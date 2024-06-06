@@ -4,7 +4,7 @@ import type { ComponentProps, ReactNode } from 'react';
 
 import { cx, cva, type RecipeVariantProps, css } from '../../styled-system/css';
 
-const buttonVariants = cva({
+export const buttonVariants = cva({
   base: {
     display: 'inline-flex',
     alignItems: 'center',
