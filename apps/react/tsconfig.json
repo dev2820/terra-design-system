@@ -15,7 +15,9 @@
     /* Linting */
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+
+    "baseUrl": "./src"
   },
   "include": ["src"],
   "extends": "tsconfig/base.json"
