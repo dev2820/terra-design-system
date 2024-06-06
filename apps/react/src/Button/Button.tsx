@@ -27,6 +27,7 @@ const buttonVariants = cva({
     color: {
       primary: {},
       secondary: {},
+      default: {},
     },
     size: {
       lg: {},
@@ -47,9 +48,10 @@ const buttonVariants = cva({
   },
   defaultVariants: {
     variant: 'filled',
-    color: 'primary',
+    color: 'default',
     size: 'md',
     disabled: false,
+    loading: false,
   },
   compoundVariants: [],
 });
