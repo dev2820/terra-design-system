@@ -7,13 +7,13 @@
     "prestorybook": "pnpm --filter utils build",
     "prebuild-storybook": "pnpm --filter utils build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "react:test": "pnpm --filter react test",
+    "react:test": "pnpm --filter @terra/react test",
     "utils:test": "pnpm --filter utils test",
-    "storybook": "pnpm --filter react run storybook",
-    "build-storybook": "pnpm --filter react run build-storybook",
+    "storybook": "pnpm --filter @terra/react run storybook",
+    "build-storybook": "pnpm --filter @terra/react run build-storybook",
     "utils": "pnpm --filter utils",
-    "react": "pnpm --filter react",
-    "build:react": "pnpm --filter react run build"
+    "react": "pnpm --filter @terra/react",
+    "build:react": "pnpm --filter @terra/react run build"
   },
   "dependencies": {
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",

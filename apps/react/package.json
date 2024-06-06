@@ -1,5 +1,5 @@
 {
-  "name": "react",
+  "name": "@terra/react",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,9 +9,23 @@
     "storybook": "storybook dev -p 6006",
     "prebuild-storybook": "panda codegen",
     "build-storybook": "storybook build",
-    "prepare": "panda codegen",
-    "prebuild": "panda codegen",
-    "build": "tsup"
+    "prebuild": "panda codegen ",
+    "build": "tsup && panda cssgen --outfile dist/styles.css"
+  },
+  "exports": {
+    ".": {
+      "source": "./src/index.ts",
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./style": "./dist/styles.css",
+    "./package.json": "./package.json"
   },
   "keywords": [],
   "author": "",
