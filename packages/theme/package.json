@@ -1,0 +1,13 @@
+{
+  "name": "theme",
+  "version": "0.0.0",
+  "private": true,
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "exports": {
+    "./token": "./token.ts",
+    "./semanticToken": "./semanticToken.ts"
+  }
+}

@@ -1,4 +1,6 @@
 import { defineConfig } from '@pandacss/dev';
+import * as semanticTokens from 'theme/semanticToken';
+import * as tokens from 'theme/token';
 
 export default defineConfig({
   // Whether to use css reset
@@ -12,7 +14,10 @@ export default defineConfig({
 
   // Useful for theme customization
   theme: {
-    extend: {},
+    extend: {
+      tokens,
+      semanticTokens,
+    },
   },
 
   // The output directory for your css system

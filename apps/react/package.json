@@ -38,6 +38,7 @@
     "utils": "workspace:*"
   },
   "devDependencies": {
+    "theme": "workspace:*",
     "@chromatic-com/storybook": "^1.5.0",
     "@pandacss/dev": "^0.40.1",
     "@storybook/addon-essentials": "^8.1.6",

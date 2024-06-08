@@ -1,7 +1,12 @@
 /** @type { import('@storybook/react').Preview } */
-import '../src/index.css';
+import type { Preview } from '@storybook/react';
 
-const preview = {
+import React from 'react';
+
+import '../src/index.css';
+import './styles.css';
+
+const preview: Preview = {
   parameters: {
     controls: {
       matchers: {
@@ -9,6 +14,11 @@ const preview = {
         date: /Date$/i,
       },
     },
+    decorators: [
+      Story => {
+        return <Story />;
+      },
+    ],
   },
 };
 
