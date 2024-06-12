@@ -24,6 +24,17 @@
         "default": "./dist/index.cjs"
       }
     },
+    "./Accordion": {
+      "source": "./src/index.ts",
+      "import": {
+        "types": "./dist/Accordion/index.d.ts",
+        "default": "./dist/Accordion/index.js"
+      },
+      "require": {
+        "types": "./dist/Accordion/index.d.ts",
+        "default": "./dist/Accordion/index.cjs"
+      }
+    },
     "./style": "./dist/styles.css",
     "./package.json": "./package.json"
   },
@@ -31,6 +42,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@ark-ui/anatomy": "^3.3.0",
     "@ark-ui/react": "^3.2.0",
     "lucide-react": "^0.378.0",
     "react": "^18.2.0",
@@ -38,7 +50,6 @@
     "utils": "workspace:*"
   },
   "devDependencies": {
-    "theme": "workspace:*",
     "@chromatic-com/storybook": "^1.5.0",
     "@pandacss/dev": "^0.40.1",
     "@storybook/addon-essentials": "^8.1.6",
@@ -55,6 +66,7 @@
     "eslint-plugin-storybook": "^0.8.0",
     "prop-types": "^15.8.1",
     "storybook": "^8.1.6",
+    "theme": "workspace:*",
     "tsup": "^8.1.0"
   }
 }

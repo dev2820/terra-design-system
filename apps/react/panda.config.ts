@@ -17,6 +17,16 @@ export default defineConfig({
     extend: {
       tokens,
       semanticTokens,
+      keyframes: {
+        'collapse-in': {
+          from: { height: '0px' },
+          to: { height: 'var(--height)' },
+        },
+        'collapse-out': {
+          from: { height: 'var(--height)' },
+          to: { height: '0px' },
+        },
+      },
     },
   },
 
