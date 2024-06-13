@@ -4,7 +4,7 @@ import type { ComponentProps, ReactNode } from 'react';
 
 import { cx, cva, type RecipeVariantProps, css } from '../../styled-system/css';
 
-export const buttonVariants = cva({
+const buttonVariants = cva({
   base: {
     display: 'inline-flex',
     alignItems: 'center',
@@ -214,7 +214,7 @@ export type ButtonProps = ComponentProps<'button'> &
     leftIcon?: ReactNode;
   };
 
-export function Button({
+function Button({
   type = 'button',
   loading = false,
   loadingIcon = (
@@ -245,3 +245,5 @@ export function Button({
     </button>
   );
 }
+
+export { Button, buttonVariants };

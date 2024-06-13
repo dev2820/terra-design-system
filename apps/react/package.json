@@ -24,17 +24,6 @@
         "default": "./dist/index.cjs"
       }
     },
-    "./Accordion": {
-      "source": "./src/index.ts",
-      "import": {
-        "types": "./dist/Accordion/index.d.ts",
-        "default": "./dist/Accordion/index.js"
-      },
-      "require": {
-        "types": "./dist/Accordion/index.d.ts",
-        "default": "./dist/Accordion/index.cjs"
-      }
-    },
     "./style": "./dist/styles.css",
     "./package.json": "./package.json"
   },
