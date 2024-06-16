@@ -1,12 +1,15 @@
 import { avatarAnatomy } from '@ark-ui/anatomy';
 import { Avatar as _Avatar } from '@ark-ui/react';
 import { UserIcon } from 'lucide-react';
+import { isNotNil } from 'utils';
 
 import {
   type ComponentProps,
   type ComponentPropsWithoutRef,
   type ElementRef,
   forwardRef,
+  ReactNode,
+  Children,
 } from 'react';
 
 import { RecipeVariantProps, cx, sva } from '../../styled-system/css';
@@ -20,10 +23,10 @@ export const avatarVariants = sva({
       overflow: 'hidden',
     },
     fallback: {
-      bg: 'neutral.500',
+      bg: 'neutral.200',
     },
     image: {
-      bg: 'neutral.500',
+      bg: 'neutral.200',
     },
   },
   variants: {
@@ -84,18 +87,43 @@ const Avatar = forwardRef<
     RecipeVariantProps<typeof avatarVariants> & {
       alt?: string;
       src?: string;
+      fallback?: ReactNode;
+      children?: ReactNode;
     }
->(({ src, alt, size, className, ...props }, ref) => {
+>((props, ref) => {
+  const { fallback, src, alt, size, className, children, ...rest } = props;
   const classes = avatarVariants({ size });
+  const child = children && Children.only(children);
 
   return (
-    <_Avatar.Root ref={ref} className={cx(classes.root, className)} {...props}>
-      <_Avatar.Image src={src} alt={alt} className={classes.image} />
-      <_Avatar.Fallback className={classes.fallback}>
-        <UserIcon size={size} />
+    <_Avatar.Root ref={ref} className={cx(classes.root, className)} {...rest}>
+      <_Avatar.Image
+        src={src}
+        alt={alt}
+        className={classes.image}
+        asChild={isNotNil(child)}
+      >
+        {child}
+      </_Avatar.Image>
+      <_Avatar.Fallback className={classes.fallback} asChild>
+        {fallback ?? <UserIcon size={convertSizeToNumber(size)} />}
       </_Avatar.Fallback>
     </_Avatar.Root>
   );
 });
 
 export { Avatar };
+
+const convertSizeToNumber = (size?: 'sm' | 'md' | 'lg') => {
+  if (size === 'sm') {
+    return 32;
+  }
+  if (size === 'md') {
+    return 40;
+  }
+  if (size === 'lg') {
+    return 48;
+  }
+
+  return 10;
+};

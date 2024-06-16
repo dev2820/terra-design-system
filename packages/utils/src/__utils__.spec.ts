@@ -1,4 +1,4 @@
-import { isNil } from './index';
+import { isNil, isNotNil } from './index';
 
 describe('isNil', () => {
   const testCases = [
@@ -18,5 +18,26 @@ describe('isNil', () => {
 
   it.each(testCases)('should return %s when input is %s', (input, expected) => {
     expect(isNil(input)).toBe(expected);
+  });
+});
+
+describe('isNotNil', () => {
+  const testCases = [
+    [null, false, 'null'],
+    [undefined, false, 'undefined'],
+    ['', true, 'an empty string'],
+    [0, true, 'zero'],
+    [false, true, 'false'],
+    [[], true, 'an empty array'],
+    [{}, true, 'an empty object'],
+    ['hello', true, 'a non-empty string'],
+    [42, true, 'a non-zero number'],
+    [true, true, 'true'],
+    [[1, 2, 3], true, 'a non-empty array'],
+    [{ key: 'value' }, true, 'a non-empty object'],
+  ] as const;
+
+  it.each(testCases)('should return %s when input is %s', (input, expected) => {
+    expect(isNotNil(input)).toBe(expected);
   });
 });

@@ -1,4 +1,6 @@
-import { cx } from '../../styled-system/css';
+import { UserIcon } from 'lucide-react';
+
+import { css, cx } from '../../styled-system/css';
 import { flex } from '../../styled-system/patterns';
 import { Avatar, type AvatarProps } from './index';
 
@@ -37,9 +39,28 @@ export const Size = {
     return (
       <div className={cx(flex({ direction: 'row', gap: 4 }))}>
         {sizes.map(size => (
-          <Avatar size={size} {...props} />
+          <Avatar size={size} key={size} {...props} />
         ))}
       </div>
     );
+  },
+};
+
+export const ImageWithChildren = {
+  args: {
+    children: <img src="https://i.pravatar.cc/500" alt="pravatar" />,
+  },
+  render: ({ children, ...props }: AvatarProps) => {
+    return <Avatar {...props}>{children}</Avatar>;
+  },
+};
+
+export const Fallback = {
+  args: {
+    alt: 'pravatar',
+    fallback: <UserIcon size={40} className={css({ bg: 'neutral.200' })} />,
+  },
+  render: (props: AvatarProps) => {
+    return <Avatar {...props} />;
   },
 };
