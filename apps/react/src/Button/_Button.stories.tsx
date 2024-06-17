@@ -4,7 +4,7 @@ import { css } from '../../styled-system/css';
 import { Button, ButtonProps } from './Button';
 
 const sizes = ['sm', 'md', 'lg', 'icon'] as ButtonProps['size'][];
-const colors = ['primary', 'neutral'] as ButtonProps['colorScheme'][];
+const colors = ['primary', 'neutral'] as ButtonProps['theme'][];
 const variants = ['filled', 'outline', 'ghost'] as ButtonProps['variant'][];
 
 export default {
@@ -23,7 +23,7 @@ export default {
       options: variants,
       control: { type: 'select' },
     },
-    colorScheme: {
+    theme: {
       options: colors,
       control: { type: 'select' },
     },
@@ -37,7 +37,7 @@ export default {
   args: {
     size: sizes[1],
     variant: variants[0],
-    colorScheme: colors[1],
+    theme: colors[1],
     disabled: false,
     loading: false,
   },
@@ -56,7 +56,7 @@ export const Variant = {
     return (
       <div className={css({ display: 'flex', flexDir: 'row', gap: 4 })}>
         {variants.map(variant => (
-          <Button variant={variant} colorScheme="neutral" key={variant}>
+          <Button variant={variant} theme="neutral" key={variant}>
             Click me
           </Button>
         ))}
@@ -71,7 +71,7 @@ export const ColorScheme = {
     return (
       <div className={css({ display: 'flex', flexDir: 'row', gap: 4 })}>
         {colors.map(color => (
-          <Button colorScheme={color} key={color}>
+          <Button theme={color} key={color}>
             Click me
           </Button>
         ))}

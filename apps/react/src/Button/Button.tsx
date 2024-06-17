@@ -32,7 +32,7 @@ const buttonVariants = cva({
         bg: 'transparent',
       },
     },
-    colorScheme: {
+    theme: {
       primary: {},
       neutral: {},
     },
@@ -65,13 +65,13 @@ const buttonVariants = cva({
   },
   defaultVariants: {
     variant: 'filled',
-    colorScheme: 'neutral',
+    theme: 'neutral',
     size: 'md',
     loading: false,
   },
   compoundVariants: [
     {
-      colorScheme: 'primary',
+      theme: 'primary',
       variant: 'filled',
       css: {
         bgColor: 'primary',
@@ -94,7 +94,7 @@ const buttonVariants = cva({
       },
     },
     {
-      colorScheme: 'neutral',
+      theme: 'neutral',
       variant: 'filled',
       css: {
         bgColor: 'neutral',
@@ -117,7 +117,7 @@ const buttonVariants = cva({
       },
     },
     {
-      colorScheme: 'primary',
+      theme: 'primary',
       variant: 'outline',
       css: {
         color: 'primary.500',
@@ -139,7 +139,7 @@ const buttonVariants = cva({
       },
     },
     {
-      colorScheme: 'neutral',
+      theme: 'neutral',
       variant: 'outline',
       css: {
         color: 'neutral.500',
@@ -162,7 +162,7 @@ const buttonVariants = cva({
       },
     },
     {
-      colorScheme: 'primary',
+      theme: 'primary',
       variant: 'ghost',
       css: {
         color: 'primary.500',
@@ -183,7 +183,7 @@ const buttonVariants = cva({
       },
     },
     {
-      colorScheme: 'neutral',
+      theme: 'neutral',
       variant: 'ghost',
       css: {
         color: 'neutral.500',
@@ -227,14 +227,14 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       disabled = false,
       variant,
       size,
-      colorScheme,
+      theme,
       children,
       ...rest
     } = props;
 
     return (
       <button
-        className={cx(buttonVariants({ variant, colorScheme, size, loading }))}
+        className={cx(buttonVariants({ variant, theme, size, loading }))}
         type={type}
         disabled={disabled || loading}
         aria-disabled={disabled || loading}
