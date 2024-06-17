@@ -7,15 +7,19 @@ import {
   type ComponentPropsWithoutRef,
   forwardRef,
   type ElementRef,
+  ReactNode,
 } from 'react';
 
 import { sva, cx } from '../../styled-system/css';
+import { createReactContext } from '../create-react-context';
 
 export const accordionVariants = sva({
   className: 'accordion',
   slots: accordionAnatomy.keys(),
   base: {
-    root: {},
+    root: {
+      w: 'full',
+    },
     item: {
       borderBottom: '1px solid',
       borderColor: 'neutral.200',
@@ -55,20 +59,42 @@ export const accordionVariants = sva({
   },
 });
 
+type AccordionProviderProps = {
+  indicator: ReactNode;
+};
+const [AccordionProvider, useAccordionContext] = createReactContext<{
+  indicator: ReactNode;
+}>({
+  name: 'accordion',
+  hookName: 'useAccordionContext',
+  providerName: 'AccordionProvider',
+  defaultValue: {
+    indicator: null,
+  },
+});
+
 export type RootProps = ComponentProps<typeof Root>;
 const Root = forwardRef<
   ElementRef<typeof Accordion.Root>,
-  ComponentPropsWithoutRef<typeof Accordion.Root>
->(({ children, className, ...props }, ref) => {
+  ComponentPropsWithoutRef<typeof Accordion.Root> & AccordionProviderProps
+>(({ indicator, children, className, ...props }, ref) => {
   const classes = accordionVariants();
+  const providedValue = {
+    indicator: indicator ?? (
+      <ChevronDownIcon size={20} className={classes.itemIndicator} />
+    ),
+  };
+
   return (
-    <Accordion.Root
-      ref={ref}
-      className={cx(classes.root, className)}
-      {...props}
-    >
-      {children}
-    </Accordion.Root>
+    <AccordionProvider value={providedValue}>
+      <Accordion.Root
+        ref={ref}
+        className={cx(classes.root, className)}
+        {...props}
+      >
+        {children}
+      </Accordion.Root>
+    </AccordionProvider>
   );
 });
 
@@ -94,6 +120,8 @@ const Trigger = forwardRef<
   ElementRef<typeof Accordion.ItemTrigger>,
   ComponentPropsWithoutRef<typeof Accordion.ItemTrigger>
 >(({ children, className, ...props }, ref) => {
+  const { indicator } = useAccordionContext();
+
   const classes = accordionVariants();
   return (
     <Accordion.ItemTrigger
@@ -102,8 +130,8 @@ const Trigger = forwardRef<
       {...props}
     >
       {children}
-      <Accordion.ItemIndicator className={classes.itemIndicator}>
-        <ChevronDownIcon size={16} />
+      <Accordion.ItemIndicator className={classes.itemIndicator} asChild>
+        {indicator}
       </Accordion.ItemIndicator>
     </Accordion.ItemTrigger>
   );
@@ -126,10 +154,4 @@ const Content = forwardRef<
   );
 });
 
-export type RootProviderProps = ComponentProps<typeof RootProvider>;
-const RootProvider = Accordion.RootProvider;
-
-export type ContextProps = ComponentProps<typeof Context>;
-const Context = Accordion.Context;
-
-export { Root, Item, Trigger, Content, RootProvider, Context };
+export { Root, Item, Trigger, Content };

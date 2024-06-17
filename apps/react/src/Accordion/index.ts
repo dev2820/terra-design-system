@@ -1,18 +1,9 @@
-import {
-  Root,
-  Item,
-  Trigger,
-  Content,
-  RootProvider,
-  Context,
-} from './Accordion';
+import { Root, Item, Trigger, Content } from './Accordion';
 import type {
-  ContextProps,
   RootProps,
   ItemProps,
   TriggerProps,
   ContentProps,
-  RootProviderProps,
 } from './Accordion';
 
 export const Accordion = {
@@ -20,8 +11,6 @@ export const Accordion = {
   Item,
   Trigger,
   Content,
-  RootProvider,
-  Context,
 };
 
 export type AccordionProps = {
@@ -29,6 +18,4 @@ export type AccordionProps = {
   Item: ItemProps;
   Trigger: TriggerProps;
   Content: ContentProps;
-  RootProvider: RootProviderProps;
-  Context: ContextProps;
 };
