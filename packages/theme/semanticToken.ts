@@ -11,29 +11,43 @@ export const colors = {
     700: { value: 'var(--my-colors-primary-700, {colors.violet.700})' },
     800: { value: 'var(--my-colors-primary-800, {colors.violet.800})' },
     900: { value: 'var(--my-colors-primary-900, {colors.violet.900})' },
+    light: { value: 'var(--my-colors-primary-light, {colors.violet.200})' },
+    dark: { value: 'var(--my-colors-primary-dark, {colors.violet.600})' },
     foreground: {
       value: 'var(--my-colors-primary-foreground, {colors.white})',
     },
   },
   info: {
     DEFAULT: { value: 'var(--my-colors-info, {colors.blue.500})' },
-    light: { value: 'var(--my-colors-info-light, {colors.blue.400})' },
+    light: { value: 'var(--my-colors-info-light, {colors.blue.200})' },
     dark: { value: 'var(--my-colors-info-dark, {colors.blue.600})' },
+    foreground: {
+      value: 'var(--my-colors-info-foreground, {colors.white})',
+    },
   },
   success: {
     DEFAULT: { value: 'var(--my-colors-success, {colors.green.500})' },
-    light: { value: 'var(--my-colors-success-light, {colors.green.50})' },
+    light: { value: 'var(--my-colors-success-light, {colors.green.200})' },
     dark: { value: 'var(--my-colors-success-dark, {colors.green.600})' },
+    foreground: {
+      value: 'var(--my-colors-success-foreground, {colors.white})',
+    },
   },
-  danger: {
-    DEFAULT: { value: 'var(--my-colors-danger, {colors.red.500})' },
-    light: { value: 'var(--my-colors-danger-light, {colors.red.50})' },
-    dark: { value: 'var(--my-colors-danger-dark, {colors.red.600})' },
+  error: {
+    DEFAULT: { value: 'var(--my-colors-error, {colors.red.500})' },
+    light: { value: 'var(--my-colors-error-light, {colors.red.200})' },
+    dark: { value: 'var(--my-colors-error-dark, {colors.red.600})' },
+    foreground: {
+      value: 'var(--my-colors-error-foreground, {colors.white})',
+    },
   },
   warning: {
-    DEFAULT: { value: 'var(--my-colors-warning, {colors.yellow.500})' },
-    light: { value: 'var(--my-colors-warning-light, {colors.yellow.50})' },
-    dark: { value: 'var(--my-colors-warning-dark, {colors.yellow.600})' },
+    DEFAULT: { value: 'var(--my-colors-warning, {colors.orange.500})' },
+    light: { value: 'var(--my-colors-warning-light, {colors.orange.200})' },
+    dark: { value: 'var(--my-colors-warning-dark, {colors.orange.600})' },
+    foreground: {
+      value: 'var(--my-colors-warning-foreground, {colors.white})',
+    },
   },
   neutral: {
     DEFAULT: { value: 'var(--my-colors-neutral, {colors.gray.100})' },
