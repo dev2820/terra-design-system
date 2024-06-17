@@ -1,6 +1,6 @@
 import { LoaderCircleIcon } from 'lucide-react';
 
-import type { ComponentProps, ReactNode } from 'react';
+import { forwardRef, type ComponentProps, type ReactNode } from 'react';
 
 import { cx, cva, type RecipeVariantProps, css } from '../../styled-system/css';
 
@@ -214,36 +214,41 @@ export type ButtonProps = ComponentProps<'button'> &
     leftIcon?: ReactNode;
   };
 
-function Button({
-  type = 'button',
-  loading = false,
-  loadingIcon = (
-    <LoaderCircleIcon className={css({ animation: 'spin' })} size={20} />
-  ),
-  leftIcon,
-  rightIcon,
-  disabled = false,
-  variant,
-  size,
-  colorScheme,
-  children,
-  ...props
-}: ButtonProps) {
-  return (
-    <button
-      className={cx(buttonVariants({ variant, colorScheme, size, loading }))}
-      type={type}
-      disabled={disabled || loading}
-      aria-disabled={disabled || loading}
-      aria-busy={loading}
-      {...props}
-    >
-      {leftIcon}
-      {children}
-      {rightIcon}
-      {loading && loadingIcon}
-    </button>
-  );
-}
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  function (props, ref) {
+    const {
+      type = 'button',
+      loading = false,
+      loadingIcon = (
+        <LoaderCircleIcon className={css({ animation: 'spin' })} size={20} />
+      ),
+      leftIcon,
+      rightIcon,
+      disabled = false,
+      variant,
+      size,
+      colorScheme,
+      children,
+      ...rest
+    } = props;
+
+    return (
+      <button
+        className={cx(buttonVariants({ variant, colorScheme, size, loading }))}
+        type={type}
+        disabled={disabled || loading}
+        aria-disabled={disabled || loading}
+        aria-busy={loading}
+        ref={ref}
+        {...rest}
+      >
+        {leftIcon}
+        {children}
+        {rightIcon}
+        {loading && loadingIcon}
+      </button>
+    );
+  },
+);
 
 export { Button, buttonVariants };
