@@ -34,21 +34,18 @@ export const Default = {
       <Card.Root {...props}>
         <Card.Header>
           <Card.Title>Sign in</Card.Title>
-          <Card.Description>
-            Welcome! Begin your journey here. Please sign in.
-          </Card.Description>
+          <Card.Description>Welcome! Begin your journey here.</Card.Description>
         </Card.Header>
         <Card.Content className={css({ display: 'flex', flexDir: 'column' })}>
           <input type="text" placeholder="your email" />
           <input type="password" placeholder="your password" />
         </Card.Content>
-        <Card.Footer>
-          <Button
-            variant="filled"
-            theme="primary"
-            className={css({ w: 'full' })}
-          >
-            🚀 Sign in
+        <Card.Footer
+          className={css({ display: 'flex', flexDir: 'row', gap: 4 })}
+        >
+          <Button className={css({ flex: 1 })}>Sign in</Button>
+          <Button theme="primary" className={css({ flex: 1 })}>
+            🚀 Sign up
           </Button>
         </Card.Footer>
       </Card.Root>
