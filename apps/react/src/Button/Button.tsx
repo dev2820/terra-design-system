@@ -228,13 +228,17 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       variant,
       size,
       theme,
+      className,
       children,
       ...rest
     } = props;
 
     return (
       <button
-        className={cx(buttonVariants({ variant, theme, size, loading }))}
+        className={cx(
+          buttonVariants({ variant, theme, size, loading }),
+          className,
+        )}
         type={type}
         disabled={disabled || loading}
         aria-disabled={disabled || loading}
