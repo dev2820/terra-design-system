@@ -2,6 +2,7 @@ import { type ComponentProps, forwardRef } from 'react';
 
 import { RecipeVariantProps, cx, sva } from '../../styled-system/css';
 import { createReactContext } from '../create-react-context';
+import { detailVariants, headingVariants } from '../typography';
 
 export const cardVariants = sva({
   className: 'card',
@@ -23,12 +24,9 @@ export const cardVariants = sva({
       pb: 6,
     },
     title: {
-      fontSize: '2xl',
-      fontWeight: 'bold',
       color: 'neutral.800',
     },
     description: {
-      fontSize: 'md',
       color: 'neutral.500',
     },
   },
@@ -141,7 +139,15 @@ const Title = forwardRef<HTMLHeadingElement, ComponentProps<'h3'>>(
     const { classes } = useCardContext();
 
     return (
-      <h3 ref={ref} className={cx(classes.title, className)} {...rest}>
+      <h3
+        ref={ref}
+        className={cx(
+          classes.title,
+          headingVariants({ size: 'sm' }),
+          className,
+        )}
+        {...rest}
+      >
         {children}
       </h3>
     );
@@ -155,7 +161,15 @@ const Description = forwardRef<HTMLParagraphElement, ComponentProps<'p'>>(
     const { classes } = useCardContext();
 
     return (
-      <p ref={ref} className={cx(classes.description, className)} {...rest}>
+      <p
+        ref={ref}
+        className={cx(
+          classes.description,
+          detailVariants({ size: 'md' }),
+          className,
+        )}
+        {...rest}
+      >
         {children}
       </p>
     );
