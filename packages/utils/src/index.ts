@@ -8,3 +8,5 @@ export const isNotNil = (value: unknown) => {
 export const isString = (value: unknown): value is string => {
   return typeof value === 'string';
 };
+
+export { range, rangeGenerator } from './array/range';
