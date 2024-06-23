@@ -1,6 +1,6 @@
-import { Avatar, Button } from '../../dist/index';
 import { css, cx } from '../../styled-system/css';
 import { flex } from '../../styled-system/patterns';
+import { Avatar, Button } from '../index';
 import { Card, type CardProps } from './index';
 
 const variants = [
