@@ -106,6 +106,6 @@ export const colors = {
     },
   },
   disabled: {
-    DEFAULT: { value: 'var(--my-colors-disabled, {colors.gray.400})' },
+    DEFAULT: { value: 'var(--my-colors-disabled, {colors.gray.200})' },
   },
 };
