@@ -92,10 +92,28 @@ export const SlidesPerView = {
         {images.map((image, idx) => (
           <Carousel.Item
             key={image}
-            className={css({ objectFit: 'contain' })}
+            className={css({ objectFit: 'cover', aspectRatio: '1 / 1' })}
             index={idx}
             asChild
           >
+            <img src={image} alt={`Slide ${idx}`} />
+          </Carousel.Item>
+        ))}
+      </Carousel.Root>
+    );
+  },
+};
+
+export const Spacing = {
+  args: {
+    align: 'center',
+    spacing: '32px',
+  },
+  render: (props: CarouselProps['Root']) => {
+    return (
+      <Carousel.Root {...props}>
+        {images.map((image, idx) => (
+          <Carousel.Item key={image} index={idx} asChild>
             <img src={image} alt={`Slide ${idx}`} />
           </Carousel.Item>
         ))}
