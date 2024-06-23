@@ -1,12 +1,12 @@
 /**
  * api reference: https://ark-ui.com/react/docs/components/carousel
+ *
+ * TODO: Swipe event
+ * Maybe change to https://www.embla-carousel.com/get-started/react/
  */
 import { css } from '../../styled-system/css';
 import { Carousel, type CarouselProps } from './index';
 
-/**
- * based on https://ark-ui.com/react/docs/components/accordion
- */
 export default {
   title: 'Components/Carousel',
   component: Carousel.Root,
