@@ -11,7 +11,6 @@ import {
   Children,
   useRef,
 } from 'react';
-import { useSwipeable } from 'react-swipeable';
 
 import { sva, cx, css } from '../../styled-system/css';
 import { createReactContext } from '../create-react-context';
@@ -166,20 +165,6 @@ const Root = forwardRef<
   const totalSlide = Math.ceil(
     totalItem / (isNumber(slidesPerView) ? slidesPerView : 1),
   );
-  const swipeHandlers = useSwipeable({
-    onSwipedRight: () => {
-      if (readonly) {
-        return;
-      }
-      prevBtnRef.current?.click();
-    },
-    onSwipedLeft: () => {
-      if (readonly) {
-        return;
-      }
-      nextBtnRef.current?.click();
-    },
-  });
 
   const ctx = {
     classes,
@@ -195,7 +180,7 @@ const Root = forwardRef<
         slidesPerView={slidesPerView}
         {...rest}
       >
-        <Carousel.Viewport className={classes.viewport} {...swipeHandlers}>
+        <Carousel.Viewport className={classes.viewport}>
           <Carousel.ItemGroup>{children}</Carousel.ItemGroup>
         </Carousel.Viewport>
         <Carousel.Control className={classes.control}>
