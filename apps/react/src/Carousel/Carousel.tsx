@@ -9,9 +9,11 @@ import {
   ElementRef,
   ComponentPropsWithoutRef,
   Children,
+  useRef,
 } from 'react';
+import { useSwipeable } from 'react-swipeable';
 
-import { sva, cx } from '../../styled-system/css';
+import { sva, cx, css } from '../../styled-system/css';
 import { createReactContext } from '../create-react-context';
 
 export const carouselVariants = sva({
@@ -65,6 +67,10 @@ export const carouselVariants = sva({
       transitionDuration: 'normal',
       '&[data-current]': {
         bg: 'neutral.500',
+      },
+      '&[data-readonly]': {
+        bg: 'disabled',
+        cursor: 'not-allowed',
       },
     },
     control: {
@@ -143,11 +149,13 @@ const Root = forwardRef<
   ElementRef<typeof Carousel.Root>,
   ComponentPropsWithoutRef<typeof Carousel.Root> &
     CarouselProviderProps & {
-      hideControl: boolean;
+      showControl: boolean;
+      readonly: boolean;
     }
 >(function (props, ref) {
   const {
-    hideControl = false,
+    showControl = true,
+    readonly = false,
     slidesPerView,
     children,
     className,
@@ -158,10 +166,27 @@ const Root = forwardRef<
   const totalSlide = Math.ceil(
     totalItem / (isNumber(slidesPerView) ? slidesPerView : 1),
   );
+  const swipeHandlers = useSwipeable({
+    onSwipedRight: () => {
+      if (readonly) {
+        return;
+      }
+      prevBtnRef.current?.click();
+    },
+    onSwipedLeft: () => {
+      if (readonly) {
+        return;
+      }
+      nextBtnRef.current?.click();
+    },
+  });
+
   const ctx = {
     classes,
   };
 
+  const prevBtnRef = useRef<ElementRef<typeof Carousel.PrevTrigger>>(null);
+  const nextBtnRef = useRef<ElementRef<typeof Carousel.NextTrigger>>(null);
   return (
     <CarouselProvider value={ctx}>
       <Carousel.Root
@@ -170,29 +195,42 @@ const Root = forwardRef<
         slidesPerView={slidesPerView}
         {...rest}
       >
-        <Carousel.Viewport className={classes.viewport}>
+        <Carousel.Viewport className={classes.viewport} {...swipeHandlers}>
           <Carousel.ItemGroup>{children}</Carousel.ItemGroup>
         </Carousel.Viewport>
         <Carousel.Control className={classes.control}>
-          {!hideControl && (
-            <Carousel.PrevTrigger className={classes.prevTrigger}>
-              <ChevronLeftCircleIcon size={32} />
-            </Carousel.PrevTrigger>
-          )}
+          <Carousel.PrevTrigger
+            className={cx(
+              classes.prevTrigger,
+              css({
+                visibility: !showControl || readonly ? 'hidden' : 'visible',
+              }),
+            )}
+            ref={prevBtnRef}
+          >
+            <ChevronLeftCircleIcon size={32} />
+          </Carousel.PrevTrigger>
           <Carousel.IndicatorGroup className={classes.indicatorGroup}>
             {range(0, totalSlide, 1).map(idx => (
               <Carousel.Indicator
                 index={idx}
                 key={idx}
                 className={classes.indicator}
+                readOnly={readonly}
               ></Carousel.Indicator>
             ))}
           </Carousel.IndicatorGroup>
-          {!hideControl && (
-            <Carousel.NextTrigger className={classes.nextTrigger}>
-              <ChevronRightCircleIcon size={32} />
-            </Carousel.NextTrigger>
-          )}
+          <Carousel.NextTrigger
+            className={cx(
+              classes.nextTrigger,
+              css({
+                visibility: !showControl || readonly ? 'hidden' : 'visible',
+              }),
+            )}
+            ref={nextBtnRef}
+          >
+            <ChevronRightCircleIcon size={32} />
+          </Carousel.NextTrigger>
         </Carousel.Control>
       </Carousel.Root>
     </CarouselProvider>

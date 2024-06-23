@@ -41,6 +41,43 @@ export const Default = {
   },
 };
 
+export const HideControl = {
+  args: {
+    defaultIndex: 1,
+    showControl: false,
+  },
+  render: (props: CarouselProps['Root']) => {
+    return (
+      <Carousel.Root {...props}>
+        {images.map((image, idx) => (
+          <Carousel.Item key={image} index={idx} asChild>
+            <img src={image} alt={`Slide ${idx}`} />
+          </Carousel.Item>
+        ))}
+      </Carousel.Root>
+    );
+  },
+};
+
+export const Readonly = {
+  args: {
+    defaultIndex: 1,
+    readonly: true,
+    hideControl: true,
+  },
+  render: (props: CarouselProps['Root']) => {
+    return (
+      <Carousel.Root {...props}>
+        {images.map((image, idx) => (
+          <Carousel.Item key={image} index={idx} asChild>
+            <img src={image} alt={`Slide ${idx}`} />
+          </Carousel.Item>
+        ))}
+      </Carousel.Root>
+    );
+  },
+};
+
 export const Loop = {
   args: {
     defaultIndex: 1,
