@@ -30,6 +30,7 @@ function range(
   step: number,
   returnAsGenerator: false,
 ): number[];
+function range(start: number, end: number, step: number): number[];
 function range(
   start: number,
   end: number,
