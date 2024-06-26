@@ -1,0 +1,1 @@
+import{a as c,g as p,p as g}from"./cva-lkKqYSg-.js";const e={transform(t){const{direction:s,align:n,justify:a,wrap:o,basis:f,grow:i,shrink:l,...x}=t;return{display:"flex",flexDirection:s,alignItems:n,justifyContent:a,flexWrap:o,flexBasis:f,flexGrow:i,flexShrink:l,...x}}},r=(t={})=>{const s=p(e,t);return e.transform(s,g)},y=t=>c(r(t));y.raw=r;export{y as f};
