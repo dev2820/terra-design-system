@@ -7,4 +7,5 @@ export * from './Card';
 export * from './Link';
 export * from './Input';
 export * from './Checkbox';
+export * from './Collapsible';
 export * from './typography';
