@@ -54,6 +54,18 @@ export const Default = {
   },
 };
 
+export const OnlyTitle = {
+  args: {},
+  render: (props: AlertProps['Root']) => {
+    return (
+      <Alert.Root {...props}>
+        <RocketIcon size={20} />
+        <Alert.Title>Lorem ipsume</Alert.Title>
+      </Alert.Root>
+    );
+  },
+};
+
 export const WithoutIcon = {
   args: {},
   render: (props: AlertProps['Root']) => {

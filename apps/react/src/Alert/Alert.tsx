@@ -25,6 +25,9 @@ export const alertVariants = sva({
       fontWeight: 'semiBold',
       fontSize: 'lg',
       lineHeight: 2,
+      _last: {
+        mb: 0,
+      },
       mb: 2,
       color: 'neutral.800',
     },
