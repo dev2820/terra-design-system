@@ -1,15 +1,15 @@
 import { EllipsisIcon, SearchIcon } from 'lucide-react';
 
 import { css } from '../../styled-system/css';
-import { Button, ButtonProps } from './Button';
+import { IconButton, IconButtonProps } from './IconButton';
 
-const sizes = ['sm', 'md', 'lg', 'icon'] as ButtonProps['size'][];
-const colors = ['primary', 'neutral'] as ButtonProps['theme'][];
-const variants = ['filled', 'outline', 'ghost'] as ButtonProps['variant'][];
+const sizes = ['sm', 'md', 'lg'] as IconButtonProps['size'][];
+const colors = ['primary', 'neutral'] as IconButtonProps['theme'][];
+const variants = ['filled', 'outline', 'ghost'] as IconButtonProps['variant'][];
 
 export default {
-  title: 'Components/Button',
-  component: Button,
+  title: 'Components/IconButton',
+  component: IconButton,
   parameters: {
     layout: 'centered',
   },
@@ -45,8 +45,12 @@ export default {
 
 export const Default = {
   args: {},
-  render: (props: ButtonProps) => {
-    return <Button {...props}>Click me</Button>;
+  render: (props: IconButtonProps) => {
+    return (
+      <IconButton {...props}>
+        <SearchIcon size={20} />
+      </IconButton>
+    );
   },
 };
 
@@ -56,9 +60,9 @@ export const Variant = {
     return (
       <div className={css({ display: 'flex', flexDir: 'row', gap: 4 })}>
         {variants.map(variant => (
-          <Button variant={variant} theme="neutral" key={variant}>
-            Click me
-          </Button>
+          <IconButton variant={variant} theme="neutral" key={variant}>
+            <SearchIcon size={20} />
+          </IconButton>
         ))}
       </div>
     );
@@ -71,9 +75,9 @@ export const ColorScheme = {
     return (
       <div className={css({ display: 'flex', flexDir: 'row', gap: 4 })}>
         {colors.map(color => (
-          <Button theme={color} key={color}>
-            Click me
-          </Button>
+          <IconButton theme={color} key={color}>
+            <SearchIcon size={20} />
+          </IconButton>
         ))}
       </div>
     );
@@ -85,9 +89,15 @@ export const Sizes = {
   render: () => {
     return (
       <div className={css({ display: 'flex', flexDir: 'row', gap: 4 })}>
-        <Button size="sm">Click me</Button>
-        <Button size="md">Click me</Button>
-        <Button size="lg">Click me</Button>
+        <IconButton size="sm">
+          <SearchIcon size={20} />
+        </IconButton>
+        <IconButton size="md">
+          <SearchIcon size={20} />
+        </IconButton>
+        <IconButton size="lg">
+          <SearchIcon size={20} />
+        </IconButton>
       </div>
     );
   },
@@ -98,22 +108,12 @@ export const Loading = {
   render: () => {
     return (
       <div className={css({ display: 'flex', flexDir: 'row', gap: 4 })}>
-        <Button loading>Click me</Button>
-        <Button loading loadingIcon={<EllipsisIcon size={20} />}>
-          Click me
-        </Button>
-      </div>
-    );
-  },
-};
-
-export const Icon = {
-  args: {},
-  render: () => {
-    return (
-      <div className={css({ display: 'flex', flexDir: 'row', gap: 4 })}>
-        <Button leftIcon={<SearchIcon size={20} />}>Click me</Button>
-        <Button rightIcon={<SearchIcon size={20} />}>Click me</Button>
+        <IconButton loading>
+          <SearchIcon size={20} />
+        </IconButton>
+        <IconButton loading loadingIcon={<EllipsisIcon size={20} />}>
+          <SearchIcon size={20} />
+        </IconButton>
       </div>
     );
   },
@@ -124,7 +124,9 @@ export const Disabled = {
   render: () => {
     return (
       <div className={css({ display: 'flex', flexDir: 'row', gap: 4 })}>
-        <Button disabled>Click me</Button>
+        <IconButton disabled>
+          <SearchIcon size={20} />
+        </IconButton>
       </div>
     );
   },

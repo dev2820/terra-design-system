@@ -11,7 +11,7 @@ import {
 
 import { sva, cx, css } from '../../styled-system/css';
 import { flex } from '../../styled-system/patterns';
-import { Button } from '../Button';
+import { IconButton } from '../IconButton';
 import { Input } from '../Input';
 
 export const colorPickerVariants = sva({
@@ -118,16 +118,12 @@ const Root = forwardRef<
                 <Input className={css({ flex: 1 })} />
               </ColorPicker.ChannelInput>
               <ColorPicker.Trigger asChild>
-                <Button
-                  variant="outline"
-                  size="icon"
-                  className={css({ flex: 'none' })}
-                >
+                <IconButton variant="outline" className={css({ flex: 'none' })}>
                   <ColorPicker.Swatch
                     value={api.value}
                     className={classes.swatch}
                   />
-                </Button>
+                </IconButton>
               </ColorPicker.Trigger>
             </ColorPicker.Control>
             <ColorPicker.Positioner className={classes.positioner}>
@@ -141,13 +137,9 @@ const Root = forwardRef<
                   </ColorPicker.Area>
                   <div className={flex({ direction: 'row', gap: 3 })}>
                     <ColorPicker.EyeDropperTrigger asChild>
-                      <Button
-                        size="icon"
-                        variant="ghost"
-                        aria-label="Pick a color"
-                      >
+                      <IconButton variant="ghost" aria-label="Pick a color">
                         <PipetteIcon size={20} />
-                      </Button>
+                      </IconButton>
                     </ColorPicker.EyeDropperTrigger>
                     <div
                       className={cx(

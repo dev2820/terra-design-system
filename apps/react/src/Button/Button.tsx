@@ -45,15 +45,10 @@ const buttonVariants = cva({
       md: {
         h: 10,
         paddingX: 4,
-        paddingY: 2,
       },
       lg: {
         h: 11,
-        paddingX: 8,
-      },
-      icon: {
-        h: 10,
-        w: 10,
+        paddingX: 6,
       },
     },
     loading: {
@@ -247,10 +242,10 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         {...rest}
       >
+        {loading && loadingIcon}
         {leftIcon}
         {children}
         {rightIcon}
-        {loading && loadingIcon}
       </button>
     );
   },
