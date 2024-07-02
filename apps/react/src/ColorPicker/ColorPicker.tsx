@@ -138,7 +138,7 @@ const Root = forwardRef<
                   <div className={flex({ direction: 'row', gap: 3 })}>
                     <ColorPicker.EyeDropperTrigger asChild>
                       <IconButton
-                        variant="ghost"
+                        variant="outline"
                         size="sm"
                         aria-label="Pick a color"
                       >
