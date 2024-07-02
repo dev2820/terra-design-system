@@ -7,8 +7,8 @@ import { cx, cva, type RecipeVariantProps, css } from '../../styled-system/css';
 const buttonVariants = cva({
   base: {
     display: 'inline-flex',
-    alignItems: 'center',
     justifyContent: 'center',
+    placeItems: 'center',
     whiteSpace: 'nowrap',
     rounded: 'lg',
     fontSize: 'md',
@@ -25,7 +25,8 @@ const buttonVariants = cva({
     variant: {
       filled: {},
       outline: {
-        border: '1px solid',
+        borderWidth: 1,
+        borderStyle: 'solid',
         bg: 'white',
       },
       ghost: {
@@ -143,7 +144,7 @@ const buttonVariants = cva({
       variant: 'outline',
       css: {
         color: 'neutral.500',
-        borderColor: 'neutral.500',
+        borderColor: 'neutral.300',
         _disabled: {
           bg: 'transparent',
           _hover: {

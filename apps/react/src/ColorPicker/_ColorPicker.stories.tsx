@@ -1,5 +1,3 @@
-import { ChevronDownIcon } from 'lucide-react';
-
 import { css } from '../../styled-system/css';
 import { flex, spacer } from '../../styled-system/patterns';
 import { ColorPicker, type ColorPickerProps } from './index';
@@ -24,7 +22,9 @@ export const Default = {
   args: {},
   render: (props: ColorPickerProps['root']) => {
     return (
-      <div className={css({ width: '600px', height: '500px' })}>
+      <div
+        className={css({ display: 'flex', width: '600px', height: '500px' })}
+      >
         <ColorPicker.Root {...props} defaultValue="#eb5e41" />
       </div>
     );

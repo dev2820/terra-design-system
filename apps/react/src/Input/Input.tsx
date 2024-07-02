@@ -7,7 +7,6 @@ const inputVariants = cva({
     display: 'flex',
     flexDir: '',
     height: 10,
-    width: 'full',
     rounded: 'lg',
     border: '1px solid',
     borderColor: 'neutral.300',

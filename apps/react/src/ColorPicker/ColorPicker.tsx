@@ -1,5 +1,6 @@
 import { colorPickerAnatomy } from '@ark-ui/anatomy';
 import { ColorPicker } from '@ark-ui/react';
+import { PipetteIcon } from 'lucide-react';
 
 import {
   type ComponentProps,
@@ -8,43 +9,86 @@ import {
   type ElementRef,
 } from 'react';
 
-import { sva, cx } from '../../styled-system/css';
-import { createReactContext } from '../create-react-context';
+import { sva, cx, css } from '../../styled-system/css';
+import { flex } from '../../styled-system/patterns';
+import { Button } from '../Button';
+import { Input } from '../Input';
 
 export const colorPickerVariants = sva({
   className: 'colorPicker',
   slots: colorPickerAnatomy.keys(),
   base: {
     root: {
-      w: 'full',
-      bg: 'white',
-      rounded: 'md',
+      display: 'flex',
+      flexDirection: 'column',
+      gap: '1.5',
     },
-    trigger: {
-      w: 'full',
-      h: 10,
-      paddingX: 4,
-      cursor: 'pointer',
-      _disabled: {
-        opacity: 40,
-        cursor: 'not-allowed',
-      },
+    control: {
+      display: 'flex',
+      flexDirection: 'row',
+      gap: 2,
     },
     content: {
-      paddingX: 4,
-      borderTop: '1px solid',
-      borderColor: 'neutral.300',
-      overflow: 'hidden',
+      background: 'white',
+      borderRadius: 'lg',
+      boxShadow: 'lg',
+      display: 'flex',
+      flexDirection: 'column',
+      maxWidth: 'sm',
+      p: '4',
+      zIndex: 'dropdown',
       _open: {
-        animation: 'collapse-in 0.15s ease-in-out',
+        animation: 'fadeIn 0.25s ease-out',
       },
       _closed: {
-        animation: 'collapse-out 0.15s ease-in-out',
+        animation: 'fadeOut 0.2s ease-out',
       },
-      _disabled: {
-        opacity: 40,
-        cursor: 'not-allowed',
-      },
+    },
+    area: {
+      height: 36,
+      borderRadius: 'lg',
+      overflow: 'hidden',
+    },
+    areaThumb: {
+      borderRadius: 'full',
+      height: 2.5,
+      width: 2.5,
+      boxShadow: 'white 0px 0px 0px 2px, black 0px 0px 2px 1px',
+      outline: 'none',
+    },
+    areaBackground: {
+      height: 'full',
+    },
+    channelSlider: {
+      borderRadius: 'lg',
+    },
+    channelSliderTrack: {
+      height: '3',
+      borderRadius: 'lg',
+    },
+    swatchGroup: {
+      display: 'grid',
+      gridTemplateColumns: 'repeat(7, 1fr)',
+      gap: 2,
+      background: 'white',
+    },
+    swatch: {
+      height: 7,
+      width: 7,
+      borderRadius: 'lg',
+      boxShadow: 'white 0px 0px 0px 3px',
+      cursor: 'pointer',
+    },
+    channelSliderThumb: {
+      borderRadius: 'full',
+      height: '2.5',
+      width: '2.5',
+      boxShadow: 'white 0px 0px 0px 2px, black 0px 0px 2px 1px',
+      transform: 'translate(-50%, -50%)',
+      outline: 'none',
+    },
+    transparencyGrid: {
+      borderRadius: 'lg',
     },
   },
 });
@@ -52,15 +96,6 @@ export const colorPickerVariants = sva({
 type ColorPickerProviderProps = {
   classes: ReturnType<typeof colorPickerVariants>;
 };
-const [ColorPickerProvider, useColorPickerContext] =
-  createReactContext<ColorPickerProviderProps>({
-    name: 'colorPicker',
-    hookName: 'useColorPickerContext',
-    providerName: 'ColorPickerProvider',
-    defaultValue: {
-      classes: {},
-    },
-  });
 
 export type RootProps = ComponentProps<typeof Root>;
 const Root = forwardRef<
@@ -68,119 +103,131 @@ const Root = forwardRef<
   ComponentPropsWithoutRef<typeof ColorPicker.Root> & ColorPickerProviderProps
 >(({ children, className, ...props }, ref) => {
   const classes = colorPickerVariants();
-  const ctx = {
-    classes,
-  };
 
   return (
-    <ColorPickerProvider value={ctx}>
-      <ColorPicker.Root
-        ref={ref}
-        className={cx(classes.root, className)}
-        {...props}
-      >
-        <ColorPicker.Label>Color</ColorPicker.Label>
-        <ColorPicker.Control>
-          <ColorPicker.ChannelInput channel="hex" />
-          <ColorPicker.ChannelInput channel="alpha" />
-          <ColorPicker.ValueText />
-          <ColorPicker.Trigger>
-            <ColorPicker.TransparencyGrid />
-            {/* <ColorPicker.ValueSwatch /> */}
-          </ColorPicker.Trigger>
-        </ColorPicker.Control>
-        <ColorPicker.Positioner>
-          <ColorPicker.Content>
-            <ColorPicker.FormatTrigger>
-              Toggle ColorFormat
-            </ColorPicker.FormatTrigger>
-            <ColorPicker.FormatSelect />
-            <ColorPicker.Area>
-              <ColorPicker.AreaBackground />
-              <ColorPicker.AreaThumb />
-            </ColorPicker.Area>
-            <ColorPicker.ChannelSlider channel="hue">
-              <ColorPicker.ChannelSliderTrack />
-              <ColorPicker.ChannelSliderThumb />
-            </ColorPicker.ChannelSlider>
-            <ColorPicker.ChannelSlider channel="alpha">
-              <ColorPicker.TransparencyGrid />
-              <ColorPicker.ChannelSliderTrack />
-              <ColorPicker.ChannelSliderThumb />
-            </ColorPicker.ChannelSlider>
-            <ColorPicker.SwatchGroup>
-              <ColorPicker.SwatchTrigger value="red">
-                <ColorPicker.Swatch value="red">
-                  <ColorPicker.SwatchIndicator>✓</ColorPicker.SwatchIndicator>
-                </ColorPicker.Swatch>
-              </ColorPicker.SwatchTrigger>
-              <ColorPicker.SwatchTrigger value="blue">
-                <ColorPicker.Swatch value="blue">
-                  <ColorPicker.SwatchIndicator>✓</ColorPicker.SwatchIndicator>
-                </ColorPicker.Swatch>
-              </ColorPicker.SwatchTrigger>
-              <ColorPicker.SwatchTrigger value="green">
-                <ColorPicker.Swatch value="green">
-                  <ColorPicker.SwatchIndicator>✓</ColorPicker.SwatchIndicator>
-                </ColorPicker.Swatch>
-              </ColorPicker.SwatchTrigger>
-            </ColorPicker.SwatchGroup>
-            <ColorPicker.View format="rgba">
-              <ColorPicker.ChannelInput channel="hex" />
-              <ColorPicker.ChannelInput channel="alpha" />
-            </ColorPicker.View>
-            <ColorPicker.View format="hsla">
-              <ColorPicker.ChannelInput channel="hue" />
-              <ColorPicker.ChannelInput channel="saturation" />
-              <ColorPicker.ChannelInput channel="lightness" />
-            </ColorPicker.View>
-            <ColorPicker.EyeDropperTrigger>
-              Pick color
-            </ColorPicker.EyeDropperTrigger>
-          </ColorPicker.Content>
-        </ColorPicker.Positioner>
-        <ColorPicker.HiddenInput />
-      </ColorPicker.Root>
-    </ColorPickerProvider>
+    <ColorPicker.Root
+      className={cx(classes.root, className)}
+      ref={ref}
+      {...props}
+    >
+      <ColorPicker.Context>
+        {api => (
+          <>
+            <ColorPicker.Control className={classes.control}>
+              <ColorPicker.ChannelInput channel="hex" asChild>
+                <Input className={css({ flex: 1 })} />
+              </ColorPicker.ChannelInput>
+              <ColorPicker.Trigger asChild>
+                <Button
+                  variant="outline"
+                  size="icon"
+                  className={css({ flex: 'none' })}
+                >
+                  <ColorPicker.Swatch
+                    value={api.value}
+                    className={classes.swatch}
+                  />
+                </Button>
+              </ColorPicker.Trigger>
+            </ColorPicker.Control>
+            <ColorPicker.Positioner className={classes.positioner}>
+              <ColorPicker.Content className={classes.content}>
+                <div className={flex({ gap: 3, direction: 'column' })}>
+                  <ColorPicker.Area className={classes.area}>
+                    <ColorPicker.AreaBackground
+                      className={classes.areaBackground}
+                    />
+                    <ColorPicker.AreaThumb className={classes.areaThumb} />
+                  </ColorPicker.Area>
+                  <div className={flex({ direction: 'row', gap: 3 })}>
+                    <ColorPicker.EyeDropperTrigger asChild>
+                      <Button
+                        size="icon"
+                        variant="ghost"
+                        aria-label="Pick a color"
+                      >
+                        <PipetteIcon size={20} />
+                      </Button>
+                    </ColorPicker.EyeDropperTrigger>
+                    <div
+                      className={cx(
+                        flex({ gap: 2, direction: 'column' }),
+                        css({ flex: '1' }),
+                      )}
+                    >
+                      <ColorPicker.ChannelSlider
+                        channel="hue"
+                        className={classes.channelSlider}
+                      >
+                        <ColorPicker.ChannelSliderTrack
+                          className={classes.channelSliderTrack}
+                        />
+                        <ColorPicker.ChannelSliderThumb
+                          className={classes.channelSliderThumb}
+                        />
+                      </ColorPicker.ChannelSlider>
+                      <ColorPicker.ChannelSlider
+                        channel="alpha"
+                        className={classes.channelSlider}
+                      >
+                        <ColorPicker.TransparencyGrid
+                          size="8px"
+                          className={classes.transparencyGrid}
+                        />
+                        <ColorPicker.ChannelSliderTrack
+                          className={classes.channelSliderTrack}
+                        />
+                        <ColorPicker.ChannelSliderThumb
+                          className={classes.channelSliderThumb}
+                        />
+                      </ColorPicker.ChannelSlider>
+                    </div>
+                  </div>
+                  <div className={cx(flex({ gap: 2 }), css({ flex: '1' }))}>
+                    <ColorPicker.ChannelInput channel="hex" asChild>
+                      <Input />
+                    </ColorPicker.ChannelInput>
+                    <ColorPicker.ChannelInput channel="alpha" asChild>
+                      <Input />
+                    </ColorPicker.ChannelInput>
+                  </div>
+                  <div className={cx(flex({ gap: 1.5, direction: 'column' }))}>
+                    <ColorPicker.SwatchGroup className={classes.swatchGroup}>
+                      {presets.map((color, id) => (
+                        <ColorPicker.SwatchTrigger
+                          key={id}
+                          value={color}
+                          className={classes.swatchTrigger}
+                        >
+                          <ColorPicker.Swatch
+                            value={color}
+                            className={classes.swatch}
+                          />
+                        </ColorPicker.SwatchTrigger>
+                      ))}
+                    </ColorPicker.SwatchGroup>
+                  </div>
+                </div>
+              </ColorPicker.Content>
+            </ColorPicker.Positioner>
+          </>
+        )}
+      </ColorPicker.Context>
+    </ColorPicker.Root>
   );
 });
 
-// export type TriggerProps = ComponentProps<typeof Trigger>;
-// const Trigger = forwardRef<
-//   ElementRef<typeof colorPicker.Trigger>,
-//   ComponentPropsWithoutRef<typeof colorPicker.Trigger>
-// >(function (props, ref) {
-//   const { classes } = usecolorPickerContext();
-//   const { children, className, ...rest } = props;
-
-//   return (
-//     <ColorPicker.Trigger
-//       className={cx(classes.trigger, className)}
-//       ref={ref}
-//       {...rest}
-//     >
-//       {children}
-//     </ColorPicker.Trigger>
-//   );
-// });
-
-// export type ContentProps = ComponentProps<typeof Content>;
-// const Content = forwardRef<
-//   ElementRef<typeof ColorPicker.Content>,
-//   ComponentPropsWithoutRef<typeof ColorPicker.Content>
-// >(function (props, ref) {
-//   const { classes } = useColorPickerContext();
-//   const { children, className, ...rest } = props;
-
-//   return (
-//     <ColorPicker.Content
-//       className={cx(classes.content, className)}
-//       ref={ref}
-//       {...rest}
-//     >
-//       {children}
-//     </ColorPicker.Content>
-//   );
-// });
+const presets = [
+  'hsl(10, 81%, 59%)',
+  'hsl(60, 81%, 59%)',
+  'hsl(100, 81%, 59%)',
+  'hsl(175, 81%, 59%)',
+  'hsl(190, 81%, 59%)',
+  'hsl(205, 81%, 59%)',
+  'hsl(220, 81%, 59%)',
+  'hsl(250, 81%, 59%)',
+  'hsl(280, 81%, 59%)',
+  'hsl(350, 81%, 59%)',
+];
 
 export { Root };
