@@ -38,10 +38,10 @@ export const colorPickerVariants = sva({
       p: '4',
       zIndex: 'dropdown',
       _open: {
-        animation: 'fadeIn 0.25s ease-out',
+        animation: 'fade-in 0.25s ease-out',
       },
       _closed: {
-        animation: 'fadeOut 0.2s ease-out',
+        animation: 'fade-out 0.2s ease-out',
       },
     },
     area: {
@@ -137,7 +137,11 @@ const Root = forwardRef<
                   </ColorPicker.Area>
                   <div className={flex({ direction: 'row', gap: 3 })}>
                     <ColorPicker.EyeDropperTrigger asChild>
-                      <IconButton variant="ghost" aria-label="Pick a color">
+                      <IconButton
+                        variant="ghost"
+                        size="sm"
+                        aria-label="Pick a color"
+                      >
                         <PipetteIcon size={20} />
                       </IconButton>
                     </ColorPicker.EyeDropperTrigger>
