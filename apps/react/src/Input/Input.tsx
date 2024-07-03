@@ -31,7 +31,7 @@ const inputVariants = cva({
       cursor: 'not-allowed',
       opacity: 50,
     },
-    _focus: {
+    _focusWithin: {
       borderColor: 'primary.500',
       boxShadow: '0 0 0 2px var(--shadow-color)',
       shadowColor: 'primary.500',

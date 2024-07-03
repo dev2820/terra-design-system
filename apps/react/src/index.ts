@@ -9,4 +9,5 @@ export * from './Input';
 export * from './Checkbox';
 export * from './Collapsible';
 export * from './Slider';
+export * from './NumberInput';
 export * from './typography';
