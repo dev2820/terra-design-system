@@ -24,8 +24,6 @@ export default {
   args: {
     size: sizes[1],
     variant: variants[0],
-    disabled: false,
-    loading: false,
   },
 };
 
