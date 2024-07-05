@@ -10,4 +10,6 @@ export * from './Checkbox';
 export * from './Collapsible';
 export * from './Slider';
 export * from './NumberInput';
+export * from './Progress';
+export * from './RadioGroup';
 export * from './typography';
