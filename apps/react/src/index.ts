@@ -12,4 +12,5 @@ export * from './Slider';
 export * from './NumberInput';
 export * from './Progress';
 export * from './RadioGroup';
+export * from './Switch';
 export * from './typography';
