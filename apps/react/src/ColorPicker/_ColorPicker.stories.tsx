@@ -1,5 +1,4 @@
 import { css } from '../../styled-system/css';
-import { flex, spacer } from '../../styled-system/patterns';
 import { ColorPicker, type ColorPickerProps } from './index';
 
 /**
