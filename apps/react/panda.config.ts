@@ -34,6 +34,17 @@ export default defineConfig({
           from: { opacity: 1 },
           to: { opacity: 0 },
         },
+        shimmer: {
+          '0%': {
+            backgroundColor: 'rgba(165, 165, 165, 0.15)',
+          },
+          '50%': {
+            backgroundColor: 'rgba(165, 165, 165, 0.4)',
+          },
+          '100%': {
+            backgroundColor: 'rgba(165, 165, 165, 0.15)',
+          },
+        },
       },
     },
   },
