@@ -14,4 +14,7 @@ export * from './Progress';
 export * from './RadioGroup';
 export * from './Switch';
 export * from './Select';
+export * from './Skeleton';
+export * from './Textarea';
+export * from './RatingGroup';
 export * from './typography';
