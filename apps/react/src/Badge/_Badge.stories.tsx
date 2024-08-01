@@ -63,9 +63,33 @@ export const Theme = {
   },
   render: (props: BadgeProps) => {
     return (
-      <div className={css({ display: 'flex', flexDir: 'row', gap: 4 })}>
+      <div
+        className={css({
+          display: 'grid',
+          gridTemplateRows: 3,
+          gridTemplateColumns: 5,
+          gap: 4,
+        })}
+      >
         {themes.map(color => (
           <Badge {...props} theme={color} key={color} />
+        ))}
+        {themes.map((color, i) => (
+          <Badge
+            {...props}
+            theme={color}
+            key={`outline-` + color}
+            className={css({ columnSpan: `${i}` })}
+            variant="outline"
+          />
+        ))}
+        {themes.map(color => (
+          <Badge
+            {...props}
+            theme={color}
+            key={`subtle-` + color}
+            variant="subtle"
+          />
         ))}
       </div>
     );
