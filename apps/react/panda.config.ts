@@ -34,6 +34,28 @@ export default defineConfig({
           from: { opacity: 1 },
           to: { opacity: 0 },
         },
+        'dialog-in': {
+          from: {
+            opacity: 0,
+            transform: 'translateY(30px)',
+            scale: '0.95',
+          },
+          to: {
+            opacity: 1,
+            transform: 'translateY(0px)',
+            scale: '1',
+          },
+        },
+        'dialog-out': {
+          from: {
+            opacity: 1,
+            scale: '1',
+          },
+          to: {
+            opacity: 0,
+            scale: '0.95',
+          },
+        },
         shimmer: {
           '0%': {
             backgroundColor: 'rgba(165, 165, 165, 0.15)',
