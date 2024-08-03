@@ -18,11 +18,11 @@ export const dialogVariants = sva({
   base: {
     backdrop: {
       backdropFilter: 'blur(4px)',
-      background: 'blackAlpha.700',
-      // background: {
-      //   _light: 'blackAlpha.700',
-      //   _dark: 'whiteAlpha.700',
-      // },
+      background: {
+        base: 'blackAlpha.700',
+        _light: 'blackAlpha.700',
+        _dark: 'whiteAlpha.700',
+      },
       height: '100vh',
       left: '0',
       position: 'fixed',
@@ -100,7 +100,6 @@ function Root({ children, ...props }: RootProps) {
     <DialogProvider value={ctx}>
       <Dialog.Root lazyMount unmountOnExit {...props}>
         {children}
-        <Dialog.Backdrop className={classes.backdrop} />
       </Dialog.Root>
     </DialogProvider>
   );
@@ -135,6 +134,7 @@ const Content = forwardRef<
 
   return (
     <Portal>
+      <Dialog.Backdrop className={classes.backdrop} />
       <Dialog.Positioner className={classes.positioner}>
         <Dialog.Content
           className={cx(classes.content, className)}
