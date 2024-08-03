@@ -18,10 +18,11 @@ export const dialogVariants = sva({
   base: {
     backdrop: {
       backdropFilter: 'blur(4px)',
-      background: {
-        _light: 'blackAlpha.700',
-        _dark: 'whiteAlpha.700',
-      },
+      background: 'blackAlpha.700',
+      // background: {
+      //   _light: 'blackAlpha.700',
+      //   _dark: 'whiteAlpha.700',
+      // },
       height: '100vh',
       left: '0',
       position: 'fixed',

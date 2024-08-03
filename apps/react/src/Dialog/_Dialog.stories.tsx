@@ -25,7 +25,7 @@ export const Default = {
     return (
       <div className={css({ width: '600px', height: '500px' })}>
         <Dialog.Root {...props}>
-          <Dialog.Trigger>
+          <Dialog.Trigger asChild>
             <Button>Open Dialog</Button>
           </Dialog.Trigger>
           <Dialog.Content className={css({ w: 400, p: 4 })}>
