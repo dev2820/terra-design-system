@@ -9,6 +9,7 @@ export * from './Input';
 export * from './Checkbox';
 export * from './Combobox';
 export * from './Collapsible';
+export * from './Field';
 export * from './Slider';
 export * from './NumberInput';
 export * from './Progress';
