@@ -12,9 +12,9 @@ import {
 import { sva, cx, RecipeVariantProps } from '../../styled-system/css';
 import { createReactContext } from '../create-react-context';
 
-export const dialogVariants = sva({
-  className: 'dialog',
-  slots: dialogAnatomy.keys(),
+export const drawerVariants = sva({
+  className: 'drawer',
+  slots: dialogAnatomy.extendWith('header', 'body', 'footer').keys(),
   base: {
     backdrop: {
       backdropFilter: 'blur(4px)',
@@ -39,69 +39,127 @@ export const dialogVariants = sva({
     positioner: {
       alignItems: 'center',
       display: 'flex',
+      height: '100dvh',
       justifyContent: 'center',
-      left: '0',
-      overflow: 'auto',
       position: 'fixed',
       top: '0',
-      width: '100vw',
-      height: '100dvh',
+      width: { base: '100vw', sm: 'sm' },
       zIndex: 'modal',
     },
     content: {
       background: 'white',
-      borderRadius: 'lg',
       boxShadow: 'lg',
-      minW: 'sm',
-      position: 'relative',
-      transitionDuration: 'normal',
-      _open: {
-        animation: 'dialog-in 0.2s ease-out',
-      },
-      _closed: {
-        animation: 'dialog-out 0.15s ease-out',
+      display: 'grid',
+      gridTemplateColumns: '1fr',
+      gridTemplateRows: 'auto 1fr auto',
+      gridTemplateAreas: `
+        'header'
+        'body'
+        'footer'
+      `,
+      height: 'full',
+      width: 'full',
+      '&[aria-hidden]': {
+        display: 'none',
       },
     },
+    header: {
+      display: 'flex',
+      flexDirection: 'column',
+      gap: '1',
+      gridArea: 'header',
+      pt: { base: '4', md: '6' },
+      pb: '4',
+      px: { base: '4', md: '6' },
+    },
+    body: {
+      display: 'flex',
+      flexDirection: 'column',
+      gridArea: 'body',
+      overflow: 'auto',
+      p: { base: '4', md: '6' },
+    },
+    footer: {
+      display: 'flex',
+      gridArea: 'footer',
+      justifyContent: 'flex-end',
+      py: '4',
+      px: { base: '4', md: '6' },
+    },
     title: {
+      color: 'neutral.900',
       fontWeight: 'semibold',
-      textStyle: 'lg',
+      textStyle: 'xl',
     },
     description: {
       color: 'neutral.400',
       textStyle: 'sm',
     },
   },
+  variants: {
+    variant: {
+      left: {
+        positioner: {
+          left: 0,
+        },
+        content: {
+          _open: {
+            animation: 'drawer-in-left 0.2s ease-out',
+          },
+          _closed: {
+            animation: 'drawer-out-left 0.15s ease-out',
+          },
+        },
+      },
+      right: {
+        positioner: {
+          right: 0,
+        },
+        content: {
+          _open: {
+            animation: 'drawer-in-right 0.2s ease-out',
+          },
+          _closed: {
+            animation: 'drawer-out-right 0.15s ease-out',
+          },
+        },
+      },
+    },
+  },
+  defaultVariants: {
+    variant: 'right',
+  },
 });
 
-type DialogProviderProps = {
-  classes: ReturnType<typeof dialogVariants>;
+type DrawerProviderProps = {
+  classes: ReturnType<typeof drawerVariants>;
 };
 
-const [DialogProvider, useDialogContext] =
-  createReactContext<DialogProviderProps>({
-    name: 'dialog',
-    hookName: 'useDialogContext',
-    providerName: 'DialogProvider',
+const [DrawerProvider, useDrawerContext] =
+  createReactContext<DrawerProviderProps>({
+    name: 'drawer',
+    hookName: 'useDrawerContext',
+    providerName: 'DrawerProvider',
     defaultValue: {
       classes: {},
     },
   });
 
 export type RootProps = DialogRootProps &
-  RecipeVariantProps<typeof dialogVariants>;
+  RecipeVariantProps<typeof drawerVariants>;
 
-function Root({ children, ...props }: RootProps) {
-  const classes = dialogVariants();
+function Root({ children, variant, ...props }: RootProps) {
+  const classes = drawerVariants({ variant });
   const ctx = {
     classes,
   };
 
   return (
-    <DialogProvider value={ctx}>
+    <DrawerProvider value={ctx}>
       <Dialog.Root lazyMount unmountOnExit {...props}>
         {children}
       </Dialog.Root>
-    </DialogProvider>
+    </DrawerProvider>
   );
 }
 
@@ -110,7 +168,7 @@ const Trigger = forwardRef<
   ElementRef<typeof Dialog.Trigger>,
   ComponentPropsWithoutRef<typeof Dialog.Trigger>
 >(function (props, ref) {
-  const { classes } = useDialogContext();
+  const { classes } = useDrawerContext();
   const { children, className, ...rest } = props;
 
   return (
@@ -129,7 +187,7 @@ const Content = forwardRef<
   ElementRef<typeof Dialog.Content>,
   ComponentPropsWithoutRef<typeof Dialog.Content>
 >(function (props, ref) {
-  const { classes } = useDialogContext();
+  const { classes } = useDrawerContext();
   const { children, className, ...rest } = props;
 
   return (
@@ -148,12 +206,54 @@ const Content = forwardRef<
   );
 });
 
+export type HeaderProps = ComponentProps<typeof Header>;
+const Header = forwardRef<HTMLDivElement, ComponentPropsWithoutRef<'div'>>(
+  function (props, ref) {
+    const { classes } = useDrawerContext();
+    const { children, className, ...rest } = props;
+
+    return (
+      <div className={cx(classes.header, className)} ref={ref} {...rest}>
+        {children}
+      </div>
+    );
+  },
+);
+
+export type BodyProps = ComponentProps<typeof Body>;
+const Body = forwardRef<HTMLDivElement, ComponentPropsWithoutRef<'div'>>(
+  function (props, ref) {
+    const { classes } = useDrawerContext();
+    const { children, className, ...rest } = props;
+
+    return (
+      <div className={cx(classes.body, className)} ref={ref} {...rest}>
+        {children}
+      </div>
+    );
+  },
+);
+
+export type FooterProps = ComponentProps<typeof Footer>;
+const Footer = forwardRef<HTMLDivElement, ComponentPropsWithoutRef<'div'>>(
+  function (props, ref) {
+    const { classes } = useDrawerContext();
+    const { children, className, ...rest } = props;
+
+    return (
+      <div className={cx(classes.footer, className)} ref={ref} {...rest}>
+        {children}
+      </div>
+    );
+  },
+);
+
 export type TitleProps = ComponentProps<typeof Title>;
 const Title = forwardRef<
   ElementRef<typeof Dialog.Title>,
   ComponentPropsWithoutRef<typeof Dialog.Title>
 >(function (props, ref) {
-  const { classes } = useDialogContext();
+  const { classes } = useDrawerContext();
   const { children, className, ...rest } = props;
 
   return (
@@ -168,7 +268,7 @@ const Description = forwardRef<
   ElementRef<typeof Dialog.Description>,
   ComponentPropsWithoutRef<typeof Dialog.Description>
 >(function (props, ref) {
-  const { classes } = useDialogContext();
+  const { classes } = useDrawerContext();
   const { children, className, ...rest } = props;
 
   return (
@@ -187,7 +287,7 @@ const CloseTrigger = forwardRef<
   ElementRef<typeof Dialog.CloseTrigger>,
   ComponentPropsWithoutRef<typeof Dialog.CloseTrigger>
 >(function (props, ref) {
-  const { classes } = useDialogContext();
+  const { classes } = useDrawerContext();
   const { children, className, ...rest } = props;
 
   return (
@@ -201,4 +301,14 @@ const CloseTrigger = forwardRef<
   );
 });
 
-export { Root, Trigger, Content, Title, Description, CloseTrigger };
+export {
+  Root,
+  Trigger,
+  Content,
+  Header,
+  Body,
+  Footer,
+  Title,
+  Description,
+  CloseTrigger,
+};

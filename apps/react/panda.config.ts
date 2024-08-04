@@ -26,13 +26,53 @@ export default defineConfig({
           from: { height: 'var(--height)' },
           to: { height: '0px' },
         },
+        'backdrop-in': {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        'backdrop-out': {
+          from: { opacity: '1' },
+          to: { opacity: '0' },
+        },
         'fade-in': {
-          from: { opacity: 0 },
-          to: { opacity: 1 },
+          from: { opacity: '0' },
+          to: { opacity: '1' },
         },
         'fade-out': {
-          from: { opacity: 1 },
-          to: { opacity: 0 },
+          from: { opacity: '1' },
+          to: { opacity: '0' },
+        },
+        'drawer-in-left': {
+          from: {
+            transform: 'translateX(-100%)',
+          },
+          to: {
+            transform: 'translateX(0px)',
+          },
+        },
+        'drawer-out-left': {
+          from: {
+            transform: 'translateX(0px)',
+          },
+          to: {
+            transform: 'translateX(-100%)',
+          },
+        },
+        'drawer-in-right': {
+          from: {
+            transform: 'translateX(100%)',
+          },
+          to: {
+            transform: 'translateX(0px)',
+          },
+        },
+        'drawer-out-right': {
+          from: {
+            transform: 'translateX(0px)',
+          },
+          to: {
+            transform: 'translateX(100%)',
+          },
         },
         'dialog-in': {
           from: {
