@@ -14,16 +14,53 @@ const linkVariants = cva({
     textUnderlinePosition: 'under',
     textDecorationThickness: 4,
     fontWeight: 'bold',
-    color: 'primary.500',
-    _hover: {
-      textDecoration: 'underline',
+    _disabled: {
+      color: 'disabled',
+      cursor: 'not-allowed',
+      _active: {
+        color: 'disabled',
+      },
+      _visited: {
+        color: 'disabled',
+      },
+      _hover: {
+        color: 'disabled',
+        textDecoration: 'none',
+      },
     },
-    _active: {
-      color: 'primary.600',
+  },
+  variants: {
+    theme: {
+      neutral: {
+        color: 'neutral.400',
+        _active: {
+          color: 'neutral.700',
+        },
+        _visited: {
+          color: 'neutral.700',
+        },
+        _hover: {
+          textDecoration: 'underline',
+          color: 'neutral.700',
+        },
+      },
+      primary: {
+        color: 'primary.400',
+        _active: {
+          color: 'primary.700',
+        },
+        _visited: {
+          color: 'primary.700',
+        },
+        _hover: {
+          textDecoration: 'underline',
+          color: 'primary.700',
+        },
+      },
     },
-    _visited: {
-      color: 'primary.600',
-    },
+  },
+  defaultVariants: {
+    theme: 'primary',
   },
 });
 
@@ -37,6 +74,7 @@ export type LinkProps = ComponentProps<'a'> &
 const Link = forwardRef<HTMLAnchorElement, LinkProps>(function (props, ref) {
   const {
     type = 'link',
+    theme,
     leftIcon,
     rightIcon,
     className,
@@ -46,7 +84,7 @@ const Link = forwardRef<HTMLAnchorElement, LinkProps>(function (props, ref) {
 
   return (
     <a
-      className={cx(linkVariants({}), className)}
+      className={cx(linkVariants({ theme }), className)}
       type={type}
       ref={ref}
       {...rest}

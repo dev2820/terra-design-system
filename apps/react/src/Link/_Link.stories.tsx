@@ -1,7 +1,5 @@
 import { ExternalLinkIcon, LinkIcon } from 'lucide-react';
 
-import { useEffect, useRef } from 'react';
-
 import { css } from '../../styled-system/css';
 import { Link, type LinkProps } from './index';
 
@@ -22,6 +20,19 @@ export const Default = {
   },
   render: (props: LinkProps) => {
     return <Link {...props}>Google</Link>;
+  },
+};
+
+export const Theme = {
+  args: {
+    href: 'https://www.google.com',
+  },
+  render: (props: LinkProps) => {
+    return (
+      <Link {...props} theme="neutral">
+        Google
+      </Link>
+    );
   },
 };
 
