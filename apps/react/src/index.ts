@@ -15,6 +15,7 @@ export * from './NumberInput';
 export * from './Progress';
 export * from './RadioGroup';
 export * from './Switch';
+export * from './Pagination';
 export * from './Select';
 export * from './Skeleton';
 export * from './Textarea';
