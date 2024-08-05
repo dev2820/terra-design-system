@@ -1,7 +1,7 @@
 import { Pagination, type PaginationProps } from './index';
 
 /**
- * based on https://ark-ui.com/react/docs/components/accordion
+ * based on https://ark-ui.com/react/docs/components/pagination
  */
 export default {
   title: 'Components/Pagination',
