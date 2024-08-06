@@ -1,1 +1,0 @@
-import{c as t,a as r}from"./create-split-props-BDI0pziA.js";const[a,n]=t({name:"RenderStrategyContext",hookName:"useRenderStrategyContext",providerName:"<RenderStrategyPropsProvider />"}),s=e=>r()(e,["lazyMount","unmountOnExit"]);export{a as R,s,n as u};
