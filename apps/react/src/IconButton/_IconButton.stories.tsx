@@ -3,7 +3,7 @@ import { EllipsisIcon, SearchIcon } from 'lucide-react';
 import { css } from '../../styled-system/css';
 import { IconButton, IconButtonProps } from './IconButton';
 
-const sizes = ['sm', 'md', 'lg'] as IconButtonProps['size'][];
+const sizes = ['xs', 'sm', 'md', 'lg'] as IconButtonProps['size'][];
 const colors = ['primary', 'neutral'] as IconButtonProps['theme'][];
 const variants = ['filled', 'outline', 'ghost'] as IconButtonProps['variant'][];
 
@@ -89,6 +89,9 @@ export const Sizes = {
   render: () => {
     return (
       <div className={css({ display: 'flex', flexDir: 'row', gap: 4 })}>
+        <IconButton size="xs">
+          <SearchIcon size={20} />
+        </IconButton>
         <IconButton size="sm">
           <SearchIcon size={20} />
         </IconButton>

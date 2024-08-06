@@ -38,6 +38,10 @@ const buttonVariants = cva({
       neutral: {},
     },
     size: {
+      xs: {
+        h: 8,
+        paddingX: 2,
+      },
       sm: {
         h: 9,
         paddingX: 3,
