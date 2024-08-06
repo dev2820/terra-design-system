@@ -4,7 +4,12 @@ import { css } from '../../styled-system/css';
 import { Button, ButtonProps } from './Button';
 
 const sizes = ['xs', 'sm', 'md', 'lg'] as ButtonProps['size'][];
-const colors = ['primary', 'neutral'] as ButtonProps['theme'][];
+const colors = [
+  'primary',
+  'neutral',
+  'whiteAlpha',
+  'blackAlpha',
+] as ButtonProps['theme'][];
 const variants = ['filled', 'outline', 'ghost'] as ButtonProps['variant'][];
 
 export default {

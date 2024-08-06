@@ -4,6 +4,9 @@ import { forwardRef, type ComponentProps, type ReactNode } from 'react';
 
 import { cx, cva, type RecipeVariantProps, css } from '../../styled-system/css';
 
+/**
+ * TODO: Text Size도 지정하기
+ */
 const buttonVariants = cva({
   base: {
     display: 'inline-flex',
@@ -36,6 +39,8 @@ const buttonVariants = cva({
     theme: {
       primary: {},
       neutral: {},
+      whiteAlpha: {},
+      blackAlpha: {},
     },
     size: {
       xs: {
@@ -117,9 +122,56 @@ const buttonVariants = cva({
       },
     },
     {
+      theme: 'whiteAlpha',
+      variant: 'filled',
+      css: {
+        bgColor: 'whiteAlpha.500',
+        color: 'white',
+        _disabled: {
+          bg: 'whiteAlpha',
+          _hover: {
+            bg: 'whiteAlpha',
+          },
+          _active: {
+            bg: 'whiteAlpha',
+          },
+        },
+        _hover: {
+          bg: 'whiteAlpha.600',
+        },
+        _active: {
+          bg: 'whiteAlpha.700',
+        },
+      },
+    },
+    {
+      theme: 'blackAlpha',
+      variant: 'filled',
+      css: {
+        bgColor: 'blackAlpha.500',
+        color: 'black',
+        _disabled: {
+          bg: 'blackAlpha',
+          _hover: {
+            bg: 'blackAlpha',
+          },
+          _active: {
+            bg: 'blackAlpha',
+          },
+        },
+        _hover: {
+          bg: 'blackAlpha.600',
+        },
+        _active: {
+          bg: 'blackAlpha.700',
+        },
+      },
+    },
+    {
       theme: 'primary',
       variant: 'outline',
       css: {
+        bg: 'transparent',
         color: 'primary.500',
         borderColor: 'primary.500',
         _disabled: {
@@ -142,6 +194,7 @@ const buttonVariants = cva({
       theme: 'neutral',
       variant: 'outline',
       css: {
+        bg: 'transparent',
         color: 'neutral.500',
         borderColor: 'neutral.300',
         _disabled: {
@@ -162,9 +215,58 @@ const buttonVariants = cva({
       },
     },
     {
+      theme: 'whiteAlpha',
+      variant: 'outline',
+      css: {
+        bg: 'transparent',
+        color: 'white',
+        borderColor: 'whiteAlpha.300',
+        _disabled: {
+          bg: 'transparent',
+          _hover: {
+            bg: 'transparent',
+          },
+          _active: {
+            bg: 'transparent',
+          },
+        },
+        _hover: {
+          bg: 'whiteAlpha.100',
+        },
+        _active: {
+          bg: 'whiteAlpha.200',
+        },
+      },
+    },
+    {
+      theme: 'blackAlpha',
+      variant: 'outline',
+      css: {
+        bg: 'transparent',
+        color: 'black',
+        borderColor: 'blackAlpha.300',
+        _disabled: {
+          bg: 'transparent',
+          _hover: {
+            bg: 'transparent',
+          },
+          _active: {
+            bg: 'transparent',
+          },
+        },
+        _hover: {
+          bg: 'blackAlpha.100',
+        },
+        _active: {
+          bg: 'blackAlpha.200',
+        },
+      },
+    },
+    {
       theme: 'primary',
       variant: 'ghost',
       css: {
+        bg: 'transparent',
         color: 'primary.500',
         _disabled: {
           _hover: {
@@ -186,6 +288,7 @@ const buttonVariants = cva({
       theme: 'neutral',
       variant: 'ghost',
       css: {
+        bg: 'transparent',
         color: 'neutral.500',
         _disabled: {
           _hover: {
@@ -200,6 +303,50 @@ const buttonVariants = cva({
         },
         _active: {
           bg: 'neutral.200',
+        },
+      },
+    },
+    {
+      theme: 'whiteAlpha',
+      variant: 'ghost',
+      css: {
+        bg: 'transparent',
+        color: 'white',
+        _disabled: {
+          _hover: {
+            bg: 'transparent',
+          },
+          _active: {
+            bg: 'transparent',
+          },
+        },
+        _hover: {
+          bg: 'whiteAlpha.100',
+        },
+        _active: {
+          bg: 'whiteAlpha.200',
+        },
+      },
+    },
+    {
+      theme: 'blackAlpha',
+      variant: 'ghost',
+      css: {
+        bg: 'transparent',
+        color: 'black',
+        _disabled: {
+          _hover: {
+            bg: 'transparent',
+          },
+          _active: {
+            bg: 'transparent',
+          },
+        },
+        _hover: {
+          bg: 'blackAlpha.100',
+        },
+        _active: {
+          bg: 'blackAlpha.200',
         },
       },
     },
