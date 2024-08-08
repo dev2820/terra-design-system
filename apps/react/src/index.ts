@@ -24,4 +24,5 @@ export * from './Spinner';
 export * from './Dialog';
 export * from './Drawer';
 export * from './Tooltip';
+export * from './SegmentGroup';
 export * from './typography';
