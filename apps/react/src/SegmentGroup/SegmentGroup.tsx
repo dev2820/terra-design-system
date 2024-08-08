@@ -39,7 +39,7 @@ export const segmentGroupVariant = sva({
       },
     },
     indicator: {
-      borderColor: 'neutral.800',
+      borderColor: 'primary.500',
       _horizontal: {
         bottom: '0',
         borderBottomWidth: '2px',
