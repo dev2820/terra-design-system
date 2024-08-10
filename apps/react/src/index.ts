@@ -28,4 +28,5 @@ export * from './SegmentGroup';
 export * from './Tabs';
 export * from './Table';
 export * from './Toast';
+export * from './TreeView';
 export * from './typography';
