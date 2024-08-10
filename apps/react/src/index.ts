@@ -26,4 +26,5 @@ export * from './Drawer';
 export * from './Tooltip';
 export * from './SegmentGroup';
 export * from './Tabs';
+export * from './Table';
 export * from './typography';
