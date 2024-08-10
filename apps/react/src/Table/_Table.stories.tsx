@@ -1,4 +1,3 @@
-import { css } from '../../styled-system/css';
 import { Table, type TableProps } from './index';
 
 export default {
