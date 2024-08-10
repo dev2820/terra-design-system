@@ -27,4 +27,5 @@ export * from './Tooltip';
 export * from './SegmentGroup';
 export * from './Tabs';
 export * from './Table';
+export * from './Toast';
 export * from './typography';
