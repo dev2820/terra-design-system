@@ -39,7 +39,7 @@ export const cardVariants = sva({
       },
       filled: {
         root: {
-          bg: 'neutral.200',
+          bg: 'neutral.100',
         },
       },
       outline: {
