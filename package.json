@@ -1,6 +1,6 @@
 {
   "name": "terra-design-system",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -17,7 +17,7 @@
     "build:utils": "pnpm --filter utils run build"
   },
   "files": [
-    "apps/react/dist/",
+    "./apps/react/dist/**/*",
     "LICENSE",
     "README.md"
   ],
