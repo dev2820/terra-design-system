@@ -16,6 +16,11 @@
     "build:react": "pnpm --filter @terra/react run build",
     "build:utils": "pnpm --filter utils run build"
   },
+  "files": [
+    "apps/react/dist/",
+    "LICENSE",
+    "README.md"
+  ],
   "exports": {
     "react": {
       "source": "./apps/react/src/index.ts",
