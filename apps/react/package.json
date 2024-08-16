@@ -30,10 +30,9 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "react": "^18.2.0"
-  },
+  "dependencies": {},
   "devDependencies": {
+    "react": "^18.2.0",
     "@chromatic-com/storybook": "^1.5.0",
     "@pandacss/dev": "^0.40.1",
     "@storybook/addon-essentials": "^8.1.6",
