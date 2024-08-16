@@ -22,7 +22,7 @@
     "README.md"
   ],
   "exports": {
-    "react": {
+    "./react": {
       "source": "./apps/react/src/index.ts",
       "import": {
         "types": "./apps/react/dist/index.d.ts",
@@ -33,7 +33,7 @@
         "default": "./apps/react/dist/index.cjs"
       }
     },
-    "react/style": "./apps/react/dist/styles.css"
+    "./react/style": "./apps/react/dist/styles.css"
   },
   "dependencies": {
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
