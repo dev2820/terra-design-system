@@ -49,12 +49,13 @@
     "eslint-plugin-storybook": "^0.8.0",
     "prop-types": "^15.8.1",
     "storybook": "^8.1.6",
-    "theme": "workspace:*",
     "tsup": "^8.1.0",
     "@ark-ui/anatomy": "^3.5.0",
     "@ark-ui/react": "^3.6.2",
     "lucide-react": "^0.378.0",
+    "theme": "workspace:*",
     "tsconfig": "workspace:*",
-    "utils": "workspace:*"
+    "utils": "workspace:*",
+    "constants": "workspace:*"
   }
 }
