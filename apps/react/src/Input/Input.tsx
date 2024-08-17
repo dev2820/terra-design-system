@@ -1,3 +1,5 @@
+import { IDENTIFIER } from 'env';
+
 import { InputHTMLAttributes, forwardRef } from 'react';
 
 import { cva, cx } from '../../styled-system/css';
@@ -55,7 +57,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     return (
       <input
         type={type}
-        className={cx(inputVariants({ invalid }), className)}
+        className={cx(IDENTIFIER.scope, inputVariants({ invalid }), className)}
         ref={ref}
         aria-invalid={invalid}
         {...props}

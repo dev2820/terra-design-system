@@ -1,10 +1,12 @@
+import { IDENTIFIER } from 'env';
+
 import { ComponentProps, ComponentPropsWithoutRef, forwardRef } from 'react';
 
 import { RecipeVariantProps, cx, sva } from '../../styled-system/css';
 import { createReactContext } from '../create-react-context';
 
 export const tableVariant = sva({
-  className: 'table',
+  className: `${IDENTIFIER.scope} table`,
   slots: ['root', 'body', 'cell', 'footer', 'head', 'header', 'row', 'caption'],
   base: {
     root: {

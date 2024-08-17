@@ -1,3 +1,5 @@
+import { IDENTIFIER } from 'env';
+
 import { forwardRef, type ComponentProps } from 'react';
 
 import { cx, cva, type RecipeVariantProps } from '../../styled-system/css';
@@ -49,7 +51,7 @@ const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
 
     return (
       <Button
-        className={cx(classes, className)}
+        className={cx(IDENTIFIER.scope, classes, className)}
         ref={ref}
         {...rest}
         size={size}

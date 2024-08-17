@@ -1,5 +1,6 @@
 import { checkboxAnatomy } from '@ark-ui/anatomy';
 import { Checkbox as _Checkbox } from '@ark-ui/react';
+import { IDENTIFIER } from 'env';
 import { CheckIcon, MinusIcon } from 'lucide-react';
 
 import {
@@ -12,7 +13,7 @@ import {
 import { RecipeVariantProps, cx, sva } from '../../styled-system/css';
 
 export const checkboxVariants = sva({
-  className: 'checkbox',
+  className: `${IDENTIFIER.scope} checkbox`,
   slots: checkboxAnatomy.keys(),
   base: {
     root: {

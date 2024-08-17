@@ -1,6 +1,7 @@
 import { dialogAnatomy } from '@ark-ui/anatomy';
 import { Dialog, DialogRootProps } from '@ark-ui/react/dialog';
 import { Portal } from '@ark-ui/react/portal';
+import { IDENTIFIER } from 'env';
 
 import {
   type ComponentProps,
@@ -13,7 +14,7 @@ import { sva, cx, RecipeVariantProps } from '../../styled-system/css';
 import { createReactContext } from '../create-react-context';
 
 export const dialogVariants = sva({
-  className: 'dialog',
+  className: `${IDENTIFIER.scope} dialog`,
   slots: dialogAnatomy.keys(),
   base: {
     backdrop: {

@@ -1,3 +1,3 @@
 export const IDENTIFIER = {
-  preflight: '__trds',
+  scope: '__trds',
 } as const;

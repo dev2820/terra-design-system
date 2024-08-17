@@ -4,6 +4,7 @@ import {
   SegmentGroupItemProps,
   type SegmentGroupRootProps,
 } from '@ark-ui/react/segment-group';
+import { IDENTIFIER } from 'env';
 
 import {
   ComponentProps,
@@ -16,7 +17,7 @@ import { RecipeVariantProps, cx, sva } from '../../styled-system/css';
 import { createReactContext } from '../create-react-context';
 
 export const segmentGroupVariant = sva({
-  className: 'segmentGroup',
+  className: `${IDENTIFIER.scope} segmentGroup`,
   slots: segmentGroupAnatomy.keys(),
   base: {
     root: {

@@ -1,5 +1,6 @@
 import { fileUploadAnatomy } from '@ark-ui/anatomy';
 import { FileUpload } from '@ark-ui/react/file-upload';
+import { IDENTIFIER } from 'env';
 
 import {
   ComponentProps,
@@ -12,7 +13,7 @@ import { RecipeVariantProps, cx, sva } from '../../styled-system/css';
 import { createReactContext } from '../create-react-context';
 
 export const fileUploadVariant = sva({
-  className: 'fileUpload',
+  className: `${IDENTIFIER.scope} fileUpload`,
   slots: fileUploadAnatomy.keys(),
   base: {
     root: {

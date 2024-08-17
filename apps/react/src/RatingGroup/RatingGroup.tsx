@@ -1,12 +1,13 @@
 import { ratingGroupAnatomy } from '@ark-ui/anatomy';
 import { RatingGroup } from '@ark-ui/react';
+import { IDENTIFIER } from 'env';
 
 import { ComponentProps, ElementRef, forwardRef } from 'react';
 
 import { RecipeVariantProps, cx, sva } from '../../styled-system/css';
 
 export const ratingGroupVariant = sva({
-  className: 'ratingGroup',
+  className: `${IDENTIFIER.scope} ratingGroup`,
   slots: ratingGroupAnatomy.keys(),
   base: {
     root: {

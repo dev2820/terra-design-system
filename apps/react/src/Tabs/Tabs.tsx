@@ -1,5 +1,6 @@
 import { tabsAnatomy } from '@ark-ui/anatomy';
 import { Tabs, type TabsRootProps } from '@ark-ui/react/tabs';
+import { IDENTIFIER } from 'env';
 
 import {
   ComponentProps,
@@ -12,7 +13,7 @@ import { RecipeVariantProps, cx, sva } from '../../styled-system/css';
 import { createReactContext } from '../create-react-context';
 
 export const tabsVariant = sva({
-  className: 'tabs',
+  className: `${IDENTIFIER.scope} tabs`,
   slots: tabsAnatomy.keys(),
   base: {
     root: {

@@ -1,3 +1,4 @@
+import { IDENTIFIER } from 'env';
 import { LoaderCircleIcon } from 'lucide-react';
 
 import { forwardRef, type ComponentProps, type ReactNode } from 'react';
@@ -383,6 +384,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <button
         className={cx(
+          IDENTIFIER.scope,
           buttonVariants({ variant, theme, size, loading }),
           className,
         )}

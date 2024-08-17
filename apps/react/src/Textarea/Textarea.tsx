@@ -1,3 +1,5 @@
+import { IDENTIFIER } from 'env';
+
 import { forwardRef, type ComponentProps } from 'react';
 
 import { cx, cva, type RecipeVariantProps } from '../../styled-system/css';
@@ -54,7 +56,11 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
 
     return (
       <textarea
-        className={cx(textareaVariants({ size, invalid }), className)}
+        className={cx(
+          IDENTIFIER.scope,
+          textareaVariants({ size, invalid }),
+          className,
+        )}
         disabled={disabled}
         aria-disabled={disabled}
         ref={ref}

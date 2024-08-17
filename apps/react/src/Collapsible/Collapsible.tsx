@@ -1,5 +1,6 @@
 import { collapsibleAnatomy } from '@ark-ui/anatomy';
 import { Collapsible } from '@ark-ui/react';
+import { IDENTIFIER } from 'env';
 
 import {
   type ComponentProps,
@@ -12,7 +13,7 @@ import { sva, cx } from '../../styled-system/css';
 import { createReactContext } from '../create-react-context';
 
 export const collapsibleVariants = sva({
-  className: 'collapsible',
+  className: `${IDENTIFIER.scope} collapsible`,
   slots: collapsibleAnatomy.keys(),
   base: {
     root: {

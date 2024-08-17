@@ -1,5 +1,6 @@
 import { popoverAnatomy } from '@ark-ui/anatomy';
 import { Popover, PopoverRootProps, Portal } from '@ark-ui/react';
+import { IDENTIFIER } from 'env';
 
 import {
   type ComponentProps,
@@ -13,7 +14,7 @@ import { sva, cx } from '../../styled-system/css';
 import { createReactContext } from '../create-react-context';
 
 export const popoverVariants = sva({
-  className: 'popover',
+  className: `${IDENTIFIER.scope} popover`,
   slots: popoverAnatomy.keys(),
   base: {
     positioner: {

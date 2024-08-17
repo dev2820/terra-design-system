@@ -1,5 +1,6 @@
 import { treeViewAnatomy } from '@ark-ui/anatomy';
 import { TreeView, type TreeViewRootProps } from '@ark-ui/react/tree-view';
+import { IDENTIFIER } from 'env';
 
 import {
   ComponentProps,
@@ -12,7 +13,7 @@ import { RecipeVariantProps, cx, sva } from '../../styled-system/css';
 import { createReactContext } from '../create-react-context';
 
 export const treeViewVariant = sva({
-  className: 'treeView',
+  className: `${IDENTIFIER.scope} treeView`,
   slots: treeViewAnatomy.keys(),
   base: {
     root: {

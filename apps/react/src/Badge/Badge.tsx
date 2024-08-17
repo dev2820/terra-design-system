@@ -1,3 +1,5 @@
+import { IDENTIFIER } from 'env';
+
 import { ComponentProps, forwardRef } from 'react';
 
 import { cx, cva, type RecipeVariantProps } from '../../styled-system/css';
@@ -182,7 +184,11 @@ const Badge = forwardRef<HTMLSpanElement, BadgeProps>(function (props, ref) {
 
   return (
     <span
-      className={cx(badgeVariants({ variant, theme }), className)}
+      className={cx(
+        IDENTIFIER.scope,
+        badgeVariants({ variant, theme }),
+        className,
+      )}
       ref={ref}
       {...rest}
     >

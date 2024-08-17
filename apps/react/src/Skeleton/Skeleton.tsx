@@ -1,3 +1,5 @@
+import { IDENTIFIER } from 'env';
+
 import { ComponentProps, forwardRef } from 'react';
 
 import { css, cva, cx } from '../../styled-system/css';
@@ -46,6 +48,7 @@ export const Skeleton = forwardRef<HTMLDivElement, SkeletonProps>(
         <div
           ref={ref}
           className={cx(
+            IDENTIFIER.scope,
             css({
               animation: 'fade-in',
               animationDuration: '0.2s',
@@ -60,7 +63,7 @@ export const Skeleton = forwardRef<HTMLDivElement, SkeletonProps>(
     return (
       <div
         ref={ref}
-        className={cx(skeletonVariants({ round }), className)}
+        className={cx(IDENTIFIER.scope, skeletonVariants({ round }), className)}
         {...otherProps}
       />
     );

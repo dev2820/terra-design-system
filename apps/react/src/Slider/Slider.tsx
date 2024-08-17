@@ -1,5 +1,6 @@
 import { sliderAnatomy } from '@ark-ui/anatomy';
 import { Slider } from '@ark-ui/react';
+import { IDENTIFIER } from 'env';
 
 import {
   type ComponentProps,
@@ -12,7 +13,7 @@ import {
 import { sva, cx, RecipeVariantProps } from '../../styled-system/css';
 
 export const sliderVariants = sva({
-  className: 'slider',
+  className: `${IDENTIFIER.scope} slider`,
   slots: sliderAnatomy.keys(),
   base: {
     root: {

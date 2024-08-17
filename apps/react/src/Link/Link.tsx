@@ -1,3 +1,5 @@
+import { IDENTIFIER } from 'env';
+
 import { forwardRef, type ComponentProps, type ReactNode } from 'react';
 
 import { cx, cva, type RecipeVariantProps } from '../../styled-system/css';
@@ -84,7 +86,7 @@ const Link = forwardRef<HTMLAnchorElement, LinkProps>(function (props, ref) {
 
   return (
     <a
-      className={cx(linkVariants({ theme }), className)}
+      className={cx(IDENTIFIER.scope, linkVariants({ theme }), className)}
       type={type}
       ref={ref}
       {...rest}

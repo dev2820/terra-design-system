@@ -1,10 +1,12 @@
+import { IDENTIFIER } from 'env';
+
 import { forwardRef, type ComponentProps } from 'react';
 
 import { cx, sva, type RecipeVariantProps } from '../../styled-system/css';
 import { createReactContext } from '../create-react-context';
 
 export const alertVariants = sva({
-  className: 'alert',
+  className: `${IDENTIFIER.scope} alert`,
   slots: ['root', 'title', 'description'],
   base: {
     root: {

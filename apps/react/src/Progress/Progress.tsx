@@ -1,12 +1,13 @@
 import { progressAnatomy } from '@ark-ui/anatomy';
 import { Progress, type ProgressRootProps } from '@ark-ui/react/progress';
+import { IDENTIFIER } from 'env';
 
 import { forwardRef } from 'react';
 
 import { cx, RecipeVariantProps, sva } from '../../styled-system/css';
 
 export const progressVariants = sva({
-  className: 'progress',
+  className: `${IDENTIFIER.scope} progress`,
   slots: progressAnatomy.keys(),
   base: {
     root: {

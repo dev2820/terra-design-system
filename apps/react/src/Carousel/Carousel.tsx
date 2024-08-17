@@ -1,5 +1,6 @@
 import { carouselAnatomy } from '@ark-ui/anatomy';
 import { Carousel } from '@ark-ui/react';
+import { IDENTIFIER } from 'env';
 import { ChevronLeftCircleIcon, ChevronRightCircleIcon } from 'lucide-react';
 import { isNumber, range } from 'utils';
 
@@ -16,7 +17,7 @@ import { sva, cx, css } from '../../styled-system/css';
 import { createReactContext } from '../create-react-context';
 
 export const carouselVariants = sva({
-  className: 'carousel',
+  className: `${IDENTIFIER.scope} carousel`,
   slots: carouselAnatomy.keys(),
   base: {
     root: {

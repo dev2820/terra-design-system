@@ -1,12 +1,13 @@
 import { switchAnatomy } from '@ark-ui/anatomy';
 import { Switch, SwitchRootProps } from '@ark-ui/react';
+import { IDENTIFIER } from 'env';
 
 import { ElementRef, forwardRef } from 'react';
 
 import { RecipeVariantProps, cx, sva } from '../../styled-system/css';
 
 export const switchVariants = sva({
-  className: 'switchRecipe',
+  className: `${IDENTIFIER.scope} switch`,
   slots: switchAnatomy.keys(),
   base: {
     root: {

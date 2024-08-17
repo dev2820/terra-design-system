@@ -1,5 +1,6 @@
 import { avatarAnatomy } from '@ark-ui/anatomy';
 import { Avatar as _Avatar } from '@ark-ui/react';
+import { IDENTIFIER } from 'env';
 import { UserIcon } from 'lucide-react';
 import { isNotNil } from 'utils';
 
@@ -15,7 +16,7 @@ import {
 import { RecipeVariantProps, cx, sva } from '../../styled-system/css';
 
 export const avatarVariants = sva({
-  className: 'avatar',
+  className: `${IDENTIFIER.scope} avatar`,
   slots: avatarAnatomy.keys(),
   base: {
     root: {

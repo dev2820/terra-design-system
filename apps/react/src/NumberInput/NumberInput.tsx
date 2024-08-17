@@ -1,5 +1,6 @@
 import { numberInputAnatomy } from '@ark-ui/anatomy';
 import { NumberInput, NumberInputRootProps } from '@ark-ui/react';
+import { IDENTIFIER } from 'env';
 import { ChevronDownIcon, ChevronUpIcon } from 'lucide-react';
 
 import { forwardRef } from 'react';
@@ -36,7 +37,7 @@ const trigger = {
 };
 
 const numberInputVariants = sva({
-  className: 'numberInput',
+  className: `${IDENTIFIER.scope} numberInput`,
   slots: numberInputAnatomy.keys(),
   base: {
     root: {

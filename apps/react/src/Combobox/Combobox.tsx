@@ -5,6 +5,7 @@ import {
   type ComboboxItemGroupProps,
   type ComboboxItemProps,
 } from '@ark-ui/react/combobox';
+import { IDENTIFIER } from 'env';
 import { CheckIcon, ChevronsUpDownIcon } from 'lucide-react';
 
 import { ElementRef, forwardRef, ReactNode } from 'react';
@@ -14,7 +15,7 @@ import { createReactContext } from '../create-react-context';
 import { Input } from '../Input';
 
 export const comboboxVariant = sva({
-  className: 'combobox',
+  className: `${IDENTIFIER.scope} combobox`,
   slots: comboboxAnatomy.keys(),
   base: {
     root: {

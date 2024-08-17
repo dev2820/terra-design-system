@@ -1,3 +1,5 @@
+import { IDENTIFIER } from 'env';
+
 import { forwardRef, type ComponentProps } from 'react';
 
 import { css, cva, cx, RecipeVariantProps } from '../../styled-system/css';
@@ -54,7 +56,7 @@ export const Spinner = forwardRef<HTMLDivElement, SpinnerProps>(
     return (
       <div
         ref={ref}
-        className={cx(spinnerVariants({ size }), className)}
+        className={cx(IDENTIFIER.scope, spinnerVariants({ size }), className)}
         {...rest}
       >
         {label && <span className={srOnly}>{label}</span>}

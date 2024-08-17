@@ -5,6 +5,7 @@ import {
   DatePickerContextProps,
 } from '@ark-ui/react/date-picker';
 import { Portal } from '@ark-ui/react/portal';
+import { IDENTIFIER } from 'env';
 
 import {
   type ComponentProps,
@@ -17,7 +18,7 @@ import { sva, cx, RecipeVariantProps } from '../../styled-system/css';
 import { createReactContext } from '../create-react-context';
 
 export const datePickerVariants = sva({
-  className: 'datePicker',
+  className: `${IDENTIFIER.scope} datePicker`,
   slots: datePickerAnatomy.keys(),
   base: {
     root: {

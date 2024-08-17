@@ -1,5 +1,6 @@
 import { paginationAnatomy } from '@ark-ui/anatomy';
 import { Pagination } from '@ark-ui/react';
+import { IDENTIFIER } from 'env';
 import { ChevronLeftIcon, ChevronRightIcon, EllipsisIcon } from 'lucide-react';
 
 import {
@@ -13,7 +14,7 @@ import { IconButton } from '../IconButton';
 import { Link } from '../Link';
 
 export const paginationVariants = sva({
-  className: 'pagination',
+  className: `${IDENTIFIER.scope} pagination`,
   slots: paginationAnatomy.keys(),
   base: {
     root: {

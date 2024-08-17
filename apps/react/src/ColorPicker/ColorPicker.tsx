@@ -1,5 +1,6 @@
 import { colorPickerAnatomy } from '@ark-ui/anatomy';
 import { ColorPicker } from '@ark-ui/react';
+import { IDENTIFIER } from 'env';
 import { PipetteIcon } from 'lucide-react';
 
 import {
@@ -15,7 +16,7 @@ import { IconButton } from '../IconButton';
 import { Input } from '../Input';
 
 export const colorPickerVariants = sva({
-  className: 'colorPicker',
+  className: `${IDENTIFIER.scope} colorPicker`,
   slots: colorPickerAnatomy.keys(),
   base: {
     root: {

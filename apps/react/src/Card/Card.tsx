@@ -1,3 +1,5 @@
+import { IDENTIFIER } from 'env';
+
 import { type ComponentProps, forwardRef } from 'react';
 
 import { RecipeVariantProps, cx, sva } from '../../styled-system/css';
@@ -5,7 +7,7 @@ import { createReactContext } from '../create-react-context';
 import { detailVariants, headingVariants } from '../typography';
 
 export const cardVariants = sva({
-  className: 'card',
+  className: `${IDENTIFIER.scope} card`,
   slots: ['root', 'header', 'content', 'footer', 'title', 'description'],
   base: {
     root: {

@@ -1,5 +1,6 @@
 import { fieldAnatomy } from '@ark-ui/anatomy';
 import { Field, FieldRootProps } from '@ark-ui/react/field';
+import { IDENTIFIER } from 'env';
 
 import {
   type ComponentProps,
@@ -12,7 +13,7 @@ import { sva, cx, RecipeVariantProps } from '../../styled-system/css';
 import { createReactContext } from '../create-react-context';
 
 export const fieldVariants = sva({
-  className: 'field',
+  className: `${IDENTIFIER.scope} field`,
   slots: fieldAnatomy.keys(),
   base: {
     root: {

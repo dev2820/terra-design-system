@@ -1,5 +1,6 @@
 import { tooltipAnatomy } from '@ark-ui/anatomy';
 import { Tooltip, TooltipRootProps } from '@ark-ui/react';
+import { IDENTIFIER } from 'env';
 
 import {
   type ComponentProps,
@@ -12,7 +13,7 @@ import { sva, cx } from '../../styled-system/css';
 import { createReactContext } from '../create-react-context';
 
 export const tooltipVariants = sva({
-  className: 'tooltip',
+  className: `${IDENTIFIER.scope} tooltip`,
   slots: tooltipAnatomy.keys(),
   base: {
     content: {

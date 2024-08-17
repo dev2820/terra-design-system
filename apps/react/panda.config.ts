@@ -1,10 +1,13 @@
 import { defineConfig } from '@pandacss/dev';
+import { IDENTIFIER } from 'env';
 import * as semanticTokens from 'theme/semanticToken';
 import * as tokens from 'theme/token';
 
 export default defineConfig({
   // Whether to use css reset
-  preflight: true,
+  preflight: {
+    scope: `.${IDENTIFIER.scope}`,
+  },
 
   // Where to look for your css declarations
   include: ['./src/**/*.{js,jsx,ts,tsx}', './stories/**/*.{js,jsx,ts,tsx}'],

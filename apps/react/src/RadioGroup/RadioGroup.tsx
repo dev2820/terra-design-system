@@ -4,6 +4,7 @@ import {
   RadioGroupItemProps,
   type RadioGroupRootProps,
 } from '@ark-ui/react/radio-group';
+import { IDENTIFIER } from 'env';
 
 import { ElementRef, forwardRef } from 'react';
 
@@ -11,7 +12,7 @@ import { RecipeVariantProps, cx, sva } from '../../styled-system/css';
 import { createReactContext } from '../create-react-context';
 
 export const radioGroupVariant = sva({
-  className: 'radioGroup',
+  className: `${IDENTIFIER.scope} radioGroup`,
   slots: radioGroupAnatomy.keys(),
   base: {
     root: {

@@ -1,5 +1,6 @@
 import { accordionAnatomy } from '@ark-ui/anatomy';
 import { Accordion } from '@ark-ui/react';
+import { IDENTIFIER } from 'env';
 import { ChevronDownIcon } from 'lucide-react';
 
 import {
@@ -14,7 +15,7 @@ import { sva, cx } from '../../styled-system/css';
 import { createReactContext } from '../create-react-context';
 
 export const accordionVariants = sva({
-  className: 'accordion',
+  className: `${IDENTIFIER.scope} accordion`,
   slots: accordionAnatomy.keys(),
   base: {
     root: {

@@ -5,6 +5,7 @@ import {
   type SelectItemGroupProps,
   type SelectItemProps,
 } from '@ark-ui/react/select';
+import { IDENTIFIER } from 'env';
 import { CheckIcon, ChevronDownIcon } from 'lucide-react';
 
 import { ElementRef, forwardRef, ReactNode } from 'react';
@@ -13,7 +14,7 @@ import { RecipeVariantProps, cx, sva } from '../../styled-system/css';
 import { createReactContext } from '../create-react-context';
 
 export const selectVariant = sva({
-  className: 'select',
+  className: `${IDENTIFIER.scope} select`,
   slots: selectAnatomy.keys(),
   base: {
     root: {
