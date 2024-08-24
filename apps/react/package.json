@@ -50,11 +50,13 @@
     "eslint-plugin-storybook": "^0.8.0",
     "lucide-react": "^0.378.0",
     "prop-types": "^15.8.1",
-    "react": "^18.2.0",
     "storybook": "^8.1.6",
     "theme": "workspace:*",
     "tsconfig": "workspace:*",
     "tsup": "^8.1.0",
     "utils": "workspace:*"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0"
   }
 }
