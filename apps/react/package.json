@@ -10,7 +10,7 @@
     "prebuild-storybook": "panda codegen",
     "build-storybook": "storybook build",
     "prebuild": "panda codegen ",
-    "build": "panda cssgen --outfile dist/styles.css && tsup --external react --external react-dom"
+    "build": "tsup --external react --external react-dom && panda cssgen --outfile dist/styles.css"
   },
   "exports": {
     ".": {

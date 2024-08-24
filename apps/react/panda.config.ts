@@ -5,9 +5,10 @@ import * as tokens from 'theme/token';
 
 export default defineConfig({
   // Whether to use css reset
-  preflight: {
-    scope: `.${IDENTIFIER.scope}`,
-  },
+  preflight: true,
+  // preflight: {
+  //   scope: `.${IDENTIFIER.scope}`,
+  // },
 
   // Where to look for your css declarations
   include: ['./src/**/*.{js,jsx,ts,tsx}', './stories/**/*.{js,jsx,ts,tsx}'],
