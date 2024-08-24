@@ -16,6 +16,13 @@ export default defineConfig({
   // Files to exclude
   exclude: [],
 
+  layers: {
+    reset: 'trds_reset',
+    base: 'trds_base',
+    utilities: 'trds_utilities',
+    tokens: 'trds_tokens',
+    recipes: 'trds_recipes',
+  },
   // Useful for theme customization
   theme: {
     extend: {
