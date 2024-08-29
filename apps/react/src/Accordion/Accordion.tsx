@@ -1,7 +1,6 @@
-import { accordionAnatomy } from '@ark-ui/anatomy';
 import { Accordion } from '@ark-ui/react';
-import { IDENTIFIER } from 'env';
 import { ChevronDownIcon } from 'lucide-react';
+import { tv } from 'tailwind-variants';
 
 import {
   type ComponentProps,
@@ -11,52 +10,19 @@ import {
   ReactNode,
 } from 'react';
 
-import { sva, cx } from '../../styled-system/css';
+import { cx } from '../../styled-system/css';
 import { createReactContext } from '../create-react-context';
 
-export const accordionVariants = sva({
-  className: `${IDENTIFIER.scope} accordion`,
-  slots: accordionAnatomy.keys(),
-  base: {
-    root: {
-      w: 'full',
-    },
-    item: {
-      borderBottom: '1px solid',
-      borderColor: 'neutral.200',
-    },
-    itemTrigger: {
-      transitionProperty: 'all',
-      transitionDuration: 'normal',
-      w: 'full',
-      paddingY: '1rem',
-      display: 'flex',
-      flexDir: 'row',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-      cursor: 'pointer',
-      _disabled: {
-        color: 'disabled',
-        cursor: 'not-allowed',
-      },
-    },
-    itemIndicator: {
-      transformOrigin: 'center',
-      transitionProperty: 'all',
-      transitionDuration: 'normal',
-      _open: {
-        rotate: '-180deg',
-      },
-    },
-    itemContent: {
-      overflow: 'hidden',
-      _open: {
-        animation: 'collapse-in 0.15s ease-in-out',
-      },
-      _closed: {
-        animation: 'collapse-out 0.15s ease-in-out',
-      },
-    },
+export const accordionVariants = tv({
+  slots: {
+    root: 'trds-w-full',
+    item: 'trds-border-b trds-border-boundary',
+    itemTrigger:
+      'trds-transition-all trds-duration-normal trds-w-full trds-py-4 trds-flex trds-flex-row trds-justify-between trds-items-center trds-cursor-pointer disabled:trds-text-muted disabled:trds-cursor-not-allowed',
+    itemIndicator:
+      'trds-origin-center trds-transition-all trds-duration-normal data-open:trds-rotate-180 trds-color-fg-neutral',
+    itemContent:
+      'trds-overflow-hidden data-open:trds-animate-collapse-in data-closed:trds-animate-collapse-out',
   },
 });
 
@@ -65,12 +31,14 @@ type AccordionProviderProps = {
 };
 const [AccordionProvider, useAccordionContext] = createReactContext<{
   indicator: ReactNode;
+  classes: ReturnType<typeof accordionVariants>;
 }>({
   name: 'accordion',
   hookName: 'useAccordionContext',
   providerName: 'AccordionProvider',
   defaultValue: {
     indicator: null,
+    classes: {} as ReturnType<typeof accordionVariants>,
   },
 });
 
@@ -80,17 +48,18 @@ const Root = forwardRef<
   ComponentPropsWithoutRef<typeof Accordion.Root> & AccordionProviderProps
 >(({ indicator, children, className, ...props }, ref) => {
   const classes = accordionVariants();
-  const providedValue = {
+  const ctx = {
     indicator: indicator ?? (
-      <ChevronDownIcon size={20} className={classes.itemIndicator} />
+      <ChevronDownIcon size={20} className={classes.itemIndicator()} />
     ),
+    classes,
   };
 
   return (
-    <AccordionProvider value={providedValue}>
+    <AccordionProvider value={ctx}>
       <Accordion.Root
         ref={ref}
-        className={cx(classes.root, className)}
+        className={cx(classes.root(), className)}
         {...props}
       >
         {children}
@@ -104,11 +73,12 @@ const Item = forwardRef<
   ElementRef<typeof Accordion.Item>,
   ComponentPropsWithoutRef<typeof Accordion.Item>
 >(({ children, className, ...props }, ref) => {
-  const classes = accordionVariants();
+  const { classes } = useAccordionContext();
+
   return (
     <Accordion.Item
       ref={ref}
-      className={cx(classes.item, className)}
+      className={cx(classes.item(), className)}
       {...props}
     >
       {children}
@@ -121,17 +91,16 @@ const Trigger = forwardRef<
   ElementRef<typeof Accordion.ItemTrigger>,
   ComponentPropsWithoutRef<typeof Accordion.ItemTrigger>
 >(({ children, className, ...props }, ref) => {
-  const { indicator } = useAccordionContext();
+  const { indicator, classes } = useAccordionContext();
 
-  const classes = accordionVariants();
   return (
     <Accordion.ItemTrigger
       ref={ref}
-      className={cx(classes.itemTrigger, className)}
+      className={cx(classes.itemTrigger(), className)}
       {...props}
     >
       {children}
-      <Accordion.ItemIndicator className={classes.itemIndicator} asChild>
+      <Accordion.ItemIndicator className={classes.itemIndicator()} asChild>
         {indicator}
       </Accordion.ItemIndicator>
     </Accordion.ItemTrigger>
@@ -143,11 +112,12 @@ const Content = forwardRef<
   ElementRef<typeof Accordion.ItemContent>,
   ComponentPropsWithoutRef<typeof Accordion.ItemContent>
 >(({ children, className, ...props }, ref) => {
-  const classes = accordionVariants();
+  const { classes } = useAccordionContext();
+
   return (
     <Accordion.ItemContent
       ref={ref}
-      className={cx(classes.itemContent, className)}
+      className={cx(classes.itemContent(), className)}
       {...props}
     >
       {children}

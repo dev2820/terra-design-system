@@ -8,6 +8,8 @@
   },
   "exports": {
     "./token": "./token.ts",
-    "./semanticToken": "./semanticToken.ts"
+    "./semanticToken": "./semanticToken.ts",
+    "./tailwind/token": "./tailwind/token.ts",
+    "./tailwind/semanticToken": "./tailwind/semanticToken.ts"
   }
 }

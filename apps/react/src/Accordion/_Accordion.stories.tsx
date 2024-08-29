@@ -1,6 +1,5 @@
-import { ChevronDownIcon, CircleChevronDownIcon } from 'lucide-react';
+import { CircleChevronDownIcon } from 'lucide-react';
 
-import { css } from '../../styled-system/css';
 import { Accordion, type AccordionProps } from './index';
 
 /**
@@ -25,7 +24,7 @@ export const Default = {
   },
   render: (props: AccordionProps['Root']) => {
     return (
-      <div className={css({ width: '400px', height: '200px' })}>
+      <div className="w-96">
         <Accordion.Root {...props}>
           {exampleList.map(item => (
             <Accordion.Item key={item} value={item}>
@@ -44,16 +43,11 @@ export const Default = {
 export const Indicator = {
   args: {
     defaultValue: [exampleList[0]],
-    indicator: (
-      <CircleChevronDownIcon
-        size={20}
-        className={css({ _open: { rotate: '-180' } })}
-      />
-    ),
+    indicator: <CircleChevronDownIcon size={20} />,
   },
   render: (props: AccordionProps['Root']) => {
     return (
-      <div className={css({ width: '400px', height: '200px' })}>
+      <div className="w-96">
         <Accordion.Root {...props}>
           {exampleList.map(item => (
             <Accordion.Item key={item} value={item}>
@@ -75,7 +69,7 @@ export const Disabled = {
   },
   render: (props: AccordionProps['Root']) => {
     return (
-      <div className={css({ width: '400px', height: '200px' })}>
+      <div className="w-96">
         <Accordion.Root {...props}>
           {exampleList.map((item, i) => (
             <Accordion.Item key={item} value={item} disabled={i === 1}>
@@ -98,7 +92,7 @@ export const Multiple = {
   },
   render: (props: AccordionProps['Root']) => {
     return (
-      <div className={css({ width: '400px', height: '200px' })}>
+      <div className="w-96">
         <Accordion.Root {...props}>
           {exampleList.map(item => (
             <Accordion.Item key={item} value={item}>
