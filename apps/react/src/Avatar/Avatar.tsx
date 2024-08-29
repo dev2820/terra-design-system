@@ -1,4 +1,3 @@
-import { avatarAnatomy } from '@ark-ui/anatomy';
 import { Avatar as _Avatar } from '@ark-ui/react';
 import { IDENTIFIER } from 'env';
 import { UserIcon } from 'lucide-react';
@@ -13,66 +12,32 @@ import {
   Children,
 } from 'react';
 
-import { RecipeVariantProps, cx, sva } from '../../styled-system/css';
+import { cx } from '../cx';
+import { tv, VariantProps } from '../tv';
 
-export const avatarVariants = sva({
-  className: `${IDENTIFIER.scope} avatar`,
-  slots: avatarAnatomy.keys(),
-  base: {
-    root: {
-      rounded: 'full',
-      overflow: 'hidden',
-    },
-    fallback: {
-      bg: 'neutral.200',
-    },
-    image: {
-      bg: 'neutral.200',
-    },
+export const avatarVariants = tv({
+  base: `${IDENTIFIER.scope} avatar`,
+  slots: {
+    root: 'trds-rounded-full trds-overflow-hidden',
+    fallback: 'trds-bg-neutral-200',
+    image: 'trds-bg-neutral-200',
   },
   variants: {
     size: {
       sm: {
-        root: {
-          w: 8,
-          h: 8,
-        },
-        fallback: {
-          w: 8,
-          h: 8,
-        },
-        image: {
-          w: 8,
-          h: 8,
-        },
+        root: 'trds-w-8 trds-h-8',
+        fallback: 'trds-w-8 trds-h-8',
+        image: 'trds-w-8 trds-h-8',
       },
       md: {
-        root: {
-          w: 10,
-          h: 10,
-        },
-        fallback: {
-          w: 10,
-          h: 10,
-        },
-        image: {
-          w: 10,
-          h: 10,
-        },
+        root: 'trds-w-10 trds-h-10',
+        fallback: 'trds-w-10 trds-h-10',
+        image: 'trds-w-10 trds-h-10',
       },
       lg: {
-        root: {
-          w: 12,
-          h: 12,
-        },
-        fallback: {
-          w: 12,
-          h: 12,
-        },
-        image: {
-          w: 12,
-          h: 12,
-        },
+        root: 'trds-w-12 trds-h-12',
+        fallback: 'trds-w-12 trds-h-12',
+        image: 'trds-w-12 trds-h-12',
       },
     },
   },
@@ -82,10 +47,11 @@ export const avatarVariants = sva({
 });
 
 export type AvatarProps = ComponentProps<typeof Avatar>;
+
 const Avatar = forwardRef<
   ElementRef<typeof _Avatar.Root>,
   ComponentPropsWithoutRef<typeof _Avatar.Root> &
-    RecipeVariantProps<typeof avatarVariants> & {
+    VariantProps<typeof avatarVariants> & {
       alt?: string;
       src?: string;
       fallback?: ReactNode;
@@ -97,16 +63,16 @@ const Avatar = forwardRef<
   const child = children && Children.only(children);
 
   return (
-    <_Avatar.Root ref={ref} className={cx(classes.root, className)} {...rest}>
+    <_Avatar.Root ref={ref} className={cx(classes.root(), className)} {...rest}>
       <_Avatar.Image
         src={src}
         alt={alt}
-        className={classes.image}
+        className={classes.image()}
         asChild={isNotNil(child)}
       >
         {child}
       </_Avatar.Image>
-      <_Avatar.Fallback className={classes.fallback} asChild>
+      <_Avatar.Fallback className={classes.fallback()} asChild>
         {fallback ?? <UserIcon size={convertSizeToNumber(size)} />}
       </_Avatar.Fallback>
     </_Avatar.Root>
@@ -126,5 +92,5 @@ const convertSizeToNumber = (size?: 'sm' | 'md' | 'lg') => {
     return 48;
   }
 
-  return 10;
+  return 40;
 };
