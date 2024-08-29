@@ -1,6 +1,5 @@
 import { Accordion } from '@ark-ui/react';
 import { ChevronDownIcon } from 'lucide-react';
-import { tv } from 'tailwind-variants';
 
 import {
   type ComponentProps,
@@ -10,8 +9,9 @@ import {
   ReactNode,
 } from 'react';
 
-import { cx } from '../../styled-system/css';
 import { createReactContext } from '../create-react-context';
+import { cx } from '../cx';
+import { tv } from "../tv"
 
 export const accordionVariants = tv({
   slots: {
