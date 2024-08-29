@@ -7,7 +7,6 @@ import {
   TriangleAlertIcon,
 } from 'lucide-react';
 
-import { css } from '../../styled-system/css';
 import { Alert, type AlertProps } from './index';
 
 const themes = [
@@ -88,7 +87,7 @@ export const Theme = {
   render: (props: AlertProps['Root']) => {
     return (
       <>
-        <Alert.Root {...props} className={css({ mb: 4 })} theme={'neutral'}>
+        <Alert.Root {...props} className={'trds-mb-4'} theme={'neutral'}>
           <StarIcon size={20} />
           <Alert.Title>Lorem ipsume</Alert.Title>
           <Alert.Description>
@@ -98,7 +97,7 @@ export const Theme = {
             and scrambled it to make a type specimen book.
           </Alert.Description>
         </Alert.Root>
-        <Alert.Root {...props} className={css({ mb: 4 })} theme={'error'}>
+        <Alert.Root {...props} className={'trds-mb-4'} theme={'error'}>
           <AlertCircleIcon size={20} />
           <Alert.Title>Lorem ipsume</Alert.Title>
           <Alert.Description>
@@ -108,7 +107,7 @@ export const Theme = {
             and scrambled it to make a type specimen book.
           </Alert.Description>
         </Alert.Root>
-        <Alert.Root {...props} className={css({ mb: 4 })} theme={'warning'}>
+        <Alert.Root {...props} className={'trds-mb-4'} theme={'warning'}>
           <TriangleAlertIcon size={20} />
           <Alert.Title>Lorem ipsume</Alert.Title>
           <Alert.Description>
@@ -118,7 +117,7 @@ export const Theme = {
             and scrambled it to make a type specimen book.
           </Alert.Description>
         </Alert.Root>
-        <Alert.Root {...props} className={css({ mb: 4 })} theme={'success'}>
+        <Alert.Root {...props} className={'trds-mb-4'} theme={'success'}>
           <CircleCheckIcon size={20} />
           <Alert.Title>Lorem ipsume</Alert.Title>
           <Alert.Description>
@@ -128,7 +127,7 @@ export const Theme = {
             and scrambled it to make a type specimen book.
           </Alert.Description>
         </Alert.Root>
-        <Alert.Root {...props} className={css({ mb: 4 })} theme={'info'}>
+        <Alert.Root {...props} className={'trds-mb-4'} theme={'info'}>
           <InfoIcon size={20} />
           <Alert.Title>Lorem ipsume</Alert.Title>
           <Alert.Description>
