@@ -1,6 +1,7 @@
 export * from './Accordion';
 export * from './Alert';
 export * from './Avatar';
+// 여기까지 tailwind 변환
 export * from './Badge';
 export * from './Button';
 export * from './Card';
