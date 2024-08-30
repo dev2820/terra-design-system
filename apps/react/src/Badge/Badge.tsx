@@ -2,39 +2,27 @@ import { IDENTIFIER } from 'env';
 
 import { ComponentProps, forwardRef } from 'react';
 
-import { cx, cva, type RecipeVariantProps } from '../../styled-system/css';
+import { cx } from '../cx';
+import { tv, VariantProps } from '../tv';
 
-const badgeVariants = cva({
-  base: {
-    display: 'inline-flex',
-    alignItems: 'center',
-    whiteSpace: 'nowrap',
-    rounded: 'full',
-    fontSize: 'xs',
-    fontWeight: 'semibold',
-    border: '1px solid',
-    paddingX: 2.5,
-    paddingY: 0.5,
-    transitionProperty: 'color',
-  },
+const badgeVariants = tv({
+  base: [
+    IDENTIFIER.scope,
+    'badge',
+    'trds-inline-flex trds-items-center trds-whitespace-nowrap trds-rounded-full trds-text-xs trds-font-semibold trds-border trds-px-[10px] trds-py-[2px] trds-transition-colors',
+  ],
   variants: {
     variant: {
-      filled: {
-        borderColor: 'transparent',
-      },
-      subtle: {
-        borderColor: 'transparent',
-      },
-      outline: {
-        bg: 'transparent',
-      },
+      filled: '',
+      subtle: '',
+      outline: 'trds-bg-transparent',
     },
     theme: {
-      primary: {},
-      info: {},
-      success: {},
-      error: {},
-      warning: {},
+      primary: '',
+      info: '',
+      success: '',
+      error: '',
+      warning: '',
     },
   },
   compoundVariants: [
@@ -44,42 +32,27 @@ const badgeVariants = cva({
     {
       variant: 'filled',
       theme: 'primary',
-      css: {
-        bg: 'primary.500',
-        color: 'primary.foreground',
-      },
+      class: 'trds-bg-primary-500 trds-text-fg-primary trds-border-primary',
     },
     {
       variant: 'filled',
       theme: 'error',
-      css: {
-        bg: 'error',
-        color: 'error.foreground',
-      },
+      class: 'trds-bg-error trds-text-fg-error trds-border-error',
     },
     {
       variant: 'filled',
       theme: 'warning',
-      css: {
-        bg: 'warning',
-        color: 'warning.foreground',
-      },
+      class: 'trds-bg-warning trds-text-fg-warning trds-border-warning',
     },
     {
       variant: 'filled',
       theme: 'success',
-      css: {
-        bg: 'success',
-        color: 'success.foreground',
-      },
+      class: 'trds-bg-success trds-text-fg-success trds-border-success',
     },
     {
       variant: 'filled',
       theme: 'info',
-      css: {
-        bg: 'info',
-        color: 'info.foreground',
-      },
+      class: 'trds-bg-info trds-text-fg-info trds-border-info',
     },
     /**
      * subtle
@@ -87,85 +60,59 @@ const badgeVariants = cva({
     {
       variant: 'subtle',
       theme: 'primary',
-      css: {
-        bg: 'primary.light',
-        color: 'primary',
-      },
+      class:
+        'trds-bg-primary-light trds-text-primary trds-border-primary-light',
     },
     {
       variant: 'subtle',
       theme: 'error',
-      css: {
-        bg: 'error.light',
-        color: 'error',
-      },
+      class: 'trds-bg-error-light trds-text-error trds-border-error-light',
     },
     {
       variant: 'subtle',
       theme: 'warning',
-      css: {
-        bg: 'warning.light',
-        color: 'warning',
-      },
+      class:
+        'trds-bg-warning-light trds-text-warning trds-border-warning-light',
     },
     {
       variant: 'subtle',
       theme: 'success',
-      css: {
-        bg: 'success.light',
-        color: 'success',
-      },
+      class:
+        'trds-bg-success-light trds-text-success trds-border-success-light',
     },
     {
       variant: 'subtle',
       theme: 'info',
-      css: {
-        bg: 'info.light',
-        color: 'info',
-      },
+      class: 'trds-bg-info-light trds-text-info trds-border-info-light',
     },
+
     /**
      * outline
      */
     {
       variant: 'outline',
       theme: 'primary',
-      css: {
-        color: 'primary',
-        borderColor: 'primary',
-      },
+      class: 'trds-text-primary trds-border-primary',
     },
     {
       variant: 'outline',
       theme: 'error',
-      css: {
-        color: 'error',
-        borderColor: 'error',
-      },
+      class: 'trds-text-error trds-border-error',
     },
     {
       variant: 'outline',
       theme: 'warning',
-      css: {
-        color: 'warning',
-        borderColor: 'warning',
-      },
+      class: 'trds-text-warning trds-border-warning',
     },
     {
       variant: 'outline',
       theme: 'success',
-      css: {
-        color: 'success',
-        borderColor: 'success',
-      },
+      class: 'trds-text-success trds-border-success',
     },
     {
       variant: 'outline',
       theme: 'info',
-      css: {
-        color: 'info',
-        borderColor: 'info',
-      },
+      class: 'trds-text-info trds-border-info',
     },
   ],
   defaultVariants: {
@@ -175,7 +122,7 @@ const badgeVariants = cva({
 });
 
 export type BadgeProps = Omit<ComponentProps<'span'>, 'children'> &
-  RecipeVariantProps<typeof badgeVariants> & {
+  VariantProps<typeof badgeVariants> & {
     text: string;
   };
 

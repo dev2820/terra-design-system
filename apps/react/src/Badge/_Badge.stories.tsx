@@ -1,4 +1,3 @@
-import { css } from '../../styled-system/css';
 import { Badge, type BadgeProps } from './index';
 
 const themes = [
@@ -8,7 +7,7 @@ const themes = [
   'info',
   'success',
 ] as BadgeProps['theme'][];
-const variants = ['filled', 'outline', 'subtle'] as BadgeProps['variant'][];
+const variants = ['filled', 'subtle', 'outline'] as BadgeProps['variant'][];
 
 export default {
   title: 'Components/Badge',
@@ -48,7 +47,7 @@ export const Variant = {
   },
   render: (props: BadgeProps) => {
     return (
-      <div className={css({ display: 'flex', flexDir: 'row', gap: 4 })}>
+      <div className="trds-flex trds-flex-row trds-gap-4">
         {variants.map(variant => (
           <Badge {...props} variant={variant} key={variant} />
         ))}
@@ -63,25 +62,9 @@ export const Theme = {
   },
   render: (props: BadgeProps) => {
     return (
-      <div
-        className={css({
-          display: 'grid',
-          gridTemplateRows: 3,
-          gridTemplateColumns: 5,
-          gap: 4,
-        })}
-      >
+      <div className="trds-grid trds-grid-rows-3 trds-grid-cols-5 trds-gap-4">
         {themes.map(color => (
           <Badge {...props} theme={color} key={color} />
-        ))}
-        {themes.map((color, i) => (
-          <Badge
-            {...props}
-            theme={color}
-            key={`outline-` + color}
-            className={css({ columnSpan: `${i}` })}
-            variant="outline"
-          />
         ))}
         {themes.map(color => (
           <Badge
@@ -89,6 +72,15 @@ export const Theme = {
             theme={color}
             key={`subtle-` + color}
             variant="subtle"
+          />
+        ))}
+        {themes.map((color, i) => (
+          <Badge
+            {...props}
+            theme={color}
+            key={`outline-` + color}
+            className={`trds-columns-${i}`}
+            variant="outline"
           />
         ))}
       </div>
