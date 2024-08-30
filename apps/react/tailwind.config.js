@@ -20,6 +20,8 @@ export default {
       data: {
         open: 'state="open"',
         close: 'state="close"',
+        current: 'current="true"',
+        readonly: 'readonly="true"',
       },
       keyframes: {
         collapseIn: {

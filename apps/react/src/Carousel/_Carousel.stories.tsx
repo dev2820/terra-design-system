@@ -4,7 +4,6 @@
  * TODO: Swipe event
  * Maybe change to https://www.embla-carousel.com/get-started/react/
  */
-import { css } from '../../styled-system/css';
 import { Carousel, type CarouselProps } from './index';
 
 export default {
@@ -107,7 +106,7 @@ export const ObjectFit = {
         {images.map((image, idx) => (
           <Carousel.Item
             key={image}
-            className={css({ objectFit: 'contain' })}
+            className="trds-object-contain"
             index={idx}
             asChild
           >
@@ -129,7 +128,7 @@ export const SlidesPerView = {
         {images.map((image, idx) => (
           <Carousel.Item
             key={image}
-            className={css({ objectFit: 'cover', aspectRatio: '1 / 1' })}
+            className="trds-object-cover trds-aspect-square"
             index={idx}
             asChild
           >
