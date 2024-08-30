@@ -2,53 +2,31 @@ import { IDENTIFIER } from 'env';
 
 import { type ComponentProps, forwardRef } from 'react';
 
-import { RecipeVariantProps, cx, sva } from '../../styled-system/css';
 import { createReactContext } from '../create-react-context';
-import { detailVariants, headingVariants } from '../typography';
+import { cx } from '../cx';
+import { tv, VariantProps } from '../tv';
 
-export const cardVariants = sva({
-  className: `${IDENTIFIER.scope} card`,
-  slots: ['root', 'header', 'content', 'footer', 'title', 'description'],
-  base: {
-    root: {
-      rounded: 'lg',
-      overflow: 'hidden',
-    },
-    header: {
-      p: 6,
-    },
-    content: {
-      px: 6,
-      pb: 6,
-    },
-    footer: {
-      px: 6,
-      pb: 6,
-    },
-    title: {
-      color: 'neutral.800',
-    },
-    description: {
-      color: 'neutral.500',
-    },
+export const cardVariants = tv({
+  base: `${IDENTIFIER.scope} card`,
+  slots: {
+    root: 'trds-rounded-lg trds-overflow-hidden',
+    header: 'trds-p-6',
+    content: 'trds-px-6 trds-pb-6',
+    footer: 'trds-px-6 trds-pb-6',
+    title:
+      'trds-text-fg-title trds-leading-normal trds-font-bold trds-text-2xl',
+    description: 'trds-text-fg-description trds-text-lg',
   },
   variants: {
     variant: {
       elevated: {
-        root: {
-          shadow: 'md',
-        },
+        root: 'trds-shadow-md',
       },
       filled: {
-        root: {
-          bg: 'neutral.100',
-        },
+        root: 'trds-bg-card-filled',
       },
       outline: {
-        root: {
-          border: '1px solid',
-          borderColor: 'neutral.200',
-        },
+        root: 'trds-border trds-border-boundary',
       },
     },
   },
@@ -66,7 +44,7 @@ const [CardProvider, useCardContext] = createReactContext<CardProviderProps>({
   hookName: 'useCardContext',
   providerName: 'CardProvider',
   defaultValue: {
-    classes: {},
+    classes: {} as ReturnType<typeof cardVariants>,
   },
 });
 
@@ -74,7 +52,7 @@ export type RootProps = ComponentProps<typeof Root>;
 
 const Root = forwardRef<
   HTMLDivElement,
-  ComponentProps<'div'> & RecipeVariantProps<typeof cardVariants>
+  ComponentProps<'div'> & VariantProps<typeof cardVariants>
 >((props, ref) => {
   const { variant = 'elevated', className, children, ...rest } = props;
   const classes = cardVariants({ variant });
@@ -85,7 +63,7 @@ const Root = forwardRef<
 
   return (
     <CardProvider value={ctx}>
-      <div ref={ref} className={cx(classes.root, className)} {...rest}>
+      <div ref={ref} className={cx(classes.root(), className)} {...rest}>
         {children}
       </div>
     </CardProvider>
@@ -99,7 +77,7 @@ const Header = forwardRef<HTMLDivElement, ComponentProps<'div'>>(
     const { classes } = useCardContext();
 
     return (
-      <div ref={ref} className={cx(classes.header, className)} {...rest}>
+      <div ref={ref} className={cx(classes.header(), className)} {...rest}>
         {children}
       </div>
     );
@@ -113,7 +91,7 @@ const Content = forwardRef<HTMLDivElement, ComponentProps<'div'>>(
     const { classes } = useCardContext();
 
     return (
-      <div ref={ref} className={cx(classes.content, className)} {...rest}>
+      <div ref={ref} className={cx(classes.content(), className)} {...rest}>
         {children}
       </div>
     );
@@ -127,7 +105,7 @@ const Footer = forwardRef<HTMLDivElement, ComponentProps<'div'>>(
     const { classes } = useCardContext();
 
     return (
-      <div ref={ref} className={cx(classes.footer, className)} {...rest}>
+      <div ref={ref} className={cx(classes.footer(), className)} {...rest}>
         {children}
       </div>
     );
@@ -141,15 +119,7 @@ const Title = forwardRef<HTMLHeadingElement, ComponentProps<'h3'>>(
     const { classes } = useCardContext();
 
     return (
-      <h3
-        ref={ref}
-        className={cx(
-          classes.title,
-          headingVariants({ size: 'sm' }),
-          className,
-        )}
-        {...rest}
-      >
+      <h3 ref={ref} className={cx(classes.title(), className)} {...rest}>
         {children}
       </h3>
     );
@@ -163,15 +133,7 @@ const Description = forwardRef<HTMLParagraphElement, ComponentProps<'p'>>(
     const { classes } = useCardContext();
 
     return (
-      <p
-        ref={ref}
-        className={cx(
-          classes.description,
-          detailVariants({ size: 'md' }),
-          className,
-        )}
-        {...rest}
-      >
+      <p ref={ref} className={cx(classes.description(), className)} {...rest}>
         {children}
       </p>
     );

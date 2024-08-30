@@ -92,7 +92,8 @@ export const colors = {
   fg: {
     neutral: `var(--my-colors-fg-neutral, ${TOKEN.colors.black})`,
     title: `var(--my-colors-fg-title, ${TOKEN.colors.gray[800]})`,
-    description: `var(--my-colors-fg-title, ${TOKEN.colors.gray[600]})`,
+    description: `var(--my-colors-fg-description, ${TOKEN.colors.gray[500]})`,
+    placeholder: `var(--my-colors-fg-placeholder, ${TOKEN.colors.gray[400]})`,
     primary: `var(--my-colors-fg-primary, ${TOKEN.colors.white})`,
     warning: `var(--my-colors-fg-warning, ${TOKEN.colors.white})`,
     error: `var(--my-colors-fg-error, ${TOKEN.colors.white})`,
@@ -102,11 +103,29 @@ export const colors = {
   muted: {
     DEFAULT: `var(--my-colors-muted, ${TOKEN.colors.gray[300]})`,
   },
+  card: {
+    filled: `var(--my-colors-muted, ${TOKEN.colors.gray[100]})`,
+  },
   boundary: `var(--my-colors-boundary, ${TOKEN.colors.gray[300]})`,
-};
+} as const;
+
+export const fontSizes = {
+  heading: {
+    DEFAULT: `var(--my-fontSizes-heading, ${TOKEN.fontSizes['4xl']})`,
+    lg: `var(--my-fontSizes-heading-lg, ${TOKEN.fontSizes['5xl']})`,
+    md: `var(--my-fontSizes-heading-md, ${TOKEN.fontSizes['4xl']})`,
+    sm: `var(--my-fontSizes-heading-sm, ${TOKEN.fontSizes['3xl']})`,
+  },
+  body: {
+    DEFAULT: `var(--my-fontSizes-body, ${TOKEN.fontSizes['lg']})`,
+    lg: `var(--my-fontSizes-body-lg, ${TOKEN.fontSizes['xl']})`,
+    md: `var(--my-fontSizes-body-md, ${TOKEN.fontSizes['lg']})`,
+    sm: `var(--my-fontSizes-body-sm, ${TOKEN.fontSizes['md']})`,
+  },
+} as const;
 
 export const duration = {
   normal: {
     DEFAULT: 'var(--my-duration-normal, 300ms)',
   },
-};
+} as const;

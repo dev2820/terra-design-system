@@ -1,5 +1,3 @@
-import { css, cx } from '../../styled-system/css';
-import { flex } from '../../styled-system/patterns';
 import { Avatar, Button } from '../index';
 import { Card, type CardProps } from './index';
 
@@ -36,15 +34,13 @@ export const Default = {
           <Card.Title>Sign in</Card.Title>
           <Card.Description>Welcome! Begin your journey here.</Card.Description>
         </Card.Header>
-        <Card.Content className={css({ display: 'flex', flexDir: 'column' })}>
+        <Card.Content className="trds-flex trds-flex-col">
           <input type="text" placeholder="your email" />
           <input type="password" placeholder="your password" />
         </Card.Content>
-        <Card.Footer
-          className={css({ display: 'flex', flexDir: 'row', gap: 4 })}
-        >
-          <Button className={css({ flex: 1 })}>Sign in</Button>
-          <Button theme="primary" className={css({ flex: 1 })}>
+        <Card.Footer className="trds-flex trds-flex-row trds-gap-4">
+          <Button className="trds-flex-1">Sign in</Button>
+          <Button theme="primary" className="trds-flex-1">
             🚀 Sign up
           </Button>
         </Card.Footer>
@@ -57,19 +53,19 @@ export const Variant = {
   args: {},
   render: (props: CardProps) => {
     return (
-      <div className={cx(flex({ direction: 'row', gap: 4 }))}>
+      <div className="trds-flex trds-flex-row trds-gap-4">
         {variants.map(variant => (
           <Card.Root variant={variant} key={variant} {...props}>
             <Card.Header>
               <Avatar src="https://i.pravatar.cc/500" size="lg" />
             </Card.Header>
-            <Card.Content>
+            <Card.Content className="trds-text-neutral-500">
               An adventurer at heart and a visionary by nature, Alex has
               journeyed through the unknown, bringing light to the darkest
               corners of the world.
             </Card.Content>
             <Card.Footer>
-              <span className={css({ fontSize: 'md', fontWeight: 'bold' })}>
+              <span className="trds-text-md trds-font-bold trds-text-neutral-400">
                 - Meet Alex Winters
               </span>
             </Card.Footer>
