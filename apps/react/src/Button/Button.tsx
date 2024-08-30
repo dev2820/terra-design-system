@@ -3,359 +3,123 @@ import { LoaderCircleIcon } from 'lucide-react';
 
 import { forwardRef, type ComponentProps, type ReactNode } from 'react';
 
-import { cx, cva, type RecipeVariantProps, css } from '../../styled-system/css';
+import { cx } from '../cx';
+import { tv, VariantProps } from '../tv';
 
 /**
  * TODO: Text Size도 지정하기
  */
-const buttonVariants = cva({
-  base: {
-    display: 'inline-flex',
-    justifyContent: 'center',
-    placeItems: 'center',
-    whiteSpace: 'nowrap',
-    rounded: 'lg',
-    fontSize: 'md',
-    fontWeight: 'medium',
-    gap: '2',
-    transition: ['colors'],
-    cursor: 'pointer',
-    _disabled: {
-      cursor: 'not-allowed',
-      opacity: 50,
-    },
-  },
+const buttonVariants = tv({
+  base: [
+    'trds-inline-flex trds-justify-center trds-place-items-center trds-whitespace-nowrap trds-rounded-lg trds-text-md trds-font-medium trds-gap-2 trds-transition-colors trds-cursor-pointer',
+    'disabled:trds-cursor-not-allowed disabled:trds-opacity-50',
+  ],
   variants: {
     variant: {
-      filled: {},
-      outline: {
-        borderWidth: 1,
-        borderStyle: 'solid',
-        bg: 'white',
-      },
-      ghost: {
-        bg: 'transparent',
-      },
+      filled: '',
+      outline: 'trds-border trds-border-solid',
+      ghost: 'trds-bg-transparent',
     },
     theme: {
-      primary: {},
-      neutral: {},
-      whiteAlpha: {},
-      blackAlpha: {},
+      primary: '',
+      neutral: '',
+      whiteAlpha: '',
+      blackAlpha: '',
     },
     size: {
-      xs: {
-        h: 8,
-        paddingX: 2,
-      },
-      sm: {
-        h: 9,
-        paddingX: 3,
-      },
-      md: {
-        h: 10,
-        paddingX: 4,
-      },
-      lg: {
-        h: 11,
-        paddingX: 6,
-      },
+      xs: 'trds-h-8 trds-px-2',
+      sm: 'trds-h-9 trds-px-3',
+      md: 'trds-h-10 trds-px-4',
+      lg: 'trds-h-11 trds-px-6',
     },
     loading: {
-      true: {
-        _disabled: {
-          cursor: 'wait',
-        },
-      },
+      true: 'disabled:trds-cursor-wait',
     },
   },
+  compoundVariants: [
+    {
+      theme: 'primary',
+      variant: 'filled',
+      class:
+        'trds-bg-primary trds-text-fg-primary disabled:trds-bg-primary enabled:hover:trds-bg-primary-600 enabled:active:trds-bg-primary-700',
+    },
+    {
+      theme: 'neutral',
+      variant: 'filled',
+      class:
+        'trds-bg-neutral trds-text-fg-neutral disabled:trds-bg-neutral enabled:hover:trds-bg-neutral-200 enabled:active:trds-bg-neutral-300',
+    },
+    {
+      theme: 'whiteAlpha',
+      variant: 'filled',
+      class:
+        'trds-bg-whiteAlpha-500 trds-text-white disabled:trds-bg-whiteAlpha enabled:hover:trds-bg-whiteAlpha-600 enabled:active:trds-bg-whiteAlpha-700',
+    },
+    {
+      theme: 'blackAlpha',
+      variant: 'filled',
+      class:
+        'trds-bg-blackAlpha-500 trds-text-black disabled:trds-bg-blackAlpha enabled:hover:trds-bg-blackAlpha-600 enabled:active:trds-bg-blackAlpha-700',
+    },
+    {
+      theme: 'primary',
+      variant: 'outline',
+      class:
+        'trds-bg-transparent trds-text-primary-500 trds-border-primary-500 enabled:hover:trds-bg-primary-100 enabled:active:trds-bg-primary-200',
+    },
+    {
+      theme: 'neutral',
+      variant: 'outline',
+      class:
+        'trds-bg-transparent trds-text-neutral-500 trds-border-neutral-300 disabled:trds-bg-transparent enabled:hover:trds-bg-neutral-100 enabled:active:trds-bg-neutral-200',
+    },
+    {
+      theme: 'whiteAlpha',
+      variant: 'outline',
+      class:
+        'trds-bg-transparent trds-text-white trds-border-whiteAlpha-300 disabled:trds-bg-transparent enabled:hover:trds-bg-whiteAlpha-100 enabled:active:trds-bg-whiteAlpha-200',
+    },
+    {
+      theme: 'blackAlpha',
+      variant: 'outline',
+      class:
+        'trds-bg-transparent trds-text-black trds-border-blackAlpha-300 disabled:trds-bg-transparent enabled:hover:trds-bg-blackAlpha-100 enabled:active:trds-bg-blackAlpha-200',
+    },
+    {
+      theme: 'primary',
+      variant: 'ghost',
+      class:
+        'trds-bg-transparent trds-text-primary-500 disabled:trds-bg-transparent enabled:hover:trds-bg-primary-100 enabled:active:trds-bg-primary-200',
+    },
+    {
+      theme: 'neutral',
+      variant: 'ghost',
+      class:
+        'trds-bg-transparent trds-text-neutral-500 disabled:trds-bg-transparent enabled:hover:trds-bg-neutral-100 enabled:active:trds-bg-neutral-200',
+    },
+    {
+      theme: 'whiteAlpha',
+      variant: 'ghost',
+      class:
+        'trds-bg-transparent trds-text-white disabled:trds-bg-transparent enabled:hover:trds-bg-whiteAlpha-100 enabled:active:trds-bg-whiteAlpha-200',
+    },
+    {
+      theme: 'blackAlpha',
+      variant: 'ghost',
+      class:
+        'trds-bg-transparent trds-text-black disabled:trds-bg-transparent enabled:hover:trds-bg-blackAlpha-100 enabled:active:trds-bg-blackAlpha-200',
+    },
+  ],
   defaultVariants: {
     variant: 'filled',
     theme: 'neutral',
     size: 'md',
     loading: false,
   },
-  compoundVariants: [
-    {
-      theme: 'primary',
-      variant: 'filled',
-      css: {
-        bgColor: 'primary',
-        color: 'primary.foreground',
-        _disabled: {
-          bg: 'primary',
-          _hover: {
-            bg: 'primary',
-          },
-          _active: {
-            bg: 'primary',
-          },
-        },
-        _hover: {
-          bg: 'primary.600',
-        },
-        _active: {
-          bg: 'primary.700',
-        },
-      },
-    },
-    {
-      theme: 'neutral',
-      variant: 'filled',
-      css: {
-        bgColor: 'neutral',
-        color: 'neutral.foreground',
-        _disabled: {
-          bg: 'neutral',
-          _hover: {
-            bg: 'neutral',
-          },
-          _active: {
-            bg: 'neutral',
-          },
-        },
-        _hover: {
-          bg: 'neutral.200',
-        },
-        _active: {
-          bg: 'neutral.300',
-        },
-      },
-    },
-    {
-      theme: 'whiteAlpha',
-      variant: 'filled',
-      css: {
-        bgColor: 'whiteAlpha.500',
-        color: 'white',
-        _disabled: {
-          bg: 'whiteAlpha',
-          _hover: {
-            bg: 'whiteAlpha',
-          },
-          _active: {
-            bg: 'whiteAlpha',
-          },
-        },
-        _hover: {
-          bg: 'whiteAlpha.600',
-        },
-        _active: {
-          bg: 'whiteAlpha.700',
-        },
-      },
-    },
-    {
-      theme: 'blackAlpha',
-      variant: 'filled',
-      css: {
-        bgColor: 'blackAlpha.500',
-        color: 'black',
-        _disabled: {
-          bg: 'blackAlpha',
-          _hover: {
-            bg: 'blackAlpha',
-          },
-          _active: {
-            bg: 'blackAlpha',
-          },
-        },
-        _hover: {
-          bg: 'blackAlpha.600',
-        },
-        _active: {
-          bg: 'blackAlpha.700',
-        },
-      },
-    },
-    {
-      theme: 'primary',
-      variant: 'outline',
-      css: {
-        bg: 'transparent',
-        color: 'primary.500',
-        borderColor: 'primary.500',
-        _disabled: {
-          _hover: {
-            bg: 'white',
-          },
-          _active: {
-            bg: 'white',
-          },
-        },
-        _hover: {
-          bg: 'primary.100',
-        },
-        _active: {
-          bg: 'primary.200',
-        },
-      },
-    },
-    {
-      theme: 'neutral',
-      variant: 'outline',
-      css: {
-        bg: 'transparent',
-        color: 'neutral.500',
-        borderColor: 'neutral.300',
-        _disabled: {
-          bg: 'transparent',
-          _hover: {
-            bg: 'transparent',
-          },
-          _active: {
-            bg: 'transparent',
-          },
-        },
-        _hover: {
-          bg: 'neutral.100',
-        },
-        _active: {
-          bg: 'neutral.200',
-        },
-      },
-    },
-    {
-      theme: 'whiteAlpha',
-      variant: 'outline',
-      css: {
-        bg: 'transparent',
-        color: 'white',
-        borderColor: 'whiteAlpha.300',
-        _disabled: {
-          bg: 'transparent',
-          _hover: {
-            bg: 'transparent',
-          },
-          _active: {
-            bg: 'transparent',
-          },
-        },
-        _hover: {
-          bg: 'whiteAlpha.100',
-        },
-        _active: {
-          bg: 'whiteAlpha.200',
-        },
-      },
-    },
-    {
-      theme: 'blackAlpha',
-      variant: 'outline',
-      css: {
-        bg: 'transparent',
-        color: 'black',
-        borderColor: 'blackAlpha.300',
-        _disabled: {
-          bg: 'transparent',
-          _hover: {
-            bg: 'transparent',
-          },
-          _active: {
-            bg: 'transparent',
-          },
-        },
-        _hover: {
-          bg: 'blackAlpha.100',
-        },
-        _active: {
-          bg: 'blackAlpha.200',
-        },
-      },
-    },
-    {
-      theme: 'primary',
-      variant: 'ghost',
-      css: {
-        bg: 'transparent',
-        color: 'primary.500',
-        _disabled: {
-          _hover: {
-            bg: 'transparent',
-          },
-          _active: {
-            bg: 'transparent',
-          },
-        },
-        _hover: {
-          bg: 'primary.100',
-        },
-        _active: {
-          bg: 'primary.200',
-        },
-      },
-    },
-    {
-      theme: 'neutral',
-      variant: 'ghost',
-      css: {
-        bg: 'transparent',
-        color: 'neutral.500',
-        _disabled: {
-          _hover: {
-            bg: 'transparent',
-          },
-          _active: {
-            bg: 'transparent',
-          },
-        },
-        _hover: {
-          bg: 'neutral.100',
-        },
-        _active: {
-          bg: 'neutral.200',
-        },
-      },
-    },
-    {
-      theme: 'whiteAlpha',
-      variant: 'ghost',
-      css: {
-        bg: 'transparent',
-        color: 'white',
-        _disabled: {
-          _hover: {
-            bg: 'transparent',
-          },
-          _active: {
-            bg: 'transparent',
-          },
-        },
-        _hover: {
-          bg: 'whiteAlpha.100',
-        },
-        _active: {
-          bg: 'whiteAlpha.200',
-        },
-      },
-    },
-    {
-      theme: 'blackAlpha',
-      variant: 'ghost',
-      css: {
-        bg: 'transparent',
-        color: 'black',
-        _disabled: {
-          _hover: {
-            bg: 'transparent',
-          },
-          _active: {
-            bg: 'transparent',
-          },
-        },
-        _hover: {
-          bg: 'blackAlpha.100',
-        },
-        _active: {
-          bg: 'blackAlpha.200',
-        },
-      },
-    },
-  ],
 });
 
 export type ButtonProps = ComponentProps<'button'> &
-  RecipeVariantProps<typeof buttonVariants> & {
+  VariantProps<typeof buttonVariants> & {
     loading?: boolean;
     loadingIcon?: ReactNode;
     rightIcon?: ReactNode;
@@ -368,7 +132,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       type = 'button',
       loading = false,
       loadingIcon = (
-        <LoaderCircleIcon className={css({ animation: 'spin' })} size={20} />
+        <LoaderCircleIcon className="trds-animate-spin" size={20} />
       ),
       leftIcon,
       rightIcon,
