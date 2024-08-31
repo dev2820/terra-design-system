@@ -5,10 +5,10 @@ export * from './Badge';
 export * from './Button';
 export * from './Card';
 export * from './Carousel';
-// 여기까지 tailwind 변환
 export * from './Checkbox';
 export * from './Collapsible';
-export * from './ColorPicker';
+export * from './ColorPicker'; // 변환 후 문제 생김
+// 여기까지 tailwind 변환
 export * from './Combobox';
 export * from './DatePicker';
 export * from './Dialog';
