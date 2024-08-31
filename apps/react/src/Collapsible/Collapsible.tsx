@@ -1,4 +1,3 @@
-import { collapsibleAnatomy } from '@ark-ui/anatomy';
 import { Collapsible } from '@ark-ui/react';
 import { IDENTIFIER } from 'env';
 
@@ -9,44 +8,24 @@ import {
   type ElementRef,
 } from 'react';
 
-import { sva, cx } from '../../styled-system/css';
 import { createReactContext } from '../create-react-context';
+import { cx } from '../cx';
+import { tv } from '../tv';
 
-export const collapsibleVariants = sva({
-  className: `${IDENTIFIER.scope} collapsible`,
-  slots: collapsibleAnatomy.keys(),
-  base: {
-    root: {
-      w: 'full',
-      bg: 'white',
-      rounded: 'md',
-    },
-    trigger: {
-      w: 'full',
-      h: 10,
-      paddingX: 4,
-      cursor: 'pointer',
-      _disabled: {
-        opacity: 40,
-        cursor: 'not-allowed',
-      },
-    },
-    content: {
-      paddingX: 4,
-      borderTop: '1px solid',
-      borderColor: 'neutral.300',
-      overflow: 'hidden',
-      _open: {
-        animation: 'collapse-in 0.15s ease-in-out',
-      },
-      _closed: {
-        animation: 'collapse-out 0.15s ease-in-out',
-      },
-      _disabled: {
-        opacity: 40,
-        cursor: 'not-allowed',
-      },
-    },
+export const collapsibleVariants = tv({
+  base: `${IDENTIFIER.scope} collapsible`,
+  slots: {
+    root: 'trds-w-full trds-bg-white trds-rounded-md',
+    trigger: [
+      'trds-w-full trds-h-10 trds-px-4 trds-cursor-pointer',
+      'data-[disabled]:trds-opacity-40 data-[disabled]:trds-cursor-not-allowed',
+      '[&>svg]:trds-origin-center [&>svg]:trds-duration-normal [&>svg]:trds-transition-all [&[data-state="open"]>svg]:-trds-rotate-180',
+    ],
+    content: [
+      'trds-px-4 trds-border-t trds-border-boundary trds-overflow-hidden',
+      'data-open:trds-animate-collapse-in data-closed:trds-animate-collapse-out',
+      'data-[disabled]:trds-opacity-40 data-[disabled]:trds-cursor-not-allowed',
+    ],
   },
 });
 
@@ -59,7 +38,7 @@ const [CollapsibleProvider, useCollapsibleContext] =
     hookName: 'useCollapsibleContext',
     providerName: 'CollapsibleProvider',
     defaultValue: {
-      classes: {},
+      classes: {} as ReturnType<typeof collapsibleVariants>,
     },
   });
 
@@ -77,7 +56,7 @@ const Root = forwardRef<
     <CollapsibleProvider value={ctx}>
       <Collapsible.Root
         ref={ref}
-        className={cx(classes.root, className)}
+        className={cx(classes.root(), className)}
         {...props}
       >
         {children}
@@ -96,7 +75,7 @@ const Trigger = forwardRef<
 
   return (
     <Collapsible.Trigger
-      className={cx(classes.trigger, className)}
+      className={cx(classes.trigger(), className)}
       ref={ref}
       {...rest}
     >
@@ -115,7 +94,7 @@ const Content = forwardRef<
 
   return (
     <Collapsible.Content
-      className={cx(classes.content, className)}
+      className={cx(classes.content(), className)}
       ref={ref}
       {...rest}
     >
