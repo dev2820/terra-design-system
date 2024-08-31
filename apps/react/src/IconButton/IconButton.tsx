@@ -2,37 +2,17 @@ import { IDENTIFIER } from 'env';
 
 import { forwardRef, type ComponentProps } from 'react';
 
-import { cx, cva, type RecipeVariantProps } from '../../styled-system/css';
 import { Button } from '../Button';
+import { cx } from '../cx';
+import { tv, VariantProps } from '../tv';
 
-const iconButtonVariants = cva({
-  base: {},
+const iconButtonVariants = tv({
   variants: {
     size: {
-      xs: {
-        h: 8,
-        w: 8,
-        px: 0,
-        py: 0,
-      },
-      sm: {
-        h: 9,
-        w: 9,
-        px: 0,
-        py: 0,
-      },
-      md: {
-        h: 10,
-        w: 10,
-        px: 0,
-        py: 0,
-      },
-      lg: {
-        h: 11,
-        w: 11,
-        px: 0,
-        py: 0,
-      },
+      xs: 'trds-h-8 trds-w-8 trds-px-0 trds-py-0',
+      sm: 'trds-h-9 trds-w-9 trds-px-0 trds-py-0',
+      md: 'trds-h-10 trds-w-10 trds-px-0 trds-py-0',
+      lg: 'trds-h-11 trds-w-11 trds-px-0 trds-py-0',
     },
   },
   defaultVariants: {
@@ -41,7 +21,7 @@ const iconButtonVariants = cva({
 });
 
 export type IconButtonProps = ComponentProps<typeof Button> &
-  RecipeVariantProps<typeof iconButtonVariants>;
+  VariantProps<typeof iconButtonVariants>;
 
 const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
   function (props, ref) {

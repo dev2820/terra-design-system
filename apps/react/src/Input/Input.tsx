@@ -2,48 +2,21 @@ import { IDENTIFIER } from 'env';
 
 import { InputHTMLAttributes, forwardRef } from 'react';
 
-import { cva, cx } from '../../styled-system/css';
+import { cx } from '../cx';
+import { tv } from '../tv';
 
-const inputVariants = cva({
-  base: {
-    display: 'flex',
-    flexDir: '',
-    height: 10,
-    rounded: 'lg',
-    border: '1px solid',
-    borderColor: 'neutral.300',
-    background: 'white',
-    paddingX: 3,
-    paddingY: 2,
-    fontSize: 'sm',
-    outline: 0,
-    transitionDuration: 'normal',
-    transitionProperty: 'box-shadow, border-color',
-    transitionTimingFunction: 'default',
-    _file: {
-      border: 0,
-      bg: 'transparent',
-      fontSize: 'sm',
-      fontWeight: 'medium',
-    },
-    _placeholder: {
-      color: 'neutral.400',
-    },
-    _disabled: {
-      cursor: 'not-allowed',
-      opacity: 50,
-    },
-    _focusWithin: {
-      borderColor: 'primary.500',
-      boxShadow: '0 0 0 2px var(--shadow-color)',
-      shadowColor: 'primary.500',
-    },
-  },
+const inputVariants = tv({
+  base: [
+    'trds-flex',
+    'trds-h-10 trds-rounded-lg trds-border trds-border-boundary trds-bg-white trds-px-3 trds-py-2 trds-text-sm trds-outline-0 trds-transition-[box-shadow] trds-transition-[border-color] trds-duration-normal',
+    'file:trds-border-0 file:trds-bg-transparent file:trds-text-sm file:trds-font-medium',
+    'placeholder:trds-text-fg-placeholder',
+    'disabled:trds-cursor-not-allowed disabled:trds-opacity-50',
+    'focus-within:trds-border-primary-500 focus-within:trds-shadow-[0_0_0_2px_var(--shadow-color)] focus-within:trds-shadow-primary-500',
+  ],
   variants: {
     invalid: {
-      true: {
-        borderColor: 'error.500',
-      },
+      true: 'trds-border-error-500',
     },
   },
 });
