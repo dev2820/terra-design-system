@@ -1,4 +1,3 @@
-import { checkboxAnatomy } from '@ark-ui/anatomy';
 import { Checkbox as _Checkbox } from '@ark-ui/react';
 import { IDENTIFIER } from 'env';
 import { CheckIcon, MinusIcon } from 'lucide-react';
@@ -10,82 +9,38 @@ import {
   forwardRef,
 } from 'react';
 
-import { RecipeVariantProps, cx, sva } from '../../styled-system/css';
+import { cx } from '../cx';
+import { tv, VariantProps } from '../tv';
 
-export const checkboxVariants = sva({
-  className: `${IDENTIFIER.scope} checkbox`,
-  slots: checkboxAnatomy.keys(),
-  base: {
-    root: {
-      rounded: 'sm',
-      display: 'inline-flex',
-      flexDir: 'row',
-      alignItems: 'center',
-      gap: 2,
-      cursor: 'pointer',
-      _disabled: {
-        cursor: 'not-allowed',
-      },
-      '&[data-readonly]': {
-        cursor: 'default',
-      },
-    },
-    label: {},
-    control: {
-      border: '2px solid',
-      borderColor: 'neutral.300',
-      rounded: 'sm',
-      flex: 'none',
-      boxSizing: 'border-box',
-      display: 'inline-flex',
-      placeItems: 'center',
-      transitionProperty: 'box-shadow, background-color, border-color',
-      transitionDuration: 'normal',
-      transitionTimingFunction: 'default',
-      _checked: {
-        bg: 'primary.500',
-        color: 'white',
-        borderColor: 'primary.500',
-      },
-      _invalid: {
-        borderColor: 'error.500',
-      },
-      _disabled: {
-        bg: 'disabled',
-        borderColor: 'disabled',
-        color: 'neutral.500',
-      },
-      _indeterminate: {
-        bg: 'primary.500',
-        color: 'white',
-        borderColor: 'primary.500',
-      },
-      _focus: {
-        boxShadow: '0 0 0 2px var(--shadow-color)',
-        shadowColor: 'primary.500',
-      },
-    },
-    indicator: {},
+export const checkboxVariants = tv({
+  base: `${IDENTIFIER.scope} checkbox`,
+  slots: {
+    root: 'group :focus-within:mt-4 trds-rounded-sm trds-inline-flex trds-flex-row trds-items-center trds-gap-2 trds-cursor-pointer data-[disabled]:trds-cursor-not-allowed data-[readonly]:trds-cursor-default',
+    label: '',
+    control: [
+      'trds-border-2 trds-border-neutral-300 trds-rounded-sm trds-flex-none trds-box-border trds-inline-flex trds-place-items-center trds-transition-shadow trds-transition-bg trds-transition-border-color trds-duration-normal trds-ease-default',
+      'data-[state="checked"]:trds-bg-primary-500 data-[state="checked"]:trds-text-white data-[state="checked"]:trds-border-primary-500',
+      'data-[invalid]:trds-border-error-500',
+      'data-[state="indeterminate"]:trds-bg-primary-500 data-[state="indeterminate"]:trds-text-white data-[state="indeterminate"]:trds-border-primary-500',
+      'data-[disabled]:trds-bg-muted data-[disabled]:trds-border-muted',
+      'data-[disabled]:data-[state="checked"]:trds-border-muted data-[disabled]:data-[state="checked"]:trds-bg-muted',
+      'data-[disabled]:data-[state="indeterminate"]:trds-border-muted data-[disabled]:data-[state="indeterminate"]:trds-bg-muted',
+      'data-[disabled]:trds-text-neutral-500',
+      'data-[focus]:trds-shadow-[0_0_0_2px_var(--shadow-color)] data-[focus]:trds-shadow-primary-500',
+    ],
+    indicator: '',
+    hiddenInput: '',
   },
   variants: {
     size: {
       sm: {
-        control: {
-          w: 3,
-          h: 3,
-        },
+        control: 'trds-w-3 trds-h-3',
       },
       md: {
-        control: {
-          w: 4,
-          h: 4,
-        },
+        control: 'trds-w-4 trds-h-4',
       },
       lg: {
-        control: {
-          w: 5,
-          h: 5,
-        },
+        control: 'trds-w-5 trds-h-5',
       },
     },
   },
@@ -98,23 +53,31 @@ export type CheckboxProps = ComponentProps<typeof Checkbox>;
 const Checkbox = forwardRef<
   ElementRef<typeof _Checkbox.Root>,
   ComponentPropsWithoutRef<typeof _Checkbox.Root> &
-    RecipeVariantProps<typeof checkboxVariants>
+    VariantProps<typeof checkboxVariants>
 >((props, ref) => {
   const { size, className, children, ...rest } = props;
   const classes = checkboxVariants({ size });
 
   return (
-    <_Checkbox.Root ref={ref} className={cx(classes.root, className)} {...rest}>
-      <_Checkbox.HiddenInput />
-      <_Checkbox.Control className={classes.control}>
+    <_Checkbox.Root
+      ref={ref}
+      className={cx(classes.root(), className)}
+      {...rest}
+    >
+      <_Checkbox.HiddenInput className={classes.hiddenInput()} />
+      <_Checkbox.Control className={classes.control()}>
         <_Checkbox.Indicator asChild>
-          <CheckIcon size={convertSizeToNumber(size)} />
+          <CheckIcon size={convertSizeToNumber(size)} strokeWidth={3} />
         </_Checkbox.Indicator>
         <_Checkbox.Indicator indeterminate asChild>
-          <MinusIcon size={convertSizeToNumber(size)} />
+          <MinusIcon size={convertSizeToNumber(size)} strokeWidth={3} />
         </_Checkbox.Indicator>
       </_Checkbox.Control>
-      <_Checkbox.Label className={classes.label}>{children}</_Checkbox.Label>
+      {children && (
+        <_Checkbox.Label className={classes.label()}>
+          {children}
+        </_Checkbox.Label>
+      )}
     </_Checkbox.Root>
   );
 });

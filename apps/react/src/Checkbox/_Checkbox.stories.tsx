@@ -1,5 +1,3 @@
-import { cx } from '../../styled-system/css';
-import { flex } from '../../styled-system/patterns';
 import { Checkbox, type CheckboxProps } from './index';
 
 /**
@@ -13,7 +11,7 @@ export default {
   },
   tags: ['autodocs'],
   argTypes: {
-    defaultCheck: {
+    defaultChecked: {
       options: [true, false, 'indeterminate'],
       control: { type: 'select' },
     },
@@ -24,7 +22,7 @@ export default {
     disabled: {
       control: { type: 'boolean' },
     },
-    readonly: {
+    readOnly: {
       control: { type: 'boolean' },
     },
     invalid: {
@@ -36,10 +34,9 @@ export default {
     },
   },
   args: {
-    defaultCheck: false,
-    options: false,
+    defaultChecked: false,
     disabled: false,
-    readonly: false,
+    readOnly: false,
     invalid: false,
     size: 'md',
   },
@@ -60,7 +57,7 @@ export const Disabled = {
   },
   render: (props: CheckboxProps) => {
     return (
-      <div className={cx(flex({ direction: 'column', gap: 4 }))}>
+      <div className="trds-flex trds-flex-col trds-gap-4">
         <Checkbox {...props} checked disabled>
           Hello
         </Checkbox>
@@ -77,7 +74,7 @@ export const ReadOnly = {
   },
   render: (props: CheckboxProps) => {
     return (
-      <div className={cx(flex({ direction: 'column', gap: 4 }))}>
+      <div className="trds-flex trds-flex-col trds-gap-4">
         <Checkbox {...props} checked readOnly>
           Hello
         </Checkbox>
@@ -94,7 +91,7 @@ export const Invalid = {
   },
   render: (props: CheckboxProps) => {
     return (
-      <div className={cx(flex({ direction: 'column', gap: 4 }))}>
+      <div className="trds-flex trds-flex-col trds-gap-4">
         <Checkbox {...props} checked invalid>
           Hello
         </Checkbox>
@@ -125,7 +122,7 @@ export const Size = {
   render: (props: CheckboxProps) => {
     const sizes = ['sm', 'md', 'lg'] as CheckboxProps['size'][];
     return (
-      <div className={cx(flex({ direction: 'column', gap: 4 }))}>
+      <div className="trds-flex trds-flex-col trds-gap-4">
         {sizes.map(size => (
           <Checkbox {...props} size={size} key={size}>
             Hello

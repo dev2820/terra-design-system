@@ -2,7 +2,6 @@
 import {
   colors as semanticColors,
   duration as semanticDuration,
-  fontSizes as semanticFontSizes,
 } from 'theme/tailwind/semanticToken';
 import { colors, duration } from 'theme/tailwind/token';
 
