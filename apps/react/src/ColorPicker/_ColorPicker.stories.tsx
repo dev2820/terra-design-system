@@ -1,4 +1,3 @@
-import { css } from '../../styled-system/css';
 import { ColorPicker, type ColorPickerProps } from './index';
 
 /**
@@ -18,13 +17,13 @@ export default {
 };
 
 export const Default = {
-  args: {},
+  args: {
+    defaultValue: '#eb5e41',
+  },
   render: (props: ColorPickerProps['root']) => {
     return (
-      <div
-        className={css({ display: 'flex', width: '600px', height: '500px' })}
-      >
-        <ColorPicker.Root {...props} defaultValue="#eb5e41" />
+      <div className="trds-flex trds-w-[600px] trds-h-[500px]">
+        <ColorPicker.Root {...props} />
       </div>
     );
   },
