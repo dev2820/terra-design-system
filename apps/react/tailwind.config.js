@@ -20,6 +20,11 @@ export default {
       data: {
         open: 'state="open"',
         close: 'state="close"',
+        hidden: 'hidden="true"',
+        highlighted: 'highlighted',
+        today: 'today',
+        selected: 'selected',
+        'in-range': 'in-range',
       },
       keyframes: {
         collapseIn: {

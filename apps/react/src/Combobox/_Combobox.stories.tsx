@@ -1,4 +1,3 @@
-import { css } from '../../styled-system/css';
 import { Combobox, type ComboboxProps } from './index';
 
 /**
@@ -21,13 +20,11 @@ const languages = ['Javascript', 'Typescript'] as const;
 
 export const Default = {
   args: {
-    className: css({ width: 600 }),
+    className: 'trds-w-[600px]',
   },
   render: (props: ComboboxProps['root']) => {
     return (
-      <div
-        className={css({ display: 'flex', width: '600px', height: '500px' })}
-      >
+      <div className="trds-flex trds-w-[600px] trds-h-[500px]">
         <Combobox.Root
           {...props}
           items={[...frameworks, ...languages, 'None']}
@@ -56,13 +53,11 @@ export const Default = {
 
 export const MultiCombobox = {
   args: {
-    className: css({ width: 600 }),
+    className: 'trds-w-[600px]',
   },
   render: (props: ComboboxProps['root']) => {
     return (
-      <div
-        className={css({ display: 'flex', width: '600px', height: '500px' })}
-      >
+      <div className="trds-flex trds-w-[600px] trds-h-[500px]">
         <Combobox.Root
           {...props}
           items={[...frameworks, ...languages, 'None']}

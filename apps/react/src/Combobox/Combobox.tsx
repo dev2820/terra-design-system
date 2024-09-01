@@ -1,4 +1,3 @@
-import { comboboxAnatomy } from '@ark-ui/anatomy';
 import { Portal } from '@ark-ui/react';
 import {
   Combobox,
@@ -10,148 +9,64 @@ import { CheckIcon, ChevronsUpDownIcon } from 'lucide-react';
 
 import { ElementRef, forwardRef, ReactNode } from 'react';
 
-import { RecipeVariantProps, cx, sva } from '../../styled-system/css';
 import { createReactContext } from '../create-react-context';
+import { cx } from '../cx';
 import { Input } from '../Input';
+import { tv, VariantProps } from '../tv';
 
-export const comboboxVariant = sva({
-  className: `${IDENTIFIER.scope} combobox`,
-  slots: comboboxAnatomy.keys(),
-  base: {
-    root: {
-      display: 'flex',
-      flexDirection: 'column',
-      gap: '1.5',
-      width: 'full',
-    },
-    control: {
-      position: 'relative',
-    },
-    trigger: {
-      bottom: '0',
-      color: 'neutral.800',
-      position: 'absolute',
-      right: '0',
-      top: '0',
-      cursor: 'pointer',
-    },
-    input: {
-      w: 'full',
-    },
-    content: {
-      background: 'white',
-      borderRadius: 'lg',
-      boxShadow: 'lg',
-      display: 'flex',
-      flexDirection: 'column',
-      zIndex: 'dropdown',
-      '&[aria-hidden]': {
-        display: 'none',
+export const comboboxVariant = tv({
+  base: `${IDENTIFIER.scope} combobox`,
+  slots: {
+    root: 'trds-flex trds-flex-col trds-gap-1.5 trds-w-full',
+    control: 'trds-relative',
+    trigger:
+      'trds-absolute trds-bottom-0 trds-right-0 trds-top-0 trds-text-muted trds-cursor-pointer',
+    input: 'trds-w-full',
+    content:
+      'trds-bg-white trds-rounded-lg trds-shadow-lg trds-flex trds-flex-col trds-z-dropdown data-hidden:trds-hidden data-open:trds-animate-fade-in data-closed:trds-animate-fade-out focus-visible:trds-outline-2 focus-visible:trds-outline-solid focus-visible:trds-outline-neutral-300 focus-visible:trds-outline-offset-2',
+    item: 'trds-flex trds-items-center trds-justify-between trds-rounded-md trds-cursor-pointer trds-transition-fast trds-transition-[background,color] trds-ease-default hover:trds-bg-neutral-100 data-highlighted:trds-bg-neutral-100 disabled:trds-text-disabled disabled:trds-cursor-not-allowed disabled:hover:trds-bg-transparent disabled:hover:trds-text-disabled',
+    itemGroupLabel: 'trds-font-semibold trds-text-sm',
+    itemIndicator: 'trds-text-black',
+    itemText: '',
+    itemGroup: '',
+    positioner: '',
+  },
+  variants: {
+    size: {
+      sm: {
+        content: 'trds-p-0.5 trds-gap-1',
+        item: 'trds-text-sm trds-px-2 trds-h-9',
+        itemIndicator: '[&_:where(svg)]:trds-w-4 [&_:where(svg)]:trds-h-4',
+        itemGroupLabel: 'trds-px-2 trds-py-1.5',
+        label: 'trds-text-sm',
+        trigger: 'trds-right-2.5',
       },
-      _open: {
-        animation: 'fade-in 0.25s ease-out',
+      md: {
+        content: 'trds-p-1 trds-gap-1',
+        item: 'trds-text-md trds-px-2 trds-h-10',
+        itemIndicator: '[&_:where(svg)]:trds-w-4 [&_:where(svg)]:trds-h-4',
+        itemGroupLabel: 'trds-px-2 trds-py-1.5',
+        label: 'trds-text-sm',
+        trigger: 'trds-right-3',
       },
-      _closed: {
-        animation: 'fade-out 0.2s ease-out',
+      lg: {
+        content: 'trds-p-1.5 trds-gap-1',
+        item: 'trds-text-md trds-px-2 trds-h-11',
+        itemIndicator: '[&_:where(svg)]:trds-w-5 [&_:where(svg)]:trds-h-5',
+        itemGroupLabel: 'trds-px-2 trds-py-1.5',
+        label: 'trds-text-sm',
+        trigger: 'trds-right-3.5',
       },
-      _focusVisible: {
-        outlineOffset: '2px',
-        outline: '2px solid',
-        outlineColor: 'neutral.300',
-      },
-    },
-    item: {
-      alignItems: 'center',
-      borderRadius: 'md',
-      cursor: 'pointer',
-      display: 'flex',
-      justifyContent: 'space-between',
-      transitionDuration: 'fast',
-      transitionProperty: 'background, color',
-      transitionTimingFunction: 'default',
-      _hover: {
-        background: 'neutral.300',
-      },
-      _highlighted: {
-        background: 'neutral.300',
-      },
-      _disabled: {
-        color: 'disabled',
-        cursor: 'not-allowed',
-        _hover: {
-          background: 'transparent',
-          color: 'disabled',
-        },
-      },
-    },
-    itemGroupLabel: {
-      fontWeight: 'semibold',
-      textStyle: 'sm',
-    },
-    itemIndicator: {
-      color: 'black',
     },
   },
   defaultVariants: {
     size: 'md',
   },
-  variants: {
-    size: {
-      sm: {
-        content: { p: '0.5', gap: '1' },
-        item: { textStyle: 'sm', px: '2', height: '9' },
-        itemIndicator: {
-          '& :where(svg)': {
-            width: '4',
-            height: '4',
-          },
-        },
-        itemGroupLabel: {
-          px: '2',
-          py: '1.5',
-        },
-        label: { textStyle: 'sm' },
-        trigger: { right: '2.5' },
-      },
-      md: {
-        content: { p: '1', gap: '1' },
-        item: { textStyle: 'md', px: '2', height: '10' },
-        itemIndicator: {
-          '& :where(svg)': {
-            width: '4',
-            height: '4',
-          },
-        },
-        itemGroupLabel: {
-          px: '2',
-          py: '1.5',
-        },
-        label: { textStyle: 'sm' },
-        trigger: { right: '3' },
-      },
-      lg: {
-        content: { p: '1.5', gap: '1' },
-        item: { textStyle: 'md', px: '2', height: '11' },
-        itemIndicator: {
-          '& :where(svg)': {
-            width: '5',
-            height: '5',
-          },
-        },
-        itemGroupLabel: {
-          px: '2',
-          py: '1.5',
-        },
-        label: { textStyle: 'sm' },
-        trigger: { right: '3.5' },
-      },
-    },
-  },
 });
 
 type ComboboxProviderProps = {
   classes: ReturnType<typeof comboboxVariant>;
-} & RecipeVariantProps<typeof comboboxVariant>;
+} & VariantProps<typeof comboboxVariant>;
 
 const [ComboboxProvider, useComboboxContext] =
   createReactContext<ComboboxProviderProps>({
@@ -159,13 +74,13 @@ const [ComboboxProvider, useComboboxContext] =
     hookName: 'useComboboxContext',
     providerName: 'ComboboxProvider',
     defaultValue: {
-      classes: {},
+      classes: {} as ReturnType<typeof comboboxVariant>,
       size: 'md',
     },
   });
 
 export type RootProps = Combobox.RootProps<Combobox.CollectionItem> &
-  RecipeVariantProps<typeof comboboxVariant> & {
+  VariantProps<typeof comboboxVariant> & {
     placeholder?: string;
   };
 
@@ -182,29 +97,29 @@ export const Root = forwardRef<ElementRef<typeof Combobox.Root>, RootProps>(
       <ComboboxProvider value={ctx}>
         <Combobox.Root
           ref={ref}
-          className={cx(classes.root, className)}
+          className={cx(classes.root(), className)}
           positioning={{ sameWidth: true }}
           lazyMount
           unmountOnExit
           {...rest}
         >
-          <Combobox.Control className={classes.control}>
+          <Combobox.Control className={classes.control()}>
             <Combobox.Input
               placeholder="Select a Framework"
-              className={classes.input}
+              className={classes.input()}
               asChild
             >
               <Input />
             </Combobox.Input>
-            <Combobox.Trigger asChild className={classes.trigger}>
+            <Combobox.Trigger asChild className={classes.trigger()}>
               <button aria-label="open">
                 <ChevronsUpDownIcon size={20} />
               </button>
             </Combobox.Trigger>
           </Combobox.Control>
           <Portal>
-            <Combobox.Positioner className={classes.positioner}>
-              <Combobox.Content className={classes.content}>
+            <Combobox.Positioner className={classes.positioner()}>
+              <Combobox.Content className={classes.content()}>
                 {children}
               </Combobox.Content>
             </Combobox.Positioner>
@@ -228,11 +143,11 @@ export const ItemGroup = forwardRef<
 
   return (
     <Combobox.ItemGroup
-      className={cx(classes.itemGroup, className)}
+      className={cx(classes.itemGroup(), className)}
       ref={ref}
       {...rest}
     >
-      <Combobox.ItemGroupLabel className={classes.itemGroupLabel}>
+      <Combobox.ItemGroupLabel className={classes.itemGroupLabel()}>
         {label}
       </Combobox.ItemGroupLabel>
       {children}
@@ -249,14 +164,14 @@ export const Item = forwardRef<ElementRef<typeof Combobox.Item>, ItemProps>(
 
     return (
       <Combobox.Item
-        className={cx(classes.item, className)}
+        className={cx(classes.item(), className)}
         ref={ref}
         {...rest}
       >
-        <Combobox.ItemText className={cx(classes.itemText)}>
+        <Combobox.ItemText className={cx(classes.itemText())}>
           {children}
         </Combobox.ItemText>
-        <Combobox.ItemIndicator className={cx(classes.itemIndicator)}>
+        <Combobox.ItemIndicator className={cx(classes.itemIndicator())}>
           <CheckIcon size={convertSizeToNumber(size)} />
         </Combobox.ItemIndicator>
       </Combobox.Item>

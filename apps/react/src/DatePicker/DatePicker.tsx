@@ -1,4 +1,3 @@
-import { datePickerAnatomy } from '@ark-ui/anatomy';
 import {
   DatePicker,
   DatePickerRootProps,
@@ -14,109 +13,39 @@ import {
   type ElementRef,
 } from 'react';
 
-import { sva, cx, RecipeVariantProps } from '../../styled-system/css';
 import { createReactContext } from '../create-react-context';
+import { cx } from '../cx';
+import { tv, VariantProps } from '../tv';
 
-export const datePickerVariants = sva({
-  className: `${IDENTIFIER.scope} datePicker`,
-  slots: datePickerAnatomy.keys(),
-  base: {
-    root: {
-      display: 'flex',
-      flexDirection: 'column',
-      gap: '1.5',
-    },
-    control: {
-      display: 'flex',
-      flexDirection: 'row',
-      gap: '2',
-    },
-    trigger: {},
-    clearTrigger: {},
-    content: {
-      background: 'white',
-      borderRadius: 'lg',
-      boxShadow: 'lg',
-      display: 'flex',
-      flexDirection: 'column',
-      gap: '3',
-      p: '4',
-      width: '344px',
-      zIndex: 'dropdown',
-      _open: {
-        animation: 'fade-in 0.25s ease-out',
-      },
-      _closed: {
-        animation: 'fade-out 0.2s ease-out',
-      },
-      '&[aria-hidden]': {
-        display: 'none',
-      },
-    },
-    view: {
-      display: 'flex',
-      flexDirection: 'column',
-      gap: '3',
-      '&[aria-hidden]': {
-        display: 'none',
-      },
-    },
-    viewControl: {
-      display: 'flex',
-      gap: '2',
-      justifyContent: 'space-between',
-    },
-    prevTrigger: {},
-    nextTrigger: {},
-    table: {
-      width: 'full',
-      borderCollapse: 'separate',
-      borderSpacing: '1',
-      m: '-1',
-    },
-    tableHeader: {
-      color: 'neutral.800',
-      fontWeight: 'semibold',
-      height: '10',
-      textStyle: 'sm',
-    },
-    tableHead: {},
-    tableBody: {},
-    tableRow: {},
-    tableCell: {
-      textAlign: 'center',
-    },
-    tableCellTrigger: {
-      width: '100%',
-      '&[data-in-range]': {
-        background: 'primary.200',
-      },
-      '&[data-today]': {
-        _before: {
-          content: '"●"',
-          fontSize: '6px',
-          color: 'primary.800',
-          position: 'absolute',
-          marginTop: '6',
-        },
-      },
-      _selected: {
-        background: 'primary.500',
-        color: 'primary.foreground',
-        _hover: {
-          background: 'primary.500',
-          color: 'primary.foreground',
-        },
-      },
-    },
-    input: {},
-    rangeText: {},
-    positioner: {},
-    viewTrigger: {},
-    label: {},
-    monthSelect: {},
-    yearSelect: {},
-    presetTrigger: {},
+export const datePickerVariants = tv({
+  base: `${IDENTIFIER.scope} datePicker`,
+  slots: {
+    root: 'trds-flex trds-flex-col trds-gap-1.5',
+    control: 'trds-flex trds-flex-row trds-gap-2',
+    trigger: '',
+    clearTrigger: '',
+    content:
+      'trds-bg-white trds-rounded-lg trds-shadow-lg trds-flex trds-flex-col trds-gap-3 trds-p-4 trds-w-[344px] trds-z-dropdown data-open:trds-animate-fade-in data-closed:trds-animate-fade-out data-hidden:trds-hidden',
+    view: '[&:not(hidden="true")]:trds-flex trds-flex-col trds-gap-3 [&[hidden="true"]]:trds-hidden',
+    viewControl: 'trds-flex trds-gap-2 trds-justify-between',
+    prevTrigger: '',
+    nextTrigger: '',
+    table: 'trds-w-full trds-border-boundary trds-border-spacing-1 -trds-m-1',
+    tableHeader: 'trds-text-title trds-font-semibold trds-h-10 trds-text-sm',
+    tableHead: '',
+    tableBody: '',
+    tableRow: '',
+    tableCell: 'trds-text-center',
+    tableCellTrigger:
+      "trds-w-full data-in-range:trds-bg-primary-300 data-today:before:trds-content-['●'] data-today:before:trds-text-[6px] data-today:before:trds-text-primary-800 data-today:before:trds-absolute data-today:before:trds-mt-6 data-selected:trds-bg-primary-500 data-in-range:data-selected:trds-bg-primary data-selected:trds-text-fg-primary data-selected:hover:trds-bg-primary-500 data-selected:hover:trds-text-fg-primary",
+    input: '',
+    rangeText: '',
+    positioner: '',
+    viewTrigger: '',
+    label: '',
+    monthSelect: '',
+    yearSelect: '',
+    presetTrigger: '',
   },
 });
 
@@ -130,12 +59,12 @@ const [DatePickerProvider, useDatePickerContext] =
     hookName: 'useDatePickerContext',
     providerName: 'DatePickerProvider',
     defaultValue: {
-      classes: {},
+      classes: {} as ReturnType<typeof datePickerVariants>,
     },
   });
 
 export type RootProps = DatePickerRootProps &
-  RecipeVariantProps<typeof datePickerVariants>;
+  VariantProps<typeof datePickerVariants>;
 
 const Root = forwardRef<ElementRef<typeof DatePicker.Root>, RootProps>(
   function (props, ref) {
@@ -148,7 +77,7 @@ const Root = forwardRef<ElementRef<typeof DatePicker.Root>, RootProps>(
     return (
       <DatePickerProvider value={ctx}>
         <DatePicker.Root
-          className={cx(classes.root, className)}
+          className={cx(classes.root(), className)}
           {...rest}
           ref={ref}
         >
@@ -169,7 +98,7 @@ const Control = forwardRef<
 
   return (
     <DatePicker.Control
-      className={cx(classes.control, className)}
+      className={cx(classes.control(), className)}
       ref={ref}
       {...rest}
     >
@@ -188,7 +117,7 @@ const Trigger = forwardRef<
 
   return (
     <DatePicker.Trigger
-      className={cx(classes.trigger, className)}
+      className={cx(classes.trigger(), className)}
       ref={ref}
       {...rest}
     >
@@ -207,7 +136,7 @@ const ClearTrigger = forwardRef<
 
   return (
     <DatePicker.ClearTrigger
-      className={cx(classes.clearTrigger, className)}
+      className={cx(classes.clearTrigger(), className)}
       ref={ref}
       {...rest}
     >
@@ -226,9 +155,9 @@ const Content = forwardRef<
 
   return (
     <Portal>
-      <DatePicker.Positioner className={classes.positioner}>
+      <DatePicker.Positioner className={classes.positioner()}>
         <DatePicker.Content
-          className={cx(classes.content, className)}
+          className={cx(classes.content(), className)}
           ref={ref}
           {...rest}
         >
@@ -249,7 +178,7 @@ const View = forwardRef<
 
   return (
     <DatePicker.View
-      className={cx(classes.view, className)}
+      className={cx(classes.view(), className)}
       ref={ref}
       {...rest}
     >
@@ -268,7 +197,7 @@ const ViewControl = forwardRef<
 
   return (
     <DatePicker.ViewControl
-      className={cx(classes.viewControl, className)}
+      className={cx(classes.viewControl(), className)}
       ref={ref}
       {...rest}
     >
@@ -287,7 +216,7 @@ const PrevTrigger = forwardRef<
 
   return (
     <DatePicker.PrevTrigger
-      className={cx(classes.prevTrigger, className)}
+      className={cx(classes.prevTrigger(), className)}
       ref={ref}
       {...rest}
     >
@@ -306,7 +235,7 @@ const NextTrigger = forwardRef<
 
   return (
     <DatePicker.NextTrigger
-      className={cx(classes.nextTrigger, className)}
+      className={cx(classes.nextTrigger(), className)}
       ref={ref}
       {...rest}
     >
@@ -325,7 +254,7 @@ const ViewTrigger = forwardRef<
 
   return (
     <DatePicker.ViewTrigger
-      className={cx(classes.viewTrigger, className)}
+      className={cx(classes.viewTrigger(), className)}
       ref={ref}
       {...rest}
     >
@@ -344,7 +273,7 @@ const Table = forwardRef<
 
   return (
     <DatePicker.Table
-      className={cx(classes.table, className)}
+      className={cx(classes.table(), className)}
       ref={ref}
       {...rest}
     >
@@ -363,7 +292,7 @@ const TableHead = forwardRef<
 
   return (
     <DatePicker.TableHead
-      className={cx(classes.tableHead, className)}
+      className={cx(classes.tableHead(), className)}
       ref={ref}
       {...rest}
     >
@@ -382,7 +311,7 @@ const TableRow = forwardRef<
 
   return (
     <DatePicker.TableRow
-      className={cx(classes.tableRow, className)}
+      className={cx(classes.tableRow(), className)}
       ref={ref}
       {...rest}
     >
@@ -401,7 +330,7 @@ const TableHeader = forwardRef<
 
   return (
     <DatePicker.TableHeader
-      className={cx(classes.tableHeader, className)}
+      className={cx(classes.tableHeader(), className)}
       ref={ref}
       {...rest}
     >
@@ -420,7 +349,7 @@ const TableBody = forwardRef<
 
   return (
     <DatePicker.TableBody
-      className={cx(classes.tableBody, className)}
+      className={cx(classes.tableBody(), className)}
       ref={ref}
       {...rest}
     >
@@ -439,7 +368,7 @@ const TableCell = forwardRef<
 
   return (
     <DatePicker.TableCell
-      className={cx(classes.tableCell, className)}
+      className={cx(classes.tableCell(), className)}
       ref={ref}
       {...rest}
     >
@@ -460,7 +389,7 @@ const TableCellTrigger = forwardRef<
     <DatePicker.TableCellTrigger
       ref={ref}
       {...rest}
-      className={cx(classes.tableCellTrigger, className)}
+      className={cx(classes.tableCellTrigger(), className)}
     >
       {children}
     </DatePicker.TableCellTrigger>
@@ -477,7 +406,7 @@ const RangeText = forwardRef<
 
   return (
     <DatePicker.RangeText
-      className={cx(classes.rangeText, className)}
+      className={cx(classes.rangeText(), className)}
       ref={ref}
       {...rest}
     >
@@ -496,7 +425,7 @@ const Input = forwardRef<
 
   return (
     <DatePicker.Input
-      className={cx(classes.input, className)}
+      className={cx(classes.input(), className)}
       ref={ref}
       {...rest}
     >
