@@ -7,12 +7,12 @@ export * from './Card';
 export * from './Carousel';
 export * from './Checkbox';
 export * from './Collapsible';
-export * from './ColorPicker'; // 변환 후 문제 생김
-// 여기까지 tailwind 변환
+export * from './ColorPicker';
 export * from './Combobox';
 export * from './DatePicker';
 export * from './Dialog';
 export * from './Drawer';
+// 여기까지 tailwind 변환
 export * from './Field';
 export * from './FileUpload';
 export * from './IconButton';
