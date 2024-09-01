@@ -43,12 +43,94 @@ export default {
           from: { opacity: '1' },
           to: { opacity: '0' },
         },
+        backdropIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        backdropOut: {
+          from: { opacity: '1' },
+          to: { opacity: '0' },
+        },
+        drawerInLeft: {
+          from: {
+            transform: 'translateX(-100%)',
+          },
+          to: {
+            transform: 'translateX(0px)',
+          },
+        },
+        drawerOutLeft: {
+          from: {
+            transform: 'translateX(0px)',
+          },
+          to: {
+            transform: 'translateX(-100%)',
+          },
+        },
+        drawerInRight: {
+          from: {
+            transform: 'translateX(100%)',
+          },
+          to: {
+            transform: 'translateX(0px)',
+          },
+        },
+        drawerOutRight: {
+          from: {
+            transform: 'translateX(0px)',
+          },
+          to: {
+            transform: 'translateX(100%)',
+          },
+        },
+        dialogIn: {
+          from: {
+            opacity: '0',
+            transform: 'translateY(30px)',
+            scale: '0.95',
+          },
+          to: {
+            opacity: '1',
+            transform: 'translateY(0px)',
+            scale: '1',
+          },
+        },
+        dialogOut: {
+          from: {
+            opacity: '1',
+            scale: '1',
+          },
+          to: {
+            opacity: '0',
+            scale: '0.95',
+          },
+        },
+        shimmer: {
+          '0%': {
+            backgroundColor: 'rgba(165, 165, 165, 0.15)',
+          },
+          '50%': {
+            backgroundColor: 'rgba(165, 165, 165, 0.4)',
+          },
+          '100%': {
+            backgroundColor: 'rgba(165, 165, 165, 0.15)',
+          },
+        },
       },
       animation: {
         'collapse-in': 'collapseIn 0.15s ease-in-out',
         'collapse-out': 'collapseOut 0.15s ease-in-out',
         'fade-in': 'fadeIn 0.25s ease-out',
         'fade-out': 'fadeOut 0.25s ease-out',
+        'backdrop-in': 'backdropIn 0.25s ease-out',
+        'backdrop-out': 'backdropOut 0.25s ease-out',
+        'drawer-in-left': 'drawerInLeft 0.25s ease-out',
+        'drawer-in-right': 'drawerInRight 0.25s ease-out',
+        'drawer-out-left': 'drawerOutLeft 0.25s ease-out',
+        'drawer-out-right': 'drawerOutRight 0.25s ease-out',
+        'dialog-in': 'dialogIn 0.25s ease-out',
+        'dialog-out': 'dialogOut 0.25s ease-out',
+        shimmer: 'shimmer 3s ease-in-out infinite',
       },
     },
   },

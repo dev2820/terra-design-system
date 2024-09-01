@@ -1,6 +1,5 @@
 import { XIcon } from 'lucide-react';
 
-import { css } from '../../styled-system/css';
 import { Button } from '../Button';
 import { IconButton } from '../IconButton';
 import { Dialog, type DialogProps } from './index';
@@ -27,31 +26,24 @@ export const Default = {
         <Dialog.Trigger asChild>
           <Button>Open Dialog</Button>
         </Dialog.Trigger>
-        <Dialog.Content className={css({ w: 400, p: 4 })}>
+        <Dialog.Content className="trds-w-[400px] trds-p-4">
           <Dialog.CloseTrigger asChild>
             <IconButton
-              className={css({ position: 'absolute', right: 4, top: 3 })}
+              className="trds-absolute trds-right-4 trds-top-3"
               size="sm"
               variant="ghost"
             >
               <XIcon size={16} />
             </IconButton>
           </Dialog.CloseTrigger>
-          <Dialog.Title className={css({ mb: 4 })}>Lorem Ipsume</Dialog.Title>
-          <Dialog.Description className={css({ mb: 4 })}>
+          <Dialog.Title>Lorem Ipsume</Dialog.Title>
+          <Dialog.Description>
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industry's standard dummy text
             ever since the 1500s, when an unknown printer took a galley of type
             and scrambled it to make a type specimen book.
           </Dialog.Description>
-          <div
-            className={css({
-              display: 'flex',
-              flexDir: 'row-reverse',
-              gap: 2,
-              w: 'full',
-            })}
-          >
+          <div className="trds-flex trds-flex-row-reverse trds-gap-2 trds-w-full">
             <Button variant="filled" theme="primary">
               Confirm
             </Button>

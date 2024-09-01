@@ -1,4 +1,3 @@
-import { dialogAnatomy } from '@ark-ui/anatomy';
 import { Dialog, DialogRootProps } from '@ark-ui/react/dialog';
 import { Portal } from '@ark-ui/react/portal';
 import { IDENTIFIER } from 'env';
@@ -10,67 +9,23 @@ import {
   type ElementRef,
 } from 'react';
 
-import { sva, cx, RecipeVariantProps } from '../../styled-system/css';
 import { createReactContext } from '../create-react-context';
+import { cx } from '../cx';
+import { tv, VariantProps } from '../tv';
 
-export const dialogVariants = sva({
-  className: `${IDENTIFIER.scope} dialog`,
-  slots: dialogAnatomy.keys(),
-  base: {
-    backdrop: {
-      backdropFilter: 'blur(4px)',
-      background: {
-        base: 'blackAlpha.700',
-        _light: 'blackAlpha.700',
-        _dark: 'whiteAlpha.700',
-      },
-      height: '100vh',
-      left: '0',
-      position: 'fixed',
-      top: '0',
-      width: '100vw',
-      zIndex: 'overlay',
-      _open: {
-        animation: 'backdrop-in 0.2s ease-out',
-      },
-      _closed: {
-        animation: 'backdrop-out 0.15s ease-out',
-      },
-    },
-    positioner: {
-      alignItems: 'center',
-      display: 'flex',
-      justifyContent: 'center',
-      left: '0',
-      overflow: 'auto',
-      position: 'fixed',
-      top: '0',
-      width: '100vw',
-      height: '100dvh',
-      zIndex: 'modal',
-    },
-    content: {
-      background: 'white',
-      borderRadius: 'lg',
-      boxShadow: 'lg',
-      minW: 'sm',
-      position: 'relative',
-      transitionDuration: 'normal',
-      _open: {
-        animation: 'dialog-in 0.2s ease-out',
-      },
-      _closed: {
-        animation: 'dialog-out 0.15s ease-out',
-      },
-    },
-    title: {
-      fontWeight: 'semibold',
-      textStyle: 'lg',
-    },
-    description: {
-      color: 'neutral.400',
-      textStyle: 'sm',
-    },
+export const dialogVariants = tv({
+  base: `${IDENTIFIER.scope} dialog`,
+  slots: {
+    backdrop:
+      'trds-backdrop-blur-[4px] trds-bg-blackAlpha-700 trds-h-[100vh] trds-w-[100vw] trds-left-0 trds-top-0 trds-fixed trds-z-overlay data-open:trds-animate-backdrop-in data-closed:trds-animate-backdrop-out dark:trds-bg-whiteAlpha-700',
+    positioner:
+      'trds-flex trds-items-center trds-justify-center trds-fixed trds-left-0 trds-top-0 trds-w-[100vw] trds-h-[100dvh] trds-overflow-auto trds-z-modal',
+    content:
+      'trds-bg-white trds-rounded-lg trds-shadow-lg trds-min-w-sm trds-relative trds-duration-normal data-open:trds-animate-dialog-in data-closed:trds-animate-dialog-out',
+    title: 'trds-text-fg-title trds-font-semibold trds-text-lg trds-mb-4',
+    description: 'trds-text-fg-description trds-text-sm trds-mb-4',
+    trigger: '',
+    closeTrigger: '',
   },
 });
 
@@ -84,12 +39,11 @@ const [DialogProvider, useDialogContext] =
     hookName: 'useDialogContext',
     providerName: 'DialogProvider',
     defaultValue: {
-      classes: {},
+      classes: {} as ReturnType<typeof dialogVariants>,
     },
   });
 
-export type RootProps = DialogRootProps &
-  RecipeVariantProps<typeof dialogVariants>;
+export type RootProps = DialogRootProps & VariantProps<typeof dialogVariants>;
 
 function Root({ children, ...props }: RootProps) {
   const classes = dialogVariants();
@@ -116,7 +70,7 @@ const Trigger = forwardRef<
 
   return (
     <Dialog.Trigger
-      className={cx(classes.trigger, className)}
+      className={cx(classes.trigger(), className)}
       ref={ref}
       {...rest}
     >
@@ -135,10 +89,10 @@ const Content = forwardRef<
 
   return (
     <Portal>
-      <Dialog.Backdrop className={classes.backdrop} />
-      <Dialog.Positioner className={classes.positioner}>
+      <Dialog.Backdrop className={classes.backdrop()} />
+      <Dialog.Positioner className={classes.positioner()}>
         <Dialog.Content
-          className={cx(classes.content, className)}
+          className={cx(classes.content(), className)}
           ref={ref}
           {...rest}
         >
@@ -158,7 +112,11 @@ const Title = forwardRef<
   const { children, className, ...rest } = props;
 
   return (
-    <Dialog.Title className={cx(classes.title, className)} ref={ref} {...rest}>
+    <Dialog.Title
+      className={cx(classes.title(), className)}
+      ref={ref}
+      {...rest}
+    >
       {children}
     </Dialog.Title>
   );
@@ -174,7 +132,7 @@ const Description = forwardRef<
 
   return (
     <Dialog.Description
-      className={cx(classes.description, className)}
+      className={cx(classes.description(), className)}
       ref={ref}
       {...rest}
     >
@@ -193,7 +151,7 @@ const CloseTrigger = forwardRef<
 
   return (
     <Dialog.CloseTrigger
-      className={cx(classes.closeTrigger, className)}
+      className={cx(classes.closeTrigger(), className)}
       ref={ref}
       {...rest}
     >
