@@ -1,4 +1,3 @@
-import { dialogAnatomy } from '@ark-ui/anatomy';
 import { Dialog, DialogRootProps } from '@ark-ui/react/dialog';
 import { Portal } from '@ark-ui/react/portal';
 import { IDENTIFIER } from 'env';
@@ -10,120 +9,40 @@ import {
   type ElementRef,
 } from 'react';
 
-import { sva, cx, RecipeVariantProps } from '../../styled-system/css';
 import { createReactContext } from '../create-react-context';
+import { cx } from '../cx';
+import { tv, VariantProps } from '../tv';
 
-export const drawerVariants = sva({
-  className: `${IDENTIFIER.scope} drawer`,
-  slots: dialogAnatomy.extendWith('header', 'body', 'footer').keys(),
-  base: {
-    backdrop: {
-      backdropFilter: 'blur(4px)',
-      background: {
-        base: 'blackAlpha.700',
-        _light: 'blackAlpha.700',
-        _dark: 'whiteAlpha.700',
-      },
-      height: '100vh',
-      left: '0',
-      position: 'fixed',
-      top: '0',
-      width: '100vw',
-      zIndex: 'overlay',
-      _open: {
-        animation: 'backdrop-in 0.2s ease-out',
-      },
-      _closed: {
-        animation: 'backdrop-out 0.15s ease-out',
-      },
-    },
-    positioner: {
-      alignItems: 'center',
-      display: 'flex',
-      height: '100dvh',
-      justifyContent: 'center',
-      position: 'fixed',
-      top: '0',
-      width: { base: '100vw', sm: 'sm' },
-      zIndex: 'modal',
-    },
-    content: {
-      background: 'white',
-      boxShadow: 'lg',
-      display: 'grid',
-      gridTemplateColumns: '1fr',
-      gridTemplateRows: 'auto 1fr auto',
-      gridTemplateAreas: `
-        'header'
-        'body'
-        'footer'
-      `,
-      height: 'full',
-      width: 'full',
-      '&[aria-hidden]': {
-        display: 'none',
-      },
-    },
-    header: {
-      display: 'flex',
-      flexDirection: 'column',
-      gap: '1',
-      gridArea: 'header',
-      pt: { base: '4', md: '6' },
-      pb: '4',
-      px: { base: '4', md: '6' },
-    },
-    body: {
-      display: 'flex',
-      flexDirection: 'column',
-      gridArea: 'body',
-      overflow: 'auto',
-      p: { base: '4', md: '6' },
-    },
-    footer: {
-      display: 'flex',
-      gridArea: 'footer',
-      justifyContent: 'flex-end',
-      py: '4',
-      px: { base: '4', md: '6' },
-    },
-    title: {
-      color: 'neutral.900',
-      fontWeight: 'semibold',
-      textStyle: 'xl',
-    },
-    description: {
-      color: 'neutral.400',
-      textStyle: 'sm',
-    },
+export const drawerVariants = tv({
+  base: `${IDENTIFIER.scope} drawer`,
+  slots: {
+    backdrop:
+      'trds-backdrop-blur-[4px] trds-bg-blackAlpha-700 trds-h-[100vh] trds-w-[100vw] trds-left-0 trds-top-0 trds-fixed trds-z-overlay data-open:trds-animate-backdrop-in data-closed:trds-animate-backdrop-out dark:trds-bg-whiteAlpha-700',
+    positioner:
+      'trds-flex trds-items-center trds-justify-center trds-fixed trds-top-0 trds-h-[100dvh] trds-z-modal trds-max-w-[100vw] trds-w-sm',
+    content:
+      'trds-bg-white trds-shadow-lg trds-grid trds-grid-cols-[1fr] trds-grid-rows-[auto_1fr_auto] trds-grid-areas-[header,body,footer] trds-h-full trds-w-full',
+    header:
+      'trds-flex trds-flex-col trds-gap-1 trds-grid-area-header trds-pt-4 md:trds-pt-6 trds-pb-4 trds-px-4 md:trds-px-6',
+    body: 'trds-flex trds-flex-col trds-grid-area-body trds-overflow-auto trds-p-4 md:trds-p-6',
+    footer:
+      'trds-flex trds-grid-area-footer trds-justify-end trds-py-4 trds-px-4 md:trds-px-6',
+    title: 'trds-text-fg-title trds-font-semibold trds-text-xl',
+    description: 'trds-text-fg-description trds-text-sm',
+    trigger: '',
+    closeTrigger: '',
   },
   variants: {
     variant: {
       left: {
-        positioner: {
-          left: 0,
-        },
-        content: {
-          _open: {
-            animation: 'drawer-in-left 0.2s ease-out',
-          },
-          _closed: {
-            animation: 'drawer-out-left 0.15s ease-out',
-          },
-        },
+        positioner: 'trds-left-0',
+        content:
+          'data-open:trds-animate-drawer-in-left data-closed:trds-animate-drawer-out-left',
       },
       right: {
-        positioner: {
-          right: 0,
-        },
-        content: {
-          _open: {
-            animation: 'drawer-in-right 0.2s ease-out',
-          },
-          _closed: {
-            animation: 'drawer-out-right 0.15s ease-out',
-          },
-        },
+        positioner: 'trds-right-0',
+        content:
+          'data-open:trds-animate-drawer-in-right data-closed:trds-animate-drawer-out-right',
       },
     },
   },
@@ -142,12 +61,11 @@ const [DrawerProvider, useDrawerContext] =
     hookName: 'useDrawerContext',
     providerName: 'DrawerProvider',
     defaultValue: {
-      classes: {},
+      classes: {} as ReturnType<typeof drawerVariants>,
     },
   });
 
-export type RootProps = DialogRootProps &
-  RecipeVariantProps<typeof drawerVariants>;
+export type RootProps = DialogRootProps & VariantProps<typeof drawerVariants>;
 
 function Root({ children, variant, ...props }: RootProps) {
   const classes = drawerVariants({ variant });
@@ -157,7 +75,7 @@ function Root({ children, variant, ...props }: RootProps) {
 
   return (
     <DrawerProvider value={ctx}>
-      <Dialog.Root lazyMount unmountOnExit {...props}>
+      <Dialog.Root lazyMount {...props}>
         {children}
       </Dialog.Root>
     </DrawerProvider>
@@ -174,7 +92,7 @@ const Trigger = forwardRef<
 
   return (
     <Dialog.Trigger
-      className={cx(classes.trigger, className)}
+      className={cx(classes.trigger(), className)}
       ref={ref}
       {...rest}
     >
@@ -193,10 +111,10 @@ const Content = forwardRef<
 
   return (
     <Portal>
-      <Dialog.Backdrop className={classes.backdrop} />
-      <Dialog.Positioner className={classes.positioner}>
+      <Dialog.Backdrop className={classes.backdrop()} />
+      <Dialog.Positioner className={classes.positioner()}>
         <Dialog.Content
-          className={cx(classes.content, className)}
+          className={cx(classes.content(), className)}
           ref={ref}
           {...rest}
         >
@@ -214,7 +132,7 @@ const Header = forwardRef<HTMLDivElement, ComponentPropsWithoutRef<'div'>>(
     const { children, className, ...rest } = props;
 
     return (
-      <div className={cx(classes.header, className)} ref={ref} {...rest}>
+      <div className={cx(classes.header(), className)} ref={ref} {...rest}>
         {children}
       </div>
     );
@@ -228,7 +146,7 @@ const Body = forwardRef<HTMLDivElement, ComponentPropsWithoutRef<'div'>>(
     const { children, className, ...rest } = props;
 
     return (
-      <div className={cx(classes.body, className)} ref={ref} {...rest}>
+      <div className={cx(classes.body(), className)} ref={ref} {...rest}>
         {children}
       </div>
     );
@@ -242,7 +160,7 @@ const Footer = forwardRef<HTMLDivElement, ComponentPropsWithoutRef<'div'>>(
     const { children, className, ...rest } = props;
 
     return (
-      <div className={cx(classes.footer, className)} ref={ref} {...rest}>
+      <div className={cx(classes.footer(), className)} ref={ref} {...rest}>
         {children}
       </div>
     );
@@ -258,7 +176,11 @@ const Title = forwardRef<
   const { children, className, ...rest } = props;
 
   return (
-    <Dialog.Title className={cx(classes.title, className)} ref={ref} {...rest}>
+    <Dialog.Title
+      className={cx(classes.title(), className)}
+      ref={ref}
+      {...rest}
+    >
       {children}
     </Dialog.Title>
   );
@@ -274,7 +196,7 @@ const Description = forwardRef<
 
   return (
     <Dialog.Description
-      className={cx(classes.description, className)}
+      className={cx(classes.description(), className)}
       ref={ref}
       {...rest}
     >
@@ -293,7 +215,7 @@ const CloseTrigger = forwardRef<
 
   return (
     <Dialog.CloseTrigger
-      className={cx(classes.closeTrigger, className)}
+      className={cx(classes.closeTrigger(), className)}
       ref={ref}
       {...rest}
     >

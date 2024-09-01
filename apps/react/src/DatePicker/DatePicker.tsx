@@ -26,7 +26,7 @@ export const datePickerVariants = tv({
     clearTrigger: '',
     content:
       'trds-bg-white trds-rounded-lg trds-shadow-lg trds-flex trds-flex-col trds-gap-3 trds-p-4 trds-w-[344px] trds-z-dropdown data-open:trds-animate-fade-in data-closed:trds-animate-fade-out data-hidden:trds-hidden',
-    view: '[&:not(hidden="true")]:trds-flex trds-flex-col trds-gap-3 [&[hidden="true"]]:trds-hidden',
+    view: 'trds-flex trds-flex-col trds-gap-3',
     viewControl: 'trds-flex trds-gap-2 trds-justify-between',
     prevTrigger: '',
     nextTrigger: '',

@@ -19,8 +19,7 @@ export default {
       duration: { ...semanticDuration },
       data: {
         open: 'state="open"',
-        close: 'state="close"',
-        hidden: 'hidden="true"',
+        closed: 'state="closed"',
         highlighted: 'highlighted',
         today: 'today',
         selected: 'selected',
@@ -44,8 +43,8 @@ export default {
           to: { opacity: '0' },
         },
         backdropIn: {
-          '0%': { opacity: '0' },
-          '100%': { opacity: '1' },
+          from: { opacity: '0' },
+          to: { opacity: '1' },
         },
         backdropOut: {
           from: { opacity: '1' },
@@ -122,8 +121,8 @@ export default {
         'collapse-out': 'collapseOut 0.15s ease-in-out',
         'fade-in': 'fadeIn 0.25s ease-out',
         'fade-out': 'fadeOut 0.25s ease-out',
-        'backdrop-in': 'backdropIn 0.25s ease-out',
-        'backdrop-out': 'backdropOut 0.25s ease-out',
+        'backdrop-in': 'backdropIn 0.2s ease-out',
+        'backdrop-out': 'backdropOut 0.15s ease-out',
         'drawer-in-left': 'drawerInLeft 0.25s ease-out',
         'drawer-in-right': 'drawerInRight 0.25s ease-out',
         'drawer-out-left': 'drawerOutLeft 0.25s ease-out',
@@ -134,5 +133,13 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    function ({ addBase }) {
+      addBase({
+        '[hidden]': {
+          display: 'none !important',
+        },
+      });
+    },
+  ],
 };
