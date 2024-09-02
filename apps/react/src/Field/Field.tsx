@@ -1,4 +1,3 @@
-import { fieldAnatomy } from '@ark-ui/anatomy';
 import { Field, FieldRootProps } from '@ark-ui/react/field';
 import { IDENTIFIER } from 'env';
 
@@ -9,46 +8,20 @@ import {
   type ElementRef,
 } from 'react';
 
-import { sva, cx, RecipeVariantProps } from '../../styled-system/css';
 import { createReactContext } from '../create-react-context';
+import { cx } from '../cx';
+import { tv, VariantProps } from '../tv';
 
-export const fieldVariants = sva({
-  className: `${IDENTIFIER.scope} field`,
-  slots: fieldAnatomy.keys(),
-  base: {
-    root: {
-      display: 'flex',
-      flexDirection: 'column',
-      gap: '1.5',
-    },
-    label: {
-      color: 'neutral.900',
-      fontWeight: 'medium',
-      textStyle: 'sm',
-      _disabled: {
-        color: 'disabled',
-      },
-    },
-    helperText: {
-      alignItems: 'center',
-      display: 'inline-flex',
-      color: 'neutral.400',
-      gap: '1',
-      textStyle: 'sm',
-      _disabled: {
-        color: 'disabled',
-      },
-    },
-    errorText: {
-      alignItems: 'center',
-      color: 'error.500',
-      display: 'inline-flex',
-      gap: '1',
-      textStyle: 'sm',
-      _disabled: {
-        color: 'disabled',
-      },
-    },
+export const fieldVariants = tv({
+  base: `${IDENTIFIER.scope} field`,
+  slots: {
+    root: 'trds-flex trds-flex-col trds-gap-1.5',
+    label:
+      'trds-text-neutral-900 trds-font-medium trds-text-sm disabled:trds-text-muted',
+    helperText:
+      'trds-inline-flex trds-items-center trds-text-fg-description trds-gap-1 trds-text-sm disabled:trds-text-muted',
+    errorText:
+      'trds-inline-flex trds-items-center trds-text-error trds-gap-1 trds-text-sm disabled:trds-text-muted',
   },
 });
 
@@ -62,13 +35,12 @@ const [FieldProvider, useFieldContext] = createReactContext<FieldProviderProps>(
     hookName: 'useFieldContext',
     providerName: 'FieldProvider',
     defaultValue: {
-      classes: {},
+      classes: {} as ReturnType<typeof fieldVariants>,
     },
   },
 );
 
-export type RootProps = FieldRootProps &
-  RecipeVariantProps<typeof fieldVariants>;
+export type RootProps = FieldRootProps & VariantProps<typeof fieldVariants>;
 
 const Root = forwardRef<
   ElementRef<typeof Field.Root>,
@@ -83,7 +55,7 @@ const Root = forwardRef<
 
   return (
     <FieldProvider value={ctx}>
-      <Field.Root className={cx(classes.root, className)} {...rest} ref={ref}>
+      <Field.Root className={cx(classes.root(), className)} {...rest} ref={ref}>
         {children}
       </Field.Root>
     </FieldProvider>
@@ -99,7 +71,7 @@ const Label = forwardRef<
   const { classes } = useFieldContext();
 
   return (
-    <Field.Label className={cx(classes.label, className)} ref={ref} {...rest}>
+    <Field.Label className={cx(classes.label(), className)} ref={ref} {...rest}>
       {children}
     </Field.Label>
   );
@@ -115,7 +87,7 @@ const HelperText = forwardRef<
 
   return (
     <Field.HelperText
-      className={cx(classes.helperText, className)}
+      className={cx(classes.helperText(), className)}
       ref={ref}
       {...rest}
     >
@@ -134,7 +106,7 @@ const ErrorText = forwardRef<
 
   return (
     <Field.ErrorText
-      className={cx(classes.errorText, className)}
+      className={cx(classes.errorText(), className)}
       ref={ref}
       {...rest}
     >
