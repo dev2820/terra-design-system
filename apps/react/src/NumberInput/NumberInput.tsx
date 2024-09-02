@@ -1,118 +1,46 @@
-import { numberInputAnatomy } from '@ark-ui/anatomy';
 import { NumberInput, NumberInputRootProps } from '@ark-ui/react';
 import { IDENTIFIER } from 'env';
 import { ChevronDownIcon, ChevronUpIcon } from 'lucide-react';
 
 import { forwardRef } from 'react';
 
-import { RecipeVariantProps, cx, sva } from '../../styled-system/css';
+import { cx } from '../cx';
+import { tv, VariantProps } from '../tv';
 
-const trigger = {
-  alignItems: 'center',
-  borderColor: 'neutral.300',
-  color: 'neutral.500',
-  cursor: 'pointer',
-  display: 'inline-flex',
-  justifyContent: 'center',
-  transitionDuration: 'normal',
-  transitionProperty: 'background, border-color, color, box-shadow',
-  transitionTimingFunction: 'default',
-  '& :where(svg)': {
-    width: 4,
-    height: 4,
-  },
-  _hover: {
-    background: 'neutral.200',
-    color: 'neutral.500',
-  },
-  _disabled: {
-    color: 'disabled',
-    opacity: 50,
-    cursor: 'not-allowed',
-    _hover: {
-      background: 'transparent',
-      color: 'disabled',
-    },
-  },
-};
-
-const numberInputVariants = sva({
-  className: `${IDENTIFIER.scope} numberInput`,
-  slots: numberInputAnatomy.keys(),
-  base: {
-    root: {
-      display: 'flex',
-      flexDirection: 'column',
-      gap: '1.5',
-    },
-    control: {
-      borderColor: 'neutral.300',
-      borderRadius: 'lg',
-      borderWidth: '1px',
-
-      display: 'grid',
-      divideX: '1px',
-      gridTemplateColumns: '1fr 32px',
-      gridTemplateRows: '1fr 1fr',
-      overflow: 'hidden',
-      transitionDuration: 'normal',
-      transitionProperty: 'border-color, box-shadow',
-      transitionTimingFunction: 'default',
-      _focusWithin: {
-        borderColor: 'primary.500',
-        boxShadow: '0 0 0 2px var(--shadow-color)',
-        shadowColor: 'primary.500',
-      },
-    },
-    input: {
-      background: 'transparent',
-      border: 'none',
-      gridRow: '2',
-      outline: 'none',
-      width: 'full',
-      _placeholder: {
-        color: 'neutral.400',
-      },
-      _disabled: {
-        cursor: 'not-allowed',
-        opacity: 50,
-      },
-    },
-    decrementTrigger: { ...trigger, borderTopWidth: '1px' },
-    incrementTrigger: trigger,
+const trigger = [
+  'trds-inline-flex trds-items-center trds-justify-center',
+  'trds-border-boundary trds-text-neutral-500 trds-cursor-pointer',
+  'trds-transition trds-duration-normal trds-transition-[background,border-color,color,box-shadow] trds-ease-default',
+  '[&_:where(svg)]:trds-w-4 [&_:where(svg)]:trds-h-4',
+  'hover:trds-bg-layer1 hover:trds-text-neutral-500',
+  'data-disabled:trds-bg-transparent data-disabled:trds-text-muted data-disabled:trds-opacity-50 data-disabled:trds-cursor-not-allowed',
+];
+const numberInputVariants = tv({
+  base: `${IDENTIFIER.scope} numberInput`,
+  slots: {
+    root: 'trds-flex trds-flex-col trds-gap-1.5',
+    control:
+      'trds-border trds-border-boundary trds-rounded-lg trds-grid trds-divide-x-[1px] trds-grid-cols-[1fr_32px] trds-grid-rows-[1fr_1fr] trds-overflow-hidden trds-transition trds-duration-normal trds-transition-[border-color,box-shadow] trds-ease-default focus-within:trds-border-primary-500 focus-within:trds-shadow-[0_0_0_1px_var(--shadow-color)] focus-within:trds-shadow-primary-500',
+    input:
+      'trds-bg-transparent trds-border-none trds-row-span-2 trds-outline-none trds-w-full placeholder:trds-text-placeholder disabled:trds-cursor-not-allowed disabled:trds-opacity-50',
+    incrementTrigger: [...trigger, 'trds-border-b'],
+    decrementTrigger: trigger,
   },
   variants: {
     invalid: {
       true: {
-        control: {
-          borderColor: 'error.500',
-        },
+        control: 'trds-border-error-500',
       },
     },
     size: {
       md: {
-        control: {
-          ps: '3',
-          h: '10',
-          minW: '10',
-          fontSize: 'md',
-        },
+        control: 'trds-ps-3 trds-h-10 trds-min-w-10 trds-text-md',
       },
       lg: {
-        control: {
-          ps: '3.5',
-          h: '11',
-          minW: '11',
-          fontSize: 'md',
-        },
+        control: 'trds-ps-3.5 trds-h-11 trds-min-w-11 trds-text-md',
       },
       xl: {
-        control: {
-          ps: '4',
-          h: '12',
-          minW: '12',
-          fontSize: 'lg',
-        },
+        control: 'trds-ps-4 trds-h-12 trds-min-w-12 trds-text-lg',
       },
     },
   },
@@ -123,7 +51,7 @@ const numberInputVariants = sva({
 });
 
 export type RootProps = Omit<NumberInputRootProps, 'children'> &
-  RecipeVariantProps<typeof numberInputVariants> & {
+  VariantProps<typeof numberInputVariants> & {
     placeholder?: string;
     invalid?: boolean;
   };
@@ -135,18 +63,18 @@ const Root = forwardRef<HTMLDivElement, RootProps>(function (props, ref) {
   return (
     <NumberInput.Root
       ref={ref}
-      className={cx(classes.root, className)}
+      className={cx(classes.root(), className)}
       {...rest}
     >
-      <NumberInput.Control className={classes.control}>
+      <NumberInput.Control className={classes.control()}>
         <NumberInput.Input
-          className={classes.input}
+          className={classes.input()}
           placeholder={placeholder}
         />
-        <NumberInput.IncrementTrigger className={classes.incrementTrigger}>
+        <NumberInput.IncrementTrigger className={classes.incrementTrigger()}>
           <ChevronUpIcon />
         </NumberInput.IncrementTrigger>
-        <NumberInput.DecrementTrigger className={classes.decrementTrigger}>
+        <NumberInput.DecrementTrigger className={classes.decrementTrigger()}>
           <ChevronDownIcon />
         </NumberInput.DecrementTrigger>
       </NumberInput.Control>

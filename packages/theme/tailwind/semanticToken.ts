@@ -107,6 +107,7 @@ export const colors = {
     filled: `var(--my-colors-muted, ${TOKEN.colors.gray[100]})`,
   },
   boundary: `var(--my-colors-boundary, ${TOKEN.colors.gray[300]})`,
+  layer1: `var(--my-colors-layer1, ${TOKEN.colors.gray[100]})`,
 } as const;
 
 export const fontSizes = {

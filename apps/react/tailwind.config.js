@@ -21,6 +21,7 @@ export default {
         open: 'state="open"',
         closed: 'state="closed"',
         highlighted: 'highlighted',
+        disabled: 'disabled',
         today: 'today',
         selected: 'selected',
         'in-range': 'in-range',
