@@ -1,6 +1,5 @@
 import { Trash2Icon } from 'lucide-react';
 
-import { css } from '../../styled-system/css';
 import { Button } from '../Button';
 import { IconButton } from '../IconButton';
 import { FileUpload, type FileUploadProps } from './index';
@@ -23,16 +22,16 @@ export default {
 export const Default = {
   args: {
     maxFiles: 3,
-    className: css({ width: 'full' }),
+    className: 'trds-w-full',
   },
   render: (props: FileUploadProps['root']) => {
     return (
-      <div className={css({ width: '600px' })}>
+      <div className="trds-w-[600px]">
         <FileUpload.Root maxFiles={3} {...props}>
           <FileUpload.Dropzone>
             <FileUpload.Label>Drop your files here</FileUpload.Label>
             <FileUpload.Trigger asChild>
-              <Button size="md" theme="primary">
+              <Button size="md" theme="primary" variant="outline">
                 Open Dialog
               </Button>
             </FileUpload.Trigger>

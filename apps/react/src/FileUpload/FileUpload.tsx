@@ -1,4 +1,3 @@
-import { fileUploadAnatomy } from '@ark-ui/anatomy';
 import { FileUpload } from '@ark-ui/react/file-upload';
 import { IDENTIFIER } from 'env';
 
@@ -9,87 +8,33 @@ import {
   forwardRef,
 } from 'react';
 
-import { RecipeVariantProps, cx, sva } from '../../styled-system/css';
 import { createReactContext } from '../create-react-context';
+import { cx } from '../cx';
+import { tv, VariantProps } from '../tv';
 
-export const fileUploadVariant = sva({
-  className: `${IDENTIFIER.scope} fileUpload`,
-  slots: fileUploadAnatomy.keys(),
-  base: {
-    root: {
-      display: 'flex',
-      flexDirection: 'column',
-      gap: '4',
-      width: '100%',
-    },
-    label: {
-      fontWeight: 'medium',
-      textStyle: 'sm',
-    },
-    dropzone: {
-      alignItems: 'center',
-      background: 'white',
-      borderRadius: 'md',
-      borderColor: 'neutral.400',
-      borderWidth: '1px',
-      display: 'flex',
-      flexDirection: 'column',
-      gap: '3',
-      justifyContent: 'center',
-      minHeight: 'xs',
-      px: '6',
-      py: '4',
-    },
-    item: {
-      animation: 'fade-in 0.25s ease-out',
-      background: 'white',
-      borderRadius: 'md',
-      borderColor: 'neutral.400',
-      borderWidth: '1px',
-      columnGap: '3',
-      display: 'grid',
-      gridTemplateColumns: 'auto 1fr auto',
-      gridTemplateAreas: `
-        "preview name delete"
-        "preview size delete"
-        `,
-      p: '4',
-    },
-    itemGroup: {
-      display: 'flex',
-      flexDirection: 'column',
-      gap: '3',
-    },
-    itemName: {
-      color: 'neutral.800',
-      fontWeight: 'medium',
-      gridArea: 'name',
-      textStyle: 'sm',
-    },
-    itemSizeText: {
-      color: 'neutral.400',
-      gridArea: 'size',
-      textStyle: 'sm',
-    },
-    itemDeleteTrigger: {
-      alignSelf: 'flex-start',
-      gridArea: 'delete',
-    },
-    itemPreview: {
-      gridArea: 'preview',
-    },
-    itemPreviewImage: {
-      aspectRatio: '1',
-      height: '10',
-      objectFit: 'scale-down',
-      width: '10',
-    },
+export const fileUploadVariant = tv({
+  base: `${IDENTIFIER.scope} fileUpload`,
+  slots: {
+    root: 'trds-flex trds-flex-col trds-gap-4 trds-w-full',
+    label: 'trds-font-medium trds-text-sm',
+    dropzone:
+      'trds-flex trds-items-center trds-justify-center trds-flex-col trds-bg-white trds-rounded-md trds-border trds-border-boundary trds-min-h-xs trds-px-6 trds-py-4 trds-gap-3',
+    trigger: '',
+    item: 'trds-grid trds-grid-cols-[auto_1fr_auto] [grid-template-areas:"preview_name_delete""preview_size_delete"] trds-bg-white trds-rounded-md trds-border trds-border-boundary trds-gap-x-3 trds-p-4 trds-animate-fade-in',
+    itemGroup: 'trds-flex trds-flex-col trds-gap-3',
+    itemName:
+      'trds-text-fg-title trds-font-medium trds-text-sm [grid-area:name]',
+    itemSizeText: 'trds-text-fg-description trds-text-sm [grid-area:size]',
+    itemDeleteTrigger: 'trds-self-start [grid-area:delete]',
+    itemPreview: '[grid-area:preview]',
+    itemPreviewImage:
+      'trds-aspect-square trds-h-10 trds-w-10 trds-object-scale-down',
   },
 });
 
 type FileUploadProviderProps = {
   classes: ReturnType<typeof fileUploadVariant>;
-} & RecipeVariantProps<typeof fileUploadVariant>;
+} & VariantProps<typeof fileUploadVariant>;
 
 const [FileUploadProvider, useFileUploadContext] =
   createReactContext<FileUploadProviderProps>({
@@ -97,12 +42,12 @@ const [FileUploadProvider, useFileUploadContext] =
     hookName: 'useFileUploadContext',
     providerName: 'FileUploadProvider',
     defaultValue: {
-      classes: {},
+      classes: {} as ReturnType<typeof fileUploadVariant>,
     },
   });
 
 export type RootProps = FileUpload.RootProps &
-  RecipeVariantProps<typeof fileUploadVariant> & {
+  VariantProps<typeof fileUploadVariant> & {
     placeholder?: string;
   };
 
@@ -118,7 +63,7 @@ const Root = forwardRef<ElementRef<typeof FileUpload.Root>, RootProps>(
       <FileUploadProvider value={ctx}>
         <FileUpload.Root
           ref={ref}
-          className={cx(classes.root, className)}
+          className={cx(classes.root(), className)}
           {...rest}
         >
           {children}
@@ -139,7 +84,7 @@ const Dropzone = forwardRef<
 
   return (
     <FileUpload.Dropzone
-      className={cx(classes.dropzone, className)}
+      className={cx(classes.dropzone(), className)}
       ref={ref}
       {...rest}
     >
@@ -158,7 +103,7 @@ const Label = forwardRef<
 
   return (
     <FileUpload.Label
-      className={cx(classes.label, className)}
+      className={cx(classes.label(), className)}
       ref={ref}
       {...rest}
     >
@@ -177,7 +122,7 @@ const Trigger = forwardRef<
 
   return (
     <FileUpload.Trigger
-      className={cx(classes.trigger, className)}
+      className={cx(classes.trigger(), className)}
       ref={ref}
       {...rest}
     >
@@ -196,7 +141,7 @@ const ItemGroup = forwardRef<
 
   return (
     <FileUpload.ItemGroup
-      className={cx(classes.itemGroup, className)}
+      className={cx(classes.itemGroup(), className)}
       ref={ref}
       {...rest}
     >
@@ -215,7 +160,7 @@ const Item = forwardRef<
 
   return (
     <FileUpload.Item
-      className={cx(classes.item, className)}
+      className={cx(classes.item(), className)}
       ref={ref}
       {...rest}
     >
@@ -234,7 +179,7 @@ const ItemPreview = forwardRef<
 
   return (
     <FileUpload.ItemPreview
-      className={cx(classes.itemPreview, className)}
+      className={cx(classes.itemPreview(), className)}
       ref={ref}
       {...rest}
     >
@@ -253,7 +198,7 @@ const ItemPreviewImage = forwardRef<
 
   return (
     <FileUpload.ItemPreviewImage
-      className={cx(classes.itemPreviewImage, className)}
+      className={cx(classes.itemPreviewImage(), className)}
       ref={ref}
       {...rest}
     >
@@ -272,7 +217,7 @@ const ItemName = forwardRef<
 
   return (
     <FileUpload.ItemName
-      className={cx(classes.itemName, className)}
+      className={cx(classes.itemName(), className)}
       ref={ref}
       {...rest}
     >
@@ -291,7 +236,7 @@ const ItemSizeText = forwardRef<
 
   return (
     <FileUpload.ItemSizeText
-      className={cx(classes.itemSizeText, className)}
+      className={cx(classes.itemSizeText(), className)}
       ref={ref}
       {...rest}
     >
@@ -310,7 +255,7 @@ const ItemDeleteTrigger = forwardRef<
 
   return (
     <FileUpload.ItemDeleteTrigger
-      className={cx(classes.itemDeleteTrigger, className)}
+      className={cx(classes.itemDeleteTrigger(), className)}
       ref={ref}
       {...rest}
     >
