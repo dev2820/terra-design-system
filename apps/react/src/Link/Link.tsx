@@ -2,63 +2,20 @@ import { IDENTIFIER } from 'env';
 
 import { forwardRef, type ComponentProps, type ReactNode } from 'react';
 
-import { cx, cva, type RecipeVariantProps } from '../../styled-system/css';
+import { cx } from '../cx';
+import { tv, VariantProps } from '../tv';
 
-const linkVariants = cva({
-  base: {
-    display: 'inline-flex',
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-    whiteSpace: 'nowrap',
-    gap: 1,
-    transition: ['colors'],
-    cursor: 'pointer',
-    textUnderlinePosition: 'under',
-    textDecorationThickness: 4,
-    fontWeight: 'bold',
-    _disabled: {
-      color: 'disabled',
-      cursor: 'not-allowed',
-      _active: {
-        color: 'disabled',
-      },
-      _visited: {
-        color: 'disabled',
-      },
-      _hover: {
-        color: 'disabled',
-        textDecoration: 'none',
-      },
-    },
-  },
+const linkVariants = tv({
+  base: [
+    'trds-inline-flex trds-items-center trds-justify-start trds-whitespace-nowrap trds-gap-1 trds-transition-colors trds-cursor-pointer trds-underline-offset-8 trds-underline-under trds-decoration-[2px] trds-font-bold',
+    'hover:trds-underline',
+  ],
   variants: {
     theme: {
-      neutral: {
-        color: 'neutral.400',
-        _active: {
-          color: 'neutral.700',
-        },
-        _visited: {
-          color: 'neutral.700',
-        },
-        _hover: {
-          textDecoration: 'underline',
-          color: 'neutral.700',
-        },
-      },
-      primary: {
-        color: 'primary.400',
-        _active: {
-          color: 'primary.700',
-        },
-        _visited: {
-          color: 'primary.700',
-        },
-        _hover: {
-          textDecoration: 'underline',
-          color: 'primary.700',
-        },
-      },
+      neutral:
+        'trds-text-neutral-500 active:trds-text-neutral-800 visited:trds-text-neutral-800 hover:trds-text-neutral-700',
+      primary:
+        'trds-text-primary-500 active:trds-text-primary-800 visited:trds-text-primary-800 hover:trds-text-primary-700',
     },
   },
   defaultVariants: {
@@ -67,10 +24,9 @@ const linkVariants = cva({
 });
 
 export type LinkProps = ComponentProps<'a'> &
-  RecipeVariantProps<typeof linkVariants> & {
+  VariantProps<typeof linkVariants> & {
     leftIcon?: ReactNode;
     rightIcon?: ReactNode;
-    disabled?: boolean;
   };
 
 const Link = forwardRef<HTMLAnchorElement, LinkProps>(function (props, ref) {

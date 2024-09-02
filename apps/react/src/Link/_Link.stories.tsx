@@ -1,6 +1,5 @@
 import { ExternalLinkIcon, LinkIcon } from 'lucide-react';
 
-import { css } from '../../styled-system/css';
 import { Link, type LinkProps } from './index';
 
 export default {
@@ -16,39 +15,44 @@ export default {
 
 export const Default = {
   args: {
-    href: 'https://www.google.com',
+    href: 'https://github.com/dev2820/terra-design-system',
   },
   render: (props: LinkProps) => {
-    return <Link {...props}>Google</Link>;
+    return <Link {...props}>Github</Link>;
   },
 };
 
 export const Theme = {
   args: {
-    href: 'https://www.google.com',
+    href: 'https://github.com/dev2820/terra-design-system',
   },
   render: (props: LinkProps) => {
     return (
-      <Link {...props} theme="neutral">
-        Google
-      </Link>
+      <div className="trds-flex trds-flex-col trds-gap-4">
+        <Link {...props} theme="neutral">
+          Github
+        </Link>
+        <Link {...props} theme="primary">
+          Github
+        </Link>
+      </div>
     );
   },
 };
 
 export const WithIcon = {
   args: {
-    href: 'https://google.com',
+    href: 'https://github.com/dev2820/terra-design-system',
     target: '_blank',
   },
   render: (props: LinkProps) => {
     return (
-      <div className={css({ display: 'flex', flexDir: 'column', gap: 4 })}>
+      <div className="trds-flex trds-flex-col trds-gap-4">
         <Link {...props} leftIcon={<ExternalLinkIcon size={16} />}>
-          Google
+          Github
         </Link>
         <Link {...props} rightIcon={<LinkIcon size={16} />}>
-          Google
+          Github
         </Link>
       </div>
     );
