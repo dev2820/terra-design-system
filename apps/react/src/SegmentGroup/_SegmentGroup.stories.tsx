@@ -1,4 +1,3 @@
-import { css } from '../../styled-system/css';
 import { SegmentGroup, type SegmentGroupProps } from './index';
 
 const sizes = ['sm', 'md', 'lg'] as SegmentGroupProps['Root']['size'][];
@@ -61,14 +60,7 @@ export const Sizes = {
   render: () => {
     return (
       <>
-        <div
-          className={css({
-            width: 400,
-            display: 'flex',
-            flexDir: 'column',
-            gap: 4,
-          })}
-        >
+        <div className="trds-w-72 trds-flex trds-flex-col trds-gap-4">
           <SegmentGroup.Root size="sm" defaultValue="item 1">
             <SegmentGroup.Item value="item 1">item 1</SegmentGroup.Item>
             <SegmentGroup.Item value="item 2">item 2</SegmentGroup.Item>
@@ -91,14 +83,7 @@ export const Disabled = {
   render: () => {
     return (
       <>
-        <div
-          className={css({
-            width: 400,
-            display: 'flex',
-            flexDir: 'column',
-            gap: 4,
-          })}
-        >
+        <div className="trds-w-72 trds-flex trds-flex-col trds-gap-4">
           <SegmentGroup.Root defaultValue="item 1" disabled>
             <SegmentGroup.Item value="item 1">item 1</SegmentGroup.Item>
             <SegmentGroup.Item value="item 2">item 2</SegmentGroup.Item>

@@ -1,4 +1,3 @@
-import { segmentGroupAnatomy } from '@ark-ui/anatomy';
 import {
   SegmentGroup,
   SegmentGroupItemProps,
@@ -13,94 +12,24 @@ import {
   forwardRef,
 } from 'react';
 
-import { RecipeVariantProps, cx, sva } from '../../styled-system/css';
 import { createReactContext } from '../create-react-context';
+import { cx } from '../cx';
+import { tv, VariantProps } from '../tv';
 
-export const segmentGroupVariant = sva({
-  className: `${IDENTIFIER.scope} segmentGroup`,
-  slots: segmentGroupAnatomy.keys(),
-  base: {
-    root: {
-      alignItems: 'flex-start',
-      display: 'flex',
-      borderColor: 'neutral.200',
-      flexDirection: {
-        _horizontal: 'row',
-        _vertical: 'column',
-      },
-      gap: {
-        _horizontal: '4',
-        _vertical: '1',
-      },
-      borderBottomWidth: {
-        _horizontal: '1px',
-      },
-      borderLeftWidth: {
-        _vertical: '1px',
-      },
-    },
-    indicator: {
-      borderColor: 'primary.500',
-      _horizontal: {
-        bottom: '0',
-        borderBottomWidth: '2px',
-        transform: 'translateY(1px)',
-        width: 'var(--width)',
-      },
-      _vertical: {
-        borderLeftWidth: '2px',
-        height: 'var(--height)',
-        transform: 'translateX(-1px)',
-      },
-    },
-    item: {
-      color: 'neutral.400',
-      cursor: 'pointer',
-      fontWeight: 'medium',
-      transitionDuration: 'normal',
-      transitionProperty: 'color',
-      transitionTimingFunction: 'default',
-      _hover: {
-        color: 'neutral.700',
-      },
-      _checked: {
-        fontWeight: 'semibold',
-        color: 'neutral.700',
-        _hover: {
-          color: 'neutral.700',
-        },
-      },
-      _disabled: {
-        color: 'disabled',
-        cursor: 'not-allowed',
-        _hover: {
-          color: 'disabled',
-        },
-      },
-      px: {
-        _horizontal: '1',
-        _vertical: '3',
-      },
-      pb: {
-        _horizontal: '3',
-      },
-      py: {
-        _vertical: '1.5',
-      },
-    },
+export const segmentGroupVariant = tv({
+  base: `${IDENTIFIER.scope} segmentGroup`,
+  slots: {
+    root: 'trds-flex trds-items-start trds-border-neutral-200 data-horizontal:trds-flex-row data-vertical:trds-flex-col data-horizontal:trds-gap-4 data-vertical:trds-gap-1 data-horizontal:trds-border-b-[1px] data-vertical:trds-border-l-[1px]',
+    indicator:
+      'trds-border-primary-500 data-horizontal:trds-bottom-0 data-horizontal:trds-border-b-[2px] data-horizontal:trds-translate-y-[1px] data-horizontal:trds-w-[var(--width)] data-vertical:trds-border-l-[2px] data-vertical:trds-h-[var(--height)] data-vertical:trds-translate-x-[-1px]',
+    item: 'trds-text-neutral-400 trds-cursor-pointer trds-font-medium trds-transition trds-duration-normal trds-transition-[color] trds-ease-default hover:trds-text-neutral-700 data-checked:trds-font-semibold data-checked:trds-text-neutral-700 hover:trds-text-neutral-700 data-disabled:trds-text-muted data-disabled:trds-cursor-not-allowed data-horizontal:trds-px-1 data-vertical:trds-px-3 data-horizontal:trds-pb-3 data-vertical:trds-py-1.5',
+    itemControl: '',
+    itemText: '',
   },
   variants: {
     size: {
-      sm: {
-        item: {
-          textStyle: 'sm',
-        },
-      },
-      md: {
-        item: {
-          textStyle: 'md',
-        },
-      },
+      sm: 'trds-text-sm',
+      md: 'trds-text-md',
     },
   },
   defaultVariants: {
@@ -118,12 +47,12 @@ const [SegmentGroupProvider, useSegmentGroupContext] =
     hookName: 'useSegmentGroupContext',
     providerName: 'SegmentGroupProvider',
     defaultValue: {
-      classes: {},
+      classes: {} as ReturnType<typeof segmentGroupVariant>,
     },
   });
 
 export type RootProps = SegmentGroupRootProps &
-  RecipeVariantProps<typeof segmentGroupVariant>;
+  VariantProps<typeof segmentGroupVariant>;
 
 const Root = forwardRef<ElementRef<typeof SegmentGroup.Root>, RootProps>(
   function (props, ref) {
@@ -137,7 +66,7 @@ const Root = forwardRef<ElementRef<typeof SegmentGroup.Root>, RootProps>(
       <SegmentGroupProvider value={ctx}>
         <SegmentGroup.Root
           ref={ref}
-          className={cx(classes.root, className)}
+          className={cx(classes.root(), className)}
           {...rest}
         >
           {children}
@@ -156,14 +85,14 @@ const Item = forwardRef<ElementRef<typeof SegmentGroup.Item>, ItemProps>(
 
     return (
       <SegmentGroup.Item
-        className={cx(classes.item, className)}
+        className={cx(classes.item(), className)}
         ref={ref}
         {...rest}
       >
         <SegmentGroup.ItemControl
-          className={classes.itemControl}
+          className={classes.itemControl()}
         ></SegmentGroup.ItemControl>
-        <SegmentGroup.ItemText className={classes.itemText}>
+        <SegmentGroup.ItemText className={classes.itemText()}>
           {children}
         </SegmentGroup.ItemText>
         <SegmentGroup.ItemHiddenInput />
@@ -182,7 +111,7 @@ const Indicator = forwardRef<
 
   return (
     <SegmentGroup.Indicator
-      className={cx(classes.indicator, className)}
+      className={cx(classes.indicator(), className)}
       ref={ref}
       {...rest}
     />
