@@ -1,4 +1,3 @@
-import { selectAnatomy } from '@ark-ui/anatomy';
 import { Portal } from '@ark-ui/react';
 import {
   Select,
@@ -10,204 +9,68 @@ import { CheckIcon, ChevronDownIcon } from 'lucide-react';
 
 import { ElementRef, forwardRef, ReactNode } from 'react';
 
-import { RecipeVariantProps, cx, sva } from '../../styled-system/css';
 import { createReactContext } from '../create-react-context';
+import { cx } from '../cx';
+import { tv, VariantProps } from '../tv';
 
-export const selectVariant = sva({
-  className: `${IDENTIFIER.scope} select`,
-  slots: selectAnatomy.keys(),
-  base: {
-    root: {
-      display: 'flex',
-      flexDirection: 'column',
-      gap: '1.5',
-      width: 'full',
-    },
-    content: {
-      background: 'white',
-      borderRadius: 'lg',
-      boxShadow: 'lg',
-      display: 'flex',
-      flexDirection: 'column',
-      zIndex: 'dropdown',
-      _open: {
-        animation: 'fade-in 0.25s ease-out',
+export const selectVariant = tv({
+  base: `${IDENTIFIER.scope} select`,
+  slots: {
+    root: 'trds-flex trds-flex-col trds-gap-1.5 trds-w-full',
+    content:
+      'trds-bg-white trds-rounded-lg trds-shadow-lg trds-flex trds-flex-col trds-z-dropdown data-open:trds-animate-fade-in data-closed:trds-animate-fade-out focus-visible:trds-outline-2 focus-visible:trds-outline-solid focus-visible:trds-outline-neutral-300 focus-visible:trds-outline-offset-2',
+    item: 'trds-flex trds-items-center trds-justify-between trds-rounded-md trds-cursor-pointer trds-transition-fast trds-transition-[background,color] trds-ease-default hover:trds-bg-neutral-100 hover:trds-text-black data-highlighted:trds-bg-neutral-100 data-highlighted:trds-text-black data-selected:trds-text-black data-disabled:trds-text-muted data-disabled:trds-cursor-not-allowed',
+    itemGroupLabel: 'trds-font-semibold trds-text-sm',
+    itemIndicator: 'trds-text-black',
+    label: 'trds-text-neutral-500 trds-font-medium',
+    trigger:
+      'trds-appearance-none trds-inline-flex trds-items-center trds-justify-between trds-border-boundary trds-rounded-lg trds-cursor-pointer trds-text-fg-title trds-inline-flex trds-relative trds-outline-0 trds-transition trds-duration-normal trds-transition-[background,box-shadow,border-color] trds-ease-default trds-w-full trds-border-[1px] focus:trds-border-neutral-300 focus:trds-shadow-[0_0_0_2px_var(--shadow-color)] focus:trds-shadow-primary-500 placeholder-shown:trds-text-neutral-400 disabled:trds-text-muted disabled:trds-cursor-not-allowed disabled:[&_:where(svg)]:text-muted [&_:where(svg)]:text-subtle',
+    control: '',
+    valueText: '',
+    indicator: '',
+    positioner: '',
+    itemGroup: '',
+    itemText: '',
+  },
+  variants: {
+    size: {
+      sm: {
+        content: 'trds-p-0.5 trds-gap-1',
+        item: 'trds-text-sm trds-px-2 trds-h-9',
+        itemIndicator: '[&_:where(svg)]:w-4 [&_:where(svg)]:h-4',
+        itemGroupLabel: 'trds-px-2 trds-py-1.5',
+        label: 'trds-text-sm',
+        trigger:
+          'trds-px-2.5 trds-h-9 trds-min-w-9 trds-text-sm trds-gap-2 [&_:where(svg)]:w-4 [&_:where(svg)]:h-4',
       },
-      _closed: {
-        animation: 'fade-out 0.2s ease-out',
+      md: {
+        content: 'trds-p-1 trds-gap-1',
+        item: 'trds-text-md trds-px-2 trds-h-10',
+        itemIndicator: '[&_:where(svg)]:w-4 [&_:where(svg)]:h-4',
+        itemGroupLabel: 'trds-px-2 trds-py-1.5',
+        label: 'trds-text-sm',
+        trigger:
+          'trds-px-3 trds-h-10 trds-min-w-10 trds-text-md trds-gap-2 [&_:where(svg)]:w-4 [&_:where(svg)]:h-4',
       },
-      _focusVisible: {
-        outlineOffset: '2px',
-        outline: '2px solid',
-        outlineColor: 'neutral.300',
-      },
-    },
-    item: {
-      alignItems: 'center',
-      borderRadius: 'md',
-      cursor: 'pointer',
-      display: 'flex',
-      justifyContent: 'space-between',
-      transitionDuration: 'fast',
-      transitionProperty: 'background, color',
-      transitionTimingFunction: 'default',
-      _hover: {
-        background: 'neutral.300',
-        color: 'black',
-      },
-      _highlighted: {
-        background: 'neutral.300',
-        color: 'black',
-      },
-      _selected: {
-        color: 'black',
-      },
-      _disabled: {
-        color: 'disabled',
-        cursor: 'not-allowed',
-        _hover: {
-          background: 'transparent',
-          color: 'disabled',
-        },
-      },
-    },
-    itemGroupLabel: {
-      fontWeight: 'semibold',
-      textStyle: 'sm',
-    },
-    itemIndicator: {
-      color: 'black',
-    },
-    label: {
-      color: 'neutral.500',
-      fontWeight: 'medium',
-    },
-    trigger: {
-      appearance: 'none',
-      alignItems: 'center',
-      borderColor: 'neutral.300',
-      borderRadius: 'lg',
-      cursor: 'pointer',
-      color: 'neutral.800',
-      display: 'inline-flex',
-      justifyContent: 'space-between',
-      outline: 0,
-      position: 'relative',
-      transitionDuration: 'normal',
-      transitionProperty: 'background, box-shadow, border-color',
-      transitionTimingFunction: 'default',
-      width: 'full',
-      borderWidth: '1px',
-      _focus: {
-        borderColor: 'neutral.300',
-        boxShadow: '0 0 0 2px var(--shadow-color)',
-        shadowColor: 'primary.500',
-      },
-      _placeholderShown: {
-        color: 'neutral.400',
-      },
-      _disabled: {
-        color: 'disabled',
-        cursor: 'not-allowed',
-        '& :where(svg)': {
-          color: 'disabled',
-        },
-      },
-      '& :where(svg)': {
-        color: 'subtle',
+      lg: {
+        content: 'trds-p-1.5 trds-gap-1',
+        item: 'trds-text-md trds-px-2 trds-h-11',
+        itemIndicator: '[&_:where(svg)]:w-5 [&_:where(svg)]:h-5',
+        itemGroupLabel: 'trds-px-2 trds-py-1.5',
+        label: 'trds-text-sm',
+        trigger:
+          'trds-px-3.5 trds-h-11 trds-min-w-11 trds-text-md trds-gap-2 [&_:where(svg)]:w-5 [&_:where(svg)]:h-5',
       },
     },
   },
   defaultVariants: {
     size: 'md',
   },
-  variants: {
-    size: {
-      sm: {
-        content: { p: '0.5', gap: '1' },
-        item: { textStyle: 'sm', px: '2', height: '9' },
-        itemIndicator: {
-          '& :where(svg)': {
-            width: '4',
-            height: '4',
-          },
-        },
-        itemGroupLabel: {
-          px: '2',
-          py: '1.5',
-        },
-        label: { textStyle: 'sm' },
-        trigger: {
-          px: '2.5',
-          h: '9',
-          minW: '9',
-          fontSize: 'sm',
-          gap: '2',
-          '& :where(svg)': {
-            width: '4',
-            height: '4',
-          },
-        },
-      },
-      md: {
-        content: { p: '1', gap: '1' },
-        item: { textStyle: 'md', px: '2', height: '10' },
-        itemIndicator: {
-          '& :where(svg)': {
-            width: '4',
-            height: '4',
-          },
-        },
-        itemGroupLabel: {
-          px: '2',
-          py: '1.5',
-        },
-        label: { textStyle: 'sm' },
-        trigger: {
-          px: '3',
-          h: '10',
-          minW: '10',
-          fontSize: 'md',
-          gap: '2',
-          '& :where(svg)': {
-            width: '4',
-            height: '4',
-          },
-        },
-      },
-      lg: {
-        content: { p: '1.5', gap: '1' },
-        item: { textStyle: 'md', px: '2', height: '11' },
-        itemIndicator: {
-          '& :where(svg)': {
-            width: '5',
-            height: '5',
-          },
-        },
-        itemGroupLabel: {
-          px: '2',
-          py: '1.5',
-        },
-        label: { textStyle: 'sm' },
-        trigger: {
-          px: '3.5',
-          h: '11',
-          minW: '11',
-          fontSize: 'md',
-          gap: '2',
-          '& :where(svg)': {
-            width: '5',
-            height: '5',
-          },
-        },
-      },
-    },
-  },
 });
 
 type SelectProviderProps = {
   classes: ReturnType<typeof selectVariant>;
-} & RecipeVariantProps<typeof selectVariant>;
+} & VariantProps<typeof selectVariant>;
 
 const [SelectProvider, useSelectContext] =
   createReactContext<SelectProviderProps>({
@@ -215,13 +78,13 @@ const [SelectProvider, useSelectContext] =
     hookName: 'useSelectContext',
     providerName: 'SelectProvider',
     defaultValue: {
-      classes: {},
+      classes: {} as ReturnType<typeof selectVariant>,
       size: 'md',
     },
   });
 
 export type RootProps = Select.RootProps<Select.CollectionItem> &
-  RecipeVariantProps<typeof selectVariant> & {
+  VariantProps<typeof selectVariant> & {
     placeholder?: string;
   };
 
@@ -238,24 +101,24 @@ export const Root = forwardRef<ElementRef<typeof Select.Root>, RootProps>(
       <SelectProvider value={ctx}>
         <Select.Root
           ref={ref}
-          className={cx(classes.root, className)}
+          className={cx(classes.root(), className)}
           positioning={{ sameWidth: true }}
           {...rest}
         >
-          <Select.Control className={classes.control}>
-            <Select.Trigger className={classes.trigger}>
+          <Select.Control className={classes.control()}>
+            <Select.Trigger className={classes.trigger()}>
               <Select.ValueText
                 placeholder={placeholder}
-                className={classes.valueText}
+                className={classes.valueText()}
               />
-              <Select.Indicator className={classes.indicator}>
+              <Select.Indicator className={classes.indicator()}>
                 <ChevronDownIcon size={convertSizeToNumber(size)} />
               </Select.Indicator>
             </Select.Trigger>
           </Select.Control>
           <Portal>
-            <Select.Positioner className={classes.positioner}>
-              <Select.Content className={classes.content}>
+            <Select.Positioner className={classes.positioner()}>
+              <Select.Content className={classes.content()}>
                 {children}
               </Select.Content>
             </Select.Positioner>
@@ -280,11 +143,11 @@ export const ItemGroup = forwardRef<
 
   return (
     <Select.ItemGroup
-      className={cx(classes.itemGroup, className)}
+      className={cx(classes.itemGroup(), className)}
       ref={ref}
       {...rest}
     >
-      <Select.ItemGroupLabel className={classes.itemGroupLabel}>
+      <Select.ItemGroupLabel className={classes.itemGroupLabel()}>
         {label}
       </Select.ItemGroupLabel>
       {children}
@@ -300,11 +163,15 @@ export const Item = forwardRef<ElementRef<typeof Select.Item>, ItemProps>(
     const { classes, size } = useSelectContext();
 
     return (
-      <Select.Item className={cx(classes.item, className)} ref={ref} {...rest}>
-        <Select.ItemText className={cx(classes.itemText)}>
+      <Select.Item
+        className={cx(classes.item(), className)}
+        ref={ref}
+        {...rest}
+      >
+        <Select.ItemText className={cx(classes.itemText())}>
           {children}
         </Select.ItemText>
-        <Select.ItemIndicator className={cx(classes.itemIndicator)}>
+        <Select.ItemIndicator className={cx(classes.itemIndicator())}>
           <CheckIcon size={convertSizeToNumber(size)} />
         </Select.ItemIndicator>
       </Select.Item>
@@ -314,14 +181,14 @@ export const Item = forwardRef<ElementRef<typeof Select.Item>, ItemProps>(
 
 const convertSizeToNumber = (size?: 'sm' | 'md' | 'lg') => {
   if (size === 'sm') {
-    return 28;
+    return 20;
   }
   if (size === 'md') {
-    return 32;
+    return 24;
   }
   if (size === 'lg') {
-    return 36;
+    return 28;
   }
 
-  return 32;
+  return 24;
 };

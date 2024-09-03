@@ -1,4 +1,3 @@
-import { css } from '../../styled-system/css';
 import { Select, type SelectProps } from './index';
 
 /**
@@ -12,8 +11,19 @@ export default {
     layout: 'centered',
   },
   tags: ['autodocs'],
-  argTypes: {},
-  args: {},
+  argTypes: {
+    disabled: {
+      control: { type: 'boolean' },
+    },
+    size: {
+      options: ['sm', 'md', 'lg'],
+      control: { type: 'select' },
+    },
+  },
+  args: {
+    disabled: false,
+    size: 'md',
+  },
 };
 
 const frameworks = ['React', 'Vue', 'Svelte', 'Solid'] as const;
@@ -21,13 +31,11 @@ const languages = ['Javascript', 'Typescript'] as const;
 
 export const Default = {
   args: {
-    className: css({ width: 400 }),
+    className: 'trds-w-96',
   },
   render: (props: SelectProps['root']) => {
     return (
-      <div
-        className={css({ display: 'flex', width: '200px', height: '500px' })}
-      >
+      <div className="trds-flex trds-w-48 trds-h-24">
         <Select.Root
           {...props}
           items={[...frameworks, ...languages, 'None']}
@@ -56,13 +64,11 @@ export const Default = {
 
 export const MultiSelect = {
   args: {
-    className: css({ width: 400 }),
+    className: 'trds-w-96',
   },
   render: (props: SelectProps['root']) => {
     return (
-      <div
-        className={css({ display: 'flex', width: '200px', height: '500px' })}
-      >
+      <div className="trds-flex trds-w-48 trds-h-96">
         <Select.Root
           {...props}
           items={[...frameworks, ...languages, 'None']}
