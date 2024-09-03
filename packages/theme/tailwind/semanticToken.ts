@@ -108,6 +108,7 @@ export const colors = {
   },
   boundary: `var(--my-colors-boundary, ${TOKEN.colors.gray[300]})`,
   layer1: `var(--my-colors-layer1, ${TOKEN.colors.gray[100]})`,
+  track: `var(--my-colors-track, ${TOKEN.colors.gray[300]})`,
 } as const;
 
 export const fontSizes = {

@@ -1,78 +1,38 @@
-import { progressAnatomy } from '@ark-ui/anatomy';
 import { Progress, type ProgressRootProps } from '@ark-ui/react/progress';
 import { IDENTIFIER } from 'env';
 
 import { forwardRef } from 'react';
 
-import { cx, RecipeVariantProps, sva } from '../../styled-system/css';
+import { cx } from '../cx';
+import { tv, VariantProps } from '../tv';
 
-export const progressVariants = sva({
-  className: `${IDENTIFIER.scope} progress`,
-  slots: progressAnatomy.keys(),
-  base: {
-    root: {
-      alignItems: 'center',
-      display: 'flex',
-      flexDirection: 'column',
-      gap: '1.5',
-      width: 'full',
-    },
-    label: {
-      fontWeight: 'medium',
-      textStyle: 'sm',
-    },
-    track: {
-      backgroundColor: 'neutral.300',
-      borderRadius: 'full',
-      overflow: 'hidden',
-      width: 'full',
-    },
-    range: {
-      backgroundColor: 'primary',
-      height: 'full',
-      transition: 'width 0.2s ease-in-out',
-      '--translate-x': '-100%',
-    },
-    circleTrack: {
-      stroke: 'neutral.300',
-    },
-    circleRange: {
-      stroke: 'primary',
-      transitionProperty: 'stroke-dasharray, stroke',
-      transitionDuration: '0.6s',
-    },
-    valueText: {
-      textStyle: 'sm',
-    },
+export const progressVariants = tv({
+  base: `${IDENTIFIER.scope} progress`,
+  slots: {
+    root: 'trds-flex trds-items-center trds-flex-col trds-gap-1.5 trds-w-full',
+    label: 'trds-font-medium trds-text-sm',
+    track: 'trds-bg-track trds-rounded-full trds-overflow-hidden trds-w-full',
+    range:
+      'trds-bg-primary trds-h-full trds-transition-[width] trds-duration-[0.2s] trds-ease-in-out [--translate-x:-100%]',
+    circle: '',
+    circleTrack: 'trds-stroke-track',
+    circleRange:
+      'trds-stroke-primary trds-transition-[stroke-dasharray,stroke] trds-duration-[0.6s]',
+    valueText: 'trds-text-sm',
   },
   variants: {
     size: {
       sm: {
-        track: {
-          height: '1.5',
-        },
-        circle: {
-          '--size': '36px',
-          '--thickness': '4px',
-        },
+        track: 'trds-h-1.5',
+        circle: '[--size:36px] [--thickness:4px]',
       },
       md: {
-        track: {
-          height: '2',
-        },
-        circle: {
-          '--size': '40px',
-          '--thickness': '4px',
-        },
+        track: 'trds-h-2',
+        circle: '[--size:40px] [--thickness:4px]',
       },
       lg: {
-        track: {
-          height: '2.5',
-        },
-        circle: {
-          '--size': '44px',
-          '--thickness': '4px',
-        },
+        track: 'trds-h-2.5',
+        circle: '[--size:44px] [--thickness:4px]',
       },
     },
   },
@@ -82,7 +42,7 @@ export const progressVariants = sva({
 });
 
 export type RootProps = ProgressRootProps &
-  RecipeVariantProps<typeof progressVariants> & {
+  VariantProps<typeof progressVariants> & {
     variant?: 'linear' | 'circular';
   };
 
@@ -91,21 +51,25 @@ const Root = forwardRef<HTMLDivElement, RootProps>(function (props, ref) {
   const classes = progressVariants({ size });
 
   return (
-    <Progress.Root ref={ref} className={cx(classes.root, className)} {...rest}>
+    <Progress.Root
+      ref={ref}
+      className={cx(classes.root(), className)}
+      {...rest}
+    >
       {children && (
-        <Progress.Label className={classes.label}>{children}</Progress.Label>
+        <Progress.Label className={classes.label()}>{children}</Progress.Label>
       )}
       {variant === 'linear' && (
         <>
-          <Progress.Track className={classes.track}>
-            <Progress.Range className={classes.range} />
+          <Progress.Track className={classes.track()}>
+            <Progress.Range className={classes.range()} />
           </Progress.Track>
         </>
       )}
       {variant === 'circular' && (
-        <Progress.Circle className={classes.circle}>
-          <Progress.CircleTrack className={classes.circleTrack} />
-          <Progress.CircleRange className={classes.circleRange} />
+        <Progress.Circle className={classes.circle()}>
+          <Progress.CircleTrack className={classes.circleTrack()} />
+          <Progress.CircleRange className={classes.circleRange()} />
         </Progress.Circle>
       )}
     </Progress.Root>

@@ -20,10 +20,13 @@ export default {
       data: {
         open: 'state="open"',
         closed: 'state="closed"',
+        checked: 'state="checked"',
         highlighted: 'highlighted',
         disabled: 'disabled',
         today: 'today',
         selected: 'selected',
+        vertical: 'orientation="vertical"',
+        horizontal: 'orientation="horizontal"',
         'in-range': 'in-range',
       },
       keyframes: {

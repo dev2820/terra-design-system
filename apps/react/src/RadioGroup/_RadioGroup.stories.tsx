@@ -1,4 +1,3 @@
-import { css } from '../../styled-system/css';
 import { RadioGroup, type RadioGroupProps } from './index';
 
 const sizes = ['sm', 'md', 'lg'] as RadioGroupProps['Root']['size'][];
@@ -40,14 +39,7 @@ export const Sizes = {
   render: () => {
     return (
       <>
-        <div
-          className={css({
-            width: 400,
-            display: 'flex',
-            flexDir: 'column',
-            gap: 4,
-          })}
-        >
+        <div className="trds-w-48 trds-flex trds-flex-col trds-gap-4">
           <RadioGroup.Root size="sm" defaultValue="item 1">
             <RadioGroup.Item value="item 1">item 1</RadioGroup.Item>
             <RadioGroup.Item value="item 2">item 2</RadioGroup.Item>
@@ -73,14 +65,7 @@ export const Disabled = {
   render: () => {
     return (
       <>
-        <div
-          className={css({
-            width: 400,
-            display: 'flex',
-            flexDir: 'column',
-            gap: 4,
-          })}
-        >
+        <div className="trds-w-48 trds-flex trds-flex-col trds-gap-4">
           <RadioGroup.Root defaultValue="item 1" disabled>
             <RadioGroup.Item value="item 1">item 1</RadioGroup.Item>
             <RadioGroup.Item value="item 2">item 2</RadioGroup.Item>
