@@ -1,4 +1,3 @@
-import { css } from '../../styled-system/css';
 import { RatingGroup, type RatingGroupProps } from './index';
 
 /**
@@ -35,30 +34,24 @@ export default {
 };
 
 export const Default = {
-  args: {
-    className: css({ color: 'yellow.300' }),
-  },
+  args: {},
   render: (props: RatingGroupProps) => {
     return <RatingGroup {...props} />;
   },
 };
 
 export const AllowHalf = {
-  args: {
-    className: css({ color: 'yellow.300' }),
-  },
+  args: {},
   render: (props: RatingGroupProps) => {
     return <RatingGroup {...props} allowHalf />;
   },
 };
 
 export const Size = {
-  args: {
-    className: css({ color: 'yellow.300' }),
-  },
+  args: {},
   render: (props: RatingGroupProps) => {
     return (
-      <div className={css({ display: 'flex', flexDir: 'column', gap: 4 })}>
+      <div className="trds-flex trds-flex-col trds-gap-4">
         <RatingGroup {...props} size="sm" />
         <RatingGroup {...props} size="md" />
         <RatingGroup {...props} size="lg" />
@@ -68,9 +61,7 @@ export const Size = {
 };
 
 export const Disabled = {
-  args: {
-    className: css({ color: 'yellow.300' }),
-  },
+  args: {},
   render: (props: RatingGroupProps) => {
     return <RatingGroup {...props} disabled />;
   },
@@ -79,7 +70,6 @@ export const Disabled = {
 export const ReadOnly = {
   args: {
     defaultValue: 2.5,
-    className: css({ color: 'yellow.300' }),
   },
   render: (props: RatingGroupProps) => {
     return <RatingGroup {...props} allowHalf readOnly />;

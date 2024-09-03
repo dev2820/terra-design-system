@@ -1,94 +1,45 @@
-import { ratingGroupAnatomy } from '@ark-ui/anatomy';
 import { RatingGroup } from '@ark-ui/react';
 import { IDENTIFIER } from 'env';
 
 import { ComponentProps, ElementRef, forwardRef } from 'react';
 
-import { RecipeVariantProps, cx, sva } from '../../styled-system/css';
+import { cx } from '../cx';
+import { tv, VariantProps } from '../tv';
 
-export const ratingGroupVariant = sva({
-  className: `${IDENTIFIER.scope} ratingGroup`,
-  slots: ratingGroupAnatomy.keys(),
-  base: {
-    root: {
-      display: 'flex',
-      flexDirection: 'column',
-      gap: '1.5',
-    },
-    control: {
-      display: 'flex',
-    },
-    item: {
-      cursor: 'pointer',
-      transitionDuration: 'normal',
-      transitionProperty: 'color, fill',
-      transitionTimingFunction: 'default',
-      fill: 'transparent',
-      _highlighted: {
-        fill: 'currentColor',
+export const ratingGroupVariant = tv({
+  base: `${IDENTIFIER.scope} ratingGroup`,
+  slots: {
+    root: 'trds-flex trds-flex-col trds-gap-1.5 trds-text-yellow-300',
+    control: 'trds-flex',
+    item: 'trds-cursor-pointer trds-transition trds-duration-normal trds-transition-[color,fill] trds-ease-default trds-fill-transparent data-highlighted:trds-fill-current focus-visible:trds-outline-none data-disabled:trds-cursor-not-allowed data-disabled:trds-opacity-40',
+  },
+
+  variants: {
+    size: {
+      sm: {
+        control: 'trds-gap-0',
+        item: '[&_svg:trds-w-4] [&_svg:trds-h-4]',
+        label: 'trds-text-sm',
       },
-      _focusVisible: {
-        outline: 'none',
+      md: {
+        control: 'trds-gap-0.5',
+        item: '[&_svg:trds-w-5] [&_svg:trds-h-5]',
+        label: 'trds-text-sm',
       },
-      _disabled: {
-        cursor: 'not-allowed',
-        opacity: 0.4,
+      lg: {
+        control: 'trds-gap-0.5',
+        item: '[&_svg:trds-w-6] [&_svg:trds-h-6]',
+        label: 'trds-text-md',
       },
     },
   },
   defaultVariants: {
     size: 'md',
   },
-  variants: {
-    size: {
-      sm: {
-        control: {
-          gap: '0',
-        },
-        item: {
-          '& svg': {
-            width: '4',
-            height: '4',
-          },
-        },
-        label: {
-          textStyle: 'sm',
-        },
-      },
-      md: {
-        control: {
-          gap: '0.5',
-        },
-        item: {
-          '& svg': {
-            width: '5',
-            height: '5',
-          },
-        },
-        label: {
-          textStyle: 'sm',
-        },
-      },
-      lg: {
-        control: {
-          gap: '0.5',
-        },
-        item: {
-          '& svg': {
-            width: '6',
-            height: '6',
-          },
-        },
-        label: {
-          textStyle: 'md',
-        },
-      },
-    },
-  },
 });
 
 export type RootProps = RatingGroup.RootProps &
-  RecipeVariantProps<typeof ratingGroupVariant> & {};
+  VariantProps<typeof ratingGroupVariant> & {};
 
 export const Root = forwardRef<ElementRef<typeof RatingGroup.Root>, RootProps>(
   function (props, ref) {
@@ -98,17 +49,17 @@ export const Root = forwardRef<ElementRef<typeof RatingGroup.Root>, RootProps>(
     return (
       <RatingGroup.Root
         ref={ref}
-        className={cx(classes.root, className)}
+        className={cx(classes.root(), className)}
         {...rest}
       >
-        <RatingGroup.Control className={classes.control}>
+        <RatingGroup.Control className={classes.control()}>
           <RatingGroup.Context>
             {({ items }) =>
               items.map(item => (
                 <RatingGroup.Item
                   key={item}
                   index={item}
-                  className={classes.item}
+                  className={classes.item()}
                 >
                   <RatingGroup.ItemContext>
                     {({ half, highlighted }) => {
