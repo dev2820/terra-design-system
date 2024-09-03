@@ -2,36 +2,20 @@ import { IDENTIFIER } from 'env';
 
 import { ComponentProps, forwardRef } from 'react';
 
-import { css, cva, cx } from '../../styled-system/css';
+import { cx } from '../cx';
+import { tv } from '../tv';
 
 export type SkeletonProps = ComponentProps<'div'> & {
   isLoaded?: boolean;
   round?: boolean;
 };
 
-export const skeletonVariants = cva({
-  base: {
-    animation: 'shimmer',
-    animationDuration: '3s',
-    animationIterationCount: 'infinite',
-    backgroundClip: 'padding-box',
-    backgroundColor: 'neutral.400',
-    color: 'transparent',
-    cursor: 'default',
-    pointerEvents: 'none',
-    userSelect: 'none',
-    '&::before, &::after, *': {
-      visibility: 'hidden',
-    },
-  },
+export const skeletonVariants = tv({
+  base: 'trds-animate-shimmer trds-bg-muted trds-bg-clip-padding-box trds-text-transparent trds-cursor-default trds-pointer-events-none trds-select-none before::trds-invisible after::trds-invisible [&_*]:trds-invisible',
   variants: {
     round: {
-      true: {
-        borderRadius: 'full',
-      },
-      false: {
-        borderRadius: 'lg',
-      },
+      true: 'trds-rounded-full',
+      false: 'trds-rounded-lg',
     },
   },
   defaultVariants: {
@@ -49,11 +33,7 @@ export const Skeleton = forwardRef<HTMLDivElement, SkeletonProps>(
           ref={ref}
           className={cx(
             IDENTIFIER.scope,
-            css({
-              animation: 'fade-in',
-              animationDuration: '0.2s',
-              animationIterationCount: 1,
-            }),
+            'trds-animate-fade-in-once',
             className,
           )}
           {...otherProps}

@@ -1,4 +1,3 @@
-import { css } from '../../styled-system/css';
 import { Card } from '../Card';
 import { Skeleton, SkeletonProps } from './index';
 
@@ -9,8 +8,14 @@ export default {
     layout: 'centered',
   },
   tags: ['autodocs'],
-  argTypes: {},
-  args: {},
+  argTypes: {
+    isLoaded: {
+      control: { type: 'boolean' },
+    },
+  },
+  args: {
+    isLoaded: false,
+  },
 };
 
 export const Default = {
@@ -44,7 +49,7 @@ export const Round = {
   render: (props: SkeletonProps) => {
     return (
       <Skeleton {...props}>
-        <div className={css({ width: 100, height: 100 })}>Hello World</div>
+        <div className="trds-w-24 trds-h-24">Hello World</div>
       </Skeleton>
     );
   },
@@ -62,18 +67,16 @@ export const Example = {
         </Card.Header>
         <Card.Content>
           <Skeleton>
-            <div className={css({ width: 400, height: 300 })}></div>
+            <div className="trds-w-96 trds-h-72"></div>
           </Skeleton>
         </Card.Content>
         <Card.Footer>
-          <div className={css({ display: 'flex', flexDir: 'row', gap: 4 })}>
+          <div className="trds-flex trds-flex-row trds-gap-4">
             <Skeleton round>
-              <div className={css({ width: 20, height: 20, rounded: 'full' })}>
-                !
-              </div>
+              <div className="trds-w-5 trds-h-5 trds-rounded-full">!</div>
             </Skeleton>
             <Skeleton>
-              <div className={css({ width: 80, height: 20, rounded: 'full' })}>
+              <div className="trds-w-40 trds-h-5 trds-rounded-full">
                 Something Something Something Blar Blar Blar
               </div>
             </Skeleton>
