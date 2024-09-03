@@ -1,4 +1,3 @@
-import { popoverAnatomy } from '@ark-ui/anatomy';
 import { Popover, PopoverRootProps, Portal } from '@ark-ui/react';
 import { IDENTIFIER } from 'env';
 
@@ -10,55 +9,23 @@ import {
   Fragment,
 } from 'react';
 
-import { sva, cx } from '../../styled-system/css';
 import { createReactContext } from '../create-react-context';
+import { cx } from '../cx';
+import { tv } from '../tv';
 
-export const popoverVariants = sva({
-  className: `${IDENTIFIER.scope} popover`,
-  slots: popoverAnatomy.keys(),
-  base: {
-    positioner: {
-      position: 'relative',
-    },
-    content: {
-      background: 'white',
-      borderRadius: 'lg',
-      boxShadow: 'lg',
-      display: 'flex',
-      flexDirection: 'column',
-      maxWidth: 'sm',
-      zIndex: 'popover',
-      p: '4',
-      _open: {
-        animation: 'fade-in 0.25s ease-out',
-      },
-      _closed: {
-        animation: 'fade-out 0.2s ease-out',
-      },
-      '&[aria-hidden]': {
-        display: 'none',
-      },
-    },
-    title: {
-      fontWeight: 'medium',
-      textStyle: 'sm',
-    },
-    description: {
-      color: 'neutral.400',
-      textStyle: 'sm',
-    },
-    closeTrigger: {
-      color: 'neutral.400',
-    },
-    arrow: {
-      '--arrow-size': 'var(--sizes-3)',
-      '--arrow-background': 'var(--colors-white)',
-    },
-    arrowTip: {
-      borderColor: 'neutral.100',
-      borderTopWidth: '1px',
-      borderLeftWidth: '1px',
-    },
+export const popoverVariants = tv({
+  base: `${IDENTIFIER.scope} popover`,
+  slots: {
+    positioner: 'trds-relative',
+    content:
+      'trds-relative trds-bg-white trds-rounded-lg trds-shadow-lg trds-flex trds-flex-col trds-max-w-sm trds-z-popover trds-p-4 data-open:trds-animate-fade-in data-closed:trds-animate-fade-out data-hidden:trds-hidden',
+    title: 'trds-font-medium trds-text-sm trds-mb-4',
+    description: 'trds-text-fg-description trds-text-sm',
+    closeTrigger:
+      'trds-text-fg-description trds-absolute trds-right-2 trds-top-2',
+    trigger: '',
+    arrow: '[--arrow-size:8px] [--arrow-background:#fff]',
+    arrowTip: 'trds-border-layer1 trds-border-t trds-border-l',
   },
 });
 
@@ -72,7 +39,7 @@ const [PopoverProvider, usePopoverContext] =
     hookName: 'usePopoverContext',
     providerName: 'PopoverProvider',
     defaultValue: {
-      classes: {},
+      classes: {} as ReturnType<typeof popoverVariants>,
       portalled: false,
     },
   });
@@ -105,7 +72,7 @@ const Trigger = forwardRef<
 
   return (
     <Popover.Trigger
-      className={cx(classes.trigger, className)}
+      className={cx(classes.trigger(), className)}
       ref={ref}
       {...rest}
     >
@@ -128,7 +95,7 @@ const Content = forwardRef<
     <Wrap>
       <Popover.Positioner>
         <Popover.Content
-          className={cx(classes.content, className)}
+          className={cx(classes.content(), className)}
           ref={ref}
           {...rest}
         >
@@ -148,8 +115,12 @@ const Arrow = forwardRef<
   const { children, className, ...rest } = props;
 
   return (
-    <Popover.Arrow className={cx(classes.arrow, className)} {...rest} ref={ref}>
-      <Popover.ArrowTip className={classes.arrowTip} />
+    <Popover.Arrow
+      className={cx(classes.arrow(), className)}
+      {...rest}
+      ref={ref}
+    >
+      <Popover.ArrowTip className={classes.arrowTip()} />
     </Popover.Arrow>
   );
 });
@@ -163,7 +134,11 @@ const Title = forwardRef<
   const { children, className, ...rest } = props;
 
   return (
-    <Popover.Title className={cx(classes.title, className)} {...rest} ref={ref}>
+    <Popover.Title
+      className={cx(classes.title(), className)}
+      {...rest}
+      ref={ref}
+    >
       {children}
     </Popover.Title>
   );
@@ -179,7 +154,7 @@ const Description = forwardRef<
 
   return (
     <Popover.Description
-      className={cx(classes.description, className)}
+      className={cx(classes.description(), className)}
       {...rest}
       ref={ref}
     >
@@ -198,7 +173,7 @@ const CloseTrigger = forwardRef<
 
   return (
     <Popover.CloseTrigger
-      className={cx(classes.closeTrigger, className)}
+      className={cx(classes.closeTrigger(), className)}
       ref={ref}
       {...rest}
     >

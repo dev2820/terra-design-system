@@ -1,7 +1,5 @@
-import { ChevronDownIcon, XIcon } from 'lucide-react';
+import { XIcon } from 'lucide-react';
 
-import { css } from '../../styled-system/css';
-import { flex, spacer } from '../../styled-system/patterns';
 import { Button } from '../Button';
 import { IconButton } from '../IconButton';
 import { Popover, type PopoverProps } from './index';
@@ -24,23 +22,18 @@ export const Default = {
   args: {},
   render: (props: PopoverProps['root']) => {
     return (
-      <div className={css({ width: '600px', height: '500px' })}>
+      <div className="trds-w-[600px] trds-h-[500px]">
         <Popover.Root {...props}>
           <Popover.Trigger asChild>
             <Button>Open Popover</Button>
           </Popover.Trigger>
-          <Popover.Content className={css({ position: 'relative' })}>
-            <Popover.Title className={css({ mb: 4 })}>
-              Lorem Ipsum
-            </Popover.Title>
+          <Popover.Content>
+            <Popover.Title>Lorem Ipsum</Popover.Title>
             <Popover.Description>
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry.
             </Popover.Description>
-            <Popover.CloseTrigger
-              className={css({ position: 'absolute', right: 2, top: 2 })}
-              asChild
-            >
+            <Popover.CloseTrigger asChild>
               <IconButton variant="ghost" size="sm">
                 <XIcon size={16} />
               </IconButton>
@@ -58,23 +51,18 @@ export const Portalled = {
   },
   render: (props: PopoverProps['root']) => {
     return (
-      <div className={css({ width: '600px', height: '500px' })}>
+      <div className="trds-w-[600px] trds-h-[500px]">
         <Popover.Root {...props}>
           <Popover.Trigger asChild>
             <Button>Open Popover</Button>
           </Popover.Trigger>
-          <Popover.Content className={css({ position: 'relative' })}>
-            <Popover.Title className={css({ mb: 4 })}>
-              Lorem Ipsum
-            </Popover.Title>
+          <Popover.Content>
+            <Popover.Title>Lorem Ipsum</Popover.Title>
             <Popover.Description>
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry.
             </Popover.Description>
-            <Popover.CloseTrigger
-              className={css({ position: 'absolute', right: 2, top: 2 })}
-              asChild
-            >
+            <Popover.CloseTrigger asChild>
               <IconButton variant="ghost" size="sm">
                 <XIcon size={16} />
               </IconButton>
@@ -90,24 +78,19 @@ export const WithArrow = {
   args: {},
   render: (props: PopoverProps['root']) => {
     return (
-      <div className={css({ width: '600px', height: '500px' })}>
+      <div className="trds-w-[600px] trds-h-[500px]">
         <Popover.Root {...props}>
           <Popover.Trigger asChild>
             <Button>Open Popover</Button>
           </Popover.Trigger>
-          <Popover.Content className={css({ position: 'relative' })}>
+          <Popover.Content>
             <Popover.Arrow />
-            <Popover.Title className={css({ mb: 4 })}>
-              Lorem Ipsum
-            </Popover.Title>
+            <Popover.Title>Lorem Ipsum</Popover.Title>
             <Popover.Description>
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry.
             </Popover.Description>
-            <Popover.CloseTrigger
-              className={css({ position: 'absolute', right: 2, top: 2 })}
-              asChild
-            >
+            <Popover.CloseTrigger asChild>
               <IconButton variant="ghost" size="sm">
                 <XIcon size={16} />
               </IconButton>
