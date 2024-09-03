@@ -1,4 +1,3 @@
-import { paginationAnatomy } from '@ark-ui/anatomy';
 import { Pagination } from '@ark-ui/react';
 import { IDENTIFIER } from 'env';
 import { ChevronLeftIcon, ChevronRightIcon, EllipsisIcon } from 'lucide-react';
@@ -9,28 +8,20 @@ import {
   type ElementRef,
 } from 'react';
 
-import { sva, cx } from '../../styled-system/css';
+import { cx } from '../cx';
 import { IconButton } from '../IconButton';
 import { Link } from '../Link';
+import { tv } from '../tv';
 
-export const paginationVariants = sva({
-  className: `${IDENTIFIER.scope} pagination`,
-  slots: paginationAnatomy.keys(),
-  base: {
-    root: {
-      display: 'flex',
-      gap: '1',
-    },
-    item: {
-      fontVariantNumeric: 'tabular-nums',
-    },
-    ellipsis: {
-      alignItems: 'center',
-      color: 'neutral.900',
-      display: 'inline-flex',
-      fontWeight: 'semibold',
-      px: '2',
-    },
+export const paginationVariants = tv({
+  base: `${IDENTIFIER.scope} pagination`,
+  slots: {
+    root: 'trds-flex trds-gap-1',
+    item: 'trds-font-tabular-nums',
+    prevTrigger: '',
+    nextTrigger: '',
+    ellipsis:
+      'trds-inline-flex trds-items-center trds-text-neutral-900 trds-font-semibold trds-px-2',
   },
 });
 
@@ -44,11 +35,11 @@ const Root = forwardRef<ElementRef<typeof Pagination.Root>, RootProps>(
     return (
       <Pagination.Root
         ref={ref}
-        className={cx(classes.root, className)}
+        className={cx(classes.root(), className)}
         type={type}
         {...rest}
       >
-        <Pagination.PrevTrigger className={classes.prevTrigger} asChild>
+        <Pagination.PrevTrigger className={classes.prevTrigger()} asChild>
           {type === 'button' ? (
             <IconButton variant="ghost" size="sm">
               <ChevronLeftIcon size={24} />
@@ -65,23 +56,30 @@ const Root = forwardRef<ElementRef<typeof Pagination.Root>, RootProps>(
               page.type === 'page' ? (
                 <Pagination.Item
                   key={index}
-                  className={classes.item}
+                  className={classes.item()}
                   {...page}
                   asChild
                 >
                   {type === 'button' ? (
                     <IconButton
-                      variant="ghost"
+                      variant={
+                        pagination.page === page.value ? 'filled' : 'ghost'
+                      }
                       size="sm"
                       data-active={
                         pagination.page === page.value ? true : undefined
+                      }
+                      theme={
+                        pagination.page === page.value ? 'primary' : 'neutral'
                       }
                     >
                       {page.value}
                     </IconButton>
                   ) : (
                     <Link
-                      theme="neutral"
+                      theme={
+                        pagination.page === page.value ? 'primary' : 'neutral'
+                      }
                       data-active={
                         pagination.page === page.value ? true : undefined
                       }
@@ -94,7 +92,7 @@ const Root = forwardRef<ElementRef<typeof Pagination.Root>, RootProps>(
                 <Pagination.Ellipsis
                   key={index}
                   index={index}
-                  className={classes.ellipsis}
+                  className={classes.ellipsis()}
                 >
                   <EllipsisIcon size={16} />
                 </Pagination.Ellipsis>
@@ -102,7 +100,7 @@ const Root = forwardRef<ElementRef<typeof Pagination.Root>, RootProps>(
             )
           }
         </Pagination.Context>
-        <Pagination.NextTrigger className={classes.nextTrigger} asChild>
+        <Pagination.NextTrigger className={classes.nextTrigger()} asChild>
           {type === 'button' ? (
             <IconButton variant="ghost" size="sm">
               <ChevronRightIcon size={24} />

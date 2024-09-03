@@ -7,7 +7,7 @@ import { tv, VariantProps } from '../tv';
 
 const linkVariants = tv({
   base: [
-    'trds-inline-flex trds-items-center trds-justify-start trds-whitespace-nowrap trds-gap-1 trds-transition-colors trds-cursor-pointer trds-underline-offset-8 trds-underline-under trds-decoration-[2px] trds-font-bold',
+    'trds-inline-flex trds-items-center trds-justify-start trds-whitespace-nowrap trds-gap-1 trds-transition-colors trds-cursor-pointer trds-underline-offset-4 trds-underline-under trds-decoration-[2px] trds-font-bold',
     'hover:trds-underline',
   ],
   variants: {
