@@ -1,4 +1,3 @@
-import { css } from '../../styled-system/css';
 import { Switch, SwitchProps } from './index';
 
 const sizes = ['sm', 'md', 'lg'] as SwitchProps['size'][];
@@ -40,16 +39,7 @@ export const Sizes = {
   args: {},
   render: () => {
     return (
-      <div
-        className={css({
-          display: 'flex',
-          flexDir: 'column',
-          alignItems: 'center',
-          gap: 4,
-          width: 100,
-          height: 120,
-        })}
-      >
+      <div className="trds-flex trds-flex-col trds-items-center trds-gap-4 trds-w-36 trds-h-48">
         <Switch size="sm" />
         <Switch size="md" />
         <Switch size="lg" />

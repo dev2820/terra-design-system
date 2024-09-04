@@ -1,103 +1,47 @@
-import { switchAnatomy } from '@ark-ui/anatomy';
 import { Switch, SwitchRootProps } from '@ark-ui/react';
 import { IDENTIFIER } from 'env';
 
 import { ElementRef, forwardRef } from 'react';
 
-import { RecipeVariantProps, cx, sva } from '../../styled-system/css';
+import { cx } from '../cx';
+import { tv, VariantProps } from '../tv';
 
-export const switchVariants = sva({
-  className: `${IDENTIFIER.scope} switch`,
-  slots: switchAnatomy.keys(),
-  base: {
-    root: {
-      alignItems: 'center',
-      display: 'flex',
-      position: 'relative',
-      _disabled: {
-        opacity: 60,
-      },
-    },
-    control: {
-      alignItems: 'center',
-      background: 'neutral.300',
-      borderRadius: 'full',
-      cursor: 'pointer',
-      display: 'inline-flex',
-      flexShrink: '0',
-      transitionDuration: 'normal',
-      transitionProperty: 'background',
-      transitionTimingFunction: 'default',
-      _checked: {
-        background: 'primary',
-      },
-      _disabled: {
-        cursor: 'not-allowed',
-      },
-    },
-    thumb: {
-      background: 'white',
-      borderRadius: 'full',
-      boxShadow: 'xs',
-      transitionDuration: 'normal',
-      transitionProperty: 'transform, background',
-      transitionTimingFunction: 'default',
-      _checked: {
-        transform: 'translateX(100%)',
-        background: { base: 'white', _dark: 'primary.foreground' },
-      },
-    },
-  },
-  defaultVariants: {
-    size: 'md',
+export const switchVariants = tv({
+  base: `${IDENTIFIER.scope} switch`,
+  slots: {
+    root: 'trds-flex trds-items-center trds-relative data-disabled:trds-opacity-60',
+    control:
+      'trds-inline-flex trds-items-center trds-bg-muted trds-rounded-full trds-cursor-pointer trds-flex-shrink-0 trds-transition trds-duration-normal trds-transition-[background] trds-ease-default data-checked:trds-bg-primary data-disabled:trds-cursor-not-allowed',
+    thumb:
+      'trds-bg-white trds-rounded-full trds-shadow-xs trds-transition trds-duration-normal trds-transition-[transform,background] trds-ease-default data-checked:trds-translate-x-[100%] data-checked:trds-bg-white',
   },
   variants: {
     size: {
       sm: {
-        root: {
-          gap: '2',
-        },
-        control: {
-          width: '7',
-          p: '0.5',
-        },
-        thumb: {
-          width: '3',
-          height: '3',
-        },
+        root: 'trds-gap-2',
+        control: 'trds-w-7 trds-p-0.5',
+        thumb: 'trds-w-3 trds-h-3',
       },
       md: {
-        root: {
-          gap: '3',
-        },
-        control: {
-          width: '9',
-          p: '0.5',
-        },
-        thumb: {
-          width: '4',
-          height: '4',
-        },
+        root: 'trds-gap-3',
+        control: 'trds-w-9 trds-p-0.5',
+        thumb: 'trds-w-4 trds-h-4',
       },
       lg: {
-        root: {
-          gap: '4',
-        },
-        control: {
-          width: '11',
-          p: '0.5',
-        },
-        thumb: {
-          width: '5',
-          height: '5',
-        },
+        root: 'trds-gap-4',
+        control: 'trds-w-11 trds-p-0.5',
+        thumb: 'trds-w-5 trds-h-5',
       },
     },
+  },
+
+  defaultVariants: {
+    size: 'md',
   },
 });
 
 export type RootProps = Omit<SwitchRootProps, 'children'> &
-  RecipeVariantProps<typeof switchVariants>;
+  VariantProps<typeof switchVariants>;
 
 const Root = forwardRef<ElementRef<typeof Switch.Root>, RootProps>(
   function (props, ref) {
@@ -105,9 +49,13 @@ const Root = forwardRef<ElementRef<typeof Switch.Root>, RootProps>(
     const classes = switchVariants({ size });
 
     return (
-      <Switch.Root ref={ref} className={cx(classes.root, className)} {...rest}>
-        <Switch.Control className={classes.control}>
-          <Switch.Thumb className={classes.thumb} />
+      <Switch.Root
+        ref={ref}
+        className={cx(classes.root(), className)}
+        {...rest}
+      >
+        <Switch.Control className={classes.control()}>
+          <Switch.Thumb className={classes.thumb()} />
         </Switch.Control>
         <Switch.HiddenInput />
       </Switch.Root>
