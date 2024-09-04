@@ -94,6 +94,7 @@ export const colors = {
     title: `var(--my-colors-fg-title, ${TOKEN.colors.gray[800]})`,
     description: `var(--my-colors-fg-description, ${TOKEN.colors.gray[500]})`,
     placeholder: `var(--my-colors-fg-placeholder, ${TOKEN.colors.gray[400]})`,
+    caption: `var(--my-colors-fg-caption, ${TOKEN.colors.gray[400]})`,
     primary: `var(--my-colors-fg-primary, ${TOKEN.colors.white})`,
     warning: `var(--my-colors-fg-warning, ${TOKEN.colors.white})`,
     error: `var(--my-colors-fg-error, ${TOKEN.colors.white})`,
