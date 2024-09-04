@@ -1,4 +1,3 @@
-import { css } from '../../styled-system/css';
 import { Spinner, type SpinnerProps } from './index';
 
 const sizes = ['xs', 'sm', 'md', 'lg', 'xl'] as SpinnerProps['size'][];
@@ -36,7 +35,7 @@ export const Size = {
   },
   render: (props: SpinnerProps) => {
     return (
-      <div className={css({ display: 'flex', flexDir: 'row', gap: 4 })}>
+      <div className="trds-flex trds-flex-row trds-gap-4">
         {sizes.map(size => (
           <Spinner {...props} size={size} key={size} />
         ))}
@@ -53,10 +52,7 @@ export const Color = {
     return (
       <Spinner
         {...props}
-        className={css({
-          borderBottomColor: 'blue',
-          borderLeftColor: 'blue',
-        })}
+        className="trds-border-b-blue-500 trds-border-l-blue-500"
       />
     );
   },
@@ -67,14 +63,7 @@ export const Track = {
     label: 'loading...',
   },
   render: (props: SpinnerProps) => {
-    return (
-      <Spinner
-        {...props}
-        className={css({
-          borderColor: 'neutral.300',
-        })}
-      />
-    );
+    return <Spinner {...props} className="trds-border-green-500" />;
   },
 };
 
@@ -83,13 +72,6 @@ export const Width = {
     label: 'loading...',
   },
   render: (props: SpinnerProps) => {
-    return (
-      <Spinner
-        {...props}
-        className={css({
-          borderWidth: 4,
-        })}
-      />
-    );
+    return <Spinner {...props} className="trds-border-4" />;
   },
 };
