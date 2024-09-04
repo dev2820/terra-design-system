@@ -1,5 +1,3 @@
-import { css } from '../../styled-system/css';
-import { flex } from '../../styled-system/patterns';
 import { Slider, type SliderProps } from './index';
 
 /**
@@ -12,8 +10,14 @@ export default {
     layout: 'centered',
   },
   tags: ['autodocs'],
-  argTypes: {},
-  args: {},
+  argTypes: {
+    disabled: {
+      control: { type: 'boolean' },
+    },
+  },
+  args: {
+    disabled: false,
+  },
 };
 
 export const Default = {
@@ -21,7 +25,16 @@ export const Default = {
     defaultValue: [30],
   },
   render: (props: SliderProps) => {
-    return <Slider {...props} className={css({ width: 200 })} />;
+    return <Slider {...props} className="trds-w-48" />;
+  },
+};
+
+export const Disabled = {
+  args: {
+    defaultValue: [30],
+  },
+  render: (props: SliderProps) => {
+    return <Slider {...props} className="trds-w-48" disabled={true} />;
   },
 };
 
@@ -33,7 +46,7 @@ export const Step = {
     defaultValue: [30],
   },
   render: (props: SliderProps) => {
-    return <Slider {...props} className={css({ width: 200 })} />;
+    return <Slider {...props} className="trds-w-48" />;
   },
 };
 
@@ -45,10 +58,10 @@ export const Size = {
   },
   render: (props: SliderProps) => {
     return (
-      <div className={flex({ direction: 'column', gap: 8 })}>
-        <Slider {...props} size={'sm'} className={css({ width: 200 })} />
-        <Slider {...props} size={'md'} className={css({ width: 200 })} />
-        <Slider {...props} size={'lg'} className={css({ width: 200 })} />
+      <div className="trds-flex trds-flex-col trds-gap-4">
+        <Slider {...props} size={'sm'} className="trds-w-48" />
+        <Slider {...props} size={'md'} className="trds-w-48" />
+        <Slider {...props} size={'lg'} className="trds-w-48" />
       </div>
     );
   },
@@ -74,7 +87,7 @@ export const Markers = {
       <Slider
         {...props}
         markers={markers}
-        className={css({ width: 200, color: 'blackAlpha.500' })}
+        className="trds-w-48 trds-text-blackAlpha-500"
       />
     );
   },
@@ -87,8 +100,6 @@ export const Multiple = {
     defaultValue: [30, 60],
   },
   render: (props: SliderProps) => {
-    return (
-      <Slider {...props} multiple={true} className={css({ width: 200 })} />
-    );
+    return <Slider {...props} multiple={true} className="trds-w-48" />;
   },
 };
