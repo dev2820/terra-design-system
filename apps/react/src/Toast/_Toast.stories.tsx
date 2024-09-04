@@ -1,12 +1,11 @@
 import { XIcon } from 'lucide-react';
 
-import { css } from '../../styled-system/css';
 import { Button } from '../Button';
 import { IconButton } from '../IconButton';
 import { Toast, type ToastProps } from './index';
 
 /**
- * based on https://ark-ui.com/react/docs/components/tooltip
+ * based on https://ark-ui.com/react/docs/components/toast
  */
 export default {
   title: 'Components/Toast',
@@ -26,7 +25,8 @@ export const Default = {
       placement: 'bottom-end',
       overlap: true,
       gap: 16,
-      removeDelay: 5000,
+      removeDelay: 300,
+      duration: 5000,
     });
 
     const showToast = () => {
@@ -38,7 +38,7 @@ export const Default = {
       });
     };
     return (
-      <div className={css({ w: 400, h: 400 })}>
+      <div className="trds-w-96 trds-h-96">
         <Button onClick={showToast}>Show Toast</Button>
         <Toast.Toaster toaster={toaster}>
           {toast => (
@@ -46,7 +46,9 @@ export const Default = {
               <Toast.Title>{toast.title}</Toast.Title>
               <Toast.Description>{toast.description}</Toast.Description>
               <Toast.ActionTrigger asChild>
-                <Button size="sm">Confirm</Button>
+                <Button size="md" theme="primary">
+                  Confirm
+                </Button>
               </Toast.ActionTrigger>
               <Toast.CloseTrigger asChild>
                 <IconButton size="xs" theme="blackAlpha" variant="ghost">

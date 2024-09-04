@@ -1,4 +1,3 @@
-import { tabsAnatomy } from '@ark-ui/anatomy';
 import { Tabs, type TabsRootProps } from '@ark-ui/react/tabs';
 import { IDENTIFIER } from 'env';
 
@@ -9,355 +8,138 @@ import {
   forwardRef,
 } from 'react';
 
-import { RecipeVariantProps, cx, sva } from '../../styled-system/css';
 import { createReactContext } from '../create-react-context';
+import { cx } from '../cx';
+import { tv, VariantProps } from '../tv';
 
-export const tabsVariant = sva({
-  className: `${IDENTIFIER.scope} tabs`,
-  slots: tabsAnatomy.keys(),
-  base: {
-    root: {
-      display: 'flex',
-      width: 'full',
-      _horizontal: {
-        flexDirection: 'column',
-      },
-      _vertical: {
-        flexDirection: 'row',
-      },
-    },
-    list: {
-      display: 'flex',
-      flexShrink: '0',
-      _horizontal: {
-        flexDirection: 'row',
-      },
-      _vertical: {
-        flexDirection: 'column',
-      },
-      overflow: 'auto',
-      position: 'relative',
-      scrollbarWidth: 'none',
-      '&::-webkit-scrollbar': {
-        display: 'none',
-      },
-    },
-    trigger: {
-      alignItems: 'center',
-      color: 'neutral.400',
-      cursor: 'pointer',
-      display: 'inline-flex',
-      flexShrink: '0',
-      fontWeight: 'semibold',
-      gap: '2',
-      justifyContent: 'center',
-      transitionDuration: 'normal',
-      transitionProperty: 'color, background, border-color',
-      transitionTimingFunction: 'default',
-      whiteSpace: 'nowrap',
-      zIndex: '1',
-      _disabled: {
-        color: 'disabled',
-        cursor: 'not-allowed',
-        _hover: {
-          color: 'disabled',
-        },
-      },
-      _hover: {
-        color: 'neutral.800',
-      },
-      _selected: {
-        color: 'neutral.800',
-        _hover: {
-          color: 'neutral.800',
-        },
-      },
-      _vertical: {
-        justifyContent: 'flex-start',
-      },
-    },
-    content: {},
-    indicator: {},
-  },
-  defaultVariants: {
-    size: 'md',
-    variant: 'line',
+export const tabsVariant = tv({
+  base: `${IDENTIFIER.scope} tabs`,
+  slots: {
+    root: 'trds-flex trds-w-full data-horizontal:trds-flex-col data-vertical:trds-flex-row',
+    list: 'trds-flex trds-flex-shrink-0 data-horizontal:trds-flex-row data-vertical:trds-flex-col trds-overflow-auto trds-relative trds-scrollbar-none [&::-webkit-scrollbar]:trds-hidden',
+    trigger: [
+      'trds-inline-flex trds-items-center trds-text-neutral-400 trds-cursor-pointer trds-flex-shrink-0 trds-font-semibold trds-gap-2 trds-justify-center',
+      'trds-transition trds-duration-normal trds-transition-[color,background,border-color] trds-ease-default',
+      'trds-whitespace-nowrap trds-z-elevated data-disabled:trds-text-muted data-disabled:trds-cursor-not-allowed hover:trds-text-neutral-800 data-selected:trds-text-neutral-800 data-vertical:trds-justify-start',
+    ],
+    content: '',
+    indicator: '',
   },
   variants: {
     variant: {
       enclosed: {
-        list: {
-          borderRadius: 'lg',
-          borderWidth: '1px',
-          borderColor: 'neutral.400',
-          px: '1',
-          backgroundColor: {
-            base: 'neutral.200',
-            _light: 'neutral.200',
-            _dark: 'neutral.800',
-          },
-          _horizontal: {
-            alignItems: 'center',
-          },
-          _vertical: {
-            height: 'fit-content!',
-            py: '1',
-          },
-        },
-        indicator: {
-          backgroundColor: {
-            base: 'white',
-            _light: 'neutral.400',
-            _dark: 'neutral.700',
-          },
-          boxShadow: 'xs',
-          borderRadius: 'lg',
-          '--transition-duration': '200ms!',
-          height: 'var(--height)',
-          width: 'var(--width)',
-        },
+        list: 'trds-rounded-lg trds-border trds-border-boundary trds-px-1 trds-bg-layer1 dark:trds-bg-neutral-800 data-horizontal:trds-items-center data-vertical:trds-h-fit data-vertical:trds-py-1',
+        indicator:
+          'trds-bg-white light:trds-bg-neutral-400 dark:trds-bg-neutral-700 trds-shadow-md trds-rounded-lg trds-transition-duration-normal trds-h-[var(--height)] trds-w-[var(--width)]',
       },
       line: {
-        list: {
-          _horizontal: {
-            boxShadow: '0 -1px 0 0 inset var(--colors-neutral-400)',
-            gap: '4',
-          },
-          _vertical: {
-            boxShadow: '1px 0 0 0 inset var(--colors-neutral-400)',
-            gap: '1',
-          },
-        },
-        indicator: {
-          background: 'primary.500',
-          _horizontal: {
-            bottom: '0',
-            height: '2px',
-            width: 'var(--width)',
-          },
-          _vertical: {
-            height: 'var(--height)',
-            left: '0',
-            width: '2px',
-          },
-        },
-        content: {
-          pt: '4',
-        },
-        trigger: {
-          _horizontal: {
-            pb: '2.5',
-          },
-        },
+        list: 'data-horizontal:trds-shadow-[0_-1px_0_0_inset_var(--colors-neutral-400, "9ca3af")] data-horizontal:trds-gap-4 data-vertical:trds-shadow-[1px_0_0_0_inset_var(--colors-neutral-400,"9ca3af")] data-vertical:trds-gap-1',
+        indicator:
+          'trds-bg-primary-500 data-horizontal:trds-bottom-0 data-horizontal:trds-h-[2px] data-horizontal:trds-w-[var(--width)] data-vertical:trds-left-0 data-vertical:trds-h-[var(--height)] data-vertical:trds-w-[2px]',
+        content: 'trds-pt-4',
+        trigger: 'data-horizontal:trds-pb-2.5',
       },
       outline: {
-        list: {
-          _horizontal: {
-            mb: '-1px',
-          },
-          _vertical: {
-            mr: '-1px',
-          },
-        },
-        trigger: {
-          borderColor: 'transparent',
-          borderWidth: '1px',
-          _horizontal: {
-            borderTopRadius: 'md',
-          },
-          _vertical: {
-            borderTopLeftRadius: 'md',
-            borderBottomLeftRadius: 'md',
-          },
-          _selected: {
-            background: 'white',
-            borderColor: 'neutral.400',
-            _horizontal: {
-              borderBottomColor: 'transparent',
-            },
-            _vertical: {
-              borderRightColor: 'transparent',
-            },
-          },
-        },
-        content: {
-          background: 'white',
-          borderWidth: '1px',
-          borderColor: 'neutral.400',
-          width: 'full',
-        },
+        list: 'data-horizontal:trds-mb-[-1px] data-vertical:trds-mr-[-1px]',
+        trigger: [
+          ' trds-border trds-border-transparent',
+          'data-horizontal:trds-rounded-t-md data-vertical:trds-rounded-tl-md data-vertical:trds-rounded-bl-md',
+          'data-selected:trds-bg-white data-selected:trds-border-boundary data-selected:[&[data-orientation="horizontal"]]:trds-border-b-transparent data-selected:[&[data-orientation="vertical"]]:trds-border-r-transparent',
+        ],
+        content:
+          'trds-bg-white trds-border trds-border-boundary trds-border-[1px] trds-w-full',
       },
     },
     size: {
       sm: {
-        trigger: {
-          '& svg': {
-            width: '4',
-            height: '4',
-          },
-        },
+        trigger: '[&_svg]:w-4 [&_svg]:h-4',
       },
       md: {
-        trigger: {
-          '& svg': {
-            width: '5',
-            height: '5',
-          },
-        },
+        trigger: '[&_svg]:w-5 [&_svg]:h-5',
       },
       lg: {
-        trigger: {
-          '& svg': {
-            width: '5',
-            height: '5',
-          },
-        },
+        trigger: '[&_svg]:w-5 [&_svg]:h-5',
       },
     },
+  },
+  defaultVariants: {
+    variant: 'line',
+    size: 'md',
   },
   compoundVariants: [
     {
       size: 'sm',
       variant: 'enclosed',
-      css: {
-        list: {
-          height: '10',
-        },
-        trigger: {
-          h: '8',
-          minW: '8',
-          textStyle: 'sm',
-          px: '3',
-        },
-        content: {
-          p: '3.5',
-        },
+      class: {
+        list: 'trds-h-10',
+        trigger: 'trds-h-8 trds-min-w-8 trds-text-sm trds-px-3',
+        content: 'trds-p-3.5',
       },
     },
     {
       size: 'md',
       variant: 'enclosed',
-      css: {
-        list: {
-          height: '11',
-        },
-        trigger: {
-          h: '9',
-          minW: '9',
-          textStyle: 'sm',
-          px: '3.5',
-        },
-        content: {
-          p: '4',
-        },
+      class: {
+        list: 'trds-h-11',
+        trigger: 'trds-h-9 trds-min-w-9 trds-text-sm trds-px-3.5',
+        content: 'trds-p-4',
       },
     },
     {
       size: 'lg',
       variant: 'enclosed',
-      css: {
-        list: {
-          height: '12',
-        },
-        trigger: {
-          h: '10',
-          minW: '10',
-          textStyle: 'sm',
-          px: '4',
-        },
-        content: {
-          p: '4.5',
-        },
+      class: {
+        list: 'trds-h-12',
+        trigger: 'trds-h-10 trds-min-w-10 trds-text-sm trds-px-4',
+        content: 'trds-p-4.5',
       },
     },
     {
       size: 'sm',
       variant: 'outline',
-      css: {
-        trigger: {
-          h: '9',
-          minW: '9',
-          textStyle: 'sm',
-          px: '3.5',
-        },
-        content: {
-          p: '3.5',
-        },
+      class: {
+        trigger: 'trds-h-9 trds-min-w-9 trds-text-sm trds-px-3.5',
+        content: 'trds-p-3.5',
       },
     },
     {
       size: 'md',
       variant: 'outline',
-      css: {
-        trigger: {
-          h: '10',
-          minW: '10',
-          textStyle: 'sm',
-          px: '4',
-        },
-        content: {
-          p: '4',
-        },
+      class: {
+        trigger: 'trds-h-10 trds-min-w-10 trds-text-sm trds-px-4',
+        content: 'trds-p-4',
       },
     },
     {
       size: 'lg',
       variant: 'outline',
-      css: {
-        trigger: {
-          h: '11',
-          minW: '11',
-          textStyle: 'md',
-          px: '4.5',
-        },
-        content: {
-          p: '4.5',
-        },
+      class: {
+        trigger: 'trds-h-11 trds-min-w-11 trds-text-md trds-px-[18px]',
+        content: 'trds-p-[18px]',
       },
     },
     {
       size: 'sm',
       variant: 'line',
-      css: {
-        trigger: {
-          fontSize: 'sm',
-          h: '9',
-          minW: '9',
-          px: '2.5',
-        },
-        content: {
-          pt: '3',
-        },
+      class: {
+        trigger: 'trds-text-sm trds-h-9 trds-min-w-9 trds-px-2.5',
+        content: 'trds-pt-3',
       },
     },
     {
       size: 'md',
       variant: 'line',
-      css: {
-        trigger: {
-          fontSize: 'md',
-          h: '10',
-          minW: '10',
-          px: '3',
-        },
-        content: {
-          pt: '4',
-        },
+      class: {
+        trigger: 'trds-text-md trds-h-10 trds-min-w-10 trds-px-3',
+        content: 'trds-pt-4',
       },
     },
     {
       size: 'lg',
       variant: 'line',
-      css: {
-        trigger: {
-          px: '3.5',
-          h: '11',
-          minW: '11',
-          fontSize: 'md',
-        },
-        content: {
-          pt: '5',
-        },
+      class: {
+        trigger: 'trds-text-md trds-h-11 trds-min-w-11 trds-px-3.5',
+        content: 'trds-pt-5',
       },
     },
   ],
@@ -372,11 +154,11 @@ const [TabsProvider, useTabsContext] = createReactContext<TabsProviderProps>({
   hookName: 'useTabsContext',
   providerName: 'TabsProvider',
   defaultValue: {
-    classes: {},
+    classes: {} as ReturnType<typeof tabsVariant>,
   },
 });
 
-export type RootProps = TabsRootProps & RecipeVariantProps<typeof tabsVariant>;
+export type RootProps = TabsRootProps & VariantProps<typeof tabsVariant>;
 const Root = forwardRef<ElementRef<typeof Tabs.Root>, RootProps>(
   function (props, ref) {
     const { size, variant, className, children, ...rest } = props;
@@ -387,7 +169,11 @@ const Root = forwardRef<ElementRef<typeof Tabs.Root>, RootProps>(
 
     return (
       <TabsProvider value={ctx}>
-        <Tabs.Root ref={ref} className={cx(classes.root, className)} {...rest}>
+        <Tabs.Root
+          ref={ref}
+          className={cx(classes.root(), className)}
+          {...rest}
+        >
           {children}
         </Tabs.Root>
       </TabsProvider>
@@ -404,7 +190,7 @@ const List = forwardRef<
   const { classes } = useTabsContext();
 
   return (
-    <Tabs.List className={cx(classes.list, className)} ref={ref} {...rest}>
+    <Tabs.List className={cx(classes.list(), className)} ref={ref} {...rest}>
       {children}
     </Tabs.List>
   );
@@ -420,7 +206,7 @@ const Indicator = forwardRef<
 
   return (
     <Tabs.Indicator
-      className={cx(classes.indicator, className)}
+      className={cx(classes.indicator(), className)}
       ref={ref}
       {...rest}
     />
@@ -437,7 +223,7 @@ const Trigger = forwardRef<
 
   return (
     <Tabs.Trigger
-      className={cx(classes.trigger, className)}
+      className={cx(classes.trigger(), className)}
       ref={ref}
       {...rest}
     >
@@ -456,7 +242,7 @@ const Content = forwardRef<
 
   return (
     <Tabs.Content
-      className={cx(classes.content, className)}
+      className={cx(classes.content(), className)}
       ref={ref}
       {...rest}
     >

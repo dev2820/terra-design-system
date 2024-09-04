@@ -1,4 +1,3 @@
-import { css } from '../../styled-system/css';
 import { Tabs, type TabsProps } from './index';
 
 export default {
@@ -33,7 +32,9 @@ export const Default = {
       <Tabs.Root {...props}>
         <Tabs.List>
           <Tabs.Trigger value="react">React</Tabs.Trigger>
-          <Tabs.Trigger value="vue">Vue</Tabs.Trigger>
+          <Tabs.Trigger value="vue" disabled>
+            Vue
+          </Tabs.Trigger>
           <Tabs.Trigger value="svelte">Svelte</Tabs.Trigger>
           <Tabs.Trigger value="solid">Solid</Tabs.Trigger>
           <Tabs.Indicator />
@@ -48,19 +49,14 @@ export const Default = {
 };
 
 export const Sizes = {
-  args: {},
-  render: () => {
+  args: {
+    defaultValue: 'react',
+  },
+  render: (props: TabsProps['root']) => {
     return (
       <>
-        <div
-          className={css({
-            width: 400,
-            display: 'flex',
-            flexDir: 'column',
-            gap: 4,
-          })}
-        >
-          <Tabs.Root size="sm">
+        <div className="trds-w-96 trds-flex trds-flex-col trds-gap-4">
+          <Tabs.Root {...props} size="sm">
             <Tabs.List>
               <Tabs.Trigger value="react">React</Tabs.Trigger>
               <Tabs.Trigger value="vue">Vue</Tabs.Trigger>
@@ -69,7 +65,7 @@ export const Sizes = {
             <Tabs.Content value="react">React is awesome</Tabs.Content>
             <Tabs.Content value="vue">Vue is awesome</Tabs.Content>
           </Tabs.Root>
-          <Tabs.Root size="md">
+          <Tabs.Root {...props} size="md">
             <Tabs.List>
               <Tabs.Trigger value="react">React</Tabs.Trigger>
               <Tabs.Trigger value="vue">Vue</Tabs.Trigger>
@@ -78,7 +74,7 @@ export const Sizes = {
             <Tabs.Content value="react">React is awesome</Tabs.Content>
             <Tabs.Content value="vue">Vue is awesome</Tabs.Content>
           </Tabs.Root>
-          <Tabs.Root size="lg">
+          <Tabs.Root {...props} size="lg">
             <Tabs.List>
               <Tabs.Trigger value="react">React</Tabs.Trigger>
               <Tabs.Trigger value="vue">Vue</Tabs.Trigger>
@@ -98,14 +94,7 @@ export const Variants = {
   render: () => {
     return (
       <>
-        <div
-          className={css({
-            width: 400,
-            display: 'flex',
-            flexDir: 'column',
-            gap: 4,
-          })}
-        >
+        <div className="trds-w-96 trds-flex trds-flex-col trds-gap-4">
           <Tabs.Root variant="enclosed" defaultValue="react">
             <Tabs.List>
               <Tabs.Trigger value="react">React</Tabs.Trigger>

@@ -1,4 +1,5 @@
 export const colors = {
+  transparent: 'transparent',
   black: '#000000',
   white: '#FFFFFF',
   whiteAlpha: {
@@ -223,6 +224,7 @@ export const opacity = {
 export const zIndex = {
   auto: 'auto',
   base: '0',
+  elevated: '1',
   dropdown: '1000',
   overlay: '1100',
   modal: '1200',

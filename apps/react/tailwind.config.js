@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+import plugin from 'tailwindcss/plugin';
 import {
   colors as semanticColors,
   duration as semanticDuration,
@@ -140,10 +141,28 @@ export default {
     },
   },
   plugins: [
+    plugin(function ({ matchUtilities, theme }) {
+      matchUtilities(
+        {
+          'translate-z': value => ({
+            '--tw-translate-z': value,
+            transform: ` translate3d(var(--tw-translate-x), var(--tw-translate-y), var(--tw-translate-z)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))`,
+          }), // this is actual CSS
+        },
+        { values: theme('translate'), supportsNegativeValues: true },
+      );
+    }),
     function ({ addBase }) {
       addBase({
         '[hidden]': {
           display: 'none !important',
+        },
+        '.trds-break-anywhere': {
+          'overflow-wrap': 'anywhere',
+        },
+        '.trds-custom-translate': {
+          translate: 'var(--x) var(--y) 0',
+          scale: 'var(--scale)',
         },
       });
     },

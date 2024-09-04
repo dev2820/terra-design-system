@@ -1,4 +1,3 @@
-import { css } from '../../styled-system/css';
 import { Textarea, TextareaProps } from './index';
 
 const sizes = ['sm', 'md', 'lg'] as TextareaProps['size'][];
@@ -40,16 +39,7 @@ export const Sizes = {
   args: {},
   render: () => {
     return (
-      <div
-        className={css({
-          display: 'flex',
-          flexDir: 'row',
-          alignItems: 'flex-start',
-          gap: 4,
-          width: 600,
-          height: 120,
-        })}
-      >
+      <div className="trds-flex trds-flex-row trds-items-start trds-gap-4 trds-w-96 trds-h-48">
         <Textarea size="sm" />
         <Textarea size="md" />
         <Textarea size="lg" />

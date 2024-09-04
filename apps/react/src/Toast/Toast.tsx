@@ -1,4 +1,3 @@
-import { toastAnatomy } from '@ark-ui/anatomy';
 import { Toast, ToastRootProps } from '@ark-ui/react';
 import { IDENTIFIER } from 'env';
 
@@ -9,49 +8,23 @@ import {
   type ElementRef,
 } from 'react';
 
-import { sva, cx } from '../../styled-system/css';
 import { createReactContext } from '../create-react-context';
+import { cx } from '../cx';
+import { tv } from '../tv';
 
-export const toastVariants = sva({
-  className: `${IDENTIFIER.scope} toast`,
-  slots: toastAnatomy.keys(),
-  base: {
-    root: {
-      background: 'white',
-      borderRadius: 'lg',
-      boxShadow: 'lg',
-      minWidth: 'xs',
-      height: 'var(--height)',
-      width: 'var(--width)',
-      opacity: 'var(--opacity)',
-      overflowWrap: 'anywhere',
-      p: '4',
-      position: 'relative',
-      scale: 'var(--scale)',
-      translate: 'var(--x) var(--y) 0',
-      willChange: 'translate, opacity, scale',
-      zIndex: 'var(--z-index)',
-      transitionDuration: 'slow',
-      transitionProperty: 'translate, scale, opacity, height',
-      transitionTimingFunction: 'default',
-    },
-    title: {
-      color: 'neutral.800',
-      fontWeight: 'semibold',
-      textStyle: 'sm',
-    },
-    description: {
-      color: 'neutral.400',
-      textStyle: 'sm',
-    },
-    actionTrigger: {
-      mt: '2',
-    },
-    closeTrigger: {
-      position: 'absolute',
-      top: '3',
-      right: '3',
-    },
+export const toastVariants = tv({
+  base: `${IDENTIFIER.scope} toast`,
+  slots: {
+    root: [
+      'trds-bg-white trds-rounded-lg trds-shadow-lg trds-min-w-[20rem]',
+      'trds-h-[var(--height)] trds-w-[var(--width)] trds-opacity-[var(--opacity)]',
+      'trds-break-anywhere trds-p-4 trds-relative',
+      'trds-custom-translate trds-will-change-[translate,opacity,scale] trds-z-[var(--z-index)] trds-transition trds-duration-300 trds-transition-[translate,scale,opacity,height] trds-ease-default',
+    ],
+    title: 'trds-text-fg-title trds-font-semibold trds-text-sm trds-mb-4',
+    description: 'trds-text-fg-description trds-text-sm',
+    actionTrigger: 'trds-mt-4',
+    closeTrigger: 'trds-absolute trds-top-3 trds-right-3',
   },
 });
 
@@ -65,7 +38,7 @@ const [ToastProvider, useToastContext] = createReactContext<ToastProviderProps>(
     hookName: 'useToastContext',
     providerName: 'ToastProvider',
     defaultValue: {
-      classes: {},
+      classes: {} as ReturnType<typeof toastVariants>,
     },
   },
 );
@@ -83,7 +56,7 @@ const Root = forwardRef<
 
   return (
     <ToastProvider value={ctx}>
-      <Toast.Root className={cx(classes.root, className)} {...rest} ref={ref}>
+      <Toast.Root className={cx(classes.root(), className)} {...rest} ref={ref}>
         {children}
       </Toast.Root>
     </ToastProvider>
@@ -99,7 +72,7 @@ const Title = forwardRef<
   const { children, className, ...rest } = props;
 
   return (
-    <Toast.Title className={cx(classes.title, className)} ref={ref} {...rest}>
+    <Toast.Title className={cx(classes.title(), className)} ref={ref} {...rest}>
       {children}
     </Toast.Title>
   );
@@ -115,7 +88,7 @@ const Description = forwardRef<
 
   return (
     <Toast.Description
-      className={cx(classes.description, className)}
+      className={cx(classes.description(), className)}
       ref={ref}
       {...rest}
     >
@@ -134,7 +107,7 @@ const CloseTrigger = forwardRef<
 
   return (
     <Toast.CloseTrigger
-      className={cx(classes.closeTrigger, className)}
+      className={cx(classes.closeTrigger(), className)}
       ref={ref}
       {...rest}
     >
@@ -153,7 +126,7 @@ const ActionTrigger = forwardRef<
 
   return (
     <Toast.ActionTrigger
-      className={cx(classes.actionTrigger, className)}
+      className={cx(classes.actionTrigger(), className)}
       ref={ref}
       {...rest}
     >
@@ -169,4 +142,5 @@ export {
   type CreateToasterProps,
   type CreateToasterReturn,
 } from '@ark-ui/react';
+
 export { Root, ActionTrigger, CloseTrigger, Title, Description };

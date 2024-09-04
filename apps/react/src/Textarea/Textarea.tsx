@@ -2,53 +2,28 @@ import { IDENTIFIER } from 'env';
 
 import { forwardRef, type ComponentProps } from 'react';
 
-import { cx, cva, type RecipeVariantProps } from '../../styled-system/css';
+import { cx } from '../cx';
+import { tv, VariantProps } from '../tv';
 
-const textareaVariants = cva({
-  base: {
-    appearance: 'none',
-    background: 'none',
-    borderColor: 'neutral.300',
-    borderRadius: 'lg',
-    borderWidth: '1px',
-    minWidth: 0,
-    outline: 0,
-    position: 'relative',
-    transitionDuration: 'normal',
-    transitionProperty: 'border-color, box-shadow',
-    width: 'full',
-    _disabled: {
-      opacity: 0.4,
-      cursor: 'not-allowed',
+const textareaVariants = tv({
+  base: 'trds-appearance-none trds-bg-none trds-border-boundary trds-rounded-lg trds-border trds-min-w-0 trds-outline-0 trds-relative trds-transition trds-duration-normal trds-transition-[border-color,box-shadow] trds-w-full disabled:trds-opacity-40 disabled:trds-cursor-not-allowed placeholder:trds-text-fg-placeholder focus:trds-border-primary-500 focus:trds-shadow-[0_0_0_1px_var(--shadow-color)] focus:[--shadow-color:#8b5cf6]',
+  variants: {
+    size: {
+      sm: 'trds-p-2.5 trds-text-sm',
+      md: 'trds-p-3 trds-text-md',
+      lg: 'trds-p-3.5 trds-text-md',
     },
-    _placeholder: {
-      color: 'neutral.400',
-    },
-    _focus: {
-      borderColor: 'primary.500',
-      boxShadow: '0 0 0 1px var(--shadow-color)',
-      shadowColor: 'primary.500',
+    invalid: {
+      true: 'trds-border-error-500',
     },
   },
   defaultVariants: {
     size: 'md',
   },
-  variants: {
-    size: {
-      sm: { p: '2.5', fontSize: 'sm' },
-      md: { p: '3', fontSize: 'md' },
-      lg: { p: '3.5', fontSize: 'md' },
-    },
-    invalid: {
-      true: {
-        borderColor: 'error.500',
-      },
-    },
-  },
 });
 
 export type TextareaProps = ComponentProps<'textarea'> &
-  RecipeVariantProps<typeof textareaVariants>;
+  VariantProps<typeof textareaVariants>;
 
 const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
   function (props, ref) {
