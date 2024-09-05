@@ -1,4 +1,3 @@
-import { tooltipAnatomy } from '@ark-ui/anatomy';
 import { Tooltip, TooltipRootProps } from '@ark-ui/react';
 import { IDENTIFIER } from 'env';
 
@@ -9,63 +8,30 @@ import {
   type ElementRef,
 } from 'react';
 
-import { sva, cx } from '../../styled-system/css';
 import { createReactContext } from '../create-react-context';
+import { cx } from '../cx';
+import { tv } from '../tv';
 
-export const tooltipVariants = sva({
-  className: `${IDENTIFIER.scope} tooltip`,
-  slots: tooltipAnatomy.keys(),
-  base: {
-    content: {
-      borderRadius: 'md',
-      boxShadow: 'sm',
-      fontWeight: 'semibold',
-      px: '3',
-      py: '2',
-      textStyle: 'xs',
-      maxWidth: '2xs',
-      zIndex: 'tooltip',
-      _open: {
-        animation: 'fade-in 0.25s ease-out',
-      },
-      _closed: {
-        animation: 'fade-out 0.2s ease-out',
-      },
-    },
-    arrow: {
-      '--arrow-size': 'var(--sizes-2)',
-    },
-    arrowTip: {
-      borderColor: 'neutral.800',
-      borderTopWidth: '1px',
-      borderLeftWidth: '1px',
-    },
+export const tooltipVariants = tv({
+  base: `${IDENTIFIER.scope} tooltip`,
+  slots: {
+    content:
+      'trds-rounded-md trds-shadow-sm trds-font-semibold trds-px-3 trds-py-2 trds-text-xs trds-max-w-40 trds-z-tooltip data-open:trds-animate-fade-in data-closed:trds-animate-fade-out',
+    arrow: '[--arrow-size:8px]',
+    arrowTip: 'trds-border-neutral-800 trds-border-t-[1px] trds-border-l-[1px]',
+    trigger: '',
   },
   variants: {
     theme: {
       neutral: {
-        content: {
-          background: 'neutral.800',
-          color: 'white',
-        },
-        arrow: {
-          '--arrow-background': 'var(--colors-neutral-800)',
-        },
-        arrowTip: {
-          borderColor: 'neutral.800',
-        },
+        content: 'trds-bg-neutral-800 trds-text-white',
+        arrow: '[--arrow-background:var(--colors-neutral-800,#1f2937)]',
+        arrowTip: 'trds-border-neutral-800',
       },
       primary: {
-        content: {
-          background: 'primary.500',
-          color: 'primary.foreground',
-        },
-        arrow: {
-          '--arrow-background': 'var(--colors-primary-500)',
-        },
-        arrowTip: {
-          borderColor: 'primary.500',
-        },
+        content: 'trds-bg-primary-500 trds-text-fg-primary',
+        arrow: 'trds-[--arrow-background:var(--colors-primary-500,#8b5cf6)]',
+        arrowTip: 'trds-border-primary-500',
       },
     },
   },
@@ -84,7 +50,7 @@ const [TooltipProvider, useTooltipContext] =
     hookName: 'useTooltipContext',
     providerName: 'TooltipProvider',
     defaultValue: {
-      classes: {},
+      classes: {} as ReturnType<typeof tooltipVariants>,
     },
   });
 
@@ -115,7 +81,7 @@ const Trigger = forwardRef<
 
   return (
     <Tooltip.Trigger
-      className={cx(classes.trigger, className)}
+      className={cx(classes.trigger(), className)}
       ref={ref}
       {...rest}
     >
@@ -135,7 +101,7 @@ const Content = forwardRef<
   return (
     <Tooltip.Positioner>
       <Tooltip.Content
-        className={cx(classes.content, className)}
+        className={cx(classes.content(), className)}
         ref={ref}
         {...rest}
       >
@@ -154,8 +120,12 @@ const Arrow = forwardRef<
   const { children, className, ...rest } = props;
 
   return (
-    <Tooltip.Arrow className={cx(classes.arrow, className)} {...rest} ref={ref}>
-      <Tooltip.ArrowTip className={classes.arrowTip} />
+    <Tooltip.Arrow
+      className={cx(classes.arrow(), className)}
+      {...rest}
+      ref={ref}
+    >
+      <Tooltip.ArrowTip className={classes.arrowTip()} />
     </Tooltip.Arrow>
   );
 });

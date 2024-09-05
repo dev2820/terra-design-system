@@ -1,6 +1,5 @@
 import { ChevronRightIcon } from 'lucide-react';
 
-import { css } from '../../styled-system/css';
 import { TreeView, type TreeViewProps } from './index';
 
 export default {
@@ -20,7 +19,7 @@ export const Default = {
   },
   render: (props: TreeViewProps) => {
     return (
-      <div className={css({ height: 600, w: 400 })}>
+      <div className="trds-w-96 trds-h-72">
         <TreeView.Root {...props}>
           <TreeView.Tree>
             <TreeView.Item value="1.0">

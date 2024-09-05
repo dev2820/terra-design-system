@@ -1,6 +1,5 @@
 import { InfoIcon } from 'lucide-react';
 
-import { css } from '../../styled-system/css';
 import { Tooltip, type TooltipProps } from './index';
 
 /**
@@ -22,13 +21,7 @@ export const Default = {
   render: (props: TooltipProps['root']) => {
     return (
       <Tooltip.Root {...props}>
-        <Tooltip.Trigger
-          className={css({
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: 1,
-          })}
-        >
+        <Tooltip.Trigger className="trds-inline-flex trds-items-center trds-gap-1">
           <InfoIcon size={16} /> Hover me
         </Tooltip.Trigger>
         <Tooltip.Content>I am a Tooltip</Tooltip.Content>
@@ -42,13 +35,7 @@ export const WithArrow = {
   render: (props: TooltipProps['root']) => {
     return (
       <Tooltip.Root {...props}>
-        <Tooltip.Trigger
-          className={css({
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: 1,
-          })}
-        >
+        <Tooltip.Trigger className="trds-inline-flex trds-items-center trds-gap-1">
           <InfoIcon size={16} /> Hover me
         </Tooltip.Trigger>
         <Tooltip.Content>
@@ -65,26 +52,13 @@ export const Theme = {
     return (
       <div>
         <Tooltip.Root theme="neutral">
-          <Tooltip.Trigger
-            className={css({
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: 1,
-              mr: 4,
-            })}
-          >
+          <Tooltip.Trigger className="trds-inline-flex trds-items-center trds-gap-1 trds-mr-4">
             <InfoIcon size={16} /> Neutral (Default)
           </Tooltip.Trigger>
           <Tooltip.Content>I am a Tooltip</Tooltip.Content>
         </Tooltip.Root>
         <Tooltip.Root theme="primary">
-          <Tooltip.Trigger
-            className={css({
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: 1,
-            })}
-          >
+          <Tooltip.Trigger className="trds-inline-flex trds-items-center trds-gap-1 trds-mr-4">
             <InfoIcon size={16} /> Primary
           </Tooltip.Trigger>
           <Tooltip.Content>I am a Tooltip</Tooltip.Content>

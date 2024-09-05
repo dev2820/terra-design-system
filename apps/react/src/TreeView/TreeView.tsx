@@ -1,4 +1,3 @@
-import { treeViewAnatomy } from '@ark-ui/anatomy';
 import { TreeView, type TreeViewRootProps } from '@ark-ui/react/tree-view';
 import { IDENTIFIER } from 'env';
 
@@ -9,99 +8,30 @@ import {
   forwardRef,
 } from 'react';
 
-import { RecipeVariantProps, cx, sva } from '../../styled-system/css';
 import { createReactContext } from '../create-react-context';
+import { cx } from '../cx';
+import { tv, VariantProps } from '../tv';
 
-export const treeViewVariant = sva({
-  className: `${IDENTIFIER.scope} treeView`,
-  slots: treeViewAnatomy.keys(),
-  base: {
-    root: {
-      width: 'full',
-    },
-    branch: {},
-    branchContent: {
-      position: 'relative',
-    },
-    branchControl: {
-      alignItems: 'center',
-      borderRadius: 'md',
-      color: 'neutral.400',
-      display: 'flex',
-      fontWeight: 'medium',
-      gap: '1.5',
-      ps: 'calc((var(--depth) - 1) * 22px)',
-      py: '1.5',
-      textStyle: 'sm',
-      transitionDuration: 'normal',
-      transitionProperty: 'background, color',
-      transitionTimingFunction: 'default',
-      _hover: {
-        background: 'neutral.100',
-        color: 'neutral.800',
-      },
-      cursor: 'pointer',
-    },
-    branchIndicator: {
-      color: 'neutral.300',
-      transformOrigin: 'center',
-      transitionDuration: 'normal',
-      transitionProperty: 'transform',
-      transitionTimingFunction: 'default',
-      '& svg': {
-        fontSize: 'md',
-        width: '4',
-        height: '4',
-      },
-      _open: {
-        color: 'primary.500',
-        transform: 'rotate(90deg)',
-      },
-    },
-    item: {
-      borderRadius: 'md',
-      color: 'neutral.400',
-      cursor: 'pointer',
-      fontWeight: 'medium',
-      position: 'relative',
-      ps: 'calc(((var(--depth) - 1) * 22px) + 22px)',
-      py: '1.5',
-      textStyle: 'sm',
-      transitionDuration: 'normal',
-      transitionProperty: 'background, color',
-      transitionTimingFunction: 'default',
-      _hover: {
-        background: 'neutral.100',
-        color: 'neutral.800',
-      },
-      _selected: {
-        background: 'neutral.100',
-        color: 'neutral.800',
-        _before: {
-          content: '""',
-          position: 'absolute',
-          left: '2',
-          top: '0',
-          width: '2px',
-          height: 'full',
-          bg: 'primary.500',
-          zIndex: '1',
-        },
-      },
-      _disabled: {
-        color: 'disabled',
-        cursor: 'not-allowed',
-        _hover: {
-          background: 'transparent',
-          color: 'disabled',
-        },
-      },
-    },
-    tree: {
-      display: 'flex',
-      flexDirection: 'column',
-      gap: '0',
-    },
+export const treeViewVariant = tv({
+  base: `${IDENTIFIER.scope} treeView`,
+  slots: {
+    root: 'trds-w-full',
+    branch: '',
+    branchContent: 'trds-relative',
+    branchText: '',
+    branchControl:
+      'trds-flex trds-items-center trds-rounded-md trds-text-neutral-400 trds-font-medium trds-gap-1.5 trds-ps-[calc((var(--depth)-1)*22px)] trds-py-1.5 trds-text-sm trds-transition trds-duration-normal trds-transition-[background,color] trds-ease-default hover:trds-bg-neutral-100 hover:trds-text-neutral-800 trds-cursor-pointer data-disabled:trds-bg-transparent',
+    branchIndicator:
+      'trds-text-neutral-300 trds-transform-origin-center trds-transition trds-duration-normal trds-transition-[transform] trds-ease-default [&_svg]:text-md [&_svg]-w-4 [&_svg]-h-4 data-open:trds-text-primary-500 data-open:trds-rotate-90',
+    item: [
+      'trds-relative trds-rounded-md trds-text-neutral-400 trds-cursor-pointer trds-font-medium',
+      'trds-ps-[calc(((var(--depth)-1)*22px)+22px)] trds-py-1.5 trds-text-sm trds-transition trds-duration-normal trds-transition-[background,color] trds-ease-default',
+      'hover:trds-bg-neutral-100 hover:trds-text-neutral-800',
+      'data-selected:trds-bg-neutral-100 data-selected:trds-text-neutral-800 data-selected:before:trds-absolute data-selected:before:trds-left-2 data-selected:before:trds-top-0 data-selected:before:trds-w-[2px] data-selected:before:trds-h-full data-selected:before:trds-bg-primary-500 data-selected:before:trds-z-elevated',
+      'data-disabled:trds-bg-transparent data-disabled:trds-text-muted data-disabled:trds-cursor-not-allowed',
+    ],
+    itemText: '',
+    tree: 'trds-flex trds-flex-col trds-gap-0',
   },
 });
 
@@ -115,12 +45,12 @@ const [TreeViewProvider, useTreeViewContext] =
     hookName: 'useTreeViewContext',
     providerName: 'TreeViewProvider',
     defaultValue: {
-      classes: {},
+      classes: {} as ReturnType<typeof treeViewVariant>,
     },
   });
 
 export type RootProps = TreeViewRootProps &
-  RecipeVariantProps<typeof treeViewVariant>;
+  VariantProps<typeof treeViewVariant>;
 
 const Root = forwardRef<ElementRef<typeof TreeView.Root>, RootProps>(
   function (props, ref) {
@@ -134,7 +64,7 @@ const Root = forwardRef<ElementRef<typeof TreeView.Root>, RootProps>(
       <TreeViewProvider value={ctx}>
         <TreeView.Root
           ref={ref}
-          className={cx(classes.root, className)}
+          className={cx(classes.root(), className)}
           {...rest}
         >
           {children}
@@ -153,7 +83,11 @@ const Tree = forwardRef<
   const { classes } = useTreeViewContext();
 
   return (
-    <TreeView.Tree className={cx(classes.tree, className)} ref={ref} {...rest}>
+    <TreeView.Tree
+      className={cx(classes.tree(), className)}
+      ref={ref}
+      {...rest}
+    >
       {children}
     </TreeView.Tree>
   );
@@ -168,7 +102,11 @@ const Item = forwardRef<
   const { classes } = useTreeViewContext();
 
   return (
-    <TreeView.Item className={cx(classes.item, className)} ref={ref} {...rest}>
+    <TreeView.Item
+      className={cx(classes.item(), className)}
+      ref={ref}
+      {...rest}
+    >
       {children}
     </TreeView.Item>
   );
@@ -184,7 +122,7 @@ const ItemText = forwardRef<
 
   return (
     <TreeView.ItemText
-      className={cx(classes.itemText, className)}
+      className={cx(classes.itemText(), className)}
       ref={ref}
       {...rest}
     >
@@ -203,7 +141,7 @@ const Branch = forwardRef<
 
   return (
     <TreeView.Branch
-      className={cx(classes.branch, className)}
+      className={cx(classes.branch(), className)}
       ref={ref}
       {...rest}
     >
@@ -222,7 +160,7 @@ const BranchText = forwardRef<
 
   return (
     <TreeView.BranchText
-      className={cx(classes.branchText, className)}
+      className={cx(classes.branchText(), className)}
       ref={ref}
       {...rest}
     >
@@ -241,7 +179,7 @@ const BranchIndicator = forwardRef<
 
   return (
     <TreeView.BranchIndicator
-      className={cx(classes.branchIndicator, className)}
+      className={cx(classes.branchIndicator(), className)}
       ref={ref}
       {...rest}
     >
@@ -260,7 +198,7 @@ const BranchControl = forwardRef<
 
   return (
     <TreeView.BranchControl
-      className={cx(classes.branchControl, className)}
+      className={cx(classes.branchControl(), className)}
       ref={ref}
       {...rest}
     >
@@ -279,7 +217,7 @@ const BranchContent = forwardRef<
 
   return (
     <TreeView.BranchContent
-      className={cx(classes.branchContent, className)}
+      className={cx(classes.branchContent(), className)}
       ref={ref}
       {...rest}
     >
