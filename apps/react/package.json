@@ -31,10 +31,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@ark-ui/anatomy": "^3.5.0",
     "@ark-ui/react": "^3.6.2",
     "@chromatic-com/storybook": "^1.5.0",
-    "@pandacss/dev": "^0.40.1",
     "@storybook/addon-essentials": "^8.1.6",
     "@storybook/addon-interactions": "^8.1.6",
     "@storybook/addon-links": "^8.1.6",

@@ -1,6 +1,6 @@
 # terra-design-system
 
-pandacss + ark ui(park ui)를 통해 만든 개인용 디자인 시스템
+tailwind + ark ui(park ui)를 통해 만든 개인용 디자인 시스템
 
 ## TODO
 
@@ -9,4 +9,3 @@ pandacss + ark ui(park ui)를 통해 만든 개인용 디자인 시스템
   - [ ] foreground 색
   - [ ] background 색
 - [ ] 다크모드 지원
-- [ ] npm 빌드
