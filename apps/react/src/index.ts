@@ -12,7 +12,6 @@ export * from './Combobox';
 export * from './DatePicker';
 export * from './Dialog';
 export * from './Drawer';
-// 여기까지 tailwind 변환
 export * from './Field';
 export * from './FileUpload';
 export * from './IconButton';
@@ -36,4 +35,3 @@ export * from './Textarea';
 export * from './Toast';
 export * from './Tooltip';
 export * from './TreeView';
-export * from './typography';
