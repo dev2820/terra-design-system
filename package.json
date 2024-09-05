@@ -33,7 +33,7 @@
         "default": "./apps/react/dist/index.cjs"
       }
     },
-    "./react/style": "./apps/react/dist/styles.css"
+    "./react/style": "./apps/react/dist/style.css"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.0",
