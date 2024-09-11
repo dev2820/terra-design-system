@@ -3,8 +3,8 @@ import plugin from 'tailwindcss/plugin';
 import {
   colors as semanticColors,
   duration as semanticDuration,
-} from 'theme/tailwind/semanticToken';
-import { colors, duration, zIndex } from 'theme/tailwind/token';
+} from 'theme/semanticToken';
+import { colors, duration, zIndex } from 'theme/token';
 
 export default {
   content: ['./src/**/*.{js,jsx,ts,tsx,mdx}'],
