@@ -9,7 +9,7 @@ import { tv, VariantProps } from '../tv';
 export const ratingGroupVariant = tv({
   base: `${IDENTIFIER.scope} ratingGroup`,
   slots: {
-    root: 'trds-flex trds-flex-col trds-gap-1.5 trds-text-yellow-300',
+    root: 'trds-flex trds-flex-col trds-gap-1.5 trds-text-primary',
     control: 'trds-flex',
     item: 'trds-cursor-pointer trds-transition trds-duration-normal trds-transition-[color,fill] trds-ease-default trds-fill-transparent data-highlighted:trds-fill-current focus-visible:trds-outline-none data-disabled:trds-cursor-not-allowed data-disabled:trds-opacity-40',
   },

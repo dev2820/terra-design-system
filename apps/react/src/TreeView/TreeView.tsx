@@ -20,14 +20,14 @@ export const treeViewVariant = tv({
     branchContent: 'trds-relative',
     branchText: '',
     branchControl:
-      'trds-flex trds-items-center trds-rounded-md trds-text-neutral-400 trds-font-medium trds-gap-1.5 trds-ps-[calc((var(--depth)-1)*22px)] trds-py-1.5 trds-text-sm trds-transition trds-duration-normal trds-transition-[background,color] trds-ease-default hover:trds-bg-neutral-100 hover:trds-text-neutral-800 trds-cursor-pointer data-disabled:trds-bg-transparent',
+      'trds-flex trds-items-center trds-rounded-md trds-text-fg-caption trds-font-medium trds-gap-1.5 trds-ps-[calc((var(--depth)-1)*22px)] trds-py-1.5 trds-text-sm trds-transition trds-duration-normal trds-transition-[background,color] trds-ease-default hover:trds-bg-layer1 hover:trds-text-fg-highlight trds-cursor-pointer data-disabled:trds-bg-transparent',
     branchIndicator:
-      'trds-text-neutral-300 trds-transform-origin-center trds-transition trds-duration-normal trds-transition-[transform] trds-ease-default [&_svg]:text-md [&_svg]-w-4 [&_svg]-h-4 data-open:trds-text-primary-500 data-open:trds-rotate-90',
+      'trds-text-fg-caption trds-transform-origin-center trds-transition trds-duration-normal trds-transition-[transform] trds-ease-default [&_svg]:text-md [&_svg]-w-4 [&_svg]-h-4 data-open:trds-text-primary-500 data-open:trds-rotate-90',
     item: [
-      'trds-relative trds-rounded-md trds-text-neutral-400 trds-cursor-pointer trds-font-medium',
+      'trds-relative trds-rounded-md trds-text-fg-caption trds-cursor-pointer trds-font-medium',
       'trds-ps-[calc(((var(--depth)-1)*22px)+22px)] trds-py-1.5 trds-text-sm trds-transition trds-duration-normal trds-transition-[background,color] trds-ease-default',
-      'hover:trds-bg-neutral-100 hover:trds-text-neutral-800',
-      'data-selected:trds-bg-neutral-100 data-selected:trds-text-neutral-800 data-selected:before:trds-absolute data-selected:before:trds-left-2 data-selected:before:trds-top-0 data-selected:before:trds-w-[2px] data-selected:before:trds-h-full data-selected:before:trds-bg-primary-500 data-selected:before:trds-z-elevated',
+      'hover:trds-bg-layer1 hover:trds-text-fg-highlight',
+      'data-selected:trds-bg-layer1 data-selected:trds-text-fg-highlight data-selected:before:trds-absolute data-selected:before:trds-left-2 data-selected:before:trds-top-0 data-selected:before:trds-w-[2px] data-selected:before:trds-h-full data-selected:before:trds-bg-primary data-selected:before:trds-z-elevated',
       'data-disabled:trds-bg-transparent data-disabled:trds-text-muted data-disabled:trds-cursor-not-allowed',
     ],
     itemText: '',

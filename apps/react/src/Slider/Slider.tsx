@@ -18,7 +18,7 @@ export const sliderVariants = tv({
     root: 'trds-flex trds-flex-col trds-gap-1 trds-w-full',
     control: 'trds-relative trds-flex trds-items-center',
     track:
-      'trds-bg-neutral-200 trds-rounded-full trds-overflow-hidden trds-flex-1 trds-cursor-pointer data-disabled:trds-cursor-not-allowed',
+      'trds-bg-track trds-rounded-full trds-overflow-hidden trds-flex-1 trds-cursor-pointer data-disabled:trds-cursor-not-allowed',
     range: 'trds-bg-primary data-disabled:trds-bg-muted',
     thumb:
       'trds-bg-white trds-border-primary trds-rounded-full trds-border-2 trds-shadow-md trds-outline-none trds-z-1 trds-cursor-pointer data-disabled:trds-border-muted data-disabled:trds-cursor-not-allowed',

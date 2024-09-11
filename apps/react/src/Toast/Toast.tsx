@@ -19,7 +19,7 @@ export const toastVariants = tv({
       'trds-bg-white trds-rounded-lg trds-shadow-lg trds-min-w-[20rem]',
       'trds-h-[var(--height)] trds-w-[var(--width)] trds-opacity-[var(--opacity)]',
       'trds-break-anywhere trds-p-4 trds-relative',
-      'trds-custom-translate trds-will-change-[translate,opacity,scale] trds-z-[var(--z-index)] trds-transition trds-duration-300 trds-transition-[translate,scale,opacity,height] trds-ease-default',
+      'trds-custom-translate trds-will-change-[translate,opacity,scale] trds-z-[var(--z-index)] trds-transition trds-duration-normal trds-transition-[translate,scale,opacity,height] trds-ease-default',
     ],
     title: 'trds-text-fg-title trds-font-semibold trds-text-sm trds-mb-4',
     description: 'trds-text-fg-description trds-text-sm',

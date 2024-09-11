@@ -1,4 +1,4 @@
-import { Avatar, Button } from '../index';
+import { Avatar, Button, Input } from '../index';
 import { Card, type CardProps } from './index';
 
 const variants = [
@@ -35,8 +35,8 @@ export const Default = {
           <Card.Description>Welcome! Begin your journey here.</Card.Description>
         </Card.Header>
         <Card.Content className="trds-flex trds-flex-col">
-          <input type="text" placeholder="your email" />
-          <input type="password" placeholder="your password" />
+          <Input type="text" placeholder="your email" className="trds-mb-2" />
+          <Input type="password" placeholder="your password" />
         </Card.Content>
         <Card.Footer className="trds-flex trds-flex-row trds-gap-4">
           <Button className="trds-flex-1">Sign in</Button>

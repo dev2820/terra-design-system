@@ -6,9 +6,6 @@ import { forwardRef, type ComponentProps, type ReactNode } from 'react';
 import { cx } from '../cx';
 import { tv, VariantProps } from '../tv';
 
-/**
- * TODO: Text Size도 지정하기
- */
 const buttonVariants = tv({
   base: [
     `${IDENTIFIER.scope} button`,
@@ -42,13 +39,13 @@ const buttonVariants = tv({
       theme: 'primary',
       variant: 'filled',
       class:
-        'trds-bg-primary trds-text-fg-primary disabled:trds-bg-primary enabled:hover:trds-bg-primary-600 enabled:active:trds-bg-primary-700',
+        'trds-bg-primary trds-text-fg-primary disabled:trds-bg-primary enabled:hover:trds-bg-primary-hover enabled:active:trds-bg-primary-pressed',
     },
     {
       theme: 'neutral',
       variant: 'filled',
       class:
-        'trds-bg-neutral trds-text-fg-neutral disabled:trds-bg-neutral enabled:hover:trds-bg-neutral-200 enabled:active:trds-bg-neutral-300',
+        'trds-bg-neutral trds-text-fg-neutral disabled:trds-bg-neutral enabled:hover:trds-bg-neutral-hover enabled:active:trds-bg-neutral-pressed',
     },
     {
       theme: 'whiteAlpha',

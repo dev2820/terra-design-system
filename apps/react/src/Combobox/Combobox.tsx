@@ -12,7 +12,7 @@ import { ElementRef, forwardRef, ReactNode } from 'react';
 import { createReactContext } from '../create-react-context';
 import { cx } from '../cx';
 import { Input } from '../Input';
-import { tv, VariantProps } from '../tv';
+import { tv, type VariantProps } from '../tv';
 
 export const comboboxVariant = tv({
   base: `${IDENTIFIER.scope} combobox`,
@@ -23,8 +23,8 @@ export const comboboxVariant = tv({
       'trds-absolute trds-bottom-0 trds-right-0 trds-top-0 trds-text-muted trds-cursor-pointer',
     input: 'trds-w-full',
     content:
-      'trds-bg-white trds-rounded-lg trds-shadow-lg trds-flex trds-flex-col trds-z-dropdown data-hidden:trds-hidden data-open:trds-animate-fade-in data-closed:trds-animate-fade-out focus-visible:trds-outline-2 focus-visible:trds-outline-solid focus-visible:trds-outline-neutral-300 focus-visible:trds-outline-offset-2',
-    item: 'trds-flex trds-items-center trds-justify-between trds-rounded-md trds-cursor-pointer trds-transition-fast trds-transition-[background,color] trds-ease-default hover:trds-bg-neutral-100 data-highlighted:trds-bg-neutral-100 disabled:trds-text-disabled disabled:trds-cursor-not-allowed disabled:hover:trds-bg-transparent disabled:hover:trds-text-disabled',
+      'trds-bg-white trds-rounded-lg trds-shadow-lg trds-flex trds-flex-col trds-z-dropdown data-hidden:trds-hidden data-open:trds-animate-fade-in data-closed:trds-animate-fade-out focus-visible:trds-outline-2 focus-visible:trds-outline-solid focus-visible:trds-outline-boundary focus-visible:trds-outline-offset-2',
+    item: 'trds-flex trds-items-center trds-justify-between trds-rounded-md trds-cursor-pointer trds-transition-fast trds-transition-[background,color] trds-ease-default hover:trds-bg-layer1 data-highlighted:trds-bg-layer1 disabled:trds-text-muted disabled:trds-cursor-not-allowed disabled:hover:trds-bg-transparent disabled:hover:trds-text-muted',
     itemGroupLabel: 'trds-font-semibold trds-text-sm',
     itemIndicator: 'trds-text-black',
     itemText: '',

@@ -19,8 +19,8 @@ export const avatarVariants = tv({
   base: `${IDENTIFIER.scope} avatar`,
   slots: {
     root: 'trds-rounded-full trds-overflow-hidden',
-    fallback: 'trds-bg-neutral-200',
-    image: 'trds-bg-neutral-200',
+    fallback: 'trds-bg-muted',
+    image: 'trds-bg-muted',
   },
   variants: {
     size: {

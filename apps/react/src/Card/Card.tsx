@@ -23,7 +23,7 @@ export const cardVariants = tv({
         root: 'trds-shadow-md',
       },
       filled: {
-        root: 'trds-bg-card-filled',
+        root: 'trds-bg-layer1',
       },
       outline: {
         root: 'trds-border trds-border-boundary',
