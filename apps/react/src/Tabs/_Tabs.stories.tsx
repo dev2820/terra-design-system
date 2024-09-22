@@ -55,7 +55,7 @@ export const Sizes = {
   render: (props: TabsProps['root']) => {
     return (
       <>
-        <div className="trds-w-96 trds-flex trds-flex-col trds-gap-4">
+        <div className="w-96 flex flex-col gap-4">
           <Tabs.Root {...props} size="sm">
             <Tabs.List>
               <Tabs.Trigger value="react">React</Tabs.Trigger>
@@ -94,7 +94,7 @@ export const Variants = {
   render: () => {
     return (
       <>
-        <div className="trds-w-96 trds-flex trds-flex-col trds-gap-4">
+        <div className="w-96 flex flex-col gap-4">
           <Tabs.Root variant="enclosed" defaultValue="react">
             <Tabs.List>
               <Tabs.Trigger value="react">React</Tabs.Trigger>

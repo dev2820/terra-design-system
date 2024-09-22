@@ -14,37 +14,37 @@ import { tv, VariantProps } from '../tv';
 export const radioGroupVariant = tv({
   base: `${IDENTIFIER.scope} radioGroup`,
   slots: {
-    root: 'trds-flex trds-flex-col data-vertical:trds-flex-col data-horizontal:trds-flex-row',
-    item: 'trds-flex trds-items-center trds-cursor-pointer data-disabled:trds-cursor-not-allowed',
+    root: 'flex flex-col data-vertical:flex-col data-horizontal:flex-row',
+    item: 'flex items-center cursor-pointer data-disabled:cursor-not-allowed',
     itemControl: [
-      'trds-bg-transparent trds-border-boundary trds-rounded-full trds-border-2 trds-transition trds-duration-normal trds-ease-default',
-      'data-checked:trds-bg-transparent data-checked:trds-border-primary data-checked:trds-outline data-checked:trds-outline-primary',
-      'data-disabled:trds-border-muted data-disabled:trds-text-muted data-disabled:trds-border-muted data-disabled:trds-outline-muted',
+      'bg-transparent border-boundary rounded-full border-2 transition duration-normal ease-default',
+      'data-checked:bg-transparent data-checked:border-primary data-checked:outline data-checked:outline-primary',
+      'data-disabled:border-muted data-disabled:text-muted data-disabled:border-muted data-disabled:outline-muted',
     ],
-    itemText: 'trds-font-medium data-disabled:trds-text-muted',
+    itemText: 'font-medium data-disabled:text-muted',
   },
   variants: {
     size: {
       sm: {
-        root: 'data-vertical:trds-gap-3 data-horizontal:trds-gap-4',
-        item: 'trds-gap-2',
+        root: 'data-vertical:gap-3 data-horizontal:gap-4',
+        item: 'gap-2',
         itemControl:
-          'trds-w-4 trds-h-4 data-checked:trds-outline-[4px] data-checked:trds-outline-offset-[-5px]',
-        itemText: 'trds-text-sm',
+          'w-4 h-4 data-checked:outline-[4px] data-checked:outline-offset-[-5px]',
+        itemText: 'text-sm',
       },
       md: {
-        root: 'data-vertical:trds-gap-4 data-horizontal:trds-gap-6',
-        item: 'trds-gap-3',
+        root: 'data-vertical:gap-4 data-horizontal:gap-6',
+        item: 'gap-3',
         itemControl:
-          'trds-w-5 trds-h-5 data-checked:trds-outline-[5px] data-checked:trds-outline-offset-[-6px]',
-        itemText: 'trds-text-md',
+          'w-5 h-5 data-checked:outline-[5px] data-checked:outline-offset-[-6px]',
+        itemText: 'text-md',
       },
       lg: {
-        root: 'data-vertical:trds-gap-5 data-horizontal:trds-gap-8',
-        item: 'trds-gap-4',
+        root: 'data-vertical:gap-5 data-horizontal:gap-8',
+        item: 'gap-4',
         itemControl:
-          'trds-w-6 trds-h-6 data-checked:trds-outline-[6px] data-checked:trds-outline-offset-[-7px]',
-        itemText: 'trds-text-lg',
+          'w-6 h-6 data-checked:outline-[6px] data-checked:outline-offset-[-7px]',
+        itemText: 'text-lg',
       },
     },
   },

@@ -9,10 +9,10 @@ import { tv, VariantProps } from '../tv';
 const iconButtonVariants = tv({
   variants: {
     size: {
-      xs: 'trds-h-8 trds-w-8 trds-px-0 trds-py-0',
-      sm: 'trds-h-9 trds-w-9 trds-px-0 trds-py-0',
-      md: 'trds-h-10 trds-w-10 trds-px-0 trds-py-0',
-      lg: 'trds-h-11 trds-w-11 trds-px-0 trds-py-0',
+      xs: 'h-8 w-8 px-0 py-0',
+      sm: 'h-9 w-9 px-0 py-0',
+      md: 'h-10 w-10 px-0 py-0',
+      lg: 'h-11 w-11 px-0 py-0',
     },
   },
   defaultVariants: {

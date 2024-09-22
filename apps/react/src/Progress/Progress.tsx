@@ -9,29 +9,29 @@ import { tv, VariantProps } from '../tv';
 export const progressVariants = tv({
   base: `${IDENTIFIER.scope} progress`,
   slots: {
-    root: 'trds-flex trds-items-center trds-flex-col trds-gap-1.5 trds-w-full',
-    label: 'trds-font-medium trds-text-sm',
-    track: 'trds-bg-track trds-rounded-full trds-overflow-hidden trds-w-full',
+    root: 'flex items-center flex-col gap-1.5 w-full',
+    label: 'font-medium text-sm',
+    track: 'bg-track rounded-full overflow-hidden w-full',
     range:
-      'trds-bg-primary trds-h-full trds-transition-[width] trds-duration-[0.2s] trds-ease-in-out [--translate-x:-100%]',
+      'bg-primary h-full transition-[width] duration-[0.2s] ease-in-out [--translate-x:-100%]',
     circle: '',
-    circleTrack: 'trds-stroke-track',
+    circleTrack: 'stroke-track',
     circleRange:
-      'trds-stroke-primary trds-transition-[stroke-dasharray,stroke] trds-duration-[0.6s]',
-    valueText: 'trds-text-sm',
+      'stroke-primary transition-[stroke-dasharray,stroke] duration-[0.6s]',
+    valueText: 'text-sm',
   },
   variants: {
     size: {
       sm: {
-        track: 'trds-h-1.5',
+        track: 'h-1.5',
         circle: '[--size:36px] [--thickness:4px]',
       },
       md: {
-        track: 'trds-h-2',
+        track: 'h-2',
         circle: '[--size:40px] [--thickness:4px]',
       },
       lg: {
-        track: 'trds-h-2.5',
+        track: 'h-2.5',
         circle: '[--size:44px] [--thickness:4px]',
       },
     },

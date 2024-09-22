@@ -9,13 +9,13 @@ const badgeVariants = tv({
   base: [
     IDENTIFIER.scope,
     'badge',
-    'trds-inline-flex trds-items-center trds-whitespace-nowrap trds-rounded-full trds-text-xs trds-font-semibold trds-border trds-px-[10px] trds-py-[2px] trds-transition-colors',
+    'inline-flex items-center whitespace-nowrap rounded-full text-xs font-semibold border px-[10px] py-[2px] transition-colors',
   ],
   variants: {
     variant: {
       filled: '',
       subtle: '',
-      outline: 'trds-bg-transparent',
+      outline: 'bg-transparent',
     },
     theme: {
       primary: '',
@@ -32,27 +32,27 @@ const badgeVariants = tv({
     {
       variant: 'filled',
       theme: 'primary',
-      class: 'trds-bg-primary-500 trds-text-fg-primary trds-border-primary',
+      class: 'bg-primary-500 text-fg-primary border-primary',
     },
     {
       variant: 'filled',
       theme: 'error',
-      class: 'trds-bg-error trds-text-fg-error trds-border-error',
+      class: 'bg-error text-fg-error border-error',
     },
     {
       variant: 'filled',
       theme: 'warning',
-      class: 'trds-bg-warning trds-text-fg-warning trds-border-warning',
+      class: 'bg-warning text-fg-warning border-warning',
     },
     {
       variant: 'filled',
       theme: 'success',
-      class: 'trds-bg-success trds-text-fg-success trds-border-success',
+      class: 'bg-success text-fg-success border-success',
     },
     {
       variant: 'filled',
       theme: 'info',
-      class: 'trds-bg-info trds-text-fg-info trds-border-info',
+      class: 'bg-info text-fg-info border-info',
     },
     /**
      * subtle
@@ -60,30 +60,27 @@ const badgeVariants = tv({
     {
       variant: 'subtle',
       theme: 'primary',
-      class:
-        'trds-bg-primary-light trds-text-primary trds-border-primary-light',
+      class: 'bg-primary-light text-primary border-primary-light',
     },
     {
       variant: 'subtle',
       theme: 'error',
-      class: 'trds-bg-error-light trds-text-error trds-border-error-light',
+      class: 'bg-error-light text-error border-error-light',
     },
     {
       variant: 'subtle',
       theme: 'warning',
-      class:
-        'trds-bg-warning-light trds-text-warning trds-border-warning-light',
+      class: 'bg-warning-light text-warning border-warning-light',
     },
     {
       variant: 'subtle',
       theme: 'success',
-      class:
-        'trds-bg-success-light trds-text-success trds-border-success-light',
+      class: 'bg-success-light text-success border-success-light',
     },
     {
       variant: 'subtle',
       theme: 'info',
-      class: 'trds-bg-info-light trds-text-info trds-border-info-light',
+      class: 'bg-info-light text-info border-info-light',
     },
 
     /**
@@ -92,27 +89,27 @@ const badgeVariants = tv({
     {
       variant: 'outline',
       theme: 'primary',
-      class: 'trds-text-primary trds-border-primary',
+      class: 'text-primary border-primary',
     },
     {
       variant: 'outline',
       theme: 'error',
-      class: 'trds-text-error trds-border-error',
+      class: 'text-error border-error',
     },
     {
       variant: 'outline',
       theme: 'warning',
-      class: 'trds-text-warning trds-border-warning',
+      class: 'text-warning border-warning',
     },
     {
       variant: 'outline',
       theme: 'success',
-      class: 'trds-text-success trds-border-success',
+      class: 'text-success border-success',
     },
     {
       variant: 'outline',
       theme: 'info',
-      class: 'trds-text-info trds-border-info',
+      class: 'text-info border-info',
     },
   ],
   defaultVariants: {

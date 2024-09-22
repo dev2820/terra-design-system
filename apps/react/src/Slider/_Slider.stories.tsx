@@ -25,7 +25,7 @@ export const Default = {
     defaultValue: [30],
   },
   render: (props: SliderProps) => {
-    return <Slider {...props} className="trds-w-48" />;
+    return <Slider {...props} className="w-48" />;
   },
 };
 
@@ -34,7 +34,7 @@ export const Disabled = {
     defaultValue: [30],
   },
   render: (props: SliderProps) => {
-    return <Slider {...props} className="trds-w-48" disabled={true} />;
+    return <Slider {...props} className="w-48" disabled={true} />;
   },
 };
 
@@ -46,7 +46,7 @@ export const Step = {
     defaultValue: [30],
   },
   render: (props: SliderProps) => {
-    return <Slider {...props} className="trds-w-48" />;
+    return <Slider {...props} className="w-48" />;
   },
 };
 
@@ -58,10 +58,10 @@ export const Size = {
   },
   render: (props: SliderProps) => {
     return (
-      <div className="trds-flex trds-flex-col trds-gap-4">
-        <Slider {...props} size={'sm'} className="trds-w-48" />
-        <Slider {...props} size={'md'} className="trds-w-48" />
-        <Slider {...props} size={'lg'} className="trds-w-48" />
+      <div className="flex flex-col gap-4">
+        <Slider {...props} size={'sm'} className="w-48" />
+        <Slider {...props} size={'md'} className="w-48" />
+        <Slider {...props} size={'lg'} className="w-48" />
       </div>
     );
   },
@@ -87,7 +87,7 @@ export const Markers = {
       <Slider
         {...props}
         markers={markers}
-        className="trds-w-48 trds-text-blackAlpha-500"
+        className="w-48 text-blackAlpha-500"
       />
     );
   },
@@ -100,6 +100,6 @@ export const Multiple = {
     defaultValue: [30, 60],
   },
   render: (props: SliderProps) => {
-    return <Slider {...props} multiple={true} className="trds-w-48" />;
+    return <Slider {...props} multiple={true} className="w-48" />;
   },
 };

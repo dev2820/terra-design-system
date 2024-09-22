@@ -31,11 +31,11 @@ const languages = ['Javascript', 'Typescript'] as const;
 
 export const Default = {
   args: {
-    className: 'trds-w-96',
+    className: 'w-96',
   },
   render: (props: SelectProps['root']) => {
     return (
-      <div className="trds-flex trds-w-48 trds-h-24">
+      <div className="flex w-48 h-24">
         <Select.Root
           {...props}
           items={[...frameworks, ...languages, 'None']}
@@ -64,11 +64,11 @@ export const Default = {
 
 export const MultiSelect = {
   args: {
-    className: 'trds-w-96',
+    className: 'w-96',
   },
   render: (props: SelectProps['root']) => {
     return (
-      <div className="trds-flex trds-w-48 trds-h-96">
+      <div className="flex w-48 h-96">
         <Select.Root
           {...props}
           items={[...frameworks, ...languages, 'None']}

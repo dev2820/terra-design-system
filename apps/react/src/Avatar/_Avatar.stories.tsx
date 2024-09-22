@@ -35,7 +35,7 @@ export const Size = {
   render: (props: AvatarProps) => {
     const sizes = ['sm', 'md', 'lg'] as AvatarProps['size'][];
     return (
-      <div className={'trds-flex trds-flex-row trds-gap-1'}>
+      <div className={'flex flex-row gap-1'}>
         {sizes.map(size => (
           <Avatar size={size} key={size} {...props} />
         ))}
@@ -56,7 +56,7 @@ export const ImageWithChildren = {
 export const Fallback = {
   args: {
     alt: 'pravatar',
-    fallback: <UserIcon size={40} className={'trds-bg-neutral-200'} />,
+    fallback: <UserIcon size={40} className={'bg-neutral-200'} />,
   },
   render: (props: AvatarProps) => {
     return <Avatar {...props} />;

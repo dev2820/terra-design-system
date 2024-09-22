@@ -17,13 +17,13 @@ export const dialogVariants = tv({
   base: `${IDENTIFIER.scope} dialog`,
   slots: {
     backdrop:
-      'trds-backdrop-blur-[4px] trds-bg-blackAlpha-700 trds-h-[100vh] trds-w-[100vw] trds-left-0 trds-top-0 trds-fixed trds-z-overlay data-open:trds-animate-backdrop-in data-closed:trds-animate-backdrop-out dark:trds-bg-whiteAlpha-700',
+      'backdrop-blur-[4px] bg-blackAlpha-700 h-[100vh] w-[100vw] left-0 top-0 fixed z-overlay data-open:animate-backdrop-in data-closed:animate-backdrop-out dark:bg-whiteAlpha-700',
     positioner:
-      'trds-flex trds-items-center trds-justify-center trds-fixed trds-left-0 trds-top-0 trds-w-[100vw] trds-h-[100dvh] trds-overflow-auto trds-z-modal',
+      'flex items-center justify-center fixed left-0 top-0 w-[100vw] h-[100dvh] overflow-auto z-modal',
     content:
-      'trds-bg-white trds-rounded-lg trds-shadow-lg trds-min-w-sm trds-relative trds-duration-normal data-open:trds-animate-dialog-in data-closed:trds-animate-dialog-out',
-    title: 'trds-text-fg-title trds-font-semibold trds-text-lg trds-mb-4',
-    description: 'trds-text-fg-description trds-text-sm trds-mb-4',
+      'bg-white rounded-lg shadow-lg min-w-sm relative duration-normal data-open:animate-dialog-in data-closed:animate-dialog-out',
+    title: 'text-fg-title font-semibold text-lg mb-4',
+    description: 'text-fg-description text-sm mb-4',
     trigger: '',
     closeTrigger: '',
   },

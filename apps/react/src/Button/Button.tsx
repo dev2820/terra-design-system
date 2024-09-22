@@ -9,14 +9,14 @@ import { tv, VariantProps } from '../tv';
 const buttonVariants = tv({
   base: [
     `${IDENTIFIER.scope} button`,
-    'trds-inline-flex trds-justify-center trds-place-items-center trds-whitespace-nowrap trds-rounded-lg trds-text-md trds-font-medium trds-gap-2 trds-transition-colors trds-cursor-pointer',
-    'disabled:trds-cursor-not-allowed disabled:trds-opacity-50',
+    'inline-flex justify-center place-items-center whitespace-nowrap rounded-lg text-md font-medium gap-2 transition-colors cursor-pointer',
+    'disabled:cursor-not-allowed disabled:opacity-50',
   ],
   variants: {
     variant: {
       filled: '',
-      outline: 'trds-border trds-border-solid',
-      ghost: 'trds-bg-transparent',
+      outline: 'border border-solid',
+      ghost: 'bg-transparent',
     },
     theme: {
       primary: '',
@@ -25,13 +25,13 @@ const buttonVariants = tv({
       blackAlpha: '',
     },
     size: {
-      xs: 'trds-h-8 trds-px-2',
-      sm: 'trds-h-9 trds-px-3',
-      md: 'trds-h-10 trds-px-4',
-      lg: 'trds-h-11 trds-px-6',
+      xs: 'h-8 px-2',
+      sm: 'h-9 px-3',
+      md: 'h-10 px-4',
+      lg: 'h-11 px-6',
     },
     loading: {
-      true: 'disabled:trds-cursor-wait',
+      true: 'disabled:cursor-wait',
     },
   },
   compoundVariants: [
@@ -39,73 +39,73 @@ const buttonVariants = tv({
       theme: 'primary',
       variant: 'filled',
       class:
-        'trds-bg-primary trds-text-fg-primary disabled:trds-bg-primary enabled:hover:trds-bg-primary-hover enabled:active:trds-bg-primary-pressed',
+        'bg-primary text-fg-primary disabled:bg-primary enabled:hover:bg-primary-hover enabled:active:bg-primary-pressed',
     },
     {
       theme: 'neutral',
       variant: 'filled',
       class:
-        'trds-bg-neutral trds-text-fg-neutral disabled:trds-bg-neutral enabled:hover:trds-bg-neutral-hover enabled:active:trds-bg-neutral-pressed',
+        'bg-neutral text-fg-neutral disabled:bg-neutral enabled:hover:bg-neutral-hover enabled:active:bg-neutral-pressed',
     },
     {
       theme: 'whiteAlpha',
       variant: 'filled',
       class:
-        'trds-bg-whiteAlpha-500 trds-text-white disabled:trds-bg-whiteAlpha enabled:hover:trds-bg-whiteAlpha-600 enabled:active:trds-bg-whiteAlpha-700',
+        'bg-whiteAlpha-500 text-white disabled:bg-whiteAlpha enabled:hover:bg-whiteAlpha-600 enabled:active:bg-whiteAlpha-700',
     },
     {
       theme: 'blackAlpha',
       variant: 'filled',
       class:
-        'trds-bg-blackAlpha-500 trds-text-black disabled:trds-bg-blackAlpha enabled:hover:trds-bg-blackAlpha-600 enabled:active:trds-bg-blackAlpha-700',
+        'bg-blackAlpha-500 text-black disabled:bg-blackAlpha enabled:hover:bg-blackAlpha-600 enabled:active:bg-blackAlpha-700',
     },
     {
       theme: 'primary',
       variant: 'outline',
       class:
-        'trds-bg-transparent trds-text-primary-500 trds-border-primary-500 enabled:hover:trds-bg-primary-100 enabled:active:trds-bg-primary-200',
+        'bg-transparent text-primary-500 border-primary-500 enabled:hover:bg-primary-100 enabled:active:bg-primary-200',
     },
     {
       theme: 'neutral',
       variant: 'outline',
       class:
-        'trds-bg-transparent trds-text-neutral-500 trds-border-neutral-300 disabled:trds-bg-transparent enabled:hover:trds-bg-neutral-100 enabled:active:trds-bg-neutral-200',
+        'bg-transparent text-neutral-500 border-neutral-300 disabled:bg-transparent enabled:hover:bg-neutral-100 enabled:active:bg-neutral-200',
     },
     {
       theme: 'whiteAlpha',
       variant: 'outline',
       class:
-        'trds-bg-transparent trds-text-white trds-border-whiteAlpha-300 disabled:trds-bg-transparent enabled:hover:trds-bg-whiteAlpha-100 enabled:active:trds-bg-whiteAlpha-200',
+        'bg-transparent text-white border-whiteAlpha-300 disabled:bg-transparent enabled:hover:bg-whiteAlpha-100 enabled:active:bg-whiteAlpha-200',
     },
     {
       theme: 'blackAlpha',
       variant: 'outline',
       class:
-        'trds-bg-transparent trds-text-black trds-border-blackAlpha-300 disabled:trds-bg-transparent enabled:hover:trds-bg-blackAlpha-100 enabled:active:trds-bg-blackAlpha-200',
+        'bg-transparent text-black border-blackAlpha-300 disabled:bg-transparent enabled:hover:bg-blackAlpha-100 enabled:active:bg-blackAlpha-200',
     },
     {
       theme: 'primary',
       variant: 'ghost',
       class:
-        'trds-bg-transparent trds-text-primary-500 disabled:trds-bg-transparent enabled:hover:trds-bg-primary-100 enabled:active:trds-bg-primary-200',
+        'bg-transparent text-primary-500 disabled:bg-transparent enabled:hover:bg-primary-100 enabled:active:bg-primary-200',
     },
     {
       theme: 'neutral',
       variant: 'ghost',
       class:
-        'trds-bg-transparent trds-text-neutral-500 disabled:trds-bg-transparent enabled:hover:trds-bg-neutral-100 enabled:active:trds-bg-neutral-200',
+        'bg-transparent text-neutral-500 disabled:bg-transparent enabled:hover:bg-neutral-100 enabled:active:bg-neutral-200',
     },
     {
       theme: 'whiteAlpha',
       variant: 'ghost',
       class:
-        'trds-bg-transparent trds-text-white disabled:trds-bg-transparent enabled:hover:trds-bg-whiteAlpha-100 enabled:active:trds-bg-whiteAlpha-200',
+        'bg-transparent text-white disabled:bg-transparent enabled:hover:bg-whiteAlpha-100 enabled:active:bg-whiteAlpha-200',
     },
     {
       theme: 'blackAlpha',
       variant: 'ghost',
       class:
-        'trds-bg-transparent trds-text-black disabled:trds-bg-transparent enabled:hover:trds-bg-blackAlpha-100 enabled:active:trds-bg-blackAlpha-200',
+        'bg-transparent text-black disabled:bg-transparent enabled:hover:bg-blackAlpha-100 enabled:active:bg-blackAlpha-200',
     },
   ],
   defaultVariants: {
@@ -129,9 +129,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     const {
       type = 'button',
       loading = false,
-      loadingIcon = (
-        <LoaderCircleIcon className="trds-animate-spin" size={20} />
-      ),
+      loadingIcon = <LoaderCircleIcon className="animate-spin" size={20} />,
       leftIcon,
       rightIcon,
       disabled = false,

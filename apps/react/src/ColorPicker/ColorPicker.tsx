@@ -17,22 +17,21 @@ import { tv } from '../tv';
 export const colorPickerVariants = tv({
   base: `${IDENTIFIER.scope} colorPicker`,
   slots: {
-    root: 'trds-flex trds-flex-col trds-gap-1.5',
-    control: 'trds-flex trds-flex-row trds-gap-2',
+    root: 'flex flex-col gap-1.5',
+    control: 'flex flex-row gap-2',
     content:
-      'trds-bg-white trds-rounded-lg trds-shadow-lg trds-flex trds-flex-col trds-max-w-sm trds-p-4 trds-z-dropdown data-open:trds-animate-fade-in data-closed:trds-animate-fade-out',
-    area: 'trds-h-36 trds-rounded-lg trds-overflow-hidden',
+      'bg-white rounded-lg shadow-lg flex flex-col max-w-sm p-4 z-dropdown data-open:animate-fade-in data-closed:animate-fade-out',
+    area: 'h-36 rounded-lg overflow-hidden',
     areaThumb:
-      'trds-rounded-full trds-h-2.5 trds-w-2.5 trds-shadow-[0_0_0_2px_white,0_0_2px_1px_black] trds-outline-none',
-    areaBackground: 'trds-h-full',
-    channelSlider: 'trds-rounded-lg',
-    channelSliderTrack: 'trds-h-3 trds-rounded-lg',
-    swatchGroup: 'trds-grid trds-grid-cols-7 trds-gap-2 trds-bg-white',
-    swatch:
-      'trds-h-7 trds-w-7 trds-rounded-lg trds-shadow-[0_0_0_3px_white] trds-cursor-pointer',
+      'rounded-full h-2.5 w-2.5 shadow-[0_0_0_2px_white,0_0_2px_1px_black] outline-none',
+    areaBackground: 'h-full',
+    channelSlider: 'rounded-lg',
+    channelSliderTrack: 'h-3 rounded-lg',
+    swatchGroup: 'grid grid-cols-7 gap-2 bg-white',
+    swatch: 'h-7 w-7 rounded-lg shadow-[0_0_0_3px_white] cursor-pointer',
     channelSliderThumb:
-      'trds-rounded-full trds-h-2.5 trds-w-2.5 trds-shadow-[0_0_0_2px_white,0_0_2px_1px_black] -trds-translate-x-1/2 -trds-translate-y-1/2 trds-outline-none',
-    transparencyGrid: 'trds-rounded-lg',
+      'rounded-full h-2.5 w-2.5 shadow-[0_0_0_2px_white,0_0_2px_1px_black] -translate-x-1/2 -translate-y-1/2 outline-none',
+    transparencyGrid: 'rounded-lg',
     positioner: '',
     swatchTrigger: '',
   },
@@ -60,10 +59,10 @@ const Root = forwardRef<
           <>
             <ColorPicker.Control className={classes.control()}>
               <ColorPicker.ChannelInput channel="hex" asChild>
-                <Input className="trds-flex-1" />
+                <Input className="flex-1" />
               </ColorPicker.ChannelInput>
               <ColorPicker.Trigger asChild>
-                <IconButton variant="outline" className="trds-flex-none">
+                <IconButton variant="outline" className="flex-none">
                   <ColorPicker.Swatch
                     value={api.value}
                     className={classes.swatch()}
@@ -73,14 +72,14 @@ const Root = forwardRef<
             </ColorPicker.Control>
             <ColorPicker.Positioner className={classes.positioner()}>
               <ColorPicker.Content className={classes.content()}>
-                <div className="trds-flex trds-flex-col trds-gap-3">
+                <div className="flex flex-col gap-3">
                   <ColorPicker.Area className={classes.area()}>
                     <ColorPicker.AreaBackground
                       className={classes.areaBackground()}
                     />
                     <ColorPicker.AreaThumb className={classes.areaThumb()} />
                   </ColorPicker.Area>
-                  <div className="trds-flex trds-flex-row trds-gap-3">
+                  <div className="flex flex-row gap-3">
                     <ColorPicker.EyeDropperTrigger asChild>
                       <IconButton
                         variant="outline"
@@ -90,11 +89,7 @@ const Root = forwardRef<
                         <PipetteIcon size={20} />
                       </IconButton>
                     </ColorPicker.EyeDropperTrigger>
-                    <div
-                      className={cx(
-                        'trds-flex trds-flex-col trds-gap-2 trds-flex-1',
-                      )}
-                    >
+                    <div className={cx('flex flex-col gap-2 flex-1')}>
                       <ColorPicker.ChannelSlider
                         channel="hue"
                         className={classes.channelSlider()}
@@ -123,7 +118,7 @@ const Root = forwardRef<
                       </ColorPicker.ChannelSlider>
                     </div>
                   </div>
-                  <div className="trds-flex trds-gap-2 trds-flex-1">
+                  <div className="flex gap-2 flex-1">
                     <ColorPicker.ChannelInput channel="hex" asChild>
                       <Input />
                     </ColorPicker.ChannelInput>
@@ -131,7 +126,7 @@ const Root = forwardRef<
                       <Input />
                     </ColorPicker.ChannelInput>
                   </div>
-                  <div className="trds-flex trds-flex-col trds-gap-1.5">
+                  <div className="flex flex-col gap-1.5">
                     <ColorPicker.SwatchGroup className={classes.swatchGroup()}>
                       {presets.map((color, id) => (
                         <ColorPicker.SwatchTrigger

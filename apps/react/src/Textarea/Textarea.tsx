@@ -6,15 +6,15 @@ import { cx } from '../cx';
 import { tv, VariantProps } from '../tv';
 
 const textareaVariants = tv({
-  base: 'trds-appearance-none trds-bg-none trds-border-boundary trds-rounded-lg trds-border trds-min-w-0 trds-outline-0 trds-relative trds-transition trds-duration-normal trds-transition-[border-color,box-shadow] trds-w-full disabled:trds-opacity-40 disabled:trds-cursor-not-allowed placeholder:trds-text-fg-placeholder focus:trds-border-primary-500 focus:trds-shadow-[0_0_0_1px_var(--shadow-color)] focus:[--shadow-color:#8b5cf6]',
+  base: 'appearance-none bg-none border-boundary rounded-lg border min-w-0 outline-0 relative transition duration-normal transition-[border-color,box-shadow] w-full disabled:opacity-40 disabled:cursor-not-allowed placeholder:text-fg-placeholder focus:border-primary-500 focus:shadow-[0_0_0_1px_var(--shadow-color)] focus:[--shadow-color:#8b5cf6]',
   variants: {
     size: {
-      sm: 'trds-p-2.5 trds-text-sm',
-      md: 'trds-p-3 trds-text-md',
-      lg: 'trds-p-3.5 trds-text-md',
+      sm: 'p-2.5 text-sm',
+      md: 'p-3 text-md',
+      lg: 'p-3.5 text-md',
     },
     invalid: {
-      true: 'trds-border-error-500',
+      true: 'border-error-500',
     },
   },
   defaultVariants: {

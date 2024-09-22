@@ -39,7 +39,7 @@ export const Sizes = {
   render: () => {
     return (
       <>
-        <div className="trds-w-48 trds-flex trds-flex-col trds-gap-4">
+        <div className="w-48 flex flex-col gap-4">
           <RadioGroup.Root size="sm" defaultValue="item 1">
             <RadioGroup.Item value="item 1">item 1</RadioGroup.Item>
             <RadioGroup.Item value="item 2">item 2</RadioGroup.Item>
@@ -65,7 +65,7 @@ export const Disabled = {
   render: () => {
     return (
       <>
-        <div className="trds-w-48 trds-flex trds-flex-col trds-gap-4">
+        <div className="w-48 flex flex-col gap-4">
           <RadioGroup.Root defaultValue="item 1" disabled>
             <RadioGroup.Item value="item 1">item 1</RadioGroup.Item>
             <RadioGroup.Item value="item 2">item 2</RadioGroup.Item>

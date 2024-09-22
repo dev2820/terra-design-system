@@ -9,27 +9,27 @@ import { tv, VariantProps } from '../tv';
 export const ratingGroupVariant = tv({
   base: `${IDENTIFIER.scope} ratingGroup`,
   slots: {
-    root: 'trds-flex trds-flex-col trds-gap-1.5 trds-text-primary',
-    control: 'trds-flex',
-    item: 'trds-cursor-pointer trds-transition trds-duration-normal trds-transition-[color,fill] trds-ease-default trds-fill-transparent data-highlighted:trds-fill-current focus-visible:trds-outline-none data-disabled:trds-cursor-not-allowed data-disabled:trds-opacity-40',
+    root: 'flex flex-col gap-1.5 text-primary',
+    control: 'flex',
+    item: 'cursor-pointer transition duration-normal transition-[color,fill] ease-default fill-transparent data-highlighted:fill-current focus-visible:outline-none data-disabled:cursor-not-allowed data-disabled:opacity-40',
   },
 
   variants: {
     size: {
       sm: {
-        control: 'trds-gap-0',
-        item: '[&_svg:trds-w-4] [&_svg:trds-h-4]',
-        label: 'trds-text-sm',
+        control: 'gap-0',
+        item: '[&_svg:w-4] [&_svg:h-4]',
+        label: 'text-sm',
       },
       md: {
-        control: 'trds-gap-0.5',
-        item: '[&_svg:trds-w-5] [&_svg:trds-h-5]',
-        label: 'trds-text-sm',
+        control: 'gap-0.5',
+        item: '[&_svg:w-5] [&_svg:h-5]',
+        label: 'text-sm',
       },
       lg: {
-        control: 'trds-gap-0.5',
-        item: '[&_svg:trds-w-6] [&_svg:trds-h-6]',
-        label: 'trds-text-md',
+        control: 'gap-0.5',
+        item: '[&_svg:w-6] [&_svg:h-6]',
+        label: 'text-md',
       },
     },
   },

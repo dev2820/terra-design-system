@@ -8,7 +8,6 @@ import { colors, duration, zIndex, keyframes, animations } from 'theme/token';
 
 export default {
   content: ['./src/**/*.{js,jsx,ts,tsx,mdx}'],
-  prefix: 'trds-',
   theme: {
     colors: { ...colors },
     duration: { ...duration },
@@ -32,6 +31,8 @@ export default {
         vertical: 'orientation="vertical"',
         horizontal: 'orientation="horizontal"',
         'in-range': 'in-range',
+        focus: 'focus',
+        invalid: 'invalid',
       },
     },
   },
@@ -52,10 +53,10 @@ export default {
         '[hidden]': {
           display: 'none !important',
         },
-        '.trds-break-anywhere': {
+        '.break-anywhere': {
           'overflow-wrap': 'anywhere',
         },
-        '.trds-custom-translate': {
+        '.custom-translate': {
           translate: 'var(--x) var(--y) 0',
           scale: 'var(--scale)',
         },

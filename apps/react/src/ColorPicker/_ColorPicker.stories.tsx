@@ -22,7 +22,7 @@ export const Default = {
   },
   render: (props: ColorPickerProps['root']) => {
     return (
-      <div className="trds-flex trds-w-[600px] trds-h-[500px]">
+      <div className="flex w-[600px] h-[500px]">
         <ColorPicker.Root {...props} />
       </div>
     );

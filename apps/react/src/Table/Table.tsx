@@ -9,48 +9,44 @@ import { tv, VariantProps } from '../tv';
 export const tableVariant = tv({
   base: `${IDENTIFIER.scope} table`,
   slots: {
-    root: 'trds-caption-bottom trds-w-full',
-    body: '[&_tr:last-child]:trds-border-b-0',
-    caption: 'trds-text-fg-caption',
-    cell: 'trds-align-middle trds-text-fg-description',
-    footer:
-      'trds-font-medium trds-border-t trds-border-boundary [&_tr:last-child]:trds-border-b-0',
-    header:
-      'trds-text-fg-title trds-font-medium trds-text-left trds-align-middle',
-    head: 'trds-align-middle',
-    row: 'trds-border-b trds-border-boundary trds-transition trds-duration-normal trds-transition-[background,color] trds-ease-default',
+    root: 'caption-bottom w-full',
+    body: '[&_tr:last-child]:border-b-0',
+    caption: 'text-fg-caption',
+    cell: 'align-middle text-fg-description',
+    footer: 'font-medium border-t border-boundary [&_tr:last-child]:border-b-0',
+    header: 'text-fg-title font-medium text-left align-middle',
+    head: 'align-middle',
+    row: 'border-b border-boundary transition duration-normal transition-[background,color] ease-default',
   },
 
   variants: {
     variant: {
       outline: {
-        root: 'trds-border trds-border-boundary trds-border-[1px]',
-        header:
-          'trds-bg-layer1 trds-border-b trds-border-boundary trds-border-b-[1px]',
-        head: 'trds-bg-layer1',
-        footer: 'trds-bg-layer1',
+        root: 'border border-boundary border-[1px]',
+        header: 'bg-layer1 border-b border-boundary border-b-[1px]',
+        head: 'bg-layer1',
+        footer: 'bg-layer1',
       },
       plain: {
-        header:
-          'trds-bg-layer1 trds-border-b trds-border-boundary trds-border-b-[1px]',
-        row: 'hover:trds-bg-layer1 data-selected:trds-bg-layer1',
-        footer: 'trds-bg-layer1',
+        header: 'bg-layer1 border-b border-boundary border-b-[1px]',
+        row: 'hover:bg-layer1 data-selected:bg-layer1',
+        footer: 'bg-layer1',
       },
     },
     size: {
       sm: {
-        root: 'trds-text-sm',
-        caption: 'trds-mt-4',
-        cell: 'trds-h-11 trds-px-3',
-        head: 'trds-h-11 trds-px-3',
-        header: 'trds-h-11 trds-px-3',
+        root: 'text-sm',
+        caption: 'mt-4',
+        cell: 'h-11 px-3',
+        head: 'h-11 px-3',
+        header: 'h-11 px-3',
       },
       md: {
-        root: 'trds-text-sm',
-        caption: 'trds-mt-4',
-        cell: 'trds-h-14 trds-px-4',
-        head: 'trds-h-14 trds-px-4',
-        header: 'trds-h-11 trds-px-4',
+        root: 'text-sm',
+        caption: 'mt-4',
+        cell: 'h-14 px-4',
+        head: 'h-14 px-4',
+        header: 'h-11 px-4',
       },
     },
   },

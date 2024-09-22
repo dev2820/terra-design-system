@@ -11,11 +11,11 @@ export type SkeletonProps = ComponentProps<'div'> & {
 };
 
 export const skeletonVariants = tv({
-  base: 'trds-animate-shimmer trds-bg-muted trds-bg-clip-padding-box trds-text-transparent trds-cursor-default trds-pointer-events-none trds-select-none before::trds-invisible after::trds-invisible [&_*]:trds-invisible',
+  base: 'animate-shimmer bg-muted bg-clip-padding-box text-transparent cursor-default pointer-events-none select-none before::invisible after::invisible [&_*]:invisible',
   variants: {
     round: {
-      true: 'trds-rounded-full',
-      false: 'trds-rounded-lg',
+      true: 'rounded-full',
+      false: 'rounded-lg',
     },
   },
   defaultVariants: {
@@ -31,11 +31,7 @@ export const Skeleton = forwardRef<HTMLDivElement, SkeletonProps>(
       return (
         <div
           ref={ref}
-          className={cx(
-            IDENTIFIER.scope,
-            'trds-animate-fade-in-once',
-            className,
-          )}
+          className={cx(IDENTIFIER.scope, 'animate-fade-in-once', className)}
           {...otherProps}
         />
       );

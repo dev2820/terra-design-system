@@ -20,15 +20,15 @@ export const Default = {
   args: {},
   render: (props: CollapsibleProps['root']) => {
     return (
-      <div className="trds-w-[600px] trds-h-[500px]">
+      <div className="w-[600px] h-[500px]">
         <Collapsible.Root {...props}>
-          <Collapsible.Trigger className="trds-flex trds-items-center">
+          <Collapsible.Trigger className="flex items-center">
             <span>Loream Ipsume</span>
-            <div className="trds-flex-1"></div>
+            <div className="flex-1"></div>
             <ChevronDownIcon size={24} />
           </Collapsible.Trigger>
           <Collapsible.Content>
-            <div className="trds-p-4">
+            <div className="p-4">
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry. Lorem Ipsum has been the industry's standard dummy text
               ever since the 1500s, when an unknown printer took a galley of
@@ -53,15 +53,15 @@ export const Disabled = {
   },
   render: (props: CollapsibleProps['root']) => {
     return (
-      <div className="trds-w-[600px] trds-h-[500px]">
+      <div className="w-[600px] h-[500px]">
         <Collapsible.Root {...props}>
-          <Collapsible.Trigger className="trds-flex trds-items-center">
+          <Collapsible.Trigger className="flex items-center">
             <span>Loream Ipsume</span>
-            <div className="trds-flex-1"></div>
+            <div className="flex-1"></div>
             <ChevronDownIcon size={24} />
           </Collapsible.Trigger>
           <Collapsible.Content>
-            <div className="trds-p-4">
+            <div className="p-4">
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry. Lorem Ipsum has been the industry's standard dummy text
               ever since the 1500s, when an unknown printer took a galley of

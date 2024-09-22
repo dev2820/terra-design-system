@@ -17,32 +17,31 @@ export const drawerVariants = tv({
   base: `${IDENTIFIER.scope} drawer`,
   slots: {
     backdrop:
-      'trds-backdrop-blur-[4px] trds-bg-blackAlpha-700 trds-h-[100vh] trds-w-[100vw] trds-left-0 trds-top-0 trds-fixed trds-z-overlay data-open:trds-animate-backdrop-in data-closed:trds-animate-backdrop-out dark:trds-bg-whiteAlpha-700',
+      'backdrop-blur-[4px] bg-blackAlpha-700 h-[100vh] w-[100vw] left-0 top-0 fixed z-overlay data-open:animate-backdrop-in data-closed:animate-backdrop-out dark:bg-whiteAlpha-700',
     positioner:
-      'trds-flex trds-items-center trds-justify-center trds-fixed trds-top-0 trds-h-[100dvh] trds-z-modal trds-max-w-[100vw] trds-w-sm',
+      'flex items-center justify-center fixed top-0 h-[100dvh] z-modal max-w-[100vw] w-sm',
     content:
-      'trds-bg-white trds-shadow-lg trds-grid trds-grid-cols-[1fr] trds-grid-rows-[auto_1fr_auto] trds-grid-areas-[header,body,footer] trds-h-full trds-w-full',
+      'bg-white shadow-lg grid grid-cols-[1fr] grid-rows-[auto_1fr_auto] grid-areas-[header,body,footer] h-full w-full',
     header:
-      'trds-flex trds-flex-col trds-gap-1 trds-grid-area-header trds-pt-4 md:trds-pt-6 trds-pb-4 trds-px-4 md:trds-px-6',
-    body: 'trds-flex trds-flex-col trds-grid-area-body trds-overflow-auto trds-p-4 md:trds-p-6',
-    footer:
-      'trds-flex trds-grid-area-footer trds-justify-end trds-py-4 trds-px-4 md:trds-px-6',
-    title: 'trds-text-fg-title trds-font-semibold trds-text-xl',
-    description: 'trds-text-fg-description trds-text-sm',
+      'flex flex-col gap-1 grid-area-header pt-4 md:pt-6 pb-4 px-4 md:px-6',
+    body: 'flex flex-col grid-area-body overflow-auto p-4 md:p-6',
+    footer: 'flex grid-area-footer justify-end py-4 px-4 md:px-6',
+    title: 'text-fg-title font-semibold text-xl',
+    description: 'text-fg-description text-sm',
     trigger: '',
     closeTrigger: '',
   },
   variants: {
     variant: {
       left: {
-        positioner: 'trds-left-0',
+        positioner: 'left-0',
         content:
-          'data-open:trds-animate-drawer-in-left data-closed:trds-animate-drawer-out-left',
+          'data-open:animate-drawer-in-left data-closed:animate-drawer-out-left',
       },
       right: {
-        positioner: 'trds-right-0',
+        positioner: 'right-0',
         content:
-          'data-open:trds-animate-drawer-in-right data-closed:trds-animate-drawer-out-right',
+          'data-open:animate-drawer-in-right data-closed:animate-drawer-out-right',
       },
     },
   },

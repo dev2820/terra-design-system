@@ -9,28 +9,28 @@ import { tv, VariantProps } from '../tv';
 export const switchVariants = tv({
   base: `${IDENTIFIER.scope} switch`,
   slots: {
-    root: 'trds-flex trds-items-center trds-relative data-disabled:trds-opacity-60',
+    root: 'flex items-center relative data-disabled:opacity-60',
     control:
-      'trds-inline-flex trds-items-center trds-bg-muted trds-rounded-full trds-cursor-pointer trds-flex-shrink-0 trds-transition trds-duration-normal trds-transition-[background] trds-ease-default data-checked:trds-bg-primary data-disabled:trds-cursor-not-allowed',
+      'inline-flex items-center bg-muted rounded-full cursor-pointer flex-shrink-0 transition duration-normal transition-[background] ease-default data-checked:bg-primary data-disabled:cursor-not-allowed',
     thumb:
-      'trds-bg-white trds-rounded-full trds-shadow-xs trds-transition trds-duration-normal trds-transition-[transform,background] trds-ease-default data-checked:trds-translate-x-[100%] data-checked:trds-bg-white',
+      'bg-white rounded-full shadow-xs transition duration-normal transition-[transform,background] ease-default data-checked:translate-x-[100%] data-checked:bg-white',
   },
   variants: {
     size: {
       sm: {
-        root: 'trds-gap-2',
-        control: 'trds-w-7 trds-p-0.5',
-        thumb: 'trds-w-3 trds-h-3',
+        root: 'gap-2',
+        control: 'w-7 p-0.5',
+        thumb: 'w-3 h-3',
       },
       md: {
-        root: 'trds-gap-3',
-        control: 'trds-w-9 trds-p-0.5',
-        thumb: 'trds-w-4 trds-h-4',
+        root: 'gap-3',
+        control: 'w-9 p-0.5',
+        thumb: 'w-4 h-4',
       },
       lg: {
-        root: 'trds-gap-4',
-        control: 'trds-w-11 trds-p-0.5',
-        thumb: 'trds-w-5 trds-h-5',
+        root: 'gap-4',
+        control: 'w-11 p-0.5',
+        thumb: 'w-5 h-5',
       },
     },
   },

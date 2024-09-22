@@ -15,23 +15,23 @@ import { tv, VariantProps } from '../tv';
 export const treeViewVariant = tv({
   base: `${IDENTIFIER.scope} treeView`,
   slots: {
-    root: 'trds-w-full',
+    root: 'w-full',
     branch: '',
-    branchContent: 'trds-relative',
+    branchContent: 'relative',
     branchText: '',
     branchControl:
-      'trds-flex trds-items-center trds-rounded-md trds-text-fg-caption trds-font-medium trds-gap-1.5 trds-ps-[calc((var(--depth)-1)*22px)] trds-py-1.5 trds-text-sm trds-transition trds-duration-normal trds-transition-[background,color] trds-ease-default hover:trds-bg-layer1 hover:trds-text-fg-highlight trds-cursor-pointer data-disabled:trds-bg-transparent',
+      'flex items-center rounded-md text-fg-caption font-medium gap-1.5 ps-[calc((var(--depth)-1)*22px)] py-1.5 text-sm transition duration-normal transition-[background,color] ease-default hover:bg-layer1 hover:text-fg-highlight cursor-pointer data-disabled:bg-transparent',
     branchIndicator:
-      'trds-text-fg-caption trds-transform-origin-center trds-transition trds-duration-normal trds-transition-[transform] trds-ease-default [&_svg]:text-md [&_svg]-w-4 [&_svg]-h-4 data-open:trds-text-primary-500 data-open:trds-rotate-90',
+      'text-fg-caption transform-origin-center transition duration-normal transition-[transform] ease-default [&_svg]:text-md [&_svg]-w-4 [&_svg]-h-4 data-open:text-primary-500 data-open:rotate-90',
     item: [
-      'trds-relative trds-rounded-md trds-text-fg-caption trds-cursor-pointer trds-font-medium',
-      'trds-ps-[calc(((var(--depth)-1)*22px)+22px)] trds-py-1.5 trds-text-sm trds-transition trds-duration-normal trds-transition-[background,color] trds-ease-default',
-      'hover:trds-bg-layer1 hover:trds-text-fg-highlight',
-      'data-selected:trds-bg-layer1 data-selected:trds-text-fg-highlight data-selected:before:trds-absolute data-selected:before:trds-left-2 data-selected:before:trds-top-0 data-selected:before:trds-w-[2px] data-selected:before:trds-h-full data-selected:before:trds-bg-primary data-selected:before:trds-z-elevated',
-      'data-disabled:trds-bg-transparent data-disabled:trds-text-muted data-disabled:trds-cursor-not-allowed',
+      'relative rounded-md text-fg-caption cursor-pointer font-medium',
+      'ps-[calc(((var(--depth)-1)*22px)+22px)] py-1.5 text-sm transition duration-normal transition-[background,color] ease-default',
+      'hover:bg-layer1 hover:text-fg-highlight',
+      'data-selected:bg-layer1 data-selected:text-fg-highlight data-selected:before:absolute data-selected:before:left-2 data-selected:before:top-0 data-selected:before:w-[2px] data-selected:before:h-full data-selected:before:bg-primary data-selected:before:z-elevated',
+      'data-disabled:bg-transparent data-disabled:text-muted data-disabled:cursor-not-allowed',
     ],
     itemText: '',
-    tree: 'trds-flex trds-flex-col trds-gap-0',
+    tree: 'flex flex-col gap-0',
   },
 });
 

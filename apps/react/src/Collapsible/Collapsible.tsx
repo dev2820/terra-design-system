@@ -15,16 +15,16 @@ import { tv } from '../tv';
 export const collapsibleVariants = tv({
   base: `${IDENTIFIER.scope} collapsible`,
   slots: {
-    root: 'trds-w-full trds-bg-white trds-rounded-md',
+    root: 'w-full bg-white rounded-md',
     trigger: [
-      'trds-w-full trds-h-10 trds-px-4 trds-cursor-pointer',
-      'data-[disabled]:trds-opacity-40 data-[disabled]:trds-cursor-not-allowed',
-      '[&>svg]:trds-origin-center [&>svg]:trds-duration-normal [&>svg]:trds-transition-all [&[data-state="open"]>svg]:-trds-rotate-180',
+      'w-full h-10 px-4 cursor-pointer',
+      'data-[disabled]:opacity-40 data-[disabled]:cursor-not-allowed',
+      '[&>svg]:origin-center [&>svg]:duration-normal [&>svg]:transition-all [&[data-state="open"]>svg]:-rotate-180',
     ],
     content: [
-      'trds-px-4 trds-border-t trds-border-boundary trds-overflow-hidden',
-      'data-open:trds-animate-collapse-in data-closed:trds-animate-collapse-out',
-      'data-[disabled]:trds-opacity-40 data-[disabled]:trds-cursor-not-allowed',
+      'px-4 border-t border-boundary overflow-hidden',
+      'data-open:animate-collapse-in data-closed:animate-collapse-out',
+      'data-[disabled]:opacity-40 data-[disabled]:cursor-not-allowed',
     ],
   },
 });

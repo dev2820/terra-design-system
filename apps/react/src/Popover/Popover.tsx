@@ -16,16 +16,15 @@ import { tv } from '../tv';
 export const popoverVariants = tv({
   base: `${IDENTIFIER.scope} popover`,
   slots: {
-    positioner: 'trds-relative',
+    positioner: 'relative',
     content:
-      'trds-relative trds-bg-white trds-rounded-lg trds-shadow-lg trds-flex trds-flex-col trds-max-w-sm trds-z-popover trds-p-4 data-open:trds-animate-fade-in data-closed:trds-animate-fade-out data-hidden:trds-hidden',
-    title: 'trds-font-medium trds-text-sm trds-mb-4',
-    description: 'trds-text-fg-description trds-text-sm',
-    closeTrigger:
-      'trds-text-fg-description trds-absolute trds-right-2 trds-top-2',
+      'relative bg-white rounded-lg shadow-lg flex flex-col max-w-sm z-popover p-4 data-open:animate-fade-in data-closed:animate-fade-out data-hidden:hidden',
+    title: 'font-medium text-sm mb-4',
+    description: 'text-fg-description text-sm',
+    closeTrigger: 'text-fg-description absolute right-2 top-2',
     trigger: '',
     arrow: '[--arrow-size:8px] [--arrow-background:#fff]',
-    arrowTip: 'trds-border-layer1 trds-border-t trds-border-l',
+    arrowTip: 'border-layer1 border-t border-l',
   },
 });
 

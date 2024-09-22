@@ -57,7 +57,7 @@ export const Disabled = {
   },
   render: (props: CheckboxProps) => {
     return (
-      <div className="trds-flex trds-flex-col trds-gap-4">
+      <div className="flex flex-col gap-4">
         <Checkbox {...props} checked disabled>
           Hello
         </Checkbox>
@@ -74,7 +74,7 @@ export const ReadOnly = {
   },
   render: (props: CheckboxProps) => {
     return (
-      <div className="trds-flex trds-flex-col trds-gap-4">
+      <div className="flex flex-col gap-4">
         <Checkbox {...props} checked readOnly>
           Hello
         </Checkbox>
@@ -91,7 +91,7 @@ export const Invalid = {
   },
   render: (props: CheckboxProps) => {
     return (
-      <div className="trds-flex trds-flex-col trds-gap-4">
+      <div className="flex flex-col gap-4">
         <Checkbox {...props} checked invalid>
           Hello
         </Checkbox>
@@ -122,7 +122,7 @@ export const Size = {
   render: (props: CheckboxProps) => {
     const sizes = ['sm', 'md', 'lg'] as CheckboxProps['size'][];
     return (
-      <div className="trds-flex trds-flex-col trds-gap-4">
+      <div className="flex flex-col gap-4">
         {sizes.map(size => (
           <Checkbox {...props} size={size} key={size}>
             Hello

@@ -28,7 +28,7 @@ export const Theme = {
   },
   render: (props: LinkProps) => {
     return (
-      <div className="trds-flex trds-flex-col trds-gap-4">
+      <div className="flex flex-col gap-4">
         <Link {...props} theme="neutral">
           Github
         </Link>
@@ -47,7 +47,7 @@ export const WithIcon = {
   },
   render: (props: LinkProps) => {
     return (
-      <div className="trds-flex trds-flex-col trds-gap-4">
+      <div className="flex flex-col gap-4">
         <Link {...props} leftIcon={<ExternalLinkIcon size={16} />}>
           Github
         </Link>

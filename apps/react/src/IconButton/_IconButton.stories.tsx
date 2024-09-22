@@ -57,7 +57,7 @@ export const Variant = {
   args: {},
   render: () => {
     return (
-      <div className="trds-flex trds-flex-row trds-gap-4">
+      <div className="flex flex-row gap-4">
         {variants.map(variant => (
           <IconButton variant={variant} theme="neutral" key={variant}>
             <SearchIcon size={20} />
@@ -72,7 +72,7 @@ export const ColorScheme = {
   args: {},
   render: () => {
     return (
-      <div className="trds-flex trds-flex-row trds-gap-4">
+      <div className="flex flex-row gap-4">
         {colors.map(color => (
           <IconButton theme={color} key={color}>
             <SearchIcon size={20} />
@@ -87,7 +87,7 @@ export const Sizes = {
   args: {},
   render: () => {
     return (
-      <div className="trds-flex trds-flex-row trds-gap-4">
+      <div className="flex flex-row gap-4">
         <IconButton size="xs">
           <SearchIcon size={20} />
         </IconButton>
@@ -109,7 +109,7 @@ export const Loading = {
   args: {},
   render: () => {
     return (
-      <div className="trds-flex trds-flex-row trds-gap-4">
+      <div className="flex flex-row gap-4">
         <IconButton loading>
           <SearchIcon size={20} />
         </IconButton>
@@ -125,7 +125,7 @@ export const Disabled = {
   args: {},
   render: () => {
     return (
-      <div className="trds-flex trds-flex-row trds-gap-4">
+      <div className="flex flex-row gap-4">
         <IconButton disabled>
           <SearchIcon size={20} />
         </IconButton>

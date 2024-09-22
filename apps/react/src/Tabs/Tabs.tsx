@@ -15,12 +15,12 @@ import { tv, VariantProps } from '../tv';
 export const tabsVariant = tv({
   base: `${IDENTIFIER.scope} tabs`,
   slots: {
-    root: 'trds-flex trds-w-full data-horizontal:trds-flex-col data-vertical:trds-flex-row',
-    list: 'trds-flex trds-flex-shrink-0 data-horizontal:trds-flex-row data-vertical:trds-flex-col trds-overflow-auto trds-relative trds-scrollbar-none [&::-webkit-scrollbar]:trds-hidden',
+    root: 'flex w-full data-horizontal:flex-col data-vertical:flex-row',
+    list: 'flex flex-shrink-0 data-horizontal:flex-row data-vertical:flex-col overflow-auto relative scrollbar-none [&::-webkit-scrollbar]:hidden',
     trigger: [
-      'trds-inline-flex trds-items-center trds-text-fg-caption trds-cursor-pointer trds-flex-shrink-0 trds-font-semibold trds-gap-2 trds-justify-center',
-      'trds-transition trds-duration-normal trds-transition-[color,background,border-color] trds-ease-default',
-      'trds-whitespace-nowrap trds-z-elevated data-disabled:trds-text-muted data-disabled:trds-cursor-not-allowed hover:trds-text-neutral-800 data-selected:trds-text-neutral-800 data-vertical:trds-justify-start',
+      'inline-flex items-center text-fg-caption cursor-pointer flex-shrink-0 font-semibold gap-2 justify-center',
+      'transition duration-normal transition-[color,background,border-color] ease-default',
+      'whitespace-nowrap z-elevated data-disabled:text-muted data-disabled:cursor-not-allowed hover:text-neutral-800 data-selected:text-neutral-800 data-vertical:justify-start',
     ],
     content: '',
     indicator: '',
@@ -28,26 +28,25 @@ export const tabsVariant = tv({
   variants: {
     variant: {
       enclosed: {
-        list: 'trds-rounded-lg trds-border trds-border-boundary trds-px-1 trds-bg-layer1 dark:trds-bg-neutral-800 data-horizontal:trds-items-center data-vertical:trds-h-fit data-vertical:trds-py-1',
+        list: 'rounded-lg border border-boundary px-1 bg-layer1 dark:bg-neutral-800 data-horizontal:items-center data-vertical:h-fit data-vertical:py-1',
         indicator:
-          'trds-bg-white light:trds-bg-fg-caption dark:trds-bg-neutral-700 trds-shadow-md trds-rounded-lg trds-transition-duration-normal trds-h-[var(--height)] trds-w-[var(--width)]',
+          'bg-white light:bg-fg-caption dark:bg-neutral-700 shadow-md rounded-lg transition-duration-normal h-[var(--height)] w-[var(--width)]',
       },
       line: {
-        list: 'data-horizontal:trds-shadow-[0_-1px_0_0_inset_var(--colors-boundary, "9ca3af")] data-horizontal:trds-gap-4 data-vertical:trds-shadow-[1px_0_0_0_inset_var(--colors-boundary,"9ca3af")] data-vertical:trds-gap-1',
+        list: 'data-horizontal:shadow-[0_-1px_0_0_inset_var(--colors-boundary, "9ca3af")] data-horizontal:gap-4 data-vertical:shadow-[1px_0_0_0_inset_var(--colors-boundary,"9ca3af")] data-vertical:gap-1',
         indicator:
-          'trds-bg-primary-500 data-horizontal:trds-bottom-0 data-horizontal:trds-h-[2px] data-horizontal:trds-w-[var(--width)] data-vertical:trds-left-0 data-vertical:trds-h-[var(--height)] data-vertical:trds-w-[2px]',
-        content: 'trds-pt-4',
-        trigger: 'data-horizontal:trds-pb-2.5',
+          'bg-primary-500 data-horizontal:bottom-0 data-horizontal:h-[2px] data-horizontal:w-[var(--width)] data-vertical:left-0 data-vertical:h-[var(--height)] data-vertical:w-[2px]',
+        content: 'pt-4',
+        trigger: 'data-horizontal:pb-2.5',
       },
       outline: {
-        list: 'data-horizontal:trds-mb-[-1px] data-vertical:trds-mr-[-1px]',
+        list: 'data-horizontal:mb-[-1px] data-vertical:mr-[-1px]',
         trigger: [
-          ' trds-border trds-border-transparent',
-          'data-horizontal:trds-rounded-t-md data-vertical:trds-rounded-tl-md data-vertical:trds-rounded-bl-md',
-          'data-selected:trds-bg-white data-selected:trds-border-boundary data-selected:[&[data-orientation="horizontal"]]:trds-border-b-transparent data-selected:[&[data-orientation="vertical"]]:trds-border-r-transparent',
+          ' border border-transparent',
+          'data-horizontal:rounded-t-md data-vertical:rounded-tl-md data-vertical:rounded-bl-md',
+          'data-selected:bg-white data-selected:border-boundary data-selected:[&[data-orientation="horizontal"]]:border-b-transparent data-selected:[&[data-orientation="vertical"]]:border-r-transparent',
         ],
-        content:
-          'trds-bg-white trds-border trds-border-boundary trds-border-[1px] trds-w-full',
+        content: 'bg-white border border-boundary border-[1px] w-full',
       },
     },
     size: {
@@ -71,75 +70,75 @@ export const tabsVariant = tv({
       size: 'sm',
       variant: 'enclosed',
       class: {
-        list: 'trds-h-10',
-        trigger: 'trds-h-8 trds-min-w-8 trds-text-sm trds-px-3',
-        content: 'trds-p-3.5',
+        list: 'h-10',
+        trigger: 'h-8 min-w-8 text-sm px-3',
+        content: 'p-3.5',
       },
     },
     {
       size: 'md',
       variant: 'enclosed',
       class: {
-        list: 'trds-h-11',
-        trigger: 'trds-h-9 trds-min-w-9 trds-text-sm trds-px-3.5',
-        content: 'trds-p-4',
+        list: 'h-11',
+        trigger: 'h-9 min-w-9 text-sm px-3.5',
+        content: 'p-4',
       },
     },
     {
       size: 'lg',
       variant: 'enclosed',
       class: {
-        list: 'trds-h-12',
-        trigger: 'trds-h-10 trds-min-w-10 trds-text-sm trds-px-4',
-        content: 'trds-p-4.5',
+        list: 'h-12',
+        trigger: 'h-10 min-w-10 text-sm px-4',
+        content: 'p-4.5',
       },
     },
     {
       size: 'sm',
       variant: 'outline',
       class: {
-        trigger: 'trds-h-9 trds-min-w-9 trds-text-sm trds-px-3.5',
-        content: 'trds-p-3.5',
+        trigger: 'h-9 min-w-9 text-sm px-3.5',
+        content: 'p-3.5',
       },
     },
     {
       size: 'md',
       variant: 'outline',
       class: {
-        trigger: 'trds-h-10 trds-min-w-10 trds-text-sm trds-px-4',
-        content: 'trds-p-4',
+        trigger: 'h-10 min-w-10 text-sm px-4',
+        content: 'p-4',
       },
     },
     {
       size: 'lg',
       variant: 'outline',
       class: {
-        trigger: 'trds-h-11 trds-min-w-11 trds-text-md trds-px-[18px]',
-        content: 'trds-p-[18px]',
+        trigger: 'h-11 min-w-11 text-md px-[18px]',
+        content: 'p-[18px]',
       },
     },
     {
       size: 'sm',
       variant: 'line',
       class: {
-        trigger: 'trds-text-sm trds-h-9 trds-min-w-9 trds-px-2.5',
-        content: 'trds-pt-3',
+        trigger: 'text-sm h-9 min-w-9 px-2.5',
+        content: 'pt-3',
       },
     },
     {
       size: 'md',
       variant: 'line',
       class: {
-        trigger: 'trds-text-md trds-h-10 trds-min-w-10 trds-px-3',
-        content: 'trds-pt-4',
+        trigger: 'text-md h-10 min-w-10 px-3',
+        content: 'pt-4',
       },
     },
     {
       size: 'lg',
       variant: 'line',
       class: {
-        trigger: 'trds-text-md trds-h-11 trds-min-w-11 trds-px-3.5',
-        content: 'trds-pt-5',
+        trigger: 'text-md h-11 min-w-11 px-3.5',
+        content: 'pt-5',
       },
     },
   ],

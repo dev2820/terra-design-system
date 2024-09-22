@@ -8,39 +8,39 @@ import { cx } from '../cx';
 import { tv, VariantProps } from '../tv';
 
 const trigger = [
-  'trds-inline-flex trds-items-center trds-justify-center',
-  'trds-border-boundary trds-text-neutral-500 trds-cursor-pointer',
-  'trds-transition trds-duration-normal trds-transition-[background,border-color,color,box-shadow] trds-ease-default',
-  '[&_:where(svg)]:trds-w-4 [&_:where(svg)]:trds-h-4',
-  'hover:trds-bg-layer1 hover:trds-text-neutral-500',
-  'data-disabled:trds-bg-transparent data-disabled:trds-text-muted data-disabled:trds-opacity-50 data-disabled:trds-cursor-not-allowed',
+  'inline-flex items-center justify-center',
+  'border-boundary text-neutral-500 cursor-pointer',
+  'transition duration-normal transition-[background,border-color,color,box-shadow] ease-default',
+  '[&_:where(svg)]:w-4 [&_:where(svg)]:h-4',
+  'hover:bg-layer1 hover:text-neutral-500',
+  'data-disabled:bg-transparent data-disabled:text-muted data-disabled:opacity-50 data-disabled:cursor-not-allowed',
 ];
 const numberInputVariants = tv({
   base: `${IDENTIFIER.scope} numberInput`,
   slots: {
-    root: 'trds-flex trds-flex-col trds-gap-1.5',
+    root: 'flex flex-col gap-1.5',
     control:
-      'trds-border trds-border-boundary trds-rounded-lg trds-grid trds-divide-x-[1px] trds-grid-cols-[1fr_32px] trds-grid-rows-[1fr_1fr] trds-overflow-hidden trds-transition trds-duration-normal trds-transition-[border-color,box-shadow] trds-ease-default focus-within:trds-border-primary-500 focus-within:trds-shadow-[0_0_0_1px_var(--shadow-color)] focus-within:trds-shadow-primary-500',
+      'border border-boundary rounded-lg grid divide-x-[1px] grid-cols-[1fr_32px] grid-rows-[1fr_1fr] overflow-hidden transition duration-normal transition-[border-color,box-shadow] ease-default focus-within:border-primary-500 focus-within:shadow-[0_0_0_1px_var(--shadow-color)] focus-within:shadow-primary-500',
     input:
-      'trds-bg-transparent trds-border-none trds-row-span-2 trds-outline-none trds-w-full placeholder:trds-text-placeholder disabled:trds-cursor-not-allowed disabled:trds-opacity-50',
-    incrementTrigger: [...trigger, 'trds-border-b'],
+      'bg-transparent border-none row-span-2 outline-none w-full placeholder:text-placeholder disabled:cursor-not-allowed disabled:opacity-50',
+    incrementTrigger: [...trigger, 'border-b'],
     decrementTrigger: trigger,
   },
   variants: {
     invalid: {
       true: {
-        control: 'trds-border-error-500',
+        control: 'border-error-500',
       },
     },
     size: {
       md: {
-        control: 'trds-ps-3 trds-h-10 trds-min-w-10 trds-text-md',
+        control: 'ps-3 h-10 min-w-10 text-md',
       },
       lg: {
-        control: 'trds-ps-3.5 trds-h-11 trds-min-w-11 trds-text-md',
+        control: 'ps-3.5 h-11 min-w-11 text-md',
       },
       xl: {
-        control: 'trds-ps-4 trds-h-12 trds-min-w-12 trds-text-lg',
+        control: 'ps-4 h-12 min-w-12 text-lg',
       },
     },
   },

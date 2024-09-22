@@ -35,7 +35,7 @@ export const Size = {
   },
   render: (props: SpinnerProps) => {
     return (
-      <div className="trds-flex trds-flex-row trds-gap-4">
+      <div className="flex flex-row gap-4">
         {sizes.map(size => (
           <Spinner {...props} size={size} key={size} />
         ))}
@@ -50,10 +50,7 @@ export const Color = {
   },
   render: (props: SpinnerProps) => {
     return (
-      <Spinner
-        {...props}
-        className="trds-border-b-blue-500 trds-border-l-blue-500"
-      />
+      <Spinner {...props} className="border-b-blue-500 border-l-blue-500" />
     );
   },
 };
@@ -63,7 +60,7 @@ export const Track = {
     label: 'loading...',
   },
   render: (props: SpinnerProps) => {
-    return <Spinner {...props} className="trds-border-green-500" />;
+    return <Spinner {...props} className="border-green-500" />;
   },
 };
 
@@ -72,6 +69,6 @@ export const Width = {
     label: 'loading...',
   },
   render: (props: SpinnerProps) => {
-    return <Spinner {...props} className="trds-border-4" />;
+    return <Spinner {...props} className="border-4" />;
   },
 };
