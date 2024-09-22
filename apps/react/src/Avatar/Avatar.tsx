@@ -19,7 +19,7 @@ export const avatarVariants = tv({
   base: `${IDENTIFIER.scope} avatar`,
   slots: {
     root: 'rounded-full overflow-hidden',
-    fallback: 'bg-muted',
+    fallback: 'bg-muted w-full h-full',
     image: 'bg-muted',
   },
   variants: {
@@ -39,6 +39,16 @@ export const avatarVariants = tv({
         fallback: 'w-12 h-12',
         image: 'w-12 h-12',
       },
+      xl: {
+        root: 'w-14 h-14',
+        fallback: 'w-14 h-14',
+        image: 'w-14 h-14',
+      },
+      '2xl': {
+        root: 'w-16 h-16',
+        fallback: 'w-16 h-16',
+        image: 'w-16 h-16',
+      },
     },
   },
   defaultVariants: {
@@ -46,42 +56,45 @@ export const avatarVariants = tv({
   },
 });
 
-export type AvatarProps = ComponentProps<typeof Avatar>;
+export type AvatarProps = ComponentPropsWithoutRef<typeof _Avatar.Root> &
+  VariantProps<typeof avatarVariants> & {
+    alt?: string;
+    src?: string;
+    fallback?: ReactNode;
+    children?: ReactNode;
+  };
 
-const Avatar = forwardRef<
-  ElementRef<typeof _Avatar.Root>,
-  ComponentPropsWithoutRef<typeof _Avatar.Root> &
-    VariantProps<typeof avatarVariants> & {
-      alt?: string;
-      src?: string;
-      fallback?: ReactNode;
-      children?: ReactNode;
-    }
->((props, ref) => {
-  const { fallback, src, alt, size, className, children, ...rest } = props;
-  const classes = avatarVariants({ size });
-  const child = children && Children.only(children);
+const Avatar = forwardRef<ElementRef<typeof _Avatar.Root>, AvatarProps>(
+  (props, ref) => {
+    const { fallback, src, alt, size, className, children, ...rest } = props;
+    const classes = avatarVariants({ size });
+    const child = children && Children.only(children);
 
-  return (
-    <_Avatar.Root ref={ref} className={cx(classes.root(), className)} {...rest}>
-      <_Avatar.Image
-        src={src}
-        alt={alt}
-        className={classes.image()}
-        asChild={isNotNil(child)}
+    return (
+      <_Avatar.Root
+        ref={ref}
+        className={cx(classes.root(), className)}
+        {...rest}
       >
-        {child}
-      </_Avatar.Image>
-      <_Avatar.Fallback className={classes.fallback()} asChild>
-        {fallback ?? <UserIcon size={convertSizeToNumber(size)} />}
-      </_Avatar.Fallback>
-    </_Avatar.Root>
-  );
-});
+        <_Avatar.Image
+          src={src}
+          alt={alt}
+          className={classes.image()}
+          asChild={isNotNil(child)}
+        >
+          {child}
+        </_Avatar.Image>
+        <_Avatar.Fallback className={classes.fallback()} asChild>
+          {fallback ?? <UserIcon size={convertSizeToNumber(size)} />}
+        </_Avatar.Fallback>
+      </_Avatar.Root>
+    );
+  },
+);
 
 export { Avatar };
 
-const convertSizeToNumber = (size?: 'sm' | 'md' | 'lg') => {
+const convertSizeToNumber = (size?: 'sm' | 'md' | 'lg' | 'xl' | '2xl') => {
   if (size === 'sm') {
     return 32;
   }
@@ -90,6 +103,12 @@ const convertSizeToNumber = (size?: 'sm' | 'md' | 'lg') => {
   }
   if (size === 'lg') {
     return 48;
+  }
+  if (size === 'xl') {
+    return 56;
+  }
+  if (size === '2xl') {
+    return 64;
   }
 
   return 40;

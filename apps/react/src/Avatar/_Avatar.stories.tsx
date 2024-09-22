@@ -2,6 +2,7 @@ import { UserIcon } from 'lucide-react';
 
 import { Avatar, type AvatarProps } from './index';
 
+const sizes = ['sm', 'md', 'lg', 'xl', '2xl'] as AvatarProps['size'][];
 /**
  * based on https://ark-ui.com/react/docs/components/avatar
  */
@@ -12,7 +13,12 @@ export default {
     layout: 'centered',
   },
   tags: ['autodocs'],
-  argTypes: {},
+  argTypes: {
+    size: {
+      options: sizes,
+      control: { type: 'select' },
+    },
+  },
   args: {},
 };
 
@@ -33,7 +39,6 @@ export const Size = {
     src: 'https://i.pravatar.cc/500',
   },
   render: (props: AvatarProps) => {
-    const sizes = ['sm', 'md', 'lg'] as AvatarProps['size'][];
     return (
       <div className={'flex flex-row gap-1'}>
         {sizes.map(size => (
