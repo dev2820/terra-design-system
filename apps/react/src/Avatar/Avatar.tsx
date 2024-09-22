@@ -4,7 +4,6 @@ import { UserIcon } from 'lucide-react';
 import { isNotNil } from 'utils';
 
 import {
-  type ComponentProps,
   type ComponentPropsWithoutRef,
   type ElementRef,
   forwardRef,
