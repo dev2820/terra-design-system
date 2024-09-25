@@ -61,7 +61,7 @@ const avatarVariants = tv({
 });
 
 type AvatarProps = ComponentPropsWithoutRef<typeof _Avatar.Root> &
-  VariantProps<typeof avatarVariants> & {
+  Omit<VariantProps<typeof avatarVariants>, 'size'> & {
     alt?: string;
     src?: string;
     fallback?: ReactNode;
