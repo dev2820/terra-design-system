@@ -30,13 +30,11 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "peerDependencies": {
+  "devDependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "@ark-ui/react": "^3.6.2",
-    "tailwind-variants": "^0.2.1"
-  },
-  "devDependencies": {
+    "tailwind-variants": "^0.2.1",
     "@chromatic-com/storybook": "^1.5.0",
     "@storybook/addon-essentials": "^8.1.6",
     "@storybook/addon-interactions": "^8.1.6",
