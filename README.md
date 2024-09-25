@@ -19,3 +19,4 @@ tailwind + ark ui(park ui)를 통해 만든 개인용 디자인 시스템
 - [ ] item마다 분리하기 (각각 install 할 수 있게)
   - [ ] core 분리
   - [ ] 각 item 분리
+- [ ] peerDep으로 ark-ui와 tailwind-variants 추가하기
