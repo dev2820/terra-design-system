@@ -337,6 +337,14 @@ export const keyframes = {
       backgroundColor: 'rgba(165, 165, 165, 0.15)',
     },
   },
+  spin: {
+    '0%': {
+      transform: 'rotate(0deg)',
+    },
+    '100%': {
+      transform: 'rotate(360deg)',
+    },
+  },
 };
 
 export const animations = {
@@ -354,5 +362,5 @@ export const animations = {
   'dialog-out': 'dialogOut 0.25s ease-out',
   shimmer: 'shimmer 2s ease-in-out infinite',
   'fade-in-once': 'fadeIn 0.2s ease-in 1',
-  spin: 'spin 0.6s linear infinite',
+  spin: 'spin 0.5s linear infinite',
 };
