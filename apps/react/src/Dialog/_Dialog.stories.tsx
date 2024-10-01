@@ -26,10 +26,10 @@ export const Default = {
         <Dialog.Trigger asChild>
           <Button>Open Dialog</Button>
         </Dialog.Trigger>
-        <Dialog.Content className="w-[400px] p-4">
+        <Dialog.Content className="trds-w-[400px] trds-p-4">
           <Dialog.CloseTrigger asChild>
             <IconButton
-              className="absolute right-4 top-3"
+              className="trds-absolute trds-right-4 trds-top-3"
               size="sm"
               variant="ghost"
             >
@@ -43,7 +43,7 @@ export const Default = {
             ever since the 1500s, when an unknown printer took a galley of type
             and scrambled it to make a type specimen book.
           </Dialog.Description>
-          <div className="flex flex-row-reverse gap-2 w-full">
+          <div className="trds-flex trds-flex-row-reverse trds-gap-2 trds-w-full">
             <Button variant="filled" theme="primary">
               Confirm
             </Button>

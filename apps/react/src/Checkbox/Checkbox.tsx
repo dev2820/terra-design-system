@@ -15,18 +15,18 @@ import { tv, VariantProps } from '../tv';
 export const checkboxVariants = tv({
   base: `${IDENTIFIER.scope} checkbox`,
   slots: {
-    root: 'group :focus-within:mt-4 rounded-sm inline-flex flex-row items-center gap-2 cursor-pointer data-disabled:cursor-not-allowed data-readonly:cursor-default',
+    root: 'group :focus-within:mt-4 trds-rounded-sm trds-inline-flex trds-flex-row trds-items-center trds-gap-2 trds-cursor-pointer data-disabled:trds-cursor-not-allowed data-readonly:trds-cursor-default',
     label: '',
     control: [
-      'border-2 border-boundary rounded-sm flex-none box-border inline-flex place-items-center transition-shadow transition-bg transition-border-color duration-normal ease-default',
-      'data-checked:bg-primary data-checked:text-white data-checked:border-primary',
-      'data-invalid:border-error',
-      'data-indeterminate:bg-primary data-indeterminate:text-white data-indeterminate:border-primary',
-      'data-disabled:bg-muted data-disabled:border-muted',
-      'data-disabled:data-checked:border-muted data-[disabled]:data-checked:bg-muted',
-      'data-disabled:data-indeterminate:border-muted data-disabled:data-indeterminate:bg-muted',
-      'data-disabled:text-highlight',
-      'data-focus:shadow-[0_0_0_2px_var(--shadow-color)] data-focus:shadow-primary',
+      'trds-border-2 trds-border-boundary trds-rounded-sm trds-flex-none trds-box-border trds-inline-flex trds-place-items-center trds-transition-shadow trds-transition-bg trds-transition-border-color trds-duration-normal trds-ease-default',
+      'data-checked:trds-bg-primary data-checked:trds-text-white data-checked:trds-border-primary',
+      'data-invalid:trds-border-error',
+      'data-indeterminate:trds-bg-primary data-indeterminate:trds-text-white data-indeterminate:trds-border-primary',
+      'data-disabled:trds-bg-muted data-disabled:trds-border-muted',
+      'data-disabled:data-checked:trds-border-muted data-[disabled]:data-checked:trds-bg-muted',
+      'data-disabled:data-indeterminate:trds-border-muted data-disabled:data-indeterminate:trds-bg-muted',
+      'data-disabled:trds-text-highlight',
+      'data-focus:trds-shadow-[0_0_0_2px_var(--shadow-color)] data-focus:trds-shadow-primary',
     ],
     indicator: '',
     hiddenInput: '',
@@ -34,13 +34,13 @@ export const checkboxVariants = tv({
   variants: {
     size: {
       sm: {
-        control: 'w-3 h-3',
+        control: 'trds-w-3 trds-h-3',
       },
       md: {
-        control: 'w-4 h-4',
+        control: 'trds-w-4 trds-h-4',
       },
       lg: {
-        control: 'w-5 h-5',
+        control: 'trds-w-5 trds-h-5',
       },
     },
   },

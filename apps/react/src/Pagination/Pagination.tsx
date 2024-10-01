@@ -16,11 +16,12 @@ import { tv } from '../tv';
 export const paginationVariants = tv({
   base: `${IDENTIFIER.scope} pagination`,
   slots: {
-    root: 'flex gap-1',
-    item: 'font-tabular-nums',
+    root: 'trds-flex trds-gap-1',
+    item: 'trds-font-tabular-nums',
     prevTrigger: '',
     nextTrigger: '',
-    ellipsis: 'inline-flex items-center text-neutral-900 font-semibold px-2',
+    ellipsis:
+      'trds-inline-flex trds-items-center trds-text-neutral-900 trds-font-semibold trds-px-2',
   },
 });
 

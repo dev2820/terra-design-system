@@ -9,32 +9,32 @@ import { tv, VariantProps } from '../tv';
 export const alertVariants = tv({
   base: `${IDENTIFIER.scope} alert`,
   slots: {
-    root: 'relative p-4 rounded-lg border [&>svg]:absolute [&>svg]:top-5 [&>svg]:left-4',
+    root: 'trds-relative trds-p-4 trds-rounded-lg trds-border [&>svg]:trds-absolute [&>svg]:trds-top-5 [&>svg]:trds-left-4',
     title:
-      '[svg+&]:pl-8 font-semibold text-lg leading-2 mb-2 last:mb-0 text-title',
-    description: 'text-description text-md [svg~&]:pl-8',
+      '[svg+&]:trds-pl-8 trds-font-semibold trds-text-lg trds-leading-2 trds-mb-2 last:trds-mb-0 trds-text-title',
+    description: 'trds-text-description trds-text-md [svg~&]:trds-pl-8',
   },
   variants: {
     theme: {
       neutral: {
-        root: 'text-neutral-500 bg-neutral-50 border-neutral-200',
-        title: 'text-neutral-500',
+        root: 'trds-text-neutral-500 trds-bg-neutral-50 trds-border-neutral-200',
+        title: 'trds-text-neutral-500',
       },
       info: {
-        root: 'text-info-500 bg-info-50 border-info-200',
-        title: 'text-info-500',
+        root: 'trds-text-info-500 trds-bg-info-50 trds-border-info-200',
+        title: 'trds-text-info-500',
       },
       success: {
-        root: 'text-success-500 bg-success-50 border-success-200',
-        title: 'text-success-500',
+        root: 'trds-text-success-500 trds-bg-success-50 trds-border-success-200',
+        title: 'trds-text-success-500',
       },
       warning: {
-        root: 'text-warning-500 bg-warning-50 border-warning-200',
-        title: 'text-warning-500',
+        root: 'trds-text-warning-500 trds-bg-warning-50 trds-border-warning-200',
+        title: 'trds-text-warning-500',
       },
       error: {
-        root: 'text-error-500 bg-error-50 border-error-200',
-        title: 'text-error-500',
+        root: 'trds-text-error-500 trds-bg-error-50 trds-border-error-200',
+        title: 'trds-text-error-500',
       },
     },
   },

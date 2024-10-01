@@ -38,7 +38,7 @@ export const Default = {
       });
     };
     return (
-      <div className="w-96 h-96">
+      <div className="trds-w-96 trds-h-96">
         <Button onClick={showToast}>Show Toast</Button>
         <Toast.Toaster toaster={toaster}>
           {toast => (

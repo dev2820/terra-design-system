@@ -20,11 +20,11 @@ const languages = ['Javascript', 'Typescript'] as const;
 
 export const Default = {
   args: {
-    className: 'w-[600px]',
+    className: 'trds-w-[600px]',
   },
   render: (props: ComboboxProps['root']) => {
     return (
-      <div className="flex w-[600px] h-[500px]">
+      <div className="trds-flex trds-w-[600px] trds-h-[500px]">
         <Combobox.Root
           {...props}
           items={[...frameworks, ...languages, 'None']}
@@ -53,11 +53,11 @@ export const Default = {
 
 export const MultiCombobox = {
   args: {
-    className: 'w-[600px]',
+    className: 'trds-w-[600px]',
   },
   render: (props: ComboboxProps['root']) => {
     return (
-      <div className="flex w-[600px] h-[500px]">
+      <div className="trds-flex trds-w-[600px] trds-h-[500px]">
         <Combobox.Root
           {...props}
           items={[...frameworks, ...languages, 'None']}

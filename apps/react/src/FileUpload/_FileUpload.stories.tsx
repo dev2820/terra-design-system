@@ -22,11 +22,11 @@ export default {
 export const Default = {
   args: {
     maxFiles: 3,
-    className: 'w-full',
+    className: 'trds-w-full',
   },
   render: (props: FileUploadProps['root']) => {
     return (
-      <div className="w-[600px]">
+      <div className="trds-w-[600px]">
         <FileUpload.Root maxFiles={3} {...props}>
           <FileUpload.Dropzone>
             <FileUpload.Label>Drop your files here</FileUpload.Label>

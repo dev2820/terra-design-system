@@ -17,26 +17,26 @@ import { tv, VariantProps } from '../tv';
 const avatarVariants = tv({
   base: `${IDENTIFIER.scope} avatar`,
   slots: {
-    root: 'rounded-full overflow-hidden',
-    fallback: 'bg-muted w-full h-full',
-    image: 'bg-muted',
+    root: 'trds-rounded-full trds-overflow-hidden',
+    fallback: 'trds-bg-muted trds-w-full trds-h-full',
+    image: 'trds-bg-muted',
   },
   variants: {
     size: {
       sm: {
-        root: 'w-8 h-8',
-        fallback: 'w-8 h-8',
-        image: 'w-8 h-8',
+        root: 'trds-w-8 trds-h-8',
+        fallback: 'trds-w-8 trds-h-8',
+        image: 'trds-w-8 trds-h-8',
       },
       md: {
-        root: 'w-10 h-10',
-        fallback: 'w-10 h-10',
-        image: 'w-10 h-10',
+        root: 'trds-w-10 trds-h-10',
+        fallback: 'trds-w-10 trds-h-10',
+        image: 'trds-w-10 trds-h-10',
       },
       lg: {
-        root: 'w-12 h-12',
-        fallback: 'w-12 h-12',
-        image: 'w-12 h-12',
+        root: 'trds-w-12 trds-h-12',
+        fallback: 'trds-w-12 trds-h-12',
+        image: 'trds-w-12 trds-h-12',
       },
       xl: {
         root: 'w-14 h-14',

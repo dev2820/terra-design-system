@@ -6,7 +6,7 @@ import { cx } from '../cx';
 import { tv, VariantProps } from '../tv';
 
 const spinnerVariants = tv({
-  base: 'inline-block border-2 border-transparent border-solid rounded-full w-[var(--size)] h-[var(--size)] animate-spin border-b-neutral-800 border-l-neutral-800',
+  base: 'trds-inline-block trds-border-2 trds-border-transparent trds-border-solid trds-rounded-full trds-w-[var(--size)] trds-h-[var(--size)] trds-animate-spin trds-border-b-neutral-800 trds-border-l-neutral-800',
   variants: {
     size: {
       xs: '[--size:8px]',
@@ -36,7 +36,7 @@ export const Spinner = forwardRef<HTMLDivElement, SpinnerProps>(
         className={cx(IDENTIFIER.scope, spinnerVariants({ size }), className)}
         {...rest}
       >
-        {label && <span className="sr-only">{label}</span>}
+        {label && <span className="trds-sr-only">{label}</span>}
       </div>
     );
   },

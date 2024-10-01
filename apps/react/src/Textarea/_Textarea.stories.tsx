@@ -39,7 +39,7 @@ export const Sizes = {
   args: {},
   render: () => {
     return (
-      <div className="flex flex-row items-start gap-4 w-96 h-48">
+      <div className="trds-flex trds-flex-row trds-items-start trds-gap-4 trds-w-96 trds-h-48">
         <Textarea size="sm" />
         <Textarea size="md" />
         <Textarea size="lg" />

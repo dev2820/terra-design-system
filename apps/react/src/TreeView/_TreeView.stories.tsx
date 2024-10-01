@@ -19,7 +19,7 @@ export const Default = {
   },
   render: (props: TreeViewProps) => {
     return (
-      <div className="w-96 h-72">
+      <div className="trds-w-96 trds-h-72">
         <TreeView.Root {...props}>
           <TreeView.Tree>
             <TreeView.Item value="1.0">

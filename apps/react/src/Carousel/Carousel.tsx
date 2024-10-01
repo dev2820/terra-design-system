@@ -19,19 +19,22 @@ import { tv } from '../tv';
 export const carouselVariants = tv({
   base: `${IDENTIFIER.scope} carousel`,
   slots: {
-    root: 'w-full relative',
-    viewport: 'overflow-hidden rounded-2xl bg-layer1 w-full h-auto',
-    item: 'aspect-video object-cover',
+    root: 'trds-w-full trds-relative',
+    viewport:
+      'trds-overflow-hidden trds-rounded-2xl trds-bg-layer1 trds-w-full trds-h-auto',
+    item: 'trds-aspect-video trds-object-cover',
     itemGroup:
-      'transition-all duration-normal w-full py-4 flex flex-row justify-between items-center cursor-pointer disabled:text-disabled disabled:cursor-not-allowed',
-    indicatorGroup: 'flex flex-row gap-2 justify-center items-center mx-8',
+      'trds-transition-all trds-duration-normal trds-w-full trds-py-4 trds-flex trds-flex-row trds-justify-between trds-items-center trds-cursor-pointer disabled:trds-text-disabled disabled:trds-cursor-not-allowed',
+    indicatorGroup:
+      'trds-flex trds-flex-row trds-gap-2 trds-justify-center trds-items-center trds-mx-8',
     indicator:
-      'w-2.5 h-2.5 rounded-full bg-layer1 cursor-pointer duration-normal data-current:bg-neutral-pressed data-readonly:bg-muted data-readonly:cursor-not-allowed',
-    control: 'w-full px-4 flex flex-row justify-center items-center mt-4',
+      'trds-w-2.5 trds-h-2.5 trds-rounded-full trds-bg-layer1 trds-cursor-pointer trds-duration-normal data-current:trds-bg-neutral-pressed data-readonly:trds-bg-muted data-readonly:trds-cursor-not-allowed',
+    control:
+      'trds-w-full trds-px-4 trds-flex trds-flex-row trds-justify-center trds-items-center trds-mt-4',
     prevTrigger:
-      'rounded-full cursor-pointer transition-colors text-neutral enabled:hover:text-neutral-hover enabled:active:text-neutral-pressed disabled:cursor-not-allowed disabled:text-muted',
+      'trds-rounded-full trds-cursor-pointer trds-transition-colors trds-text-neutral enabled:hover:trds-text-neutral-hover enabled:active:trds-text-neutral-pressed disabled:trds-cursor-not-allowed disabled:trds-text-muted',
     nextTrigger:
-      'rounded-full cursor-pointer transition-colors text-neutral enabled:hover:text-neutral-hover enabled:active:text-neutral-pressed disabled:cursor-not-allowed disabled:text-muted',
+      'trds-rounded-full trds-cursor-pointer trds-transition-colors trds-text-neutral enabled:hover:trds-text-neutral-hover enabled:active:trds-text-neutral-pressed disabled:trds-cursor-not-allowed disabled:trds-text-muted',
   },
 });
 
@@ -93,7 +96,7 @@ const Root = forwardRef<
           <Carousel.PrevTrigger
             className={cx(
               classes.prevTrigger(),
-              !showControl || readonly ? 'hidden' : 'visible',
+              !showControl || readonly ? 'trds-hidden' : 'trds-visible',
             )}
             ref={prevBtnRef}
           >
@@ -112,7 +115,7 @@ const Root = forwardRef<
           <Carousel.NextTrigger
             className={cx(
               classes.nextTrigger(),
-              !showControl || readonly ? 'hidden' : 'visible',
+              !showControl || readonly ? 'trds-hidden' : 'trds-visible',
             )}
             ref={nextBtnRef}
           >

@@ -16,15 +16,15 @@ export const toastVariants = tv({
   base: `${IDENTIFIER.scope} toast`,
   slots: {
     root: [
-      'bg-white rounded-lg shadow-lg min-w-[20rem]',
-      'h-[var(--height)] w-[var(--width)] opacity-[var(--opacity)]',
-      'break-anywhere p-4 relative',
-      'custom-translate will-change-[translate,opacity,scale] z-[var(--z-index)] transition duration-normal transition-[translate,scale,opacity,height] ease-default',
+      'trds-bg-white trds-rounded-lg trds-shadow-lg trds-min-w-[20rem]',
+      'trds-h-[var(--height)] trds-w-[var(--width)] trds-opacity-[var(--opacity)]',
+      'trds-break-anywhere trds-p-4 trds-relative',
+      'trds-custom-translate trds-will-change-[translate,opacity,scale] trds-z-[var(--z-index)] trds-transition trds-duration-normal trds-transition-[translate,scale,opacity,height] trds-ease-default',
     ],
-    title: 'text-fg-title font-semibold text-sm mb-4',
-    description: 'text-fg-description text-sm',
-    actionTrigger: 'mt-4',
-    closeTrigger: 'absolute top-3 right-3',
+    title: 'trds-text-fg-title trds-font-semibold trds-text-sm trds-mb-4',
+    description: 'trds-text-fg-description trds-text-sm',
+    actionTrigger: 'trds-mt-4',
+    closeTrigger: 'trds-absolute trds-top-3 trds-right-3',
   },
 });
 

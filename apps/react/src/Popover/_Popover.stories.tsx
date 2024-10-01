@@ -22,7 +22,7 @@ export const Default = {
   args: {},
   render: (props: PopoverProps['root']) => {
     return (
-      <div className="w-[600px] h-[500px]">
+      <div className="trds-w-[600px] trds-h-[500px]">
         <Popover.Root {...props}>
           <Popover.Trigger asChild>
             <Button>Open Popover</Button>
@@ -51,7 +51,7 @@ export const Portalled = {
   },
   render: (props: PopoverProps['root']) => {
     return (
-      <div className="w-[600px] h-[500px]">
+      <div className="trds-w-[600px] trds-h-[500px]">
         <Popover.Root {...props}>
           <Popover.Trigger asChild>
             <Button>Open Popover</Button>
@@ -78,7 +78,7 @@ export const WithArrow = {
   args: {},
   render: (props: PopoverProps['root']) => {
     return (
-      <div className="w-[600px] h-[500px]">
+      <div className="trds-w-[600px] trds-h-[500px]">
         <Popover.Root {...props}>
           <Popover.Trigger asChild>
             <Button>Open Popover</Button>

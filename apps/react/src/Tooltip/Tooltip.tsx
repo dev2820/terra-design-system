@@ -16,22 +16,22 @@ export const tooltipVariants = tv({
   base: `${IDENTIFIER.scope} tooltip`,
   slots: {
     content:
-      'rounded-md shadow-sm font-semibold px-3 py-2 text-xs max-w-40 z-tooltip data-open:animate-fade-in data-closed:animate-fade-out',
+      'trds-rounded-md trds-shadow-sm trds-font-semibold trds-px-3 trds-py-2 trds-text-xs trds-max-w-40 trds-z-tooltip data-open:trds-animate-fade-in data-closed:trds-animate-fade-out',
     arrow: '[--arrow-size:8px]',
-    arrowTip: 'border-neutral-800 border-t-[1px] border-l-[1px]',
+    arrowTip: 'trds-border-neutral-800 trds-border-t-[1px] trds-border-l-[1px]',
     trigger: '',
   },
   variants: {
     theme: {
       neutral: {
-        content: 'bg-neutral-800 text-white',
+        content: 'trds-bg-neutral-800 trds-text-white',
         arrow: '[--arrow-background:var(--colors-neutral-800,#1f2937)]',
-        arrowTip: 'border-neutral-800',
+        arrowTip: 'trds-border-neutral-800',
       },
       primary: {
-        content: 'bg-primary-500 text-fg-primary',
-        arrow: '[--arrow-background:var(--colors-primary-500,#8b5cf6)]',
-        arrowTip: 'border-primary-500',
+        content: 'trds-bg-primary-500 trds-text-fg-primary',
+        arrow: 'trds-[--arrow-background:var(--colors-primary-500,#8b5cf6)]',
+        arrowTip: 'trds-border-primary-500',
       },
     },
   },

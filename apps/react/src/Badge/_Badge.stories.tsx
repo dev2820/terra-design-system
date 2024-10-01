@@ -47,7 +47,7 @@ export const Variant = {
   },
   render: (props: BadgeProps) => {
     return (
-      <div className="flex flex-row gap-4">
+      <div className="trds-flex trds-flex-row trds-gap-4">
         {variants.map(variant => (
           <Badge {...props} variant={variant} key={variant} />
         ))}
@@ -62,7 +62,7 @@ export const Theme = {
   },
   render: (props: BadgeProps) => {
     return (
-      <div className="grid grid-rows-3 grid-cols-5 gap-4">
+      <div className="trds-grid trds-grid-rows-3 trds-grid-cols-5 trds-gap-4">
         {themes.map(color => (
           <Badge {...props} theme={color} key={color} />
         ))}
@@ -79,7 +79,7 @@ export const Theme = {
             {...props}
             theme={color}
             key={`outline-` + color}
-            className={`columns-${i}`}
+            className={`trds-columns-${i}`}
             variant="outline"
           />
         ))}

@@ -51,7 +51,7 @@ export const Size = {
   args: {},
   render: (props: RatingGroupProps) => {
     return (
-      <div className="flex flex-col gap-4">
+      <div className="trds-flex trds-flex-col trds-gap-4">
         <RatingGroup {...props} size="sm" />
         <RatingGroup {...props} size="md" />
         <RatingGroup {...props} size="lg" />

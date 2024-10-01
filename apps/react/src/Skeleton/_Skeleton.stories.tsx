@@ -49,7 +49,7 @@ export const Round = {
   render: (props: SkeletonProps) => {
     return (
       <Skeleton {...props}>
-        <div className="w-24 h-24">Hello World</div>
+        <div className="trds-w-24 trds-h-24">Hello World</div>
       </Skeleton>
     );
   },
@@ -67,16 +67,16 @@ export const Example = {
         </Card.Header>
         <Card.Content>
           <Skeleton>
-            <div className="w-96 h-72"></div>
+            <div className="trds-w-96 trds-h-72"></div>
           </Skeleton>
         </Card.Content>
         <Card.Footer>
-          <div className="flex flex-row gap-4">
+          <div className="trds-flex trds-flex-row trds-gap-4">
             <Skeleton round>
-              <div className="w-5 h-5 rounded-full">!</div>
+              <div className="trds-w-5 trds-h-5 trds-rounded-full">!</div>
             </Skeleton>
             <Skeleton>
-              <div className="w-40 h-5 rounded-full">
+              <div className="trds-w-40 trds-h-5 trds-rounded-full">
                 Something Something Something Blar Blar Blar
               </div>
             </Skeleton>

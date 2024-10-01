@@ -15,18 +15,20 @@ import { tv, VariantProps } from '../tv';
 export const fileUploadVariant = tv({
   base: `${IDENTIFIER.scope} fileUpload`,
   slots: {
-    root: 'flex flex-col gap-4 w-full',
-    label: 'font-medium text-sm',
+    root: 'trds-flex trds-flex-col trds-gap-4 trds-w-full',
+    label: 'trds-font-medium trds-text-sm',
     dropzone:
-      'flex items-center justify-center flex-col bg-white rounded-md border border-boundary min-h-xs px-6 py-4 gap-3',
+      'trds-flex trds-items-center trds-justify-center trds-flex-col trds-bg-white trds-rounded-md trds-border trds-border-boundary trds-min-h-xs trds-px-6 trds-py-4 trds-gap-3',
     trigger: '',
-    item: 'grid grid-cols-[auto_1fr_auto] [grid-template-areas:"preview_name_delete""preview_size_delete"] bg-white rounded-md border border-boundary gap-x-3 p-4 animate-fade-in',
-    itemGroup: 'flex flex-col gap-3',
-    itemName: 'text-fg-title font-medium text-sm [grid-area:name]',
-    itemSizeText: 'text-fg-description text-sm [grid-area:size]',
-    itemDeleteTrigger: 'self-start [grid-area:delete]',
+    item: 'trds-grid trds-grid-cols-[auto_1fr_auto] [grid-template-areas:"preview_name_delete""preview_size_delete"] trds-bg-white trds-rounded-md trds-border trds-border-boundary trds-gap-x-3 trds-p-4 trds-animate-fade-in',
+    itemGroup: 'trds-flex trds-flex-col trds-gap-3',
+    itemName:
+      'trds-text-fg-title trds-font-medium trds-text-sm [grid-area:name]',
+    itemSizeText: 'trds-text-fg-description trds-text-sm [grid-area:size]',
+    itemDeleteTrigger: 'trds-self-start [grid-area:delete]',
     itemPreview: '[grid-area:preview]',
-    itemPreviewImage: 'aspect-square h-10 w-10 object-scale-down',
+    itemPreviewImage:
+      'trds-aspect-square trds-h-10 trds-w-10 trds-object-scale-down',
   },
 });
 

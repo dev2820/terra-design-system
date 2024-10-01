@@ -106,7 +106,7 @@ export const ObjectFit = {
         {images.map((image, idx) => (
           <Carousel.Item
             key={image}
-            className="object-contain"
+            className="trds-object-contain"
             index={idx}
             asChild
           >
@@ -128,7 +128,7 @@ export const SlidesPerView = {
         {images.map((image, idx) => (
           <Carousel.Item
             key={image}
-            className="object-cover aspect-square"
+            className="trds-object-cover trds-aspect-square"
             index={idx}
             asChild
           >

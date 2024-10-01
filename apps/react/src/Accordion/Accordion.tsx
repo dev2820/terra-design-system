@@ -11,18 +11,18 @@ import {
 
 import { createReactContext } from '../create-react-context';
 import { cx } from '../cx';
-import { tv } from '../tv';
+import { tv } from "../tv"
 
 export const accordionVariants = tv({
   slots: {
-    root: 'w-full',
-    item: 'border-b border-boundary',
+    root: 'trds-w-full',
+    item: 'trds-border-b trds-border-boundary',
     itemTrigger:
-      'transition-all duration-normal w-full py-4 flex flex-row justify-between items-center cursor-pointer disabled:text-muted disabled:cursor-not-allowed',
+      'trds-transition-all trds-duration-normal trds-w-full trds-py-4 trds-flex trds-flex-row trds-justify-between trds-items-center trds-cursor-pointer disabled:trds-text-muted disabled:trds-cursor-not-allowed',
     itemIndicator:
-      'origin-center transition-all duration-normal data-open:rotate-180 color-fg-neutral',
+      'trds-origin-center trds-transition-all trds-duration-normal data-open:trds-rotate-180 trds-color-fg-neutral',
     itemContent:
-      'overflow-hidden data-open:animate-collapse-in data-closed:animate-collapse-out',
+      'trds-overflow-hidden data-open:trds-animate-collapse-in data-closed:trds-animate-collapse-out',
   },
 });
 

@@ -16,15 +16,15 @@ import { tv, VariantProps } from '../tv';
 export const selectVariant = tv({
   base: `${IDENTIFIER.scope} select`,
   slots: {
-    root: 'flex flex-col gap-1.5 w-full',
+    root: 'trds-flex trds-flex-col trds-gap-1.5 trds-w-full',
     content:
-      'bg-white rounded-lg shadow-lg flex flex-col z-dropdown data-open:animate-fade-in data-closed:animate-fade-out focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-boundary focus-visible:outline-offset-2',
-    item: 'flex items-center justify-between rounded-md cursor-pointer transition-fast transition-[background,color] ease-default hover:bg-layer1 hover:text-black data-highlighted:bg-layer1 data-highlighted:text-black data-selected:text-black data-disabled:text-muted data-disabled:cursor-not-allowed',
-    itemGroupLabel: 'font-semibold text-sm',
-    itemIndicator: 'text-black',
-    label: 'text-neutral-500 font-medium',
+      'trds-bg-white trds-rounded-lg trds-shadow-lg trds-flex trds-flex-col trds-z-dropdown data-open:trds-animate-fade-in data-closed:trds-animate-fade-out focus-visible:trds-outline-2 focus-visible:trds-outline-solid focus-visible:trds-outline-boundary focus-visible:trds-outline-offset-2',
+    item: 'trds-flex trds-items-center trds-justify-between trds-rounded-md trds-cursor-pointer trds-transition-fast trds-transition-[background,color] trds-ease-default hover:trds-bg-layer1 hover:trds-text-black data-highlighted:trds-bg-layer1 data-highlighted:trds-text-black data-selected:trds-text-black data-disabled:trds-text-muted data-disabled:trds-cursor-not-allowed',
+    itemGroupLabel: 'trds-font-semibold trds-text-sm',
+    itemIndicator: 'trds-text-black',
+    label: 'trds-text-neutral-500 trds-font-medium',
     trigger:
-      'appearance-none inline-flex items-center justify-between border-boundary rounded-lg cursor-pointer text-fg-title inline-flex relative outline-0 transition duration-normal transition-[background,box-shadow,border-color] ease-default w-full border-[1px] focus:border-boundary focus:shadow-[0_0_0_2px_var(--shadow-color)] focus:shadow-primary-500 placeholder-shown:text-fg-placeholder disabled:text-muted disabled:cursor-not-allowed disabled:[&_:where(svg)]:text-muted [&_:where(svg)]:text-subtle',
+      'trds-appearance-none trds-inline-flex trds-items-center trds-justify-between trds-border-boundary trds-rounded-lg trds-cursor-pointer trds-text-fg-title trds-inline-flex trds-relative trds-outline-0 trds-transition trds-duration-normal trds-transition-[background,box-shadow,border-color] trds-ease-default trds-w-full trds-border-[1px] focus:trds-border-boundary focus:trds-shadow-[0_0_0_2px_var(--shadow-color)] focus:trds-shadow-primary-500 placeholder-shown:trds-text-fg-placeholder disabled:trds-text-muted disabled:trds-cursor-not-allowed disabled:[&_:where(svg)]:text-muted [&_:where(svg)]:text-subtle',
     control: '',
     valueText: '',
     indicator: '',
@@ -35,31 +35,31 @@ export const selectVariant = tv({
   variants: {
     size: {
       sm: {
-        content: 'p-0.5 gap-1',
-        item: 'text-sm px-2 h-9',
+        content: 'trds-p-0.5 trds-gap-1',
+        item: 'trds-text-sm trds-px-2 trds-h-9',
         itemIndicator: '[&_:where(svg)]:w-4 [&_:where(svg)]:h-4',
-        itemGroupLabel: 'px-2 py-1.5',
-        label: 'text-sm',
+        itemGroupLabel: 'trds-px-2 trds-py-1.5',
+        label: 'trds-text-sm',
         trigger:
-          'px-2.5 h-9 min-w-9 text-sm gap-2 [&_:where(svg)]:w-4 [&_:where(svg)]:h-4',
+          'trds-px-2.5 trds-h-9 trds-min-w-9 trds-text-sm trds-gap-2 [&_:where(svg)]:w-4 [&_:where(svg)]:h-4',
       },
       md: {
-        content: 'p-1 gap-1',
-        item: 'text-md px-2 h-10',
+        content: 'trds-p-1 trds-gap-1',
+        item: 'trds-text-md trds-px-2 trds-h-10',
         itemIndicator: '[&_:where(svg)]:w-4 [&_:where(svg)]:h-4',
-        itemGroupLabel: 'px-2 py-1.5',
-        label: 'text-sm',
+        itemGroupLabel: 'trds-px-2 trds-py-1.5',
+        label: 'trds-text-sm',
         trigger:
-          'px-3 h-10 min-w-10 text-md gap-2 [&_:where(svg)]:w-4 [&_:where(svg)]:h-4',
+          'trds-px-3 trds-h-10 trds-min-w-10 trds-text-md trds-gap-2 [&_:where(svg)]:w-4 [&_:where(svg)]:h-4',
       },
       lg: {
-        content: 'p-1.5 gap-1',
-        item: 'text-md px-2 h-11',
+        content: 'trds-p-1.5 trds-gap-1',
+        item: 'trds-text-md trds-px-2 trds-h-11',
         itemIndicator: '[&_:where(svg)]:w-5 [&_:where(svg)]:h-5',
-        itemGroupLabel: 'px-2 py-1.5',
-        label: 'text-sm',
+        itemGroupLabel: 'trds-px-2 trds-py-1.5',
+        label: 'trds-text-sm',
         trigger:
-          'px-3.5 h-11 min-w-11 text-md gap-2 [&_:where(svg)]:w-5 [&_:where(svg)]:h-5',
+          'trds-px-3.5 trds-h-11 trds-min-w-11 trds-text-md trds-gap-2 [&_:where(svg)]:w-5 [&_:where(svg)]:h-5',
       },
     },
   },

@@ -39,7 +39,7 @@ export const Sizes = {
   args: {},
   render: () => {
     return (
-      <div className="flex flex-col items-center gap-4 w-36 h-48">
+      <div className="trds-flex trds-flex-col trds-items-center trds-gap-4 trds-w-36 trds-h-48">
         <Switch size="sm" />
         <Switch size="md" />
         <Switch size="lg" />

@@ -9,23 +9,24 @@ import { tv, VariantProps } from '../tv';
 export const cardVariants = tv({
   base: `${IDENTIFIER.scope} card`,
   slots: {
-    root: 'rounded-lg overflow-hidden',
-    header: 'p-6',
-    content: 'px-6 pb-6',
-    footer: 'px-6 pb-6',
-    title: 'text-fg-title leading-normal font-bold text-2xl',
-    description: 'text-fg-description text-lg',
+    root: 'trds-rounded-lg trds-overflow-hidden',
+    header: 'trds-p-6',
+    content: 'trds-px-6 trds-pb-6',
+    footer: 'trds-px-6 trds-pb-6',
+    title:
+      'trds-text-fg-title trds-leading-normal trds-font-bold trds-text-2xl',
+    description: 'trds-text-fg-description trds-text-lg',
   },
   variants: {
     variant: {
       elevated: {
-        root: 'shadow-md',
+        root: 'trds-shadow-md',
       },
       filled: {
-        root: 'bg-layer1',
+        root: 'trds-bg-layer1',
       },
       outline: {
-        root: 'border border-boundary',
+        root: 'trds-border trds-border-boundary',
       },
     },
   },

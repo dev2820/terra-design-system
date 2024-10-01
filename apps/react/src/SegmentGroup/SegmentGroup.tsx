@@ -19,17 +19,17 @@ import { tv, VariantProps } from '../tv';
 export const segmentGroupVariant = tv({
   base: `${IDENTIFIER.scope} segmentGroup`,
   slots: {
-    root: 'flex items-start border-boundary data-horizontal:flex-row data-vertical:flex-col data-horizontal:gap-4 data-vertical:gap-1 data-horizontal:border-b-[1px] data-vertical:border-l-[1px]',
+    root: 'trds-flex trds-items-start trds-border-boundary data-horizontal:trds-flex-row data-vertical:trds-flex-col data-horizontal:trds-gap-4 data-vertical:trds-gap-1 data-horizontal:trds-border-b-[1px] data-vertical:trds-border-l-[1px]',
     indicator:
-      'border-primary data-horizontal:bottom-0 data-horizontal:border-b-[2px] data-horizontal:translate-y-[1px] data-horizontal:w-[var(--width)] data-vertical:border-l-[2px] data-vertical:h-[var(--height)] data-vertical:translate-x-[-1px]',
-    item: 'text-caption cursor-pointer font-medium transition duration-normal transition-[color] ease-default hover:text-neutral-700 data-checked:font-semibold data-checked:text-fg-highlight hover:text-fg-highlight data-disabled:text-muted data-disabled:cursor-not-allowed data-horizontal:px-1 data-vertical:px-3 data-horizontal:pb-3 data-vertical:py-1.5',
+      'trds-border-primary data-horizontal:trds-bottom-0 data-horizontal:trds-border-b-[2px] data-horizontal:trds-translate-y-[1px] data-horizontal:trds-w-[var(--width)] data-vertical:trds-border-l-[2px] data-vertical:trds-h-[var(--height)] data-vertical:trds-translate-x-[-1px]',
+    item: 'trds-text-caption trds-cursor-pointer trds-font-medium trds-transition trds-duration-normal trds-transition-[color] trds-ease-default hover:trds-text-neutral-700 data-checked:trds-font-semibold data-checked:trds-text-fg-highlight hover:trds-text-fg-highlight data-disabled:trds-text-muted data-disabled:trds-cursor-not-allowed data-horizontal:trds-px-1 data-vertical:trds-px-3 data-horizontal:trds-pb-3 data-vertical:trds-py-1.5',
     itemControl: '',
     itemText: '',
   },
   variants: {
     size: {
-      sm: 'text-sm',
-      md: 'text-md',
+      sm: 'trds-text-sm',
+      md: 'trds-text-md',
     },
   },
   defaultVariants: {

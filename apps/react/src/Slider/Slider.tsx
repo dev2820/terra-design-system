@@ -15,39 +15,42 @@ import { tv, VariantProps } from '../tv';
 export const sliderVariants = tv({
   base: `${IDENTIFIER.scope} slider`,
   slots: {
-    root: 'flex flex-col gap-1 w-full',
-    control: 'relative flex items-center',
+    root: 'trds-flex trds-flex-col trds-gap-1 trds-w-full',
+    control: 'trds-relative trds-flex trds-items-center',
     track:
-      'bg-track rounded-full overflow-hidden flex-1 cursor-pointer data-disabled:cursor-not-allowed',
-    range: 'bg-primary data-disabled:bg-muted',
+      'trds-bg-track trds-rounded-full trds-overflow-hidden trds-flex-1 trds-cursor-pointer data-disabled:trds-cursor-not-allowed',
+    range: 'trds-bg-primary data-disabled:trds-bg-muted',
     thumb:
-      'bg-white border-primary rounded-full border-2 shadow-md outline-none z-1 cursor-pointer data-disabled:border-muted data-disabled:cursor-not-allowed',
-    markerGroup: '-mt-1',
+      'trds-bg-white trds-border-primary trds-rounded-full trds-border-2 trds-shadow-md trds-outline-none trds-z-1 trds-cursor-pointer data-disabled:trds-border-muted data-disabled:trds-cursor-not-allowed',
+    markerGroup: '-trds-mt-1',
     marker:
-      "text-current before:bg-white before:rounded-full before:content-[''] before:block before:left-1/2 before:relative before:-translate-x-1/2",
+      "trds-text-current before:trds-bg-white before:trds-rounded-full before:trds-content-[''] before:trds-block before:trds-left-1/2 before:trds-relative before:-trds-translate-x-1/2",
   },
   variants: {
     size: {
       sm: {
-        control: 'h-4',
-        range: 'h-1.5',
-        track: 'h-1.5',
-        thumb: 'h-4 w-4',
-        marker: 'text-sm before:h-1 before:-top-2.5 before:w-0.5',
+        control: 'trds-h-4',
+        range: 'trds-h-1.5',
+        track: 'trds-h-1.5',
+        thumb: 'trds-h-4 trds-w-4',
+        marker:
+          'trds-text-sm before:trds-h-1 before:-trds-top-2.5 before:trds-w-0.5',
       },
       md: {
-        control: 'h-5',
-        range: 'h-2',
-        track: 'h-2',
-        thumb: 'h-5 w-5',
-        marker: 'text-sm before:h-1 before:-top-3 before:w-0.5',
+        control: 'trds-h-5',
+        range: 'trds-h-2',
+        track: 'trds-h-2',
+        thumb: 'trds-h-5 trds-w-5',
+        marker:
+          'trds-text-sm before:trds-h-1 before:-trds-top-3 before:trds-w-0.5',
       },
       lg: {
-        control: 'h-6',
-        range: 'h-2.5',
-        track: 'h-2.5',
-        thumb: 'h-6 w-6',
-        marker: 'text-md before:h-1.5 before:top-[-15px] before:w-0.5',
+        control: 'trds-h-6',
+        range: 'trds-h-2.5',
+        track: 'trds-h-2.5',
+        thumb: 'trds-h-6 trds-w-6',
+        marker:
+          'trds-text-md before:trds-h-1.5 before:trds-top-[-15px] before:trds-w-0.5',
       },
     },
   },

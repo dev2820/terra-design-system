@@ -7,15 +7,15 @@ import { tv, VariantProps } from '../tv';
 
 const linkVariants = tv({
   base: [
-    'inline-flex items-center justify-start whitespace-nowrap gap-1 transition-colors cursor-pointer underline-offset-4 underline-under decoration-[2px] font-bold',
-    'hover:underline',
+    'trds-inline-flex trds-items-center trds-justify-start trds-whitespace-nowrap trds-gap-1 trds-transition-colors trds-cursor-pointer trds-underline-offset-4 trds-underline-under trds-decoration-[2px] trds-font-bold',
+    'hover:trds-underline',
   ],
   variants: {
     theme: {
       neutral:
-        'text-neutral-500 active:text-neutral-800 visited:text-neutral-800 hover:text-neutral-700',
+        'trds-text-neutral-500 active:trds-text-neutral-800 visited:trds-text-neutral-800 hover:trds-text-neutral-700',
       primary:
-        'text-primary-500 active:text-primary-800 visited:text-primary-800 hover:text-primary-700',
+        'trds-text-primary-500 active:trds-text-primary-800 visited:trds-text-primary-800 hover:trds-text-primary-700',
     },
   },
   defaultVariants: {
