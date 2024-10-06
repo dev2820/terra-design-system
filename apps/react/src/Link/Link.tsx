@@ -7,7 +7,7 @@ import { tv, VariantProps } from '../tv';
 
 const linkVariants = tv({
   base: [
-    'trds-inline-flex trds-items-center trds-justify-start trds-whitespace-nowrap trds-gap-1 trds-transition-colors trds-cursor-pointer trds-underline-offset-4 trds-underline-under trds-decoration-[2px] trds-font-bold',
+    'trds-inline-flex trds-items-center trds-justify-start trds-whitespace-nowrap trds-gap-1 trds-transition-colors trds-cursor-pointer trds-underline-offset-4 trds-underline-under trds-decoration-[2px]',
     'hover:trds-underline',
   ],
   variants: {
@@ -15,7 +15,7 @@ const linkVariants = tv({
       neutral:
         'trds-text-neutral-500 active:trds-text-neutral-800 visited:trds-text-neutral-800 hover:trds-text-neutral-700',
       primary:
-        'trds-text-primary-500 active:trds-text-primary-800 visited:trds-text-primary-800 hover:trds-text-primary-700',
+        'trds-text-primary active:trds-text-primary-pressed visited:trds-text-primary-pressed hover:trds-text-primary-hover',
     },
   },
   defaultVariants: {

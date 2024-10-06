@@ -17,6 +17,7 @@ export const colors = {
     dark: `var(--my-colors-primary-dark, ${TOKEN.colors.violet[600]})`,
     hover: `var(--my-colors-primary-hover, ${TOKEN.colors.violet[600]})`,
     pressed: `var(--my-colors-primary-pressed, ${TOKEN.colors.violet[700]})`,
+    visited: `var(--my-colors-primary-visited, ${TOKEN.colors.violet[700]})`,
   },
   info: {
     DEFAULT: `var(--my-colors-info, ${TOKEN.colors.blue[500]})`,
@@ -100,6 +101,7 @@ export const colors = {
     900: `var(--my-colors-neutral-900, ${TOKEN.colors.gray[900]})`,
     hover: `var(--my-colors-neutral-hover, ${TOKEN.colors.gray[300]})`,
     pressed: `var(--my-colors-neutral-pressed, ${TOKEN.colors.gray[400]})`,
+    visited: `var(--my-colors-neutral-visited, ${TOKEN.colors.gray[400]})`,
   },
   fg: {
     primary: `var(--my-colors-fg-primary, ${TOKEN.colors.white})`,
