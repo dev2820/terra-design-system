@@ -84,8 +84,8 @@ export const colors = {
     900: `var(--my-colors-warning-900, ${TOKEN.colors.orange[900]})`,
     light: `var(--my-colors-warning-light, ${TOKEN.colors.orange[200]})`,
     dark: `var(--my-colors-warning-dark, ${TOKEN.colors.orange[600]})`,
-    hover: `var(--my-colors-warning-hover, ${TOKEN.colors.orange[600]})`,
-    pressed: `var(--my-colors-warning-pressed, ${TOKEN.colors.orange[700]})`,
+    hover: `var(--my-colors-warning-hover, ${TOKEN.colors.orange[700]})`,
+    pressed: `var(--my-colors-warning-pressed, ${TOKEN.colors.orange[800]})`,
   },
   neutral: {
     DEFAULT: `var(--my-colors-neutral, ${TOKEN.colors.gray[200]})`,
