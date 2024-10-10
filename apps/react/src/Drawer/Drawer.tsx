@@ -19,7 +19,7 @@ export const drawerVariants = tv({
     backdrop:
       'trds-backdrop-blur-[4px] trds-bg-blackAlpha-700 trds-h-[100vh] trds-w-[100vw] trds-left-0 trds-top-0 trds-fixed trds-z-overlay data-open:trds-animate-backdrop-in data-closed:trds-animate-backdrop-out dark:trds-bg-whiteAlpha-700',
     positioner:
-      'trds-flex trds-items-center trds-justify-center trds-fixed trds-top-0 trds-h-[100dvh] trds-z-modal trds-max-w-[100vw] trds-w-sm',
+      'trds-flex trds-items-center trds-justify-center trds-fixed trds-z-modal',
     content:
       'trds-bg-white trds-shadow-lg trds-grid trds-grid-cols-[1fr] trds-grid-rows-[auto_1fr_auto] trds-grid-areas-[header,body,footer] trds-h-full trds-w-full',
     header:
@@ -35,14 +35,22 @@ export const drawerVariants = tv({
   variants: {
     variant: {
       left: {
-        positioner: 'trds-left-0',
+        positioner:
+          'trds-left-0 trds-top-0 trds-h-[100dvh] trds-max-w-[100vw] trds-w-sm',
         content:
           'data-open:trds-animate-drawer-in-left data-closed:trds-animate-drawer-out-left',
       },
       right: {
-        positioner: 'trds-right-0',
+        positioner:
+          'trds-right-0 trds-top-0 trds-h-[100dvh] trds-max-w-[100vw] trds-w-sm',
         content:
           'data-open:trds-animate-drawer-in-right data-closed:trds-animate-drawer-out-right',
+      },
+      bottom: {
+        positioner:
+          'trds-bottom-0 trds-w-[100dvw] trds-max-h-[100vh] trds-h-sm',
+        content:
+          'data-open:trds-animate-drawer-in-bottom data-closed:trds-animate-drawer-out-bottom',
       },
     },
   },

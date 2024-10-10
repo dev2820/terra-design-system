@@ -304,6 +304,22 @@ export const keyframes = {
       transform: 'translateX(100%)',
     },
   },
+  drawerInBottom: {
+    from: {
+      transform: 'translateY(100%)',
+    },
+    to: {
+      transform: 'translateY(0px)',
+    },
+  },
+  drawerOutBottom: {
+    from: {
+      transform: 'translateY(0px)',
+    },
+    to: {
+      transform: 'translateY(100%)',
+    },
+  },
   dialogIn: {
     from: {
       opacity: '0',
@@ -358,6 +374,8 @@ export const animations = {
   'drawer-in-right': 'drawerInRight 0.25s ease-out',
   'drawer-out-left': 'drawerOutLeft 0.25s ease-out',
   'drawer-out-right': 'drawerOutRight 0.25s ease-out',
+  'drawer-in-bottom': 'drawerInBottom 0.25s ease-out',
+  'drawer-out-bottom': 'drawerOutBottom 0.25s ease-out',
   'dialog-in': 'dialogIn 0.25s ease-out',
   'dialog-out': 'dialogOut 0.25s ease-out',
   shimmer: 'shimmer 2s ease-in-out infinite',
