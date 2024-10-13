@@ -1,6 +1,6 @@
 {
   "name": "terra-design-system",
-  "version": "1.0.35",
+  "version": "1.0.36",
   "description": "",
   "main": "./apps/react/dist/index.js",
   "module": "./apps/react/dist/index.mjs",
