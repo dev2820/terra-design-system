@@ -2,8 +2,8 @@
   "name": "terra-design-system",
   "version": "1.0.35",
   "description": "",
-  "main": "./apps/react/dist/index.cjs",
-  "module": "./apps/react/dist/index.js",
+  "main": "./apps/react/dist/index.js",
+  "module": "./apps/react/dist/index.mjs",
   "types": "./apps/react/dist/index.d.ts",
   "scripts": {
     "prestorybook": "pnpm --filter utils build",
@@ -28,11 +28,11 @@
       "source": "./apps/react/src/index.ts",
       "import": {
         "types": "./apps/react/dist/index.d.ts",
-        "default": "./apps/react/dist/index.js"
+        "default": "./apps/react/dist/index.mjs"
       },
       "require": {
         "types": "./apps/react/dist/index.d.ts",
-        "default": "./apps/react/dist/index.cjs"
+        "default": "./apps/react/dist/index.js"
       }
     },
     "./react/style": "./apps/react/dist/style.css"
