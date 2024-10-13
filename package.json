@@ -2,7 +2,9 @@
   "name": "terra-design-system",
   "version": "1.0.33",
   "description": "",
-  "main": "index.js",
+  "main": "./apps/react/dist/index.cjs",
+  "module": "./apps/react/dist/index.js",
+  "types": "./apps/react/dist/index.d.ts",
   "scripts": {
     "prestorybook": "pnpm --filter utils build",
     "prebuild-storybook": "pnpm --filter utils build",
