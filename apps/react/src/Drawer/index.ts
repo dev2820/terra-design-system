@@ -7,6 +7,8 @@ import {
   Body,
   Footer,
   Description,
+  Backdrop,
+  Positioner,
   CloseTrigger,
 } from './Drawer';
 import type {
@@ -18,6 +20,8 @@ import type {
   FooterProps,
   RootProps,
   TitleProps,
+  BackdropProps,
+  PositionerProps,
   TriggerProps,
 } from './Drawer';
 
@@ -30,6 +34,8 @@ export const Drawer = {
   Footer,
   Title,
   Description,
+  Backdrop,
+  Positioner,
   CloseTrigger,
 };
 
@@ -42,5 +48,7 @@ export type DrawerProps = {
   footer: FooterProps;
   body: BodyProps;
   description: DescriptionProps;
+  backdrop: BackdropProps;
+  positioner: PositionerProps;
   closeTrigger: CloseTriggerProps;
 };

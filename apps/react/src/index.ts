@@ -35,3 +35,4 @@ export * from './Textarea';
 export * from './Toast';
 export * from './Tooltip';
 export * from './TreeView';
+export { Portal } from '@ark-ui/react/portal';

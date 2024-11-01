@@ -1,5 +1,4 @@
 import { Dialog, DialogRootProps } from '@ark-ui/react/dialog';
-import { Portal } from '@ark-ui/react/portal';
 import { IDENTIFIER } from 'env';
 
 import {
@@ -79,6 +78,32 @@ const Trigger = forwardRef<
   );
 });
 
+export type BackdropProps = ComponentProps<typeof Backdrop>;
+const Backdrop = forwardRef<
+  ElementRef<typeof Dialog.Backdrop>,
+  ComponentPropsWithoutRef<typeof Dialog.Backdrop>
+>(function (props, ref) {
+  const { classes } = useDialogContext();
+  const { children, className, ...rest } = props;
+
+  return <Dialog.Backdrop className={classes.backdrop()} {...rest} ref={ref} />;
+});
+
+export type PositionerProps = ComponentProps<typeof Positioner>;
+const Positioner = forwardRef<
+  ElementRef<typeof Dialog.Positioner>,
+  ComponentPropsWithoutRef<typeof Dialog.Positioner>
+>(function (props, ref) {
+  const { classes } = useDialogContext();
+  const { children, className, ...rest } = props;
+
+  return (
+    <Dialog.Positioner className={classes.positioner()} {...rest} ref={ref}>
+      {children}
+    </Dialog.Positioner>
+  );
+});
+
 export type ContentProps = ComponentProps<typeof Content>;
 const Content = forwardRef<
   ElementRef<typeof Dialog.Content>,
@@ -88,18 +113,13 @@ const Content = forwardRef<
   const { children, className, ...rest } = props;
 
   return (
-    <Portal>
-      <Dialog.Backdrop className={classes.backdrop()} />
-      <Dialog.Positioner className={classes.positioner()}>
-        <Dialog.Content
-          className={cx(classes.content(), className)}
-          ref={ref}
-          {...rest}
-        >
-          {children}
-        </Dialog.Content>
-      </Dialog.Positioner>
-    </Portal>
+    <Dialog.Content
+      className={cx(classes.content(), className)}
+      ref={ref}
+      {...rest}
+    >
+      {children}
+    </Dialog.Content>
   );
 });
 
@@ -160,4 +180,13 @@ const CloseTrigger = forwardRef<
   );
 });
 
-export { Root, Trigger, Content, Title, Description, CloseTrigger };
+export {
+  Root,
+  Trigger,
+  Content,
+  Title,
+  Description,
+  CloseTrigger,
+  Positioner,
+  Backdrop,
+};

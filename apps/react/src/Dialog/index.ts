@@ -4,12 +4,16 @@ import {
   Content,
   Title,
   Description,
+  Positioner,
+  Backdrop,
   CloseTrigger,
 } from './Dialog';
 import type {
   CloseTriggerProps,
   ContentProps,
   DescriptionProps,
+  PositionerProps,
+  BackdropProps,
   RootProps,
   TitleProps,
   TriggerProps,
@@ -21,6 +25,8 @@ export const Dialog = {
   Content,
   Title,
   Description,
+  Positioner,
+  Backdrop,
   CloseTrigger,
 };
 
@@ -31,4 +37,6 @@ export type DialogProps = {
   title: TitleProps;
   description: DescriptionProps;
   closeTrigger: CloseTriggerProps;
+  positioner: PositionerProps;
+  backdrop: BackdropProps;
 };
