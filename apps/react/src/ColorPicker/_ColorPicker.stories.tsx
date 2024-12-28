@@ -1,10 +1,10 @@
+import { PipetteIcon } from 'lucide-react';
+
+import { cx } from '../cx';
+import { IconButton } from '../IconButton';
+import { Input } from '../Input';
 import { ColorPicker, type ColorPickerProps } from './index';
 
-/**
- * based on https://ark-ui.com/react/docs/components/color-picker
- *
- * TODO: https://www.google.com/search?sca_esv=d92477f2496a46bf&sca_upv=1&q=color+picker+component+dribbble&udm=2&fbs=AEQNm0Aa4sjWe7Rqy32pFwRj0UkWd8nbOJfsBGGB5IQQO6L3J_86uWOeqwdnV0yaSF-x2joZDvir2QxhZkTA8rK1etu4ohtqlTKXOQ56HmFa2r_eprBYzNmbcCED92hCbqO_IkEUX7lq-0c__a0IrXht1Bx6_h-GfwmaB2JrNU1g8ES3V7R-WghDNJ07Lf9hH_5jRbgD_olp&sa=X&ved=2ahUKEwjLqsn77IWHAxUPrlYBHQeTBOAQtKgLegQIEBAB&biw=1728&bih=958&dpr=2#vhid=appWg_GALx3jhM&vssid=mosaic
- */
 export default {
   title: 'Components/ColorPicker',
   component: ColorPicker.Root,
@@ -16,6 +16,19 @@ export default {
   args: {},
 };
 
+const presets = [
+  'hsl(10, 81%, 59%)',
+  'hsl(60, 81%, 59%)',
+  'hsl(100, 81%, 59%)',
+  'hsl(175, 81%, 59%)',
+  'hsl(190, 81%, 59%)',
+  'hsl(205, 81%, 59%)',
+  'hsl(220, 81%, 59%)',
+  'hsl(250, 81%, 59%)',
+  'hsl(280, 81%, 59%)',
+  'hsl(350, 81%, 59%)',
+];
+
 export const Default = {
   args: {
     defaultValue: '#eb5e41',
@@ -23,7 +36,77 @@ export const Default = {
   render: (props: ColorPickerProps['root']) => {
     return (
       <div className="trds-flex trds-w-[600px] trds-h-[500px]">
-        <ColorPicker.Root {...props} />
+        <ColorPicker.Root {...props}>
+          <ColorPicker.Context>
+            {api => (
+              <>
+                <ColorPicker.Control>
+                  <ColorPicker.ChannelInput channel="hex" asChild>
+                    <Input className="trds-flex-1" />
+                  </ColorPicker.ChannelInput>
+                  <ColorPicker.Trigger asChild>
+                    <IconButton variant="outline" className="trds-flex-none">
+                      <ColorPicker.Swatch value={api.value} />
+                    </IconButton>
+                  </ColorPicker.Trigger>
+                </ColorPicker.Control>
+                <ColorPicker.Positioner>
+                  <ColorPicker.Content>
+                    <div className="trds-flex trds-flex-col trds-gap-3">
+                      <ColorPicker.Area>
+                        <ColorPicker.AreaBackground />
+                        <ColorPicker.AreaThumb />
+                      </ColorPicker.Area>
+                      <div className="trds-flex trds-flex-row trds-gap-3">
+                        <ColorPicker.EyeDropperTrigger asChild>
+                          <IconButton
+                            variant="outline"
+                            size="sm"
+                            aria-label="Pick a color"
+                          >
+                            <PipetteIcon size={20} />
+                          </IconButton>
+                        </ColorPicker.EyeDropperTrigger>
+                        <div
+                          className={cx(
+                            'trds-flex trds-flex-col trds-gap-2 trds-flex-1',
+                          )}
+                        >
+                          <ColorPicker.ChannelSlider channel="hue">
+                            <ColorPicker.ChannelSliderTrack />
+                            <ColorPicker.ChannelSliderThumb />
+                          </ColorPicker.ChannelSlider>
+                          <ColorPicker.ChannelSlider channel="alpha">
+                            <ColorPicker.TransparencyGrid size="8px" />
+                            <ColorPicker.ChannelSliderTrack />
+                            <ColorPicker.ChannelSliderThumb />
+                          </ColorPicker.ChannelSlider>
+                        </div>
+                      </div>
+                      <div className="trds-flex trds-gap-2 trds-flex-1">
+                        <ColorPicker.ChannelInput channel="hex" asChild>
+                          <Input />
+                        </ColorPicker.ChannelInput>
+                        <ColorPicker.ChannelInput channel="alpha" asChild>
+                          <Input />
+                        </ColorPicker.ChannelInput>
+                      </div>
+                      <div className="trds-flex trds-flex-col trds-gap-1.5">
+                        <ColorPicker.SwatchGroup>
+                          {presets.map((color, id) => (
+                            <ColorPicker.SwatchTrigger key={id} value={color}>
+                              <ColorPicker.Swatch value={color} />
+                            </ColorPicker.SwatchTrigger>
+                          ))}
+                        </ColorPicker.SwatchGroup>
+                      </div>
+                    </div>
+                  </ColorPicker.Content>
+                </ColorPicker.Positioner>
+              </>
+            )}
+          </ColorPicker.Context>
+        </ColorPicker.Root>
       </div>
     );
   },
