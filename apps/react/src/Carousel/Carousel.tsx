@@ -1,15 +1,11 @@
 import { Carousel } from '@ark-ui/react';
 import { IDENTIFIER } from 'env';
-import { ChevronLeftCircleIcon, ChevronRightCircleIcon } from 'lucide-react';
-import { isNumber, range } from 'utils';
 
 import {
   ComponentProps,
   forwardRef,
   ElementRef,
   ComponentPropsWithoutRef,
-  Children,
-  useRef,
 } from 'react';
 
 import { createReactContext } from '../create-react-context';
@@ -24,7 +20,7 @@ export const carouselVariants = tv({
       'trds-overflow-hidden trds-rounded-2xl trds-bg-layer1 trds-w-full trds-h-auto',
     item: 'trds-aspect-video trds-object-cover',
     itemGroup:
-      'trds-transition-all trds-duration-normal trds-w-full trds-py-4 trds-flex trds-flex-row trds-justify-between trds-items-center trds-cursor-pointer disabled:trds-text-disabled disabled:trds-cursor-not-allowed',
+      'trds-transition-all trds-duration-normal trds-w-full trds-flex trds-flex-row trds-justify-between trds-items-center trds-cursor-pointer disabled:trds-text-disabled disabled:trds-cursor-not-allowed',
     indicatorGroup:
       'trds-flex trds-flex-row trds-gap-2 trds-justify-center trds-items-center trds-mx-8',
     indicator:
@@ -55,32 +51,15 @@ const [CarouselProvider, useCarouselContext] =
 export type RootProps = ComponentProps<typeof Root>;
 const Root = forwardRef<
   ElementRef<typeof Carousel.Root>,
-  ComponentPropsWithoutRef<typeof Carousel.Root> &
-    CarouselProviderProps & {
-      showControl: boolean;
-      readonly: boolean;
-    }
+  ComponentPropsWithoutRef<typeof Carousel.Root> & CarouselProviderProps
 >(function (props, ref) {
-  const {
-    showControl = true,
-    readonly = false,
-    slidesPerView,
-    children,
-    className,
-    ...rest
-  } = props;
+  const { slidesPerView, children, className, ...rest } = props;
   const classes = carouselVariants();
-  const totalItem = Children.count(children);
-  const totalSlide = Math.ceil(
-    totalItem / (isNumber(slidesPerView) ? slidesPerView : 1),
-  );
 
   const ctx = {
     classes,
   };
 
-  const prevBtnRef = useRef<ElementRef<typeof Carousel.PrevTrigger>>(null);
-  const nextBtnRef = useRef<ElementRef<typeof Carousel.NextTrigger>>(null);
   return (
     <CarouselProvider value={ctx}>
       <Carousel.Root
@@ -89,43 +68,145 @@ const Root = forwardRef<
         slidesPerView={slidesPerView}
         {...rest}
       >
-        <Carousel.Viewport className={classes.viewport()}>
-          <Carousel.ItemGroup>{children}</Carousel.ItemGroup>
-        </Carousel.Viewport>
-        <Carousel.Control className={classes.control()}>
-          <Carousel.PrevTrigger
-            className={cx(
-              classes.prevTrigger(),
-              !showControl || readonly ? 'trds-hidden' : 'trds-visible',
-            )}
-            ref={prevBtnRef}
-          >
-            <ChevronLeftCircleIcon size={32} />
-          </Carousel.PrevTrigger>
-          <Carousel.IndicatorGroup className={classes.indicatorGroup()}>
-            {range(0, totalSlide, 1).map(idx => (
-              <Carousel.Indicator
-                index={idx}
-                key={idx}
-                className={classes.indicator()}
-                readOnly={readonly}
-              ></Carousel.Indicator>
-            ))}
-          </Carousel.IndicatorGroup>
-          <Carousel.NextTrigger
-            className={cx(
-              classes.nextTrigger(),
-              !showControl || readonly ? 'trds-hidden' : 'trds-visible',
-            )}
-            ref={nextBtnRef}
-          >
-            <ChevronRightCircleIcon size={32} />
-          </Carousel.NextTrigger>
-        </Carousel.Control>
+        {children}
       </Carousel.Root>
     </CarouselProvider>
   );
 });
+Root.displayName = 'Carousel.Root';
+
+export type ViewportProps = ComponentProps<typeof Viewport>;
+const Viewport = forwardRef<
+  ElementRef<typeof Carousel.Viewport>,
+  ComponentPropsWithoutRef<typeof Carousel.Viewport>
+>(({ children, className, ...props }, ref) => {
+  const { classes } = useCarouselContext();
+
+  return (
+    <Carousel.Viewport
+      ref={ref}
+      className={cx(classes.viewport(), className)}
+      {...props}
+    >
+      {children}
+    </Carousel.Viewport>
+  );
+});
+Viewport.displayName = 'Carousel.Viewport';
+
+export type ControlProps = ComponentProps<typeof Control>;
+const Control = forwardRef<
+  ElementRef<typeof Carousel.Control>,
+  ComponentPropsWithoutRef<typeof Carousel.Control>
+>(({ children, className, ...props }, ref) => {
+  const { classes } = useCarouselContext();
+
+  return (
+    <Carousel.Control
+      ref={ref}
+      className={cx(classes.control(), className)}
+      {...props}
+    >
+      {children}
+    </Carousel.Control>
+  );
+});
+Control.displayName = 'Carousel.Control';
+
+export type PrevTriggerProps = ComponentProps<typeof PrevTrigger>;
+const PrevTrigger = forwardRef<
+  ElementRef<typeof Carousel.PrevTrigger>,
+  ComponentPropsWithoutRef<typeof Carousel.PrevTrigger>
+>(({ children, className, ...props }, ref) => {
+  const { classes } = useCarouselContext();
+
+  return (
+    <Carousel.PrevTrigger
+      ref={ref}
+      className={cx(classes.prevTrigger(), className)}
+      {...props}
+    >
+      {children}
+    </Carousel.PrevTrigger>
+  );
+});
+PrevTrigger.displayName = 'Carousel.PrevTrigger';
+
+export type NextTriggerProps = ComponentProps<typeof NextTrigger>;
+const NextTrigger = forwardRef<
+  ElementRef<typeof Carousel.NextTrigger>,
+  ComponentPropsWithoutRef<typeof Carousel.NextTrigger>
+>(({ children, className, ...props }, ref) => {
+  const { classes } = useCarouselContext();
+
+  return (
+    <Carousel.NextTrigger
+      ref={ref}
+      className={cx(classes.nextTrigger(), className)}
+      {...props}
+    >
+      {children}
+    </Carousel.NextTrigger>
+  );
+});
+NextTrigger.displayName = 'Carousel.NextTrigger';
+
+export type ItemGroupProps = ComponentProps<typeof ItemGroup>;
+const ItemGroup = forwardRef<
+  ElementRef<typeof Carousel.ItemGroup>,
+  ComponentPropsWithoutRef<typeof Carousel.ItemGroup>
+>(({ children, className, ...props }, ref) => {
+  const { classes } = useCarouselContext();
+
+  return (
+    <Carousel.ItemGroup
+      ref={ref}
+      className={cx(classes.itemGroup(), className)}
+      {...props}
+    >
+      {children}
+    </Carousel.ItemGroup>
+  );
+});
+ItemGroup.displayName = 'Carousel.ItemGroup';
+
+export type IndicatorGroupProps = ComponentProps<typeof IndicatorGroup>;
+const IndicatorGroup = forwardRef<
+  ElementRef<typeof Carousel.IndicatorGroup>,
+  ComponentPropsWithoutRef<typeof Carousel.IndicatorGroup>
+>(({ children, className, ...props }, ref) => {
+  const { classes } = useCarouselContext();
+
+  return (
+    <Carousel.IndicatorGroup
+      ref={ref}
+      className={cx(classes.indicatorGroup(), className)}
+      {...props}
+    >
+      {children}
+    </Carousel.IndicatorGroup>
+  );
+});
+IndicatorGroup.displayName = 'Carousel.IndicatorGroup';
+
+export type IndicatorProps = ComponentProps<typeof Indicator>;
+const Indicator = forwardRef<
+  ElementRef<typeof Carousel.Indicator>,
+  ComponentPropsWithoutRef<typeof Carousel.Indicator>
+>(({ children, className, ...props }, ref) => {
+  const { classes } = useCarouselContext();
+
+  return (
+    <Carousel.Indicator
+      ref={ref}
+      className={cx(classes.indicator(), className)}
+      {...props}
+    >
+      {children}
+    </Carousel.Indicator>
+  );
+});
+Indicator.displayName = 'Carousel.Indicator';
 
 export type ItemProps = ComponentProps<typeof Item>;
 const Item = forwardRef<
@@ -144,5 +225,16 @@ const Item = forwardRef<
     </Carousel.Item>
   );
 });
+Item.displayName = 'Carousel.Item';
 
-export { Root, Item };
+export {
+  Root,
+  Control,
+  Viewport,
+  PrevTrigger,
+  NextTrigger,
+  IndicatorGroup,
+  Indicator,
+  ItemGroup,
+  Item,
+};

@@ -4,6 +4,8 @@
  * TODO: Swipe event
  * Maybe change to https://www.embla-carousel.com/get-started/react/
  */
+import { ChevronLeftCircleIcon, ChevronRightCircleIcon } from 'lucide-react';
+
 import { Carousel, type CarouselProps } from './index';
 
 export default {
@@ -30,48 +32,32 @@ export const Default = {
   render: (props: CarouselProps['Root']) => {
     return (
       <Carousel.Root {...props}>
-        {images.map((image, idx) => (
-          <Carousel.Item key={image} index={idx} asChild>
-            <img src={image} alt={`Slide ${idx}`} />
-          </Carousel.Item>
-        ))}
-      </Carousel.Root>
-    );
-  },
-};
-
-export const HideControl = {
-  args: {
-    defaultIndex: 1,
-    showControl: false,
-  },
-  render: (props: CarouselProps['Root']) => {
-    return (
-      <Carousel.Root {...props}>
-        {images.map((image, idx) => (
-          <Carousel.Item key={image} index={idx} asChild>
-            <img src={image} alt={`Slide ${idx}`} />
-          </Carousel.Item>
-        ))}
-      </Carousel.Root>
-    );
-  },
-};
-
-export const Readonly = {
-  args: {
-    defaultIndex: 1,
-    readonly: true,
-    hideControl: true,
-  },
-  render: (props: CarouselProps['Root']) => {
-    return (
-      <Carousel.Root {...props}>
-        {images.map((image, idx) => (
-          <Carousel.Item key={image} index={idx} asChild>
-            <img src={image} alt={`Slide ${idx}`} />
-          </Carousel.Item>
-        ))}
+        <Carousel.Viewport>
+          <Carousel.ItemGroup>
+            <Carousel.Item key={images[0]} index={0} asChild>
+              <img src={images[0]} alt={`Slide 0`} />
+            </Carousel.Item>
+            <Carousel.Item key={images[1]} index={1} asChild>
+              <img src={images[1]} alt={`Slide 1`} />
+            </Carousel.Item>
+            <Carousel.Item key={images[2]} index={2} asChild>
+              <img src={images[2]} alt={`Slide 2`} />
+            </Carousel.Item>
+          </Carousel.ItemGroup>
+        </Carousel.Viewport>
+        <Carousel.Control>
+          <Carousel.PrevTrigger>
+            <ChevronLeftCircleIcon size={32} />
+          </Carousel.PrevTrigger>
+          <Carousel.IndicatorGroup>
+            <Carousel.Indicator index={0}></Carousel.Indicator>
+            <Carousel.Indicator index={1}></Carousel.Indicator>
+            <Carousel.Indicator index={2}></Carousel.Indicator>
+          </Carousel.IndicatorGroup>
+          <Carousel.NextTrigger>
+            <ChevronRightCircleIcon size={32} />
+          </Carousel.NextTrigger>
+        </Carousel.Control>
       </Carousel.Root>
     );
   },
@@ -85,17 +71,38 @@ export const Loop = {
   render: (props: CarouselProps['Root']) => {
     return (
       <Carousel.Root {...props}>
-        {images.map((image, idx) => (
-          <Carousel.Item key={image} index={idx} asChild>
-            <img src={image} alt={`Slide ${idx}`} />
-          </Carousel.Item>
-        ))}
+        <Carousel.Viewport>
+          <Carousel.ItemGroup>
+            <Carousel.Item key={images[0]} index={0} asChild>
+              <img src={images[0]} alt={`Slide 0`} />
+            </Carousel.Item>
+            <Carousel.Item key={images[1]} index={1} asChild>
+              <img src={images[1]} alt={`Slide 1`} />
+            </Carousel.Item>
+            <Carousel.Item key={images[2]} index={2} asChild>
+              <img src={images[2]} alt={`Slide 2`} />
+            </Carousel.Item>
+          </Carousel.ItemGroup>
+        </Carousel.Viewport>
+        <Carousel.Control>
+          <Carousel.PrevTrigger>
+            <ChevronLeftCircleIcon size={32} />
+          </Carousel.PrevTrigger>
+          <Carousel.IndicatorGroup>
+            <Carousel.Indicator index={0}></Carousel.Indicator>
+            <Carousel.Indicator index={1}></Carousel.Indicator>
+            <Carousel.Indicator index={2}></Carousel.Indicator>
+          </Carousel.IndicatorGroup>
+          <Carousel.NextTrigger>
+            <ChevronRightCircleIcon size={32} />
+          </Carousel.NextTrigger>
+        </Carousel.Control>
       </Carousel.Root>
     );
   },
 };
 
-export const ObjectFit = {
+export const ObjectContain = {
   args: {
     defaultIndex: 1,
     loop: true,
@@ -103,16 +110,47 @@ export const ObjectFit = {
   render: (props: CarouselProps['Root']) => {
     return (
       <Carousel.Root {...props}>
-        {images.map((image, idx) => (
-          <Carousel.Item
-            key={image}
-            className="trds-object-contain"
-            index={idx}
-            asChild
-          >
-            <img src={image} alt={`Slide ${idx}`} />
-          </Carousel.Item>
-        ))}
+        <Carousel.Viewport>
+          <Carousel.ItemGroup>
+            <Carousel.Item
+              key={images[0]}
+              index={0}
+              className="trds-object-contain"
+              asChild
+            >
+              <img src={images[0]} alt={`Slide 0`} />
+            </Carousel.Item>
+            <Carousel.Item
+              key={images[1]}
+              index={1}
+              className="trds-object-contain"
+              asChild
+            >
+              <img src={images[1]} alt={`Slide 1`} />
+            </Carousel.Item>
+            <Carousel.Item
+              key={images[2]}
+              index={2}
+              className="trds-object-contain"
+              asChild
+            >
+              <img src={images[2]} alt={`Slide 2`} />
+            </Carousel.Item>
+          </Carousel.ItemGroup>
+        </Carousel.Viewport>
+        <Carousel.Control>
+          <Carousel.PrevTrigger>
+            <ChevronLeftCircleIcon size={32} />
+          </Carousel.PrevTrigger>
+          <Carousel.IndicatorGroup>
+            <Carousel.Indicator index={0}></Carousel.Indicator>
+            <Carousel.Indicator index={1}></Carousel.Indicator>
+            <Carousel.Indicator index={2}></Carousel.Indicator>
+          </Carousel.IndicatorGroup>
+          <Carousel.NextTrigger>
+            <ChevronRightCircleIcon size={32} />
+          </Carousel.NextTrigger>
+        </Carousel.Control>
       </Carousel.Root>
     );
   },
@@ -125,16 +163,31 @@ export const SlidesPerView = {
   render: (props: CarouselProps['Root']) => {
     return (
       <Carousel.Root {...props}>
-        {images.map((image, idx) => (
-          <Carousel.Item
-            key={image}
-            className="trds-object-cover trds-aspect-square"
-            index={idx}
-            asChild
-          >
-            <img src={image} alt={`Slide ${idx}`} />
-          </Carousel.Item>
-        ))}
+        <Carousel.Viewport>
+          <Carousel.ItemGroup>
+            <Carousel.Item key={images[0]} index={0} asChild>
+              <img src={images[0]} alt={`Slide 0`} />
+            </Carousel.Item>
+            <Carousel.Item key={images[1]} index={1} asChild>
+              <img src={images[1]} alt={`Slide 1`} />
+            </Carousel.Item>
+            <Carousel.Item key={images[2]} index={2} asChild>
+              <img src={images[2]} alt={`Slide 2`} />
+            </Carousel.Item>
+          </Carousel.ItemGroup>
+        </Carousel.Viewport>
+        <Carousel.Control>
+          <Carousel.PrevTrigger>
+            <ChevronLeftCircleIcon size={32} />
+          </Carousel.PrevTrigger>
+          <Carousel.IndicatorGroup>
+            <Carousel.Indicator index={0}></Carousel.Indicator>
+            <Carousel.Indicator index={1}></Carousel.Indicator>
+          </Carousel.IndicatorGroup>
+          <Carousel.NextTrigger>
+            <ChevronRightCircleIcon size={32} />
+          </Carousel.NextTrigger>
+        </Carousel.Control>
       </Carousel.Root>
     );
   },
@@ -148,11 +201,32 @@ export const Spacing = {
   render: (props: CarouselProps['Root']) => {
     return (
       <Carousel.Root {...props}>
-        {images.map((image, idx) => (
-          <Carousel.Item key={image} index={idx} asChild>
-            <img src={image} alt={`Slide ${idx}`} />
-          </Carousel.Item>
-        ))}
+        <Carousel.Viewport>
+          <Carousel.ItemGroup>
+            <Carousel.Item key={images[0]} index={0} asChild>
+              <img src={images[0]} alt={`Slide 0`} />
+            </Carousel.Item>
+            <Carousel.Item key={images[1]} index={1} asChild>
+              <img src={images[1]} alt={`Slide 1`} />
+            </Carousel.Item>
+            <Carousel.Item key={images[2]} index={2} asChild>
+              <img src={images[2]} alt={`Slide 2`} />
+            </Carousel.Item>
+          </Carousel.ItemGroup>
+        </Carousel.Viewport>
+        <Carousel.Control>
+          <Carousel.PrevTrigger>
+            <ChevronLeftCircleIcon size={32} />
+          </Carousel.PrevTrigger>
+          <Carousel.IndicatorGroup>
+            <Carousel.Indicator index={0}></Carousel.Indicator>
+            <Carousel.Indicator index={1}></Carousel.Indicator>
+            <Carousel.Indicator index={2}></Carousel.Indicator>
+          </Carousel.IndicatorGroup>
+          <Carousel.NextTrigger>
+            <ChevronRightCircleIcon size={32} />
+          </Carousel.NextTrigger>
+        </Carousel.Control>
       </Carousel.Root>
     );
   },
