@@ -39,73 +39,73 @@ const buttonVariants = tv({
       theme: 'primary',
       variant: 'filled',
       class:
-        'trds-bg-primary trds-text-fg-primary disabled:trds-bg-primary hoverable:enabled:hover:trds-bg-primary-hover enabled:active:trds-bg-primary-pressed',
+        'trds-bg-primary trds-text-fg-primary disabled:trds-bg-primary hover:trds-bg-primary-hover enabled:active:trds-bg-primary-pressed',
     },
     {
       theme: 'neutral',
       variant: 'filled',
       class:
-        'trds-bg-neutral trds-text-fg-neutral disabled:trds-bg-neutral hoverable:enabled:hover:trds-bg-neutral-hover enabled:active:trds-bg-neutral-pressed',
+        'trds-bg-neutral trds-text-fg-neutral disabled:trds-bg-neutral enabled:hover:trds-bg-neutral-hover enabled:active:trds-bg-neutral-pressed',
     },
     {
       theme: 'whiteAlpha',
       variant: 'filled',
       class:
-        'trds-bg-whiteAlpha-500 trds-text-white disabled:trds-bg-whiteAlpha hoverable:enabled:hover:trds-bg-whiteAlpha-600 enabled:active:trds-bg-whiteAlpha-700',
+        'trds-bg-whiteAlpha-500 trds-text-white disabled:trds-bg-whiteAlpha enabled:hover:trds-bg-whiteAlpha-600 enabled:active:trds-bg-whiteAlpha-700',
     },
     {
       theme: 'blackAlpha',
       variant: 'filled',
       class:
-        'trds-bg-blackAlpha-500 trds-text-black disabled:trds-bg-blackAlpha hoverable:enabled:hover:trds-bg-blackAlpha-600 enabled:active:trds-bg-blackAlpha-700',
+        'trds-bg-blackAlpha-500 trds-text-black disabled:trds-bg-blackAlpha enabled:hover:trds-bg-blackAlpha-600 enabled:active:trds-bg-blackAlpha-700',
     },
     {
       theme: 'primary',
       variant: 'outline',
       class:
-        'trds-bg-transparent trds-text-primary-500 trds-border-primary-500 hoverable:enabled:hover:trds-bg-primary-100 enabled:active:trds-bg-primary-200',
+        'trds-bg-transparent trds-text-primary-500 trds-border-primary-500 enabled:hover:trds-bg-primary-100 enabled:active:trds-bg-primary-200',
     },
     {
       theme: 'neutral',
       variant: 'outline',
       class:
-        'trds-bg-transparent trds-text-neutral-500 trds-border-neutral-300 disabled:trds-bg-transparent hoverable:enabled:hover:trds-bg-neutral-100 enabled:active:trds-bg-neutral-200',
+        'trds-bg-transparent trds-text-neutral-500 trds-border-neutral-300 disabled:trds-bg-transparent enabled:hover:trds-bg-neutral-100 enabled:active:trds-bg-neutral-200',
     },
     {
       theme: 'whiteAlpha',
       variant: 'outline',
       class:
-        'trds-bg-transparent trds-text-white trds-border-whiteAlpha-300 disabled:trds-bg-transparent hoverable:enabled:hover:trds-bg-whiteAlpha-100 enabled:active:trds-bg-whiteAlpha-200',
+        'trds-bg-transparent trds-text-white trds-border-whiteAlpha-300 disabled:trds-bg-transparent enabled:hover:trds-bg-whiteAlpha-100 enabled:active:trds-bg-whiteAlpha-200',
     },
     {
       theme: 'blackAlpha',
       variant: 'outline',
       class:
-        'trds-bg-transparent trds-text-black trds-border-blackAlpha-300 disabled:trds-bg-transparent hoverable:enabled:hover:trds-bg-blackAlpha-100 enabled:active:trds-bg-blackAlpha-200',
+        'trds-bg-transparent trds-text-black trds-border-blackAlpha-300 disabled:trds-bg-transparent enabled:hover:trds-bg-blackAlpha-100 enabled:active:trds-bg-blackAlpha-200',
     },
     {
       theme: 'primary',
       variant: 'ghost',
       class:
-        'trds-bg-transparent trds-text-primary-500 disabled:trds-bg-transparent hoverable:enabled:hover:trds-bg-primary-100 enabled:active:trds-bg-primary-200',
+        'trds-bg-transparent trds-text-primary-500 disabled:trds-bg-transparent enabled:hover:trds-bg-primary-100 enabled:active:trds-bg-primary-200',
     },
     {
       theme: 'neutral',
       variant: 'ghost',
       class:
-        'trds-bg-transparent trds-text-neutral-500 disabled:trds-bg-transparent hoverable:enabled:hover:trds-bg-neutral-100 enabled:active:trds-bg-neutral-200',
+        'trds-bg-transparent trds-text-neutral-500 disabled:trds-bg-transparent enabled:hover:trds-bg-neutral-100 enabled:active:trds-bg-neutral-200',
     },
     {
       theme: 'whiteAlpha',
       variant: 'ghost',
       class:
-        'trds-bg-transparent trds-text-white disabled:trds-bg-transparent hoverable:enabled:hover:trds-bg-whiteAlpha-100 enabled:active:trds-bg-whiteAlpha-200',
+        'trds-bg-transparent trds-text-white disabled:trds-bg-transparent enabled:hover:trds-bg-whiteAlpha-100 enabled:active:trds-bg-whiteAlpha-200',
     },
     {
       theme: 'blackAlpha',
       variant: 'ghost',
       class:
-        'trds-bg-transparent trds-text-black disabled:trds-bg-transparent hoverable:enabled:hover:trds-bg-blackAlpha-100 enabled:active:trds-bg-blackAlpha-200',
+        'trds-bg-transparent trds-text-black disabled:trds-bg-transparent enabled:hover:trds-bg-blackAlpha-100 enabled:active:trds-bg-blackAlpha-200',
     },
   ],
   defaultVariants: {
@@ -123,7 +123,6 @@ export type ButtonProps = ComponentProps<'button'> &
     rightIcon?: ReactNode;
     leftIcon?: ReactNode;
   };
-
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   function (props, ref) {
     const {
@@ -146,13 +145,11 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <button
         className={cx(
-          IDENTIFIER.scope,
           buttonVariants({ variant, theme, size, loading }),
           className,
         )}
         type={type}
         disabled={disabled || loading}
-        aria-disabled={disabled || loading}
         aria-busy={loading}
         ref={ref}
         {...rest}

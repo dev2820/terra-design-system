@@ -33,18 +33,15 @@ export default {
         horizontal: 'orientation="horizontal"',
         'in-range': 'in-range',
       },
-      screen: {
-        'no-hover': { raw: '(hover: none)' },
-        hoverable: {
-          raw: '(hover: hover) and (pointer: fine)',
-        },
-      },
     },
   },
   variants: {
     extend: {
       backgroundColor: ['hover', 'active', 'no-hover'],
     },
+  },
+  future: {
+    hoverOnlyWhenSupported: true,
   },
   plugins: [
     plugin(function ({ matchUtilities, theme }) {
