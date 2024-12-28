@@ -7,6 +7,7 @@ import { tv } from '../tv';
 
 const inputVariants = tv({
   base: [
+    `${IDENTIFIER.scope} input`,
     'trds-flex',
     'trds-h-10 trds-rounded-lg trds-border trds-border-boundary trds-bg-white trds-px-3 trds-py-2 trds-text-sm trds-outline-0 trds-transition-[box-shadow] trds-transition-[border-color] trds-duration-normal',
     'file:trds-border-0 file:trds-bg-transparent file:trds-text-sm file:trds-font-medium',
@@ -30,7 +31,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     return (
       <input
         type={type}
-        className={cx(IDENTIFIER.scope, inputVariants({ invalid }), className)}
+        className={cx(inputVariants({ invalid }), className)}
         ref={ref}
         aria-invalid={invalid}
         {...props}
