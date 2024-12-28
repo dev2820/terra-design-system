@@ -29,7 +29,7 @@ export default {
 
 export const Default = {
   args: {},
-  render: (props: DrawerProps['root']) => {
+  render: (props: DrawerProps['Root']) => {
     return (
       <Drawer.Root {...props}>
         <Drawer.Trigger asChild>
@@ -85,7 +85,7 @@ export const Variant = {
   args: {
     variant: 'left',
   },
-  render: (props: DrawerProps['root']) => {
+  render: (props: DrawerProps['Root']) => {
     return (
       <Drawer.Root {...props}>
         <Drawer.Trigger asChild>
@@ -135,7 +135,7 @@ export const VariantBottom = {
   args: {
     variant: 'bottom',
   },
-  render: (props: DrawerProps['root']) => {
+  render: (props: DrawerProps['Root']) => {
     return (
       <Drawer.Root {...props}>
         <Drawer.Trigger asChild>

@@ -40,15 +40,15 @@ export const Drawer = {
 };
 
 export type DrawerProps = {
-  root: RootProps;
-  content: ContentProps;
-  trigger: TriggerProps;
-  title: TitleProps;
-  header: HeaderProps;
-  footer: FooterProps;
-  body: BodyProps;
-  description: DescriptionProps;
-  backdrop: BackdropProps;
-  positioner: PositionerProps;
-  closeTrigger: CloseTriggerProps;
+  Root: RootProps;
+  Content: ContentProps;
+  Trigger: TriggerProps;
+  Title: TitleProps;
+  Header: HeaderProps;
+  Footer: FooterProps;
+  Body: BodyProps;
+  Description: DescriptionProps;
+  Backdrop: BackdropProps;
+  Positioner: PositionerProps;
+  CloseTrigger: CloseTriggerProps;
 };
