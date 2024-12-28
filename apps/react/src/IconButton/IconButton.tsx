@@ -1,5 +1,3 @@
-import { IDENTIFIER } from 'env';
-
 import { forwardRef, type ComponentProps } from 'react';
 
 import { Button } from '../Button';
@@ -7,6 +5,7 @@ import { cx } from '../cx';
 import { tv, VariantProps } from '../tv';
 
 const iconButtonVariants = tv({
+  base: 'icon-button',
   variants: {
     size: {
       xs: 'trds-h-8 trds-w-8 trds-px-0 trds-py-0',
@@ -31,7 +30,7 @@ const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
 
     return (
       <Button
-        className={cx(IDENTIFIER.scope, classes, className)}
+        className={cx(classes, className)}
         ref={ref}
         {...rest}
         size={size}
@@ -42,5 +41,6 @@ const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
     );
   },
 );
+IconButton.displayName = 'IconButton';
 
 export { IconButton };
