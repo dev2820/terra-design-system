@@ -1,4 +1,5 @@
 import { Accordion } from '@ark-ui/react/accordion';
+import { IDENTIFIER } from 'env';
 import { ChevronDownIcon } from 'lucide-react';
 
 import {
@@ -13,6 +14,7 @@ import { cx } from '../cx';
 import { tv } from '../tv';
 
 export const accordionVariants = tv({
+  base: `${IDENTIFIER.scope} accordion`,
   slots: {
     root: 'trds-w-full',
     item: 'trds-border-b trds-border-boundary',
