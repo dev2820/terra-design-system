@@ -134,3 +134,16 @@ export const Disabled = {
     );
   },
 };
+
+export const AsChild = {
+  args: {},
+  render: () => {
+    return (
+      <Button theme="primary" asChild>
+        <a href="https://github.com/dev2820/terra-design-system">
+          Terra Design System
+        </a>
+      </Button>
+    );
+  },
+};

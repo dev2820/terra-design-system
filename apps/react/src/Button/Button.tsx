@@ -4,6 +4,7 @@ import { LoaderCircleIcon } from 'lucide-react';
 import { forwardRef, type ComponentProps, type ReactNode } from 'react';
 
 import { cx } from '../cx';
+import { AsChildProps, Slot } from '../Slot';
 import { tv, VariantProps } from '../tv';
 
 const buttonVariants = tv({
@@ -116,8 +117,11 @@ const buttonVariants = tv({
   },
 });
 
-export type ButtonProps = ComponentProps<'button'> &
-  VariantProps<typeof buttonVariants> & {
+export type ButtonProps = AsChildProps<ComponentProps<'button'>> & {
+  style?: React.CSSProperties;
+  className?: string;
+  disabled?: boolean;
+} & VariantProps<typeof buttonVariants> & {
     loading?: boolean;
     loadingIcon?: ReactNode;
     rightIcon?: ReactNode;
@@ -126,29 +130,29 @@ export type ButtonProps = ComponentProps<'button'> &
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   function (props, ref) {
     const {
-      type = 'button',
       loading = false,
       loadingIcon = (
         <LoaderCircleIcon className="trds-animate-spin" size={20} />
       ),
       leftIcon,
       rightIcon,
-      disabled = false,
       variant,
+      disabled = false,
       size,
       theme,
       className,
       children,
+      asChild,
       ...rest
     } = props;
+    const Comp = asChild ? Slot : 'button';
 
     return (
-      <button
+      <Comp
         className={cx(
           buttonVariants({ variant, theme, size, loading }),
           className,
         )}
-        type={type}
         disabled={disabled || loading}
         aria-busy={loading}
         ref={ref}
@@ -158,7 +162,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         {leftIcon}
         {children}
         {rightIcon}
-      </button>
+      </Comp>
     );
   },
 );
