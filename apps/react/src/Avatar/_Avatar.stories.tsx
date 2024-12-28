@@ -2,7 +2,7 @@ import { UserIcon } from 'lucide-react';
 
 import { Avatar, type AvatarProps } from './index';
 
-const sizes = ['sm', 'md', 'lg', 'xl', '2xl'] as AvatarProps['size'][];
+const sizes = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'] as AvatarProps['size'][];
 /**
  * based on https://ark-ui.com/react/docs/components/avatar
  */
@@ -24,8 +24,8 @@ export default {
 
 export const Default = {
   args: {
-    alt: 'pravatar',
-    src: 'https://i.pravatar.cc/500',
+    alt: 'dev2820',
+    src: 'https://avatars.githubusercontent.com/u/40891497?v=4',
     size: 'md',
   },
   render: (props: AvatarProps) => {
@@ -35,8 +35,8 @@ export const Default = {
 
 export const Size = {
   args: {
-    alt: 'pravatar',
-    src: 'https://i.pravatar.cc/500',
+    alt: 'dev2820',
+    src: 'https://avatars.githubusercontent.com/u/40891497?v=4',
   },
   render: (props: AvatarProps) => {
     return (
@@ -49,9 +49,25 @@ export const Size = {
   },
 };
 
+export const SizeWithNumber = {
+  args: {
+    alt: 'dev2820',
+    src: 'https://avatars.githubusercontent.com/u/40891497?v=4',
+    size: 128,
+  },
+  render: (props: AvatarProps) => {
+    return <Avatar {...props} />;
+  },
+};
+
 export const ImageWithChildren = {
   args: {
-    children: <img src="https://i.pravatar.cc/500" alt="pravatar" />,
+    children: (
+      <img
+        src="https://avatars.githubusercontent.com/u/40891497?v=4"
+        alt="dev2820"
+      />
+    ),
   },
   render: ({ children, ...props }: AvatarProps) => {
     return <Avatar {...props}>{children}</Avatar>;
@@ -60,7 +76,7 @@ export const ImageWithChildren = {
 
 export const Fallback = {
   args: {
-    alt: 'pravatar',
+    alt: 'dev2820',
     fallback: <UserIcon size={40} className={'trds-bg-neutral-200'} />,
   },
   render: (props: AvatarProps) => {

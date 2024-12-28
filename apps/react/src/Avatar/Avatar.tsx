@@ -1,4 +1,4 @@
-import { Avatar as _Avatar } from '@ark-ui/react';
+import { Avatar as _Avatar } from '@ark-ui/react/avatar';
 import { IDENTIFIER } from 'env';
 import { UserIcon } from 'lucide-react';
 import { isNotNil, isNumber } from 'utils';
@@ -18,11 +18,16 @@ const avatarVariants = tv({
   base: `${IDENTIFIER.scope} avatar`,
   slots: {
     root: 'trds-rounded-full trds-overflow-hidden',
-    fallback: 'trds-bg-muted trds-w-full trds-h-full',
+    fallback: 'trds-bg-muted',
     image: 'trds-bg-muted',
   },
   variants: {
     size: {
+      xs: {
+        root: 'trds-w-6 trds-h-6',
+        fallback: 'trds-w-6 trds-h-6',
+        image: 'trds-w-6 trds-h-6',
+      },
       sm: {
         root: 'trds-w-8 trds-h-8',
         fallback: 'trds-w-8 trds-h-8',
@@ -39,14 +44,14 @@ const avatarVariants = tv({
         image: 'trds-w-12 trds-h-12',
       },
       xl: {
-        root: 'w-14 h-14',
-        fallback: 'w-14 h-14',
-        image: 'w-14 h-14',
+        root: 'trds-w-14 trds-h-14',
+        fallback: 'trds-w-14 trds-h-14',
+        image: 'trds-w-14 trds-h-14',
       },
       '2xl': {
-        root: 'w-16 h-16',
-        fallback: 'w-16 h-16',
-        image: 'w-16 h-16',
+        root: 'trds-w-16 trds-h-16',
+        fallback: 'trds-w-16 trds-h-16',
+        image: 'trds-w-16 trds-h-16',
       },
       none: {
         root: '',
@@ -60,7 +65,7 @@ const avatarVariants = tv({
   },
 });
 
-type AvatarProps = ComponentPropsWithoutRef<typeof _Avatar.Root> &
+export type AvatarProps = ComponentPropsWithoutRef<typeof _Avatar.Root> &
   Omit<VariantProps<typeof avatarVariants>, 'size'> & {
     alt?: string;
     src?: string;
@@ -68,11 +73,11 @@ type AvatarProps = ComponentPropsWithoutRef<typeof _Avatar.Root> &
     children?: ReactNode;
     size?: VariantProps<typeof avatarVariants>['size'] | number;
   };
-
 const Avatar = forwardRef<ElementRef<typeof _Avatar.Root>, AvatarProps>(
   (props, ref) => {
     const { fallback, src, alt, size, className, children, ...rest } = props;
-    const classes = avatarVariants({ size: isNumber(size) ? 'none' : size });
+    const isNumberMode = isNumber(size);
+    const classes = avatarVariants({ size: isNumberMode ? 'none' : size });
     const child = children && Children.only(children);
 
     return (
@@ -85,6 +90,10 @@ const Avatar = forwardRef<ElementRef<typeof _Avatar.Root>, AvatarProps>(
           src={src}
           alt={alt}
           className={classes.image()}
+          style={{
+            width: isNumberMode ? `${size}px` : undefined,
+            height: isNumberMode ? `${size}px` : undefined,
+          }}
           asChild={isNotNil(child)}
         >
           {child}
@@ -102,11 +111,13 @@ const Avatar = forwardRef<ElementRef<typeof _Avatar.Root>, AvatarProps>(
 );
 
 export { Avatar };
-export type { AvatarProps };
 
 const convertSizeToNumber = (
   size?: VariantProps<typeof avatarVariants>['size'],
 ) => {
+  if (size === 'xs') {
+    return 24;
+  }
   if (size === 'sm') {
     return 32;
   }
