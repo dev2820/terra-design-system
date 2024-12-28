@@ -29,6 +29,7 @@ export const fileUploadVariant = tv({
     itemPreview: '[grid-area:preview]',
     itemPreviewImage:
       'trds-aspect-square trds-h-10 trds-w-10 trds-object-scale-down',
+    hiddenInput: '',
   },
 });
 
@@ -67,12 +68,32 @@ const Root = forwardRef<ElementRef<typeof FileUpload.Root>, RootProps>(
           {...rest}
         >
           {children}
-          <FileUpload.HiddenInput />
         </FileUpload.Root>
       </FileUploadProvider>
     );
   },
 );
+Root.displayName = 'FileUpload.Root';
+
+export type HiddenInputProps = ComponentProps<typeof HiddenInput>;
+const HiddenInput = forwardRef<
+  ElementRef<typeof FileUpload.HiddenInput>,
+  ComponentPropsWithoutRef<typeof FileUpload.HiddenInput>
+>(function (props, ref) {
+  const { className, children, ...rest } = props;
+  const { classes } = useFileUploadContext();
+
+  return (
+    <FileUpload.HiddenInput
+      className={cx(classes.hiddenInput(), className)}
+      ref={ref}
+      {...rest}
+    >
+      {children}
+    </FileUpload.HiddenInput>
+  );
+});
+HiddenInput.displayName = 'FileUpload.HiddenInput';
 
 export type DropzoneProps = ComponentProps<typeof Dropzone>;
 const Dropzone = forwardRef<
@@ -92,6 +113,7 @@ const Dropzone = forwardRef<
     </FileUpload.Dropzone>
   );
 });
+Dropzone.displayName = 'FileUpload.Dropzone';
 
 export type LabelProps = ComponentProps<typeof Label>;
 const Label = forwardRef<
@@ -111,6 +133,7 @@ const Label = forwardRef<
     </FileUpload.Label>
   );
 });
+Label.displayName = 'FileUpload.Label';
 
 export type TriggerProps = ComponentProps<typeof Trigger>;
 const Trigger = forwardRef<
@@ -130,6 +153,7 @@ const Trigger = forwardRef<
     </FileUpload.Trigger>
   );
 });
+Trigger.displayName = 'FileUpload.Trigger';
 
 export type ItemGroupProps = ComponentProps<typeof ItemGroup>;
 const ItemGroup = forwardRef<
@@ -149,6 +173,7 @@ const ItemGroup = forwardRef<
     </FileUpload.ItemGroup>
   );
 });
+ItemGroup.displayName = 'FileUpload.ItemGroup';
 
 export type ItemProps = ComponentProps<typeof Item>;
 const Item = forwardRef<
@@ -168,6 +193,7 @@ const Item = forwardRef<
     </FileUpload.Item>
   );
 });
+Item.displayName = 'FileUpload.Item';
 
 export type ItemPreviewProps = ComponentProps<typeof ItemPreview>;
 const ItemPreview = forwardRef<
@@ -187,6 +213,7 @@ const ItemPreview = forwardRef<
     </FileUpload.ItemPreview>
   );
 });
+ItemPreview.displayName = 'FileUpload.ItemPreview';
 
 export type ItemPreviewImageProps = ComponentProps<typeof ItemPreviewImage>;
 const ItemPreviewImage = forwardRef<
@@ -206,6 +233,7 @@ const ItemPreviewImage = forwardRef<
     </FileUpload.ItemPreviewImage>
   );
 });
+ItemPreviewImage.displayName = 'FileUpload.ItemPreviewImage';
 
 export type ItemNameProps = ComponentProps<typeof ItemName>;
 const ItemName = forwardRef<
@@ -225,6 +253,7 @@ const ItemName = forwardRef<
     </FileUpload.ItemName>
   );
 });
+ItemName.displayName = 'FileUpload.ItemName';
 
 export type ItemSizeTextProps = ComponentProps<typeof ItemSizeText>;
 const ItemSizeText = forwardRef<
@@ -244,6 +273,7 @@ const ItemSizeText = forwardRef<
     </FileUpload.ItemSizeText>
   );
 });
+ItemSizeText.displayName = 'FileUpload.ItemSizeText';
 
 export type ItemDeleteTriggerProps = ComponentProps<typeof ItemDeleteTrigger>;
 const ItemDeleteTrigger = forwardRef<
@@ -263,6 +293,7 @@ const ItemDeleteTrigger = forwardRef<
     </FileUpload.ItemDeleteTrigger>
   );
 });
+ItemDeleteTrigger.displayName = 'FileUpload.ItemDeleteTrigger';
 
 export type ContextProps = FileUpload.ContextProps;
 const Context = FileUpload.Context;
@@ -279,5 +310,6 @@ export {
   ItemSizeText,
   ItemName,
   ItemDeleteTrigger,
+  HiddenInput,
   Context,
 };

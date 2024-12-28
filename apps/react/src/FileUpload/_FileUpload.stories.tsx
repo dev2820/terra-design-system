@@ -4,10 +4,6 @@ import { Button } from '../Button';
 import { IconButton } from '../IconButton';
 import { FileUpload, type FileUploadProps } from './index';
 
-/**
- * based on https://ark-ui.com/react/docs/components/file-upload
- *
- */
 export default {
   title: 'Components/FileUpload',
   component: FileUpload.Root,
@@ -24,10 +20,11 @@ export const Default = {
     maxFiles: 3,
     className: 'trds-w-full',
   },
-  render: (props: FileUploadProps['root']) => {
+  render: (props: FileUploadProps['Root']) => {
     return (
       <div className="trds-w-[600px]">
         <FileUpload.Root maxFiles={3} {...props}>
+          <FileUpload.HiddenInput />
           <FileUpload.Dropzone>
             <FileUpload.Label>Drop your files here</FileUpload.Label>
             <FileUpload.Trigger asChild>

@@ -10,6 +10,7 @@ import {
   ItemSizeText,
   ItemName,
   ItemDeleteTrigger,
+  HiddenInput,
   Context,
 } from './FileUpload';
 import type {
@@ -24,6 +25,7 @@ import type {
   ItemSizeTextProps,
   ItemNameProps,
   ItemDeleteTriggerProps,
+  HiddenInputProps,
   ContextProps,
 } from './FileUpload';
 
@@ -39,20 +41,23 @@ export const FileUpload = {
   ItemSizeText,
   ItemName,
   ItemDeleteTrigger,
+  HiddenInput,
   Context,
 };
 
+export type * from '@ark-ui/react/file-upload';
 export type FileUploadProps = {
-  root: RootProps;
-  dropzone: DropzoneProps;
-  trigger: TriggerProps;
-  label: LabelProps;
-  itemGroup: ItemGroupProps;
-  item: ItemProps;
-  itemPreview: ItemPreviewProps;
-  itemPreviewImage: ItemPreviewImageProps;
-  itemSizeText: ItemSizeTextProps;
-  itemName: ItemNameProps;
-  itemDeleteTrigger: ItemDeleteTriggerProps;
-  context: ContextProps;
+  Root: RootProps;
+  Dropzone: DropzoneProps;
+  Trigger: TriggerProps;
+  Label: LabelProps;
+  ItemGroup: ItemGroupProps;
+  Item: ItemProps;
+  ItemPreview: ItemPreviewProps;
+  ItemPreviewImage: ItemPreviewImageProps;
+  ItemSizeText: ItemSizeTextProps;
+  ItemName: ItemNameProps;
+  ItemDeleteTrigger: ItemDeleteTriggerProps;
+  HiddenInput: HiddenInputProps;
+  Context: ContextProps;
 };
