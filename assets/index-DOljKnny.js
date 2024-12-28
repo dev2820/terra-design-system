@@ -1,1 +1,0 @@
-function*i(t,o,r=1){if(t>o)throw new Error("Start must be less than end.");if(r<=0)throw new Error("Step must be a positive number.");for(let e=t;r>0?e<o:e>o;e+=r)yield e}function u(t,o,r=1,e=!1){const n=i(t,o,r);return e?n:[...n]}const c=t=>typeof t=="number",s=t=>Object.is(t,void 0)||Object.is(t,null),f=t=>!s(t);export{c,f,u};
