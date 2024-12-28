@@ -1,21 +1,26 @@
-import { Root, Item, Trigger, Content } from './Accordion';
+import { Root, Item, ItemIndicator, ItemTrigger, Content } from './Accordion';
 import type {
   RootProps,
   ItemProps,
-  TriggerProps,
+  ItemIndicatorProps,
+  ItemTriggerProps,
   ContentProps,
 } from './Accordion';
 
 export const Accordion = {
   Root,
   Item,
-  Trigger,
+  ItemIndicator,
+  ItemTrigger,
   Content,
 };
 
 export type AccordionProps = {
   Root: RootProps;
   Item: ItemProps;
-  Trigger: TriggerProps;
+  ItemTrigger: ItemIndicatorProps;
+  Trigger: ItemTriggerProps;
   Content: ContentProps;
 };
+
+export type * from '@ark-ui/react/accordion';

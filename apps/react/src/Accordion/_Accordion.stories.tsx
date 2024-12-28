@@ -28,7 +28,10 @@ export const Default = {
         <Accordion.Root {...props}>
           {exampleList.map(item => (
             <Accordion.Item key={item} value={item}>
-              <Accordion.Trigger>{item}</Accordion.Trigger>
+              <Accordion.ItemTrigger>
+                {item}
+                <Accordion.ItemIndicator />
+              </Accordion.ItemTrigger>
               <Accordion.Content>
                 {item} is a JavaScript library for building user interfaces.
               </Accordion.Content>
@@ -43,7 +46,6 @@ export const Default = {
 export const Indicator = {
   args: {
     defaultValue: [exampleList[0]],
-    indicator: <CircleChevronDownIcon size={20} />,
   },
   render: (props: AccordionProps['Root']) => {
     return (
@@ -51,7 +53,13 @@ export const Indicator = {
         <Accordion.Root {...props}>
           {exampleList.map(item => (
             <Accordion.Item key={item} value={item}>
-              <Accordion.Trigger>{item}</Accordion.Trigger>
+              <Accordion.ItemTrigger>
+                {item}
+
+                <Accordion.ItemIndicator asChild>
+                  <CircleChevronDownIcon size={20} />
+                </Accordion.ItemIndicator>
+              </Accordion.ItemTrigger>
               <Accordion.Content>
                 {item} is a JavaScript library for building user interfaces.
               </Accordion.Content>
@@ -73,7 +81,10 @@ export const Disabled = {
         <Accordion.Root {...props}>
           {exampleList.map((item, i) => (
             <Accordion.Item key={item} value={item} disabled={i === 1}>
-              <Accordion.Trigger>{item}</Accordion.Trigger>
+              <Accordion.ItemTrigger>
+                {item}
+                <Accordion.ItemIndicator />
+              </Accordion.ItemTrigger>
               <Accordion.Content>
                 {item} is a JavaScript library for building user interfaces.
               </Accordion.Content>
@@ -96,7 +107,10 @@ export const Multiple = {
         <Accordion.Root {...props}>
           {exampleList.map(item => (
             <Accordion.Item key={item} value={item}>
-              <Accordion.Trigger>{item}</Accordion.Trigger>
+              <Accordion.ItemTrigger>
+                {item}
+                <Accordion.ItemIndicator />
+              </Accordion.ItemTrigger>
               <Accordion.Content>
                 {item} is a JavaScript library for building user interfaces.
               </Accordion.Content>

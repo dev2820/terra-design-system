@@ -1,4 +1,4 @@
-import { Accordion } from '@ark-ui/react';
+import { Accordion } from '@ark-ui/react/accordion';
 import { ChevronDownIcon } from 'lucide-react';
 
 import {
@@ -6,12 +6,11 @@ import {
   type ComponentPropsWithoutRef,
   forwardRef,
   type ElementRef,
-  ReactNode,
 } from 'react';
 
 import { createReactContext } from '../create-react-context';
 import { cx } from '../cx';
-import { tv } from "../tv"
+import { tv } from '../tv';
 
 export const accordionVariants = tv({
   slots: {
@@ -26,18 +25,14 @@ export const accordionVariants = tv({
   },
 });
 
-type AccordionProviderProps = {
-  indicator: ReactNode;
-};
+type AccordionProviderProps = {};
 const [AccordionProvider, useAccordionContext] = createReactContext<{
-  indicator: ReactNode;
   classes: ReturnType<typeof accordionVariants>;
 }>({
   name: 'accordion',
   hookName: 'useAccordionContext',
   providerName: 'AccordionProvider',
   defaultValue: {
-    indicator: null,
     classes: {} as ReturnType<typeof accordionVariants>,
   },
 });
@@ -46,12 +41,10 @@ export type RootProps = ComponentProps<typeof Root>;
 const Root = forwardRef<
   ElementRef<typeof Accordion.Root>,
   ComponentPropsWithoutRef<typeof Accordion.Root> & AccordionProviderProps
->(({ indicator, children, className, ...props }, ref) => {
+>((props, ref) => {
+  const { children, className, ...rest } = props;
   const classes = accordionVariants();
   const ctx = {
-    indicator: indicator ?? (
-      <ChevronDownIcon size={20} className={classes.itemIndicator()} />
-    ),
     classes,
   };
 
@@ -60,69 +53,93 @@ const Root = forwardRef<
       <Accordion.Root
         ref={ref}
         className={cx(classes.root(), className)}
-        {...props}
+        {...rest}
       >
         {children}
       </Accordion.Root>
     </AccordionProvider>
   );
 });
+Root.displayName = 'Accordion.Root';
 
 export type ItemProps = ComponentProps<typeof Item>;
 const Item = forwardRef<
   ElementRef<typeof Accordion.Item>,
   ComponentPropsWithoutRef<typeof Accordion.Item>
->(({ children, className, ...props }, ref) => {
+>((props, ref) => {
+  const { children, className, ...rest } = props;
   const { classes } = useAccordionContext();
 
   return (
     <Accordion.Item
       ref={ref}
       className={cx(classes.item(), className)}
-      {...props}
+      {...rest}
     >
       {children}
     </Accordion.Item>
   );
 });
+Item.displayName = 'Accordion.Item';
 
-export type TriggerProps = ComponentProps<typeof Trigger>;
-const Trigger = forwardRef<
+export type ItemTriggerProps = ComponentProps<typeof ItemTrigger>;
+const ItemTrigger = forwardRef<
   ElementRef<typeof Accordion.ItemTrigger>,
   ComponentPropsWithoutRef<typeof Accordion.ItemTrigger>
->(({ children, className, ...props }, ref) => {
-  const { indicator, classes } = useAccordionContext();
+>((props, ref) => {
+  const { children, className, ...rest } = props;
+  const { classes } = useAccordionContext();
 
   return (
     <Accordion.ItemTrigger
       ref={ref}
       className={cx(classes.itemTrigger(), className)}
-      {...props}
+      {...rest}
     >
       {children}
-      <Accordion.ItemIndicator className={classes.itemIndicator()} asChild>
-        {indicator}
-      </Accordion.ItemIndicator>
     </Accordion.ItemTrigger>
   );
 });
+ItemTrigger.displayName = 'Accordion.ItemTrigger';
+
+export type ItemIndicatorProps = ComponentProps<typeof ItemIndicator>;
+const ItemIndicator = forwardRef<
+  ElementRef<typeof Accordion.ItemIndicator>,
+  ComponentPropsWithoutRef<typeof Accordion.ItemIndicator>
+>((props, ref) => {
+  const { children, className, ...rest } = props;
+  const { classes } = useAccordionContext();
+
+  return (
+    <Accordion.ItemIndicator
+      ref={ref}
+      className={cx(classes.itemIndicator(), className)}
+      {...rest}
+    >
+      {children ?? <ChevronDownIcon size={20} />}
+    </Accordion.ItemIndicator>
+  );
+});
+ItemIndicator.displayName = 'Accordion.ItemIndicator';
 
 export type ContentProps = ComponentProps<typeof Content>;
 const Content = forwardRef<
   ElementRef<typeof Accordion.ItemContent>,
   ComponentPropsWithoutRef<typeof Accordion.ItemContent>
->(({ children, className, ...props }, ref) => {
+>((props, ref) => {
+  const { children, className, ...rest } = props;
   const { classes } = useAccordionContext();
 
   return (
     <Accordion.ItemContent
       ref={ref}
       className={cx(classes.itemContent(), className)}
-      {...props}
+      {...rest}
     >
       {children}
     </Accordion.ItemContent>
   );
 });
+Content.displayName = 'Accordion.Content';
 
-export { Root, Item, Trigger, Content };
+export { Root, Item, ItemIndicator, ItemTrigger, Content };
