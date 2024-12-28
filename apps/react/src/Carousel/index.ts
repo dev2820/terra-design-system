@@ -30,6 +30,7 @@ export const Carousel = {
   ItemGroup,
   Item,
 };
+export type * from '@ark-ui/react/carousel';
 export type CarouselProps = {
   Root: RootProps;
   Item: ItemProps;
