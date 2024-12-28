@@ -1,13 +1,10 @@
-import { Portal } from '@ark-ui/react';
 import { XIcon } from 'lucide-react';
 
 import { Button } from '../Button';
 import { IconButton } from '../IconButton';
+import { Portal } from '../index';
 import { Dialog, type DialogProps } from './index';
 
-/**
- * based on https://ark-ui.com/react/docs/components/dialog
- */
 export default {
   title: 'Components/Dialog',
   component: Dialog.Root,
@@ -20,8 +17,11 @@ export default {
 };
 
 export const Default = {
-  args: {},
-  render: (props: DialogProps['root']) => {
+  args: {
+    lazyMount: true,
+    unmountOnExit: true,
+  },
+  render: (props: DialogProps['Root']) => {
     return (
       <Dialog.Root {...props}>
         <Dialog.Trigger asChild>

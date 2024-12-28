@@ -30,13 +30,14 @@ export const Dialog = {
   CloseTrigger,
 };
 
+export type * from '@ark-ui/react/dialog';
 export type DialogProps = {
-  root: RootProps;
-  content: ContentProps;
-  trigger: TriggerProps;
-  title: TitleProps;
-  description: DescriptionProps;
-  closeTrigger: CloseTriggerProps;
-  positioner: PositionerProps;
-  backdrop: BackdropProps;
+  Root: RootProps;
+  Content: ContentProps;
+  Trigger: TriggerProps;
+  Title: TitleProps;
+  Description: DescriptionProps;
+  CloseTrigger: CloseTriggerProps;
+  Positioner: PositionerProps;
+  Backdrop: BackdropProps;
 };

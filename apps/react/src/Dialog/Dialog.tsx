@@ -52,12 +52,11 @@ function Root({ children, ...props }: RootProps) {
 
   return (
     <DialogProvider value={ctx}>
-      <Dialog.Root lazyMount unmountOnExit {...props}>
-        {children}
-      </Dialog.Root>
+      <Dialog.Root {...props}>{children}</Dialog.Root>
     </DialogProvider>
   );
 }
+Root.displayName = 'Dialog.Root';
 
 export type TriggerProps = ComponentProps<typeof Trigger>;
 const Trigger = forwardRef<
@@ -77,6 +76,7 @@ const Trigger = forwardRef<
     </Dialog.Trigger>
   );
 });
+Trigger.displayName = 'Dialog.Trigger';
 
 export type BackdropProps = ComponentProps<typeof Backdrop>;
 const Backdrop = forwardRef<
@@ -88,6 +88,7 @@ const Backdrop = forwardRef<
 
   return <Dialog.Backdrop className={classes.backdrop()} {...rest} ref={ref} />;
 });
+Backdrop.displayName = 'Dialog.Backdrop';
 
 export type PositionerProps = ComponentProps<typeof Positioner>;
 const Positioner = forwardRef<
@@ -103,6 +104,7 @@ const Positioner = forwardRef<
     </Dialog.Positioner>
   );
 });
+Positioner.displayName = 'Dialog.Positioner';
 
 export type ContentProps = ComponentProps<typeof Content>;
 const Content = forwardRef<
@@ -122,6 +124,7 @@ const Content = forwardRef<
     </Dialog.Content>
   );
 });
+Content.displayName = 'Dialog.Content';
 
 export type TitleProps = ComponentProps<typeof Title>;
 const Title = forwardRef<
@@ -141,6 +144,7 @@ const Title = forwardRef<
     </Dialog.Title>
   );
 });
+Title.displayName = 'Dialog.Title';
 
 export type DescriptionProps = ComponentProps<typeof Description>;
 const Description = forwardRef<
@@ -160,6 +164,7 @@ const Description = forwardRef<
     </Dialog.Description>
   );
 });
+Description.displayName = 'Dialog.Description';
 
 export type CloseTriggerProps = ComponentProps<typeof CloseTrigger>;
 const CloseTrigger = forwardRef<
@@ -179,6 +184,7 @@ const CloseTrigger = forwardRef<
     </Dialog.CloseTrigger>
   );
 });
+CloseTrigger.displayName = 'Dialog.CloseTrigger';
 
 export {
   Root,
