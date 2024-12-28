@@ -34,7 +34,7 @@ export default {
 
 export const Default = {
   args: {
-    text: 'new',
+    children: 'new',
   },
   render: (props: BadgeProps) => {
     return <Badge {...props} />;
@@ -43,7 +43,7 @@ export const Default = {
 
 export const Variant = {
   args: {
-    text: 'new',
+    children: 'new',
   },
   render: (props: BadgeProps) => {
     return (
@@ -58,7 +58,7 @@ export const Variant = {
 
 export const Theme = {
   args: {
-    text: 'new',
+    children: 'new',
   },
   render: (props: BadgeProps) => {
     return (

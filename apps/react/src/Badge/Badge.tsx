@@ -121,25 +121,18 @@ const badgeVariants = tv({
   },
 });
 
-export type BadgeProps = Omit<ComponentProps<'span'>, 'children'> &
-  VariantProps<typeof badgeVariants> & {
-    text: string;
-  };
-
+export type BadgeProps = ComponentProps<'span'> &
+  VariantProps<typeof badgeVariants>;
 const Badge = forwardRef<HTMLSpanElement, BadgeProps>(function (props, ref) {
-  const { text, variant, theme, className, ...rest } = props;
+  const { children, variant, theme, className, ...rest } = props;
 
   return (
     <span
-      className={cx(
-        IDENTIFIER.scope,
-        badgeVariants({ variant, theme }),
-        className,
-      )}
+      className={cx(badgeVariants({ variant, theme }), className)}
       ref={ref}
       {...rest}
     >
-      {text}
+      {children}
     </span>
   );
 });
