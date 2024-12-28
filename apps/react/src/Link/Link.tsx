@@ -3,12 +3,13 @@ import { IDENTIFIER } from 'env';
 import { forwardRef, type ComponentProps, type ReactNode } from 'react';
 
 import { cx } from '../cx';
+import { AsChildProps, Slot } from '../Slot';
 import { tv, VariantProps } from '../tv';
 
 const linkVariants = tv({
   base: [
+    `${IDENTIFIER.scope} link`,
     'trds-inline-flex trds-items-center trds-justify-start trds-whitespace-nowrap trds-gap-1 trds-transition-colors trds-cursor-pointer',
-    // underline
     'trds-underline-offset-2 trds-underline-under trds-decoration-[2px] trds-underline',
   ],
   variants: {
@@ -24,35 +25,33 @@ const linkVariants = tv({
   },
 });
 
-export type LinkProps = ComponentProps<'a'> &
-  VariantProps<typeof linkVariants> & {
+export type LinkProps = AsChildProps<ComponentProps<'a'>> & {
+  style?: React.CSSProperties;
+  className?: string;
+} & VariantProps<typeof linkVariants> & {
     leftIcon?: ReactNode;
     rightIcon?: ReactNode;
   };
 
 const Link = forwardRef<HTMLAnchorElement, LinkProps>(function (props, ref) {
-  const {
-    type = 'link',
-    theme,
-    leftIcon,
-    rightIcon,
-    className,
-    children,
-    ...rest
-  } = props;
+  const { theme, leftIcon, rightIcon, className, children, asChild, ...rest } =
+    props;
+  const Comp = asChild ? Slot : 'a';
 
   return (
-    <a
-      className={cx(IDENTIFIER.scope, linkVariants({ theme }), className)}
-      type={type}
+    <Comp
+      className={cx(linkVariants({ theme }), className)}
       ref={ref}
       {...rest}
     >
-      {leftIcon}
-      {children}
-      {rightIcon}
-    </a>
+      <span>
+        {leftIcon}
+        {children}
+        {rightIcon}
+      </span>
+    </Comp>
   );
 });
+Link.displayName = 'Link';
 
 export { Link, linkVariants };

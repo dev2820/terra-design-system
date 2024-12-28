@@ -58,3 +58,19 @@ export const WithIcon = {
     );
   },
 };
+
+export const AsChild = {
+  args: {
+    href: 'https://github.com/dev2820/terra-design-system',
+    target: '_blank',
+  },
+  render: (props: LinkProps) => {
+    return (
+      <div className="trds-flex trds-flex-col trds-gap-4">
+        <Link {...props} leftIcon={<ExternalLinkIcon size={16} />} asChild>
+          <button>Button Link</button>
+        </Link>
+      </div>
+    );
+  },
+};
