@@ -13,9 +13,10 @@ export const Field = {
   ErrorText,
 };
 
+export type * from '@ark-ui/react/field';
 export type FieldProps = {
-  root: RootProps;
-  label: LabelProps;
-  helperText: HelperTextProps;
-  errorText: ErrorTextProps;
+  Root: RootProps;
+  Label: LabelProps;
+  HelperText: HelperTextProps;
+  ErrorText: ErrorTextProps;
 };

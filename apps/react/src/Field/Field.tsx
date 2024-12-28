@@ -61,6 +61,7 @@ const Root = forwardRef<
     </FieldProvider>
   );
 });
+Root.displayName = 'Field.Root';
 
 export type LabelProps = ComponentProps<typeof Label>;
 const Label = forwardRef<
@@ -76,6 +77,7 @@ const Label = forwardRef<
     </Field.Label>
   );
 });
+Label.displayName = 'Field.Label';
 
 export type HelperTextProps = ComponentProps<typeof HelperText>;
 const HelperText = forwardRef<
@@ -95,6 +97,7 @@ const HelperText = forwardRef<
     </Field.HelperText>
   );
 });
+HelperText.displayName = 'Field.HelperText';
 
 export type ErrorTextProps = ComponentProps<typeof ErrorText>;
 const ErrorText = forwardRef<
@@ -114,5 +117,6 @@ const ErrorText = forwardRef<
     </Field.ErrorText>
   );
 });
+ErrorText.displayName = 'Field.ErrorText';
 
 export { Root, Label, HelperText, ErrorText };

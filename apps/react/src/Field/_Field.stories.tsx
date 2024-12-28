@@ -3,9 +3,6 @@ import { InfoIcon, TriangleAlertIcon } from 'lucide-react';
 import { Input } from '../Input';
 import { Field, type FieldProps } from './index';
 
-/**
- * based on https://ark-ui.com/react/docs/components/field
- */
 export default {
   title: 'Components/Field',
   component: Field.Root,
@@ -19,7 +16,7 @@ export default {
 
 export const Default = {
   args: {},
-  render: (props: FieldProps['root']) => {
+  render: (props: FieldProps['Root']) => {
     return (
       <Field.Root {...props}>
         <Field.Label htmlFor="input-default">Email</Field.Label>
@@ -41,7 +38,7 @@ export const Invalid = {
   args: {
     invalid: true,
   },
-  render: (props: FieldProps['root']) => {
+  render: (props: FieldProps['Root']) => {
     return (
       <Field.Root {...props}>
         <Field.Label>Email</Field.Label>
@@ -63,7 +60,7 @@ export const Disabled = {
   args: {
     disabled: true,
   },
-  render: (props: FieldProps['root']) => {
+  render: (props: FieldProps['Root']) => {
     return (
       <Field.Root {...props}>
         <Field.Label>Email</Field.Label>
@@ -85,7 +82,7 @@ export const ReadOnly = {
   args: {
     readOnly: true,
   },
-  render: (props: FieldProps['root']) => {
+  render: (props: FieldProps['Root']) => {
     return (
       <Field.Root {...props}>
         <Field.Label>Email</Field.Label>
@@ -107,7 +104,7 @@ export const Required = {
   args: {
     required: true,
   },
-  render: (props: FieldProps['root']) => {
+  render: (props: FieldProps['Root']) => {
     return (
       <Field.Root {...props}>
         <Field.Label>Email</Field.Label>
