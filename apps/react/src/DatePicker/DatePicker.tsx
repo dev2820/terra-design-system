@@ -32,7 +32,7 @@ export const datePickerVariants = tv({
     tableRow: '',
     tableCell: 'trds-text-center',
     tableCellTrigger:
-      "trds-w-full data-in-range:trds-bg-primary-300 data-today:before:trds-content-['●'] data-today:before:trds-text-[6px] data-today:before:trds-text-primary-800 data-today:before:trds-absolute data-today:before:trds-mt-6 data-selected:trds-bg-primary data-in-range:data-selected:trds-bg-primary data-selected:trds-text-fg-primary data-selected:hover:trds-bg-primary data-selected:hover:trds-text-fg-primary",
+      "trds-w-full data-in-range:trds-bg-primary-300 data-today:before:trds-content-['●'] data-today:before:trds-text-[6px] data-today:before:trds-text-primary-800 data-today:before:trds-absolute data-today:before:trds-mt-6 data-selected:trds-bg-primary data-in-range:data-selected:trds-bg-primary data-selected:trds-text-fg-primary data-selected:hover:trds-bg-primary data-selected:hover:trds-text-fg-primary data-disabled:trds-text-muted data-disabled:trds-cursor-not-allowed data-disabled:trds-bg-transparent data-disabled:hover:trds-bg-transparent data-disabled:active:trds-bg-transparent",
     input: '',
     rangeText: '',
     positioner: '',
