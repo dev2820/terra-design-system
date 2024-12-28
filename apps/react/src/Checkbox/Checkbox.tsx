@@ -18,7 +18,7 @@ export const checkboxVariants = tv({
     root: 'group :focus-within:mt-4 trds-rounded-sm trds-inline-flex trds-flex-row trds-items-center trds-gap-2 trds-cursor-pointer data-disabled:trds-cursor-not-allowed data-readonly:trds-cursor-default',
     label: '',
     control: [
-      'trds-border-2 trds-border-boundary trds-rounded-sm trds-flex-none trds-box-border trds-inline-flex trds-place-items-center trds-transition-shadow trds-transition-bg trds-transition-border-color trds-duration-normal trds-ease-default',
+      'trds-border-2 trds-border-boundary trds-rounded-sm trds-flex-none trds-box-border trds-inline-flex trds-place-items-center trds-transition-all trds-duration-normal trds-ease-default',
       'data-checked:trds-bg-primary data-checked:trds-text-white data-checked:trds-border-primary',
       'data-invalid:trds-border-error',
       'data-indeterminate:trds-bg-primary data-indeterminate:trds-text-white data-indeterminate:trds-border-primary',
