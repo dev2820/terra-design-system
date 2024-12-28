@@ -57,7 +57,10 @@ export const Variant = {
         {variants.map(variant => (
           <Card.Root variant={variant} key={variant} {...props}>
             <Card.Header>
-              <Avatar src="https://i.pravatar.cc/500" size="lg" />
+              <Avatar
+                src="https://avatars.githubusercontent.com/u/40891497?v=4"
+                size="lg"
+              />
             </Card.Header>
             <Card.Content className="trds-text-neutral-500">
               An adventurer at heart and a visionary by nature, Alex has

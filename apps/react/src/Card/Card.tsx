@@ -49,7 +49,6 @@ const [CardProvider, useCardContext] = createReactContext<CardProviderProps>({
 });
 
 export type RootProps = ComponentProps<typeof Root>;
-
 const Root = forwardRef<
   HTMLDivElement,
   ComponentProps<'div'> & VariantProps<typeof cardVariants>
@@ -69,6 +68,7 @@ const Root = forwardRef<
     </CardProvider>
   );
 });
+Root.displayName = 'Card.Root';
 
 export type HeaderProps = ComponentProps<typeof Header>;
 const Header = forwardRef<HTMLDivElement, ComponentProps<'div'>>(
@@ -83,6 +83,7 @@ const Header = forwardRef<HTMLDivElement, ComponentProps<'div'>>(
     );
   },
 );
+Header.displayName = 'Card.Header';
 
 export type ContentProps = ComponentProps<typeof Content>;
 const Content = forwardRef<HTMLDivElement, ComponentProps<'div'>>(
@@ -97,6 +98,7 @@ const Content = forwardRef<HTMLDivElement, ComponentProps<'div'>>(
     );
   },
 );
+Content.displayName = 'Card.Content';
 
 export type FooterProps = ComponentProps<typeof Footer>;
 const Footer = forwardRef<HTMLDivElement, ComponentProps<'div'>>(
@@ -111,6 +113,7 @@ const Footer = forwardRef<HTMLDivElement, ComponentProps<'div'>>(
     );
   },
 );
+Footer.displayName = 'Card.Footer';
 
 export type TitleProps = ComponentProps<typeof Title>;
 const Title = forwardRef<HTMLHeadingElement, ComponentProps<'h3'>>(
@@ -125,6 +128,7 @@ const Title = forwardRef<HTMLHeadingElement, ComponentProps<'h3'>>(
     );
   },
 );
+Title.displayName = 'Card.Title';
 
 export type DescriptionProps = ComponentProps<typeof Description>;
 const Description = forwardRef<HTMLParagraphElement, ComponentProps<'p'>>(
@@ -139,5 +143,6 @@ const Description = forwardRef<HTMLParagraphElement, ComponentProps<'p'>>(
     );
   },
 );
+Description.displayName = 'Card.Description';
 
 export { Root, Header, Content, Footer, Title, Description };
