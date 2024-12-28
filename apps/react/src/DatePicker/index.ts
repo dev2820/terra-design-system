@@ -18,6 +18,7 @@ import {
   TableCell,
   TableCellTrigger,
   Input,
+  Positioner,
   Context,
 } from './DatePicker';
 import type {
@@ -40,6 +41,7 @@ import type {
   TableCellProps,
   TableCellTriggerProps,
   InputProps,
+  PositionerProps,
   ContextProps,
 } from './DatePicker';
 
@@ -63,28 +65,30 @@ export const DatePicker = {
   TableCell,
   TableCellTrigger,
   Input,
+  Positioner,
   Context,
 };
 
 export type DatePickerProps = {
-  root: RootProps;
-  control: ControlProps;
-  trigger: TriggerProps;
-  clearTrigger: ClearTriggerProps;
-  content: ContentProps;
-  view: ViewProps;
-  viewControl: ViewControlProps;
-  viewTrigger: ViewTriggerProps;
-  nextTrigger: NextTriggerProps;
-  prevTrigger: PrevTriggerProps;
-  rangeText: RangeTextProps;
-  table: TableProps;
-  tableHeader: TableHeaderProps;
-  tableHead: TableHeadProps;
-  tableBody: TableBodyProps;
-  tableRow: TableRowProps;
-  tableCell: TableCellProps;
-  tableCellTrigger: TableCellTriggerProps;
-  context: ContextProps;
-  input: InputProps;
+  Root: RootProps;
+  Control: ControlProps;
+  Trigger: TriggerProps;
+  ClearTrigger: ClearTriggerProps;
+  Content: ContentProps;
+  View: ViewProps;
+  ViewControl: ViewControlProps;
+  ViewTrigger: ViewTriggerProps;
+  NextTrigger: NextTriggerProps;
+  PrevTrigger: PrevTriggerProps;
+  RangeText: RangeTextProps;
+  Table: TableProps;
+  TableHeader: TableHeaderProps;
+  TableHead: TableHeadProps;
+  TableBody: TableBodyProps;
+  TableRow: TableRowProps;
+  TableCell: TableCellProps;
+  TableCellTrigger: TableCellTriggerProps;
+  Context: ContextProps;
+  Input: InputProps;
+  Positioner: PositionerProps;
 };

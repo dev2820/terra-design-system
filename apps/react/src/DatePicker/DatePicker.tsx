@@ -1,9 +1,4 @@
-import {
-  DatePicker,
-  DatePickerRootProps,
-  DatePickerContextProps,
-} from '@ark-ui/react/date-picker';
-import { Portal } from '@ark-ui/react/portal';
+import { DatePicker, DatePickerContextProps } from '@ark-ui/react/date-picker';
 import { IDENTIFIER } from 'env';
 
 import {
@@ -63,30 +58,31 @@ const [DatePickerProvider, useDatePickerContext] =
     },
   });
 
-export type RootProps = DatePickerRootProps &
-  VariantProps<typeof datePickerVariants>;
+export type RootProps = ComponentProps<typeof Root>;
 
-const Root = forwardRef<ElementRef<typeof DatePicker.Root>, RootProps>(
-  function (props, ref) {
-    const { children, className, ...rest } = props;
-    const classes = datePickerVariants();
-    const ctx = {
-      classes,
-    };
+const Root = forwardRef<
+  ElementRef<typeof DatePicker.Root>,
+  ComponentPropsWithoutRef<typeof DatePicker.Root> &
+    VariantProps<typeof datePickerVariants>
+>(function (props, ref) {
+  const { children, className, ...rest } = props;
+  const classes = datePickerVariants();
+  const ctx = {
+    classes,
+  };
 
-    return (
-      <DatePickerProvider value={ctx}>
-        <DatePicker.Root
-          className={cx(classes.root(), className)}
-          {...rest}
-          ref={ref}
-        >
-          {children}
-        </DatePicker.Root>
-      </DatePickerProvider>
-    );
-  },
-);
+  return (
+    <DatePickerProvider value={ctx}>
+      <DatePicker.Root
+        className={cx(classes.root(), className)}
+        ref={ref}
+        {...rest}
+      >
+        {children}
+      </DatePicker.Root>
+    </DatePickerProvider>
+  );
+});
 
 export type ControlProps = ComponentProps<typeof Control>;
 const Control = forwardRef<
@@ -145,6 +141,25 @@ const ClearTrigger = forwardRef<
   );
 });
 
+export type PositionerProps = ComponentProps<typeof Positioner>;
+const Positioner = forwardRef<
+  ElementRef<typeof DatePicker.Positioner>,
+  ComponentPropsWithoutRef<typeof DatePicker.Positioner>
+>(function (props, ref) {
+  const { classes } = useDatePickerContext();
+  const { children, className, ...rest } = props;
+
+  return (
+    <DatePicker.Positioner
+      className={cx(classes.positioner(), className)}
+      ref={ref}
+      {...rest}
+    >
+      {children}
+    </DatePicker.Positioner>
+  );
+});
+
 export type ContentProps = ComponentProps<typeof Content>;
 const Content = forwardRef<
   ElementRef<typeof DatePicker.Content>,
@@ -154,17 +169,13 @@ const Content = forwardRef<
   const { children, className, ...rest } = props;
 
   return (
-    <Portal>
-      <DatePicker.Positioner className={classes.positioner()}>
-        <DatePicker.Content
-          className={cx(classes.content(), className)}
-          ref={ref}
-          {...rest}
-        >
-          {children}
-        </DatePicker.Content>
-      </DatePicker.Positioner>
-    </Portal>
+    <DatePicker.Content
+      className={cx(classes.content(), className)}
+      ref={ref}
+      {...rest}
+    >
+      {children}
+    </DatePicker.Content>
   );
 });
 
@@ -457,5 +468,6 @@ export {
   TableCell,
   TableCellTrigger,
   Input,
+  Positioner,
   Context,
 };
