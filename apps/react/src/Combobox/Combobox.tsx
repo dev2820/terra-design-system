@@ -1,17 +1,16 @@
-import { Portal } from '@ark-ui/react';
-import {
-  Combobox,
-  type ComboboxItemGroupProps,
-  type ComboboxItemProps,
-} from '@ark-ui/react/combobox';
+import { Combobox } from '@ark-ui/react/combobox';
 import { IDENTIFIER } from 'env';
-import { CheckIcon, ChevronsUpDownIcon } from 'lucide-react';
+import { CheckIcon } from 'lucide-react';
 
-import { ElementRef, forwardRef, ReactNode } from 'react';
+import {
+  ComponentProps,
+  ComponentPropsWithoutRef,
+  ElementRef,
+  forwardRef,
+} from 'react';
 
 import { createReactContext } from '../create-react-context';
 import { cx } from '../cx';
-import { Input } from '../Input';
 import { tv, type VariantProps } from '../tv';
 
 export const comboboxVariant = tv({
@@ -21,6 +20,8 @@ export const comboboxVariant = tv({
     control: 'trds-relative',
     trigger:
       'trds-absolute trds-bottom-0 trds-right-0 trds-top-0 trds-text-muted trds-cursor-pointer',
+    clearTrigger:
+      'trds-absolute trds-bottom-0 trds-right-8 trds-top-0 trds-text-muted trds-cursor-pointer',
     input: 'trds-w-full',
     content:
       'trds-bg-white trds-rounded-lg trds-shadow-lg trds-flex trds-flex-col trds-z-dropdown data-hidden:trds-hidden data-open:trds-animate-fade-in data-closed:trds-animate-fade-out focus-visible:trds-outline-2 focus-visible:trds-outline-solid focus-visible:trds-outline-boundary focus-visible:trds-outline-offset-2',
@@ -80,13 +81,10 @@ const [ComboboxProvider, useComboboxContext] =
   });
 
 export type RootProps = Combobox.RootProps<Combobox.CollectionItem> &
-  VariantProps<typeof comboboxVariant> & {
-    placeholder?: string;
-  };
-
-export const Root = forwardRef<ElementRef<typeof Combobox.Root>, RootProps>(
+  VariantProps<typeof comboboxVariant>;
+const Root = forwardRef<ElementRef<typeof Combobox.Root>, RootProps>(
   function (props, ref) {
-    const { size, placeholder, className, children, ...rest } = props;
+    const { size, className, children, ...rest } = props;
     const classes = comboboxVariant({ size });
     const ctx = {
       classes,
@@ -98,47 +96,153 @@ export const Root = forwardRef<ElementRef<typeof Combobox.Root>, RootProps>(
         <Combobox.Root
           ref={ref}
           className={cx(classes.root(), className)}
-          positioning={{ sameWidth: true }}
-          lazyMount
-          unmountOnExit
           {...rest}
         >
-          <Combobox.Control className={classes.control()}>
-            <Combobox.Input
-              placeholder="Select a Framework"
-              className={classes.input()}
-              asChild
-            >
-              <Input />
-            </Combobox.Input>
-            <Combobox.Trigger asChild className={classes.trigger()}>
-              <button aria-label="open">
-                <ChevronsUpDownIcon size={20} />
-              </button>
-            </Combobox.Trigger>
-          </Combobox.Control>
-          <Portal>
-            <Combobox.Positioner className={classes.positioner()}>
-              <Combobox.Content className={classes.content()}>
-                {children}
-              </Combobox.Content>
-            </Combobox.Positioner>
-          </Portal>
+          {children}
         </Combobox.Root>
       </ComboboxProvider>
     );
   },
 );
 
-export type ItemGroupProps = ComboboxItemGroupProps & {
-  label?: ReactNode;
-};
-
-export const ItemGroup = forwardRef<
-  ElementRef<typeof Combobox.ItemGroup>,
-  ItemGroupProps
+export type ControlProps = ComponentProps<typeof Control>;
+const Control = forwardRef<
+  ElementRef<typeof Combobox.Control>,
+  ComponentPropsWithoutRef<typeof Combobox.Control>
 >(function (props, ref) {
-  const { label, className, children, ...rest } = props;
+  const { className, children, ...rest } = props;
+  const { classes } = useComboboxContext();
+
+  return (
+    <Combobox.Control
+      className={cx(classes.control(), className)}
+      ref={ref}
+      {...rest}
+    >
+      {children}
+    </Combobox.Control>
+  );
+});
+export type ContentProps = ComponentProps<typeof Content>;
+const Content = forwardRef<
+  ElementRef<typeof Combobox.Content>,
+  ComponentPropsWithoutRef<typeof Combobox.Content>
+>(function (props, ref) {
+  const { className, children, ...rest } = props;
+  const { classes } = useComboboxContext();
+
+  return (
+    <Combobox.Content
+      className={cx(classes.content(), className)}
+      ref={ref}
+      {...rest}
+    >
+      {children}
+    </Combobox.Content>
+  );
+});
+
+export type InputProps = ComponentProps<typeof Input>;
+const Input = forwardRef<
+  ElementRef<typeof Combobox.Input>,
+  ComponentPropsWithoutRef<typeof Combobox.Input>
+>(function (props, ref) {
+  const { className, children, ...rest } = props;
+  const { classes } = useComboboxContext();
+
+  return (
+    <Combobox.Input
+      className={cx(classes.input(), className)}
+      ref={ref}
+      {...rest}
+    >
+      {children}
+    </Combobox.Input>
+  );
+});
+
+export type PositionerProps = ComponentProps<typeof Positioner>;
+const Positioner = forwardRef<
+  ElementRef<typeof Combobox.Positioner>,
+  ComponentPropsWithoutRef<typeof Combobox.Positioner>
+>(function (props, ref) {
+  const { className, children, ...rest } = props;
+  const { classes } = useComboboxContext();
+
+  return (
+    <Combobox.Positioner
+      className={cx(classes.positioner(), className)}
+      ref={ref}
+      {...rest}
+    >
+      {children}
+    </Combobox.Positioner>
+  );
+});
+
+export type TriggerProps = ComponentProps<typeof Trigger>;
+const Trigger = forwardRef<
+  ElementRef<typeof Combobox.Trigger>,
+  ComponentPropsWithoutRef<typeof Combobox.Trigger>
+>(function (props, ref) {
+  const { className, children, ...rest } = props;
+  const { classes } = useComboboxContext();
+
+  return (
+    <Combobox.Trigger
+      className={cx(classes.trigger(), className)}
+      ref={ref}
+      {...rest}
+    >
+      {children}
+    </Combobox.Trigger>
+  );
+});
+
+export type ClearTriggerProps = ComponentProps<typeof ClearTrigger>;
+const ClearTrigger = forwardRef<
+  ElementRef<typeof Combobox.ClearTrigger>,
+  ComponentPropsWithoutRef<typeof Combobox.ClearTrigger>
+>(function (props, ref) {
+  const { className, children, ...rest } = props;
+  const { classes } = useComboboxContext();
+
+  return (
+    <Combobox.ClearTrigger
+      className={cx(classes.clearTrigger(), className)}
+      ref={ref}
+      {...rest}
+    >
+      {children}
+    </Combobox.ClearTrigger>
+  );
+});
+
+export type ItemGroupLabelProps = ComponentProps<typeof ItemGroupLabel>;
+const ItemGroupLabel = forwardRef<
+  ElementRef<typeof Combobox.ItemGroupLabel>,
+  ComponentPropsWithoutRef<typeof Combobox.ItemGroupLabel>
+>(function (props, ref) {
+  const { className, children, ...rest } = props;
+  const { classes } = useComboboxContext();
+
+  return (
+    <Combobox.ItemGroupLabel
+      className={cx(classes.itemGroupLabel(), className)}
+      ref={ref}
+      {...rest}
+    >
+      {children}
+    </Combobox.ItemGroupLabel>
+  );
+});
+
+export type ItemGroupProps = ComponentProps<typeof ItemGroup>;
+const ItemGroup = forwardRef<
+  ElementRef<typeof Combobox.ItemGroup>,
+  ComponentPropsWithoutRef<typeof Combobox.ItemGroup>
+>(function (props, ref) {
+  const { className, children, ...rest } = props;
   const { classes } = useComboboxContext();
 
   return (
@@ -147,48 +251,91 @@ export const ItemGroup = forwardRef<
       ref={ref}
       {...rest}
     >
-      <Combobox.ItemGroupLabel className={classes.itemGroupLabel()}>
-        {label}
-      </Combobox.ItemGroupLabel>
       {children}
     </Combobox.ItemGroup>
   );
 });
+export type ItemTextProps = ComponentProps<typeof ItemText>;
+const ItemText = forwardRef<
+  ElementRef<typeof Combobox.ItemText>,
+  ComponentPropsWithoutRef<typeof Combobox.ItemText>
+>(function (props, ref) {
+  const { className, children, ...rest } = props;
+  const { classes } = useComboboxContext();
 
-export type ItemProps = ComboboxItemProps;
+  return (
+    <Combobox.ItemText
+      className={cx(classes.itemText(), className)}
+      ref={ref}
+      {...rest}
+    >
+      {children}
+    </Combobox.ItemText>
+  );
+});
+export type ItemIndicatorProps = ComponentProps<typeof ItemIndicator>;
+const ItemIndicator = forwardRef<
+  ElementRef<typeof Combobox.ItemIndicator>,
+  ComponentPropsWithoutRef<typeof Combobox.ItemIndicator>
+>(function (props, ref) {
+  const { className, children, ...rest } = props;
+  const { size, classes } = useComboboxContext();
 
-export const Item = forwardRef<ElementRef<typeof Combobox.Item>, ItemProps>(
-  function (props, ref) {
-    const { className, children, ...rest } = props;
-    const { classes, size } = useComboboxContext();
+  return (
+    <Combobox.ItemIndicator
+      className={cx(classes.itemIndicator(), className)}
+      ref={ref}
+      {...rest}
+    >
+      {children ?? <CheckIcon size={convertSizeToNumber(size)} />}
+    </Combobox.ItemIndicator>
+  );
+});
 
-    return (
-      <Combobox.Item
-        className={cx(classes.item(), className)}
-        ref={ref}
-        {...rest}
-      >
-        <Combobox.ItemText className={cx(classes.itemText())}>
-          {children}
-        </Combobox.ItemText>
-        <Combobox.ItemIndicator className={cx(classes.itemIndicator())}>
-          <CheckIcon size={convertSizeToNumber(size)} />
-        </Combobox.ItemIndicator>
-      </Combobox.Item>
-    );
-  },
-);
+export type ItemProps = ComponentProps<typeof Item>;
+const Item = forwardRef<
+  ElementRef<typeof Combobox.Item>,
+  ComponentPropsWithoutRef<typeof Combobox.Item>
+>(function (props, ref) {
+  const { className, children, ...rest } = props;
+  const { classes } = useComboboxContext();
+
+  return (
+    <Combobox.Item
+      className={cx(classes.item(), className)}
+      ref={ref}
+      {...rest}
+    >
+      {children}
+    </Combobox.Item>
+  );
+});
+
+export {
+  Root,
+  Item,
+  ItemGroup,
+  ItemGroupLabel,
+  ItemText,
+  ItemIndicator,
+  Positioner,
+  Control,
+  Content,
+  Trigger,
+  Input,
+  ClearTrigger,
+};
 
 const convertSizeToNumber = (size?: 'sm' | 'md' | 'lg') => {
   if (size === 'sm') {
-    return 28;
+    return 16;
   }
   if (size === 'md') {
-    return 32;
+    return 20;
   }
   if (size === 'lg') {
-    return 36;
+    return 24;
   }
 
-  return 32;
+  return 20;
 };
