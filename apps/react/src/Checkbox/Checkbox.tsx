@@ -23,7 +23,7 @@ export const checkboxVariants = tv({
       'data-invalid:trds-border-error',
       'data-indeterminate:trds-bg-primary data-indeterminate:trds-text-white data-indeterminate:trds-border-primary',
       'data-disabled:trds-bg-muted data-disabled:trds-border-muted',
-      'data-disabled:data-checked:trds-border-muted data-[disabled]:data-checked:trds-bg-muted',
+      'data-disabled:data-checked:trds-border-muted data-disabled:data-checked:trds-bg-muted',
       'data-disabled:data-indeterminate:trds-border-muted data-disabled:data-indeterminate:trds-bg-muted',
       'data-disabled:trds-text-highlight',
       'data-focus:trds-shadow-[0_0_0_2px_var(--shadow-color)] data-focus:trds-shadow-primary',
@@ -66,10 +66,14 @@ const Checkbox = forwardRef<
     >
       <_Checkbox.HiddenInput className={classes.hiddenInput()} />
       <_Checkbox.Control className={classes.control()}>
-        <_Checkbox.Indicator asChild>
+        <_Checkbox.Indicator className={classes.indicator()} asChild>
           <CheckIcon size={convertSizeToNumber(size)} strokeWidth={3} />
         </_Checkbox.Indicator>
-        <_Checkbox.Indicator indeterminate asChild>
+        <_Checkbox.Indicator
+          className={classes.indicator()}
+          indeterminate
+          asChild
+        >
           <MinusIcon size={convertSizeToNumber(size)} strokeWidth={3} />
         </_Checkbox.Indicator>
       </_Checkbox.Control>
