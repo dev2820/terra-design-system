@@ -1,4 +1,7 @@
-import { NumberInput, NumberInputRootProps } from '@ark-ui/react';
+import {
+  NumberInput as _NumberInput,
+  NumberInputRootProps,
+} from '@ark-ui/react';
 import { IDENTIFIER } from 'env';
 import { ChevronDownIcon, ChevronUpIcon } from 'lucide-react';
 
@@ -50,38 +53,40 @@ const numberInputVariants = tv({
   },
 });
 
-export type RootProps = Omit<NumberInputRootProps, 'children'> &
+export type NumberInputProps = Omit<NumberInputRootProps, 'children'> &
   VariantProps<typeof numberInputVariants> & {
     placeholder?: string;
     invalid?: boolean;
   };
 
-const Root = forwardRef<HTMLDivElement, RootProps>(function (props, ref) {
-  const { placeholder, invalid, size, className, ...rest } = props;
-  const classes = numberInputVariants({ size, invalid });
+const NumberInput = forwardRef<HTMLDivElement, NumberInputProps>(
+  function (props, ref) {
+    const { placeholder, invalid, size, className, ...rest } = props;
+    const classes = numberInputVariants({ size, invalid });
 
-  return (
-    <NumberInput.Root
-      ref={ref}
-      className={cx(classes.root(), className)}
-      {...rest}
-    >
-      <NumberInput.Control className={classes.control()}>
-        <NumberInput.Input
-          className={classes.input()}
-          placeholder={placeholder}
-        />
-        <NumberInput.IncrementTrigger className={classes.incrementTrigger()}>
-          <ChevronUpIcon />
-        </NumberInput.IncrementTrigger>
-        <NumberInput.DecrementTrigger className={classes.decrementTrigger()}>
-          <ChevronDownIcon />
-        </NumberInput.DecrementTrigger>
-      </NumberInput.Control>
-    </NumberInput.Root>
-  );
-});
+    return (
+      <_NumberInput.Root
+        ref={ref}
+        className={cx(classes.root(), className)}
+        {...rest}
+      >
+        <_NumberInput.Control className={classes.control()}>
+          <_NumberInput.Input
+            className={classes.input()}
+            placeholder={placeholder}
+          />
+          <_NumberInput.IncrementTrigger className={classes.incrementTrigger()}>
+            <ChevronUpIcon />
+          </_NumberInput.IncrementTrigger>
+          <_NumberInput.DecrementTrigger className={classes.decrementTrigger()}>
+            <ChevronDownIcon />
+          </_NumberInput.DecrementTrigger>
+        </_NumberInput.Control>
+      </_NumberInput.Root>
+    );
+  },
+);
 
-Root.displayName = 'NumberInput';
+NumberInput.displayName = 'NumberInput';
 
-export { Root };
+export { NumberInput };
