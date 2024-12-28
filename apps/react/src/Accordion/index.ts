@@ -15,6 +15,7 @@ export const Accordion = {
   Content,
 };
 
+export type * from '@ark-ui/react/accordion';
 export type AccordionProps = {
   Root: RootProps;
   Item: ItemProps;
@@ -22,5 +23,3 @@ export type AccordionProps = {
   Trigger: ItemTriggerProps;
   Content: ContentProps;
 };
-
-export type * from '@ark-ui/react/accordion';
