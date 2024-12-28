@@ -58,6 +58,7 @@ export const ColorPicker = {
   ChannelSliderTrack,
 };
 
+export type * from '@ark-ui/react/color-picker';
 export type ColorPickerProps = {
   root: RootProps;
   Root: RootProps;
