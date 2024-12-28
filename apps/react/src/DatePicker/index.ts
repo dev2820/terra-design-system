@@ -69,6 +69,7 @@ export const DatePicker = {
   Context,
 };
 
+export type * from '@ark-ui/react/date-picker';
 export type DatePickerProps = {
   Root: RootProps;
   Control: ControlProps;
