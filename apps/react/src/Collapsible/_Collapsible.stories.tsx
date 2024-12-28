@@ -22,9 +22,8 @@ export const Default = {
     return (
       <div className="trds-w-[600px] trds-h-[500px]">
         <Collapsible.Root {...props}>
-          <Collapsible.Trigger className="trds-flex trds-items-center">
+          <Collapsible.Trigger className="trds-flex trds-items-center trds-justify-between">
             <span>Loream Ipsume</span>
-            <div className="trds-flex-1"></div>
             <ChevronDownIcon size={24} />
           </Collapsible.Trigger>
           <Collapsible.Content>
@@ -55,9 +54,8 @@ export const Disabled = {
     return (
       <div className="trds-w-[600px] trds-h-[500px]">
         <Collapsible.Root {...props}>
-          <Collapsible.Trigger className="trds-flex trds-items-center">
+          <Collapsible.Trigger className="trds-flex trds-items-center trds-justify-between">
             <span>Loream Ipsume</span>
-            <div className="trds-flex-1"></div>
             <ChevronDownIcon size={24} />
           </Collapsible.Trigger>
           <Collapsible.Content>

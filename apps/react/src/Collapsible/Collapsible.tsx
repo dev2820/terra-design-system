@@ -1,4 +1,4 @@
-import { Collapsible } from '@ark-ui/react';
+import { Collapsible } from '@ark-ui/react/collapsible';
 import { IDENTIFIER } from 'env';
 
 import {
@@ -64,6 +64,7 @@ const Root = forwardRef<
     </CollapsibleProvider>
   );
 });
+Root.displayName = 'Collapsible.Root';
 
 export type TriggerProps = ComponentProps<typeof Trigger>;
 const Trigger = forwardRef<
@@ -83,6 +84,7 @@ const Trigger = forwardRef<
     </Collapsible.Trigger>
   );
 });
+Trigger.displayName = 'Collapsible.Trigger';
 
 export type ContentProps = ComponentProps<typeof Content>;
 const Content = forwardRef<
@@ -102,5 +104,6 @@ const Content = forwardRef<
     </Collapsible.Content>
   );
 });
+Content.displayName = 'Collapsible.Content';
 
 export { Root, Trigger, Content };

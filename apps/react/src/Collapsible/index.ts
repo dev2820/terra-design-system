@@ -7,6 +7,7 @@ export const Collapsible = {
   Content,
 };
 
+export type * from '@ark-ui/react/collapsible';
 export type CollapsibleProps = {
   root: RootProps;
   content: ContentProps;
