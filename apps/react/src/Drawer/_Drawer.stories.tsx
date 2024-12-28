@@ -1,8 +1,8 @@
-import { Portal } from '@ark-ui/react';
 import { XIcon } from 'lucide-react';
 
 import { Button } from '../Button';
 import { IconButton } from '../IconButton';
+import { Portal } from '../index';
 import { Drawer, type DrawerProps } from './index';
 
 const variants = ['left', 'right', 'bottom'];

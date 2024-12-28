@@ -107,6 +107,7 @@ const Trigger = forwardRef<
     </Dialog.Trigger>
   );
 });
+Trigger.displayName = 'Drawer.Trigger';
 
 export type BackdropProps = ComponentProps<typeof Backdrop>;
 const Backdrop = forwardRef<
@@ -118,6 +119,7 @@ const Backdrop = forwardRef<
 
   return <Dialog.Backdrop className={classes.backdrop()} {...rest} ref={ref} />;
 });
+Backdrop.displayName = 'Drawer.Backdrop';
 
 export type PositionerProps = ComponentProps<typeof Positioner>;
 const Positioner = forwardRef<
@@ -133,6 +135,7 @@ const Positioner = forwardRef<
     </Dialog.Positioner>
   );
 });
+Positioner.displayName = 'Drawer.Positioner';
 
 export type ContentProps = ComponentProps<typeof Content>;
 const Content = forwardRef<
@@ -152,6 +155,7 @@ const Content = forwardRef<
     </Dialog.Content>
   );
 });
+Content.displayName = 'Drawer.Content';
 
 export type HeaderProps = ComponentProps<typeof Header>;
 const Header = forwardRef<HTMLDivElement, ComponentPropsWithoutRef<'div'>>(
@@ -166,6 +170,7 @@ const Header = forwardRef<HTMLDivElement, ComponentPropsWithoutRef<'div'>>(
     );
   },
 );
+Header.displayName = 'Drawer.Header';
 
 export type BodyProps = ComponentProps<typeof Body>;
 const Body = forwardRef<HTMLDivElement, ComponentPropsWithoutRef<'div'>>(
@@ -180,6 +185,7 @@ const Body = forwardRef<HTMLDivElement, ComponentPropsWithoutRef<'div'>>(
     );
   },
 );
+Body.displayName = 'Drawer.Body';
 
 export type FooterProps = ComponentProps<typeof Footer>;
 const Footer = forwardRef<HTMLDivElement, ComponentPropsWithoutRef<'div'>>(
@@ -194,6 +200,7 @@ const Footer = forwardRef<HTMLDivElement, ComponentPropsWithoutRef<'div'>>(
     );
   },
 );
+Footer.displayName = 'Drawer.Footer';
 
 export type TitleProps = ComponentProps<typeof Title>;
 const Title = forwardRef<
@@ -213,6 +220,7 @@ const Title = forwardRef<
     </Dialog.Title>
   );
 });
+Title.displayName = 'Drawer.Title';
 
 export type DescriptionProps = ComponentProps<typeof Description>;
 const Description = forwardRef<
@@ -232,6 +240,7 @@ const Description = forwardRef<
     </Dialog.Description>
   );
 });
+Description.displayName = 'Drawer.Description';
 
 export type CloseTriggerProps = ComponentProps<typeof CloseTrigger>;
 const CloseTrigger = forwardRef<
@@ -251,6 +260,7 @@ const CloseTrigger = forwardRef<
     </Dialog.CloseTrigger>
   );
 });
+CloseTrigger.displayName = 'Drawer.CloseTrigger';
 
 export {
   Root,
