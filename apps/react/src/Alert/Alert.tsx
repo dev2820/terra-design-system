@@ -63,7 +63,6 @@ const [AlertProvider, useAlertContext] = createReactContext<{
 export type RootProps = ComponentProps<'div'> &
   VariantProps<typeof alertVariants> &
   AlertProviderProps;
-
 const Root = forwardRef<HTMLDivElement, RootProps>(function (props, ref) {
   const { theme, children, className, ...rest } = props;
   const classes = alertVariants({ theme });
@@ -81,9 +80,9 @@ const Root = forwardRef<HTMLDivElement, RootProps>(function (props, ref) {
     </AlertProvider>
   );
 });
+Root.displayName = 'Alert.Root';
 
 export type TitleProps = ComponentProps<'h5'>;
-
 const Title = forwardRef<HTMLHeadingElement, TitleProps>(function (props, ref) {
   const { children, className, ...rest } = props;
   const { classes } = useAlertContext();
@@ -94,9 +93,9 @@ const Title = forwardRef<HTMLHeadingElement, TitleProps>(function (props, ref) {
     </h5>
   );
 });
+Title.displayName = 'Alert.Title';
 
 export type DescriptionProps = ComponentProps<'p'>;
-
 const Description = forwardRef<HTMLParagraphElement, DescriptionProps>(
   function (props, ref) {
     const { children, className, ...rest } = props;
@@ -109,5 +108,6 @@ const Description = forwardRef<HTMLParagraphElement, DescriptionProps>(
     );
   },
 );
+Description.displayName = 'Alert.Description';
 
 export { Root, Title, Description };
