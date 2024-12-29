@@ -1,17 +1,16 @@
-import { Pagination } from '@ark-ui/react';
+import { Pagination, PaginationContextProps } from '@ark-ui/react/pagination';
 import { IDENTIFIER } from 'env';
-import { ChevronLeftIcon, ChevronRightIcon, EllipsisIcon } from 'lucide-react';
 
 import {
-  type ComponentPropsWithoutRef,
   forwardRef,
+  type ComponentPropsWithoutRef,
   type ElementRef,
+  type ComponentProps,
 } from 'react';
 
+import { createReactContext } from '../create-react-context';
 import { cx } from '../cx';
-import { IconButton } from '../IconButton';
-import { Link } from '../Link';
-import { tv } from '../tv';
+import { tv, type VariantProps } from '../tv';
 
 export const paginationVariants = tv({
   base: `${IDENTIFIER.scope} pagination`,
@@ -25,95 +24,109 @@ export const paginationVariants = tv({
   },
 });
 
-export type RootProps = ComponentPropsWithoutRef<typeof Pagination.Root>;
+type PaginationProviderProps = {
+  classes: ReturnType<typeof paginationVariants>;
+};
 
-const Root = forwardRef<ElementRef<typeof Pagination.Root>, RootProps>(
-  (props, ref) => {
-    const { type = 'button', children, className, ...rest } = props;
-    const classes = paginationVariants();
+const [PaginationProvider, usePaginationContext] =
+  createReactContext<PaginationProviderProps>({
+    name: 'pagination',
+    hookName: 'usePaginationContext',
+    providerName: 'PaginationProvider',
+    defaultValue: {
+      classes: {} as ReturnType<typeof paginationVariants>,
+    },
+  });
 
-    return (
+export type RootProps = ComponentProps<typeof Root>;
+const Root = forwardRef<
+  ElementRef<typeof Pagination.Root>,
+  ComponentPropsWithoutRef<typeof Pagination.Root> &
+    VariantProps<typeof paginationVariants>
+>(function (props, ref) {
+  const { children, className, ...rest } = props;
+  const classes = paginationVariants();
+  const ctx = {
+    classes,
+  };
+
+  return (
+    <PaginationProvider value={ctx}>
       <Pagination.Root
         ref={ref}
         className={cx(classes.root(), className)}
-        type={type}
         {...rest}
       >
-        <Pagination.PrevTrigger className={classes.prevTrigger()} asChild>
-          {type === 'button' ? (
-            <IconButton variant="ghost" size="sm">
-              <ChevronLeftIcon size={24} />
-            </IconButton>
-          ) : (
-            <Link theme="neutral">
-              <ChevronLeftIcon size={24} />
-            </Link>
-          )}
-        </Pagination.PrevTrigger>
-        <Pagination.Context>
-          {pagination =>
-            pagination.pages.map((page, index) =>
-              page.type === 'page' ? (
-                <Pagination.Item
-                  key={index}
-                  className={classes.item()}
-                  {...page}
-                  asChild
-                >
-                  {type === 'button' ? (
-                    <IconButton
-                      variant={
-                        pagination.page === page.value ? 'filled' : 'ghost'
-                      }
-                      size="sm"
-                      data-active={
-                        pagination.page === page.value ? true : undefined
-                      }
-                      theme={
-                        pagination.page === page.value ? 'primary' : 'neutral'
-                      }
-                    >
-                      {page.value}
-                    </IconButton>
-                  ) : (
-                    <Link
-                      theme={
-                        pagination.page === page.value ? 'primary' : 'neutral'
-                      }
-                      data-active={
-                        pagination.page === page.value ? true : undefined
-                      }
-                    >
-                      {page.value}
-                    </Link>
-                  )}
-                </Pagination.Item>
-              ) : (
-                <Pagination.Ellipsis
-                  key={index}
-                  index={index}
-                  className={classes.ellipsis()}
-                >
-                  <EllipsisIcon size={16} />
-                </Pagination.Ellipsis>
-              ),
-            )
-          }
-        </Pagination.Context>
-        <Pagination.NextTrigger className={classes.nextTrigger()} asChild>
-          {type === 'button' ? (
-            <IconButton variant="ghost" size="sm">
-              <ChevronRightIcon size={24} />
-            </IconButton>
-          ) : (
-            <Link theme="neutral">
-              <ChevronRightIcon size={24} />
-            </Link>
-          )}
-        </Pagination.NextTrigger>
+        {children}
       </Pagination.Root>
-    );
-  },
-);
+    </PaginationProvider>
+  );
+});
+Root.displayName = 'Pagination.Root';
 
-export { Root };
+export type PrevTriggerProps = ComponentProps<typeof PrevTrigger>;
+const PrevTrigger = forwardRef<
+  ElementRef<typeof Pagination.PrevTrigger>,
+  ComponentPropsWithoutRef<typeof Pagination.PrevTrigger>
+>(function (props, ref) {
+  const { className, ...rest } = props;
+  const { classes } = usePaginationContext();
+
+  return (
+    <Pagination.PrevTrigger
+      className={classes.prevTrigger()}
+      ref={ref}
+      {...rest}
+    />
+  );
+});
+PrevTrigger.displayName = 'Pagination.PrevTrigger';
+
+export type NextTriggerProps = ComponentProps<typeof NextTrigger>;
+const NextTrigger = forwardRef<
+  ElementRef<typeof Pagination.NextTrigger>,
+  ComponentPropsWithoutRef<typeof Pagination.NextTrigger>
+>(function (props, ref) {
+  const { className, ...rest } = props;
+  const { classes } = usePaginationContext();
+
+  return (
+    <Pagination.NextTrigger
+      className={classes.nextTrigger()}
+      ref={ref}
+      {...rest}
+    />
+  );
+});
+NextTrigger.displayName = 'Pagination.NextTrigger';
+
+export type ContextProps = PaginationContextProps;
+const Context = Pagination.Context;
+
+export type ItemProps = ComponentProps<typeof Item>;
+const Item = forwardRef<
+  ElementRef<typeof Pagination.Item>,
+  ComponentPropsWithoutRef<typeof Pagination.Item>
+>(function (props, ref) {
+  const { className, ...rest } = props;
+  const { classes } = usePaginationContext();
+
+  return <Pagination.Item className={classes.item()} ref={ref} {...rest} />;
+});
+Item.displayName = 'Pagination.Item';
+
+export type EllipsisProps = ComponentProps<typeof Ellipsis>;
+const Ellipsis = forwardRef<
+  ElementRef<typeof Pagination.Ellipsis>,
+  ComponentPropsWithoutRef<typeof Pagination.Ellipsis>
+>(function (props, ref) {
+  const { className, ...rest } = props;
+  const { classes } = usePaginationContext();
+
+  return (
+    <Pagination.Ellipsis className={classes.ellipsis()} ref={ref} {...rest} />
+  );
+});
+Ellipsis.displayName = 'Pagination.Ellipsis';
+
+export { Root, PrevTrigger, NextTrigger, Context, Item, Ellipsis };
