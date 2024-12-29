@@ -3,7 +3,7 @@ import { IDENTIFIER } from 'env';
 
 import {
   ComponentProps,
-  ComponentPropsWithRef,
+  ComponentPropsWithoutRef,
   ElementRef,
   forwardRef,
 } from 'react';
@@ -73,7 +73,7 @@ const [RadioGroupProvider, useRadioGroupContext] =
 export type RootProps = ComponentProps<typeof Root>;
 const Root = forwardRef<
   ElementRef<typeof RadioGroup.Root>,
-  ComponentPropsWithRef<typeof RadioGroup.Root> &
+  ComponentPropsWithoutRef<typeof RadioGroup.Root> &
     VariantProps<typeof radioGroupVariant>
 >(function (props, ref) {
   const { size, className, children, ...rest } = props;
@@ -99,7 +99,7 @@ Root.displayName = 'RadioGroup.Root';
 export type LabelProps = ComponentProps<typeof Label>;
 const Label = forwardRef<
   ElementRef<typeof RadioGroup.Label>,
-  ComponentPropsWithRef<typeof RadioGroup.Label>
+  ComponentPropsWithoutRef<typeof RadioGroup.Label>
 >(function (props, ref) {
   const { className, ...rest } = props;
   const { classes } = useRadioGroupContext();
@@ -117,7 +117,7 @@ Label.displayName = 'RadioGroup.Label';
 export type IndicatorProps = ComponentProps<typeof Indicator>;
 const Indicator = forwardRef<
   ElementRef<typeof RadioGroup.Indicator>,
-  ComponentPropsWithRef<typeof RadioGroup.Indicator>
+  ComponentPropsWithoutRef<typeof RadioGroup.Indicator>
 >(function (props, ref) {
   const { className, ...rest } = props;
   const { classes } = useRadioGroupContext();
@@ -135,7 +135,7 @@ Indicator.displayName = 'RadioGroup.Indicator';
 export type ItemProps = ComponentProps<typeof Item>;
 const Item = forwardRef<
   ElementRef<typeof RadioGroup.Item>,
-  ComponentPropsWithRef<typeof RadioGroup.Item>
+  ComponentPropsWithoutRef<typeof RadioGroup.Item>
 >(function (props, ref) {
   const { className, ...rest } = props;
   const { classes } = useRadioGroupContext();
@@ -153,7 +153,7 @@ Item.displayName = 'RadioGroup.Item';
 export type ItemControlProps = ComponentProps<typeof ItemControl>;
 const ItemControl = forwardRef<
   ElementRef<typeof RadioGroup.ItemControl>,
-  ComponentPropsWithRef<typeof RadioGroup.ItemControl>
+  ComponentPropsWithoutRef<typeof RadioGroup.ItemControl>
 >(function (props, ref) {
   const { className, ...rest } = props;
   const { classes } = useRadioGroupContext();
@@ -171,7 +171,7 @@ ItemControl.displayName = 'RadioGroup.ItemControl';
 export type ItemTextProps = ComponentProps<typeof ItemText>;
 const ItemText = forwardRef<
   ElementRef<typeof RadioGroup.ItemText>,
-  ComponentPropsWithRef<typeof RadioGroup.ItemText>
+  ComponentPropsWithoutRef<typeof RadioGroup.ItemText>
 >(function (props, ref) {
   const { className, ...rest } = props;
   const { classes } = useRadioGroupContext();
@@ -189,7 +189,7 @@ ItemText.displayName = 'RadioGroup.ItemText';
 export type ItemHiddenInputProps = ComponentProps<typeof ItemHiddenInput>;
 const ItemHiddenInput = forwardRef<
   ElementRef<typeof RadioGroup.ItemHiddenInput>,
-  ComponentPropsWithRef<typeof RadioGroup.ItemHiddenInput>
+  ComponentPropsWithoutRef<typeof RadioGroup.ItemHiddenInput>
 >(function (props, ref) {
   const { className, ...rest } = props;
 
