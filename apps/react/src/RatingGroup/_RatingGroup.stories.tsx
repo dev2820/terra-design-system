@@ -1,9 +1,5 @@
 import { RatingGroup, type RatingGroupProps } from './index';
 
-/**
- * based on https://ark-ui.com/react/docs/components/select
- *
- */
 export default {
   title: 'Components/RatingGroup',
   component: RatingGroup,
@@ -35,15 +31,67 @@ export default {
 
 export const Default = {
   args: {},
-  render: (props: RatingGroupProps) => {
-    return <RatingGroup {...props} />;
+  render: (props: RatingGroupProps['Root']) => {
+    return (
+      <RatingGroup.Root {...props}>
+        <RatingGroup.Control>
+          <RatingGroup.Context>
+            {({ items }) =>
+              items.map(item => (
+                <RatingGroup.Item key={item} index={item}>
+                  <RatingGroup.ItemContext>
+                    {({ half, highlighted }) => {
+                      if (half && highlighted) {
+                        return <RatingGroup.HalfStarIcon />;
+                      }
+                      if (highlighted) {
+                        return <RatingGroup.FullStarIcon />;
+                      }
+                      return <RatingGroup.EmptyStarIcon />;
+                    }}
+                  </RatingGroup.ItemContext>
+                </RatingGroup.Item>
+              ))
+            }
+          </RatingGroup.Context>
+        </RatingGroup.Control>
+        <RatingGroup.HiddenInput />
+      </RatingGroup.Root>
+    );
   },
 };
 
 export const AllowHalf = {
-  args: {},
-  render: (props: RatingGroupProps) => {
-    return <RatingGroup {...props} allowHalf />;
+  args: {
+    allowHalf: true,
+  },
+  render: (props: RatingGroupProps['Root']) => {
+    return (
+      <RatingGroup.Root {...props}>
+        <RatingGroup.Control>
+          <RatingGroup.Context>
+            {({ items }) =>
+              items.map(item => (
+                <RatingGroup.Item key={item} index={item}>
+                  <RatingGroup.ItemContext>
+                    {({ half, highlighted }) => {
+                      if (half && highlighted) {
+                        return <RatingGroup.HalfStarIcon />;
+                      }
+                      if (highlighted) {
+                        return <RatingGroup.FullStarIcon />;
+                      }
+                      return <RatingGroup.EmptyStarIcon />;
+                    }}
+                  </RatingGroup.ItemContext>
+                </RatingGroup.Item>
+              ))
+            }
+          </RatingGroup.Context>
+        </RatingGroup.Control>
+        <RatingGroup.HiddenInput />
+      </RatingGroup.Root>
+    );
   },
 };
 
@@ -52,26 +100,147 @@ export const Size = {
   render: (props: RatingGroupProps) => {
     return (
       <div className="trds-flex trds-flex-col trds-gap-4">
-        <RatingGroup {...props} size="sm" />
-        <RatingGroup {...props} size="md" />
-        <RatingGroup {...props} size="lg" />
+        <RatingGroup.Root {...props} size="sm">
+          <RatingGroup.Control>
+            <RatingGroup.Context>
+              {({ items }) =>
+                items.map(item => (
+                  <RatingGroup.Item key={item} index={item}>
+                    <RatingGroup.ItemContext>
+                      {({ half, highlighted }) => {
+                        if (half && highlighted) {
+                          return <RatingGroup.HalfStarIcon />;
+                        }
+                        if (highlighted) {
+                          return <RatingGroup.FullStarIcon />;
+                        }
+                        return <RatingGroup.EmptyStarIcon />;
+                      }}
+                    </RatingGroup.ItemContext>
+                  </RatingGroup.Item>
+                ))
+              }
+            </RatingGroup.Context>
+          </RatingGroup.Control>
+          <RatingGroup.HiddenInput />
+        </RatingGroup.Root>
+        <RatingGroup.Root {...props} size="md">
+          <RatingGroup.Control>
+            <RatingGroup.Context>
+              {({ items }) =>
+                items.map(item => (
+                  <RatingGroup.Item key={item} index={item}>
+                    <RatingGroup.ItemContext>
+                      {({ half, highlighted }) => {
+                        if (half && highlighted) {
+                          return <RatingGroup.HalfStarIcon />;
+                        }
+                        if (highlighted) {
+                          return <RatingGroup.FullStarIcon />;
+                        }
+                        return <RatingGroup.EmptyStarIcon />;
+                      }}
+                    </RatingGroup.ItemContext>
+                  </RatingGroup.Item>
+                ))
+              }
+            </RatingGroup.Context>
+          </RatingGroup.Control>
+          <RatingGroup.HiddenInput />
+        </RatingGroup.Root>
+        <RatingGroup.Root {...props} size="lg">
+          <RatingGroup.Control>
+            <RatingGroup.Context>
+              {({ items }) =>
+                items.map(item => (
+                  <RatingGroup.Item key={item} index={item}>
+                    <RatingGroup.ItemContext>
+                      {({ half, highlighted }) => {
+                        if (half && highlighted) {
+                          return <RatingGroup.HalfStarIcon />;
+                        }
+                        if (highlighted) {
+                          return <RatingGroup.FullStarIcon />;
+                        }
+                        return <RatingGroup.EmptyStarIcon />;
+                      }}
+                    </RatingGroup.ItemContext>
+                  </RatingGroup.Item>
+                ))
+              }
+            </RatingGroup.Context>
+          </RatingGroup.Control>
+          <RatingGroup.HiddenInput />
+        </RatingGroup.Root>
       </div>
     );
   },
 };
 
 export const Disabled = {
-  args: {},
+  args: { disabled: true },
   render: (props: RatingGroupProps) => {
-    return <RatingGroup {...props} disabled />;
+    return (
+      <RatingGroup.Root {...props}>
+        <RatingGroup.Control>
+          <RatingGroup.Context>
+            {({ items }) =>
+              items.map(item => (
+                <RatingGroup.Item key={item} index={item}>
+                  <RatingGroup.ItemContext>
+                    {({ half, highlighted }) => {
+                      if (half && highlighted) {
+                        return <RatingGroup.HalfStarIcon />;
+                      }
+                      if (highlighted) {
+                        return <RatingGroup.FullStarIcon />;
+                      }
+                      return <RatingGroup.EmptyStarIcon />;
+                    }}
+                  </RatingGroup.ItemContext>
+                </RatingGroup.Item>
+              ))
+            }
+          </RatingGroup.Context>
+        </RatingGroup.Control>
+        <RatingGroup.HiddenInput />
+      </RatingGroup.Root>
+    );
   },
 };
 
 export const ReadOnly = {
   args: {
+    allowHalf: true,
     defaultValue: 2.5,
+    readOnly: true,
   },
   render: (props: RatingGroupProps) => {
-    return <RatingGroup {...props} allowHalf readOnly />;
+    return (
+      <RatingGroup.Root {...props}>
+        <RatingGroup.Control>
+          <RatingGroup.Context>
+            {({ items }) =>
+              items.map(item => (
+                <RatingGroup.Item key={item} index={item}>
+                  <RatingGroup.ItemContext>
+                    {({ half, highlighted }) => {
+                      if (half && highlighted) {
+                        return <RatingGroup.HalfStarIcon />;
+                      }
+                      if (highlighted) {
+                        return <RatingGroup.FullStarIcon />;
+                      }
+                      return <RatingGroup.EmptyStarIcon />;
+                    }}
+                  </RatingGroup.ItemContext>
+                </RatingGroup.Item>
+              ))
+            }
+          </RatingGroup.Context>
+        </RatingGroup.Control>
+        <RatingGroup.HiddenInput />
+      </RatingGroup.Root>
+    );
   },
 };
