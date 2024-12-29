@@ -1,4 +1,7 @@
-import { Progress, type ProgressRootProps } from '@ark-ui/react/progress';
+import {
+  Progress as _Progress,
+  type ProgressRootProps,
+} from '@ark-ui/react/progress';
 import { IDENTIFIER } from 'env';
 
 import { forwardRef } from 'react';
@@ -41,41 +44,45 @@ export const progressVariants = tv({
   },
 });
 
-export type RootProps = ProgressRootProps &
+export type ProgressProps = ProgressRootProps &
   VariantProps<typeof progressVariants> & {
     variant?: 'linear' | 'circular';
   };
 
-const Root = forwardRef<HTMLDivElement, RootProps>(function (props, ref) {
-  const { size, children, className, variant = 'linear', ...rest } = props;
-  const classes = progressVariants({ size });
+const Progress = forwardRef<HTMLDivElement, ProgressProps>(
+  function (props, ref) {
+    const { size, children, className, variant = 'linear', ...rest } = props;
+    const classes = progressVariants({ size });
 
-  return (
-    <Progress.Root
-      ref={ref}
-      className={cx(classes.root(), className)}
-      {...rest}
-    >
-      {children && (
-        <Progress.Label className={classes.label()}>{children}</Progress.Label>
-      )}
-      {variant === 'linear' && (
-        <>
-          <Progress.Track className={classes.track()}>
-            <Progress.Range className={classes.range()} />
-          </Progress.Track>
-        </>
-      )}
-      {variant === 'circular' && (
-        <Progress.Circle className={classes.circle()}>
-          <Progress.CircleTrack className={classes.circleTrack()} />
-          <Progress.CircleRange className={classes.circleRange()} />
-        </Progress.Circle>
-      )}
-    </Progress.Root>
-  );
-});
+    return (
+      <_Progress.Root
+        ref={ref}
+        className={cx(classes.root(), className)}
+        {...rest}
+      >
+        {children && (
+          <_Progress.Label className={classes.label()}>
+            {children}
+          </_Progress.Label>
+        )}
+        {variant === 'linear' && (
+          <>
+            <_Progress.Track className={classes.track()}>
+              <_Progress.Range className={classes.range()} />
+            </_Progress.Track>
+          </>
+        )}
+        {variant === 'circular' && (
+          <_Progress.Circle className={classes.circle()}>
+            <_Progress.CircleTrack className={classes.circleTrack()} />
+            <_Progress.CircleRange className={classes.circleRange()} />
+          </_Progress.Circle>
+        )}
+      </_Progress.Root>
+    );
+  },
+);
 
-Root.displayName = 'Progress';
+Progress.displayName = 'Progress';
 
-export { Root };
+export { Progress };
