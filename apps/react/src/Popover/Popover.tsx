@@ -1,4 +1,4 @@
-import { Popover, PopoverRootProps, Portal } from '@ark-ui/react';
+import { Popover, PopoverRootProps } from '@ark-ui/react';
 import { IDENTIFIER } from 'env';
 
 import {
@@ -6,7 +6,6 @@ import {
   type ComponentPropsWithoutRef,
   forwardRef,
   type ElementRef,
-  Fragment,
 } from 'react';
 
 import { createReactContext } from '../create-react-context';
@@ -31,7 +30,6 @@ export const popoverVariants = tv({
 
 type PopoverProviderProps = {
   classes: ReturnType<typeof popoverVariants>;
-  portalled: PopoverRootProps['portalled'];
 };
 const [PopoverProvider, usePopoverContext] =
   createReactContext<PopoverProviderProps>({
@@ -40,7 +38,6 @@ const [PopoverProvider, usePopoverContext] =
     providerName: 'PopoverProvider',
     defaultValue: {
       classes: {} as ReturnType<typeof popoverVariants>,
-      portalled: false,
     },
   });
 
@@ -55,12 +52,11 @@ function Root(props: RootProps) {
 
   return (
     <PopoverProvider value={ctx}>
-      <Popover.Root portalled={portalled} {...rest}>
-        {children}
-      </Popover.Root>
+      <Popover.Root {...rest}>{children}</Popover.Root>
     </PopoverProvider>
   );
 }
+Root.displayName = 'Popover.Root';
 
 export type TriggerProps = ComponentProps<typeof Trigger>;
 const Trigger = forwardRef<
@@ -80,31 +76,47 @@ const Trigger = forwardRef<
     </Popover.Trigger>
   );
 });
+Trigger.displayName = 'Popover.Trigger';
+
+export type PositionerProps = ComponentProps<typeof Positioner>;
+const Positioner = forwardRef<
+  ElementRef<typeof Popover.Positioner>,
+  ComponentPropsWithoutRef<typeof Popover.Positioner>
+>(function (props, ref) {
+  const { classes } = usePopoverContext();
+  const { children, className, ...rest } = props;
+
+  return (
+    <Popover.Positioner
+      className={cx(classes.positioner(), className)}
+      ref={ref}
+      {...rest}
+    >
+      {children}
+    </Popover.Positioner>
+  );
+});
+Positioner.displayName = 'Popover.Positioner';
 
 export type ContentProps = ComponentProps<typeof Content>;
 const Content = forwardRef<
   ElementRef<typeof Popover.Content>,
   ComponentPropsWithoutRef<typeof Popover.Content>
 >(function (props, ref) {
-  const { classes, portalled } = usePopoverContext();
+  const { classes } = usePopoverContext();
   const { children, className, ...rest } = props;
 
-  const Wrap = portalled ? Portal : Fragment;
-
   return (
-    <Wrap>
-      <Popover.Positioner>
-        <Popover.Content
-          className={cx(classes.content(), className)}
-          ref={ref}
-          {...rest}
-        >
-          {children}
-        </Popover.Content>
-      </Popover.Positioner>
-    </Wrap>
+    <Popover.Content
+      className={cx(classes.content(), className)}
+      ref={ref}
+      {...rest}
+    >
+      {children}
+    </Popover.Content>
   );
 });
+Content.displayName = 'Popover.Content';
 
 export type ArrowProps = ComponentProps<typeof Arrow>;
 const Arrow = forwardRef<
@@ -117,13 +129,14 @@ const Arrow = forwardRef<
   return (
     <Popover.Arrow
       className={cx(classes.arrow(), className)}
-      {...rest}
       ref={ref}
+      {...rest}
     >
       <Popover.ArrowTip className={classes.arrowTip()} />
     </Popover.Arrow>
   );
 });
+Arrow.displayName = 'Popover.Arrow';
 
 export type TitleProps = ComponentProps<typeof Title>;
 const Title = forwardRef<
@@ -143,6 +156,7 @@ const Title = forwardRef<
     </Popover.Title>
   );
 });
+Title.displayName = 'Popover.Title';
 
 export type DescriptionProps = ComponentProps<typeof Description>;
 const Description = forwardRef<
@@ -162,6 +176,7 @@ const Description = forwardRef<
     </Popover.Description>
   );
 });
+Description.displayName = 'Popover.Description';
 
 export type CloseTriggerProps = ComponentProps<typeof CloseTrigger>;
 const CloseTrigger = forwardRef<
@@ -181,5 +196,15 @@ const CloseTrigger = forwardRef<
     </Popover.CloseTrigger>
   );
 });
+CloseTrigger.displayName = 'Popover.CloseTrigger';
 
-export { Root, Trigger, Content, CloseTrigger, Title, Description, Arrow };
+export {
+  Root,
+  Trigger,
+  Content,
+  Positioner,
+  CloseTrigger,
+  Title,
+  Description,
+  Arrow,
+};

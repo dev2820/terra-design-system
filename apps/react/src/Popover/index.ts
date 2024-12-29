@@ -1,6 +1,7 @@
 import {
   Root,
   Trigger,
+  Positioner,
   Content,
   Title,
   Description,
@@ -11,6 +12,7 @@ import type {
   ArrowProps,
   CloseTriggerProps,
   ContentProps,
+  PositionerProps,
   DescriptionProps,
   RootProps,
   TitleProps,
@@ -21,18 +23,21 @@ export const Popover = {
   Root,
   Trigger,
   Content,
+  Positioner,
   Title,
   Description,
   CloseTrigger,
   Arrow,
 };
 
+export type * from '@ark-ui/react/popover';
 export type PopoverProps = {
-  root: RootProps;
-  trigger: TriggerProps;
-  content: ContentProps;
-  title: TitleProps;
-  description: DescriptionProps;
-  closeTrigger: CloseTriggerProps;
-  arrow: ArrowProps;
+  Root: RootProps;
+  Trigger: TriggerProps;
+  Content: ContentProps;
+  Positioner: PositionerProps;
+  Title: TitleProps;
+  Description: DescriptionProps;
+  CloseTrigger: CloseTriggerProps;
+  Arrow: ArrowProps;
 };
