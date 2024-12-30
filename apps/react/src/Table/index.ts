@@ -11,14 +11,14 @@ import type {
 } from './Table';
 
 export type TableProps = {
-  root: RootProps;
-  header: HeaderProps;
-  body: BodyProps;
-  footer: FooterProps;
-  head: HeadProps;
-  row: RowProps;
-  cell: CellProps;
-  caption: CaptionProps;
+  Root: RootProps;
+  Header: HeaderProps;
+  Body: BodyProps;
+  Footer: FooterProps;
+  Head: HeadProps;
+  Row: RowProps;
+  Cell: CellProps;
+  Caption: CaptionProps;
 };
 
 export const Table = { Root, Header, Body, Footer, Head, Row, Cell, Caption };

@@ -92,6 +92,7 @@ const Root = forwardRef<HTMLTableElement, RootProps>(function (props, ref) {
     </TableProvider>
   );
 });
+Root.displayName = 'Table.Root';
 
 export type HeaderProps = ComponentProps<'thead'>;
 const Header = forwardRef<
@@ -107,6 +108,7 @@ const Header = forwardRef<
     </thead>
   );
 });
+Header.displayName = 'Table.Header';
 
 export type BodyProps = ComponentProps<'tbody'>;
 const Body = forwardRef<
@@ -122,6 +124,7 @@ const Body = forwardRef<
     </tbody>
   );
 });
+Body.displayName = 'Table.Body';
 
 export type FooterProps = ComponentProps<'tfoot'>;
 const Footer = forwardRef<
@@ -137,6 +140,7 @@ const Footer = forwardRef<
     </tfoot>
   );
 });
+Footer.displayName = 'Table.Footer';
 
 export type HeadProps = ComponentProps<'th'>;
 const Head = forwardRef<HTMLTableCellElement, ComponentPropsWithoutRef<'th'>>(
@@ -151,6 +155,7 @@ const Head = forwardRef<HTMLTableCellElement, ComponentPropsWithoutRef<'th'>>(
     );
   },
 );
+Head.displayName = 'Table.Head';
 
 export type RowProps = ComponentProps<'tr'>;
 const Row = forwardRef<HTMLTableRowElement, ComponentPropsWithoutRef<'tr'>>(
@@ -165,6 +170,7 @@ const Row = forwardRef<HTMLTableRowElement, ComponentPropsWithoutRef<'tr'>>(
     );
   },
 );
+Row.displayName = 'Table.Row';
 
 export type CellProps = ComponentProps<'td'>;
 const Cell = forwardRef<HTMLTableCellElement, ComponentPropsWithoutRef<'td'>>(
@@ -179,6 +185,7 @@ const Cell = forwardRef<HTMLTableCellElement, ComponentPropsWithoutRef<'td'>>(
     );
   },
 );
+Cell.displayName = 'Table.Cell';
 
 export type CaptionProps = ComponentProps<'caption'>;
 const Caption = forwardRef<
@@ -194,5 +201,6 @@ const Caption = forwardRef<
     </caption>
   );
 });
+Caption.displayName = 'Table.Caption';
 
 export { Root, Header, Body, Footer, Head, Row, Cell, Caption };

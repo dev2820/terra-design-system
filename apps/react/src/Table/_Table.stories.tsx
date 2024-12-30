@@ -25,7 +25,7 @@ export default {
 
 export const Default = {
   args: {},
-  render: (props: TableProps['root']) => {
+  render: (props: TableProps['Root']) => {
     return (
       <Table.Root {...props}>
         <Table.Header>
