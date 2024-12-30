@@ -27,10 +27,26 @@ export const Default = {
   render: (props: SegmentGroupProps) => {
     return (
       <SegmentGroup.Root {...props}>
-        <SegmentGroup.Item value="react">React</SegmentGroup.Item>
-        <SegmentGroup.Item value="vue">Vue</SegmentGroup.Item>
-        <SegmentGroup.Item value="svelte">Svelte</SegmentGroup.Item>
-        <SegmentGroup.Item value="solid">Solid</SegmentGroup.Item>
+        <SegmentGroup.Item value="react">
+          <SegmentGroup.ItemControl></SegmentGroup.ItemControl>
+          <SegmentGroup.ItemText>react</SegmentGroup.ItemText>
+          <SegmentGroup.ItemHiddenInput />
+        </SegmentGroup.Item>
+        <SegmentGroup.Item value="vue">
+          <SegmentGroup.ItemControl></SegmentGroup.ItemControl>
+          <SegmentGroup.ItemText>vue</SegmentGroup.ItemText>
+          <SegmentGroup.ItemHiddenInput />
+        </SegmentGroup.Item>
+        <SegmentGroup.Item value="svelte">
+          <SegmentGroup.ItemControl></SegmentGroup.ItemControl>
+          <SegmentGroup.ItemText>svelte</SegmentGroup.ItemText>
+          <SegmentGroup.ItemHiddenInput />
+        </SegmentGroup.Item>
+        <SegmentGroup.Item value="solid">
+          <SegmentGroup.ItemControl></SegmentGroup.ItemControl>
+          <SegmentGroup.ItemText>solid</SegmentGroup.ItemText>
+          <SegmentGroup.ItemHiddenInput />
+        </SegmentGroup.Item>
         <SegmentGroup.Indicator />
       </SegmentGroup.Root>
     );
@@ -45,10 +61,26 @@ export const Horizontal = {
   render: (props: SegmentGroupProps) => {
     return (
       <SegmentGroup.Root {...props}>
-        <SegmentGroup.Item value="react">React</SegmentGroup.Item>
-        <SegmentGroup.Item value="vue">Vue</SegmentGroup.Item>
-        <SegmentGroup.Item value="svelte">Svelte</SegmentGroup.Item>
-        <SegmentGroup.Item value="solid">Solid</SegmentGroup.Item>
+        <SegmentGroup.Item value="react">
+          <SegmentGroup.ItemControl></SegmentGroup.ItemControl>
+          <SegmentGroup.ItemText>react</SegmentGroup.ItemText>
+          <SegmentGroup.ItemHiddenInput />
+        </SegmentGroup.Item>
+        <SegmentGroup.Item value="vue">
+          <SegmentGroup.ItemControl></SegmentGroup.ItemControl>
+          <SegmentGroup.ItemText>vue</SegmentGroup.ItemText>
+          <SegmentGroup.ItemHiddenInput />
+        </SegmentGroup.Item>
+        <SegmentGroup.Item value="svelte">
+          <SegmentGroup.ItemControl></SegmentGroup.ItemControl>
+          <SegmentGroup.ItemText>svelte</SegmentGroup.ItemText>
+          <SegmentGroup.ItemHiddenInput />
+        </SegmentGroup.Item>
+        <SegmentGroup.Item value="solid">
+          <SegmentGroup.ItemControl></SegmentGroup.ItemControl>
+          <SegmentGroup.ItemText>solid</SegmentGroup.ItemText>
+          <SegmentGroup.ItemHiddenInput />
+        </SegmentGroup.Item>
         <SegmentGroup.Indicator />
       </SegmentGroup.Root>
     );
@@ -61,15 +93,45 @@ export const Sizes = {
     return (
       <>
         <div className="trds-w-72 trds-flex trds-flex-col trds-gap-4">
-          <SegmentGroup.Root size="sm" defaultValue="item 1">
-            <SegmentGroup.Item value="item 1">item 1</SegmentGroup.Item>
-            <SegmentGroup.Item value="item 2">item 2</SegmentGroup.Item>
+          <SegmentGroup.Root size="sm" defaultValue="item1">
+            <SegmentGroup.Item value="item1">
+              <SegmentGroup.ItemControl />
+              <SegmentGroup.ItemText>item1</SegmentGroup.ItemText>
+              <SegmentGroup.ItemHiddenInput />
+            </SegmentGroup.Item>
+            <SegmentGroup.Item value="item2">
+              <SegmentGroup.ItemControl />
+              <SegmentGroup.ItemText>item2</SegmentGroup.ItemText>
+              <SegmentGroup.ItemHiddenInput />
+            </SegmentGroup.Item>
             <SegmentGroup.Indicator />
           </SegmentGroup.Root>
           <hr />
-          <SegmentGroup.Root size="md" defaultValue="item 1">
-            <SegmentGroup.Item value="item 1">item 1</SegmentGroup.Item>
-            <SegmentGroup.Item value="item 2">item 2</SegmentGroup.Item>
+          <SegmentGroup.Root size="md" defaultValue="item1">
+            <SegmentGroup.Item value="item1">
+              <SegmentGroup.ItemControl />
+              <SegmentGroup.ItemText>item1</SegmentGroup.ItemText>
+              <SegmentGroup.ItemHiddenInput />
+            </SegmentGroup.Item>
+            <SegmentGroup.Item value="item2">
+              <SegmentGroup.ItemControl />
+              <SegmentGroup.ItemText>item2</SegmentGroup.ItemText>
+              <SegmentGroup.ItemHiddenInput />
+            </SegmentGroup.Item>
+            <SegmentGroup.Indicator />
+          </SegmentGroup.Root>
+          <hr />
+          <SegmentGroup.Root size="lg" defaultValue="item1">
+            <SegmentGroup.Item value="item1">
+              <SegmentGroup.ItemControl />
+              <SegmentGroup.ItemText>item1</SegmentGroup.ItemText>
+              <SegmentGroup.ItemHiddenInput />
+            </SegmentGroup.Item>
+            <SegmentGroup.Item value="item2">
+              <SegmentGroup.ItemControl />
+              <SegmentGroup.ItemText>item2</SegmentGroup.ItemText>
+              <SegmentGroup.ItemHiddenInput />
+            </SegmentGroup.Item>
             <SegmentGroup.Indicator />
           </SegmentGroup.Root>
         </div>
@@ -84,17 +146,31 @@ export const Disabled = {
     return (
       <>
         <div className="trds-w-72 trds-flex trds-flex-col trds-gap-4">
-          <SegmentGroup.Root defaultValue="item 1" disabled>
-            <SegmentGroup.Item value="item 1">item 1</SegmentGroup.Item>
-            <SegmentGroup.Item value="item 2">item 2</SegmentGroup.Item>
+          <SegmentGroup.Root defaultValue="item1" disabled>
+            <SegmentGroup.Item value="item1">
+              <SegmentGroup.ItemControl />
+              <SegmentGroup.ItemText>item1</SegmentGroup.ItemText>
+              <SegmentGroup.ItemHiddenInput />
+            </SegmentGroup.Item>
+            <SegmentGroup.Item value="item2">
+              <SegmentGroup.ItemControl />
+              <SegmentGroup.ItemText>item2</SegmentGroup.ItemText>
+              <SegmentGroup.ItemHiddenInput />
+            </SegmentGroup.Item>
             <SegmentGroup.Indicator />
           </SegmentGroup.Root>
           <hr />
           <SegmentGroup.Root size="md" defaultValue="item 1">
-            <SegmentGroup.Item value="item 1" disabled>
-              item 1
+            <SegmentGroup.Item value="item1" disabled>
+              <SegmentGroup.ItemControl />
+              <SegmentGroup.ItemText>item1</SegmentGroup.ItemText>
+              <SegmentGroup.ItemHiddenInput />
             </SegmentGroup.Item>
-            <SegmentGroup.Item value="item 2">item 2</SegmentGroup.Item>
+            <SegmentGroup.Item value="item2">
+              <SegmentGroup.ItemControl />
+              <SegmentGroup.ItemText>item2</SegmentGroup.ItemText>
+              <SegmentGroup.ItemHiddenInput />
+            </SegmentGroup.Item>
             <SegmentGroup.Indicator />
           </SegmentGroup.Root>
         </div>

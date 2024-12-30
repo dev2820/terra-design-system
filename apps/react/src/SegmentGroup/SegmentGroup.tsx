@@ -22,14 +22,21 @@ export const segmentGroupVariant = tv({
     root: 'trds-flex trds-items-start trds-border-boundary data-horizontal:trds-flex-row data-vertical:trds-flex-col data-horizontal:trds-gap-4 data-vertical:trds-gap-1 data-horizontal:trds-border-b-[1px] data-vertical:trds-border-l-[1px]',
     indicator:
       'trds-border-primary data-horizontal:trds-bottom-0 data-horizontal:trds-border-b-[2px] data-horizontal:trds-translate-y-[1px] data-horizontal:trds-w-[var(--width)] data-vertical:trds-border-l-[2px] data-vertical:trds-h-[var(--height)] data-vertical:trds-translate-x-[-1px]',
-    item: 'trds-text-caption trds-cursor-pointer trds-font-medium trds-transition trds-duration-normal trds-transition-[color] trds-ease-default hover:trds-text-neutral-700 data-checked:trds-font-semibold data-checked:trds-text-fg-highlight hover:trds-text-fg-highlight data-disabled:trds-text-muted data-disabled:trds-cursor-not-allowed data-horizontal:trds-px-1 data-vertical:trds-px-3 data-horizontal:trds-pb-3 data-vertical:trds-py-1.5',
+    item: 'trds-text-caption trds-cursor-pointer trds-font-normal trds-transition trds-duration-normal trds-transition-[color] trds-ease-default hover:trds-text-neutral-700 data-checked:trds-font-semibold data-checked:trds-text-fg-highlight hover:trds-text-fg-highlight data-disabled:trds-text-muted data-disabled:trds-cursor-not-allowed data-horizontal:trds-px-1 data-vertical:trds-px-3 data-horizontal:trds-pb-3 data-vertical:trds-py-1.5',
     itemControl: '',
     itemText: '',
   },
   variants: {
     size: {
-      sm: 'trds-text-sm',
-      md: 'trds-text-md',
+      sm: {
+        itemText: 'trds-text-sm',
+      },
+      md: {
+        itemText: 'trds-text-md',
+      },
+      lg: {
+        itemText: 'trds-text-lg',
+      },
     },
   },
   defaultVariants: {
@@ -80,7 +87,7 @@ export type ItemProps = SegmentGroupItemProps;
 
 const Item = forwardRef<ElementRef<typeof SegmentGroup.Item>, ItemProps>(
   function (props, ref) {
-    const { className, children, ...rest } = props;
+    const { className, ...rest } = props;
     const { classes } = useSegmentGroupContext();
 
     return (
@@ -88,25 +95,66 @@ const Item = forwardRef<ElementRef<typeof SegmentGroup.Item>, ItemProps>(
         className={cx(classes.item(), className)}
         ref={ref}
         {...rest}
-      >
-        <SegmentGroup.ItemControl
-          className={classes.itemControl()}
-        ></SegmentGroup.ItemControl>
-        <SegmentGroup.ItemText className={classes.itemText()}>
-          {children}
-        </SegmentGroup.ItemText>
-        <SegmentGroup.ItemHiddenInput />
-      </SegmentGroup.Item>
+      />
     );
   },
 );
+
+export type ItemHiddenInputProps = ComponentProps<typeof ItemHiddenInput>;
+const ItemHiddenInput = forwardRef<
+  ElementRef<typeof SegmentGroup.ItemHiddenInput>,
+  ComponentPropsWithoutRef<typeof SegmentGroup.ItemHiddenInput>
+>(function (props, ref) {
+  const { className, ...rest } = props;
+
+  return (
+    <SegmentGroup.ItemHiddenInput
+      className={cx(className)}
+      ref={ref}
+      {...rest}
+    />
+  );
+});
+export type ItemTextProps = ComponentProps<typeof ItemText>;
+const ItemText = forwardRef<
+  ElementRef<typeof SegmentGroup.ItemText>,
+  ComponentPropsWithoutRef<typeof SegmentGroup.ItemText>
+>(function (props, ref) {
+  const { className, ...rest } = props;
+  const { classes } = useSegmentGroupContext();
+
+  return (
+    <SegmentGroup.ItemText
+      className={cx(classes.itemText(), className)}
+      ref={ref}
+      {...rest}
+    />
+  );
+});
+
+export type ItemControlProps = ComponentProps<typeof ItemControl>;
+const ItemControl = forwardRef<
+  ElementRef<typeof SegmentGroup.ItemControl>,
+  ComponentPropsWithoutRef<typeof SegmentGroup.ItemControl>
+>(function (props, ref) {
+  const { className, ...rest } = props;
+  const { classes } = useSegmentGroupContext();
+
+  return (
+    <SegmentGroup.ItemControl
+      className={cx(classes.itemControl(), className)}
+      ref={ref}
+      {...rest}
+    />
+  );
+});
 
 export type IndicatorProps = ComponentProps<typeof Indicator>;
 const Indicator = forwardRef<
   ElementRef<typeof SegmentGroup.Indicator>,
   ComponentPropsWithoutRef<typeof SegmentGroup.Indicator>
 >(function (props, ref) {
-  const { className, children, ...rest } = props;
+  const { className, ...rest } = props;
   const { classes } = useSegmentGroupContext();
 
   return (
@@ -118,4 +166,4 @@ const Indicator = forwardRef<
   );
 });
 
-export { Root, Item, Indicator };
+export { Root, Item, Indicator, ItemControl, ItemText, ItemHiddenInput };
