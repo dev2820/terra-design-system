@@ -5,7 +5,7 @@ import { forwardRef, type ComponentProps } from 'react';
 import { cx } from '../cx';
 import { tv, VariantProps } from '../tv';
 
-const spinnerVariants = tv({
+export const spinnerVariants = tv({
   base: 'trds-inline-block trds-border-2 trds-border-transparent trds-border-solid trds-rounded-full trds-w-[var(--size)] trds-h-[var(--size)] trds-animate-spin trds-border-b-neutral-800 trds-border-l-neutral-800',
   variants: {
     size: {
