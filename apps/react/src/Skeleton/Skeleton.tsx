@@ -25,7 +25,7 @@ export const skeletonVariants = tv({
 
 export const Skeleton = forwardRef<HTMLDivElement, SkeletonProps>(
   function (props, ref) {
-    const { round = false, isLoaded, className, ...otherProps } = props;
+    const { round = false, isLoaded, className, ...rest } = props;
 
     if (isLoaded) {
       return (
@@ -36,7 +36,7 @@ export const Skeleton = forwardRef<HTMLDivElement, SkeletonProps>(
             'trds-animate-fade-in-once',
             className,
           )}
-          {...otherProps}
+          {...rest}
         />
       );
     }
@@ -44,10 +44,9 @@ export const Skeleton = forwardRef<HTMLDivElement, SkeletonProps>(
       <div
         ref={ref}
         className={cx(IDENTIFIER.scope, skeletonVariants({ round }), className)}
-        {...otherProps}
+        {...rest}
       />
     );
   },
 );
-
 Skeleton.displayName = 'Skeleton';

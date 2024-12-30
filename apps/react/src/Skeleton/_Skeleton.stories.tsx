@@ -73,13 +73,23 @@ export const Example = {
         <Card.Footer>
           <div className="trds-flex trds-flex-row trds-gap-4">
             <Skeleton round>
-              <div className="trds-w-5 trds-h-5 trds-rounded-full">!</div>
+              <div className="trds-w-16 trds-h-16 trds-rounded-full">!</div>
             </Skeleton>
-            <Skeleton>
-              <div className="trds-w-40 trds-h-5 trds-rounded-full">
-                Something Something Something Blar Blar Blar
-              </div>
-            </Skeleton>
+            <div>
+              <Skeleton>
+                <div className="trds-w-40 trds-h-6 trds-rounded-full trds-mb-2">
+                  Something Something Something Blar Blar Blar
+                </div>
+              </Skeleton>
+              <Skeleton style={{ width: '100px' }}>
+                <div
+                  className="trds-h-6 trds-rounded-full"
+                  style={{ width: '100px' }}
+                >
+                  Maybe Name
+                </div>
+              </Skeleton>
+            </div>
           </div>
         </Card.Footer>
       </Card.Root>
