@@ -82,9 +82,9 @@ const Root = forwardRef<ElementRef<typeof SegmentGroup.Root>, RootProps>(
     );
   },
 );
+Root.displayName = 'SegmentGroup.Root';
 
 export type ItemProps = SegmentGroupItemProps;
-
 const Item = forwardRef<ElementRef<typeof SegmentGroup.Item>, ItemProps>(
   function (props, ref) {
     const { className, ...rest } = props;
@@ -99,6 +99,7 @@ const Item = forwardRef<ElementRef<typeof SegmentGroup.Item>, ItemProps>(
     );
   },
 );
+Item.displayName = 'SegmentGroup.Item';
 
 export type ItemHiddenInputProps = ComponentProps<typeof ItemHiddenInput>;
 const ItemHiddenInput = forwardRef<
@@ -115,6 +116,8 @@ const ItemHiddenInput = forwardRef<
     />
   );
 });
+ItemHiddenInput.displayName = 'SegmentGroup.ItemHiddenInput';
+
 export type ItemTextProps = ComponentProps<typeof ItemText>;
 const ItemText = forwardRef<
   ElementRef<typeof SegmentGroup.ItemText>,
@@ -131,6 +134,7 @@ const ItemText = forwardRef<
     />
   );
 });
+ItemText.displayName = 'SegmentGroup.ItemText';
 
 export type ItemControlProps = ComponentProps<typeof ItemControl>;
 const ItemControl = forwardRef<
@@ -148,6 +152,7 @@ const ItemControl = forwardRef<
     />
   );
 });
+ItemControl.displayName = 'SegmentGroup.ItemControl';
 
 export type IndicatorProps = ComponentProps<typeof Indicator>;
 const Indicator = forwardRef<
@@ -165,5 +170,6 @@ const Indicator = forwardRef<
     />
   );
 });
+Indicator.displayName = 'SegmentGroup.Indicator';
 
 export { Root, Item, Indicator, ItemControl, ItemText, ItemHiddenInput };

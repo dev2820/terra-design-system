@@ -1,8 +1,5 @@
 import { Slider, type SliderProps } from './index';
 
-/**
- * based on https://ark-ui.com/react/docs/components/collapsible
- */
 export default {
   title: 'Components/Slider',
   component: Slider,
@@ -23,18 +20,47 @@ export default {
 export const Default = {
   args: {
     defaultValue: [30],
+    className: 'trds-w-48',
   },
-  render: (props: SliderProps) => {
-    return <Slider {...props} className="trds-w-48" />;
+  render: (props: SliderProps['Root']) => {
+    return (
+      <Slider.Root {...props}>
+        <Slider.Label>Label</Slider.Label>
+        <Slider.ValueText />
+        <Slider.Control>
+          <Slider.Track>
+            <Slider.Range />
+          </Slider.Track>
+          <Slider.Thumb index={0}>
+            <Slider.HiddenInput />
+          </Slider.Thumb>
+        </Slider.Control>
+      </Slider.Root>
+    );
   },
 };
 
 export const Disabled = {
   args: {
     defaultValue: [30],
+    disabled: true,
+    className: 'trds-w-48',
   },
-  render: (props: SliderProps) => {
-    return <Slider {...props} className="trds-w-48" disabled={true} />;
+  render: (props: SliderProps['Root']) => {
+    return (
+      <Slider.Root {...props}>
+        <Slider.Label>Label</Slider.Label>
+        <Slider.ValueText />
+        <Slider.Control>
+          <Slider.Track>
+            <Slider.Range />
+          </Slider.Track>
+          <Slider.Thumb index={0}>
+            <Slider.HiddenInput />
+          </Slider.Thumb>
+        </Slider.Control>
+      </Slider.Root>
+    );
   },
 };
 
@@ -44,9 +70,23 @@ export const Step = {
     max: 100,
     step: 10,
     defaultValue: [30],
+    className: 'trds-w-48',
   },
-  render: (props: SliderProps) => {
-    return <Slider {...props} className="trds-w-48" />;
+  render: (props: SliderProps['Root']) => {
+    return (
+      <Slider.Root {...props}>
+        <Slider.Label>Label</Slider.Label>
+        <Slider.ValueText />
+        <Slider.Control>
+          <Slider.Track>
+            <Slider.Range />
+          </Slider.Track>
+          <Slider.Thumb index={0}>
+            <Slider.HiddenInput />
+          </Slider.Thumb>
+        </Slider.Control>
+      </Slider.Root>
+    );
   },
 };
 
@@ -55,13 +95,47 @@ export const Size = {
     min: 0,
     max: 100,
     defaultValue: [30],
+    className: 'trds-w-48',
   },
   render: (props: SliderProps) => {
     return (
       <div className="trds-flex trds-flex-col trds-gap-4">
-        <Slider {...props} size={'sm'} className="trds-w-48" />
-        <Slider {...props} size={'md'} className="trds-w-48" />
-        <Slider {...props} size={'lg'} className="trds-w-48" />
+        <Slider.Root {...props} size="sm">
+          <Slider.Label>Label</Slider.Label>
+          <Slider.ValueText />
+          <Slider.Control>
+            <Slider.Track>
+              <Slider.Range />
+            </Slider.Track>
+            <Slider.Thumb index={0}>
+              <Slider.HiddenInput />
+            </Slider.Thumb>
+          </Slider.Control>
+        </Slider.Root>
+        <Slider.Root {...props} size="md">
+          <Slider.Label>Label</Slider.Label>
+          <Slider.ValueText />
+          <Slider.Control>
+            <Slider.Track>
+              <Slider.Range />
+            </Slider.Track>
+            <Slider.Thumb index={0}>
+              <Slider.HiddenInput />
+            </Slider.Thumb>
+          </Slider.Control>
+        </Slider.Root>
+        <Slider.Root {...props} size="lg">
+          <Slider.Label>Label</Slider.Label>
+          <Slider.ValueText />
+          <Slider.Control>
+            <Slider.Track>
+              <Slider.Range />
+            </Slider.Track>
+            <Slider.Thumb index={0}>
+              <Slider.HiddenInput />
+            </Slider.Thumb>
+          </Slider.Control>
+        </Slider.Root>
       </div>
     );
   },
@@ -72,23 +146,28 @@ export const Markers = {
     min: 0,
     max: 100,
     defaultValue: [30],
+    className: 'trds-w-48',
   },
-  render: (props: SliderProps) => {
-    const markers = [
-      { value: 0, marker: '0' },
-      { value: 20, marker: '20' },
-      { value: 40, marker: '40' },
-      { value: 60, marker: '60' },
-      { value: 80, marker: '80' },
-      { value: 100, marker: '100' },
-    ];
-
+  render: (props: SliderProps['Root']) => {
     return (
-      <Slider
-        {...props}
-        markers={markers}
-        className="trds-w-48 trds-text-blackAlpha-500"
-      />
+      <Slider.Root {...props}>
+        <Slider.Label>Label</Slider.Label>
+        <Slider.ValueText />
+        <Slider.Control>
+          <Slider.Track>
+            <Slider.Range />
+          </Slider.Track>
+          <Slider.Thumb index={0}>
+            <Slider.HiddenInput />
+          </Slider.Thumb>
+        </Slider.Control>
+        <Slider.MarkerGroup>
+          <Slider.Marker value={0}>0</Slider.Marker>
+          <Slider.Marker value={25}>25</Slider.Marker>
+          <Slider.Marker value={50}>50</Slider.Marker>
+          <Slider.Marker value={75}>75</Slider.Marker>
+        </Slider.MarkerGroup>
+      </Slider.Root>
     );
   },
 };
@@ -98,8 +177,25 @@ export const Multiple = {
     min: 0,
     max: 100,
     defaultValue: [30, 60],
+    className: 'trds-w-48',
   },
-  render: (props: SliderProps) => {
-    return <Slider {...props} multiple={true} className="trds-w-48" />;
+  render: (props: SliderProps['Root']) => {
+    return (
+      <Slider.Root {...props}>
+        <Slider.Label>Label</Slider.Label>
+        <Slider.ValueText />
+        <Slider.Control>
+          <Slider.Track>
+            <Slider.Range />
+          </Slider.Track>
+          <Slider.Thumb index={0}>
+            <Slider.HiddenInput />
+          </Slider.Thumb>
+          <Slider.Thumb index={1}>
+            <Slider.HiddenInput />
+          </Slider.Thumb>
+        </Slider.Control>
+      </Slider.Root>
+    );
   },
 };
