@@ -1,10 +1,8 @@
 import { InfoIcon } from 'lucide-react';
 
+import { Portal } from '../index';
 import { Tooltip, type TooltipProps } from './index';
 
-/**
- * based on https://ark-ui.com/react/docs/components/tooltip
- */
 export default {
   title: 'Components/Tooltip',
   component: Tooltip.Root,
@@ -18,13 +16,15 @@ export default {
 
 export const Default = {
   args: {},
-  render: (props: TooltipProps['root']) => {
+  render: (props: TooltipProps['Root']) => {
     return (
       <Tooltip.Root {...props}>
         <Tooltip.Trigger className="trds-inline-flex trds-items-center trds-gap-1">
           <InfoIcon size={16} /> Hover me
         </Tooltip.Trigger>
-        <Tooltip.Content>I am a Tooltip</Tooltip.Content>
+        <Tooltip.Positioner>
+          <Tooltip.Content>I am a Tooltip</Tooltip.Content>
+        </Tooltip.Positioner>
       </Tooltip.Root>
     );
   },
@@ -32,20 +32,42 @@ export const Default = {
 
 export const WithArrow = {
   args: {},
-  render: (props: TooltipProps['root']) => {
+  render: (props: TooltipProps['Root']) => {
     return (
       <Tooltip.Root {...props}>
         <Tooltip.Trigger className="trds-inline-flex trds-items-center trds-gap-1">
           <InfoIcon size={16} /> Hover me
         </Tooltip.Trigger>
-        <Tooltip.Content>
-          <Tooltip.Arrow />I am a Tooltip
-        </Tooltip.Content>
+        <Tooltip.Positioner>
+          <Tooltip.Content>
+            <Tooltip.Arrow>
+              <Tooltip.ArrowTip />
+            </Tooltip.Arrow>
+            I am a Tooltip
+          </Tooltip.Content>
+        </Tooltip.Positioner>
       </Tooltip.Root>
     );
   },
 };
 
+export const WithPortal = {
+  args: {},
+  render: (props: TooltipProps['Root']) => {
+    return (
+      <Tooltip.Root {...props}>
+        <Tooltip.Trigger className="trds-inline-flex trds-items-center trds-gap-1">
+          <InfoIcon size={16} /> Hover me
+        </Tooltip.Trigger>
+        <Portal>
+          <Tooltip.Positioner>
+            <Tooltip.Content>I am a Tooltip</Tooltip.Content>
+          </Tooltip.Positioner>
+        </Portal>
+      </Tooltip.Root>
+    );
+  },
+};
 export const Theme = {
   args: {},
   render: () => {
@@ -55,13 +77,17 @@ export const Theme = {
           <Tooltip.Trigger className="trds-inline-flex trds-items-center trds-gap-1 trds-mr-4">
             <InfoIcon size={16} /> Neutral (Default)
           </Tooltip.Trigger>
-          <Tooltip.Content>I am a Tooltip</Tooltip.Content>
+          <Tooltip.Positioner>
+            <Tooltip.Content>I am a Tooltip</Tooltip.Content>
+          </Tooltip.Positioner>
         </Tooltip.Root>
         <Tooltip.Root theme="primary">
           <Tooltip.Trigger className="trds-inline-flex trds-items-center trds-gap-1 trds-mr-4">
             <InfoIcon size={16} /> Primary
           </Tooltip.Trigger>
-          <Tooltip.Content>I am a Tooltip</Tooltip.Content>
+          <Tooltip.Positioner>
+            <Tooltip.Content>I am a Tooltip</Tooltip.Content>
+          </Tooltip.Positioner>
         </Tooltip.Root>
       </div>
     );

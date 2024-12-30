@@ -20,6 +20,7 @@ export const tooltipVariants = tv({
     arrow: '[--arrow-size:8px]',
     arrowTip: 'trds-border-neutral-800 trds-border-t-[1px] trds-border-l-[1px]',
     trigger: '',
+    positioner: '',
   },
   variants: {
     theme: {
@@ -70,6 +71,7 @@ function Root(props: RootProps) {
     </TooltipProvider>
   );
 }
+Root.displayName = 'Tooltip.Root';
 
 export type TriggerProps = ComponentProps<typeof Trigger>;
 const Trigger = forwardRef<
@@ -77,18 +79,35 @@ const Trigger = forwardRef<
   ComponentPropsWithoutRef<typeof Tooltip.Trigger>
 >(function (props, ref) {
   const { classes } = useTooltipContext();
-  const { children, className, ...rest } = props;
+  const { className, ...rest } = props;
 
   return (
     <Tooltip.Trigger
       className={cx(classes.trigger(), className)}
       ref={ref}
       {...rest}
-    >
-      {children}
-    </Tooltip.Trigger>
+    />
   );
 });
+Trigger.displayName = 'Tooltip.Trigger';
+
+export type PositionerProps = ComponentProps<typeof Positioner>;
+const Positioner = forwardRef<
+  ElementRef<typeof Tooltip.Positioner>,
+  ComponentPropsWithoutRef<typeof Tooltip.Positioner>
+>(function (props, ref) {
+  const { classes } = useTooltipContext();
+  const { className, ...rest } = props;
+
+  return (
+    <Tooltip.Positioner
+      className={cx(classes.positioner(), className)}
+      ref={ref}
+      {...rest}
+    />
+  );
+});
+Positioner.displayName = 'Tooltip.Positioner';
 
 export type ContentProps = ComponentProps<typeof Content>;
 const Content = forwardRef<
@@ -96,20 +115,17 @@ const Content = forwardRef<
   ComponentPropsWithoutRef<typeof Tooltip.Content>
 >(function (props, ref) {
   const { classes } = useTooltipContext();
-  const { children, className, ...rest } = props;
+  const { className, ...rest } = props;
 
   return (
-    <Tooltip.Positioner>
-      <Tooltip.Content
-        className={cx(classes.content(), className)}
-        ref={ref}
-        {...rest}
-      >
-        {children}
-      </Tooltip.Content>
-    </Tooltip.Positioner>
+    <Tooltip.Content
+      className={cx(classes.content(), className)}
+      ref={ref}
+      {...rest}
+    />
   );
 });
+Content.displayName = 'Tooltip.Content';
 
 export type ArrowProps = ComponentProps<typeof Arrow>;
 const Arrow = forwardRef<
@@ -117,17 +133,34 @@ const Arrow = forwardRef<
   ComponentPropsWithoutRef<typeof Tooltip.Arrow>
 >(function (props, ref) {
   const { classes } = useTooltipContext();
-  const { children, className, ...rest } = props;
+  const { className, ...rest } = props;
 
   return (
     <Tooltip.Arrow
       className={cx(classes.arrow(), className)}
-      {...rest}
       ref={ref}
-    >
-      <Tooltip.ArrowTip className={classes.arrowTip()} />
-    </Tooltip.Arrow>
+      {...rest}
+    />
   );
 });
+Arrow.displayName = 'Tooltip.Arrow';
 
-export { Root, Trigger, Content, Arrow };
+export type ArrowTipProps = ComponentProps<typeof ArrowTip>;
+const ArrowTip = forwardRef<
+  ElementRef<typeof Tooltip.ArrowTip>,
+  ComponentPropsWithoutRef<typeof Tooltip.ArrowTip>
+>(function (props, ref) {
+  const { classes } = useTooltipContext();
+  const { className, ...rest } = props;
+
+  return (
+    <Tooltip.ArrowTip
+      className={cx(classes.arrowTip(), className)}
+      ref={ref}
+      {...rest}
+    />
+  );
+});
+ArrowTip.displayName = 'Tooltip.ArrowTip';
+
+export { Root, Trigger, Content, Arrow, Positioner, ArrowTip };
