@@ -1,8 +1,14 @@
-import { Switch, SwitchRootProps } from '@ark-ui/react';
+import { Switch } from '@ark-ui/react/switch';
 import { IDENTIFIER } from 'env';
 
-import { ElementRef, forwardRef } from 'react';
+import {
+  ComponentProps,
+  ComponentPropsWithoutRef,
+  ElementRef,
+  forwardRef,
+} from 'react';
 
+import { createReactContext } from '../create-react-context';
 import { cx } from '../cx';
 import { tv, VariantProps } from '../tv';
 
@@ -14,6 +20,7 @@ export const switchVariants = tv({
       'trds-inline-flex trds-items-center trds-bg-muted trds-rounded-full trds-cursor-pointer trds-flex-shrink-0 trds-transition trds-duration-normal trds-transition-[background] trds-ease-default data-checked:trds-bg-primary data-disabled:trds-cursor-not-allowed',
     thumb:
       'trds-bg-white trds-rounded-full trds-shadow-xs trds-transition trds-duration-normal trds-transition-[transform,background] trds-ease-default data-checked:trds-translate-x-[100%] data-checked:trds-bg-white',
+    label: '',
   },
   variants: {
     size: {
@@ -40,29 +47,115 @@ export const switchVariants = tv({
   },
 });
 
-export type RootProps = Omit<SwitchRootProps, 'children'> &
-  VariantProps<typeof switchVariants>;
+type SwitchProviderProps = {
+  classes: ReturnType<typeof switchVariants>;
+} & VariantProps<typeof switchVariants>;
 
-const Root = forwardRef<ElementRef<typeof Switch.Root>, RootProps>(
-  function (props, ref) {
-    const { size, className, ...rest } = props;
-    const classes = switchVariants({ size });
+const [SwitchProvider, useSwitchContext] =
+  createReactContext<SwitchProviderProps>({
+    name: 'switch',
+    hookName: 'useSwitchContext',
+    providerName: 'SwitchProvider',
+    defaultValue: {
+      classes: {} as ReturnType<typeof switchVariants>,
+      size: 'md',
+    },
+  });
 
-    return (
+export type RootProps = ComponentProps<typeof Root>;
+const Root = forwardRef<
+  ElementRef<typeof Switch.Root>,
+  ComponentPropsWithoutRef<typeof Switch.Root> &
+    VariantProps<typeof switchVariants>
+>(function (props, ref) {
+  const { size, className, children, ...rest } = props;
+  const classes = switchVariants({ size });
+  const ctx = { classes };
+
+  return (
+    <SwitchProvider value={ctx}>
       <Switch.Root
         ref={ref}
         className={cx(classes.root(), className)}
         {...rest}
       >
-        <Switch.Control className={classes.control()}>
-          <Switch.Thumb className={classes.thumb()} />
-        </Switch.Control>
-        <Switch.HiddenInput />
+        {children}
       </Switch.Root>
-    );
-  },
-);
+    </SwitchProvider>
+  );
+});
+Root.displayName = 'Switch.Root';
 
-Root.displayName = 'Switch';
+export type LabelProps = ComponentProps<typeof Label>;
+const Label = forwardRef<
+  ElementRef<typeof Switch.Label>,
+  ComponentPropsWithoutRef<typeof Switch.Label>
+>(function (props, ref) {
+  const { className, ...rest } = props;
+  const { classes } = useSwitchContext();
 
-export { Root };
+  return (
+    <Switch.Label
+      className={cx(classes.label(), className)}
+      ref={ref}
+      {...rest}
+    />
+  );
+});
+Label.displayName = 'Slider.Label';
+
+export type ThumbProps = ComponentProps<typeof Thumb>;
+const Thumb = forwardRef<
+  ElementRef<typeof Switch.Thumb>,
+  ComponentPropsWithoutRef<typeof Switch.Thumb>
+>(function (props, ref) {
+  const { className, ...rest } = props;
+  const { classes } = useSwitchContext();
+
+  return (
+    <Switch.Thumb
+      className={cx(classes.thumb(), className)}
+      ref={ref}
+      {...rest}
+    />
+  );
+});
+Thumb.displayName = 'Slider.Thumb';
+
+export type ControlProps = ComponentProps<typeof Control>;
+const Control = forwardRef<
+  ElementRef<typeof Switch.Control>,
+  ComponentPropsWithoutRef<typeof Switch.Control>
+>(function (props, ref) {
+  const { className, ...rest } = props;
+  const { classes } = useSwitchContext();
+
+  return (
+    <Switch.Control
+      className={cx(classes.control(), className)}
+      ref={ref}
+      {...rest}
+    />
+  );
+});
+Control.displayName = 'Slider.Control';
+
+export type HiddenInputProps = ComponentProps<typeof HiddenInput>;
+const HiddenInput = forwardRef<
+  ElementRef<typeof Switch.HiddenInput>,
+  ComponentPropsWithoutRef<typeof Switch.HiddenInput>
+>(function (props, ref) {
+  const { className, ...rest } = props;
+  const { classes } = useSwitchContext();
+
+  return (
+    <Switch.HiddenInput
+      className={cx(classes.control(), className)}
+      ref={ref}
+      {...rest}
+    />
+  );
+});
+HiddenInput.displayName = 'Slider.HiddenInput';
+
+export { Root, HiddenInput, Control, Thumb, Label };

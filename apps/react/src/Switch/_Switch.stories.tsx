@@ -1,6 +1,6 @@
 import { Switch, SwitchProps } from './index';
 
-const sizes = ['sm', 'md', 'lg'] as SwitchProps['size'][];
+const sizes = ['sm', 'md', 'lg'] as SwitchProps['Root']['size'][];
 
 export default {
   title: 'Components/Switch',
@@ -30,34 +30,59 @@ export default {
 
 export const Default = {
   args: {},
-  render: (props: SwitchProps) => {
-    return <Switch {...props}></Switch>;
+  render: (props: SwitchProps['Root']) => {
+    return (
+      <Switch.Root {...props}>
+        <Switch.Control>
+          <Switch.Thumb />
+        </Switch.Control>
+        <Switch.Label>Switch</Switch.Label>
+        <Switch.HiddenInput />
+      </Switch.Root>
+    );
   },
 };
 
 export const Sizes = {
   args: {},
-  render: () => {
+  render: (props: SwitchProps['Root']) => {
     return (
       <div className="trds-flex trds-flex-col trds-items-center trds-gap-4 trds-w-36 trds-h-48">
-        <Switch size="sm" />
-        <Switch size="md" />
-        <Switch size="lg" />
+        <Switch.Root {...props} size="sm">
+          <Switch.Control>
+            <Switch.Thumb />
+          </Switch.Control>
+          <Switch.HiddenInput />
+        </Switch.Root>
+        <Switch.Root {...props} size="md">
+          <Switch.Control>
+            <Switch.Thumb />
+          </Switch.Control>
+          <Switch.HiddenInput />
+        </Switch.Root>
+        <Switch.Root {...props} size="lg">
+          <Switch.Control>
+            <Switch.Thumb />
+          </Switch.Control>
+          <Switch.HiddenInput />
+        </Switch.Root>
       </div>
     );
   },
 };
 
 export const Disabled = {
-  args: {},
-  render: () => {
-    return <Switch disabled />;
+  args: {
+    disabled: true,
   },
-};
-
-export const Invalid = {
-  args: {},
-  render: () => {
-    return <Switch invalid />;
+  render: (props: SwitchProps['Root']) => {
+    return (
+      <Switch.Root {...props} size="lg">
+        <Switch.Control>
+          <Switch.Thumb />
+        </Switch.Control>
+        <Switch.HiddenInput />
+      </Switch.Root>
+    );
   },
 };
