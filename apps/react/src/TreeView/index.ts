@@ -21,17 +21,6 @@ import type {
   BranchIndicatorProps,
 } from './TreeView';
 
-export type TreeViewProps = {
-  root: RootProps;
-  tree: TreeProps;
-  item: ItemProps;
-  itemText: ItemTextProps;
-  branch: BranchProps;
-  branchControl: BranchControlProps;
-  branchText: BranchTextProps;
-  branchContent: BranchContentProps;
-  branchIndicator: BranchIndicatorProps;
-};
 export const TreeView = {
   Root,
   Tree,
@@ -42,4 +31,17 @@ export const TreeView = {
   BranchText,
   BranchContent,
   BranchIndicator,
+};
+
+export type * from '@ark-ui/react/tree-view';
+export type TreeViewProps = {
+  Root: RootProps;
+  Tree: TreeProps;
+  Item: ItemProps;
+  ItemText: ItemTextProps;
+  Branch: BranchProps;
+  BranchControl: BranchControlProps;
+  BranchText: BranchTextProps;
+  BranchContent: BranchContentProps;
+  BranchIndicator: BranchIndicatorProps;
 };

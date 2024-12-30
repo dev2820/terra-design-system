@@ -17,7 +17,7 @@ export const Default = {
   args: {
     defaultExpandedValue: ['2.1'],
   },
-  render: (props: TreeViewProps) => {
+  render: (props: TreeViewProps['Root']) => {
     return (
       <div className="trds-w-96 trds-h-72">
         <TreeView.Root {...props}>

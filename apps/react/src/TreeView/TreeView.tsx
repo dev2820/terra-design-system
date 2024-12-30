@@ -73,6 +73,7 @@ const Root = forwardRef<ElementRef<typeof TreeView.Root>, RootProps>(
     );
   },
 );
+Root.displayName = 'TreeView.Root';
 
 export type TreeProps = ComponentProps<typeof Tree>;
 const Tree = forwardRef<
@@ -92,6 +93,7 @@ const Tree = forwardRef<
     </TreeView.Tree>
   );
 });
+Tree.displayName = 'TreeView.Tree';
 
 export type ItemProps = ComponentProps<typeof Item>;
 const Item = forwardRef<
@@ -111,6 +113,7 @@ const Item = forwardRef<
     </TreeView.Item>
   );
 });
+Item.displayName = 'TreeView.Item';
 
 export type ItemTextProps = ComponentProps<typeof ItemText>;
 const ItemText = forwardRef<
@@ -130,6 +133,7 @@ const ItemText = forwardRef<
     </TreeView.ItemText>
   );
 });
+ItemText.displayName = 'TreeView.ItemText';
 
 export type BranchProps = ComponentProps<typeof Branch>;
 const Branch = forwardRef<
@@ -149,6 +153,7 @@ const Branch = forwardRef<
     </TreeView.Branch>
   );
 });
+Branch.displayName = 'TreeView.Branch';
 
 export type BranchTextProps = ComponentProps<typeof BranchText>;
 const BranchText = forwardRef<
@@ -168,6 +173,7 @@ const BranchText = forwardRef<
     </TreeView.BranchText>
   );
 });
+BranchText.displayName = 'TreeView.BranchText';
 
 export type BranchIndicatorProps = ComponentProps<typeof BranchIndicator>;
 const BranchIndicator = forwardRef<
@@ -187,6 +193,7 @@ const BranchIndicator = forwardRef<
     </TreeView.BranchIndicator>
   );
 });
+BranchIndicator.displayName = 'TreeView.BranchIndicator';
 
 export type BranchControlProps = ComponentProps<typeof BranchControl>;
 const BranchControl = forwardRef<
@@ -206,6 +213,7 @@ const BranchControl = forwardRef<
     </TreeView.BranchControl>
   );
 });
+BranchControl.displayName = 'TreeView.BranchControl';
 
 export type BranchContentProps = ComponentProps<typeof BranchContent>;
 const BranchContent = forwardRef<
@@ -225,6 +233,7 @@ const BranchContent = forwardRef<
     </TreeView.BranchContent>
   );
 });
+BranchContent.displayName = 'TreeView.BranchContent';
 
 export {
   Root,
