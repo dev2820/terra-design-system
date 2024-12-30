@@ -27,7 +27,7 @@ export const Default = {
   args: {
     defaultValue: 'react',
   },
-  render: (props: TabsProps['root']) => {
+  render: (props: TabsProps['Root']) => {
     return (
       <Tabs.Root {...props}>
         <Tabs.List>
@@ -52,7 +52,7 @@ export const Sizes = {
   args: {
     defaultValue: 'react',
   },
-  render: (props: TabsProps['root']) => {
+  render: (props: TabsProps['Root']) => {
     return (
       <>
         <div className="trds-w-96 trds-flex trds-flex-col trds-gap-4">

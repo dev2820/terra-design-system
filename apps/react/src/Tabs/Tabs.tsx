@@ -180,6 +180,7 @@ const Root = forwardRef<ElementRef<typeof Tabs.Root>, RootProps>(
     );
   },
 );
+Root.displayName = 'Tabs.Root';
 
 export type ListProps = ComponentProps<typeof List>;
 const List = forwardRef<
@@ -195,6 +196,7 @@ const List = forwardRef<
     </Tabs.List>
   );
 });
+List.displayName = 'Tabs.List';
 
 export type IndicatorProps = ComponentProps<typeof Indicator>;
 const Indicator = forwardRef<
@@ -212,6 +214,7 @@ const Indicator = forwardRef<
     />
   );
 });
+Indicator.displayName = 'Tabs.Indicator';
 
 export type TriggerProps = ComponentProps<typeof Trigger>;
 const Trigger = forwardRef<
@@ -231,6 +234,7 @@ const Trigger = forwardRef<
     </Tabs.Trigger>
   );
 });
+Trigger.displayName = 'Tabs.Trigger';
 
 export type ContentProps = ComponentProps<typeof Content>;
 const Content = forwardRef<
@@ -250,5 +254,6 @@ const Content = forwardRef<
     </Tabs.Content>
   );
 });
+Content.displayName = 'Tabs.Content';
 
 export { Root, Content, Trigger, List, Indicator };
