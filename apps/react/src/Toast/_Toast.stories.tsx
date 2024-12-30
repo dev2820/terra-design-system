@@ -4,9 +4,6 @@ import { Button } from '../Button';
 import { IconButton } from '../IconButton';
 import { Toast, type ToastProps } from './index';
 
-/**
- * based on https://ark-ui.com/react/docs/components/toast
- */
 export default {
   title: 'Components/Toast',
   component: Toast.Root,
@@ -20,7 +17,7 @@ export default {
 
 export const Default = {
   args: {},
-  render: (props: ToastProps['root']) => {
+  render: (props: ToastProps['Root']) => {
     const toaster = Toast.createToaster({
       placement: 'bottom-end',
       overlap: true,

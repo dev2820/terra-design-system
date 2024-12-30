@@ -1,4 +1,4 @@
-import { Toast, ToastRootProps } from '@ark-ui/react';
+import { Toast, ToastRootProps } from '@ark-ui/react/toast';
 import { IDENTIFIER } from 'env';
 
 import {
@@ -62,6 +62,7 @@ const Root = forwardRef<
     </ToastProvider>
   );
 });
+Root.displayName = 'Toast.Root';
 
 export type TitleProps = ComponentProps<typeof Title>;
 const Title = forwardRef<
@@ -77,6 +78,7 @@ const Title = forwardRef<
     </Toast.Title>
   );
 });
+Title.displayName = 'Toast.Title';
 
 export type DescriptionProps = ComponentProps<typeof Description>;
 const Description = forwardRef<
@@ -96,6 +98,7 @@ const Description = forwardRef<
     </Toast.Description>
   );
 });
+Description.displayName = 'Toast.Description';
 
 export type CloseTriggerProps = ComponentProps<typeof CloseTrigger>;
 const CloseTrigger = forwardRef<
@@ -115,6 +118,7 @@ const CloseTrigger = forwardRef<
     </Toast.CloseTrigger>
   );
 });
+CloseTrigger.displayName = 'Toast.CloseTrigger';
 
 export type ActionTriggerProps = ComponentProps<typeof ActionTrigger>;
 const ActionTrigger = forwardRef<
@@ -134,6 +138,7 @@ const ActionTrigger = forwardRef<
     </Toast.ActionTrigger>
   );
 });
+ActionTrigger.displayName = 'Toast.ActionTrigger';
 
 export {
   Toaster,
@@ -141,6 +146,6 @@ export {
   type ToasterProps,
   type CreateToasterProps,
   type CreateToasterReturn,
-} from '@ark-ui/react';
+} from '@ark-ui/react/toast';
 
 export { Root, ActionTrigger, CloseTrigger, Title, Description };

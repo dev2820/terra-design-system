@@ -27,12 +27,13 @@ export const Toast = {
   createToaster,
 };
 
+export type * from '@ark-ui/react/toast';
 export type ToastProps = {
-  toaster: ToasterProps;
-  root: RootProps;
-  actionTrigger: ActionTriggerProps;
-  closeTrigger: CloseTriggerProps;
-  title: TitleProps;
-  description: DescriptionProps;
-  createToaster: CreateToasterProps;
+  Toaster: ToasterProps;
+  Root: RootProps;
+  ActionTrigger: ActionTriggerProps;
+  CloseTrigger: CloseTriggerProps;
+  Title: TitleProps;
+  Description: DescriptionProps;
+  CreateToaster: CreateToasterProps;
 };
