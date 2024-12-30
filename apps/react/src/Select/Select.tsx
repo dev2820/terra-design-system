@@ -1,13 +1,16 @@
-import { Portal } from '@ark-ui/react';
 import {
   Select,
   type SelectItemGroupProps,
   type SelectItemProps,
 } from '@ark-ui/react/select';
 import { IDENTIFIER } from 'env';
-import { CheckIcon, ChevronDownIcon } from 'lucide-react';
 
-import { ElementRef, forwardRef, ReactNode } from 'react';
+import {
+  ComponentProps,
+  ComponentPropsWithoutRef,
+  ElementRef,
+  forwardRef,
+} from 'react';
 
 import { createReactContext } from '../create-react-context';
 import { cx } from '../cx';
@@ -26,11 +29,13 @@ export const selectVariant = tv({
     trigger:
       'trds-appearance-none trds-inline-flex trds-items-center trds-justify-between trds-border-boundary trds-rounded-lg trds-cursor-pointer trds-text-fg-title trds-inline-flex trds-relative trds-outline-0 trds-transition trds-duration-normal trds-transition-[background,box-shadow,border-color] trds-ease-default trds-w-full trds-border-[1px] focus:trds-border-boundary focus:trds-shadow-[0_0_0_2px_var(--shadow-color)] focus:trds-shadow-primary-500 placeholder-shown:trds-text-fg-placeholder disabled:trds-text-muted disabled:trds-cursor-not-allowed disabled:[&_:where(svg)]:text-muted [&_:where(svg)]:text-subtle',
     control: '',
-    valueText: '',
+    valueText:
+      'trds-flex-1 trds-whitespace-nowrap trds-text-left trds-overflow-hidden trds-text-ellipsis',
     indicator: '',
     positioner: '',
     itemGroup: '',
     itemText: '',
+    clearTrigger: '',
   },
   variants: {
     size: {
@@ -84,13 +89,10 @@ const [SelectProvider, useSelectContext] =
   });
 
 export type RootProps = Select.RootProps<Select.CollectionItem> &
-  VariantProps<typeof selectVariant> & {
-    placeholder?: string;
-  };
-
-export const Root = forwardRef<ElementRef<typeof Select.Root>, RootProps>(
+  VariantProps<typeof selectVariant>;
+const Root = forwardRef<ElementRef<typeof Select.Root>, RootProps>(
   function (props, ref) {
-    const { size, placeholder, className, children, ...rest } = props;
+    const { size, className, children, ...rest } = props;
     const classes = selectVariant({ size });
     const ctx = {
       classes,
@@ -105,40 +107,192 @@ export const Root = forwardRef<ElementRef<typeof Select.Root>, RootProps>(
           positioning={{ sameWidth: true }}
           {...rest}
         >
-          <Select.Control className={classes.control()}>
-            <Select.Trigger className={classes.trigger()}>
-              <Select.ValueText
-                placeholder={placeholder}
-                className={classes.valueText()}
-              />
-              <Select.Indicator className={classes.indicator()}>
-                <ChevronDownIcon size={convertSizeToNumber(size)} />
-              </Select.Indicator>
-            </Select.Trigger>
-          </Select.Control>
-          <Portal>
-            <Select.Positioner className={classes.positioner()}>
-              <Select.Content className={classes.content()}>
-                {children}
-              </Select.Content>
-            </Select.Positioner>
-          </Portal>
-          <Select.HiddenSelect />
+          {children}
         </Select.Root>
       </SelectProvider>
     );
   },
 );
 
-export type ItemGroupProps = SelectItemGroupProps & {
-  label?: ReactNode;
-};
+export type ItemGroupLabelProps = ComponentProps<typeof ItemGroupLabel>;
+const ItemGroupLabel = forwardRef<
+  ElementRef<typeof Select.ItemGroupLabel>,
+  ComponentPropsWithoutRef<typeof Select.ItemGroupLabel>
+>(function (props, ref) {
+  const { className, ...rest } = props;
+  const { classes } = useSelectContext();
 
-export const ItemGroup = forwardRef<
+  return (
+    <Select.ItemGroupLabel
+      className={cx(classes.itemGroupLabel(), className)}
+      ref={ref}
+      {...rest}
+    />
+  );
+});
+ItemGroupLabel.displayName = 'Select.ItemGroupLabel';
+
+export type ItemIndicatorProps = ComponentProps<typeof ItemIndicator>;
+const ItemIndicator = forwardRef<
+  ElementRef<typeof Select.ItemIndicator>,
+  ComponentPropsWithoutRef<typeof Select.ItemIndicator>
+>(function (props, ref) {
+  const { className, ...rest } = props;
+  const { classes } = useSelectContext();
+
+  return (
+    <Select.ItemIndicator
+      className={cx(classes.itemIndicator(), className)}
+      ref={ref}
+      {...rest}
+    />
+  );
+});
+ItemIndicator.displayName = 'Select.ItemIndicator';
+
+export type ItemTextProps = ComponentProps<typeof ItemText>;
+const ItemText = forwardRef<
+  ElementRef<typeof Select.ItemText>,
+  ComponentPropsWithoutRef<typeof Select.ItemText>
+>(function (props, ref) {
+  const { className, ...rest } = props;
+  const { classes } = useSelectContext();
+
+  return (
+    <Select.ItemText
+      className={cx(classes.itemText(), className)}
+      ref={ref}
+      {...rest}
+    />
+  );
+});
+ItemText.displayName = 'Select.ItemText';
+
+export type HiddenSelectProps = ComponentProps<typeof HiddenSelect>;
+const HiddenSelect = forwardRef<
+  ElementRef<typeof Select.HiddenSelect>,
+  ComponentPropsWithoutRef<typeof Select.HiddenSelect>
+>(function (props, ref) {
+  const { className, ...rest } = props;
+
+  return <Select.HiddenSelect className={className} ref={ref} {...rest} />;
+});
+HiddenSelect.displayName = 'Select.HiddenSelect';
+
+export type ContentProps = ComponentProps<typeof Content>;
+const Content = forwardRef<
+  ElementRef<typeof Select.Content>,
+  ComponentPropsWithoutRef<typeof Select.Content>
+>(function (props, ref) {
+  const { className, ...rest } = props;
+  const { classes } = useSelectContext();
+
+  return (
+    <Select.Content
+      className={cx(classes.content(), className)}
+      ref={ref}
+      {...rest}
+    />
+  );
+});
+Content.displayName = 'Select.Content';
+
+export type PositionerProps = ComponentProps<typeof Positioner>;
+const Positioner = forwardRef<
+  ElementRef<typeof Select.Positioner>,
+  ComponentPropsWithoutRef<typeof Select.Positioner>
+>(function (props, ref) {
+  const { className, ...rest } = props;
+  const { classes } = useSelectContext();
+
+  return (
+    <Select.Positioner
+      className={cx(classes.positioner(), className)}
+      ref={ref}
+      {...rest}
+    />
+  );
+});
+Positioner.displayName = 'Select.Positioner';
+
+export type IndicatorProps = ComponentProps<typeof Indicator>;
+const Indicator = forwardRef<
+  ElementRef<typeof Select.Indicator>,
+  ComponentPropsWithoutRef<typeof Select.Indicator>
+>(function (props, ref) {
+  const { className, ...rest } = props;
+  const { classes } = useSelectContext();
+
+  return (
+    <Select.Indicator
+      className={cx(classes.indicator(), className)}
+      ref={ref}
+      {...rest}
+    />
+  );
+});
+Indicator.displayName = 'Select.Indicator';
+
+export type ValueTextProps = ComponentProps<typeof ValueText>;
+const ValueText = forwardRef<
+  ElementRef<typeof Select.ValueText>,
+  ComponentPropsWithoutRef<typeof Select.ValueText>
+>(function (props, ref) {
+  const { className, ...rest } = props;
+  const { classes } = useSelectContext();
+
+  return (
+    <Select.ValueText
+      className={cx(classes.valueText(), className)}
+      ref={ref}
+      {...rest}
+    />
+  );
+});
+ValueText.displayName = 'Select.ValueText';
+
+export type TriggerProps = ComponentProps<typeof Trigger>;
+const Trigger = forwardRef<
+  ElementRef<typeof Select.Trigger>,
+  ComponentPropsWithoutRef<typeof Select.Trigger>
+>(function (props, ref) {
+  const { className, ...rest } = props;
+  const { classes } = useSelectContext();
+
+  return (
+    <Select.Trigger
+      className={cx(classes.trigger(), className)}
+      ref={ref}
+      {...rest}
+    />
+  );
+});
+Trigger.displayName = 'Select.Trigger';
+
+export type ControlProps = ComponentProps<typeof Control>;
+const Control = forwardRef<
+  ElementRef<typeof Select.Control>,
+  ComponentPropsWithoutRef<typeof Select.Control>
+>(function (props, ref) {
+  const { className, ...rest } = props;
+  const { classes } = useSelectContext();
+
+  return (
+    <Select.Control
+      className={cx(classes.control(), className)}
+      ref={ref}
+      {...rest}
+    />
+  );
+});
+Control.displayName = 'Select.Control';
+
+export type ItemGroupProps = SelectItemGroupProps;
+const ItemGroup = forwardRef<
   ElementRef<typeof Select.ItemGroup>,
   ItemGroupProps
 >(function (props, ref) {
-  const { label, className, children, ...rest } = props;
+  const { className, ...rest } = props;
   const { classes } = useSelectContext();
 
   return (
@@ -146,49 +300,78 @@ export const ItemGroup = forwardRef<
       className={cx(classes.itemGroup(), className)}
       ref={ref}
       {...rest}
-    >
-      <Select.ItemGroupLabel className={classes.itemGroupLabel()}>
-        {label}
-      </Select.ItemGroupLabel>
-      {children}
-    </Select.ItemGroup>
+    />
   );
 });
+ItemGroup.displayName = 'Select.ItemGroup';
 
 export type ItemProps = SelectItemProps;
-
-export const Item = forwardRef<ElementRef<typeof Select.Item>, ItemProps>(
+const Item = forwardRef<ElementRef<typeof Select.Item>, ItemProps>(
   function (props, ref) {
-    const { className, children, ...rest } = props;
-    const { classes, size } = useSelectContext();
+    const { className, ...rest } = props;
+    const { classes } = useSelectContext();
 
     return (
       <Select.Item
         className={cx(classes.item(), className)}
         ref={ref}
         {...rest}
-      >
-        <Select.ItemText className={cx(classes.itemText())}>
-          {children}
-        </Select.ItemText>
-        <Select.ItemIndicator className={cx(classes.itemIndicator())}>
-          <CheckIcon size={convertSizeToNumber(size)} />
-        </Select.ItemIndicator>
-      </Select.Item>
+      />
     );
   },
 );
+Item.displayName = 'Select.Item';
 
-const convertSizeToNumber = (size?: 'sm' | 'md' | 'lg') => {
-  if (size === 'sm') {
-    return 20;
-  }
-  if (size === 'md') {
-    return 24;
-  }
-  if (size === 'lg') {
-    return 28;
-  }
+export type ClearTriggerProps = ComponentProps<typeof ClearTrigger>;
+const ClearTrigger = forwardRef<
+  ElementRef<typeof Select.ClearTrigger>,
+  ComponentPropsWithoutRef<typeof Select.ClearTrigger>
+>(function (props, ref) {
+  const { className, ...rest } = props;
+  const { classes } = useSelectContext();
 
-  return 24;
+  return (
+    <Select.ClearTrigger
+      className={cx(classes.clearTrigger(), className)}
+      ref={ref}
+      {...rest}
+    />
+  );
+});
+ClearTrigger.displayName = 'Select.ClearTrigger';
+
+export type LabelProps = ComponentProps<typeof Label>;
+const Label = forwardRef<
+  ElementRef<typeof Select.Label>,
+  ComponentPropsWithoutRef<typeof Select.Label>
+>(function (props, ref) {
+  const { className, ...rest } = props;
+  const { classes } = useSelectContext();
+
+  return (
+    <Select.Label
+      className={cx(classes.label(), className)}
+      ref={ref}
+      {...rest}
+    />
+  );
+});
+Label.displayName = 'Select.Label';
+
+export {
+  Root,
+  Item,
+  ItemText,
+  ValueText,
+  ItemIndicator,
+  ItemGroup,
+  ItemGroupLabel,
+  Trigger,
+  Content,
+  Control,
+  Positioner,
+  HiddenSelect,
+  ClearTrigger,
+  Indicator,
+  Label,
 };
