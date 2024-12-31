@@ -17,11 +17,11 @@ export const accordionVariants = tv({
   base: `${IDENTIFIER.scope} accordion`,
   slots: {
     root: 'trds-w-full',
-    item: 'trds-border-b trds-border-boundary',
+    item: 'trds-border-b trds-border-secondary-300',
     itemTrigger:
       'trds-transition-all trds-duration-normal trds-w-full trds-py-4 trds-flex trds-flex-row trds-justify-between trds-items-center trds-cursor-pointer disabled:trds-text-muted disabled:trds-cursor-not-allowed',
     itemIndicator:
-      'trds-origin-center trds-transition-all trds-duration-normal data-open:trds-rotate-180 trds-color-fg-neutral',
+      'trds-origin-center trds-transition-all trds-duration-normal data-open:trds-rotate-180',
     itemContent:
       'trds-overflow-hidden data-open:trds-animate-collapse-in data-closed:trds-animate-collapse-out',
   },
