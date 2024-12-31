@@ -16,46 +16,42 @@ export const alertVariants = tv({
   },
   variants: {
     theme: {
-      neutral: {
-        root: 'trds-text-neutral-500 trds-bg-neutral-50 trds-border-neutral-200',
-        title: 'trds-text-neutral-500',
-      },
       info: {
-        root: 'trds-text-info-500 trds-bg-info-50 trds-border-info-200',
+        root: '[&>svg]:trds-text-info-500 trds-bg-info-50 trds-border-info-200',
         title: 'trds-text-info-500',
       },
       success: {
-        root: 'trds-text-success-500 trds-bg-success-50 trds-border-success-200',
+        root: '[&>svg]:trds-text-success-500 trds-bg-success-50 trds-border-success-200',
         title: 'trds-text-success-500',
       },
       warning: {
-        root: 'trds-text-warning-500 trds-bg-warning-50 trds-border-warning-200',
+        root: '[&>svg]:trds-text-warning-500 trds-bg-warning-50 trds-border-warning-200',
         title: 'trds-text-warning-500',
       },
       error: {
-        root: 'trds-text-error-500 trds-bg-error-50 trds-border-error-200',
+        root: '[&>svg]:trds-text-error-500 trds-bg-error-50 trds-border-error-200',
         title: 'trds-text-error-500',
       },
     },
   },
   defaultVariants: {
-    theme: 'neutral',
+    theme: 'info',
   },
 });
 
 type AlertProviderProps = {
-  theme: 'info' | 'success' | 'warning' | 'error' | 'neutral';
+  theme: 'info' | 'success' | 'warning' | 'error';
 };
 
 const [AlertProvider, useAlertContext] = createReactContext<{
-  theme: 'info' | 'success' | 'warning' | 'error' | 'neutral';
+  theme: 'info' | 'success' | 'warning' | 'error';
   classes: ReturnType<typeof alertVariants>;
 }>({
   name: 'alert',
   hookName: 'useAlertContext',
   providerName: 'AlertProvider',
   defaultValue: {
-    theme: 'neutral',
+    theme: 'info',
     classes: {} as ReturnType<typeof alertVariants>,
   },
 });

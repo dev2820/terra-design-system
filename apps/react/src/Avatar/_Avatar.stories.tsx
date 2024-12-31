@@ -77,7 +77,7 @@ export const ImageWithChildren = {
 export const Fallback = {
   args: {
     alt: 'dev2820',
-    fallback: <UserIcon size={40} className={'trds-bg-neutral-200'} />,
+    fallback: <UserIcon size={40} className={'trds-bg-grayscale-200'} />,
   },
   render: (props: AvatarProps) => {
     return <Avatar {...props} />;

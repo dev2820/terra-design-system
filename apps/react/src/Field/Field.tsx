@@ -17,7 +17,7 @@ export const fieldVariants = tv({
   slots: {
     root: 'trds-flex trds-flex-col trds-gap-1.5',
     label:
-      'trds-text-neutral-900 trds-font-medium trds-text-sm disabled:trds-text-muted',
+      'trds-text-grayscale-900 trds-font-medium trds-text-sm disabled:trds-text-muted',
     helperText:
       'trds-inline-flex trds-items-center trds-text-fg-description trds-gap-1 trds-text-sm disabled:trds-text-muted',
     errorText:

@@ -32,27 +32,27 @@ const badgeVariants = tv({
     {
       variant: 'filled',
       theme: 'primary',
-      class: 'trds-bg-primary-500 trds-text-fg-primary trds-border-primary',
+      class: 'trds-bg-primary-500 trds-text-white trds-border-primary',
     },
     {
       variant: 'filled',
       theme: 'error',
-      class: 'trds-bg-error trds-text-fg-error trds-border-error',
+      class: 'trds-bg-error trds-text-white trds-border-error',
     },
     {
       variant: 'filled',
       theme: 'warning',
-      class: 'trds-bg-warning trds-text-fg-warning trds-border-warning',
+      class: 'trds-bg-warning trds-text-white trds-border-warning',
     },
     {
       variant: 'filled',
       theme: 'success',
-      class: 'trds-bg-success trds-text-fg-success trds-border-success',
+      class: 'trds-bg-success trds-text-white trds-border-success',
     },
     {
       variant: 'filled',
       theme: 'info',
-      class: 'trds-bg-info trds-text-fg-info trds-border-info',
+      class: 'trds-bg-info trds-text-white trds-border-info',
     },
     /**
      * subtle
@@ -61,29 +61,29 @@ const badgeVariants = tv({
       variant: 'subtle',
       theme: 'primary',
       class:
-        'trds-bg-primary-light trds-text-primary trds-border-primary-light',
+        'trds-bg-primary-subtle trds-text-primary trds-border-primary-subtle',
     },
     {
       variant: 'subtle',
       theme: 'error',
-      class: 'trds-bg-error-light trds-text-error trds-border-error-light',
+      class: 'trds-bg-error-subtle trds-text-error trds-border-error-subtle',
     },
     {
       variant: 'subtle',
       theme: 'warning',
       class:
-        'trds-bg-warning-light trds-text-warning trds-border-warning-light',
+        'trds-bg-warning-subtle trds-text-warning trds-border-warning-subtle',
     },
     {
       variant: 'subtle',
       theme: 'success',
       class:
-        'trds-bg-success-light trds-text-success trds-border-success-light',
+        'trds-bg-success-subtle trds-text-success trds-border-success-subtle',
     },
     {
       variant: 'subtle',
       theme: 'info',
-      class: 'trds-bg-info-light trds-text-info trds-border-info-light',
+      class: 'trds-bg-info-subtle trds-text-info trds-border-info-subtle',
     },
 
     /**

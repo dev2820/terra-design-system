@@ -18,16 +18,17 @@ export const tooltipVariants = tv({
     content:
       'trds-rounded-md trds-shadow-sm trds-font-semibold trds-px-3 trds-py-2 trds-text-xs trds-max-w-40 trds-z-tooltip data-open:trds-animate-fade-in data-closed:trds-animate-fade-out',
     arrow: '[--arrow-size:8px]',
-    arrowTip: 'trds-border-neutral-800 trds-border-t-[1px] trds-border-l-[1px]',
+    arrowTip:
+      'trds-border-grayscale-800 trds-border-t-[1px] trds-border-l-[1px]',
     trigger: '',
     positioner: '',
   },
   variants: {
     theme: {
-      neutral: {
-        content: 'trds-bg-neutral-800 trds-text-white',
-        arrow: '[--arrow-background:var(--colors-neutral-800,#1f2937)]',
-        arrowTip: 'trds-border-neutral-800',
+      grayscale: {
+        content: 'trds-bg-grayscale-800 trds-text-white',
+        arrow: '[--arrow-background:var(--colors-grayscale-800,#1f2937)]',
+        arrowTip: 'trds-border-grayscale-800',
       },
       primary: {
         content: 'trds-bg-primary-500 trds-text-fg-primary',
@@ -37,7 +38,7 @@ export const tooltipVariants = tv({
     },
   },
   defaultVariants: {
-    theme: 'neutral',
+    theme: 'grayscale',
   },
 });
 
@@ -55,7 +56,7 @@ const [TooltipProvider, useTooltipContext] =
     },
   });
 
-export type RootProps = TooltipRootProps & { theme: 'neutral' | 'primary' };
+export type RootProps = TooltipRootProps & { theme: 'grayscale' | 'primary' };
 function Root(props: RootProps) {
   const { theme, children, closeDelay = 200, openDelay = 100, ...rest } = props;
   const classes = tooltipVariants({ theme });

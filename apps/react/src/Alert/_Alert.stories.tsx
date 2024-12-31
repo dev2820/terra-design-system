@@ -10,7 +10,6 @@ import {
 import { Alert, type AlertProps } from './index';
 
 const themes = [
-  'neutral',
   'info',
   'success',
   'error',
@@ -87,16 +86,6 @@ export const Theme = {
   render: (props: AlertProps['Root']) => {
     return (
       <>
-        <Alert.Root {...props} className={'trds-mb-4'} theme={'neutral'}>
-          <StarIcon size={20} />
-          <Alert.Title>Lorem ipsume</Alert.Title>
-          <Alert.Description>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book.
-          </Alert.Description>
-        </Alert.Root>
         <Alert.Root {...props} className={'trds-mb-4'} theme={'error'}>
           <AlertCircleIcon size={20} />
           <Alert.Title>Lorem ipsume</Alert.Title>

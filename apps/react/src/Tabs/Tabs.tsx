@@ -20,7 +20,7 @@ export const tabsVariant = tv({
     trigger: [
       'trds-inline-flex trds-items-center trds-text-fg-caption trds-cursor-pointer trds-flex-shrink-0 trds-font-semibold trds-gap-2 trds-justify-center',
       'trds-transition trds-duration-normal trds-transition-[color,background,border-color] trds-ease-default',
-      'trds-whitespace-nowrap trds-z-elevated data-disabled:trds-text-muted data-disabled:trds-cursor-not-allowed hover:trds-text-neutral-800 data-selected:trds-text-neutral-800 data-vertical:trds-justify-start',
+      'trds-whitespace-nowrap trds-z-elevated data-disabled:trds-text-muted data-disabled:trds-cursor-not-allowed hover:trds-text-grayscale-800 data-selected:trds-text-grayscale-800 data-vertical:trds-justify-start',
     ],
     content: '',
     indicator: '',
@@ -28,9 +28,9 @@ export const tabsVariant = tv({
   variants: {
     variant: {
       enclosed: {
-        list: 'trds-rounded-lg trds-border trds-border-boundary trds-px-1 trds-bg-layer1 dark:trds-bg-neutral-800 data-horizontal:trds-items-center data-vertical:trds-h-fit data-vertical:trds-py-1',
+        list: 'trds-rounded-lg trds-border trds-border-boundary trds-px-1 trds-bg-layer1 dark:trds-bg-grayscale-800 data-horizontal:trds-items-center data-vertical:trds-h-fit data-vertical:trds-py-1',
         indicator:
-          'trds-bg-white light:trds-bg-fg-caption dark:trds-bg-neutral-700 trds-shadow-md trds-rounded-lg trds-transition-duration-normal trds-h-[var(--height)] trds-w-[var(--width)]',
+          'trds-bg-white light:trds-bg-fg-caption dark:trds-bg-grayscale-700 trds-shadow-md trds-rounded-lg trds-transition-duration-normal trds-h-[var(--height)] trds-w-[var(--width)]',
       },
       line: {
         list: 'data-horizontal:trds-shadow-[0_-1px_0_0_inset_var(--colors-boundary, "9ca3af")] data-horizontal:trds-gap-4 data-vertical:trds-shadow-[1px_0_0_0_inset_var(--colors-boundary,"9ca3af")] data-vertical:trds-gap-1',

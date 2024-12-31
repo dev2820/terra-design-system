@@ -62,13 +62,13 @@ export const Variant = {
                 size="lg"
               />
             </Card.Header>
-            <Card.Content className="trds-text-neutral-500">
+            <Card.Content className="trds-text-grayscale-500">
               An adventurer at heart and a visionary by nature, Alex has
               journeyed through the unknown, bringing light to the darkest
               corners of the world.
             </Card.Content>
             <Card.Footer>
-              <span className="trds-text-md trds-font-bold trds-text-neutral-400">
+              <span className="trds-text-md trds-font-bold trds-text-grayscale-400">
                 - Meet Alex Winters
               </span>
             </Card.Footer>

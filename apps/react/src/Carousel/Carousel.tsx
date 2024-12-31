@@ -24,13 +24,13 @@ export const carouselVariants = tv({
     indicatorGroup:
       'trds-flex trds-flex-row trds-gap-2 trds-justify-center trds-items-center trds-mx-8',
     indicator:
-      'trds-w-2.5 trds-h-2.5 trds-rounded-full trds-bg-layer1 trds-cursor-pointer trds-duration-normal data-current:trds-bg-neutral-pressed data-readonly:trds-bg-muted data-readonly:trds-cursor-not-allowed',
+      'trds-w-2.5 trds-h-2.5 trds-rounded-full trds-bg-layer1 trds-cursor-pointer trds-duration-normal data-current:trds-bg-grayscale-pressed data-readonly:trds-bg-muted data-readonly:trds-cursor-not-allowed',
     control:
       'trds-w-full trds-px-4 trds-flex trds-flex-row trds-justify-center trds-items-center trds-mt-4',
     prevTrigger:
-      'trds-rounded-full trds-cursor-pointer trds-transition-colors trds-text-neutral enabled:hover:trds-text-neutral-hover enabled:active:trds-text-neutral-pressed disabled:trds-cursor-not-allowed disabled:trds-text-muted',
+      'trds-rounded-full trds-cursor-pointer trds-transition-colors trds-text-grayscale enabled:hover:trds-text-grayscale-hover enabled:active:trds-text-grayscale-pressed disabled:trds-cursor-not-allowed disabled:trds-text-muted',
     nextTrigger:
-      'trds-rounded-full trds-cursor-pointer trds-transition-colors trds-text-neutral enabled:hover:trds-text-neutral-hover enabled:active:trds-text-neutral-pressed disabled:trds-cursor-not-allowed disabled:trds-text-muted',
+      'trds-rounded-full trds-cursor-pointer trds-transition-colors trds-text-grayscale enabled:hover:trds-text-grayscale-hover enabled:active:trds-text-grayscale-pressed disabled:trds-cursor-not-allowed disabled:trds-text-muted',
   },
 });
 

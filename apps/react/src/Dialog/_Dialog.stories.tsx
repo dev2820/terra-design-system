@@ -54,7 +54,7 @@ export const Default = {
                 <Dialog.CloseTrigger asChild>
                   <Button
                     variant="outline"
-                    theme="neutral"
+                    theme="grayscale"
                     aria-label="Close Dialog"
                   >
                     Close

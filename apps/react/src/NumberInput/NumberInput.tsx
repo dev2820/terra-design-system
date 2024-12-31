@@ -12,10 +12,10 @@ import { tv, VariantProps } from '../tv';
 
 const trigger = [
   'trds-inline-flex trds-items-center trds-justify-center',
-  'trds-border-boundary trds-text-neutral-500 trds-cursor-pointer',
+  'trds-border-boundary trds-text-grayscale-500 trds-cursor-pointer',
   'trds-transition trds-duration-normal trds-transition-[background,border-color,color,box-shadow] trds-ease-default',
   '[&_:where(svg)]:trds-w-4 [&_:where(svg)]:trds-h-4',
-  'hover:trds-bg-layer1 hover:trds-text-neutral-500',
+  'hover:trds-bg-layer1 hover:trds-text-grayscale-500',
   'data-disabled:trds-bg-transparent data-disabled:trds-text-muted data-disabled:trds-opacity-50 data-disabled:trds-cursor-not-allowed',
 ];
 const numberInputVariants = tv({

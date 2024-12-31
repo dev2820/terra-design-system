@@ -25,7 +25,7 @@ export const selectVariant = tv({
     item: 'trds-flex trds-items-center trds-justify-between trds-rounded-md trds-cursor-pointer trds-transition-fast trds-transition-[background,color] trds-ease-default hover:trds-bg-layer1 hover:trds-text-black data-highlighted:trds-bg-layer1 data-highlighted:trds-text-black data-selected:trds-text-black data-disabled:trds-text-muted data-disabled:trds-cursor-not-allowed',
     itemGroupLabel: 'trds-font-semibold trds-text-sm',
     itemIndicator: 'trds-text-black',
-    label: 'trds-text-neutral-500 trds-font-medium',
+    label: 'trds-text-grayscale-500 trds-font-medium',
     trigger:
       'trds-appearance-none trds-inline-flex trds-items-center trds-justify-between trds-border-boundary trds-rounded-lg trds-cursor-pointer trds-text-fg-title trds-inline-flex trds-relative trds-outline-0 trds-transition trds-duration-normal trds-transition-[background,box-shadow,border-color] trds-ease-default trds-w-full trds-border-[1px] focus:trds-border-boundary focus:trds-shadow-[0_0_0_2px_var(--shadow-color)] focus:trds-shadow-primary-500 placeholder-shown:trds-text-fg-placeholder disabled:trds-text-muted disabled:trds-cursor-not-allowed disabled:[&_:where(svg)]:text-muted [&_:where(svg)]:text-subtle',
     control: '',

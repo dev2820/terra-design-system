@@ -3,7 +3,7 @@ import { EllipsisIcon, SearchIcon } from 'lucide-react';
 import { IconButton, IconButtonProps } from './IconButton';
 
 const sizes = ['xs', 'sm', 'md', 'lg'] as IconButtonProps['size'][];
-const colors = ['primary', 'neutral'] as IconButtonProps['theme'][];
+const colors = ['primary', 'grayscale'] as IconButtonProps['theme'][];
 const variants = ['filled', 'outline', 'ghost'] as IconButtonProps['variant'][];
 
 export default {
@@ -59,7 +59,7 @@ export const Variant = {
     return (
       <div className="trds-flex trds-flex-row trds-gap-4">
         {variants.map(variant => (
-          <IconButton variant={variant} theme="neutral" key={variant}>
+          <IconButton variant={variant} theme="grayscale" key={variant}>
             <SearchIcon size={20} />
           </IconButton>
         ))}

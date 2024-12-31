@@ -14,8 +14,8 @@ const linkVariants = tv({
   ],
   variants: {
     theme: {
-      neutral:
-        'trds-text-neutral-500 active:trds-text-neutral-800 hover:trds-text-neutral-700 trds-border-neutral-500',
+      grayscale:
+        'trds-text-grayscale-500 active:trds-text-grayscale-800 hover:trds-text-grayscale-700 trds-border-grayscale-500',
       primary:
         'trds-text-primary active:trds-text-primary-pressed hover:trds-text-primary-hover trds-border-primary',
     },

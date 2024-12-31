@@ -11,7 +11,7 @@ const buttonVariants = tv({
   base: [
     `${IDENTIFIER.scope} button`,
     'trds-inline-flex trds-justify-center trds-place-items-center trds-whitespace-nowrap trds-rounded-lg trds-text-md trds-font-medium trds-gap-2 trds-transition-colors trds-cursor-pointer',
-    'disabled:trds-cursor-not-allowed disabled:trds-opacity-50',
+    'disabled:trds-cursor-not-allowed disabled:trds-opacity-40',
   ],
   variants: {
     variant: {
@@ -21,9 +21,9 @@ const buttonVariants = tv({
     },
     theme: {
       primary: '',
-      neutral: '',
+      grayscale: '',
       whiteAlpha: '',
-      blackAlpha: '',
+      error: '',
     },
     size: {
       xs: 'trds-h-8 trds-px-2',
@@ -40,13 +40,13 @@ const buttonVariants = tv({
       theme: 'primary',
       variant: 'filled',
       class:
-        'trds-bg-primary trds-text-fg-primary disabled:trds-bg-primary hover:trds-bg-primary-hover enabled:active:trds-bg-primary-pressed',
+        'trds-bg-primary-500 trds-text-white disabled:trds-bg-primary enabled:hover:trds-bg-primary-600 enabled:active:trds-bg-primary-700',
     },
     {
-      theme: 'neutral',
+      theme: 'grayscale',
       variant: 'filled',
       class:
-        'trds-bg-neutral trds-text-fg-neutral disabled:trds-bg-neutral enabled:hover:trds-bg-neutral-hover enabled:active:trds-bg-neutral-pressed',
+        'trds-bg-grayscale-100 trds-text-grayscale-800 disabled:trds-bg-grayscale enabled:hover:trds-bg-grayscale-200 enabled:active:trds-bg-grayscale-300',
     },
     {
       theme: 'whiteAlpha',
@@ -55,22 +55,22 @@ const buttonVariants = tv({
         'trds-bg-whiteAlpha-500 trds-text-white disabled:trds-bg-whiteAlpha enabled:hover:trds-bg-whiteAlpha-600 enabled:active:trds-bg-whiteAlpha-700',
     },
     {
-      theme: 'blackAlpha',
+      theme: 'error',
       variant: 'filled',
       class:
-        'trds-bg-blackAlpha-500 trds-text-black disabled:trds-bg-blackAlpha enabled:hover:trds-bg-blackAlpha-600 enabled:active:trds-bg-blackAlpha-700',
+        'trds-bg-error-500 trds-text-white disabled:trds-bg-error enabled:hover:trds-bg-error-600 enabled:active:trds-bg-error-700',
     },
     {
       theme: 'primary',
       variant: 'outline',
       class:
-        'trds-bg-transparent trds-text-primary-500 trds-border-primary-500 enabled:hover:trds-bg-primary-100 enabled:active:trds-bg-primary-200',
+        'trds-bg-transparent trds-text-primary trds-border-primary enabled:hover:trds-bg-primary-100 enabled:active:trds-bg-primary-200',
     },
     {
-      theme: 'neutral',
+      theme: 'grayscale',
       variant: 'outline',
       class:
-        'trds-bg-transparent trds-text-neutral-500 trds-border-neutral-300 disabled:trds-bg-transparent enabled:hover:trds-bg-neutral-100 enabled:active:trds-bg-neutral-200',
+        'trds-bg-transparent trds-text-grayscale-800 trds-border-grayscale-300 disabled:trds-bg-transparent enabled:hover:trds-bg-grayscale-50 enabled:active:trds-bg-grayscale-100',
     },
     {
       theme: 'whiteAlpha',
@@ -79,10 +79,10 @@ const buttonVariants = tv({
         'trds-bg-transparent trds-text-white trds-border-whiteAlpha-300 disabled:trds-bg-transparent enabled:hover:trds-bg-whiteAlpha-100 enabled:active:trds-bg-whiteAlpha-200',
     },
     {
-      theme: 'blackAlpha',
+      theme: 'error',
       variant: 'outline',
       class:
-        'trds-bg-transparent trds-text-black trds-border-blackAlpha-300 disabled:trds-bg-transparent enabled:hover:trds-bg-blackAlpha-100 enabled:active:trds-bg-blackAlpha-200',
+        'trds-bg-transparent trds-text-black trds-border-error-300 disabled:trds-bg-transparent enabled:hover:trds-bg-error-100 enabled:active:trds-bg-error-200',
     },
     {
       theme: 'primary',
@@ -91,10 +91,10 @@ const buttonVariants = tv({
         'trds-bg-transparent trds-text-primary-500 disabled:trds-bg-transparent enabled:hover:trds-bg-primary-100 enabled:active:trds-bg-primary-200',
     },
     {
-      theme: 'neutral',
+      theme: 'grayscale',
       variant: 'ghost',
       class:
-        'trds-bg-transparent trds-text-neutral-500 disabled:trds-bg-transparent enabled:hover:trds-bg-neutral-100 enabled:active:trds-bg-neutral-200',
+        'trds-bg-transparent trds-text-grayscale-800 disabled:trds-bg-transparent enabled:hover:trds-bg-grayscale-50 enabled:active:trds-bg-grayscale-100',
     },
     {
       theme: 'whiteAlpha',
@@ -103,15 +103,15 @@ const buttonVariants = tv({
         'trds-bg-transparent trds-text-white disabled:trds-bg-transparent enabled:hover:trds-bg-whiteAlpha-100 enabled:active:trds-bg-whiteAlpha-200',
     },
     {
-      theme: 'blackAlpha',
+      theme: 'error',
       variant: 'ghost',
       class:
-        'trds-bg-transparent trds-text-black disabled:trds-bg-transparent enabled:hover:trds-bg-blackAlpha-100 enabled:active:trds-bg-blackAlpha-200',
+        'trds-bg-transparent trds-text-black disabled:trds-bg-transparent enabled:hover:trds-bg-error-100 enabled:active:trds-bg-error-200',
     },
   ],
   defaultVariants: {
     variant: 'filled',
-    theme: 'neutral',
+    theme: 'grayscale',
     size: 'md',
     loading: false,
   },

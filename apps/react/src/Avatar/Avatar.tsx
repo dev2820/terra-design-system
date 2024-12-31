@@ -18,8 +18,8 @@ const avatarVariants = tv({
   base: `${IDENTIFIER.scope} avatar`,
   slots: {
     root: 'trds-rounded-full trds-overflow-hidden',
-    fallback: 'trds-bg-muted',
-    image: 'trds-bg-muted',
+    fallback: 'trds-bg-muted-bg',
+    image: 'trds-bg-muted-bg',
   },
   variants: {
     size: {
