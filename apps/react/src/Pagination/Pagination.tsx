@@ -20,7 +20,7 @@ export const paginationVariants = tv({
     prevTrigger: '',
     nextTrigger: '',
     ellipsis:
-      'trds-inline-flex trds-items-center trds-text-grayscale-900 trds-font-semibold trds-px-2',
+      'trds-inline-flex trds-items-center trds-text-neutral-title trds-font-semibold trds-px-2',
   },
 });
 

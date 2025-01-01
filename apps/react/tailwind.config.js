@@ -3,6 +3,7 @@ import plugin from 'tailwindcss/plugin';
 import {
   colors as semanticColors,
   duration as semanticDuration,
+  opacity as semanticOpacity,
 } from 'theme/semanticToken';
 import { colors, duration, zIndex, keyframes, animations } from 'theme/token';
 
@@ -18,11 +19,13 @@ export default {
     extend: {
       colors: { ...semanticColors },
       duration: { ...semanticDuration },
+      opacity: { ...semanticOpacity },
       data: {
         open: 'state="open"',
         closed: 'state="closed"',
         checked: 'state="checked"',
         invalid: 'invalid',
+        focus: 'focus',
         indeterminate: 'state="indeterminate"',
         highlighted: 'highlighted',
         readonly: 'readonly',

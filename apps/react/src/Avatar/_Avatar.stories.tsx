@@ -3,9 +3,7 @@ import { UserIcon } from 'lucide-react';
 import { Avatar, type AvatarProps } from './index';
 
 const sizes = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'] as AvatarProps['size'][];
-/**
- * based on https://ark-ui.com/react/docs/components/avatar
- */
+
 export default {
   title: 'Components/Avatar',
   component: Avatar,
@@ -77,7 +75,7 @@ export const ImageWithChildren = {
 export const Fallback = {
   args: {
     alt: 'dev2820',
-    fallback: <UserIcon size={40} className={'trds-bg-grayscale-200'} />,
+    fallback: <UserIcon size={40} />,
   },
   render: (props: AvatarProps) => {
     return <Avatar {...props} />;

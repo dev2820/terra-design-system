@@ -1,11 +1,6 @@
-/**
- * api reference: https://ark-ui.com/react/docs/components/carousel
- *
- * TODO: Swipe event
- * Maybe change to https://www.embla-carousel.com/get-started/react/
- */
-import { ChevronLeftCircleIcon, ChevronRightCircleIcon } from 'lucide-react';
+import { ArrowLeftIcon, ArrowRightIcon } from 'lucide-react';
 
+import { IconButton } from '../IconButton';
 import { Carousel, type CarouselProps } from './index';
 
 export default {
@@ -46,16 +41,20 @@ export const Default = {
           </Carousel.ItemGroup>
         </Carousel.Viewport>
         <Carousel.Control>
-          <Carousel.PrevTrigger>
-            <ChevronLeftCircleIcon size={32} />
+          <Carousel.PrevTrigger asChild>
+            <IconButton theme="neutral" variant="outline" size="xs">
+              <ArrowLeftIcon size={20} />
+            </IconButton>
           </Carousel.PrevTrigger>
           <Carousel.IndicatorGroup>
             <Carousel.Indicator index={0}></Carousel.Indicator>
             <Carousel.Indicator index={1}></Carousel.Indicator>
             <Carousel.Indicator index={2}></Carousel.Indicator>
           </Carousel.IndicatorGroup>
-          <Carousel.NextTrigger>
-            <ChevronRightCircleIcon size={32} />
+          <Carousel.NextTrigger asChild>
+            <IconButton theme="neutral" variant="outline" size="xs">
+              <ArrowRightIcon size={20} />
+            </IconButton>
           </Carousel.NextTrigger>
         </Carousel.Control>
       </Carousel.Root>
@@ -85,16 +84,20 @@ export const Loop = {
           </Carousel.ItemGroup>
         </Carousel.Viewport>
         <Carousel.Control>
-          <Carousel.PrevTrigger>
-            <ChevronLeftCircleIcon size={32} />
+          <Carousel.PrevTrigger asChild>
+            <IconButton theme="neutral" variant="outline" size="xs">
+              <ArrowLeftIcon size={20} />
+            </IconButton>
           </Carousel.PrevTrigger>
           <Carousel.IndicatorGroup>
             <Carousel.Indicator index={0}></Carousel.Indicator>
             <Carousel.Indicator index={1}></Carousel.Indicator>
             <Carousel.Indicator index={2}></Carousel.Indicator>
           </Carousel.IndicatorGroup>
-          <Carousel.NextTrigger>
-            <ChevronRightCircleIcon size={32} />
+          <Carousel.NextTrigger asChild>
+            <IconButton theme="neutral" variant="outline" size="xs">
+              <ArrowRightIcon size={20} />
+            </IconButton>
           </Carousel.NextTrigger>
         </Carousel.Control>
       </Carousel.Root>
@@ -139,16 +142,20 @@ export const ObjectContain = {
           </Carousel.ItemGroup>
         </Carousel.Viewport>
         <Carousel.Control>
-          <Carousel.PrevTrigger>
-            <ChevronLeftCircleIcon size={32} />
+          <Carousel.PrevTrigger asChild>
+            <IconButton theme="neutral" variant="outline" size="xs">
+              <ArrowLeftIcon size={20} />
+            </IconButton>
           </Carousel.PrevTrigger>
           <Carousel.IndicatorGroup>
             <Carousel.Indicator index={0}></Carousel.Indicator>
             <Carousel.Indicator index={1}></Carousel.Indicator>
             <Carousel.Indicator index={2}></Carousel.Indicator>
           </Carousel.IndicatorGroup>
-          <Carousel.NextTrigger>
-            <ChevronRightCircleIcon size={32} />
+          <Carousel.NextTrigger asChild>
+            <IconButton theme="neutral" variant="outline" size="xs">
+              <ArrowRightIcon size={20} />
+            </IconButton>
           </Carousel.NextTrigger>
         </Carousel.Control>
       </Carousel.Root>
@@ -177,15 +184,19 @@ export const SlidesPerView = {
           </Carousel.ItemGroup>
         </Carousel.Viewport>
         <Carousel.Control>
-          <Carousel.PrevTrigger>
-            <ChevronLeftCircleIcon size={32} />
+          <Carousel.PrevTrigger asChild>
+            <IconButton theme="neutral" variant="outline" size="xs">
+              <ArrowLeftIcon size={20} />
+            </IconButton>
           </Carousel.PrevTrigger>
           <Carousel.IndicatorGroup>
             <Carousel.Indicator index={0}></Carousel.Indicator>
             <Carousel.Indicator index={1}></Carousel.Indicator>
           </Carousel.IndicatorGroup>
-          <Carousel.NextTrigger>
-            <ChevronRightCircleIcon size={32} />
+          <Carousel.NextTrigger asChild>
+            <IconButton theme="neutral" variant="outline" size="xs">
+              <ArrowRightIcon size={20} />
+            </IconButton>
           </Carousel.NextTrigger>
         </Carousel.Control>
       </Carousel.Root>
@@ -215,16 +226,20 @@ export const Spacing = {
           </Carousel.ItemGroup>
         </Carousel.Viewport>
         <Carousel.Control>
-          <Carousel.PrevTrigger>
-            <ChevronLeftCircleIcon size={32} />
+          <Carousel.PrevTrigger asChild>
+            <IconButton theme="neutral" variant="outline" size="xs">
+              <ArrowLeftIcon size={20} />
+            </IconButton>
           </Carousel.PrevTrigger>
           <Carousel.IndicatorGroup>
             <Carousel.Indicator index={0}></Carousel.Indicator>
             <Carousel.Indicator index={1}></Carousel.Indicator>
             <Carousel.Indicator index={2}></Carousel.Indicator>
           </Carousel.IndicatorGroup>
-          <Carousel.NextTrigger>
-            <ChevronRightCircleIcon size={32} />
+          <Carousel.NextTrigger asChild>
+            <IconButton theme="neutral" variant="outline" size="xs">
+              <ArrowRightIcon size={20} />
+            </IconButton>
           </Carousel.NextTrigger>
         </Carousel.Control>
       </Carousel.Root>

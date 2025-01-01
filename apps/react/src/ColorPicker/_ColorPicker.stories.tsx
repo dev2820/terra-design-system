@@ -45,7 +45,11 @@ export const Default = {
                     <Input className="trds-flex-1" />
                   </ColorPicker.ChannelInput>
                   <ColorPicker.Trigger asChild>
-                    <IconButton variant="outline" className="trds-flex-none">
+                    <IconButton
+                      variant="outline"
+                      theme="neutral"
+                      className="trds-flex-none"
+                    >
                       <ColorPicker.Swatch value={api.value} />
                     </IconButton>
                   </ColorPicker.Trigger>

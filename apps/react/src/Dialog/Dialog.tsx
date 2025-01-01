@@ -21,8 +21,8 @@ export const dialogVariants = tv({
       'trds-flex trds-items-center trds-justify-center trds-fixed trds-left-0 trds-top-0 trds-w-[100vw] trds-h-[100dvh] trds-overflow-auto trds-z-modal',
     content:
       'trds-bg-white trds-rounded-lg trds-shadow-lg trds-min-w-sm trds-relative trds-duration-normal data-open:trds-animate-dialog-in data-closed:trds-animate-dialog-out',
-    title: 'trds-text-fg-title trds-font-semibold trds-text-lg trds-mb-4',
-    description: 'trds-text-fg-description trds-text-sm trds-mb-4',
+    title: 'trds-text-neutral-title trds-font-semibold trds-text-lg trds-mb-4',
+    description: 'trds-text-neutral-description trds-text-sm trds-mb-4',
     trigger: '',
     closeTrigger: '',
   },

@@ -73,9 +73,9 @@ export const Theme = {
   render: () => {
     return (
       <div>
-        <Tooltip.Root theme="grayscale">
+        <Tooltip.Root theme="neutral">
           <Tooltip.Trigger className="trds-inline-flex trds-items-center trds-gap-1 trds-mr-4">
-            <InfoIcon size={16} /> grayscale (Default)
+            <InfoIcon size={16} /> neutral (Default)
           </Tooltip.Trigger>
           <Tooltip.Positioner>
             <Tooltip.Content>I am a Tooltip</Tooltip.Content>

@@ -65,7 +65,7 @@ export const Default = {
                   <Drawer.CloseTrigger asChild>
                     <Button
                       variant="outline"
-                      theme="grayscale"
+                      theme="neutral"
                       aria-label="Close Drawer"
                     >
                       Close
@@ -117,7 +117,7 @@ export const Variant = {
               <Drawer.CloseTrigger asChild>
                 <Button
                   variant="outline"
-                  theme="grayscale"
+                  theme="neutral"
                   aria-label="Close Drawer"
                 >
                   Close
@@ -167,7 +167,7 @@ export const VariantBottom = {
               <Drawer.CloseTrigger asChild>
                 <Button
                   variant="outline"
-                  theme="grayscale"
+                  theme="neutral"
                   aria-label="Close Drawer"
                 >
                   Close

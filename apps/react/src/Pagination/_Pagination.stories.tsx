@@ -43,7 +43,7 @@ export const Default = {
                       pagination.page === page.value ? true : undefined
                     }
                     theme={
-                      pagination.page === page.value ? 'primary' : 'grayscale'
+                      pagination.page === page.value ? 'primary' : 'neutral'
                     }
                   >
                     {page.value}
@@ -96,7 +96,7 @@ export const SibilingCount = {
                       pagination.page === page.value ? true : undefined
                     }
                     theme={
-                      pagination.page === page.value ? 'primary' : 'grayscale'
+                      pagination.page === page.value ? 'primary' : 'neutral'
                     }
                   >
                     {page.value}
@@ -130,7 +130,7 @@ export const LinkExample = {
     return (
       <Pagination.Root {...props}>
         <Pagination.PrevTrigger asChild>
-          <Link theme="grayscale">
+          <Link theme="neutral">
             <ChevronLeftIcon size={24} />
           </Link>
         </Pagination.PrevTrigger>
@@ -141,7 +141,7 @@ export const LinkExample = {
                 <Pagination.Item key={index} {...page} asChild>
                   <Link
                     theme={
-                      pagination.page === page.value ? 'primary' : 'grayscale'
+                      pagination.page === page.value ? 'primary' : 'neutral'
                     }
                     data-active={
                       pagination.page === page.value ? true : undefined
@@ -159,7 +159,7 @@ export const LinkExample = {
           }
         </Pagination.Context>
         <Pagination.NextTrigger asChild>
-          <Link theme="grayscale">
+          <Link theme="neutral">
             <ChevronRightIcon size={24} />
           </Link>
         </Pagination.NextTrigger>

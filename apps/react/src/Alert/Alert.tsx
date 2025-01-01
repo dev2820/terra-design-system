@@ -17,20 +17,20 @@ export const alertVariants = tv({
   variants: {
     theme: {
       info: {
-        root: '[&>svg]:trds-text-info-500 trds-bg-info-50 trds-border-info-200',
-        title: 'trds-text-info-500',
+        root: '[&>svg]:trds-text-info trds-bg-info-layer trds-border-info-boundary',
+        title: 'trds-text-info',
       },
       success: {
-        root: '[&>svg]:trds-text-success-500 trds-bg-success-50 trds-border-success-200',
-        title: 'trds-text-success-500',
+        root: '[&>svg]:trds-text-success trds-bg-success-layer trds-border-success-boundary',
+        title: 'trds-text-success',
       },
       warning: {
-        root: '[&>svg]:trds-text-warning-500 trds-bg-warning-50 trds-border-warning-200',
-        title: 'trds-text-warning-500',
+        root: '[&>svg]:trds-text-warning trds-bg-warning-layer trds-border-warning-boundary',
+        title: 'trds-text-warning',
       },
-      error: {
-        root: '[&>svg]:trds-text-error-500 trds-bg-error-50 trds-border-error-200',
-        title: 'trds-text-error-500',
+      danger: {
+        root: '[&>svg]:trds-text-danger trds-bg-danger-layer trds-border-danger-boundary',
+        title: 'trds-text-danger',
       },
     },
   },
@@ -40,11 +40,11 @@ export const alertVariants = tv({
 });
 
 type AlertProviderProps = {
-  theme: 'info' | 'success' | 'warning' | 'error';
+  theme: 'info' | 'success' | 'warning' | 'danger';
 };
 
 const [AlertProvider, useAlertContext] = createReactContext<{
-  theme: 'info' | 'success' | 'warning' | 'error';
+  theme: 'info' | 'success' | 'warning' | 'danger';
   classes: ReturnType<typeof alertVariants>;
 }>({
   name: 'alert',

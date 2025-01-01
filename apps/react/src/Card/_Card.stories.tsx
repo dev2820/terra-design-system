@@ -32,7 +32,7 @@ export const Default = {
       <Card.Root {...props}>
         <Card.Header>
           <Card.Title>Sign in</Card.Title>
-          <Card.Description>Welcome! Begin your journey here.</Card.Description>
+          <Card.Description>Welcome! Begin your journey here</Card.Description>
         </Card.Header>
         <Card.Content className="trds-flex trds-flex-col">
           <Input type="text" placeholder="your email" className="trds-mb-2" />
@@ -50,10 +50,12 @@ export const Default = {
 };
 
 export const Variant = {
-  args: {},
+  args: {
+    className: 'trds-w-64',
+  },
   render: (props: CardProps) => {
     return (
-      <div className="trds-flex trds-flex-row trds-gap-4">
+      <div className="trds-flex trds-flex-col trds-gap-4">
         {variants.map(variant => (
           <Card.Root variant={variant} key={variant} {...props}>
             <Card.Header>
@@ -62,13 +64,13 @@ export const Variant = {
                 size="lg"
               />
             </Card.Header>
-            <Card.Content className="trds-text-grayscale-500">
+            <Card.Content>
               An adventurer at heart and a visionary by nature, Alex has
               journeyed through the unknown, bringing light to the darkest
               corners of the world.
             </Card.Content>
             <Card.Footer>
-              <span className="trds-text-md trds-font-bold trds-text-grayscale-400">
+              <span className="trds-text-md trds-text-neutral-500">
                 - Meet Alex Winters
               </span>
             </Card.Footer>

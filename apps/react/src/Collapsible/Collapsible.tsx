@@ -15,16 +15,16 @@ import { tv } from '../tv';
 export const collapsibleVariants = tv({
   base: `${IDENTIFIER.scope} collapsible`,
   slots: {
-    root: 'trds-w-full trds-bg-white trds-rounded-md',
+    root: 'trds-w-full',
     trigger: [
       'trds-w-full trds-h-10 trds-px-4 trds-cursor-pointer',
-      'data-[disabled]:trds-opacity-40 data-[disabled]:trds-cursor-not-allowed',
+      'data-[disabled]:trds-opacity-muted data-[disabled]:trds-cursor-not-allowed',
       '[&>svg]:trds-origin-center [&>svg]:trds-duration-normal [&>svg]:trds-transition-all [&[data-state="open"]>svg]:-trds-rotate-180',
     ],
     content: [
       'trds-px-4 trds-border-t trds-border-boundary trds-overflow-hidden',
       'data-open:trds-animate-collapse-in data-closed:trds-animate-collapse-out',
-      'data-[disabled]:trds-opacity-40 data-[disabled]:trds-cursor-not-allowed',
+      'data-disabled:trds-opacity-muted data-disabled:trds-cursor-not-allowed',
     ],
   },
 });

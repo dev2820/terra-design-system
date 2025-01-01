@@ -26,7 +26,7 @@ export function Slot(props: HTMLAttributes<HTMLElement>) {
         ...props.style,
         ...child.props.style,
       },
-      className: cx(props.className, child.props.className),
+      className: cx(child.props.className, props.className),
     });
   }
   return null;

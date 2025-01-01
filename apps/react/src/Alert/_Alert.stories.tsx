@@ -12,7 +12,7 @@ import { Alert, type AlertProps } from './index';
 const themes = [
   'info',
   'success',
-  'error',
+  'danger',
   'warning',
 ] as AlertProps['Root']['theme'][];
 
@@ -86,7 +86,7 @@ export const Theme = {
   render: (props: AlertProps['Root']) => {
     return (
       <>
-        <Alert.Root {...props} className={'trds-mb-4'} theme={'error'}>
+        <Alert.Root {...props} className={'trds-mb-4'} theme={'danger'}>
           <AlertCircleIcon size={20} />
           <Alert.Title>Lorem ipsume</Alert.Title>
           <Alert.Description>

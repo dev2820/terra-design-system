@@ -12,10 +12,10 @@ import { tv, VariantProps } from '../tv';
 
 const trigger = [
   'trds-inline-flex trds-items-center trds-justify-center',
-  'trds-border-boundary trds-text-grayscale-500 trds-cursor-pointer',
+  'trds-border-boundary trds-text-neutral-500 trds-cursor-pointer',
   'trds-transition trds-duration-normal trds-transition-[background,border-color,color,box-shadow] trds-ease-default',
   '[&_:where(svg)]:trds-w-4 [&_:where(svg)]:trds-h-4',
-  'hover:trds-bg-layer1 hover:trds-text-grayscale-500',
+  'hover:trds-bg-layer1 hover:trds-text-neutral-500',
   'data-disabled:trds-bg-transparent data-disabled:trds-text-muted data-disabled:trds-opacity-50 data-disabled:trds-cursor-not-allowed',
 ];
 const numberInputVariants = tv({
@@ -23,7 +23,7 @@ const numberInputVariants = tv({
   slots: {
     root: 'trds-flex trds-flex-col trds-gap-1.5',
     control:
-      'trds-border trds-border-boundary trds-rounded-lg trds-grid trds-divide-x-[1px] trds-grid-cols-[1fr_32px] trds-grid-rows-[1fr_1fr] trds-overflow-hidden trds-transition trds-duration-normal trds-transition-[border-color,box-shadow] trds-ease-default focus-within:trds-border-primary-500 focus-within:trds-shadow-[0_0_0_1px_var(--shadow-color)] focus-within:trds-shadow-primary-500',
+      'trds-border trds-border-boundary trds-rounded-lg trds-grid trds-divide-x-[1px] trds-grid-cols-[1fr_32px] trds-grid-rows-[1fr_1fr] trds-overflow-hidden trds-transition trds-duration-normal trds-transition-[border-color,box-shadow] trds-ease-default focus-within:trds-border-primary focus-within:trds-shadow-[0_0_0_1px_var(--shadow-color)] focus-within:trds-shadow-primary',
     input:
       'trds-bg-transparent trds-border-none trds-row-span-2 trds-outline-none trds-w-full placeholder:trds-text-placeholder disabled:trds-cursor-not-allowed disabled:trds-opacity-50',
     incrementTrigger: [...trigger, 'trds-border-b'],
@@ -32,7 +32,7 @@ const numberInputVariants = tv({
   variants: {
     invalid: {
       true: {
-        control: 'trds-border-error-500',
+        control: 'trds-border-danger-500',
       },
     },
     size: {

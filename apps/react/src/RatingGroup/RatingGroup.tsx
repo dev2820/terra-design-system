@@ -23,7 +23,7 @@ export const ratingGroupVariant = tv({
     root: 'trds-flex trds-flex-col trds-gap-1.5 trds-text-primary',
     control: 'trds-flex',
     label: '',
-    item: 'trds-cursor-pointer trds-transition trds-duration-normal trds-transition-[color,fill] trds-ease-default trds-fill-transparent data-highlighted:trds-fill-current focus-visible:trds-outline-none data-disabled:trds-cursor-not-allowed data-disabled:trds-opacity-40',
+    item: 'trds-cursor-pointer trds-transition trds-duration-normal trds-transition-[color,fill] trds-ease-default trds-fill-transparent data-highlighted:trds-fill-current focus-visible:trds-outline-none data-disabled:trds-cursor-not-allowed data-disabled:trds-opacity-muted',
   },
 
   variants: {

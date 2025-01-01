@@ -2,7 +2,7 @@ import { Badge, type BadgeProps } from './index';
 
 const themes = [
   'primary',
-  'error',
+  'danger',
   'warning',
   'info',
   'success',

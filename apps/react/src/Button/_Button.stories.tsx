@@ -5,9 +5,9 @@ import { Button, ButtonProps } from './Button';
 const sizes = ['xs', 'sm', 'md', 'lg'] as ButtonProps['size'][];
 const colors = [
   'primary',
-  'grayscale',
+  'neutral',
   'whiteAlpha',
-  'error',
+  'danger',
 ] as ButtonProps['theme'][];
 const variants = ['filled', 'outline', 'ghost'] as ButtonProps['variant'][];
 
@@ -60,7 +60,7 @@ export const Variant = {
     return (
       <div className="trds-flex trds-flex-row trds-gap-4">
         {variants.map(variant => (
-          <Button variant={variant} theme="grayscale" key={variant}>
+          <Button variant={variant} theme="neutral" key={variant}>
             Click me
           </Button>
         ))}

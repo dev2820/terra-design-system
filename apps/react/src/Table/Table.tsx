@@ -12,11 +12,11 @@ export const tableVariant = tv({
     root: 'trds-caption-bottom trds-w-full',
     body: '[&_tr:last-child]:trds-border-b-0',
     caption: 'trds-text-fg-caption',
-    cell: 'trds-align-middle trds-text-fg-description',
+    cell: 'trds-align-middle trds-text-neutral-description',
     footer:
       'trds-font-medium trds-border-t trds-border-boundary [&_tr:last-child]:trds-border-b-0',
     header:
-      'trds-text-fg-title trds-font-medium trds-text-left trds-align-middle',
+      'trds-text-neutral-title trds-font-medium trds-text-left trds-align-middle',
     head: 'trds-align-middle',
     row: 'trds-border-b trds-border-boundary trds-transition trds-duration-normal trds-transition-[background,color] trds-ease-default',
   },

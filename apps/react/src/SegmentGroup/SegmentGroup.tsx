@@ -22,7 +22,7 @@ export const segmentGroupVariant = tv({
     root: 'trds-flex trds-items-start trds-border-boundary data-horizontal:trds-flex-row data-vertical:trds-flex-col data-horizontal:trds-gap-4 data-vertical:trds-gap-1 data-horizontal:trds-border-b-[1px] data-vertical:trds-border-l-[1px]',
     indicator:
       'trds-border-primary data-horizontal:trds-bottom-0 data-horizontal:trds-border-b-[2px] data-horizontal:trds-translate-y-[1px] data-horizontal:trds-w-[var(--width)] data-vertical:trds-border-l-[2px] data-vertical:trds-h-[var(--height)] data-vertical:trds-translate-x-[-1px]',
-    item: 'trds-text-caption trds-cursor-pointer trds-font-normal trds-transition trds-duration-normal trds-transition-[color] trds-ease-default hover:trds-text-grayscale-700 data-checked:trds-font-semibold data-checked:trds-text-fg-highlight hover:trds-text-fg-highlight data-disabled:trds-text-muted data-disabled:trds-cursor-not-allowed data-horizontal:trds-px-1 data-vertical:trds-px-3 data-horizontal:trds-pb-3 data-vertical:trds-py-1.5',
+    item: 'trds-text-caption trds-cursor-pointer trds-font-normal trds-transition trds-duration-normal trds-transition-[color] trds-ease-default hover:trds-text-neutral-700 data-checked:trds-font-semibold data-checked:trds-text-fg-highlight hover:trds-text-fg-highlight data-disabled:trds-text-muted data-disabled:trds-cursor-not-allowed data-horizontal:trds-px-1 data-vertical:trds-px-3 data-horizontal:trds-pb-3 data-vertical:trds-py-1.5',
     itemControl: '',
     itemText: '',
   },

@@ -23,8 +23,8 @@ export const fileUploadVariant = tv({
     item: 'trds-grid trds-grid-cols-[auto_1fr_auto] [grid-template-areas:"preview_name_delete""preview_size_delete"] trds-bg-white trds-rounded-md trds-border trds-border-boundary trds-gap-x-3 trds-p-4 trds-animate-fade-in',
     itemGroup: 'trds-flex trds-flex-col trds-gap-3',
     itemName:
-      'trds-text-fg-title trds-font-medium trds-text-sm [grid-area:name]',
-    itemSizeText: 'trds-text-fg-description trds-text-sm [grid-area:size]',
+      'trds-text-neutral-title trds-font-medium trds-text-sm [grid-area:name]',
+    itemSizeText: 'trds-text-neutral-description trds-text-sm [grid-area:size]',
     itemDeleteTrigger: 'trds-self-start [grid-area:delete]',
     itemPreview: '[grid-area:preview]',
     itemPreviewImage:

@@ -29,7 +29,7 @@ export const Theme = {
   render: (props: LinkProps) => {
     return (
       <div className="trds-flex trds-flex-col trds-gap-4">
-        <Link {...props} theme="grayscale">
+        <Link {...props} theme="neutral">
           Github
         </Link>
         <Link {...props} theme="primary">

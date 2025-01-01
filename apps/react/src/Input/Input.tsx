@@ -17,7 +17,7 @@ const inputVariants = tv({
   ],
   variants: {
     invalid: {
-      true: 'trds-border-error',
+      true: 'trds-border-danger',
     },
   },
 });

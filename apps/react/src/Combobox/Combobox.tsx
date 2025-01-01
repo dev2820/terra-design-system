@@ -22,12 +22,13 @@ export const comboboxVariant = tv({
       'trds-absolute trds-bottom-0 trds-right-0 trds-top-0 trds-text-muted trds-cursor-pointer',
     clearTrigger:
       'trds-absolute trds-bottom-0 trds-right-8 trds-top-0 trds-text-muted trds-cursor-pointer',
-    input: 'trds-w-full',
+    input:
+      'trds-w-full trds-bg-layer-input trds-caret-caret trds-text-fg-input trds-border-boundary-input',
     content:
-      'trds-bg-white trds-rounded-lg trds-shadow-lg trds-flex trds-flex-col trds-z-dropdown data-hidden:trds-hidden data-open:trds-animate-fade-in data-closed:trds-animate-fade-out focus-visible:trds-outline-2 focus-visible:trds-outline-solid focus-visible:trds-outline-boundary focus-visible:trds-outline-offset-2',
-    item: 'trds-flex trds-items-center trds-justify-between trds-rounded-md trds-cursor-pointer trds-transition-fast trds-transition-[background,color] trds-ease-default hover:trds-bg-layer1 data-highlighted:trds-bg-layer1 disabled:trds-text-muted disabled:trds-cursor-not-allowed disabled:hover:trds-bg-transparent disabled:hover:trds-text-muted',
+      'trds-bg-layer-popover trds-text-fg-popover trds-rounded-lg trds-shadow-lg trds-flex trds-flex-col trds-z-dropdown data-hidden:trds-hidden data-open:trds-animate-fade-in data-closed:trds-animate-fade-out focus-visible:trds-outline-2 focus-visible:trds-outline-solid focus-visible:trds-outline-boundary focus-visible:trds-outline-offset-2',
+    item: 'trds-flex trds-items-center trds-justify-between trds-rounded-md trds-cursor-pointer trds-transition-fast trds-transition-[background,color] trds-duration-normal trds-ease-default data-highlighted:trds-bg-layer-hover disabled:trds-text-fg-muted disabled:trds-cursor-not-allowed disabled:hover:trds-bg-transparent disabled:hover:trds-text-fg-muted',
     itemGroupLabel: 'trds-font-semibold trds-text-sm',
-    itemIndicator: 'trds-text-black',
+    itemIndicator: 'trds-text-fg-indicator',
     itemText: '',
     itemGroup: '',
     positioner: '',
@@ -110,7 +111,7 @@ const Control = forwardRef<
   ElementRef<typeof Combobox.Control>,
   ComponentPropsWithoutRef<typeof Combobox.Control>
 >(function (props, ref) {
-  const { className, children, ...rest } = props;
+  const { className, ...rest } = props;
   const { classes } = useComboboxContext();
 
   return (
@@ -118,9 +119,7 @@ const Control = forwardRef<
       className={cx(classes.control(), className)}
       ref={ref}
       {...rest}
-    >
-      {children}
-    </Combobox.Control>
+    />
   );
 });
 export type ContentProps = ComponentProps<typeof Content>;
@@ -128,7 +127,7 @@ const Content = forwardRef<
   ElementRef<typeof Combobox.Content>,
   ComponentPropsWithoutRef<typeof Combobox.Content>
 >(function (props, ref) {
-  const { className, children, ...rest } = props;
+  const { className, ...rest } = props;
   const { classes } = useComboboxContext();
 
   return (
@@ -136,9 +135,7 @@ const Content = forwardRef<
       className={cx(classes.content(), className)}
       ref={ref}
       {...rest}
-    >
-      {children}
-    </Combobox.Content>
+    />
   );
 });
 
@@ -147,7 +144,7 @@ const Input = forwardRef<
   ElementRef<typeof Combobox.Input>,
   ComponentPropsWithoutRef<typeof Combobox.Input>
 >(function (props, ref) {
-  const { className, children, ...rest } = props;
+  const { className, ...rest } = props;
   const { classes } = useComboboxContext();
 
   return (
@@ -155,9 +152,7 @@ const Input = forwardRef<
       className={cx(classes.input(), className)}
       ref={ref}
       {...rest}
-    >
-      {children}
-    </Combobox.Input>
+    />
   );
 });
 
@@ -166,7 +161,7 @@ const Positioner = forwardRef<
   ElementRef<typeof Combobox.Positioner>,
   ComponentPropsWithoutRef<typeof Combobox.Positioner>
 >(function (props, ref) {
-  const { className, children, ...rest } = props;
+  const { className, ...rest } = props;
   const { classes } = useComboboxContext();
 
   return (
@@ -174,9 +169,7 @@ const Positioner = forwardRef<
       className={cx(classes.positioner(), className)}
       ref={ref}
       {...rest}
-    >
-      {children}
-    </Combobox.Positioner>
+    />
   );
 });
 
@@ -185,7 +178,7 @@ const Trigger = forwardRef<
   ElementRef<typeof Combobox.Trigger>,
   ComponentPropsWithoutRef<typeof Combobox.Trigger>
 >(function (props, ref) {
-  const { className, children, ...rest } = props;
+  const { className, ...rest } = props;
   const { classes } = useComboboxContext();
 
   return (
@@ -193,9 +186,7 @@ const Trigger = forwardRef<
       className={cx(classes.trigger(), className)}
       ref={ref}
       {...rest}
-    >
-      {children}
-    </Combobox.Trigger>
+    />
   );
 });
 
@@ -204,7 +195,7 @@ const ClearTrigger = forwardRef<
   ElementRef<typeof Combobox.ClearTrigger>,
   ComponentPropsWithoutRef<typeof Combobox.ClearTrigger>
 >(function (props, ref) {
-  const { className, children, ...rest } = props;
+  const { className, ...rest } = props;
   const { classes } = useComboboxContext();
 
   return (
@@ -212,9 +203,7 @@ const ClearTrigger = forwardRef<
       className={cx(classes.clearTrigger(), className)}
       ref={ref}
       {...rest}
-    >
-      {children}
-    </Combobox.ClearTrigger>
+    />
   );
 });
 
@@ -223,7 +212,7 @@ const ItemGroupLabel = forwardRef<
   ElementRef<typeof Combobox.ItemGroupLabel>,
   ComponentPropsWithoutRef<typeof Combobox.ItemGroupLabel>
 >(function (props, ref) {
-  const { className, children, ...rest } = props;
+  const { className, ...rest } = props;
   const { classes } = useComboboxContext();
 
   return (
@@ -231,9 +220,7 @@ const ItemGroupLabel = forwardRef<
       className={cx(classes.itemGroupLabel(), className)}
       ref={ref}
       {...rest}
-    >
-      {children}
-    </Combobox.ItemGroupLabel>
+    />
   );
 });
 
@@ -242,7 +229,7 @@ const ItemGroup = forwardRef<
   ElementRef<typeof Combobox.ItemGroup>,
   ComponentPropsWithoutRef<typeof Combobox.ItemGroup>
 >(function (props, ref) {
-  const { className, children, ...rest } = props;
+  const { className, ...rest } = props;
   const { classes } = useComboboxContext();
 
   return (
@@ -250,9 +237,7 @@ const ItemGroup = forwardRef<
       className={cx(classes.itemGroup(), className)}
       ref={ref}
       {...rest}
-    >
-      {children}
-    </Combobox.ItemGroup>
+    />
   );
 });
 export type ItemTextProps = ComponentProps<typeof ItemText>;
@@ -260,7 +245,7 @@ const ItemText = forwardRef<
   ElementRef<typeof Combobox.ItemText>,
   ComponentPropsWithoutRef<typeof Combobox.ItemText>
 >(function (props, ref) {
-  const { className, children, ...rest } = props;
+  const { className, ...rest } = props;
   const { classes } = useComboboxContext();
 
   return (
@@ -268,9 +253,7 @@ const ItemText = forwardRef<
       className={cx(classes.itemText(), className)}
       ref={ref}
       {...rest}
-    >
-      {children}
-    </Combobox.ItemText>
+    />
   );
 });
 export type ItemIndicatorProps = ComponentProps<typeof ItemIndicator>;
@@ -297,7 +280,7 @@ const Item = forwardRef<
   ElementRef<typeof Combobox.Item>,
   ComponentPropsWithoutRef<typeof Combobox.Item>
 >(function (props, ref) {
-  const { className, children, ...rest } = props;
+  const { className, ...rest } = props;
   const { classes } = useComboboxContext();
 
   return (
@@ -305,9 +288,7 @@ const Item = forwardRef<
       className={cx(classes.item(), className)}
       ref={ref}
       {...rest}
-    >
-      {children}
-    </Combobox.Item>
+    />
   );
 });
 

@@ -1,5 +1,17 @@
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/variable/pretendardvariable.css');
 
+:root {
+  --my-colors-layer-popover: #363636;
+  --my-colors-layer-trigger: #484848;
+  --my-colors-layer-input: #484848;
+  --my-colors-caret: white;
+  --my-colors-fg-input: white;
+  --my-colors-fg-popover: white;
+  --my-colors-layer-hover: #484848;
+  --my-colors-fg-indicator: white;
+  --my-colors-boundary-swatch: #484848;
+  --my-colors-boundary-input: #565656;
+}
 body {
   font-family: 'Pretendard Variable';
 }

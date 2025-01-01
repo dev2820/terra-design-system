@@ -20,7 +20,7 @@ export const Default = {
   args: {},
   render: (props: CollapsibleProps['root']) => {
     return (
-      <div className="trds-w-[600px] trds-h-[500px]">
+      <div className="trds-w-[500px] trds-h-[500px]">
         <Collapsible.Root {...props}>
           <Collapsible.Trigger className="trds-flex trds-items-center trds-justify-between">
             <span>Loream Ipsume</span>
@@ -52,7 +52,7 @@ export const Disabled = {
   },
   render: (props: CollapsibleProps['root']) => {
     return (
-      <div className="trds-w-[600px] trds-h-[500px]">
+      <div className="trds-w-[500px] trds-h-[500px]">
         <Collapsible.Root {...props}>
           <Collapsible.Trigger className="trds-flex trds-items-center trds-justify-between">
             <span>Loream Ipsume</span>

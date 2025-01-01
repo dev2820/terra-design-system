@@ -14,19 +14,19 @@ export const cardVariants = tv({
     content: 'trds-px-6 trds-pb-6',
     footer: 'trds-px-6 trds-pb-6',
     title:
-      'trds-text-fg-title trds-leading-normal trds-font-bold trds-text-2xl',
-    description: 'trds-text-fg-description trds-text-lg',
+      'trds-text-neutral-title trds-leading-normal trds-font-bold trds-text-2xl',
+    description: 'trds-text-neutral-description trds-text-md',
   },
   variants: {
     variant: {
       elevated: {
-        root: 'trds-shadow-md',
+        root: 'trds-bg-layer-card trds-shadow-md',
       },
       filled: {
-        root: 'trds-bg-layer1',
+        root: 'trds-bg-layer-fill',
       },
       outline: {
-        root: 'trds-border trds-border-boundary',
+        root: 'trds-bg-transparent trds-border trds-border-boundary',
       },
     },
   },
