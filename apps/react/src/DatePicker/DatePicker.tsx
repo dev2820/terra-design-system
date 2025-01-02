@@ -65,7 +65,7 @@ const Root = forwardRef<
   ComponentPropsWithoutRef<typeof DatePicker.Root> &
     VariantProps<typeof datePickerVariants>
 >(function (props, ref) {
-  const { children, className, ...rest } = props;
+  const { className, ...rest } = props;
   const classes = datePickerVariants();
   const ctx = {
     classes,
@@ -77,12 +77,11 @@ const Root = forwardRef<
         className={cx(classes.root(), className)}
         ref={ref}
         {...rest}
-      >
-        {children}
-      </DatePicker.Root>
+      />
     </DatePickerProvider>
   );
 });
+Root.displayName = 'DatePicker.Root';
 
 export type ControlProps = ComponentProps<typeof Control>;
 const Control = forwardRef<
@@ -90,18 +89,17 @@ const Control = forwardRef<
   ComponentPropsWithoutRef<typeof DatePicker.Control>
 >(function (props, ref) {
   const { classes } = useDatePickerContext();
-  const { children, className, ...rest } = props;
+  const { className, ...rest } = props;
 
   return (
     <DatePicker.Control
       className={cx(classes.control(), className)}
       ref={ref}
       {...rest}
-    >
-      {children}
-    </DatePicker.Control>
+    />
   );
 });
+Control.displayName = 'DatePicker.Control';
 
 export type TriggerProps = ComponentProps<typeof Trigger>;
 const Trigger = forwardRef<
@@ -109,18 +107,17 @@ const Trigger = forwardRef<
   ComponentPropsWithoutRef<typeof DatePicker.Trigger>
 >(function (props, ref) {
   const { classes } = useDatePickerContext();
-  const { children, className, ...rest } = props;
+  const { className, ...rest } = props;
 
   return (
     <DatePicker.Trigger
       className={cx(classes.trigger(), className)}
       ref={ref}
       {...rest}
-    >
-      {children}
-    </DatePicker.Trigger>
+    />
   );
 });
+Trigger.displayName = 'DatePicker.Trigger';
 
 export type ClearTriggerProps = ComponentProps<typeof ClearTrigger>;
 const ClearTrigger = forwardRef<
@@ -128,18 +125,17 @@ const ClearTrigger = forwardRef<
   ComponentPropsWithoutRef<typeof DatePicker.ClearTrigger>
 >(function (props, ref) {
   const { classes } = useDatePickerContext();
-  const { children, className, ...rest } = props;
+  const { className, ...rest } = props;
 
   return (
     <DatePicker.ClearTrigger
       className={cx(classes.clearTrigger(), className)}
       ref={ref}
       {...rest}
-    >
-      {children}
-    </DatePicker.ClearTrigger>
+    />
   );
 });
+ClearTrigger.displayName = 'DatePicker.ClearTrigger';
 
 export type PositionerProps = ComponentProps<typeof Positioner>;
 const Positioner = forwardRef<
@@ -147,18 +143,17 @@ const Positioner = forwardRef<
   ComponentPropsWithoutRef<typeof DatePicker.Positioner>
 >(function (props, ref) {
   const { classes } = useDatePickerContext();
-  const { children, className, ...rest } = props;
+  const { className, ...rest } = props;
 
   return (
     <DatePicker.Positioner
       className={cx(classes.positioner(), className)}
       ref={ref}
       {...rest}
-    >
-      {children}
-    </DatePicker.Positioner>
+    />
   );
 });
+Positioner.displayName = 'DatePicker.Positioner';
 
 export type ContentProps = ComponentProps<typeof Content>;
 const Content = forwardRef<
@@ -166,18 +161,17 @@ const Content = forwardRef<
   ComponentPropsWithoutRef<typeof DatePicker.Content>
 >(function (props, ref) {
   const { classes } = useDatePickerContext();
-  const { children, className, ...rest } = props;
+  const { className, ...rest } = props;
 
   return (
     <DatePicker.Content
       className={cx(classes.content(), className)}
       ref={ref}
       {...rest}
-    >
-      {children}
-    </DatePicker.Content>
+    />
   );
 });
+Content.displayName = 'DatePicker.Content';
 
 export type ViewProps = ComponentProps<typeof View>;
 const View = forwardRef<
@@ -185,18 +179,17 @@ const View = forwardRef<
   ComponentPropsWithoutRef<typeof DatePicker.View>
 >(function (props, ref) {
   const { classes } = useDatePickerContext();
-  const { children, className, ...rest } = props;
+  const { className, ...rest } = props;
 
   return (
     <DatePicker.View
       className={cx(classes.view(), className)}
       ref={ref}
       {...rest}
-    >
-      {children}
-    </DatePicker.View>
+    />
   );
 });
+View.displayName = 'DatePicker.View';
 
 export type ViewControlProps = ComponentProps<typeof ViewControl>;
 const ViewControl = forwardRef<
@@ -204,18 +197,17 @@ const ViewControl = forwardRef<
   ComponentPropsWithoutRef<typeof DatePicker.ViewControl>
 >(function (props, ref) {
   const { classes } = useDatePickerContext();
-  const { children, className, ...rest } = props;
+  const { className, ...rest } = props;
 
   return (
     <DatePicker.ViewControl
       className={cx(classes.viewControl(), className)}
       ref={ref}
       {...rest}
-    >
-      {children}
-    </DatePicker.ViewControl>
+    />
   );
 });
+ViewControl.displayName = 'DatePicker.ViewControl';
 
 export type PrevTriggerProps = ComponentProps<typeof PrevTrigger>;
 const PrevTrigger = forwardRef<
@@ -223,18 +215,17 @@ const PrevTrigger = forwardRef<
   ComponentPropsWithoutRef<typeof DatePicker.PrevTrigger>
 >(function (props, ref) {
   const { classes } = useDatePickerContext();
-  const { children, className, ...rest } = props;
+  const { className, ...rest } = props;
 
   return (
     <DatePicker.PrevTrigger
       className={cx(classes.prevTrigger(), className)}
       ref={ref}
       {...rest}
-    >
-      {children}
-    </DatePicker.PrevTrigger>
+    />
   );
 });
+PrevTrigger.displayName = 'DatePicker.PrevTrigger';
 
 export type NextTriggerProps = ComponentProps<typeof NextTrigger>;
 const NextTrigger = forwardRef<
@@ -242,18 +233,17 @@ const NextTrigger = forwardRef<
   ComponentPropsWithoutRef<typeof DatePicker.NextTrigger>
 >(function (props, ref) {
   const { classes } = useDatePickerContext();
-  const { children, className, ...rest } = props;
+  const { className, ...rest } = props;
 
   return (
     <DatePicker.NextTrigger
       className={cx(classes.nextTrigger(), className)}
       ref={ref}
       {...rest}
-    >
-      {children}
-    </DatePicker.NextTrigger>
+    />
   );
 });
+NextTrigger.displayName = 'DatePicker.NextTrigger';
 
 export type ViewTriggerProps = ComponentProps<typeof ViewTrigger>;
 const ViewTrigger = forwardRef<
@@ -261,18 +251,17 @@ const ViewTrigger = forwardRef<
   ComponentPropsWithoutRef<typeof DatePicker.ViewTrigger>
 >(function (props, ref) {
   const { classes } = useDatePickerContext();
-  const { children, className, ...rest } = props;
+  const { className, ...rest } = props;
 
   return (
     <DatePicker.ViewTrigger
       className={cx(classes.viewTrigger(), className)}
       ref={ref}
       {...rest}
-    >
-      {children}
-    </DatePicker.ViewTrigger>
+    />
   );
 });
+ViewTrigger.displayName = 'DatePicker.ViewTrigger';
 
 export type TableProps = ComponentProps<typeof Table>;
 const Table = forwardRef<
@@ -280,18 +269,17 @@ const Table = forwardRef<
   ComponentPropsWithoutRef<typeof DatePicker.Table>
 >(function (props, ref) {
   const { classes } = useDatePickerContext();
-  const { children, className, ...rest } = props;
+  const { className, ...rest } = props;
 
   return (
     <DatePicker.Table
       className={cx(classes.table(), className)}
       ref={ref}
       {...rest}
-    >
-      {children}
-    </DatePicker.Table>
+    />
   );
 });
+Table.displayName = 'DatePicker.Table';
 
 export type TableHeadProps = ComponentProps<typeof TableHead>;
 const TableHead = forwardRef<
@@ -299,18 +287,17 @@ const TableHead = forwardRef<
   ComponentPropsWithoutRef<typeof DatePicker.TableHead>
 >(function (props, ref) {
   const { classes } = useDatePickerContext();
-  const { children, className, ...rest } = props;
+  const { className, ...rest } = props;
 
   return (
     <DatePicker.TableHead
       className={cx(classes.tableHead(), className)}
       ref={ref}
       {...rest}
-    >
-      {children}
-    </DatePicker.TableHead>
+    />
   );
 });
+TableHead.displayName = 'DatePicker.TableHead';
 
 export type TableRowProps = ComponentProps<typeof TableRow>;
 const TableRow = forwardRef<
@@ -318,18 +305,17 @@ const TableRow = forwardRef<
   ComponentPropsWithoutRef<typeof DatePicker.TableRow>
 >(function (props, ref) {
   const { classes } = useDatePickerContext();
-  const { children, className, ...rest } = props;
+  const { className, ...rest } = props;
 
   return (
     <DatePicker.TableRow
       className={cx(classes.tableRow(), className)}
       ref={ref}
       {...rest}
-    >
-      {children}
-    </DatePicker.TableRow>
+    />
   );
 });
+TableRow.displayName = 'DatePicker.TableRow';
 
 export type TableHeaderProps = ComponentProps<typeof TableHeader>;
 const TableHeader = forwardRef<
@@ -337,18 +323,17 @@ const TableHeader = forwardRef<
   ComponentPropsWithoutRef<typeof DatePicker.TableHeader>
 >(function (props, ref) {
   const { classes } = useDatePickerContext();
-  const { children, className, ...rest } = props;
+  const { className, ...rest } = props;
 
   return (
     <DatePicker.TableHeader
       className={cx(classes.tableHeader(), className)}
       ref={ref}
       {...rest}
-    >
-      {children}
-    </DatePicker.TableHeader>
+    />
   );
 });
+TableHeader.displayName = 'DatePicker.TableHeader';
 
 export type TableBodyProps = ComponentProps<typeof TableBody>;
 const TableBody = forwardRef<
@@ -356,18 +341,17 @@ const TableBody = forwardRef<
   ComponentPropsWithoutRef<typeof DatePicker.TableBody>
 >(function (props, ref) {
   const { classes } = useDatePickerContext();
-  const { children, className, ...rest } = props;
+  const { className, ...rest } = props;
 
   return (
     <DatePicker.TableBody
       className={cx(classes.tableBody(), className)}
       ref={ref}
       {...rest}
-    >
-      {children}
-    </DatePicker.TableBody>
+    />
   );
 });
+TableBody.displayName = 'DatePicker.TableBody';
 
 export type TableCellProps = ComponentProps<typeof TableCell>;
 const TableCell = forwardRef<
@@ -375,18 +359,17 @@ const TableCell = forwardRef<
   ComponentPropsWithoutRef<typeof DatePicker.TableCell>
 >(function (props, ref) {
   const { classes } = useDatePickerContext();
-  const { children, className, ...rest } = props;
+  const { className, ...rest } = props;
 
   return (
     <DatePicker.TableCell
       className={cx(classes.tableCell(), className)}
       ref={ref}
       {...rest}
-    >
-      {children}
-    </DatePicker.TableCell>
+    />
   );
 });
+TableCell.displayName = 'DatePicker.TableCell';
 
 export type TableCellTriggerProps = ComponentProps<typeof TableCellTrigger>;
 const TableCellTrigger = forwardRef<
@@ -394,18 +377,17 @@ const TableCellTrigger = forwardRef<
   ComponentPropsWithoutRef<typeof DatePicker.TableCellTrigger>
 >(function (props, ref) {
   const { classes } = useDatePickerContext();
-  const { children, className, ...rest } = props;
+  const { className, ...rest } = props;
 
   return (
     <DatePicker.TableCellTrigger
       ref={ref}
       {...rest}
       className={cx(classes.tableCellTrigger(), className)}
-    >
-      {children}
-    </DatePicker.TableCellTrigger>
+    />
   );
 });
+TableCellTrigger.displayName = 'DatePicker.TableCellTrigger';
 
 export type RangeTextProps = ComponentProps<typeof RangeText>;
 const RangeText = forwardRef<
@@ -413,18 +395,17 @@ const RangeText = forwardRef<
   ComponentPropsWithoutRef<typeof DatePicker.RangeText>
 >(function (props, ref) {
   const { classes } = useDatePickerContext();
-  const { children, className, ...rest } = props;
+  const { className, ...rest } = props;
 
   return (
     <DatePicker.RangeText
       className={cx(classes.rangeText(), className)}
       ref={ref}
       {...rest}
-    >
-      {children}
-    </DatePicker.RangeText>
+    />
   );
 });
+RangeText.displayName = 'DatePicker.RangeText';
 
 export type InputProps = ComponentProps<typeof Input>;
 const Input = forwardRef<
@@ -432,18 +413,17 @@ const Input = forwardRef<
   ComponentPropsWithoutRef<typeof DatePicker.Input>
 >(function (props, ref) {
   const { classes } = useDatePickerContext();
-  const { children, className, ...rest } = props;
+  const { className, ...rest } = props;
 
   return (
     <DatePicker.Input
       className={cx(classes.input(), className)}
       ref={ref}
       {...rest}
-    >
-      {children}
-    </DatePicker.Input>
+    />
   );
 });
+Input.displayName = 'DatePicker.Input';
 
 export type ContextProps = DatePickerContextProps;
 const Context = DatePicker.Context;

@@ -6,9 +6,6 @@ import { Portal } from '../index';
 import { Input } from '../Input';
 import { DatePicker, type DatePickerProps } from './index';
 
-/**
- * based on https://ark-ui.com/react/docs/components/date-picker
- */
 export default {
   title: 'Components/DatePicker',
   component: DatePicker.Root,
