@@ -61,30 +61,31 @@ const badgeVariants = tv({
       variant: 'subtle',
       theme: 'primary',
       class:
-        'trds-bg-primary-subtle trds-text-primary-fg trds-border-primary-subtle',
+        'trds-bg-primary-subtlest trds-text-primary-fg trds-border-primary-subtlest',
     },
     {
       variant: 'subtle',
       theme: 'danger',
       class:
-        'trds-bg-danger-subtle trds-text-danger-fg trds-border-danger-subtle',
+        'trds-bg-danger-subtlest trds-text-danger-fg trds-border-danger-subtlest',
     },
     {
       variant: 'subtle',
       theme: 'warning',
       class:
-        'trds-bg-warning-subtle trds-text-warning-fg trds-border-warning-subtle',
+        'trds-bg-warning-subtlest trds-text-warning-fg trds-border-warning-subtlest',
     },
     {
       variant: 'subtle',
       theme: 'success',
       class:
-        'trds-bg-success-subtle trds-text-success-fg trds-border-success-subtle',
+        'trds-bg-success-subtlest trds-text-success-fg trds-border-success-subtlest',
     },
     {
       variant: 'subtle',
       theme: 'info',
-      class: 'trds-bg-info-subtle trds-text-info-fg trds-border-info-subtle',
+      class:
+        'trds-bg-info-subtlest trds-text-info-fg trds-border-info-subtlest',
     },
 
     /**

@@ -16,20 +16,22 @@ export const drawerVariants = tv({
   base: `${IDENTIFIER.scope} drawer`,
   slots: {
     backdrop:
-      'trds-backdrop-blur-[4px] trds-bg-blackAlpha-700 trds-h-[100vh] trds-w-[100vw] trds-left-0 trds-top-0 trds-fixed trds-z-overlay data-open:trds-animate-backdrop-in data-closed:trds-animate-backdrop-out dark:trds-bg-whiteAlpha-700',
+      'trds-backdrop-blur-[4px] trds-bg-dimmed trds-h-[100vh] trds-w-[100vw] trds-left-0 trds-top-0 trds-fixed trds-z-overlay data-open:trds-animate-backdrop-in data-closed:trds-animate-backdrop-out',
     positioner:
       'trds-flex trds-items-center trds-justify-center trds-fixed trds-z-modal',
     content:
-      'trds-bg-white trds-shadow-lg trds-grid trds-grid-cols-[1fr] trds-grid-rows-[auto_1fr_auto] trds-grid-areas-[header,body,footer] trds-h-full trds-w-full',
+      'trds-text-fg trds-bg-layer-modal trds-shadow-lg trds-grid trds-grid-cols-[1fr] trds-grid-rows-[auto_1fr_auto] trds-grid-areas-[header,body,footer] trds-h-full trds-w-full',
     header:
       'trds-flex trds-flex-col trds-gap-1 trds-grid-area-header trds-pt-4 md:trds-pt-6 trds-pb-4 trds-px-4 md:trds-px-6',
     body: 'trds-flex trds-flex-col trds-grid-area-body trds-overflow-auto trds-p-4 md:trds-p-6',
     footer:
       'trds-flex trds-grid-area-footer trds-justify-end trds-py-4 trds-px-4 md:trds-px-6',
-    title: 'trds-text-neutral-title trds-font-semibold trds-text-xl',
-    description: 'trds-text-neutral-description trds-text-sm',
-    trigger: '',
-    closeTrigger: '',
+    title: 'trds-text-fg-title trds-font-semibold trds-text-xl',
+    description: 'trds-text-fg-description trds-text-sm',
+    trigger:
+      'trds-text-fg-trigger trds-bg-layer-trigger hover:trds-bg-layer-hover active:trds-bg-layer-pressed',
+    closeTrigger:
+      'trds-text-fg-trigger trds-bg-layer-alpha hover:trds-bg-layer-alpha2 active:trds-bg-layer-alpha3',
   },
   variants: {
     variant: {

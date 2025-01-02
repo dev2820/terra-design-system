@@ -41,75 +41,75 @@ const buttonVariants = tv({
       theme: 'primary',
       variant: 'filled',
       class:
-        'trds-bg-primary trds-text-primary-inverse disabled:trds-bg-primary enabled:hover:trds-bg-primary-strong enabled:active:trds-bg-primary-stronger',
+        'trds-bg-primary trds-text-primary-inverse disabled:trds-bg-primary hover:trds-bg-primary-strong active:trds-bg-primary-stronger',
     },
     {
       theme: 'neutral',
       variant: 'filled',
       class:
-        'trds-bg-neutral trds-text-neutral-inverse disabled:trds-bg-neutral enabled:hover:trds-bg-neutral-strong enabled:active:trds-bg-neutral-stronger',
+        'trds-bg-neutral trds-text-neutral-inverse disabled:trds-bg-neutral hover:trds-bg-neutral-strong active:trds-bg-neutral-stronger',
     },
     {
       theme: 'whiteAlpha',
       variant: 'filled',
       class:
-        'trds-bg-whiteAlpha-500 trds-text-whiteAlpha-900 disabled:trds-bg-whiteAlpha enabled:hover:trds-bg-whiteAlpha-600 enabled:active:trds-bg-whiteAlpha-700',
+        'trds-bg-whiteAlpha-500 trds-text-whiteAlpha-900 disabled:trds-bg-whiteAlpha hover:trds-bg-whiteAlpha-600 active:trds-bg-whiteAlpha-700',
     },
     {
       theme: 'danger',
       variant: 'filled',
       class:
-        'trds-bg-danger trds-text-danger-inverse disabled:trds-bg-danger enabled:hover:trds-bg-danger-strong enabled:active:trds-bg-danger-stronger',
+        'trds-bg-danger trds-text-danger-inverse disabled:trds-bg-danger hover:trds-bg-danger-strong active:trds-bg-danger-stronger',
     },
     // outline
     {
       theme: 'primary',
       variant: 'outline',
       class:
-        'trds-bg-transparent trds-text-primary-fg trds-border-primary enabled:hover:trds-bg-primary-100 enabled:active:trds-bg-primary-200',
+        'trds-bg-transparent trds-text-primary-fg trds-border-primary hover:trds-bg-primary-100 active:trds-bg-primary-200',
     },
     {
       theme: 'neutral',
       variant: 'outline',
       class:
-        'trds-bg-transparent trds-text-neutral-fg trds-border-neutral-300 disabled:trds-bg-transparent enabled:hover:trds-bg-neutral-50 enabled:active:trds-bg-neutral-100',
+        'trds-bg-transparent trds-text-neutral-fg trds-border-neutral-300 disabled:trds-bg-transparent hover:trds-bg-neutral-50 active:trds-bg-neutral-100',
     },
     {
       theme: 'whiteAlpha',
       variant: 'outline',
       class:
-        'trds-bg-transparent trds-text-white trds-border-whiteAlpha-300 disabled:trds-bg-transparent enabled:hover:trds-bg-whiteAlpha-100 enabled:active:trds-bg-whiteAlpha-200',
+        'trds-bg-transparent trds-text-white trds-border-whiteAlpha-300 disabled:trds-bg-transparent hover:trds-bg-whiteAlpha-100 active:trds-bg-whiteAlpha-200',
     },
     {
       theme: 'danger',
       variant: 'outline',
       class:
-        'trds-bg-transparent trds-text-danger-fg trds-border-danger-300 disabled:trds-bg-transparent enabled:hover:trds-bg-danger-100 enabled:active:trds-bg-danger-200',
+        'trds-bg-transparent trds-text-danger-fg trds-border-danger-300 disabled:trds-bg-transparent hover:trds-bg-danger-100 active:trds-bg-danger-200',
     },
     // ghost
     {
       theme: 'primary',
       variant: 'ghost',
       class:
-        'trds-bg-transparent trds-text-primary-fg disabled:trds-bg-transparent enabled:hover:trds-bg-primary-100 enabled:active:trds-bg-primary-200',
+        'trds-bg-transparent trds-text-primary-fg disabled:trds-bg-transparent hover:trds-bg-primary-100 active:trds-bg-primary-200',
     },
     {
       theme: 'neutral',
       variant: 'ghost',
       class:
-        'trds-bg-transparent trds-text-neutral-fg disabled:trds-bg-transparent enabled:hover:trds-bg-neutral-50 enabled:active:trds-bg-neutral-100',
+        'trds-bg-transparent trds-text-neutral-fg disabled:trds-bg-transparent hover:trds-bg-neutral-50 active:trds-bg-neutral-100',
     },
     {
       theme: 'whiteAlpha',
       variant: 'ghost',
       class:
-        'trds-bg-transparent trds-text-white disabled:trds-bg-transparent enabled:hover:trds-bg-whiteAlpha-100 enabled:active:trds-bg-whiteAlpha-200',
+        'trds-bg-transparent trds-text-white disabled:trds-bg-transparent hover:trds-bg-whiteAlpha-100 active:trds-bg-whiteAlpha-200',
     },
     {
       theme: 'danger',
       variant: 'ghost',
       class:
-        'trds-bg-transparent trds-text-danger-fg disabled:trds-bg-transparent enabled:hover:trds-bg-danger-100 enabled:active:trds-bg-danger-200',
+        'trds-bg-transparent trds-text-danger-fg disabled:trds-bg-transparent hover:trds-bg-danger-100 active:trds-bg-danger-200',
     },
   ],
   defaultVariants: {

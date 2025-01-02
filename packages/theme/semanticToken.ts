@@ -15,8 +15,9 @@ export const colors = {
     900: `var(--my-colors-primary-900, ${TOKEN.colors.violet[900]})`,
     stronger: `var(--my-colors-primary-stronger, ${TOKEN.colors.violet[700]})`,
     strong: `var(--my-colors-primary-strong, ${TOKEN.colors.violet[600]})`,
-    subtle: `var(--my-colors-primary-subtle, ${TOKEN.colors.violet[200]})`,
-    subtler: `var(--my-colors-primary-subtler, ${TOKEN.colors.violet[100]})`,
+    subtle: `var(--my-colors-primary-subtle, ${TOKEN.colors.violet[400]})`,
+    subtler: `var(--my-colors-primary-subtler, ${TOKEN.colors.violet[300]})`, //used
+    subtlest: `var(--my-colors-primary-subtlest, ${TOKEN.colors.violet[200]})`, //used
     dark: `var(--my-colors-primary-dark, ${TOKEN.colors.violet[600]})`,
     hover: `var(--my-colors-primary-hover, ${TOKEN.colors.violet[600]})`,
     pressed: `var(--my-colors-primary-pressed, ${TOKEN.colors.violet[700]})`,
@@ -62,7 +63,11 @@ export const colors = {
     700: `var(--my-colors-info-700, ${TOKEN.colors.blue[700]})`,
     800: `var(--my-colors-info-800, ${TOKEN.colors.blue[800]})`,
     900: `var(--my-colors-info-900, ${TOKEN.colors.blue[900]})`,
-    subtle: `var(--my-colors-info-subtle, ${TOKEN.colors.blue[200]})`,
+    stronger: `var(--my-colors-info-stronger, ${TOKEN.colors.blue[700]})`,
+    strong: `var(--my-colors-info-strong, ${TOKEN.colors.blue[600]})`,
+    subtle: `var(--my-colors-info-subtle, ${TOKEN.colors.blue[400]})`,
+    subtler: `var(--my-colors-info-subtler, ${TOKEN.colors.blue[300]})`, //used
+    subtlest: `var(--my-colors-info-subtlest, ${TOKEN.colors.blue[200]})`, //used
     dark: `var(--my-colors-info-dark, ${TOKEN.colors.blue[600]})`,
     hover: `var(--my-colors-info-hover, ${TOKEN.colors.blue[600]})`,
     pressed: `var(--my-colors-info-pressed, ${TOKEN.colors.blue[700]})`,
@@ -83,7 +88,11 @@ export const colors = {
     700: `var(--my-colors-success-700, ${TOKEN.colors.green[700]})`,
     800: `var(--my-colors-success-800, ${TOKEN.colors.green[800]})`,
     900: `var(--my-colors-success-900, ${TOKEN.colors.green[900]})`,
-    subtle: `var(--my-colors-success-subtle, ${TOKEN.colors.green[200]})`,
+    stronger: `var(--my-colors-success-stronger, ${TOKEN.colors.green[700]})`,
+    strong: `var(--my-colors-success-strong, ${TOKEN.colors.green[600]})`,
+    subtle: `var(--my-colors-success-subtle, ${TOKEN.colors.green[400]})`,
+    subtler: `var(--my-colors-success-subtler, ${TOKEN.colors.green[300]})`, //used
+    subtlest: `var(--my-colors-success-subtlest, ${TOKEN.colors.green[200]})`, //used
     dark: `var(--my-colors-success-dark, ${TOKEN.colors.green[600]})`,
     hover: `var(--my-colors-success-hover, ${TOKEN.colors.green[600]})`,
     pressed: `var(--my-colors-success-pressed, ${TOKEN.colors.green[700]})`,
@@ -104,9 +113,11 @@ export const colors = {
     700: `var(--my-colors-danger-700, ${TOKEN.colors.red[700]})`,
     800: `var(--my-colors-danger-800, ${TOKEN.colors.red[800]})`,
     900: `var(--my-colors-danger-900, ${TOKEN.colors.red[900]})`,
-    subtle: `var(--my-colors-danger-subtle, ${TOKEN.colors.red[200]})`,
-    strong: `var(--my-colors-danger-strong, ${TOKEN.colors.red[600]})`,
     stronger: `var(--my-colors-danger-stronger, ${TOKEN.colors.red[700]})`,
+    strong: `var(--my-colors-danger-strong, ${TOKEN.colors.red[600]})`,
+    subtle: `var(--my-colors-danger-subtle, ${TOKEN.colors.red[400]})`,
+    subtler: `var(--my-colors-danger-subtler, ${TOKEN.colors.red[300]})`, //used
+    subtlest: `var(--my-colors-danger-subtlest, ${TOKEN.colors.red[200]})`, //used
     dark: `var(--my-colors-danger-dark, ${TOKEN.colors.red[600]})`,
     hover: `var(--my-colors-danger-hover, ${TOKEN.colors.red[600]})`,
     pressed: `var(--my-colors-danger-pressed, ${TOKEN.colors.red[700]})`,
@@ -127,7 +138,11 @@ export const colors = {
     700: `var(--my-colors-warning-700, ${TOKEN.colors.yellow[700]})`,
     800: `var(--my-colors-warning-800, ${TOKEN.colors.yellow[800]})`,
     900: `var(--my-colors-warning-900, ${TOKEN.colors.yellow[900]})`,
-    subtle: `var(--my-colors-warning-subtle, ${TOKEN.colors.yellow[200]})`,
+    stronger: `var(--my-colors-warning-stronger, ${TOKEN.colors.yellow[700]})`,
+    strong: `var(--my-colors-warning-strong, ${TOKEN.colors.yellow[600]})`,
+    subtle: `var(--my-colors-warning-subtle, ${TOKEN.colors.yellow[400]})`,
+    subtler: `var(--my-colors-warning-subtler, ${TOKEN.colors.yellow[300]})`, //used
+    subtlest: `var(--my-colors-warning-subtlest, ${TOKEN.colors.yellow[200]})`, //used
     dark: `var(--my-colors-warning-dark, ${TOKEN.colors.yellow[600]})`,
     hover: `var(--my-colors-warning-hover, ${TOKEN.colors.yellow[700]})`,
     pressed: `var(--my-colors-warning-pressed, ${TOKEN.colors.yellow[800]})`,
@@ -150,6 +165,7 @@ export const colors = {
     DEFAULT: `var(--my-colors-placeholder, ${TOKEN.colors.gray[400]})`,
   },
   fg: {
+    DEFAULT: `var(--my-colors-fg, ${TOKEN.colors.gray[800]})`,
     primary: `var(--my-colors-fg-primary, ${TOKEN.colors.white})`,
     success: `var(--my-colors-fg-success, ${TOKEN.colors.white})`,
     info: `var(--my-colors-fg-info, ${TOKEN.colors.white})`,
@@ -189,14 +205,19 @@ export const colors = {
     pressed: `var(--my-colors-layer-pressed, ${TOKEN.colors.gray[200]})`,
     indicator: `var(--my-colors-layer-indicator, ${TOKEN.colors.gray[50]})`,
     trigger: `var(--my-colors-layer-trigger, ${TOKEN.colors.white})`,
+    alpha: `var(--my-colors-layer-alpha, ${TOKEN.colors.transparent})`,
+    alpha2: `var(--my-colors-layer-alpha2, ${TOKEN.colors.blackAlpha[200]})`,
+    alpha3: `var(--my-colors-layer-alpha3, ${TOKEN.colors.blackAlpha[300]})`,
     card: `var(--my-colors-layer-card, ${TOKEN.colors.white})`,
     popover: `var(--my-colors-layer-popover, ${TOKEN.colors.white})`,
+    modal: `var(--my-colors-layer-modal, ${TOKEN.colors.white})`,
     muted: `var(--my-colors-layer-muted, ${TOKEN.colors.gray[200]})`,
     input: `var(--my-colors-layer-input, ${TOKEN.colors.white})`,
+    dropzone: `var(--my-colors-layer-dropzone, ${TOKEN.colors.white})`,
   },
   //deprecated
   layer1: `var(--my-colors-layer1, ${TOKEN.colors.gray[100]})`,
-  dimmed: `var(--my-colors-dimmed, ${TOKEN.colors.blackAlpha[700]})`,
+  dimmed: `var(--my-colors-dimmed, ${TOKEN.colors.blackAlpha[700]})`, // used
   track: `var(--my-colors-track, ${TOKEN.colors.gray[300]})`,
   caret: `var(--my-colors-caret, ${TOKEN.colors.black})`,
 } as const;

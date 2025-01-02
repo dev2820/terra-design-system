@@ -10,18 +10,21 @@ const linkVariants = tv({
   base: [
     `${IDENTIFIER.scope} link`,
     'trds-inline-flex trds-items-center trds-justify-start trds-whitespace-nowrap trds-gap-1 trds-transition-colors trds-cursor-pointer',
-    'trds-underline-offset-2 trds-underline-under trds-decoration-[2px] trds-underline',
+    'trds-underline-under trds-decoration-[2px] trds-underline-offset-2',
   ],
   variants: {
     theme: {
-      neutral:
-        'trds-text-neutral-500 active:trds-text-neutral-800 hover:trds-text-neutral-700 trds-border-neutral-500',
-      primary:
-        'trds-text-primary active:trds-text-primary-pressed hover:trds-text-primary-hover trds-border-primary',
+      default: 'trds-text-fg',
+      primary: 'trds-text-primary',
+    },
+    variant: {
+      plain: 'hover:trds-unerline',
+      underline: 'trds-underline',
     },
   },
   defaultVariants: {
-    theme: 'primary',
+    theme: 'default',
+    variant: 'underline',
   },
 });
 
@@ -44,7 +47,7 @@ const Link = forwardRef<HTMLAnchorElement, LinkProps>(function (props, ref) {
       ref={ref}
       {...rest}
     >
-      <span>
+      <span className="trds-flex trds-flex-row trds-gap-1 trds-place-items-center">
         {leftIcon}
         {children}
         {rightIcon}

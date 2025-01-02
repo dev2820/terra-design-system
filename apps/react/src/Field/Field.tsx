@@ -17,9 +17,9 @@ export const fieldVariants = tv({
   slots: {
     root: 'trds-flex trds-flex-col trds-gap-1.5',
     label:
-      'trds-text-neutral-title trds-font-medium trds-text-sm disabled:trds-text-muted',
+      'trds-text-fg-title trds-font-medium trds-text-sm disabled:trds-text-muted',
     helperText:
-      'trds-inline-flex trds-items-center trds-text-neutral-description trds-gap-1 trds-text-sm disabled:trds-text-muted',
+      'trds-inline-flex trds-items-center trds-text-fg-description trds-gap-1 trds-text-sm disabled:trds-text-muted',
     dangerText:
       'trds-inline-flex trds-items-center trds-text-danger trds-gap-1 trds-text-sm disabled:trds-text-muted',
   },
@@ -46,7 +46,7 @@ const Root = forwardRef<
   ElementRef<typeof Field.Root>,
   ComponentPropsWithoutRef<typeof Field.Root>
 >(function (props, ref) {
-  const { children, className, ...rest } = props;
+  const { className, ...rest } = props;
 
   const classes = fieldVariants();
   const ctx = {
@@ -55,9 +55,11 @@ const Root = forwardRef<
 
   return (
     <FieldProvider value={ctx}>
-      <Field.Root className={cx(classes.root(), className)} {...rest} ref={ref}>
-        {children}
-      </Field.Root>
+      <Field.Root
+        className={cx(classes.root(), className)}
+        {...rest}
+        ref={ref}
+      />
     </FieldProvider>
   );
 });
@@ -68,13 +70,15 @@ const Label = forwardRef<
   ElementRef<typeof Field.Label>,
   ComponentPropsWithoutRef<typeof Field.Label>
 >(function (props, ref) {
-  const { children, className, ...rest } = props;
+  const { className, ...rest } = props;
   const { classes } = useFieldContext();
 
   return (
-    <Field.Label className={cx(classes.label(), className)} ref={ref} {...rest}>
-      {children}
-    </Field.Label>
+    <Field.Label
+      className={cx(classes.label(), className)}
+      ref={ref}
+      {...rest}
+    />
   );
 });
 Label.displayName = 'Field.Label';
@@ -84,7 +88,7 @@ const HelperText = forwardRef<
   ElementRef<typeof Field.HelperText>,
   ComponentPropsWithoutRef<typeof Field.HelperText>
 >(function (props, ref) {
-  const { children, className, ...rest } = props;
+  const { className, ...rest } = props;
   const { classes } = useFieldContext();
 
   return (
@@ -92,9 +96,7 @@ const HelperText = forwardRef<
       className={cx(classes.helperText(), className)}
       ref={ref}
       {...rest}
-    >
-      {children}
-    </Field.HelperText>
+    />
   );
 });
 HelperText.displayName = 'Field.HelperText';
@@ -104,7 +106,7 @@ const ErrorText = forwardRef<
   ElementRef<typeof Field.ErrorText>,
   ComponentPropsWithoutRef<typeof Field.ErrorText>
 >(function (props, ref) {
-  const { children, className, ...rest } = props;
+  const { className, ...rest } = props;
   const { classes } = useFieldContext();
 
   return (
@@ -112,9 +114,7 @@ const ErrorText = forwardRef<
       className={cx(classes.dangerText(), className)}
       ref={ref}
       {...rest}
-    >
-      {children}
-    </Field.ErrorText>
+    />
   );
 });
 ErrorText.displayName = 'Field.ErrorText';

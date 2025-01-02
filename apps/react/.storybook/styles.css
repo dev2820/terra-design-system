@@ -1,16 +1,34 @@
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/variable/pretendardvariable.css');
 
 :root {
-  --my-colors-layer-popover: #363636;
-  --my-colors-layer-trigger: #484848;
-  --my-colors-layer-input: #484848;
+  --my-colors-layer-modal: #333333;
+  --my-colors-layer-popover: #333333;
+  --my-colors-layer-trigger: #444444;
+  --my-colors-layer-input: #444444;
   --my-colors-caret: white;
+  --my-colors-fg: #dddddd;
   --my-colors-fg-input: white;
-  --my-colors-fg-popover: white;
-  --my-colors-layer-hover: #484848;
+  --my-colors-fg-popover: #dddddd;
+  --my-colors-fg-trigger: #dddddd;
+  --my-colors-layer-hover: #555555;
+  --my-colors-layer-pressed: #666666;
+  --my-colors-dimmed: rgba(255, 255, 255, 0.16);
   --my-colors-fg-indicator: white;
-  --my-colors-boundary-swatch: #484848;
-  --my-colors-boundary-input: #565656;
+  --my-colors-fg-title: white;
+  --my-colors-fg-description: #dddddd;
+  --my-colors-boundary-swatch: #444444;
+  --my-colors-boundary-input: #555555;
+  --my-colors-primary: #ddd6fe;
+  --my-colors-primary-strong: #c4b5fd;
+  --my-colors-primary-stronger: #a78bfa;
+  --my-colors-primary-subtle: #ede9fe;
+  --my-colors-primary-subtler: #f5f3ff;
+  --my-colors-primary-inverse: black;
+  --my-colors-layer-alpha: rgba(255, 255, 255, 0);
+  --my-colors-layer-alpha2: rgba(255, 255, 255, 0.08);
+  --my-colors-layer-alpha3: rgba(255, 255, 255, 0.16);
+  --my-colors-layer-dropzone: #333333;
+  --my-colors-layer-card: #333333;
 }
 body {
   font-family: 'Pretendard Variable';

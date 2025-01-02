@@ -16,20 +16,23 @@ export const fileUploadVariant = tv({
   base: `${IDENTIFIER.scope} fileUpload`,
   slots: {
     root: 'trds-flex trds-flex-col trds-gap-4 trds-w-full',
-    label: 'trds-font-medium trds-text-sm',
+    label: 'trds-text-fg trds-font-medium trds-text-sm',
     dropzone:
-      'trds-flex trds-items-center trds-justify-center trds-flex-col trds-bg-white trds-rounded-md trds-border trds-border-boundary trds-min-h-xs trds-px-6 trds-py-4 trds-gap-3',
-    trigger: '',
-    item: 'trds-grid trds-grid-cols-[auto_1fr_auto] [grid-template-areas:"preview_name_delete""preview_size_delete"] trds-bg-white trds-rounded-md trds-border trds-border-boundary trds-gap-x-3 trds-p-4 trds-animate-fade-in',
+      'trds-flex trds-items-center trds-justify-center trds-flex-col trds-bg-dropzone trds-rounded-md trds-border trds-border-boundary trds-min-h-xs trds-px-6 trds-py-4 trds-gap-3',
+    trigger:
+      'trds-text-fg-trigger trds-bg-layer-trigger hover:trds-bg-layer-hover active:trds-bg-layer-pressed',
+    item: 'trds-grid trds-grid-cols-[auto_1fr_auto] [grid-template-areas:"preview_name_delete""preview_size_delete"] trds-bg-layer-card trds-rounded-md trds-border trds-border-boundary trds-gap-x-3 trds-p-4 trds-animate-fade-in',
     itemGroup: 'trds-flex trds-flex-col trds-gap-3',
     itemName:
-      'trds-text-neutral-title trds-font-medium trds-text-sm [grid-area:name]',
-    itemSizeText: 'trds-text-neutral-description trds-text-sm [grid-area:size]',
-    itemDeleteTrigger: 'trds-self-start [grid-area:delete]',
+      'trds-text-fg-title trds-font-medium trds-text-sm [grid-area:name]',
+    itemSizeText: 'trds-text-fg-description trds-text-sm [grid-area:size]',
+    itemDeleteTrigger: [
+      'trds-self-start [grid-area:delete]',
+      'trds-text-fg-trigger trds-bg-layer-alpha hover:trds-bg-layer-alpha2 active:trds-bg-layer-alpha3',
+    ],
     itemPreview: '[grid-area:preview]',
     itemPreviewImage:
       'trds-aspect-square trds-h-10 trds-w-10 trds-object-scale-down',
-    hiddenInput: '',
   },
 });
 
@@ -81,14 +84,9 @@ const HiddenInput = forwardRef<
   ComponentPropsWithoutRef<typeof FileUpload.HiddenInput>
 >(function (props, ref) {
   const { className, children, ...rest } = props;
-  const { classes } = useFileUploadContext();
 
   return (
-    <FileUpload.HiddenInput
-      className={cx(classes.hiddenInput(), className)}
-      ref={ref}
-      {...rest}
-    >
+    <FileUpload.HiddenInput className={cx(className)} ref={ref} {...rest}>
       {children}
     </FileUpload.HiddenInput>
   );

@@ -16,15 +16,17 @@ export const dialogVariants = tv({
   base: `${IDENTIFIER.scope} dialog`,
   slots: {
     backdrop:
-      'trds-backdrop-blur-[4px] trds-bg-blackAlpha-700 trds-h-[100vh] trds-w-[100vw] trds-left-0 trds-top-0 trds-fixed trds-z-overlay data-open:trds-animate-backdrop-in data-closed:trds-animate-backdrop-out dark:trds-bg-whiteAlpha-700',
+      'trds-backdrop-blur-[4px] trds-bg-dimmed trds-h-[100vh] trds-w-[100vw] trds-left-0 trds-top-0 trds-fixed trds-z-overlay data-open:trds-animate-backdrop-in data-closed:trds-animate-backdrop-out',
     positioner:
       'trds-flex trds-items-center trds-justify-center trds-fixed trds-left-0 trds-top-0 trds-w-[100vw] trds-h-[100dvh] trds-overflow-auto trds-z-modal',
     content:
-      'trds-bg-white trds-rounded-lg trds-shadow-lg trds-min-w-sm trds-relative trds-duration-normal data-open:trds-animate-dialog-in data-closed:trds-animate-dialog-out',
-    title: 'trds-text-neutral-title trds-font-semibold trds-text-lg trds-mb-4',
-    description: 'trds-text-neutral-description trds-text-sm trds-mb-4',
-    trigger: '',
-    closeTrigger: '',
+      'trds-bg-layer-modal trds-rounded-lg trds-shadow-lg trds-min-w-sm trds-relative trds-duration-normal data-open:trds-animate-dialog-in data-closed:trds-animate-dialog-out',
+    title: 'trds-text-fg-title trds-font-semibold trds-text-lg trds-mb-4',
+    description: 'trds-text-fg-description trds-text-sm trds-mb-4',
+    trigger:
+      'trds-text-fg-trigger trds-bg-layer-trigger hover:trds-bg-layer-hover active:trds-bg-layer-pressed',
+    closeTrigger:
+      'trds-text-fg-trigger trds-bg-layer-alpha hover:trds-bg-layer-alpha2 active:trds-bg-layer-alpha3',
   },
 });
 
@@ -44,7 +46,8 @@ const [DialogProvider, useDialogContext] =
 
 export type RootProps = DialogRootProps & VariantProps<typeof dialogVariants>;
 
-function Root({ children, ...props }: RootProps) {
+function Root(props: RootProps) {
+  const { ...rest } = props;
   const classes = dialogVariants();
   const ctx = {
     classes,
@@ -52,7 +55,7 @@ function Root({ children, ...props }: RootProps) {
 
   return (
     <DialogProvider value={ctx}>
-      <Dialog.Root {...props}>{children}</Dialog.Root>
+      <Dialog.Root {...rest} />
     </DialogProvider>
   );
 }
@@ -64,16 +67,14 @@ const Trigger = forwardRef<
   ComponentPropsWithoutRef<typeof Dialog.Trigger>
 >(function (props, ref) {
   const { classes } = useDialogContext();
-  const { children, className, ...rest } = props;
+  const { className, ...rest } = props;
 
   return (
     <Dialog.Trigger
       className={cx(classes.trigger(), className)}
       ref={ref}
       {...rest}
-    >
-      {children}
-    </Dialog.Trigger>
+    />
   );
 });
 Trigger.displayName = 'Dialog.Trigger';
@@ -84,7 +85,7 @@ const Backdrop = forwardRef<
   ComponentPropsWithoutRef<typeof Dialog.Backdrop>
 >(function (props, ref) {
   const { classes } = useDialogContext();
-  const { children, className, ...rest } = props;
+  const { className, ...rest } = props;
 
   return <Dialog.Backdrop className={classes.backdrop()} {...rest} ref={ref} />;
 });
@@ -96,12 +97,10 @@ const Positioner = forwardRef<
   ComponentPropsWithoutRef<typeof Dialog.Positioner>
 >(function (props, ref) {
   const { classes } = useDialogContext();
-  const { children, className, ...rest } = props;
+  const { className, ...rest } = props;
 
   return (
-    <Dialog.Positioner className={classes.positioner()} {...rest} ref={ref}>
-      {children}
-    </Dialog.Positioner>
+    <Dialog.Positioner className={classes.positioner()} {...rest} ref={ref} />
   );
 });
 Positioner.displayName = 'Dialog.Positioner';
@@ -112,16 +111,14 @@ const Content = forwardRef<
   ComponentPropsWithoutRef<typeof Dialog.Content>
 >(function (props, ref) {
   const { classes } = useDialogContext();
-  const { children, className, ...rest } = props;
+  const { className, ...rest } = props;
 
   return (
     <Dialog.Content
       className={cx(classes.content(), className)}
       ref={ref}
       {...rest}
-    >
-      {children}
-    </Dialog.Content>
+    />
   );
 });
 Content.displayName = 'Dialog.Content';
@@ -132,16 +129,14 @@ const Title = forwardRef<
   ComponentPropsWithoutRef<typeof Dialog.Title>
 >(function (props, ref) {
   const { classes } = useDialogContext();
-  const { children, className, ...rest } = props;
+  const { className, ...rest } = props;
 
   return (
     <Dialog.Title
       className={cx(classes.title(), className)}
       ref={ref}
       {...rest}
-    >
-      {children}
-    </Dialog.Title>
+    />
   );
 });
 Title.displayName = 'Dialog.Title';
@@ -152,16 +147,14 @@ const Description = forwardRef<
   ComponentPropsWithoutRef<typeof Dialog.Description>
 >(function (props, ref) {
   const { classes } = useDialogContext();
-  const { children, className, ...rest } = props;
+  const { className, ...rest } = props;
 
   return (
     <Dialog.Description
       className={cx(classes.description(), className)}
       ref={ref}
       {...rest}
-    >
-      {children}
-    </Dialog.Description>
+    />
   );
 });
 Description.displayName = 'Dialog.Description';
@@ -172,16 +165,14 @@ const CloseTrigger = forwardRef<
   ComponentPropsWithoutRef<typeof Dialog.CloseTrigger>
 >(function (props, ref) {
   const { classes } = useDialogContext();
-  const { children, className, ...rest } = props;
+  const { className, ...rest } = props;
 
   return (
     <Dialog.CloseTrigger
       className={cx(classes.closeTrigger(), className)}
       ref={ref}
       {...rest}
-    >
-      {children}
-    </Dialog.CloseTrigger>
+    />
   );
 });
 CloseTrigger.displayName = 'Dialog.CloseTrigger';

@@ -1,5 +1,6 @@
 import { ExternalLinkIcon, LinkIcon } from 'lucide-react';
 
+import { Button } from '../Button';
 import { Link, type LinkProps } from './index';
 
 export default {
@@ -29,10 +30,27 @@ export const Theme = {
   render: (props: LinkProps) => {
     return (
       <div className="trds-flex trds-flex-col trds-gap-4">
-        <Link {...props} theme="neutral">
+        <Link {...props} theme="default">
           Github
         </Link>
         <Link {...props} theme="primary">
+          Github
+        </Link>
+      </div>
+    );
+  },
+};
+export const Variant = {
+  args: {
+    href: 'https://github.com/dev2820/terra-design-system',
+  },
+  render: (props: LinkProps) => {
+    return (
+      <div className="trds-flex trds-flex-col trds-gap-4">
+        <Link {...props} variant="plain">
+          Github
+        </Link>
+        <Link {...props} variant="underline">
           Github
         </Link>
       </div>
@@ -48,10 +66,10 @@ export const WithIcon = {
   render: (props: LinkProps) => {
     return (
       <div className="trds-flex trds-flex-col trds-gap-4">
-        <Link {...props} leftIcon={<ExternalLinkIcon size={16} />}>
+        <Link {...props} leftIcon={<LinkIcon size={16} />}>
           Github
         </Link>
-        <Link {...props} rightIcon={<LinkIcon size={16} />}>
+        <Link {...props} rightIcon={<ExternalLinkIcon size={16} />}>
           Github
         </Link>
       </div>
@@ -67,8 +85,8 @@ export const AsChild = {
   render: (props: LinkProps) => {
     return (
       <div className="trds-flex trds-flex-col trds-gap-4">
-        <Link {...props} leftIcon={<ExternalLinkIcon size={16} />} asChild>
-          <button>Button Link</button>
+        <Link {...props} asChild>
+          <Button>Button Link</Button>
         </Link>
       </div>
     );
