@@ -5,6 +5,13 @@
   --my-colors-layer-popover: #333333;
   --my-colors-layer-trigger: #444444;
   --my-colors-layer-input: #444444;
+  --my-colors-layer-muted: #444444;
+  --my-colors-layer-indicator: #444444;
+  --my-colors-layer-alpha: rgba(255, 255, 255, 0);
+  --my-colors-layer-alpha2: rgba(255, 255, 255, 0.08);
+  --my-colors-layer-alpha3: rgba(255, 255, 255, 0.16);
+  --my-colors-layer-dropzone: #333333;
+  --my-colors-layer-card: #333333;
   --my-colors-caret: white;
   --my-colors-fg: #dddddd;
   --my-colors-fg-input: white;
@@ -17,18 +24,23 @@
   --my-colors-fg-title: white;
   --my-colors-fg-description: #dddddd;
   --my-colors-boundary-swatch: #444444;
-  --my-colors-boundary-input: #555555;
-  --my-colors-primary: #ddd6fe;
-  --my-colors-primary-strong: #c4b5fd;
-  --my-colors-primary-stronger: #a78bfa;
+  --my-colors-boundary-input: #dddddd;
+  --my-colors-primary-fg: #c4b5fd;
+  --my-colors-primary: #c4b5fd;
+  --my-colors-primary-strong: #a78bfa;
+  --my-colors-primary-stronger: #8b5cf6;
   --my-colors-primary-subtle: #ede9fe;
   --my-colors-primary-subtler: #f5f3ff;
+  --my-colors-primary-alpha: #c4b5fd1f;
+  --my-colors-primary-alpha2: #c4b5fd3d;
   --my-colors-primary-inverse: black;
-  --my-colors-layer-alpha: rgba(255, 255, 255, 0);
-  --my-colors-layer-alpha2: rgba(255, 255, 255, 0.08);
-  --my-colors-layer-alpha3: rgba(255, 255, 255, 0.16);
-  --my-colors-layer-dropzone: #333333;
-  --my-colors-layer-card: #333333;
+  --my-colors-neutral-inverse: white;
+  --my-colors-neutral-fg: #dddddd;
+  --my-colors-neutral: #444444;
+  --my-colors-neutral-strong: #555555;
+  --my-colors-neutral-stronger: #666666;
+  --my-colors-neutral-alpha: #9999991f;
+  --my-colors-neutral-alpha2: #9999993d;
 }
 body {
   font-family: 'Pretendard Variable';

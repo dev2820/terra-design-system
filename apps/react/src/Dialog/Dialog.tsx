@@ -23,8 +23,7 @@ export const dialogVariants = tv({
       'trds-bg-layer-modal trds-rounded-lg trds-shadow-lg trds-min-w-sm trds-relative trds-duration-normal data-open:trds-animate-dialog-in data-closed:trds-animate-dialog-out',
     title: 'trds-text-fg-title trds-font-semibold trds-text-lg trds-mb-4',
     description: 'trds-text-fg-description trds-text-sm trds-mb-4',
-    trigger:
-      'trds-text-fg-trigger trds-bg-layer-trigger hover:trds-bg-layer-hover active:trds-bg-layer-pressed',
+    trigger: [''],
     closeTrigger:
       'trds-text-fg-trigger trds-bg-layer-alpha hover:trds-bg-layer-alpha2 active:trds-bg-layer-alpha3',
   },

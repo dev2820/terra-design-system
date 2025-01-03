@@ -17,17 +17,14 @@ export const datePickerVariants = tv({
   slots: {
     root: 'trds-flex trds-flex-col trds-gap-1.5',
     control: 'trds-flex trds-flex-row trds-gap-2',
-    trigger:
-      'trds-text-fg-trigger trds-bg-layer-trigger hover:trds-bg-layer-hover active:trds-bg-layer-pressed',
+    trigger: [''],
     clearTrigger: '',
     content:
       'trds-bg-layer-popover trds-text-fg-popover trds-rounded-lg trds-shadow-lg trds-flex trds-flex-col trds-gap-3 trds-p-4 trds-w-[344px] trds-z-dropdown data-open:trds-animate-fade-in data-closed:trds-animate-fade-out data-hidden:trds-hidden',
     view: 'trds-flex trds-flex-col trds-gap-3',
     viewControl: 'trds-flex trds-gap-2 trds-justify-between',
-    prevTrigger:
-      'trds-text-fg-trigger hover:trds-bg-layer-hover active:trds-bg-layer-pressed',
-    nextTrigger:
-      'trds-text-fg-trigger hover:trds-bg-layer-hover active:trds-bg-layer-pressed',
+    prevTrigger: [''],
+    nextTrigger: [''],
     table:
       'trds-text-fg-popover trds-w-full trds-border-boundary trds-border-spacing-1 -trds-m-1',
     tableHeader: 'trds-text-title trds-font-semibold trds-h-10 trds-text-sm',
@@ -37,23 +34,20 @@ export const datePickerVariants = tv({
     tableCell: 'trds-text-center',
     tableCellTrigger: [
       'trds-w-full',
-      'data-in-range:trds-bg-primary-subtler data-in-range:trds-text-primary-inverse',
+      'data-in-range:trds-bg-primary-subtle data-in-range:trds-text-primary-inverse',
       "data-today:before:trds-content-['●'] data-today:before:trds-text-[6px] data-today:before:trds-text-primary-stronger data-today:before:trds-absolute data-today:before:trds-mt-6",
       'data-selected:trds-bg-primary data-selected:trds-text-primary-inverse data-selected:hover:trds-bg-primary data-selected:hover:trds-text-primary-inverse',
       'data-in-range:data-selected:trds-bg-primary data-in-range:data-selected:trds-text-primary-inverse',
       'data-disabled:trds-text-fg-muted data-disabled:trds-cursor-not-allowed data-disabled:trds-bg-transparent data-disabled:hover:trds-bg-transparent data-disabled:active:trds-bg-transparent',
-      'trds-text-fg-trigger hover:trds-bg-layer-hover active:trds-bg-layer-presse',
     ],
     input: 'trds-bg-layer-input trds-text-fg-input trds-caret-caret',
     rangeText: '',
     positioner: '',
-    viewTrigger:
-      'trds-text-fg-trigger hover:trds-bg-layer-hover active:trds-bg-layer-pressed',
+    viewTrigger: [''],
     label: '',
     monthSelect: '',
     yearSelect: '',
-    presetTrigger:
-      'trds-text-fg-trigger hover:trds-bg-layer-hover active:trds-bg-layer-pressed',
+    presetTrigger: [''],
   },
 });
 

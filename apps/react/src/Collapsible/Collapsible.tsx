@@ -15,10 +15,10 @@ import { tv } from '../tv';
 export const collapsibleVariants = tv({
   base: `${IDENTIFIER.scope} collapsible`,
   slots: {
-    root: 'trds-w-full',
+    root: 'trds-w-full trds-text-fg',
     trigger: [
       'trds-w-full trds-h-10 trds-px-4 trds-cursor-pointer',
-      'data-[disabled]:trds-opacity-muted data-[disabled]:trds-cursor-not-allowed',
+      'data-disabled:trds-opacity-muted data-disabled:trds-cursor-not-allowed',
       '[&>svg]:trds-origin-center [&>svg]:trds-duration-normal [&>svg]:trds-transition-all [&[data-state="open"]>svg]:-trds-rotate-180',
     ],
     content: [

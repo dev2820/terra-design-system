@@ -19,8 +19,7 @@ export const fileUploadVariant = tv({
     label: 'trds-text-fg trds-font-medium trds-text-sm',
     dropzone:
       'trds-flex trds-items-center trds-justify-center trds-flex-col trds-bg-dropzone trds-rounded-md trds-border trds-border-boundary trds-min-h-xs trds-px-6 trds-py-4 trds-gap-3',
-    trigger:
-      'trds-text-fg-trigger trds-bg-layer-trigger hover:trds-bg-layer-hover active:trds-bg-layer-pressed',
+    trigger: [''],
     item: 'trds-grid trds-grid-cols-[auto_1fr_auto] [grid-template-areas:"preview_name_delete""preview_size_delete"] trds-bg-layer-card trds-rounded-md trds-border trds-border-boundary trds-gap-x-3 trds-p-4 trds-animate-fade-in',
     itemGroup: 'trds-flex trds-flex-col trds-gap-3',
     itemName:

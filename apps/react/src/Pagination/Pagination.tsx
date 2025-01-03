@@ -15,12 +15,12 @@ import { tv, type VariantProps } from '../tv';
 export const paginationVariants = tv({
   base: `${IDENTIFIER.scope} pagination`,
   slots: {
-    root: 'trds-flex trds-gap-1',
-    item: 'trds-font-tabular-nums',
+    root: 'trds-text-fg trds-flex trds-gap-1',
+    item: ['trds-font-tabular-nums'],
     prevTrigger: '',
     nextTrigger: '',
     ellipsis:
-      'trds-inline-flex trds-items-center trds-text-neutral-title trds-font-semibold trds-px-2',
+      'trds-inline-flex trds-items-center trds-text-fg-title trds-font-semibold trds-px-2',
   },
 });
 

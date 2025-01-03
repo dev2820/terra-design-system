@@ -4,7 +4,6 @@ import { LoaderCircleIcon } from 'lucide-react';
 import { forwardRef, type ComponentProps, type ReactNode } from 'react';
 
 import { cx } from '../cx';
-import { AsChildProps, Slot } from '../Slot';
 import { tv, VariantProps } from '../tv';
 
 const buttonVariants = tv({
@@ -66,13 +65,13 @@ const buttonVariants = tv({
       theme: 'primary',
       variant: 'outline',
       class:
-        'trds-bg-transparent trds-text-primary-fg trds-border-primary hover:trds-bg-primary-100 active:trds-bg-primary-200',
+        'trds-bg-transparent trds-text-primary-fg trds-border-primary-boundary hover:trds-bg-primary-alpha active:trds-bg-primary-alpha2',
     },
     {
       theme: 'neutral',
       variant: 'outline',
       class:
-        'trds-bg-transparent trds-text-neutral-fg trds-border-neutral-300 disabled:trds-bg-transparent hover:trds-bg-neutral-50 active:trds-bg-neutral-100',
+        'trds-bg-transparent trds-text-neutral-fg trds-border-neutral-boundary disabled:trds-bg-transparent hover:trds-bg-neutral-alpha active:trds-bg-neutral-alpha2',
     },
     {
       theme: 'whiteAlpha',
@@ -84,20 +83,20 @@ const buttonVariants = tv({
       theme: 'danger',
       variant: 'outline',
       class:
-        'trds-bg-transparent trds-text-danger-fg trds-border-danger-300 disabled:trds-bg-transparent hover:trds-bg-danger-100 active:trds-bg-danger-200',
+        'trds-bg-transparent trds-text-danger-fg trds-border-danger-boundary disabled:trds-bg-transparent hover:trds-bg-danger-alpha active:trds-bg-danger-alpha2',
     },
     // ghost
     {
       theme: 'primary',
       variant: 'ghost',
       class:
-        'trds-bg-transparent trds-text-primary-fg disabled:trds-bg-transparent hover:trds-bg-primary-100 active:trds-bg-primary-200',
+        'trds-bg-transparent trds-text-primary-fg disabled:trds-bg-transparent hover:trds-bg-primary-alpha active:trds-bg-primary-alpha2',
     },
     {
       theme: 'neutral',
       variant: 'ghost',
       class:
-        'trds-bg-transparent trds-text-neutral-fg disabled:trds-bg-transparent hover:trds-bg-neutral-50 active:trds-bg-neutral-100',
+        'trds-bg-transparent trds-text-neutral-fg disabled:trds-bg-transparent hover:trds-bg-neutral-alpha active:trds-bg-neutral-alpha2',
     },
     {
       theme: 'whiteAlpha',
@@ -109,7 +108,7 @@ const buttonVariants = tv({
       theme: 'danger',
       variant: 'ghost',
       class:
-        'trds-bg-transparent trds-text-danger-fg disabled:trds-bg-transparent hover:trds-bg-danger-100 active:trds-bg-danger-200',
+        'trds-bg-transparent trds-text-danger-fg disabled:trds-bg-transparent hover:trds-bg-danger-alpha active:trds-bg-danger-alpha2',
     },
   ],
   defaultVariants: {
@@ -120,11 +119,9 @@ const buttonVariants = tv({
   },
 });
 
-export type ButtonProps = AsChildProps<ComponentProps<'button'>> & {
-  style?: React.CSSProperties;
-  className?: string;
-  disabled?: boolean;
-} & VariantProps<typeof buttonVariants> & {
+export type ButtonProps = ComponentProps<'button'> & {} & VariantProps<
+    typeof buttonVariants
+  > & {
     loading?: boolean;
     loadingIcon?: ReactNode;
     rightIcon?: ReactNode;
@@ -140,18 +137,16 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       leftIcon,
       rightIcon,
       variant,
-      disabled = false,
+      disabled,
       size,
       theme,
       className,
       children,
-      asChild,
       ...rest
     } = props;
-    const Comp = asChild ? Slot : 'button';
 
     return (
-      <Comp
+      <button
         className={cx(
           buttonVariants({ variant, theme, size, loading }),
           className,
@@ -165,7 +160,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         {leftIcon}
         {children}
         {rightIcon}
-      </Comp>
+      </button>
     );
   },
 );

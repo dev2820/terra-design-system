@@ -28,8 +28,7 @@ export const drawerVariants = tv({
       'trds-flex trds-grid-area-footer trds-justify-end trds-py-4 trds-px-4 md:trds-px-6',
     title: 'trds-text-fg-title trds-font-semibold trds-text-xl',
     description: 'trds-text-fg-description trds-text-sm',
-    trigger:
-      'trds-text-fg-trigger trds-bg-layer-trigger hover:trds-bg-layer-hover active:trds-bg-layer-pressed',
+    trigger: [''],
     closeTrigger:
       'trds-text-fg-trigger trds-bg-layer-alpha hover:trds-bg-layer-alpha2 active:trds-bg-layer-alpha3',
   },

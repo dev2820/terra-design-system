@@ -21,15 +21,14 @@ export const colorPickerVariants = tv({
     root: 'trds-flex trds-flex-col trds-gap-1.5',
     control: 'trds-flex trds-flex-row trds-gap-2',
     context: '',
-    trigger: '',
+    trigger: [''],
     content:
       'trds-bg-layer-popover trds-rounded-lg trds-shadow-lg trds-flex trds-flex-col trds-max-w-sm trds-p-4 trds-z-dropdown data-open:trds-animate-fade-in data-closed:trds-animate-fade-out',
     area: 'trds-h-36 trds-rounded-lg trds-overflow-hidden',
     areaThumb:
       'trds-rounded-full trds-h-2.5 trds-w-2.5 trds-shadow-[0_0_0_2px_white,0_0_2px_1px_black] trds-outline-none',
     areaBackground: 'trds-h-full',
-    eyeDropperTrigger:
-      'trds-border-boundary-trigger trds-bg-layer-trigger enabled:hover:trds-bg-layer-hover active:trds-bg-layer-pressed',
+    eyeDropperTrigger: '',
     channelInput: 'trds-bg-layer-input',
     channelSlider: 'trds-rounded-lg',
     channelSliderTrack: 'trds-h-3 trds-rounded-lg',
@@ -37,10 +36,10 @@ export const colorPickerVariants = tv({
       'trds-rounded-full trds-h-2.5 trds-w-2.5 trds-shadow-[0_0_0_2px_white,0_0_2px_1px_black] -trds-translate-x-1/2 -trds-translate-y-1/2 trds-outline-none',
     swatchGroup: 'trds-grid trds-grid-cols-7 trds-gap-2',
     swatch:
-      'trds-h-7 trds-w-7 trds-rounded-md trds-shadow-[0_0_0_3px] trds-shadow-boundary-swatch enabled:hover:trds-shadow-boundary-hover trds-cursor-pointer',
+      'trds-h-7 trds-w-7 trds-rounded-md trds-shadow-[0_0_0_3px] trds-shadow-boundary-swatch hover:trds-shadow-boundary-hover trds-cursor-pointer',
     transparencyGrid: 'trds-rounded-lg',
     positioner: '',
-    swatchTrigger: '',
+    swatchTrigger: [''],
   },
 });
 

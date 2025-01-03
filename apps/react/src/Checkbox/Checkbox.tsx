@@ -15,7 +15,7 @@ import { tv, VariantProps } from '../tv';
 export const checkboxVariants = tv({
   base: `${IDENTIFIER.scope} checkbox`,
   slots: {
-    root: 'group :focus-within:mt-4 trds-rounded-sm trds-inline-flex trds-flex-row trds-items-center trds-gap-2 trds-cursor-pointer data-disabled:trds-cursor-not-allowed data-readonly:trds-cursor-default',
+    root: 'group trds-text-fg focus-within:mt-4 trds-rounded-sm trds-inline-flex trds-flex-row trds-items-center trds-gap-2 trds-cursor-pointer data-disabled:trds-cursor-not-allowed data-readonly:trds-cursor-default',
     label: '',
     control: [
       'trds-text-primary-inverse',

@@ -14,8 +14,8 @@ export const cardVariants = tv({
     content: 'trds-px-6 trds-pb-6',
     footer: 'trds-px-6 trds-pb-6',
     title:
-      'trds-text-neutral-title trds-leading-normal trds-font-bold trds-text-2xl',
-    description: 'trds-text-neutral-description trds-text-md',
+      'trds-text-fg-title trds-leading-normal trds-font-bold trds-text-2xl',
+    description: 'trds-text-fg-description trds-text-md',
   },
   variants: {
     variant: {

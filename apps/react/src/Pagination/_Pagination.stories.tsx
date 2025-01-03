@@ -130,7 +130,7 @@ export const LinkExample = {
     return (
       <Pagination.Root {...props}>
         <Pagination.PrevTrigger asChild>
-          <Link theme="neutral">
+          <Link theme="default">
             <ChevronLeftIcon size={24} />
           </Link>
         </Pagination.PrevTrigger>
@@ -141,7 +141,7 @@ export const LinkExample = {
                 <Pagination.Item key={index} {...page} asChild>
                   <Link
                     theme={
-                      pagination.page === page.value ? 'primary' : 'neutral'
+                      pagination.page === page.value ? 'primary' : 'default'
                     }
                     data-active={
                       pagination.page === page.value ? true : undefined
@@ -159,7 +159,7 @@ export const LinkExample = {
           }
         </Pagination.Context>
         <Pagination.NextTrigger asChild>
-          <Link theme="neutral">
+          <Link>
             <ChevronRightIcon size={24} />
           </Link>
         </Pagination.NextTrigger>
