@@ -19,15 +19,19 @@ import { tv, VariantProps } from '../tv';
 export const selectVariant = tv({
   base: `${IDENTIFIER.scope} select`,
   slots: {
-    root: 'trds-flex trds-flex-col trds-gap-1.5 trds-w-full',
+    root: 'trds-text-fg trds-flex trds-flex-col trds-gap-1.5 trds-w-full',
     content:
-      'trds-bg-white trds-rounded-lg trds-shadow-lg trds-flex trds-flex-col trds-z-dropdown data-open:trds-animate-fade-in data-closed:trds-animate-fade-out focus-visible:trds-outline-2 focus-visible:trds-outline-solid focus-visible:trds-outline-boundary focus-visible:trds-outline-offset-2',
-    item: 'trds-flex trds-items-center trds-justify-between trds-rounded-md trds-cursor-pointer trds-transition-fast trds-transition-[background,color] trds-ease-default hover:trds-bg-layer1 hover:trds-text-black data-highlighted:trds-bg-layer1 data-highlighted:trds-text-black data-selected:trds-text-black data-disabled:trds-text-muted data-disabled:trds-cursor-not-allowed',
+      'trds-text-fg trds-bg-layer-popover trds-rounded-lg trds-shadow-lg trds-flex trds-flex-col trds-z-dropdown data-open:trds-animate-fade-in data-closed:trds-animate-fade-out focus-visible:trds-outline-2 focus-visible:trds-outline-solid focus-visible:trds-outline-boundary focus-visible:trds-outline-offset-2',
+    item: 'trds-flex trds-items-center trds-justify-between trds-rounded-md trds-cursor-pointer trds-duration-fast trds-transition-[background,color] hover:trds-bg-layer-hover data-highlighted:trds-bg-layer-hover data-disabled:trds-text-muted data-disabled:trds-cursor-not-allowed',
     itemGroupLabel: 'trds-font-semibold trds-text-sm',
-    itemIndicator: 'trds-text-black',
-    label: 'trds-text-neutral-500 trds-font-medium',
-    trigger:
-      'trds-appearance-none trds-inline-flex trds-items-center trds-justify-between trds-border-boundary trds-rounded-lg trds-cursor-pointer trds-text-neutral-title trds-inline-flex trds-relative trds-outline-0 trds-transition trds-duration-normal trds-transition-[background,box-shadow,border-color] trds-ease-default trds-w-full trds-border-[1px] focus:trds-border-boundary focus:trds-shadow-[0_0_0_2px_var(--shadow-color)] focus:trds-shadow-primary placeholder-shown:trds-text-fg-placeholder disabled:trds-text-muted disabled:trds-cursor-not-allowed disabled:[&_:where(svg)]:text-muted [&_:where(svg)]:text-subtle',
+    itemIndicator: '',
+    label: 'trds-text-fg-label trds-font-medium',
+    trigger: [
+      'trds-appearance-none',
+      'data-placeholder-shown:trds-text-fg-placeholder',
+      'trds-inline-flex trds-items-center trds-justify-between',
+      'trds-border-boundary-trigger trds-rounded-lg trds-cursor-pointer trds-text-fg-trigger trds-inline-flex trds-relative trds-outline-0 trds-transition trds-duration-normal trds-transition-[background,box-shadow,border-color] trds-ease-in-out trds-w-full trds-border focus:trds-border-boundary-trigger focus:trds-shadow-[0_0_0_2px_var(--shadow-color)] focus:trds-shadow-primary disabled:trds-text-muted disabled:trds-cursor-not-allowed disabled:[&_:where(svg)]:trds-text-fg-muted',
+    ],
     control: '',
     valueText:
       'trds-flex-1 trds-whitespace-nowrap trds-text-left trds-overflow-hidden trds-text-ellipsis',

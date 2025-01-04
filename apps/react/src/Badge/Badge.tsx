@@ -32,7 +32,8 @@ const badgeVariants = tv({
     {
       variant: 'filled',
       theme: 'primary',
-      class: 'trds-bg-primary trds-text-primary-inverse trds-border-primary',
+      class:
+        'trds-bg-primary trds-text-primary-inverse trds-border-primary-boundary',
     },
     {
       variant: 'filled',
@@ -61,7 +62,7 @@ const badgeVariants = tv({
       variant: 'subtle',
       theme: 'primary',
       class:
-        'trds-bg-primary-subtlest trds-text-primary-fg trds-border-primary-subtlest',
+        'trds-bg-primary-subtlest trds-text-primary-fg trds-border-primary-boundary-subtlest',
     },
     {
       variant: 'subtle',
@@ -94,7 +95,7 @@ const badgeVariants = tv({
     {
       variant: 'outline',
       theme: 'primary',
-      class: 'trds-text-primary-fg trds-border-primary',
+      class: 'trds-text-primary-fg trds-border-primary-boundary',
     },
     {
       variant: 'outline',

@@ -19,10 +19,10 @@ export const checkboxVariants = tv({
     label: '',
     control: [
       'trds-text-primary-inverse',
-      'trds-border-2 trds-border-boundary trds-rounded-sm trds-flex-none trds-box-border trds-inline-flex trds-place-items-center trds-transition-all trds-duration-normal trds-ease-default',
-      'data-checked:trds-bg-primary data-checked:trds-text-primary-inverse data-checked:trds-border-primary',
+      'trds-border-2 trds-border-boundary trds-rounded-sm trds-flex-none trds-box-border trds-inline-flex trds-place-items-center trds-transition-all trds-duration-normal trds-ease-in-out',
+      'data-checked:trds-bg-primary data-checked:trds-text-primary-inverse data-checked:trds-border-primary-boundary',
       'data-invalid:trds-border-danger',
-      'data-indeterminate:trds-bg-primary data-indeterminate:trds-text-primary-inverse data-indeterminate:trds-border-primary',
+      'data-indeterminate:trds-bg-primary data-indeterminate:trds-text-primary-inverse data-indeterminate:trds-border-primary-boundary',
       'data-disabled:trds-bg-layer-muted data-disabled:trds-border-boundary-muted',
       'data-disabled:data-checked:trds-border-boundary-muted data-disabled:data-checked:trds-bg-layer-muted',
       'data-disabled:data-indeterminate:trds-border-boundary-muted data-disabled:data-indeterminate:trds-bg-layer-muted',

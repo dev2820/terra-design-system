@@ -2,7 +2,7 @@ import * as TOKEN from './token';
 
 export const colors = {
   primary: {
-    DEFAULT: `var(--my-colors-primary, ${TOKEN.colors.violet[500]})`,
+    DEFAULT: `var(--my-colors-primary, ${TOKEN.colors.violet[800]})`,
     50: `var(--my-colors-primary-50, ${TOKEN.colors.violet[50]})`,
     100: `var(--my-colors-primary-100, ${TOKEN.colors.violet[100]})`,
     200: `var(--my-colors-primary-200, ${TOKEN.colors.violet[200]})`,
@@ -28,7 +28,7 @@ export const colors = {
     fg: `var(--my-colors-primary-fg, ${TOKEN.colors.violet[500]})`,
     inverse: `var(--my-colors-primary-inverse, ${TOKEN.colors.white})`,
     layer: `var(--my-colors-primary-layer, ${TOKEN.colors.violet[50]})`,
-    boundary: `var(--my-colors-primary-boundary, ${TOKEN.colors.violet[200]})`,
+    boundary: `var(--my-colors-primary-boundary, ${TOKEN.colors.violet[500]})`,
     shadow: `var(--my-colors-primary-shadow, ${TOKEN.colors.violet[500]})`, //used
   },
   neutral: {
@@ -188,6 +188,7 @@ export const colors = {
     neutral: `var(--my-colors-fg-neutral, ${TOKEN.colors.black})`,
 
     title: `var(--my-colors-fg-title, ${TOKEN.colors.gray[900]})`,
+    label: `var(--my-colors-fg-label, ${TOKEN.colors.gray[900]})`,
     description: `var(--my-colors-fg-description, ${TOKEN.colors.gray[800]})`,
     placeholder: `var(--my-colors-fg-placeholder, ${TOKEN.colors.gray[400]})`,
     caption: `var(--my-colors-fg-caption, ${TOKEN.colors.gray[500]})`,
@@ -211,14 +212,18 @@ export const colors = {
     muted: `var(--my-colors-boundary-muted, ${TOKEN.colors.gray[200]})`,
     swatch: `var(--my-colors-boundary-swatch, ${TOKEN.colors.white})`,
     trigger: `var(--my-colors-boundary-trigger, ${TOKEN.colors.gray[200]})`,
+    radio: `var(--my-colors-boundary-radio, ${TOKEN.colors.gray[300]})`,
     input: `var(--my-colors-boundary-input, ${TOKEN.colors.gray[300]})`,
     invalid: `var(--my-colors-boundary-invalid, ${TOKEN.colors.red[500]})`,
+    popover: `var(--my-colors-boundary-popover, ${TOKEN.colors.white})`,
   },
   layer: {
     fill: `var(--my-colors-layer-bg, ${TOKEN.colors.gray[50]})`,
     hover: `var(--my-colors-layer-hover, ${TOKEN.colors.gray[100]})`,
     pressed: `var(--my-colors-layer-pressed, ${TOKEN.colors.gray[200]})`,
     indicator: `var(--my-colors-layer-indicator, ${TOKEN.colors.gray[50]})`,
+    thumb: `var(--my-colors-layer-thumb, ${TOKEN.colors.white})`,
+    marker: `var(--my-colors-layer-marker, ${TOKEN.colors.white})`,
     trigger: `var(--my-colors-layer-trigger, ${TOKEN.colors.white})`,
     alpha: `var(--my-colors-layer-alpha, ${TOKEN.colors.transparent})`,
     alpha2: `var(--my-colors-layer-alpha2, ${TOKEN.colors.blackAlpha[200]})`,
@@ -229,11 +234,12 @@ export const colors = {
     muted: `var(--my-colors-layer-muted, ${TOKEN.colors.gray[200]})`,
     input: `var(--my-colors-layer-input, ${TOKEN.colors.white})`,
     dropzone: `var(--my-colors-layer-dropzone, ${TOKEN.colors.white})`,
+    track: `var(--my-colors-layer-track, ${TOKEN.colors.gray[300]})`,
   },
   //deprecated
   layer1: `var(--my-colors-layer1, ${TOKEN.colors.gray[100]})`,
   dimmed: `var(--my-colors-dimmed, ${TOKEN.colors.blackAlpha[700]})`, // used
-  track: `var(--my-colors-track, ${TOKEN.colors.gray[300]})`,
+  spinner: `var(--my-colors-spinner, ${TOKEN.colors.gray[800]})`, // used
   caret: `var(--my-colors-caret, ${TOKEN.colors.black})`,
 } as const;
 
@@ -253,9 +259,10 @@ export const fontSizes = {
 } as const;
 
 export const duration = {
-  normal: {
-    DEFAULT: 'var(--my-duration-normal, 300ms)',
-  },
+  normal: 'var(--my-duration-normal, 300ms)',
+  fast: 'var(--my-duration-fast, 200ms)',
+  faster: 'var(--my-duration-faster, 100ms)',
+  fastest: 'var(--my-duration-fastest, 50ms)',
 } as const;
 
 export const opacity = {

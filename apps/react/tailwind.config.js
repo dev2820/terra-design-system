@@ -12,13 +12,13 @@ export default {
   prefix: 'trds-',
   theme: {
     colors: { ...colors },
-    duration: { ...duration },
+    transitionDuration: { ...duration },
     zIndex: { ...zIndex },
     keyframes: { ...keyframes },
     animation: { ...animations },
     extend: {
       colors: { ...semanticColors },
-      duration: { ...semanticDuration },
+      transitionDuration: { ...semanticDuration },
       opacity: { ...semanticOpacity },
       data: {
         open: 'state="open"',
@@ -35,6 +35,7 @@ export default {
         selected: 'selected',
         vertical: 'orientation="vertical"',
         horizontal: 'orientation="horizontal"',
+        'placeholder-shown': 'placeholder-shown',
         'in-range': 'in-range',
       },
     },

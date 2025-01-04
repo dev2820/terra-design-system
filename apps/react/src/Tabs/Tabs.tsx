@@ -19,7 +19,7 @@ export const tabsVariant = tv({
     list: 'trds-flex trds-flex-shrink-0 data-horizontal:trds-flex-row data-vertical:trds-flex-col trds-overflow-auto trds-relative trds-scrollbar-none [&::-webkit-scrollbar]:trds-hidden',
     trigger: [
       'trds-inline-flex trds-items-center trds-text-fg-caption trds-cursor-pointer trds-flex-shrink-0 trds-font-semibold trds-gap-2 trds-justify-center',
-      'trds-transition trds-duration-normal trds-transition-[color,background,border-color] trds-ease-default',
+      'trds-transition trds-duration-normal trds-transition-[color,background,border-color] trds-ease-in-out',
       'trds-whitespace-nowrap trds-z-elevated data-disabled:trds-text-muted data-disabled:trds-cursor-not-allowed hover:trds-text-neutral-800 data-selected:trds-text-neutral-800 data-vertical:trds-justify-start',
     ],
     content: '',

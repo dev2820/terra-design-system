@@ -14,13 +14,14 @@ export const progressVariants = tv({
   slots: {
     root: 'trds-flex trds-items-center trds-flex-col trds-gap-1.5 trds-w-full',
     label: 'trds-font-medium trds-text-sm',
-    track: 'trds-bg-track trds-rounded-full trds-overflow-hidden trds-w-full',
+    track:
+      'trds-bg-layer-track trds-rounded-full trds-overflow-hidden trds-w-full',
     range:
       'trds-bg-primary trds-h-full trds-transition-[width] trds-duration-[0.2s] trds-ease-in-out [--translate-x:-100%]',
     circle: '',
-    circleTrack: 'trds-stroke-track',
+    circleTrack: 'trds-stroke-layer-track',
     circleRange:
-      'trds-stroke-primary trds-transition-[stroke-dasharray,stroke] trds-duration-[0.6s]',
+      'trds-stroke-primary trds-transition-[stroke-dasharray,stroke] trds-duration-600',
     valueText: 'trds-text-sm',
   },
   variants: {

@@ -17,14 +17,14 @@ export const popoverVariants = tv({
   slots: {
     positioner: 'trds-relative',
     content:
-      'trds-relative trds-bg-white trds-rounded-lg trds-shadow-lg trds-flex trds-flex-col trds-max-w-sm trds-z-popover trds-p-4 data-open:trds-animate-fade-in data-closed:trds-animate-fade-out data-hidden:trds-hidden',
-    title: 'trds-font-medium trds-text-sm trds-mb-4',
-    description: 'trds-text-neutral-description trds-text-sm',
-    closeTrigger:
-      'trds-text-neutral-description trds-absolute trds-right-2 trds-top-2',
+      'trds-relative trds-bg-layer-popover trds-rounded-lg trds-shadow-lg trds-flex trds-flex-col trds-max-w-sm trds-z-popover trds-p-4 data-open:trds-animate-fade-in data-closed:trds-animate-fade-out data-hidden:trds-hidden',
+    title: 'trds-text-fg-title trds-font-medium trds-text-sm trds-mb-4',
+    description: 'trds-text-fg-description trds-text-sm',
+    closeTrigger: 'trds-absolute trds-right-2 trds-top-2',
     trigger: '',
-    arrow: '[--arrow-size:8px] [--arrow-background:#fff]',
-    arrowTip: 'trds-border-layer1 trds-border-t trds-border-l',
+    arrow:
+      '[--arrow-size:8px] [--arrow-background:--my-colors-layer-popover,white]',
+    arrowTip: 'trds-border-boundary-popover trds-border-t trds-border-l',
   },
 });
 

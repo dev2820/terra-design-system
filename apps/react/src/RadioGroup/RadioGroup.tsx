@@ -15,11 +15,13 @@ import { tv, VariantProps } from '../tv';
 export const radioGroupVariant = tv({
   base: `${IDENTIFIER.scope} radioGroup`,
   slots: {
-    root: 'trds-flex trds-flex-col data-vertical:trds-flex-col data-horizontal:trds-flex-row',
+    root: 'trds-text-fg trds-flex trds-flex-col data-vertical:trds-flex-col data-horizontal:trds-flex-row',
     item: 'trds-flex trds-items-center trds-cursor-pointer data-disabled:trds-cursor-not-allowed',
     itemControl: [
-      'trds-bg-transparent trds-border-boundary trds-rounded-full trds-border-2 trds-transition trds-duration-normal trds-ease-default',
-      'data-checked:trds-bg-transparent data-checked:trds-border-primary data-checked:trds-outline data-checked:trds-outline-primary',
+      'trds-transition-colors trds-transition-[outline] trds-duration-faster',
+      'trds-bg-transparent trds-border-boundary-radio trds-rounded-full trds-border-2',
+      'hover:trds-bg-layer-hover',
+      'data-checked:trds-bg-transparent data-checked:trds-border-primary-boundary data-checked:trds-outline data-checked:trds-outline-primary',
       'data-disabled:trds-border-muted data-disabled:trds-text-muted data-disabled:trds-border-muted data-disabled:trds-outline-muted',
     ],
     itemText: 'trds-font-medium data-disabled:trds-text-muted',
@@ -32,21 +34,21 @@ export const radioGroupVariant = tv({
         root: 'data-vertical:trds-gap-3 data-horizontal:trds-gap-4',
         item: 'trds-gap-2',
         itemControl:
-          'trds-w-4 trds-h-4 data-checked:trds-outline-[4px] data-checked:trds-outline-offset-[-5px]',
+          'trds-w-4 trds-h-4 data-checked:trds-outline-[4px] data-checked:trds-outline-offset-[-8px]',
         itemText: 'trds-text-sm',
       },
       md: {
         root: 'data-vertical:trds-gap-4 data-horizontal:trds-gap-6',
         item: 'trds-gap-3',
         itemControl:
-          'trds-w-5 trds-h-5 data-checked:trds-outline-[5px] data-checked:trds-outline-offset-[-6px]',
+          'trds-w-5 trds-h-5 data-checked:trds-outline-[5px] data-checked:trds-outline-offset-[-10px]',
         itemText: 'trds-text-md',
       },
       lg: {
         root: 'data-vertical:trds-gap-5 data-horizontal:trds-gap-8',
         item: 'trds-gap-4',
         itemControl:
-          'trds-w-6 trds-h-6 data-checked:trds-outline-[6px] data-checked:trds-outline-offset-[-7px]',
+          'trds-w-6 trds-h-6 data-checked:trds-outline-[6px] data-checked:trds-outline-offset-[-12px]',
         itemText: 'trds-text-lg',
       },
     },

@@ -15,17 +15,17 @@ import { tv, VariantProps } from '../tv';
 export const sliderVariants = tv({
   base: `${IDENTIFIER.scope} slider`,
   slots: {
-    root: 'trds-flex trds-flex-col trds-gap-1 trds-w-full',
+    root: 'trds-text-fg trds-flex trds-flex-col trds-gap-1 trds-w-full',
     label: '',
     control: 'trds-relative trds-flex trds-items-center',
     track:
-      'trds-bg-track trds-rounded-full trds-overflow-hidden trds-flex-1 trds-cursor-pointer data-disabled:trds-cursor-not-allowed',
+      'trds-bg-layer-track trds-rounded-full trds-overflow-hidden trds-flex-1 trds-cursor-pointer data-disabled:trds-cursor-not-allowed',
     range: 'trds-bg-primary data-disabled:trds-bg-muted',
     thumb:
-      'trds-bg-white trds-border-primary trds-rounded-full trds-border-2 trds-shadow-md trds-outline-none trds-z-elevated trds-cursor-pointer data-disabled:trds-border-muted data-disabled:trds-cursor-not-allowed',
+      'trds-bg-layer-thumb trds-border-primary-boundary trds-rounded-full trds-border-2 trds-shadow-md trds-outline-none trds-z-elevated trds-cursor-pointer data-disabled:trds-border-boundary-muted data-disabled:trds-cursor-not-allowed',
     markerGroup: '-trds-mt-1',
     marker:
-      "trds-text-current before:trds-bg-white before:trds-rounded-full before:trds-content-[''] before:trds-block before:trds-left-1/2 before:trds-relative before:-trds-translate-x-1/2",
+      "trds-text-current before:trds-bg-layer-marker before:trds-rounded-full before:trds-content-[''] before:trds-block before:trds-left-1/2 before:trds-relative before:-trds-translate-x-1/2",
     valueText: '',
   },
   variants: {

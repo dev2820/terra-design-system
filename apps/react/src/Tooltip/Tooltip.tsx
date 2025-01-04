@@ -32,7 +32,7 @@ export const tooltipVariants = tv({
       primary: {
         content: 'trds-bg-primary trds-text-fg-primary',
         arrow: 'trds-[--arrow-background:var(--colors-primary,#8b5cf6)]',
-        arrowTip: 'trds-border-primary',
+        arrowTip: 'trds-border-primary-boundary',
       },
     },
   },

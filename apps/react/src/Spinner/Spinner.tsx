@@ -6,7 +6,7 @@ import { cx } from '../cx';
 import { tv, VariantProps } from '../tv';
 
 export const spinnerVariants = tv({
-  base: 'trds-inline-block trds-border-2 trds-border-transparent trds-border-solid trds-rounded-full trds-w-[var(--size)] trds-h-[var(--size)] trds-animate-spin trds-border-b-neutral-800 trds-border-l-neutral-800',
+  base: 'trds-inline-block trds-border-2 trds-border-transparent trds-border-solid trds-rounded-full trds-w-[var(--size)] trds-h-[var(--size)] trds-animate-spin trds-border-b-spinner trds-border-l-spinner',
   variants: {
     size: {
       xs: '[--size:8px]',
