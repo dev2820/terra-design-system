@@ -20,16 +20,9 @@ export const colors = {
     subtlest: `var(--my-colors-primary-subtlest, ${TOKEN.colors.violet[200]})`, //used
     alpha: `var(--my-colors-primary-alpha, ${TOKEN.colors.violet[500]}1F)`, //used
     alpha2: `var(--my-colors-primary-alpha2, ${TOKEN.colors.violet[500]}3D)`, //used
-    dark: `var(--my-colors-primary-dark, ${TOKEN.colors.violet[600]})`,
-    hover: `var(--my-colors-primary-hover, ${TOKEN.colors.violet[600]})`,
-    pressed: `var(--my-colors-primary-pressed, ${TOKEN.colors.violet[700]})`,
-    visited: `var(--my-colors-primary-visited, ${TOKEN.colors.violet[700]})`,
-    fill: `var(--my-colors-primary-fill, ${TOKEN.colors.violet[200]})`,
     fg: `var(--my-colors-primary-fg, ${TOKEN.colors.violet[500]})`,
     inverse: `var(--my-colors-primary-inverse, ${TOKEN.colors.white})`,
-    layer: `var(--my-colors-primary-layer, ${TOKEN.colors.violet[50]})`,
     boundary: `var(--my-colors-primary-boundary, ${TOKEN.colors.violet[500]})`,
-    shadow: `var(--my-colors-primary-shadow, ${TOKEN.colors.violet[500]})`, //used
   },
   neutral: {
     DEFAULT: `var(--my-colors-neutral, ${TOKEN.colors.gray[100]})`,
@@ -50,11 +43,8 @@ export const colors = {
     stronger: `var(--my-colors-neutral-stronger, ${TOKEN.colors.gray[300]})`,
     alpha: `var(--my-colors-neutral-alpha, ${TOKEN.colors.gray[500]}1F)`, //used
     alpha2: `var(--my-colors-neutral-alpha2, ${TOKEN.colors.gray[500]}3D)`, //used
-    visited: `var(--my-colors-neutral-visited, ${TOKEN.colors.gray[400]})`,
     fg: `var(--my-colors-neutral-fg, ${TOKEN.colors.gray[800]})`,
     inverse: `var(--my-colors-neutral-inverse, ${TOKEN.colors.gray[800]})`,
-    title: `var(--my-colors-neutral-title, ${TOKEN.colors.gray[900]})`,
-    description: `var(--my-colors-neutral-title, ${TOKEN.colors.gray[800]})`,
     boundary: `var(--my-colors-neutral-boundary, ${TOKEN.colors.gray[200]})`,
   },
   info: {
@@ -76,12 +66,8 @@ export const colors = {
     subtlest: `var(--my-colors-info-subtlest, ${TOKEN.colors.blue[200]})`, //used
     alpha: `var(--my-colors-info-alpha, ${TOKEN.colors.blue[500]}1F)`, //used
     alpha2: `var(--my-colors-info-alpha2, ${TOKEN.colors.blue[500]}3D)`, //used
-    dark: `var(--my-colors-info-dark, ${TOKEN.colors.blue[600]})`,
-    hover: `var(--my-colors-info-hover, ${TOKEN.colors.blue[600]})`,
-    pressed: `var(--my-colors-info-pressed, ${TOKEN.colors.blue[700]})`,
     fg: `var(--my-colors-info-fg, ${TOKEN.colors.blue[500]})`,
     inverse: `var(--my-colors-info-inverse, ${TOKEN.colors.white})`,
-    layer: `var(--my-colors-info-layer, ${TOKEN.colors.blue[50]})`,
     boundary: `var(--my-colors-info-boundary, ${TOKEN.colors.blue[200]})`,
   },
   success: {
@@ -103,12 +89,8 @@ export const colors = {
     subtlest: `var(--my-colors-success-subtlest, ${TOKEN.colors.green[200]})`, //used
     alpha: `var(--my-colors-success-alpha, ${TOKEN.colors.green[500]}1F)`, //used
     alpha2: `var(--my-colors-success-alpha2, ${TOKEN.colors.green[500]}3D)`, //used
-    dark: `var(--my-colors-success-dark, ${TOKEN.colors.green[600]})`,
-    hover: `var(--my-colors-success-hover, ${TOKEN.colors.green[600]})`,
-    pressed: `var(--my-colors-success-pressed, ${TOKEN.colors.green[700]})`,
     fg: `var(--my-colors-success-fg, ${TOKEN.colors.green[500]})`,
     inverse: `var(--my-colors-success-inverse, ${TOKEN.colors.white})`,
-    layer: `var(--my-colors-success-layer, ${TOKEN.colors.green[50]})`,
     boundary: `var(--my-colors-success-boundary, ${TOKEN.colors.green[200]})`,
   },
   danger: {
@@ -130,12 +112,8 @@ export const colors = {
     subtlest: `var(--my-colors-danger-subtlest, ${TOKEN.colors.red[200]})`, //used
     alpha: `var(--my-colors-danger-alpha, ${TOKEN.colors.red[500]}1F)`, //used
     alpha2: `var(--my-colors-danger-alpha2, ${TOKEN.colors.red[500]}3D)`, //used
-    dark: `var(--my-colors-danger-dark, ${TOKEN.colors.red[600]})`,
-    hover: `var(--my-colors-danger-hover, ${TOKEN.colors.red[600]})`,
-    pressed: `var(--my-colors-danger-pressed, ${TOKEN.colors.red[700]})`,
     fg: `var(--my-colors-danger-fg, ${TOKEN.colors.red[500]})`,
     inverse: `var(--my-colors-danger-inverse, ${TOKEN.colors.white})`,
-    layer: `var(--my-colors-danger-layer, ${TOKEN.colors.red[50]})`,
     boundary: `var(--my-colors-danger-boundary, ${TOKEN.colors.red[200]})`,
   },
   warning: {
@@ -157,36 +135,12 @@ export const colors = {
     subtlest: `var(--my-colors-warning-subtlest, ${TOKEN.colors.yellow[200]})`, //used
     alpha: `var(--my-colors-warning-alpha, ${TOKEN.colors.yellow[500]}1F)`, //used
     alpha2: `var(--my-colors-warning-alpha2, ${TOKEN.colors.yellow[500]}3D)`, //used
-    dark: `var(--my-colors-warning-dark, ${TOKEN.colors.yellow[600]})`,
-    hover: `var(--my-colors-warning-hover, ${TOKEN.colors.yellow[700]})`,
-    pressed: `var(--my-colors-warning-pressed, ${TOKEN.colors.yellow[800]})`,
     fg: `var(--my-colors-warning-fg, ${TOKEN.colors.yellow[500]})`,
     inverse: `var(--my-colors-warning-inverse, ${TOKEN.colors.white})`,
-    layer: `var(--my-colors-warning-layer, ${TOKEN.colors.yellow[50]})`,
     boundary: `var(--my-colors-warning-boundary, ${TOKEN.colors.yellow[200]})`,
-  },
-  muted: {
-    // deprecated
-    DEFAULT: `var(--my-colors-muted, ${TOKEN.colors.gray[400]})`,
-    fg: `var(--my-colors-muted-fg, ${TOKEN.colors.gray[400]})`,
-    bg: `var(--my-colors-muted-bg, ${TOKEN.colors.gray[100]})`,
-  },
-  transparent: {
-    DEFAULT: `var(--my-colors-transparent, ${TOKEN.colors.transparent})`,
-    fg: `var(--my-colors-transparent-fg, ${TOKEN.colors.transparent})`,
-  },
-  placeholder: {
-    DEFAULT: `var(--my-colors-placeholder, ${TOKEN.colors.gray[400]})`,
   },
   fg: {
     DEFAULT: `var(--my-colors-fg, ${TOKEN.colors.gray[800]})`,
-    primary: `var(--my-colors-fg-primary, ${TOKEN.colors.white})`,
-    success: `var(--my-colors-fg-success, ${TOKEN.colors.white})`,
-    info: `var(--my-colors-fg-info, ${TOKEN.colors.white})`,
-    warning: `var(--my-colors-fg-warning, ${TOKEN.colors.white})`,
-    error: `var(--my-colors-fg-error, ${TOKEN.colors.white})`,
-    neutral: `var(--my-colors-fg-neutral, ${TOKEN.colors.black})`,
-
     title: `var(--my-colors-fg-title, ${TOKEN.colors.gray[900]})`,
     label: `var(--my-colors-fg-label, ${TOKEN.colors.gray[900]})`,
     description: `var(--my-colors-fg-description, ${TOKEN.colors.gray[800]})`,
@@ -206,7 +160,6 @@ export const colors = {
     trigger: `var(--my-colors-boundary-trigger, ${TOKEN.colors.gray[200]})`,
     radio: `var(--my-colors-boundary-radio, ${TOKEN.colors.gray[300]})`,
     input: `var(--my-colors-boundary-input, ${TOKEN.colors.gray[300]})`,
-    invalid: `var(--my-colors-boundary-invalid, ${TOKEN.colors.red[500]})`,
     popover: `var(--my-colors-boundary-popover, ${TOKEN.colors.white})`,
   },
   layer: {
@@ -216,7 +169,6 @@ export const colors = {
     indicator: `var(--my-colors-layer-indicator, ${TOKEN.colors.gray[50]})`,
     thumb: `var(--my-colors-layer-thumb, ${TOKEN.colors.white})`,
     marker: `var(--my-colors-layer-marker, ${TOKEN.colors.white})`,
-    trigger: `var(--my-colors-layer-trigger, ${TOKEN.colors.white})`,
     alpha: `var(--my-colors-layer-alpha, ${TOKEN.colors.transparent})`,
     alpha2: `var(--my-colors-layer-alpha2, ${TOKEN.colors.blackAlpha[200]})`,
     alpha3: `var(--my-colors-layer-alpha3, ${TOKEN.colors.blackAlpha[300]})`,
@@ -225,15 +177,12 @@ export const colors = {
     modal: `var(--my-colors-layer-modal, ${TOKEN.colors.white})`,
     muted: `var(--my-colors-layer-muted, ${TOKEN.colors.gray[200]})`,
     input: `var(--my-colors-layer-input, ${TOKEN.colors.white})`,
-    dropzone: `var(--my-colors-layer-dropzone, ${TOKEN.colors.white})`,
     track: `var(--my-colors-layer-track, ${TOKEN.colors.gray[300]})`,
   },
-  //deprecated
-  layer1: `var(--my-colors-layer1, ${TOKEN.colors.gray[100]})`,
+  transparent: `var(--my-colors-transparent, ${TOKEN.colors.transparent})`,
   base: `var(--my-colors-base, ${TOKEN.colors.white})`,
   dimmed: `var(--my-colors-dimmed, ${TOKEN.colors.blackAlpha[700]})`, // used
   spinner: `var(--my-colors-spinner, ${TOKEN.colors.gray[800]})`, // used
-  caret: `var(--my-colors-caret, ${TOKEN.colors.black})`,
 } as const;
 
 export const fontSizes = {

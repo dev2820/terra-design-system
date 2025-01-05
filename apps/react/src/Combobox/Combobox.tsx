@@ -19,11 +19,11 @@ export const comboboxVariant = tv({
     root: 'trds-flex trds-flex-col trds-gap-1.5 trds-w-full',
     control: 'trds-relative',
     trigger:
-      'trds-absolute trds-bottom-0 trds-right-0 trds-top-0 trds-text-muted trds-cursor-pointer',
+      'trds-absolute trds-bottom-0 trds-right-0 trds-top-0 trds-text-fg-muted trds-cursor-pointer',
     clearTrigger:
-      'trds-absolute trds-bottom-0 trds-right-8 trds-top-0 trds-text-muted trds-cursor-pointer',
+      'trds-absolute trds-bottom-0 trds-right-8 trds-top-0 trds-text-fg-muted trds-cursor-pointer',
     input:
-      'trds-w-full trds-bg-layer-input trds-caret-caret trds-text-fg-input trds-border-boundary-input',
+      'trds-w-full trds-bg-layer-input trds-text-fg-input trds-border-boundary-input',
     content:
       'trds-bg-layer-popover trds-text-fg-popover trds-rounded-lg trds-shadow-lg trds-flex trds-flex-col trds-z-dropdown data-hidden:trds-hidden data-open:trds-animate-fade-in data-closed:trds-animate-fade-out focus-visible:trds-outline-2 focus-visible:trds-outline-solid focus-visible:trds-outline-boundary focus-visible:trds-outline-offset-2',
     item: 'trds-flex trds-items-center trds-justify-between trds-rounded-md trds-cursor-pointer trds-transition-fast trds-transition-[background,color] trds-duration-normal trds-ease-in-out data-highlighted:trds-bg-layer-hover disabled:trds-text-fg-muted disabled:trds-cursor-not-allowed disabled:hover:trds-bg-transparent disabled:hover:trds-text-fg-muted',

@@ -22,7 +22,7 @@ export const selectVariant = tv({
     root: 'trds-text-fg trds-flex trds-flex-col trds-gap-1.5 trds-w-full',
     content:
       'trds-text-fg trds-bg-layer-popover trds-rounded-lg trds-shadow-lg trds-flex trds-flex-col trds-z-dropdown data-open:trds-animate-fade-in data-closed:trds-animate-fade-out focus-visible:trds-outline-2 focus-visible:trds-outline-solid focus-visible:trds-outline-boundary focus-visible:trds-outline-offset-2',
-    item: 'trds-flex trds-items-center trds-justify-between trds-rounded-md trds-cursor-pointer trds-duration-fast trds-transition-[background,color] hover:trds-bg-layer-hover data-highlighted:trds-bg-layer-hover data-disabled:trds-text-muted data-disabled:trds-cursor-not-allowed',
+    item: 'trds-flex trds-items-center trds-justify-between trds-rounded-md trds-cursor-pointer trds-duration-fast trds-transition-[background,color] hover:trds-bg-layer-hover data-highlighted:trds-bg-layer-hover data-disabled:trds-text-fg-muted data-disabled:trds-cursor-not-allowed',
     itemGroupLabel: 'trds-font-semibold trds-text-sm',
     itemIndicator: '',
     label: 'trds-text-fg-label trds-font-medium',
@@ -30,7 +30,7 @@ export const selectVariant = tv({
       'trds-appearance-none',
       'data-placeholder-shown:trds-text-fg-placeholder',
       'trds-inline-flex trds-items-center trds-justify-between',
-      'trds-border-boundary-trigger trds-rounded-lg trds-cursor-pointer trds-text-fg-trigger trds-inline-flex trds-relative trds-outline-0 trds-transition trds-duration-normal trds-transition-[background,box-shadow,border-color] trds-ease-in-out trds-w-full trds-border focus:trds-border-boundary-trigger focus:trds-shadow-[0_0_0_2px_var(--shadow-color)] focus:trds-shadow-primary disabled:trds-text-muted disabled:trds-cursor-not-allowed disabled:[&_:where(svg)]:trds-text-fg-muted',
+      'trds-border-boundary-trigger trds-rounded-lg trds-cursor-pointer trds-text-fg-trigger trds-inline-flex trds-relative trds-outline-0 trds-transition trds-duration-normal trds-transition-[background,box-shadow,border-color] trds-ease-in-out trds-w-full trds-border focus:trds-border-boundary-trigger focus:trds-shadow-[0_0_0_2px_var(--shadow-color)] focus:trds-shadow-primary disabled:trds-text-fg-muted disabled:trds-cursor-not-allowed disabled:[&_:where(svg)]:trds-text-fg-muted',
     ],
     control: '',
     valueText:

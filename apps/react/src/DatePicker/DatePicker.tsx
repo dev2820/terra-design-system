@@ -40,7 +40,7 @@ export const datePickerVariants = tv({
       'data-in-range:data-selected:trds-bg-primary data-in-range:data-selected:trds-text-primary-inverse',
       'data-disabled:trds-text-fg-muted data-disabled:trds-cursor-not-allowed data-disabled:trds-bg-transparent data-disabled:hover:trds-bg-transparent data-disabled:active:trds-bg-transparent',
     ],
-    input: 'trds-bg-layer-input trds-text-fg-input trds-caret-caret',
+    input: 'trds-bg-layer-input trds-text-fg-input',
     rangeText: '',
     positioner: '',
     viewTrigger: [''],

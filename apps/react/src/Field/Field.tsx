@@ -17,11 +17,11 @@ export const fieldVariants = tv({
   slots: {
     root: 'trds-flex trds-flex-col trds-gap-1.5',
     label:
-      'trds-text-fg-title trds-font-medium trds-text-sm disabled:trds-text-muted',
+      'trds-text-fg-title trds-font-medium trds-text-sm disabled:trds-text-fg-muted',
     helperText:
-      'trds-inline-flex trds-items-center trds-text-fg-description trds-gap-1 trds-text-sm disabled:trds-text-muted',
+      'trds-inline-flex trds-items-center trds-text-fg-description trds-gap-1 trds-text-sm disabled:trds-text-fg-muted',
     dangerText:
-      'trds-inline-flex trds-items-center trds-text-danger trds-gap-1 trds-text-sm disabled:trds-text-muted',
+      'trds-inline-flex trds-items-center trds-text-danger trds-gap-1 trds-text-sm disabled:trds-text-fg-muted',
   },
 });
 

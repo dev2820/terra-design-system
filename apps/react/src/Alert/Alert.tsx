@@ -9,7 +9,7 @@ import { tv, VariantProps } from '../tv';
 export const alertVariants = tv({
   base: `${IDENTIFIER.scope} alert`,
   slots: {
-    root: 'trds-relative trds-p-4 trds-rounded-lg trds-border [&>svg]:trds-absolute [&>svg]:trds-top-5 [&>svg]:trds-left-4',
+    root: 'trds-text-fg trds-relative trds-p-4 trds-rounded-lg trds-border [&>svg]:trds-absolute [&>svg]:trds-top-5 [&>svg]:trds-left-4',
     title:
       '[svg+&]:trds-pl-8 trds-font-semibold trds-text-lg trds-leading-2 trds-mb-2 last:trds-mb-0 trds-text-title',
     description: 'trds-text-description trds-text-md [svg~&]:trds-pl-8',
@@ -17,19 +17,19 @@ export const alertVariants = tv({
   variants: {
     theme: {
       info: {
-        root: '[&>svg]:trds-text-info trds-bg-info-layer trds-border-info-boundary',
+        root: '[&>svg]:trds-text-info trds-bg-info-alpha trds-border-info-boundary',
         title: 'trds-text-info',
       },
       success: {
-        root: '[&>svg]:trds-text-success trds-bg-success-layer trds-border-success-boundary',
+        root: '[&>svg]:trds-text-success trds-bg-success-alpha trds-border-success-boundary',
         title: 'trds-text-success',
       },
       warning: {
-        root: '[&>svg]:trds-text-warning trds-bg-warning-layer trds-border-warning-boundary',
+        root: '[&>svg]:trds-text-warning trds-bg-warning-alpha trds-border-warning-boundary',
         title: 'trds-text-warning',
       },
       danger: {
-        root: '[&>svg]:trds-text-danger trds-bg-danger-layer trds-border-danger-boundary',
+        root: '[&>svg]:trds-text-danger trds-bg-danger-alpha trds-border-danger-boundary',
         title: 'trds-text-danger',
       },
     },

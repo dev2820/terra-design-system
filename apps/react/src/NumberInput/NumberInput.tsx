@@ -16,7 +16,7 @@ const trigger = [
   'trds-transition trds-duration-normal trds-transition-[background,border-color,color,box-shadow] trds-ease-in-out',
   '[&_:where(svg)]:trds-w-4 [&_:where(svg)]:trds-h-4',
   'hover:trds-bg-layer-hover hover:trds-text-fg',
-  'data-disabled:trds-bg-transparent data-disabled:trds-text-muted data-disabled:trds-opacity-50 data-disabled:trds-cursor-not-allowed',
+  'data-disabled:trds-bg-transparent data-disabled:trds-text-fg-muted data-disabled:trds-opacity-50 data-disabled:trds-cursor-not-allowed',
 ];
 const numberInputVariants = tv({
   base: `${IDENTIFIER.scope} numberInput`,
@@ -25,7 +25,7 @@ const numberInputVariants = tv({
     control:
       'trds-bg-layer-input trds-border trds-border-boundary-input trds-rounded-lg trds-grid trds-divide-x-[1px] trds-grid-cols-[1fr_32px] trds-grid-rows-[1fr_1fr] trds-overflow-hidden trds-transition trds-duration-normal trds-transition-[border-color,box-shadow] trds-ease-in-out focus-within:trds-border-primary-boundary focus-within:trds-shadow-[0_0_0_1px_var(--shadow-color)] focus-within:trds-shadow-primary',
     input:
-      'trds-bg-layer-input trds-text-fg-input trds-border-none trds-row-span-2 trds-outline-none trds-w-full placeholder:trds-text-placeholder disabled:trds-cursor-not-allowed disabled:trds-opacity-50',
+      'trds-bg-layer-input trds-text-fg-input trds-border-none trds-row-span-2 trds-outline-none trds-w-full placeholder:trds-text-fg-placeholder disabled:trds-cursor-not-allowed disabled:trds-opacity-50',
     incrementTrigger: cx('', trigger, 'trds-border-b'),
     decrementTrigger: cx('', trigger),
   },

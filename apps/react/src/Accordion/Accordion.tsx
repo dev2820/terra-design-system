@@ -16,7 +16,7 @@ import { tv } from '../tv';
 export const accordionVariants = tv({
   base: `${IDENTIFIER.scope} accordion`,
   slots: {
-    root: 'trds-w-full',
+    root: 'trds-text-fg trds-w-full',
     item: 'trds-border-b trds-border-boundary',
     itemTrigger:
       'trds-transition-all trds-duration-normal trds-w-full trds-py-4 trds-flex trds-flex-row trds-justify-between trds-items-center trds-cursor-pointer disabled:trds-text-fg-muted disabled:trds-cursor-not-allowed',
