@@ -6,7 +6,7 @@ import { cx } from '../cx';
 import { tv, VariantProps } from '../tv';
 
 const textareaVariants = tv({
-  base: 'trds-appearance-none trds-bg-none trds-border-boundary trds-rounded-lg trds-border trds-min-w-0 trds-outline-0 trds-relative trds-transition trds-duration-normal trds-transition-[border-color,box-shadow] trds-w-full disabled:trds-opacity-muted disabled:trds-cursor-not-allowed placeholder:trds-text-fg-placeholder focus:trds-border-primary-boundary focus:trds-shadow-[0_0_0_1px] focus:trds-shadow-primary',
+  base: 'trds-text-fg trds-appearance-none trds-bg-transparent trds-border-boundary-input trds-rounded-lg trds-border trds-min-w-0 trds-outline-0 trds-relative trds-transition trds-duration-normal trds-transition-[border-color,box-shadow] trds-w-full disabled:trds-opacity-muted disabled:trds-cursor-not-allowed placeholder:trds-text-fg-placeholder focus:trds-border-primary-boundary focus:trds-shadow-[0_0_0_1px] focus:trds-shadow-primary',
   variants: {
     size: {
       sm: 'trds-p-2.5 trds-text-sm',
@@ -14,7 +14,7 @@ const textareaVariants = tv({
       lg: 'trds-p-3.5 trds-text-md',
     },
     invalid: {
-      true: 'trds-border-danger-500',
+      true: 'trds-border-danger',
     },
   },
   defaultVariants: {

@@ -48,7 +48,7 @@ export const Default = {
                 </Button>
               </Toast.ActionTrigger>
               <Toast.CloseTrigger asChild>
-                <IconButton size="xs" theme="blackAlpha" variant="ghost">
+                <IconButton size="xs" variant="ghost">
                   <XIcon size={16} />
                 </IconButton>
               </Toast.CloseTrigger>

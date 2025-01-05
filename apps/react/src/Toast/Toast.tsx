@@ -16,15 +16,16 @@ export const toastVariants = tv({
   base: `${IDENTIFIER.scope} toast`,
   slots: {
     root: [
-      'trds-bg-white trds-rounded-lg trds-shadow-lg trds-min-w-[20rem]',
+      'trds-text-fg trds-bg-layer-popover trds-rounded-lg trds-shadow-lg trds-min-w-[20rem]',
       'trds-h-[var(--height)] trds-w-[var(--width)] trds-opacity-[var(--opacity)]',
       'trds-break-anywhere trds-p-4 trds-relative',
-      'trds-custom-translate trds-will-change-[translate,opacity,scale] trds-z-[var(--z-index)] trds-transition trds-duration-normal trds-transition-[translate,scale,opacity,height] trds-ease-in-out',
+      'trds-custom-translate trds-will-change-[translate,opacity,scale] trds-z-[var(--z-index)] trds-transition trds-duration-normal trds-transition-[translate,scale,opacity,height]',
     ],
-    title: 'trds-text-neutral-title trds-font-semibold trds-text-sm trds-mb-4',
-    description: 'trds-text-neutral-description trds-text-sm',
+    title: 'trds-text-fg-title trds-font-semibold trds-text-sm trds-mb-4',
+    description: 'trds-text-fg-description trds-text-sm',
     actionTrigger: 'trds-mt-4',
-    closeTrigger: 'trds-absolute trds-top-3 trds-right-3',
+    closeTrigger:
+      'trds-absolute trds-top-3 trds-right-3 trds-text-fg-trigger trds-bg-layer-alpha hover:trds-bg-layer-alpha2 active:trds-bg-layer-alpha3',
   },
 });
 

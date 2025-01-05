@@ -24,7 +24,7 @@ export const carouselVariants = tv({
     indicatorGroup:
       'trds-flex trds-flex-row trds-gap-2 trds-justify-center trds-items-center trds-mx-8',
     indicator:
-      'trds-w-2.5 trds-h-2.5 trds-rounded-full trds-transition-colors trds-duration-normal trds-bg-layer-indicator hover:trds-bg-layer-hover trds-cursor-pointer trds-duration-normal data-current:trds-bg-layer-pressed data-current:hover:trds-bg-layer-pressed data-readonly:trds-bg-layer-muted data-readonly:trds-cursor-not-allowed',
+      'trds-w-2.5 trds-h-2.5 trds-rounded-full trds-transition-colors trds-duration-normal trds-bg-layer-fill hover:trds-bg-layer-indicator trds-cursor-pointer trds-duration-normal data-current:trds-bg-layer-indicator data-current:hover:trds-bg-layer-indicator data-readonly:trds-bg-layer-muted data-readonly:trds-cursor-not-allowed',
     control:
       'trds-w-full trds-px-4 trds-flex trds-flex-row trds-justify-center trds-items-center trds-mt-4',
     prevTrigger: ['', 'trds-rounded-full'],

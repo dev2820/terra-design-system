@@ -18,20 +18,20 @@ export const tooltipVariants = tv({
     content:
       'trds-rounded-md trds-shadow-sm trds-font-semibold trds-px-3 trds-py-2 trds-text-xs trds-max-w-40 trds-z-tooltip data-open:trds-animate-fade-in data-closed:trds-animate-fade-out',
     arrow: '[--arrow-size:8px]',
-    arrowTip: 'trds-border-neutral-800 trds-border-t-[1px] trds-border-l-[1px]',
+    arrowTip: 'trds-border-t-[1px] trds-border-l-[1px]',
     trigger: '',
     positioner: '',
   },
   variants: {
     theme: {
       neutral: {
-        content: 'trds-bg-neutral-800 trds-text-white',
-        arrow: '[--arrow-background:var(--colors-neutral-800,#1f2937)]',
-        arrowTip: 'trds-border-neutral-800',
+        content: 'trds-bg-layer-popover trds-text-white',
+        arrow: '[--arrow-background:var(--my-colors-layer-popover,#1f2937)]',
+        arrowTip: 'trds-border-boundary-popover',
       },
       primary: {
-        content: 'trds-bg-primary trds-text-fg-primary',
-        arrow: 'trds-[--arrow-background:var(--colors-primary,#8b5cf6)]',
+        content: 'trds-bg-primary trds-text-primary-inverse',
+        arrow: 'trds-[--arrow-background:var(--my-colors-primary,#8b5cf6)]',
         arrowTip: 'trds-border-primary-boundary',
       },
     },

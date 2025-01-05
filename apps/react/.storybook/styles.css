@@ -6,15 +6,18 @@
   --my-colors-layer-trigger: #444444;
   --my-colors-layer-input: #444444;
   --my-colors-layer-muted: #444444;
-  --my-colors-layer-indicator: #444444;
+  --my-colors-layer-indicator: #999999;
   --my-colors-layer-alpha: rgba(255, 255, 255, 0);
   --my-colors-layer-alpha2: rgba(255, 255, 255, 0.08);
-  --my-colors-layer-alpha3: rgba(255, 255, 255, 0.16);
   --my-colors-layer-alpha3: rgba(255, 255, 255, 0.16);
   --my-colors-layer-thumb: white;
   --my-colors-layer-marker: #555555;
   --my-colors-layer-dropzone: #333333;
   --my-colors-layer-card: #333333;
+  --my-colors-layer-fill: #444444;
+  --my-colors-layer-hover: #555555;
+  --my-colors-layer-pressed: #666666;
+  --my-colors-layer-track: #555555;
   --my-colors-caret: white;
   --my-colors-fg: #dddddd;
   --my-colors-fg-input: white;
@@ -25,9 +28,6 @@
   --my-colors-fg-indicator: white;
   --my-colors-fg-title: white;
   --my-colors-fg-description: #dddddd;
-  --my-colors-layer-hover: #555555;
-  --my-colors-layer-pressed: #666666;
-  --my-colors-layer-track: #555555;
   --my-colors-dimmed: rgba(255, 255, 255, 0.16);
   --my-colors-boundary-swatch: #444444;
   --my-colors-boundary-input: #dddddd;
@@ -50,6 +50,7 @@
   --my-colors-neutral-alpha: #9999991f;
   --my-colors-neutral-alpha2: #9999993d;
   --my-colors-spinner: #eeeeee;
+  --my-colors-base: #333333;
 }
 body {
   font-family: 'Pretendard Variable';

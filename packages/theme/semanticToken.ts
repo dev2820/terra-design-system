@@ -199,14 +199,6 @@ export const colors = {
     popover: `var(--my-colors-fg-popover, ${TOKEN.colors.gray[800]})`,
     indicator: `var(--my-colors-fg-indicator, ${TOKEN.colors.black})`,
   },
-  foreground: {
-    // deprecated
-    muted: `var(--my-colors-foreground-muted, ${TOKEN.colors.gray[400]})`,
-  },
-  background: {
-    // deprecated
-    muted: `var(--my-colors-background-muted, ${TOKEN.colors.gray[400]})`,
-  },
   boundary: {
     DEFAULT: `var(--my-colors-boundary, ${TOKEN.colors.gray[300]})`,
     muted: `var(--my-colors-boundary-muted, ${TOKEN.colors.gray[200]})`,
@@ -218,7 +210,7 @@ export const colors = {
     popover: `var(--my-colors-boundary-popover, ${TOKEN.colors.white})`,
   },
   layer: {
-    fill: `var(--my-colors-layer-bg, ${TOKEN.colors.gray[50]})`,
+    fill: `var(--my-colors-layer-fill, ${TOKEN.colors.gray[50]})`,
     hover: `var(--my-colors-layer-hover, ${TOKEN.colors.gray[100]})`,
     pressed: `var(--my-colors-layer-pressed, ${TOKEN.colors.gray[200]})`,
     indicator: `var(--my-colors-layer-indicator, ${TOKEN.colors.gray[50]})`,
@@ -238,6 +230,7 @@ export const colors = {
   },
   //deprecated
   layer1: `var(--my-colors-layer1, ${TOKEN.colors.gray[100]})`,
+  base: `var(--my-colors-base, ${TOKEN.colors.white})`,
   dimmed: `var(--my-colors-dimmed, ${TOKEN.colors.blackAlpha[700]})`, // used
   spinner: `var(--my-colors-spinner, ${TOKEN.colors.gray[800]})`, // used
   caret: `var(--my-colors-caret, ${TOKEN.colors.black})`,
