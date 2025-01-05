@@ -12,11 +12,11 @@
     "react:test": "pnpm --filter @terra/react test",
     "utils:test": "pnpm --filter utils test",
     "storybook": "pnpm --filter @terra/react run storybook",
-    "build-storybook": "pnpm --filter @terra/react run build-storybook",
     "utils": "pnpm --filter utils",
     "react": "pnpm --filter @terra/react",
     "build:react": "pnpm --filter @terra/react run build",
-    "build:utils": "pnpm --filter utils run build"
+    "build:utils": "pnpm --filter utils run build",
+    "build:storybook": "pnpm --filter @terra/react run build-storybook"
   },
   "files": [
     "./apps/react/dist/**/*",
