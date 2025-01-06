@@ -2,7 +2,7 @@ import * as TOKEN from './token';
 
 export const colors = {
   primary: {
-    DEFAULT: `var(--my-colors-primary, ${TOKEN.colors.violet[800]})`,
+    DEFAULT: `var(--my-colors-primary, ${TOKEN.colors.violet[500]})`,
     50: `var(--my-colors-primary-50, ${TOKEN.colors.violet[50]})`,
     100: `var(--my-colors-primary-100, ${TOKEN.colors.violet[100]})`,
     200: `var(--my-colors-primary-200, ${TOKEN.colors.violet[200]})`,
