@@ -17,9 +17,9 @@ export const switchVariants = tv({
   slots: {
     root: 'trds-cursor-pointer trds-text-fg trds-flex trds-items-center trds-relative data-disabled:trds-opacity-60',
     control:
-      'trds-inline-flex trds-items-center trds-bg-layer-muted trds-rounded-full trds-cursor-pointer trds-flex-shrink-0 trds-transition trds-duration-normal trds-transition-[background] data-checked:trds-bg-primary data-disabled:trds-cursor-not-allowed',
+      'trds-inline-flex trds-items-center trds-bg-layer-muted trds-rounded-full trds-cursor-pointer trds-flex-shrink-0 trds-transition trds-duration-normal data-checked:trds-bg-primary data-disabled:trds-cursor-not-allowed',
     thumb:
-      'trds-bg-layer-thumb trds-rounded-full trds-shadow-xs trds-transition trds-duration-normal trds-transition-[transform,background] trds-ease-in-out data-checked:trds-translate-x-[100%] data-checked:trds-bg-white',
+      'trds-bg-layer-thumb trds-rounded-full trds-shadow-xs trds-transition trds-duration-normal trds-ease-in-out data-checked:trds-translate-x-[100%] data-checked:trds-bg-white',
     label: '',
   },
   variants: {

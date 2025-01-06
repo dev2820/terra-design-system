@@ -19,7 +19,7 @@ export const collapsibleVariants = tv({
     trigger: [
       'trds-w-full trds-h-10 trds-px-4 trds-cursor-pointer',
       'data-disabled:trds-opacity-muted data-disabled:trds-cursor-not-allowed',
-      '[&>svg]:trds-origin-center [&>svg]:trds-duration-normal [&>svg]:trds-transition-all [&[data-state="open"]>svg]:-trds-rotate-180',
+      '[&>svg]:trds-origin-center [&>svg]:trds-duration-normal [&>svg]:trds-transition-all [&>svg]:trds-duration-normal [&[data-state="open"]>svg]:-trds-rotate-180',
     ],
     content: [
       'trds-px-4 trds-border-t trds-border-boundary trds-overflow-hidden',

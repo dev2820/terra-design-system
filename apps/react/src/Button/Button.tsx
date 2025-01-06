@@ -9,7 +9,7 @@ import { tv, VariantProps } from '../tv';
 const buttonVariants = tv({
   base: [
     `${IDENTIFIER.scope} button`,
-    'trds-inline-flex trds-justify-center trds-place-items-center trds-whitespace-nowrap trds-rounded-lg trds-text-md trds-font-medium trds-gap-2 trds-transition-colors trds-cursor-pointer',
+    'trds-inline-flex trds-justify-center trds-place-items-center trds-whitespace-nowrap trds-rounded-lg trds-text-md trds-font-medium trds-gap-2 trds-transition-colors trds-duration-normal trds-cursor-pointer',
     'disabled:trds-cursor-not-allowed disabled:trds-opacity-muted',
   ],
   variants: {

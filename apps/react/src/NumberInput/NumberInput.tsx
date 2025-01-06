@@ -13,7 +13,7 @@ import { tv, VariantProps } from '../tv';
 const trigger = [
   'trds-inline-flex trds-items-center trds-justify-center',
   'trds-border-boundary trds-text-fg trds-cursor-pointer',
-  'trds-transition trds-duration-normal trds-transition-[background,border-color,color,box-shadow] trds-ease-in-out',
+  'trds-duration-normal trds-transition-[background,border-color,color,box-shadow] trds-ease-in-out',
   '[&_:where(svg)]:trds-w-4 [&_:where(svg)]:trds-h-4',
   'hover:trds-bg-layer-hover hover:trds-text-fg',
   'data-disabled:trds-bg-transparent data-disabled:trds-text-fg-muted data-disabled:trds-opacity-50 data-disabled:trds-cursor-not-allowed',

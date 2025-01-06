@@ -18,7 +18,7 @@ export const tableVariant = tv({
     header:
       'trds-text-fg-title trds-font-medium trds-text-left trds-align-middle',
     head: 'trds-align-middle',
-    row: 'trds-border-b trds-border-boundary trds-transition trds-duration-normal trds-transition-[background,color]',
+    row: 'trds-border-b trds-border-boundary trds-transition trds-duration-normal',
   },
 
   variants: {

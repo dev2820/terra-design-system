@@ -18,7 +18,7 @@ export const radioGroupVariant = tv({
     root: 'trds-text-fg trds-flex trds-flex-col data-vertical:trds-flex-col data-horizontal:trds-flex-row',
     item: 'trds-flex trds-items-center trds-cursor-pointer data-disabled:trds-cursor-not-allowed',
     itemControl: [
-      'trds-transition-colors trds-transition-[outline] trds-duration-faster',
+      'trds-transition-[color,background-color,border,outline] trds-duration-faster',
       'trds-bg-transparent trds-border-boundary-radio trds-rounded-full trds-border-2',
       'hover:trds-bg-layer-hover',
       'data-checked:trds-bg-transparent data-checked:trds-border-primary-boundary data-checked:trds-outline data-checked:trds-outline-primary',
