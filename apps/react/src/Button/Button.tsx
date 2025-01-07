@@ -40,13 +40,13 @@ const buttonVariants = tv({
       theme: 'primary',
       variant: 'filled',
       class:
-        'trds-bg-primary trds-text-primary-inverse disabled:trds-bg-primary hover:trds-bg-primary-strong active:trds-bg-primary-stronger',
+        'trds-bg-primary trds-text-primary-fg disabled:trds-bg-primary hover:trds-bg-primary-strong active:trds-bg-primary-stronger',
     },
     {
       theme: 'neutral',
       variant: 'filled',
       class:
-        'trds-bg-neutral trds-text-neutral-inverse disabled:trds-bg-neutral hover:trds-bg-neutral-strong active:trds-bg-neutral-stronger',
+        'trds-bg-neutral trds-text-neutral-fg disabled:trds-bg-neutral hover:trds-bg-neutral-strong active:trds-bg-neutral-stronger',
     },
     {
       theme: 'whiteAlpha',
@@ -58,14 +58,14 @@ const buttonVariants = tv({
       theme: 'danger',
       variant: 'filled',
       class:
-        'trds-bg-danger trds-text-danger-inverse disabled:trds-bg-danger hover:trds-bg-danger-strong active:trds-bg-danger-stronger',
+        'trds-bg-danger trds-text-danger-fg disabled:trds-bg-danger hover:trds-bg-danger-strong active:trds-bg-danger-stronger',
     },
     // outline
     {
       theme: 'primary',
       variant: 'outline',
       class:
-        'trds-bg-transparent trds-text-primary-fg trds-border-primary-boundary hover:trds-bg-primary-alpha active:trds-bg-primary-alpha2',
+        'trds-bg-transparent trds-text-primary trds-border-primary-boundary hover:trds-bg-primary-alpha active:trds-bg-primary-alpha2',
     },
     {
       theme: 'neutral',
@@ -83,14 +83,14 @@ const buttonVariants = tv({
       theme: 'danger',
       variant: 'outline',
       class:
-        'trds-bg-transparent trds-text-danger-fg trds-border-danger-boundary disabled:trds-bg-transparent hover:trds-bg-danger-alpha active:trds-bg-danger-alpha2',
+        'trds-bg-transparent trds-text-danger trds-border-danger-boundary disabled:trds-bg-transparent hover:trds-bg-danger-alpha active:trds-bg-danger-alpha2',
     },
     // ghost
     {
       theme: 'primary',
       variant: 'ghost',
       class:
-        'trds-bg-transparent trds-text-primary-fg disabled:trds-bg-transparent hover:trds-bg-primary-alpha active:trds-bg-primary-alpha2',
+        'trds-bg-transparent trds-text-primary disabled:trds-bg-transparent hover:trds-bg-primary-alpha active:trds-bg-primary-alpha2',
     },
     {
       theme: 'neutral',
@@ -108,7 +108,7 @@ const buttonVariants = tv({
       theme: 'danger',
       variant: 'ghost',
       class:
-        'trds-bg-transparent trds-text-danger-fg disabled:trds-bg-transparent hover:trds-bg-danger-alpha active:trds-bg-danger-alpha2',
+        'trds-bg-transparent trds-text-danger disabled:trds-bg-transparent hover:trds-bg-danger-alpha active:trds-bg-danger-alpha2',
     },
   ],
   defaultVariants: {

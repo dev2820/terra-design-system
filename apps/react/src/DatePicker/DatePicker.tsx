@@ -34,10 +34,10 @@ export const datePickerVariants = tv({
     tableCell: 'trds-text-center',
     tableCellTrigger: [
       'trds-w-full',
-      'data-in-range:trds-bg-primary-subtle data-in-range:trds-text-primary-inverse',
+      'data-in-range:trds-bg-primary-subtle data-in-range:trds-text-primary-fg',
       "data-today:before:trds-content-['●'] data-today:before:trds-text-[6px] data-today:before:trds-text-primary-stronger data-today:before:trds-absolute data-today:before:trds-mt-6",
-      'data-selected:trds-bg-primary data-selected:trds-text-primary-inverse data-selected:hover:trds-bg-primary data-selected:hover:trds-text-primary-inverse',
-      'data-in-range:data-selected:trds-bg-primary data-in-range:data-selected:trds-text-primary-inverse',
+      'data-selected:trds-bg-primary data-selected:trds-text-primary-fg data-selected:hover:trds-bg-primary data-selected:hover:trds-text-primary-fg',
+      'data-in-range:data-selected:trds-bg-primary data-in-range:data-selected:trds-text-primary-fg',
       'data-disabled:trds-text-fg-muted data-disabled:trds-cursor-not-allowed data-disabled:trds-bg-transparent data-disabled:hover:trds-bg-transparent data-disabled:active:trds-bg-transparent',
     ],
     input: 'trds-bg-layer-input trds-text-fg-input',

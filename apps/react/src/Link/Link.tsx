@@ -16,7 +16,7 @@ const linkVariants = tv({
     theme: {
       default: 'trds-text-fg',
       primary:
-        'trds-text-primary-fg hover:trds-text-primary-strong active:trds-text-primary-stronger',
+        'trds-text-primary hover:trds-text-primary-strong active:trds-text-primary-stronger',
     },
     variant: {
       plain: 'hover:trds-unerline',

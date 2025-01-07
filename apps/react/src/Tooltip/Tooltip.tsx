@@ -30,7 +30,7 @@ export const tooltipVariants = tv({
         arrowTip: 'trds-border-boundary-popover',
       },
       primary: {
-        content: 'trds-bg-primary trds-text-primary-inverse',
+        content: 'trds-bg-primary trds-text-primary-fg',
         arrow: 'trds-[--arrow-background:var(--my-colors-primary,#8b5cf6)]',
         arrowTip: 'trds-border-primary-boundary',
       },
