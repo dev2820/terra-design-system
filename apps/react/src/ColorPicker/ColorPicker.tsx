@@ -13,7 +13,7 @@ import {
 
 import { createReactContext } from '../create-react-context';
 import { cx } from '../cx';
-import { tv } from '../tv';
+import { tv, VariantProps } from '../tv';
 
 export const colorPickerVariants = tv({
   base: `${IDENTIFIER.scope} colorPicker`,
@@ -59,7 +59,8 @@ const [ColorPickerProvider, useColorPickerContext] =
 export type RootProps = ComponentProps<typeof Root>;
 const Root = forwardRef<
   ElementRef<typeof ColorPicker.Root>,
-  ComponentPropsWithoutRef<typeof ColorPicker.Root> & ColorPickerProviderProps
+  ComponentPropsWithoutRef<typeof ColorPicker.Root> &
+    VariantProps<typeof colorPickerVariants>
 >(({ children, className, ...props }, ref) => {
   const classes = colorPickerVariants();
   const ctx = {
