@@ -3,7 +3,6 @@ import { IDENTIFIER } from 'env';
 import { forwardRef, type ComponentProps, type ReactNode } from 'react';
 
 import { cx } from '../cx';
-import { AsChildProps, Slot } from '../Slot';
 import { tv, VariantProps } from '../tv';
 
 const linkVariants = tv({
@@ -29,31 +28,24 @@ const linkVariants = tv({
   },
 });
 
-export type LinkProps = AsChildProps<ComponentProps<'a'>> & {
-  style?: React.CSSProperties;
-  className?: string;
-} & VariantProps<typeof linkVariants> & {
+export type LinkProps = ComponentProps<'a'> & {} & VariantProps<
+    typeof linkVariants
+  > & {
     leftIcon?: ReactNode;
     rightIcon?: ReactNode;
   };
 
 const Link = forwardRef<HTMLAnchorElement, LinkProps>(function (props, ref) {
-  const { theme, leftIcon, rightIcon, className, children, asChild, ...rest } =
-    props;
-  const Comp = asChild ? Slot : 'a';
+  const { theme, leftIcon, rightIcon, className, children, ...rest } = props;
 
   return (
-    <Comp
-      className={cx(linkVariants({ theme }), className)}
-      ref={ref}
-      {...rest}
-    >
+    <a className={cx(linkVariants({ theme }), className)} ref={ref} {...rest}>
       <span className="trds-flex trds-flex-row trds-gap-1 trds-place-items-center">
         {leftIcon}
         {children}
         {rightIcon}
       </span>
-    </Comp>
+    </a>
   );
 });
 Link.displayName = 'Link';
