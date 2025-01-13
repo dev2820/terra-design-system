@@ -1,3 +1,5 @@
+import { IDENTIFIER } from 'env';
+
 import { forwardRef, type ComponentProps } from 'react';
 
 import { Button } from '../Button';
@@ -5,7 +7,7 @@ import { cx } from '../cx';
 import { tv, VariantProps } from '../tv';
 
 const iconButtonVariants = tv({
-  base: 'icon-button',
+  base: `${IDENTIFIER.scope} icon-button`,
   variants: {
     size: {
       xs: 'trds-h-8 trds-w-8 trds-px-0 trds-py-0',
@@ -26,11 +28,9 @@ const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
   function (props, ref) {
     const { loading, size, className, children, ...rest } = props;
 
-    const classes = iconButtonVariants({ size });
-
     return (
       <Button
-        className={cx(classes, className)}
+        className={cx(iconButtonVariants({ size }), className)}
         ref={ref}
         {...rest}
         size={size}
