@@ -28,9 +28,8 @@ const linkVariants = tv({
   },
 });
 
-export type LinkProps = ComponentProps<'a'> & {} & VariantProps<
-    typeof linkVariants
-  > & {
+export type LinkProps = ComponentProps<'a'> &
+  VariantProps<typeof linkVariants> & {
     leftIcon?: ReactNode;
     rightIcon?: ReactNode;
   };

@@ -1,6 +1,5 @@
 import { ExternalLinkIcon, LinkIcon } from 'lucide-react';
 
-import { Button } from '../Button';
 import { Link, type LinkProps } from './index';
 
 export default {
