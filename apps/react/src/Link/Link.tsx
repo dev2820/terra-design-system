@@ -18,7 +18,7 @@ const linkVariants = tv({
         'trds-text-primary hover:trds-text-primary-strong active:trds-text-primary-stronger',
     },
     variant: {
-      plain: 'hover:trds-unerline',
+      plain: 'trds-no-underline hover:trds-underline',
       underline: 'trds-underline',
     },
   },
@@ -35,15 +35,18 @@ export type LinkProps = ComponentProps<'a'> &
   };
 
 const Link = forwardRef<HTMLAnchorElement, LinkProps>(function (props, ref) {
-  const { theme, leftIcon, rightIcon, className, children, ...rest } = props;
+  const { theme, variant, leftIcon, rightIcon, className, children, ...rest } =
+    props;
 
   return (
-    <a className={cx(linkVariants({ theme }), className)} ref={ref} {...rest}>
-      <span className="trds-flex trds-flex-row trds-gap-1 trds-place-items-center">
-        {leftIcon}
-        {children}
-        {rightIcon}
-      </span>
+    <a
+      className={cx(linkVariants({ theme, variant }), className)}
+      ref={ref}
+      {...rest}
+    >
+      {leftIcon}
+      {children}
+      {rightIcon}
     </a>
   );
 });
