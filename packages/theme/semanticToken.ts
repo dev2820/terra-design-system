@@ -173,7 +173,7 @@ export const colors = {
     alpha2: `var(--my-colors-layer-alpha2, ${TOKEN.colors.blackAlpha[200]})`,
     alpha3: `var(--my-colors-layer-alpha3, ${TOKEN.colors.blackAlpha[300]})`,
     card: `var(--my-colors-layer-card, ${TOKEN.colors.white})`,
-    popover: `var(--my-colors-layer-popover, ${TOKEN.colors.white})`,
+    popover: `var(--my-colors-layer-popover, ${TOKEN.colors.gray[200]})`,
     modal: `var(--my-colors-layer-modal, ${TOKEN.colors.white})`,
     muted: `var(--my-colors-layer-muted, ${TOKEN.colors.gray[200]})`,
     input: `var(--my-colors-layer-input, ${TOKEN.colors.white})`,
