@@ -22,7 +22,7 @@ export const selectVariant = tv({
     root: 'trds-text-fg trds-flex trds-flex-col trds-gap-1.5 trds-w-full',
     content:
       'trds-text-fg trds-bg-layer-popover trds-rounded-lg trds-shadow-lg trds-flex trds-flex-col trds-z-dropdown data-open:trds-animate-fade-in data-closed:trds-animate-fade-out focus-visible:trds-outline-2 focus-visible:trds-outline-solid focus-visible:trds-outline-boundary focus-visible:trds-outline-offset-2',
-    item: 'trds-flex trds-items-center trds-justify-between trds-rounded-md trds-cursor-pointer trds-duration-normal trds-transition-[background,color] hover:trds-bg-layer-hover data-highlighted:trds-bg-layer-hover data-disabled:trds-text-fg-muted data-disabled:trds-cursor-not-allowed',
+    item: 'trds-flex trds-items-center trds-justify-between trds-rounded-md trds-cursor-pointer trds-duration-normal trds-transition-[background,color] hover:trds-bg-layer-highlight data-highlighted:trds-bg-layer-highlight data-disabled:trds-text-fg-muted data-disabled:trds-cursor-not-allowed',
     itemGroupLabel: 'trds-font-semibold trds-text-sm',
     itemIndicator: '',
     label: 'trds-text-fg-label trds-font-medium',
