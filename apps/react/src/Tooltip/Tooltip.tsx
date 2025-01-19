@@ -25,8 +25,8 @@ export const tooltipVariants = tv({
   variants: {
     theme: {
       neutral: {
-        content: 'trds-bg-neutral-200 trds-fg-popover',
-        arrow: '[--arrow-background:var(--my-colors-neutral-200,#e5e7eb)]',
+        content: 'trds-bg-layer-hover trds-fg-popover',
+        arrow: '[--arrow-background:var(--my-colors-layer-hover,#f3f4f6)]',
         arrowTip: 'trds-border-boundary-popover',
       },
       primary: {
