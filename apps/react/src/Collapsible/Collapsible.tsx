@@ -45,7 +45,7 @@ const [CollapsibleProvider, useCollapsibleContext] =
 export type RootProps = ComponentProps<typeof Root>;
 const Root = forwardRef<
   ElementRef<typeof Collapsible.Root>,
-  ComponentPropsWithoutRef<typeof Collapsible.Root> & CollapsibleProviderProps
+  ComponentPropsWithoutRef<typeof Collapsible.Root>
 >(({ children, className, ...props }, ref) => {
   const classes = collapsibleVariants();
   const ctx = {
