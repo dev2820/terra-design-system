@@ -9,7 +9,7 @@
     "prebuild-storybook": "",
     "build-storybook": "storybook build",
     "prebuild": "",
-    "build": "tsup --external react --external react-dom && pnpx tailwindcss -i ./src/index.css -o ./dist/style.css --minify"
+    "build": "tsup --external react --external react-dom && pnpx tailwindcss@3.4.10 -i ./src/index.css -o ./dist/style.css --minify"
   },
   "exports": {
     ".": {
