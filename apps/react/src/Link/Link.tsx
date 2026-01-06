@@ -8,7 +8,7 @@ import { tv, VariantProps } from '../tv';
 const linkVariants = tv({
   base: [
     `${IDENTIFIER.scope} link`,
-    'trds-inline-flex trds-items-center trds-justify-start trds-whitespace-nowrap trds-gap-1 trds-transition-colors trds-duration-normal trds-cursor-pointer',
+    'trds-inline-flex trds-items-center trds-justify-start trds-break-all trds-whitespace-nowrap trds-gap-1 trds-transition-colors trds-duration-normal trds-cursor-pointer',
     'trds-underline-under trds-decoration-[2px] trds-underline-offset-2',
   ],
   variants: {
