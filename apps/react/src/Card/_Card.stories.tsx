@@ -22,9 +22,7 @@ export default {
   },
   args: {},
 };
-/**
- * TODO: 추후 Input component로 교체 필요
- */
+
 export const Default = {
   args: {},
   render: (props: CardProps) => {
