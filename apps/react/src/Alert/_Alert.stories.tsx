@@ -3,7 +3,6 @@ import {
   CircleCheckIcon,
   InfoIcon,
   RocketIcon,
-  StarIcon,
   TriangleAlertIcon,
 } from 'lucide-react';
 

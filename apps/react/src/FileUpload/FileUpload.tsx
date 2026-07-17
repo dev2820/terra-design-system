@@ -50,13 +50,11 @@ const [FileUploadProvider, useFileUploadContext] =
   });
 
 export type RootProps = FileUpload.RootProps &
-  VariantProps<typeof fileUploadVariant> & {
-    placeholder?: string;
-  };
+  VariantProps<typeof fileUploadVariant>;
 
 const Root = forwardRef<ElementRef<typeof FileUpload.Root>, RootProps>(
   function (props, ref) {
-    const { placeholder, className, children, ...rest } = props;
+    const { className, children, ...rest } = props;
     const classes = fileUploadVariant();
     const ctx = {
       classes,

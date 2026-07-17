@@ -121,10 +121,10 @@ Content.displayName = 'Popover.Content';
 export type ArrowProps = ComponentProps<typeof Arrow>;
 const Arrow = forwardRef<
   ElementRef<typeof Popover.Arrow>,
-  ComponentPropsWithoutRef<typeof Popover.Arrow>
+  Omit<ComponentPropsWithoutRef<typeof Popover.Arrow>, 'children'>
 >(function (props, ref) {
   const { classes } = usePopoverContext();
-  const { children, className, ...rest } = props;
+  const { className, ...rest } = props;
 
   return (
     <Popover.Arrow
