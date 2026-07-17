@@ -1,0 +1,94 @@
+import { Meta } from '@storybook/blocks';
+
+import {
+  InterfaceColors,
+  MotionAndLayerTokens,
+  PrimitiveColors,
+  SemanticColors,
+  ShapeAndShadowTokens,
+  SpacingTokens,
+  TypographyTokens,
+} from './FoundationDocs';
+import './foundations.css';
+
+<Meta title="Foundations/Overview" />
+
+<div className="trds-foundations">
+
+# Terra Design System Foundations
+
+<p className="foundation-intro">
+  컴포넌트의 모양과 동작을 일관되게 만드는 시각 언어입니다. 원시 토큰은 선택
+  가능한 값을 정의하고, 시맨틱 토큰은 그 값에 목적을 부여하며, 컴포넌트는 목적에
+  맞는 토큰만 사용합니다.
+</p>
+
+## Color
+
+색상은 원시 팔레트와 역할 기반 시맨틱 토큰으로 나뉩니다. 컴포넌트에서는 팔레트 값을 직접
+사용하기보다 시맨틱 토큰을 사용해 테마를 교체할 수 있는 구조를 유지합니다.
+
+### Primitive palette
+
+<PrimitiveColors />
+
+### Intent colors
+
+상호작용의 중요도와 피드백의 성격을 표현합니다. 각 intent는 강조 단계, 투명 배경, 전경색,
+경계색을 같은 구조로 제공합니다.
+
+<SemanticColors />
+
+### Interface roles
+
+텍스트와 아이콘은 `fg`, 구분선은 `boundary`, 표면과 상태 배경은 `layer` 토큰을 사용합니다.
+
+<InterfaceColors />
+
+## Typography
+
+기본 크기와 굵기는 원시 토큰으로 제공하며, 제목과 본문처럼 의미가 있는 크기는 시맨틱 토큰으로
+분리합니다. 기본 행간은 `1.5`입니다.
+
+<TypographyTokens />
+
+## Spacing
+
+간격은 4px 단위에서 시작하는 제한된 스케일을 사용합니다.
+
+<SpacingTokens />
+
+## Shape & Shadow
+
+반경은 각진 형태부터 pill 형태까지, 그림자는 작은 요소부터 overlay까지 단계적으로 제공합니다.
+기능과 계층이 같은 요소에는 같은 반경과 그림자 수준을 사용합니다.
+
+<ShapeAndShadowTokens />
+
+## Motion & Layer
+
+모션은 상태 변화를 설명할 만큼만 사용하며, 시맨틱 duration으로 속도의 목적을 표현합니다.
+z-index는 개별 숫자 대신 정해진 레이어 이름으로 관리합니다.
+
+<MotionAndLayerTokens />
+
+## Theming
+
+시맨틱 토큰은 CSS custom property와 기본값으로 구성되어 있습니다. 필요한 역할만 재정의하면
+컴포넌트 코드를 바꾸지 않고 브랜드 또는 제품 테마를 적용할 수 있습니다.
+
+```css
+:root {
+  --my-colors-primary: #2563eb;
+  --my-colors-primary-strong: #1d4ed8;
+  --my-colors-primary-subtle: #60a5fa;
+  --my-colors-primary-fg: #ffffff;
+  --my-colors-boundary: #bfdbfe;
+  --my-duration-normal: 250ms;
+}
+```
+
+테마를 바꿀 때는 배경과 전경색의 대비, hover·pressed·disabled 상태의 구분, focus ring의 가시성을
+함께 확인해야 합니다. 색상만으로 상태를 전달하지 않고 텍스트나 아이콘 같은 보조 단서를 유지합니다.
+
+</div>

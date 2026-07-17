@@ -1,0 +1,380 @@
+.trds-foundations {
+  --docs-bg: #ffffff;
+  --docs-surface: #f9fafb;
+  --docs-border: #e5e7eb;
+  --docs-text: #111827;
+  --docs-muted: #6b7280;
+  --docs-accent: #7c3aed;
+  color: var(--docs-text);
+  font-size: 14px;
+}
+
+.trds-foundations *,
+.trds-foundations *::before,
+.trds-foundations *::after {
+  box-sizing: border-box;
+}
+
+.trds-foundations .foundation-intro {
+  max-width: 720px;
+  color: #4b5563;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.trds-foundations .foundation-stack {
+  display: grid;
+  gap: 24px;
+}
+
+.trds-foundations .foundation-base-colors,
+.trds-foundations .foundation-type-families,
+.trds-foundations .foundation-shape-grid,
+.trds-foundations .foundation-shadow-grid,
+.trds-foundations .foundation-weight-grid,
+.trds-foundations .foundation-semantic-grid,
+.trds-foundations .foundation-role-grid,
+.trds-foundations .foundation-three-columns {
+  display: grid;
+  gap: 16px;
+}
+
+.trds-foundations .foundation-base-colors,
+.trds-foundations .foundation-type-families {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.trds-foundations .foundation-base-color,
+.trds-foundations .foundation-type-family,
+.trds-foundations .foundation-shape-card,
+.trds-foundations .foundation-shadow-card,
+.trds-foundations .foundation-role-card,
+.trds-foundations .foundation-semantic-card {
+  overflow: hidden;
+  border: 1px solid var(--docs-border);
+  border-radius: 10px;
+  background: var(--docs-bg);
+}
+
+.trds-foundations .foundation-base-color-preview {
+  height: 72px;
+  border-bottom: 1px solid var(--docs-border);
+}
+
+.trds-foundations .foundation-base-color-preview.is-transparent {
+  background-image: linear-gradient(45deg, #e5e7eb 25%, transparent 25%),
+    linear-gradient(-45deg, #e5e7eb 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #e5e7eb 75%),
+    linear-gradient(-45deg, transparent 75%, #e5e7eb 75%);
+  background-position:
+    0 0,
+    0 6px,
+    6px -6px,
+    -6px 0;
+  background-size: 12px 12px;
+}
+
+.trds-foundations .foundation-token-value {
+  display: flex;
+  min-width: 0;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 12px;
+}
+
+.trds-foundations .foundation-token-value code,
+.trds-foundations .foundation-swatch code,
+.trds-foundations .foundation-role-row code,
+.trds-foundations .foundation-spacing-row code {
+  color: var(--docs-accent);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.trds-foundations .foundation-token-value span,
+.trds-foundations .foundation-role-variable {
+  overflow: hidden;
+  color: var(--docs-muted);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 11px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.trds-foundations .foundation-color-scale h3,
+.trds-foundations .foundation-role-card h3,
+.trds-foundations .foundation-semantic-card h3 {
+  margin: 0 0 12px;
+  font-size: 15px;
+  text-transform: capitalize;
+}
+
+.trds-foundations .foundation-swatches {
+  display: grid;
+  grid-template-columns: repeat(10, minmax(62px, 1fr));
+  overflow-x: auto;
+}
+
+.trds-foundations .foundation-swatch {
+  min-width: 62px;
+}
+
+.trds-foundations .foundation-swatch-color {
+  height: 56px;
+  border: 1px solid rgba(17, 24, 39, 0.08);
+}
+
+.trds-foundations .foundation-swatch code,
+.trds-foundations .foundation-swatch span {
+  display: block;
+  padding: 6px 2px 0;
+}
+
+.trds-foundations .foundation-swatch span {
+  color: var(--docs-muted);
+  font-size: 10px;
+}
+
+.trds-foundations .foundation-semantic-grid {
+  grid-template-columns: 1fr;
+}
+
+.trds-foundations .foundation-semantic-card,
+.trds-foundations .foundation-role-card {
+  padding: 16px;
+}
+
+.trds-foundations .foundation-semantic-card h3 {
+  margin-bottom: 4px;
+}
+
+.trds-foundations .foundation-intent-description {
+  margin: 0 0 16px;
+  color: #4b5563;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.trds-foundations .foundation-semantic-roles {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.trds-foundations .foundation-semantic-role {
+  min-width: 0;
+}
+
+.trds-foundations .foundation-semantic-role > div {
+  height: 44px;
+  border: 1px solid var(--docs-border);
+  border-radius: 6px;
+}
+
+.trds-foundations .foundation-semantic-role span,
+.trds-foundations .foundation-semantic-role code {
+  display: block;
+  overflow: hidden;
+  margin-top: 5px;
+  font-size: 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.trds-foundations .foundation-semantic-role code {
+  color: var(--docs-muted);
+}
+
+.trds-foundations .foundation-semantic-role .foundation-semantic-description {
+  overflow: visible;
+  color: #4b5563;
+  line-height: 1.45;
+  text-overflow: clip;
+  white-space: normal;
+}
+
+.trds-foundations .foundation-role-grid,
+.trds-foundations .foundation-three-columns {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.trds-foundations .foundation-role-row {
+  display: grid;
+  grid-template-columns: 24px minmax(72px, auto) 1fr;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  padding: 7px 0;
+  border-top: 1px solid #f3f4f6;
+}
+
+.trds-foundations .foundation-role-chip {
+  width: 24px;
+  height: 24px;
+  border: 1px solid var(--docs-border);
+  border-radius: 5px;
+}
+
+.trds-foundations .foundation-role-content,
+.trds-foundations .foundation-role-content span {
+  display: block;
+  min-width: 0;
+}
+
+.trds-foundations .foundation-role-description {
+  margin-top: 3px;
+  color: #4b5563;
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+.trds-foundations .foundation-standalone-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 20px;
+}
+
+.trds-foundations .foundation-type-family {
+  padding-top: 24px;
+}
+
+.trds-foundations .foundation-type-family > span {
+  display: block;
+  padding: 0 16px 18px;
+  font-size: 26px;
+}
+
+.trds-foundations .foundation-type-scale {
+  overflow-x: auto;
+  border: 1px solid var(--docs-border);
+  border-radius: 10px;
+}
+
+.trds-foundations .foundation-type-row {
+  display: grid;
+  grid-template-columns: minmax(280px, 1fr) 220px;
+  align-items: center;
+  min-width: 540px;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--docs-border);
+}
+
+.trds-foundations .foundation-type-row:last-child {
+  border-bottom: 0;
+}
+
+.trds-foundations .foundation-weight-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.trds-foundations .foundation-weight-grid > div {
+  border: 1px solid var(--docs-border);
+  border-radius: 10px;
+}
+
+.trds-foundations .foundation-weight-grid > div > span {
+  display: block;
+  padding: 18px 12px 6px;
+  font-size: 28px;
+}
+
+.trds-foundations .foundation-token-list .foundation-token-value {
+  padding-right: 0;
+  padding-left: 0;
+  border-top: 1px solid #f3f4f6;
+}
+
+.trds-foundations .foundation-spacing-list {
+  overflow: hidden;
+  border: 1px solid var(--docs-border);
+  border-radius: 10px;
+}
+
+.trds-foundations .foundation-spacing-row {
+  display: grid;
+  grid-template-columns: 44px minmax(160px, 1fr) 72px 56px;
+  align-items: center;
+  gap: 12px;
+  min-width: 430px;
+  min-height: 38px;
+  padding: 6px 12px;
+  border-bottom: 1px solid #f3f4f6;
+  color: var(--docs-muted);
+  font-size: 12px;
+}
+
+.trds-foundations .foundation-spacing-row:last-child {
+  border-bottom: 0;
+}
+
+.trds-foundations .foundation-spacing-track {
+  overflow: hidden;
+  height: 12px;
+  border-radius: 3px;
+  background: #f3f4f6;
+}
+
+.trds-foundations .foundation-spacing-track span {
+  display: block;
+  max-width: 100%;
+  height: 100%;
+  background: #8b5cf6;
+}
+
+.trds-foundations .foundation-shape-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.trds-foundations .foundation-shape-card > div:first-child {
+  width: 72px;
+  height: 72px;
+  margin: 20px auto;
+  border: 2px solid #8b5cf6;
+  background: #f5f3ff;
+}
+
+.trds-foundations .foundation-shadow-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.trds-foundations .foundation-shadow-card > div:first-child {
+  width: 72px;
+  height: 72px;
+  margin: 28px auto;
+  border-radius: 8px;
+  background: white;
+}
+
+@media (max-width: 900px) {
+  .trds-foundations .foundation-role-grid,
+  .trds-foundations .foundation-three-columns {
+    grid-template-columns: 1fr;
+  }
+
+  .trds-foundations .foundation-shadow-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 620px) {
+  .trds-foundations .foundation-base-colors,
+  .trds-foundations .foundation-type-families,
+  .trds-foundations .foundation-weight-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .trds-foundations .foundation-shape-grid,
+  .trds-foundations .foundation-shadow-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .trds-foundations .foundation-semantic-roles {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .trds-foundations .foundation-standalone-grid {
+    grid-template-columns: 1fr;
+  }
+}
