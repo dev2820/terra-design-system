@@ -43,9 +43,10 @@ import { Avatar, Link } from 'terra-design-system/react';
 
 ### 테마 변경
 
-Semantic Token은 CSS Custom Property로 재정의할 수 있습니다.
+Semantic Token은 CSS Custom Property로 재정의할 수 있습니다.  
+자세한 내용은 [Storybook - add project styles](https://dev2820.github.io/terra-design-system/?path=/docs/getting-started-how-to-use--docs#8-add-project-styles)를 참고하세요
 
-### 예시
+### 사용 예시
 
 ```tsx
 import { Button, Card, Input } from 'terra-design-system/react';
