@@ -36,11 +36,11 @@ export const colors = {
     700: `var(--my-colors-neutral-700, ${TOKEN.colors.gray[700]})`,
     800: `var(--my-colors-neutral-800, ${TOKEN.colors.gray[800]})`,
     900: `var(--my-colors-neutral-900, ${TOKEN.colors.gray[900]})`,
-    subtlest: `var(--my-colors-primary-subtlest, ${TOKEN.colors.violet[200]})`, //used
-    subtler: `var(--my-colors-primary-subtler, ${TOKEN.colors.violet[300]})`, //used
-    subtle: `var(--my-colors-neutral-subtle, ${TOKEN.colors.gray[50]})`,
-    strong: `var(--my-colors-neutral-strong, ${TOKEN.colors.gray[200]})`,
     stronger: `var(--my-colors-neutral-stronger, ${TOKEN.colors.gray[300]})`,
+    strong: `var(--my-colors-neutral-strong, ${TOKEN.colors.gray[200]})`,
+    subtle: `var(--my-colors-neutral-subtle, ${TOKEN.colors.gray[50]})`,
+    subtler: `var(--my-colors-primary-subtler, ${TOKEN.colors.violet[300]})`, //used
+    subtlest: `var(--my-colors-primary-subtlest, ${TOKEN.colors.violet[200]})`, //used
     alpha: `var(--my-colors-neutral-alpha, ${TOKEN.colors.gray[500]}1F)`, //used
     alpha2: `var(--my-colors-neutral-alpha2, ${TOKEN.colors.gray[500]}3D)`, //used
     fg: `var(--my-colors-neutral-fg, ${TOKEN.colors.gray[800]})`,
