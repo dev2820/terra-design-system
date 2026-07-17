@@ -54,7 +54,7 @@ Semantic Token은 CSS Custom Property로 재정의할 수 있습니다.
 ```
 
 <details>
-<summary>전체 테마 토큰 (175개)</summary>
+<summary>전체 테마 토큰 (172개)</summary>
 
 ```text
 --my-colors-base
@@ -80,7 +80,6 @@ Semantic Token은 CSS Custom Property로 재정의할 수 있습니다.
 --my-colors-danger-alpha2
 --my-colors-danger-boundary
 --my-colors-danger-fg
---my-colors-danger-inverse
 --my-colors-danger-strong
 --my-colors-danger-stronger
 --my-colors-danger-subtle
@@ -114,7 +113,6 @@ Semantic Token은 CSS Custom Property로 재정의할 수 있습니다.
 --my-colors-info-alpha2
 --my-colors-info-boundary
 --my-colors-info-fg
---my-colors-info-inverse
 --my-colors-info-strong
 --my-colors-info-stronger
 --my-colors-info-subtle
@@ -154,6 +152,8 @@ Semantic Token은 CSS Custom Property로 재정의할 수 있습니다.
 --my-colors-neutral-strong
 --my-colors-neutral-stronger
 --my-colors-neutral-subtle
+--my-colors-neutral-subtler
+--my-colors-neutral-subtlest
 --my-colors-primary
 --my-colors-primary-50
 --my-colors-primary-100
@@ -169,7 +169,6 @@ Semantic Token은 CSS Custom Property로 재정의할 수 있습니다.
 --my-colors-primary-alpha2
 --my-colors-primary-boundary
 --my-colors-primary-fg
---my-colors-primary-inverse
 --my-colors-primary-strong
 --my-colors-primary-stronger
 --my-colors-primary-subtle
@@ -191,7 +190,6 @@ Semantic Token은 CSS Custom Property로 재정의할 수 있습니다.
 --my-colors-success-alpha2
 --my-colors-success-boundary
 --my-colors-success-fg
---my-colors-success-inverse
 --my-colors-success-strong
 --my-colors-success-stronger
 --my-colors-success-subtle
@@ -213,7 +211,6 @@ Semantic Token은 CSS Custom Property로 재정의할 수 있습니다.
 --my-colors-warning-alpha2
 --my-colors-warning-boundary
 --my-colors-warning-fg
---my-colors-warning-inverse
 --my-colors-warning-strong
 --my-colors-warning-stronger
 --my-colors-warning-subtle
@@ -225,8 +222,6 @@ Semantic Token은 CSS Custom Property로 재정의할 수 있습니다.
 --my-duration-normal
 --my-opacity-muted
 ```
-
-> 현재 `neutral.subtler`와 `neutral.subtlest`는 각각 `--my-colors-primary-subtler`, `--my-colors-primary-subtlest`를 참조하고, `neutral.inverse`는 `--my-colors-neutral-fg`를 참조합니다.
 
 </details>
 

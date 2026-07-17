@@ -21,7 +21,6 @@ export const colors = {
     alpha: `var(--my-colors-primary-alpha, ${TOKEN.colors.violet[500]}1F)`, //used
     alpha2: `var(--my-colors-primary-alpha2, ${TOKEN.colors.violet[500]}3D)`, //used
     fg: `var(--my-colors-primary-fg, ${TOKEN.colors.white})`,
-    inverse: `var(--my-colors-primary-inverse, ${TOKEN.colors.violet[500]})`,
     boundary: `var(--my-colors-primary-boundary, ${TOKEN.colors.violet[500]})`,
   },
   neutral: {
@@ -39,12 +38,11 @@ export const colors = {
     stronger: `var(--my-colors-neutral-stronger, ${TOKEN.colors.gray[300]})`,
     strong: `var(--my-colors-neutral-strong, ${TOKEN.colors.gray[200]})`,
     subtle: `var(--my-colors-neutral-subtle, ${TOKEN.colors.gray[50]})`,
-    subtler: `var(--my-colors-primary-subtler, ${TOKEN.colors.violet[300]})`, //used
-    subtlest: `var(--my-colors-primary-subtlest, ${TOKEN.colors.violet[200]})`, //used
+    subtler: `var(--my-colors-neutral-subtler, ${TOKEN.colors.gray[300]})`, //used
+    subtlest: `var(--my-colors-neutral-subtlest, ${TOKEN.colors.gray[200]})`, //used
     alpha: `var(--my-colors-neutral-alpha, ${TOKEN.colors.gray[500]}1F)`, //used
     alpha2: `var(--my-colors-neutral-alpha2, ${TOKEN.colors.gray[500]}3D)`, //used
     fg: `var(--my-colors-neutral-fg, ${TOKEN.colors.gray[800]})`,
-    inverse: `var(--my-colors-neutral-fg, ${TOKEN.colors.gray[800]})`,
     boundary: `var(--my-colors-neutral-boundary, ${TOKEN.colors.gray[200]})`,
   },
   info: {
@@ -67,7 +65,6 @@ export const colors = {
     alpha: `var(--my-colors-info-alpha, ${TOKEN.colors.blue[500]}1F)`, //used
     alpha2: `var(--my-colors-info-alpha2, ${TOKEN.colors.blue[500]}3D)`, //used
     fg: `var(--my-colors-info-fg, ${TOKEN.colors.white})`,
-    inverse: `var(--my-colors-info-inverse, ${TOKEN.colors.blue[500]})`,
     boundary: `var(--my-colors-info-boundary, ${TOKEN.colors.blue[500]})`,
   },
   success: {
@@ -90,7 +87,6 @@ export const colors = {
     alpha: `var(--my-colors-success-alpha, ${TOKEN.colors.green[500]}1F)`, //used
     alpha2: `var(--my-colors-success-alpha2, ${TOKEN.colors.green[500]}3D)`, //used
     fg: `var(--my-colors-success-fg, ${TOKEN.colors.white})`,
-    inverse: `var(--my-colors-success-inverse, ${TOKEN.colors.green[500]})`,
     boundary: `var(--my-colors-success-boundary, ${TOKEN.colors.green[500]})`,
   },
   danger: {
@@ -113,7 +109,6 @@ export const colors = {
     alpha: `var(--my-colors-danger-alpha, ${TOKEN.colors.red[500]}1F)`, //used
     alpha2: `var(--my-colors-danger-alpha2, ${TOKEN.colors.red[500]}3D)`, //used
     fg: `var(--my-colors-danger-fg, ${TOKEN.colors.white})`,
-    inverse: `var(--my-colors-danger-inverse, ${TOKEN.colors.red[500]})`,
     boundary: `var(--my-colors-danger-boundary, ${TOKEN.colors.red[500]})`,
   },
   warning: {
@@ -136,7 +131,6 @@ export const colors = {
     alpha: `var(--my-colors-warning-alpha, ${TOKEN.colors.yellow[500]}1F)`, //used
     alpha2: `var(--my-colors-warning-alpha2, ${TOKEN.colors.yellow[500]}3D)`, //used
     fg: `var(--my-colors-warning-fg, ${TOKEN.colors.white})`,
-    inverse: `var(--my-colors-warning-inverse, ${TOKEN.colors.yellow[500]})`,
     boundary: `var(--my-colors-warning-boundary, ${TOKEN.colors.yellow[500]})`,
   },
   fg: {
