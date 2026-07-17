@@ -1,4 +1,4 @@
-import{j as e}from"./jsx-runtime-qGIIFXMu.js";import{useMDXComponents as t}from"./index-CqcSDpoT.js";import{M as o}from"./index-Cux1fTkh.js";import"./index-CDs2tPxN.js";import"./iframe-DTcnzbms.js";import"../sb-preview/runtime.js";import"./index-B-yFm4aN.js";import"./index-DXimoRZY.js";import"./index-BH_9z_ur.js";import"./index-DrFu-skq.js";function s(r){const n={code:"code",h1:"h1",h2:"h2",h3:"h3",p:"p",pre:"pre",...t(),...r.components};return e.jsxs(e.Fragment,{children:[e.jsx(o,{title:"Getting Started/How to use"}),`
+import{j as e}from"./jsx-runtime-qGIIFXMu.js";import{useMDXComponents as t}from"./index-CqcSDpoT.js";import{M as o}from"./index-kiTvMvma.js";import"./index-CDs2tPxN.js";import"./iframe-DP1qk051.js";import"../sb-preview/runtime.js";import"./index-B-yFm4aN.js";import"./index-DXimoRZY.js";import"./index-BH_9z_ur.js";import"./index-DrFu-skq.js";function s(r){const n={code:"code",h1:"h1",h2:"h2",h3:"h3",p:"p",pre:"pre",...t(),...r.components};return e.jsxs(e.Fragment,{children:[e.jsx(o,{title:"Getting Started/How to use"}),`
 `,e.jsxs("div",{className:"trds-how-to-use",children:[e.jsx(n.h1,{id:"how-to-use",children:"How to use"}),e.jsx(n.p,{children:`Terra Design System을 React 프로젝트에 설치하고 사용하는 방법입니다. 현재 React 18을 공식
 지원하며, 사용하는 프로젝트가 Tailwind CSS를 사용하지 않아도 컴포넌트를 사용할 수 있습니다.`}),e.jsx(n.h2,{id:"1-install",children:"1. Install"}),e.jsx(n.p,{children:"패키지를 프로젝트 의존성으로 설치합니다."}),e.jsx(n.pre,{children:e.jsx(n.code,{className:"language-bash",children:`npm install terra-design-system
 `})}),e.jsxs("div",{className:"how-to-use-note",children:[e.jsx("strong",{children:"지원 범위"}),e.jsx("span",{children:e.jsx(n.p,{children:`현재 공식 지원 버전은 React 18입니다. React 19 지원은 Roadmap에 포함되어
@@ -77,24 +77,44 @@ export function EmailField() {
     </Field.Root>
   );
 }
-`})}),e.jsx(n.h2,{id:"7-customize-the-theme",children:"7. Customize the theme"}),e.jsx(n.p,{children:`Semantic token에 대응하는 CSS custom property를 전역 또는 특정 영역에서 재정의합니다. 컴포넌트
-코드는 그대로 유지하면서 브랜드 색상과 표면을 변경할 수 있습니다.`}),e.jsx(n.pre,{children:e.jsx(n.code,{className:"language-css",children:`:root {
+`})}),e.jsx(n.h2,{id:"7-customize-the-theme",children:"7. Customize the theme"}),e.jsx(n.p,{children:`Terra의 Semantic token은 CSS custom property로 재정의할 수 있습니다. 변경하지 않은 token은 Terra의
+기본값을 사용하므로 필요한 역할부터 점진적으로 커스텀할 수 있습니다.`}),e.jsx(n.h3,{id:"create-a-theme-file",children:"Create a theme file"}),e.jsxs(n.p,{children:["프로젝트에 ",e.jsx(n.code,{children:"theme.css"}),"를 만들고 변경할 token을 ",e.jsx(n.code,{children:":root"}),`에 선언합니다. 하나의 Intent를 변경할 때는
+기본색뿐 아니라 hover, pressed, 전경색과 경계색을 함께 지정합니다.`]}),e.jsx(n.pre,{children:e.jsx(n.code,{className:"language-css",children:`/* theme.css */
+:root {
   --my-colors-primary: #2563eb;
   --my-colors-primary-strong: #1d4ed8;
   --my-colors-primary-stronger: #1e40af;
   --my-colors-primary-fg: #ffffff;
   --my-colors-primary-boundary: #2563eb;
+  --my-colors-primary-alpha: rgba(37, 99, 235, 0.12);
+  --my-colors-primary-alpha2: rgba(37, 99, 235, 0.24);
+
+  --my-colors-base: #ffffff;
+  --my-colors-fg: #1e293b;
+  --my-colors-fg-title: #0f172a;
+  --my-colors-boundary: #cbd5e1;
+  --my-colors-layer-card: #ffffff;
+  --my-colors-layer-popover: #ffffff;
 }
-`})}),e.jsx(n.p,{children:"특정 영역에만 별도 테마를 적용할 수도 있습니다."}),e.jsx(n.pre,{children:e.jsx(n.code,{className:"language-css",children:`.admin-theme {
-  --my-colors-primary: #0f766e;
-  --my-colors-primary-strong: #0d9488;
+`})}),e.jsx(n.h3,{id:"import-the-theme",children:"Import the theme"}),e.jsx(n.p,{children:"Terra의 기본 CSS를 먼저 불러오고 프로젝트의 테마와 애플리케이션 CSS를 뒤에 불러옵니다."}),e.jsx(n.pre,{children:e.jsx(n.code,{className:"language-tsx",children:`// main.tsx
+import 'terra-design-system/react/style';
+
+import './index.css';
+import './theme.css';
+`})}),e.jsx(n.h3,{id:"scope-a-theme",children:"Scope a theme"}),e.jsx(n.p,{children:`특정 화면이나 영역에만 다른 테마가 필요하면 class selector 안에서 token을 재정의합니다. 하위의 Terra
+컴포넌트에만 해당 값이 상속됩니다.`}),e.jsx(n.pre,{children:e.jsx(n.code,{className:"language-css",children:`.admin-theme {
+  --my-colors-primary: #0d9488;
+  --my-colors-primary-strong: #0f766e;
   --my-colors-primary-stronger: #115e59;
+  --my-colors-primary-boundary: #0d9488;
+  --my-colors-primary-alpha: rgba(13, 148, 136, 0.12);
+  --my-colors-primary-alpha2: rgba(13, 148, 136, 0.24);
 }
 `})}),e.jsx(n.pre,{children:e.jsx(n.code,{className:"language-tsx",children:`<section className="admin-theme">
   <Button theme="primary">관리자 작업</Button>
 </section>
-`})}),e.jsxs(n.p,{children:["전체 token과 각 token의 역할은 ",e.jsx(n.code,{children:"Foundations / Overview"}),`에서 확인할 수 있습니다. 테마를 변경할
-때는 기본·hover·pressed 상태와 배경 위 전경색의 대비를 함께 확인합니다.`]}),e.jsx(n.h2,{id:"8-add-project-styles",children:"8. Add project styles"}),e.jsxs(n.p,{children:["모든 컴포넌트와 Compound component의 각 part는 ",e.jsx(n.code,{children:"className"}),`을 전달할 수 있습니다. 프로젝트에서
+`})}),e.jsxs("div",{className:"how-to-use-note",children:[e.jsx("strong",{children:"Theme checklist"}),e.jsx("span",{children:e.jsx(n.p,{children:`기본·hover·pressed·disabled 상태가 구분되는지, 배경과 전경색의 대비가
+충분한지, focus 경계선이 보이는지 함께 확인하세요.`})})]}),e.jsxs(n.p,{children:["전체 token 이름, 기본값과 역할은 ",e.jsx(n.code,{children:"Foundations / Overview"}),"에서 확인할 수 있습니다."]}),e.jsx(n.h2,{id:"8-add-project-styles",children:"8. Add project styles"}),e.jsxs(n.p,{children:["모든 컴포넌트와 Compound component의 각 part는 ",e.jsx(n.code,{children:"className"}),`을 전달할 수 있습니다. 프로젝트에서
 사용하는 스타일 방식에 맞춰 레이아웃이나 제한된 외형을 조정합니다.`]}),e.jsx(n.h3,{id:"tailwind-css",children:"Tailwind CSS"}),e.jsx(n.p,{children:`Terra CSS를 프로젝트의 Tailwind 진입 CSS보다 먼저 import합니다. 동일한 specificity를 가진 utility가
 같은 속성을 선언하면 나중에 불러온 프로젝트 Tailwind 스타일이 적용됩니다.`}),e.jsx(n.pre,{children:e.jsx(n.code,{className:"language-tsx",children:`// main.tsx
 import 'terra-design-system/react/style';
@@ -164,4 +184,4 @@ export function Faq() {
   padding-inline: 1rem;
 }
 `})}),e.jsxs(n.p,{children:["한 곳에서만 스타일을 바꿀 때는 ",e.jsx(n.code,{children:"className"}),`을 사용하고, 여러 인스턴스에 같은 스타일을 적용할 때
-이 선택자를 사용합니다.`]})]})]})}function j(r={}){const{wrapper:n}={...t(),...r.components};return n?e.jsx(n,{...r,children:e.jsx(s,{...r})}):s(r)}export{j as default};
+이 선택자를 사용합니다.`]})]})]})}function u(r={}){const{wrapper:n}={...t(),...r.components};return n?e.jsx(n,{...r,children:e.jsx(s,{...r})}):s(r)}export{u as default};
