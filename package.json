@@ -2,64 +2,11 @@
   "name": "terra-design-system",
   "version": "1.1.13",
   "description": "",
-  "main": "./apps/react/dist/index.js",
-  "module": "./apps/react/dist/index.mjs",
-  "types": "./apps/react/dist/index.d.ts",
-  "scripts": {
-    "prestorybook": "pnpm --filter utils build",
-    "prebuild-storybook": "pnpm --filter utils build",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "react:test": "pnpm --filter @terra/react test",
-    "utils:test": "pnpm --filter utils test",
-    "storybook": "pnpm --filter @terra/react run storybook",
-    "utils": "pnpm --filter utils",
-    "react": "pnpm --filter @terra/react",
-    "build:react": "pnpm --filter @terra/react run build",
-    "build:utils": "pnpm --filter utils run build",
-    "build:storybook": "pnpm --filter @terra/react run build-storybook"
-  },
-  "files": [
-    "./apps/react/dist/**/*",
-    "LICENSE",
-    "README.md"
-  ],
-  "exports": {
-    "./react": {
-      "source": "./apps/react/src/index.ts",
-      "import": {
-        "types": "./apps/react/dist/index.d.ts",
-        "default": "./apps/react/dist/index.mjs"
-      },
-      "require": {
-        "types": "./apps/react/dist/index.d.ts",
-        "default": "./apps/react/dist/index.js"
-      }
-    },
-    "./react/style": "./apps/react/dist/style.css"
-  },
-  "dependencies": {
-    "class-variance-authority": "^0.7.0",
-    "classnames": "^2.5.1",
-    "lucide-react": "^0.378.0",
-    "tailwind-merge": "^2.3.0"
-  },
-  "devDependencies": {
-    "@trivago/prettier-plugin-sort-imports": "^4.3.0",
-    "eslint": "^8.57.0",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-import-resolver-alias": "^1.1.2",
-    "eslint-plugin-import": "^2.29.1",
-    "eslint-plugin-prettier": "^5.1.3",
-    "prettier": "^3.2.5",
-    "prettier-plugin-tailwindcss": "^0.5.14",
-    "typescript": "^5.2.2"
-  },
-  "peerDependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "@ark-ui/react": "^3.6.2",
-    "tailwind-variants": "^0.2.1"
-  },
+  "scripts": {},
+  "files": [],
+  "dependencies": {},
+  "devDependencies": {},
+  "peerDependencies": {},
   "keywords": [],
   "author": "@dev2820",
   "license": "ISC"
