@@ -1,0 +1,4 @@
+interface:
+  display_name: "Journey 결정 기록"
+  short_description: "선택한 결정을 상세한 개별 Journey 파일로 생성"
+  default_prompt: "Use $record-journey to find journey-worthy decisions, let me select them, and save each selection as a detailed file under docs/journey/."
