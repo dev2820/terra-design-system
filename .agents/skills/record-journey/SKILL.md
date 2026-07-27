@@ -1,28 +1,41 @@
 ---
 name: record-journey
-description: Review the current conversation for consequential project decisions, present qualified candidates for user selection, and create one detailed Korean 문제-접근 방식-해결 Markdown file per selected decision under docs/journey/. Use when the user asks to capture, summarize, or preserve decisions from a discussion or work session in the project journey, when the user selects candidates previously presented by this skill, or when repository instructions explicitly require updating the journey decision log. Do not use for ordinary status updates, task lists, or completed specifications.
+description: Review the current conversation for consequential project decisions and reusable project knowledge, present qualified candidates for user selection, and create one detailed Korean Journey Markdown file per selection under docs/journey/ using either 문제-접근 방식-해결 or 질문-해답. Use when the user asks to capture, summarize, or preserve decisions, discoveries, findings, or newly learned project knowledge from a discussion or work session, when the user selects previously presented candidates, or when repository instructions require updating the Journey log. Do not use for ordinary status updates, task lists, trivial facts, or completed specifications.
 ---
 
 # Record Journey
 
-대화에서 실제로 내려진 프로젝트 결정 후보를 선별해 사용자에게 먼저 제시하고, 사용자가 선택한 결정만 `docs/journey/` 아래에 개별 파일로 남긴다. 후보 검토와 기록을 반드시 두 단계로 분리한다.
+대화에서 실제로 내려진 프로젝트 결정과 다시 참고할 가치가 있는 발견을 선별해 사용자에게 먼저 제시하고, 사용자가 선택한 항목만 `docs/journey/` 아래에 개별 파일로 남긴다. 후보 검토와 기록을 반드시 두 단계로 분리한다.
 
 ## 1. 기준 확인하기
 
 1. 저장소 루트부터 대상 디렉터리까지 적용되는 `AGENTS.md`를 읽는다.
-2. `docs/journey/`의 Markdown 파일 목록과 내용을 모두 확인해 기존 형식과 이미 기록된 결정을 파악한다.
+2. `docs/journey/`의 Markdown 파일 목록과 내용을 모두 확인해 기존 형식과 이미 기록된 결정 및 지식을 파악한다.
 3. 필요할 때만 `docs/charter.md`, `TODO.md` 등 기준 문서를 확인해 상세 명세나 할 일을 Journey에 중복하지 않는다.
 
 저장소 지침과 기존 문서 형식이 이 스킬의 예시보다 우선한다.
 
-## 2. 기록할 결정 판별하기
+## 2. 기록 후보 판별하기
 
-다음 네 요소가 대화의 근거로 모두 확인될 때만 기록한다.
+후보를 먼저 `결정` 또는 `지식`으로 분류한다. 하나의 후보에 두 성격을 섞지 않는다.
+
+### 결정 후보
+
+다음 네 요소가 대화의 근거로 모두 확인될 때만 결정 후보로 제시한다.
 
 - 해결하거나 판단해야 했던 문제 또는 제약이 있다.
 - 의미 있는 대안, 상충 관계, 우려 중 하나 이상을 고민했다.
 - 채택한 선택이 확정되었다.
 - 근거가 그 선택으로 이어지는 인과관계가 드러난다.
+
+### 지식 후보
+
+선택 자체보다 발견한 사실을 남길 가치가 있고 다음 네 요소가 대화의 근거로 모두 확인될 때 지식 후보로 제시한다.
+
+- 프로젝트를 이해하거나 작업하는 과정에서 새로운 사실을 발견했고, 그 사실이 답하는 구체적인 질문을 표현할 수 있다.
+- 조사, 코드나 문서 확인, 실험 또는 대화를 통해 질문에 대한 해답이 확인되었다.
+- 해답이 추측이나 미결론이 아니라 근거로 뒷받침된다.
+- 이후의 프로젝트 이해나 작업에 다시 참고할 가치가 있다.
 
 다음 내용은 기록하지 않는다.
 
@@ -31,33 +44,35 @@ description: Review the current conversation for consequential project decisions
 - 완성된 명세나 구현 세부사항의 반복
 - 도구 선택, 파일명 같은 사소하고 기계적인 선택
 - 대안이나 근거가 없는 선호 표현
-- 기존 Journey에 같은 문제와 선택이 이미 담긴 내용
+- 프로젝트와 무관한 일반 상식이나 일회성 명령 결과
+- 답이 확인되지 않은 질문이나 근거 없이 단정한 사실
+- 기존 Journey에 같은 문제와 선택 또는 같은 질문과 해답이 이미 담긴 내용
 
-근거나 대안을 추측해서 빈칸을 채우지 않는다. 적격 결정이 없으면 파일을 만들지 않고 그 사실만 알린다.
+근거, 대안, 사실을 추측해서 빈칸을 채우지 않는다. 적격 후보가 없으면 파일을 만들지 않고 그 사실만 알린다.
 
 ## 3. 후보를 제시하고 선택 기다리기
 
-첫 호출에서는 Journey 파일을 만들지 않는다. 적격 결정을 대화에서 등장한 순서대로 번호를 붙여 다음 형식으로 제시한다.
+첫 호출에서는 Journey 파일을 만들지 않는다. 적격 후보를 대화에서 등장한 순서대로 번호를 붙여 다음 형식으로 제시한다.
 
 ```markdown
 ## 기록 후보
 
-1. 후보 제목
+1. [결정] 후보 제목
    - 문제: 결정이 필요해진 배경과 제약
    - 접근 방식: 비교한 대안과 핵심 상충 관계
    - 해결: 대화에서 확정된 선택
 
-2. 후보 제목
-   - 문제: ...
-   - 접근 방식: ...
-   - 해결: ...
+2. [지식] 후보 제목
+   - 질문: 작업 중 확인할 필요가 생긴 구체적인 질문
+   - 해답: 확인한 사실과 핵심 근거
 
 `$record-journey 1, 2`처럼 기록할 후보를 선택해주세요. `$record-journey 전부` 또는 `$record-journey 없음`으로 선택해도 됩니다.
 ```
 
 - 사용자가 기록 가치를 판단할 수 있을 만큼 구체적으로 쓰되 Journey 본문 전체를 미리 작성하지 않는다.
-- 후보마다 한 가지 문제와 선택만 다룬다.
-- 기존 Journey에 이미 기록된 결정은 후보에서 제외한다.
+- 각 후보에 `[결정]` 또는 `[지식]` 유형을 표시한다.
+- 결정 후보마다 한 가지 문제와 선택만, 지식 후보마다 한 가지 질문과 해답만 다룬다.
+- 기존 Journey에 이미 기록된 결정이나 지식은 후보에서 제외한다.
 - 적격 후보가 없으면 파일을 만들지 않고 후보가 없다고 알린다.
 - 후보를 제시한 뒤 사용자의 선택을 기다린다. 같은 턴에서 임의로 전부 기록하거나 선택을 추정하지 않는다.
 - 사용자가 다음 턴에도 스킬을 확실히 호출할 수 있도록 `$record-journey 1, 2`, `$record-journey 전부`, `$record-journey 없음` 형식으로 선택을 안내한다.
@@ -67,13 +82,15 @@ description: Review the current conversation for consequential project decisions
 
 사용자가 이전에 제시된 후보를 선택한 메시지에서만 파일 생성을 시작한다. 선택 메시지가 들어오면 후보를 다시 목록화하지 않는다. 기록 직전에 기존 Journey 파일을 다시 읽어 형식과 중복 여부를 확인하고 선택된 후보만 기록한다.
 
-결정 하나마다 별도 파일을 만든다. 서로 다른 문제나 선택을 한 파일에 합치지 않는다.
+선택된 후보 하나마다 별도 파일을 만든다. 서로 다른 문제와 선택 또는 질문과 해답을 한 파일에 합치지 않는다.
 
-파일 경로와 기본 구조는 다음과 같다.
+공통 파일 경로는 다음과 같다.
 
 ```text
-docs/journey/YYYY-MM-DD-선택을-드러내는-간결한-제목.md
+docs/journey/YYYY-MM-DD-내용을-드러내는-간결한-제목.md
 ```
+
+결정 후보에는 다음 구조를 사용한다.
 
 ```markdown
 # YYYY-MM-DD — 선택을 드러내는 간결한 제목
@@ -91,20 +108,36 @@ docs/journey/YYYY-MM-DD-선택을-드러내는-간결한-제목.md
 최종 선택, 그 근거, 선택으로 생기는 영향이나 적용 경계를 적는다.
 ```
 
+지식 후보에는 다음 구조를 사용한다.
+
+```markdown
+# YYYY-MM-DD — 발견한 지식을 드러내는 간결한 제목
+
+## 질문
+
+발견한 지식이 어떤 질문에 답하며 왜 프로젝트에서 다시 참고할 가치가 있는지 구체적으로 적는다.
+
+## 해답
+
+확인한 사실과 그 근거를 질문에 직접 답하는 형태로 적는다. 사실이 특정 조건에서만 성립하거나 아직 확인하지 못한 경계가 있다면 함께 밝힌다.
+```
+
 - 저장소의 현지 날짜를 `YYYY-MM-DD` 형식으로 사용한다.
 - 파일명은 제목의 공백을 하이픈으로 바꾸고 파일 경로에 부적합한 문장부호를 제거한다. 한글, 영문, 숫자, 하이픈은 유지한다.
 - 순번을 붙이지 않는다.
-- 판단 과정을 나중에 다시 이해할 수 있도록 대화와 프로젝트 자료가 뒷받침하는 범위에서 충분히 자세히 쓴다. 임의의 분량을 채우기 위해 내용을 반복하거나 근거를 만들지 않는다.
-- 결과만 쓰지 말고 문제, 대안, 근거와 선택 사이의 인과관계를 남긴다.
-- 세부 명세나 할 일은 기준 문서에 남기고, Journey에는 결정을 이해하는 데 필요한 맥락만 기록한다.
+- 판단이나 발견을 나중에 다시 이해할 수 있도록 대화와 프로젝트 자료가 뒷받침하는 범위에서 충분히 자세히 쓴다. 임의의 분량을 채우기 위해 내용을 반복하거나 근거를 만들지 않는다.
+- 결정 기록에는 문제, 대안, 근거와 선택 사이의 인과관계를 남긴다.
+- 지식 기록에는 질문에 대한 직접적인 해답, 해답을 뒷받침한 근거와 적용 범위를 남긴다. 대안이나 선택이 없었다면 만들어내지 않는다.
+- 세부 명세나 할 일은 기준 문서에 남기고, Journey에는 결정 또는 발견을 이해하는 데 필요한 맥락만 기록한다.
 - 결정이 과거 기록을 뒤집더라도 기존 파일을 고치지 않는다. 변경 이유와 새 선택을 새 파일로 추가한다.
+- 새로 확인한 지식이 과거 기록을 정정하더라도 기존 파일을 고치지 않는다. 무엇이 다르게 확인되었는지 새 질문과 해답으로 추가한다.
 - 선택되지 않은 후보는 기록하지 않는다.
 - 사용자가 후보의 제목이나 범위를 수정했다면 대화의 근거를 벗어나지 않는 범위에서 반영한다.
 
 ## 5. 안전하게 반영하기
 
-1. 선택된 결정마다 새 파일을 만들고 기존 Journey 파일은 수정하지 않는다.
-2. 같은 경로가 이미 존재하면 내용을 읽어 중복 여부를 확인한다. 다른 결정이면 숫자 접미사를 붙이지 말고 차이가 드러나는 더 구체적인 제목으로 파일명을 정한다. 기존 파일을 덮어쓰지 않는다.
+1. 선택된 후보마다 새 파일을 만들고 기존 Journey 파일은 수정하지 않는다.
+2. 같은 경로가 이미 존재하면 내용을 읽어 중복 여부를 확인한다. 다른 기록이면 숫자 접미사를 붙이지 말고 차이가 드러나는 더 구체적인 제목으로 파일명을 정한다. 기존 파일을 덮어쓰지 않는다.
 3. 생성한 각 파일과 diff를 다시 읽는다.
-4. 파일명, 날짜와 제목을 합친 H1, 세 섹션, 한 파일당 한 결정, 기존 파일 미변경을 확인한다.
+4. 파일명, 날짜와 제목을 합친 H1, 유형에 맞는 섹션, 한 파일당 한 결정 또는 지식, 기존 파일 미변경을 확인한다.
 5. 최종 응답에서 생성한 파일 경로를 알린다. 사용자가 `없음`을 선택했거나 선택한 후보를 기록할 수 없으면 파일을 만들지 않고 그 사실을 알린다.
