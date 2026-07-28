@@ -47,3 +47,5 @@ recipe 또는 제품 테마를 통해 표현을 변경한다.
   위계 recipe와 확장 계약
 - [Surface](foundations/surface.md): 콘텐츠가 놓이는 배경의 Base와 Layer 구조,
   사용 규칙과 확장 경계
+- [Elevation](foundations/elevation.md): 기준면으로부터의 절대적인 시각적 높이,
+  단계 관계와 확장 경계
