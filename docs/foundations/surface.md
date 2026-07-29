@@ -41,6 +41,22 @@ Base
 - 필요한 정보 관계를 더 단순한 구조로 충분히 설명할 수 있다면 불필요한 Layer를
   만들지 않는다.
 
+## 색상 관계
+
+Base, Layer 1과 Layer 2의 실제 색상값은 서로 다를 수 있다. 다만 하나의 테마
+안에서는 모든 Surface가 동일한 Content Foreground 집합과 명암 방향을 공유할 수
+있어야 한다.
+
+Surface 사이의 색상 차이는 정보의 경계를 드러낼 수 있지만, Content Foreground를
+밝은 색에서 어두운 색으로 반전해야 할 정도로 커서는 안 된다. 새로운 Base가
+시작되더라도 같은 테마 안에서는 이 명암 방향을 변경하지 않는다.
+
+Light Theme과 Dark Theme처럼 테마 전체에서 Surface와 Content Foreground의 명암
+방향을 함께 변경하는 것은 허용한다.
+
+Surface와 Content Foreground의 조합 규칙은
+[Foreground](foreground.md)에서 정의한다.
+
 ## 확장
 
 Terra는 공통 Surface를 `Base`, `Layer 1`, `Layer 2`로 시작한다. 더 깊은

@@ -121,7 +121,6 @@ Terra는 Semantic color의 공식 기본값을 제공한다. 제품은 Terra 패
 
 - 같은 Token의 의미와 사용 목적을 바꾸지 않는다.
 - 같은 행동 그룹에서 `Solid > Soft > Ghost` 관계를 유지한다.
-- 공식 foreground와 background 조합을 함께 검증한다.
 - 기존 의미로 설명되지 않는 제품 고유의 필요는 제품 범위의 Semantic token으로
   추가한다.
 
@@ -134,7 +133,7 @@ Semantic color의 이름이나 Emphasis 단계만으로 접근성이 보장되�
 Terra의 기본값과 제품이 재매핑한 모든 공식 recipe는 실제 사용되는 표면에서
 검증해야 한다.
 
-- Background와 Foreground를 검증된 쌍으로 제공한다.
 - 행동 위계와 위험을 색상만으로 전달하지 않는다.
-- 제품 테마에서 값을 변경하거나 새로운 조합을 만들면 최종 결과를 다시
-  검증한다.
+
+Background와 Foreground의 조합 및 검증 규칙은
+[Foreground](foreground.md)에서 정의한다.
