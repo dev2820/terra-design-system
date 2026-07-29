@@ -41,6 +41,11 @@ Danger는 삭제나 해지처럼 위험하거나 되돌리기 어려운 결과�
 사용한다. Danger는 행동의 중요도를 뜻하지 않으므로 Primary, Secondary 등 서로
 다른 행동 위계에 놓일 수 있다.
 
+## Feedback Color
+
+Feedback Color는 Terra의 공통 Foundation에 포함하지 않는다. 제품에서 필요하면
+제품 범위의 Semantic color로 확장한다.
+
 ## Emphasis
 
 Terra는 행동 색상의 표현 단계를 `Solid`, `Soft`, `Ghost`로 구분한다. 공개
