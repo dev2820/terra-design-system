@@ -43,11 +43,13 @@ recipe 또는 제품 테마를 통해 표현을 변경한다.
 
 ## Foundation 문서
 
-- [Color](foundations/color.md): 색상의 토큰 계층, 행동 색상의 Tone과 Emphasis,
+- [Color](./foundations/color.md): 색상의 토큰 계층, 행동 색상의 Tone과 Emphasis,
   위계 recipe와 확장 계약
-- [Foreground](foundations/foreground.md): Surface 위의 Content Foreground와
+- [Foreground](./foundations/foreground.md): Surface 위의 Content Foreground와
   Color 표현에 대응하는 On-color의 사용 규칙
-- [Surface](foundations/surface.md): 콘텐츠가 놓이는 배경의 Base와 Layer 구조,
+- [Surface](./foundations/surface.md): 콘텐츠가 놓이는 배경의 Base와 Layer 구조,
   사용 규칙과 확장 경계
-- [Elevation](foundations/elevation.md): 기준면으로부터의 절대적인 시각적 높이,
+- [Boundary](./foundations/boundary.md): 요소와 정보 단위의 경계 역할, 강도와
+  표현 및 확장 규칙
+- [Elevation](./foundations/elevation.md): 기준면으로부터의 절대적인 시각적 높이,
   단계 관계와 확장 경계
