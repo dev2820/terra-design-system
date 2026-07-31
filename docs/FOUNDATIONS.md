@@ -53,3 +53,5 @@ recipe 또는 제품 테마를 통해 표현을 변경한다.
   표현 및 확장 규칙
 - [Elevation](./foundations/elevation.md): 기준면으로부터의 절대적인 시각적 높이,
   단계 관계와 확장 경계
+- [State](./foundations/state.md): 행동 가능성, 현재 상호작용, 입력 위치와 선택
+  여부를 나타내는 공통 상태와 전환 제약

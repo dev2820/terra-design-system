@@ -25,7 +25,7 @@ Enclosure와 Separation은 선의 방향이나 길이가 아니라 전달하는 
 
 다음 의미는 Boundary가 소유하지 않는다.
 
-- Focus와 Selected 같은 Interaction State
+- Focus와 Selected 같은 State
 - Danger와 Error 같은 상태나 결과
 - Link의 상호작용 가능성
 - Timeline과 Tree 같은 Pattern의 연결 관계
