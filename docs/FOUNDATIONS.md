@@ -55,7 +55,8 @@ recipe 또는 제품 테마를 통해 표현을 변경한다.
   단계 관계와 확장 경계
 - [State](./foundations/state.md): 행동 가능성, 현재 상호작용, 입력 위치와 선택
   여부를 나타내는 공통 상태와 전환 제약
-- [Radius](./foundations/radius.md)
+- [Radius](./foundations/radius.md): 모서리의 둥근 정도, 절대적인 숫자 단계와
+  중첩 관계 및 확장 규칙
 - [Typography](./foundations/typography.md)
 - [Spacing](./foundations/spacing.md)
 - [Motion](./foundations/motion.md)
