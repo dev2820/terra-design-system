@@ -1,5 +1,12 @@
 # TODO
 
+## Foundation
+
+- [ ] Radius를 정의한다.
+- [ ] Typography를 정의한다.
+- [ ] Spacing을 정의한다.
+- [ ] Motion을 정의한다.
+
 ## Token
 
 - [ ] Token의 구조, 이름과 확장 규칙을 정의한다.
