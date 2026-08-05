@@ -14,7 +14,7 @@ Primitive Token은 가공되지 않은 값을 이름으로 관리하며, 값이 
 
 ```text
 color.orange.600
-spacing.4
+space.4
 radius.2
 ```
 
@@ -46,7 +46,7 @@ Primitive Token의 이름은 값의 속성과 척도를 나타내며 사용 목�
 
 ```text
 color.orange.600
-spacing.4
+space.4
 radius.2
 ```
 

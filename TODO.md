@@ -4,7 +4,7 @@
 
 - [x] Radius를 정의한다.
 - [ ] Typography를 정의한다.
-- [ ] Spacing을 정의한다.
+- [x] Spacing을 정의한다.
 - [ ] Motion을 정의한다.
 
 ## Token
