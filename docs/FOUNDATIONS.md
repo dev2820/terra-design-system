@@ -57,7 +57,8 @@ recipe 또는 제품 테마를 통해 표현을 변경한다.
   여부를 나타내는 공통 상태와 전환 제약
 - [Radius](./foundations/radius.md): 모서리의 둥근 정도, 절대적인 숫자 단계와
   중첩 관계 및 확장 규칙
-- [Typography](./foundations/typography.md)
+- [Typography](./foundations/typography.md): 문자를 표현하는 Family, Size, Weight와
+  Line Height의 관계, 조합과 확장 규칙
 - [Spacing](./foundations/spacing.md): 요소 사이와 내부의 관계를 드러내는 빈 공간,
   절대적인 숫자 단계와 확장 규칙
 - [Motion](./foundations/motion.md)
