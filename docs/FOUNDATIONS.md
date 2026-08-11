@@ -61,4 +61,5 @@ recipe 또는 제품 테마를 통해 표현을 변경한다.
   Line Height의 관계, 조합과 확장 규칙
 - [Spacing](./foundations/spacing.md): 요소 사이와 내부의 관계를 드러내는 빈 공간,
   절대적인 숫자 단계와 확장 규칙
-- [Motion](./foundations/motion.md)
+- [Motion](./foundations/motion.md): 변화의 원인과 결과를 연결하는 Duration과
+  Easing, 반응 및 Reduced Motion 계약
