@@ -1,11 +1,11 @@
-# @wave/core Agent Guidelines
+# Bison Agent Guidelines
 
 작업하기 전에 이 디렉터리의 `README.md`를 읽고 패키지의 목적과 책임 경계를
 따른다. 저장소 루트의 `AGENTS.md`도 함께 적용된다.
 
 ## 범위 제약
 
-- Wave에는 동작만 구현한다.
+- Bison에는 동작만 구현한다.
 - 행동은 ARIA APG 패턴 단위의 완성된 계약으로 제공한다.
 - Token, Theme, Recipe, 스타일과 애니메이션 표현을 추가하지 않는다.
 - API는 시각적 형태가 아니라 행동의 의미를 표현한다.
