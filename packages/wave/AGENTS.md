@@ -1,16 +1,16 @@
-# @terra/behave Agent Guidelines
+# @wave/core Agent Guidelines
 
 작업하기 전에 이 디렉터리의 `README.md`를 읽고 패키지의 목적과 책임 경계를
 따른다. 저장소 루트의 `AGENTS.md`도 함께 적용된다.
 
 ## 범위 제약
 
-- Behave에는 동작만 구현한다.
+- Wave에는 동작만 구현한다.
 - 행동은 ARIA APG 패턴 단위의 완성된 계약으로 제공한다.
 - Token, Theme, Recipe, 스타일과 애니메이션 표현을 추가하지 않는다.
 - API는 시각적 형태가 아니라 행동의 의미를 표현한다.
-- 패턴에 필요한 parts와 그 의미 및 관계를 정의하고, 실제 HTML 렌더링과 DOM
-  생명주기 연결은 Headless에 맡긴다.
+- 패턴에 필요한 parts와 그 의미 및 관계를 정의한다. 실제 HTML 렌더링은 Coral이,
+  두 패키지의 연결은 상위 조합 계층이 맡는다.
 - 제품에만 필요한 행동을 공통 규칙으로 미리 포함하지 않는다.
 - `README.md`에서 아직 결정하지 않았다고 명시한 구조를 구현 과정에서 임의로
   확정하지 않는다.
