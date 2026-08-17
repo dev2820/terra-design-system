@@ -1,4 +1,11 @@
 {
   "name": "@bison/accordion",
-  "version": "0.0.0"
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "@terra/vitest-config": "workspace:*"
+  }
 }

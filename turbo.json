@@ -1,0 +1,15 @@
+{
+  "$schema": "https://turborepo.dev/schema.json",
+  "tasks": {
+    "test": {
+      "cache": true,
+      "dependsOn": ["^test"],
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        "$TURBO_ROOT$/packages/vitest-config/index.js",
+        "$TURBO_ROOT$/packages/vitest-config/package.json"
+      ],
+      "outputs": []
+    }
+  }
+}
