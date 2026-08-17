@@ -2,12 +2,18 @@
   "name": "terra-design-system",
   "version": "1.1.13",
   "description": "",
-  "scripts": {},
-  "files": [],
-  "dependencies": {},
-  "devDependencies": {},
-  "peerDependencies": {},
   "keywords": [],
+  "license": "ISC",
   "author": "@dev2820",
-  "license": "ISC"
+  "files": [],
+  "scripts": {
+    "lint": "oxlint",
+    "lint:fix": "oxlint --fix",
+    "format": "oxfmt",
+    "format:check": "oxfmt --check"
+  },
+  "devDependencies": {
+    "oxfmt": "^0.63.0",
+    "oxlint": "^1.78.0"
+  }
 }
