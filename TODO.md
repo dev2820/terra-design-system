@@ -1,5 +1,7 @@
 # TODO
 
+- [ ] Vitest, Vitest browser mode
+
 ## Token
 
 - [ ] Token의 구조, 이름과 확장 규칙을 정의한다.
