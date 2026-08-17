@@ -1,3 +1,6 @@
+engineStrict: true
+nodeVersion: 22.22.1
+
 packages:
   - "apps/*"
   - "packages/*"

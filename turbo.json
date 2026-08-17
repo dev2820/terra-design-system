@@ -10,6 +10,16 @@
         "$TURBO_ROOT$/packages/vitest-config/package.json"
       ],
       "outputs": []
+    },
+    "typecheck": {
+      "cache": true,
+      "dependsOn": ["^typecheck"],
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        "$TURBO_ROOT$/packages/typescript-config/base.json",
+        "$TURBO_ROOT$/packages/typescript-config/package.json"
+      ],
+      "outputs": []
     }
   }
 }

@@ -14,9 +14,11 @@
     "format": "oxfmt",
     "format:check": "oxfmt --check",
     "test": "turbo run test",
+    "typecheck": "turbo run typecheck",
     "prepare": "husky"
   },
   "devDependencies": {
+    "@types/node": "^22.0.0",
     "@vitest/browser-playwright": "^4.1.10",
     "husky": "^9.1.7",
     "lint-staged": "^17.3.0",
@@ -24,6 +26,7 @@
     "oxlint": "^1.78.0",
     "playwright": "^1.62.1",
     "turbo": "^2.10.10",
+    "typescript": "^7.0.2",
     "vite": "^8.2.1",
     "vitest": "^4.1.10"
   },
@@ -35,7 +38,8 @@
     "!(*.{js,jsx,ts,tsx,mjs,cjs,mts,cts})": "oxfmt --no-error-on-unmatched-pattern"
   },
   "engines": {
-    "node": "^22.22.1 || >=24.0.0"
+    "node": ">=22.22.1",
+    "pnpm": ">=11.0.0"
   },
-  "packageManager": "pnpm@9.15.1"
+  "packageManager": "pnpm@11.22.0"
 }
