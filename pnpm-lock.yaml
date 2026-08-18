@@ -46,6 +46,10 @@ importers:
         version: 4.1.10(@types/node@22.20.1)(@vitest/browser-playwright@4.1.10)(vite@8.2.1(@types/node@22.20.1)(yaml@2.9.0))
 
   packages/bison/accordion:
+    dependencies:
+      '@bison/core':
+        specifier: workspace:*
+        version: link:../core
     devDependencies:
       '@terra/typescript-config':
         specifier: workspace:*
@@ -53,6 +57,12 @@ importers:
       '@terra/vitest-config':
         specifier: workspace:*
         version: link:../../vitest-config
+
+  packages/bison/core:
+    devDependencies:
+      '@terra/typescript-config':
+        specifier: workspace:*
+        version: link:../../typescript-config
 
   packages/bison/react:
     devDependencies:

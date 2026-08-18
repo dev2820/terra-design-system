@@ -24,7 +24,7 @@
     },
     "typecheck": {
       "cache": true,
-      "dependsOn": ["^typecheck"],
+      "dependsOn": ["^build", "^typecheck"],
       "inputs": [
         "$TURBO_DEFAULT$",
         "$TURBO_ROOT$/packages/typescript-config/base.json",

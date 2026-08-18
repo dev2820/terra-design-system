@@ -1,5 +1,5 @@
 {
-  "name": "@bison/accordion",
+  "name": "@bison/core",
   "version": "0.0.0",
   "files": [
     "dist"
@@ -14,14 +14,9 @@
   },
   "scripts": {
     "build": "tsdown",
-    "test": "vitest run",
     "typecheck": "tsc --noEmit"
   },
-  "dependencies": {
-    "@bison/core": "workspace:*"
-  },
   "devDependencies": {
-    "@terra/typescript-config": "workspace:*",
-    "@terra/vitest-config": "workspace:*"
+    "@terra/typescript-config": "workspace:*"
   }
 }
