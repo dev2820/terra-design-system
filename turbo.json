@@ -1,6 +1,17 @@
 {
   "$schema": "https://turborepo.dev/schema.json",
   "tasks": {
+    "build": {
+      "cache": true,
+      "dependsOn": ["^build"],
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        "$TURBO_ROOT$/tsdown.config.ts",
+        "$TURBO_ROOT$/packages/typescript-config/base.json",
+        "$TURBO_ROOT$/packages/typescript-config/package.json"
+      ],
+      "outputs": ["dist/**"]
+    },
     "test": {
       "cache": true,
       "dependsOn": ["^test"],

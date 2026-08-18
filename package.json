@@ -9,6 +9,7 @@
   "files": [],
   "type": "module",
   "scripts": {
+    "build": "turbo run build",
     "lint": "oxlint",
     "lint:fix": "oxlint --fix",
     "format": "oxfmt",
@@ -25,6 +26,7 @@
     "oxfmt": "^0.63.0",
     "oxlint": "^1.78.0",
     "playwright": "^1.62.1",
+    "tsdown": "^0.22.14",
     "turbo": "^2.10.10",
     "typescript": "^7.0.2",
     "vite": "^8.2.1",
