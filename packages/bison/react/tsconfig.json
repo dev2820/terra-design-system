@@ -1,5 +1,5 @@
 {
-  "extends": "@terra/typescript-config/base.json",
+  "extends": "@terra/typescript-config/bundler.json",
   "include": ["src", "tests", "vitest.config.ts"],
   "exclude": ["dist", "node_modules"]
 }

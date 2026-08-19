@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "exports": {
-    "./base.json": "./base.json"
+    "./base.json": "./base.json",
+    "./bundler.json": "./bundler.json"
   }
 }
