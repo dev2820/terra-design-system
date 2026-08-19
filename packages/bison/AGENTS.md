@@ -35,6 +35,38 @@ Bison에는 동작만 구현한다. Token, Theme, Recipe, 스타일과 애니메
 제품에만 필요한 행동을 공통 규칙으로 미리 포함하지 않는다. `README.md`에서
 아직 결정하지 않았다고 명시한 구조도 구현 과정에서 임의로 확정하지 않는다.
 
+## 폴더와 파일 구조
+
+Bison은 공통 Core와 프레임워크 어댑터, 각 행동 패턴을 수평적인 패키지로
+나눈다. 패턴 패키지 안에 React, Vue 같은 프레임워크 폴더를 만들지 않는다.
+
+```text
+packages/bison/
+├── core/
+├── react/
+└── accordion/
+    ├── src/
+    │   ├── index.ts
+    │   ├── types.ts
+    │   ├── types.test.ts
+    │   ├── machine.ts
+    │   ├── machine.test.ts
+    │   ├── connect.ts
+    │   └── connect.test.ts
+    ├── package.json
+    ├── tsconfig.json
+    └── vitest.config.ts
+```
+
+- 패턴은 `@bison/accordion`처럼 하나의 배포 패키지로 만든다.
+- `src/index.ts`는 패키지의 공개 API를 조립하고 내보낸다.
+- `types.ts`, `machine.ts`, `connect.ts`는 각각 계약, 상태 전이, 외부 API
+  연결을 담당한다.
+- 각 구현 파일의 테스트는 같은 디렉터리에 둔다. 별도의 `tests` 폴더를
+  만들지 않는다.
+- 패키지별 Vitest 설정은 공통 `@terra/vitest-config`를 확장하며, 기본적으로
+  Playwright를 사용하는 Browser Mode에서 실행한다.
+
 ### 4. 테스트되지 않은 행동은 지원하지 않는다
 
 공개적으로 지원하는 모든 동작은 테스트한다. 테스트는 내부 구현이나 상태
@@ -49,6 +81,13 @@ Bison에는 동작만 구현한다. Token, Theme, Recipe, 스타일과 애니메
 - 최상위 `describe`에는 패턴 이름을 쓴다.
 - 중첩 `describe`에는 `types`, `machine`, `connect`처럼 검증 대상 구현 파일의
   이름을 쓴다.
+- `types.test.ts`는 `expectTypeOf`로 공개 타입 계약을 검증한다.
+- `machine.test.ts`는 입력 이벤트에 따른 상태 전이를 검증한다.
+- `connect.test.ts`는 `event`와 `api`를 나누어 actor로 전달되는 이벤트와
+  반환되는 value, 상태, HTML·ARIA props를 검증한다.
+- 실제 HTML 구조, 키보드, Focus와 접근성 트리는 렌더러 또는 어댑터 패키지의
+  Browser Mode 테스트에서 검증한다. `machine`과 `connect` 테스트에서 특정
+  프레임워크의 개념을 사용하지 않는다.
 - `it`에는 지원하는 행동을 이해할 수 있는 한글 문장을 쓴다. HTML, ARIA 속성,
   키 이름과 API 식별자는 원래 표기를 유지한다.
 
