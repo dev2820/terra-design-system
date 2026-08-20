@@ -1,4 +1,4 @@
-import type { ElementProps } from "@bison/core";
+import type { Actor, ElementProps, MachineSnapshot, PatternTypes } from "@bison/core";
 
 export type AccordionValue<Multiple extends boolean> = Multiple extends true
   ? string[]
@@ -41,15 +41,16 @@ export type AccordionEvent =
       value: string[];
     };
 
-export interface AccordionSnapshot<Multiple extends boolean = boolean> {
-  props: AccordionProps<Multiple>;
-  state: AccordionState;
-}
+export type AccordionSnapshot<Multiple extends boolean = boolean> = MachineSnapshot<
+  AccordionProps<Multiple>,
+  AccordionState
+>;
 
-export interface AccordionActor<Multiple extends boolean = boolean> {
-  getSnapshot: () => AccordionSnapshot<Multiple>;
-  send: (event: AccordionEvent) => void;
-}
+export type AccordionActor<Multiple extends boolean = boolean> = Actor<
+  AccordionProps<Multiple>,
+  AccordionState,
+  AccordionEvent
+>;
 
 export interface AccordionItemProps {
   value: string;
@@ -83,4 +84,12 @@ export interface AccordionApi<
   getItemState: (props: AccordionItemProps) => AccordionItemState;
   getTriggerProps: (props: AccordionItemProps) => Props["button"];
   getPanelProps: (props: AccordionPanelProps) => Props["element"];
+}
+
+export interface AccordionPatternTypes extends PatternTypes {
+  api: this["props"] extends AccordionProps
+    ? this["propTypes"] extends AccordionPropTypes
+      ? AccordionApi<this["props"] extends { multiple: true } ? true : false, this["propTypes"]>
+      : never
+    : never;
 }

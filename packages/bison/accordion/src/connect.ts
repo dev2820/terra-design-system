@@ -1,12 +1,14 @@
-import type { NormalizeProps } from "@bison/core";
+import type { Actor, NormalizeProps } from "@bison/core";
 
 import { canCollapse, getValue } from "./machine";
 import type {
-  AccordionActor,
   AccordionApi,
+  AccordionEvent,
   AccordionItemProps,
   AccordionItemState,
   AccordionPropTypes,
+  AccordionProps,
+  AccordionState,
   AccordionValue,
 } from "./types";
 
@@ -30,22 +32,10 @@ function getPanelId(id: string, value: string) {
   return `${id}-panel-${encodeURIComponent(value)}`;
 }
 
-export function connect<Props extends AccordionPropTypes>(
-  actor: AccordionActor<false>,
+export function connect<MachineProps extends AccordionProps, Props extends AccordionPropTypes>(
+  actor: Actor<MachineProps, AccordionState, AccordionEvent>,
   normalize: NormalizeProps<Props>,
-): AccordionApi<false, Props>;
-export function connect<Props extends AccordionPropTypes>(
-  actor: AccordionActor<true>,
-  normalize: NormalizeProps<Props>,
-): AccordionApi<true, Props>;
-export function connect<Props extends AccordionPropTypes>(
-  actor: AccordionActor,
-  normalize: NormalizeProps<Props>,
-): AccordionApi<boolean, Props>;
-export function connect(
-  actor: AccordionActor,
-  normalize: NormalizeProps<AccordionPropTypes>,
-): AccordionApi<boolean, AccordionPropTypes> {
+): AccordionApi<MachineProps extends { multiple: true } ? true : false, Props> {
   const { props, state } = actor.getSnapshot();
   const value = getValue(state, props);
   const collapsible = canCollapse(props);
@@ -58,7 +48,9 @@ export function connect(
   }
 
   return {
-    value: toPublicValue(value, props.multiple === true),
+    value: toPublicValue(value, props.multiple === true) as AccordionValue<
+      MachineProps extends { multiple: true } ? true : false
+    >,
 
     setValue(nextValue) {
       actor.send({ type: "value.set", value: toInternalValue(nextValue) });
