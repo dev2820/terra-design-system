@@ -83,10 +83,25 @@ packages/bison/
   이름을 쓴다.
 - `types.test.ts`는 `expectTypeOf`로 공개 타입 계약을 검증한다.
 - `machine.test.ts`는 입력 이벤트에 따른 상태 전이를 검증한다.
-- `connect.test.ts`는 `event`와 `api`를 나누어 actor로 전달되는 이벤트와
-  반환되는 value, 상태, HTML·ARIA props를 검증한다.
-- 실제 HTML 구조, 키보드, Focus와 접근성 트리는 렌더러 또는 어댑터 패키지의
-  Browser Mode 테스트에서 검증한다. `machine`과 `connect` 테스트에서 특정
+- `connect.test.ts`는 내부 이벤트나 value를 다시 검증하지 않는다. Vanilla
+  HTML에 props를 연결하고 `html`, `accessibility`, `keyboard`로 나누어
+  HTML·ARIA 속성과 실제 브라우저 동작을 검증한다.
+- `connect` 테스트는 구현이 만든 props 객체의 모양이 아니라 HTML, WAI-ARIA
+  명세와 APG 패턴이 사용자에게 보장하는 결과를 계약으로 삼는다. 내부 event
+  이름, 내부 value 표현, `send` 호출 횟수처럼 구현을 바꿀 때 함께 바뀔 수 있는
+  값은 단언하지 않는다.
+- HTML과 ARIA 속성은 속성값만 확인하지 않는다. 해당 속성이 Focus, 키보드와
+  포인터 활성화, form 동작, 표시 상태에 미치는 결과까지 실제 브라우저에서
+  검증한다. 키보드는 handler를 직접 호출하지 않고 `userEvent`로 입력한다.
+- 네이티브 HTML 속성과 같은 이름의 ARIA 상태를 구분해 검증한다. 예를 들어
+  `aria-disabled="true"`가 필요한 Trigger는 `disabled`가 없어 Tab 순서에
+  남아야 하며, 활성화해도 상태가 바뀌지 않아야 한다. 반대로 네이티브
+  `disabled`가 계약이면 브라우저가 Focus와 활성화를 차단하는 결과를 검증한다.
+- 조건부 ARIA 속성은 필요한 조건과 필요하지 않은 조건을 모두 테스트한다.
+  `aria-controls`, `aria-labelledby` 같은 ID 참조는 속성 문자열만 비교하지 않고
+  실제로 연결된 요소의 ID를 가리키는지 검증한다.
+- 렌더러가 결정하는 실제 HTML 구조와 접근성 트리는 해당 렌더러 또는 어댑터
+  패키지에서 추가로 검증한다. `machine`과 `connect` 테스트에서 특정
   프레임워크의 개념을 사용하지 않는다.
 - `it`에는 지원하는 행동을 이해할 수 있는 한글 문장을 쓴다. HTML, ARIA 속성,
   키 이름과 API 식별자는 원래 표기를 유지한다.
