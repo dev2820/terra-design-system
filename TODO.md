@@ -1,6 +1,6 @@
 # TODO
 
-- [ ] Vitest, Vitest browser mode
+- [x] Vitest, Vitest browser mode
 
 ## Bison
 
@@ -25,15 +25,15 @@ Bison의 목표는 [WAI-ARIA APG 패턴](https://www.w3.org/WAI/ARIA/apg/pattern
 
 ### APG 패턴
 
-- [ ] Accordion
-- [ ] Alert
+- [x] Accordion
+- [x] Alert
 - [ ] Alert Dialog
 - [ ] Breadcrumb
 - [ ] Button
 - [ ] Carousel
 - [ ] Checkbox
 - [ ] Combobox
-- [ ] Dialog (Modal)
+- [x] Dialog (Modal)
 - [ ] Disclosure
 - [ ] Feed
 - [ ] Grid
