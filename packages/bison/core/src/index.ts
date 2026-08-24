@@ -43,3 +43,16 @@ export interface Pattern<
     normalize: NormalizeProps<CurrentPropTypes>,
   ) => PatternApi<Types, CurrentProps, CurrentPropTypes>;
 }
+
+export {
+  dismissableMachine,
+  type DismissableEvent,
+  type DismissableProps,
+  type DismissableState,
+} from "./dismissable";
+export {
+  openableMachine,
+  type OpenableEvent,
+  type OpenableProps,
+  type OpenableState,
+} from "./openable";
