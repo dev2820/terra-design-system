@@ -13,8 +13,13 @@ Bison의 목표는 [WAI-ARIA APG 패턴](https://www.w3.org/WAI/ARIA/apg/pattern
 - 사용자 입력과 외부 사건을 event로, 전환 조건을 guard로, 상태 변화와 외부에
   알릴 결과를 transition과 effect로 표현한다.
 - 모든 상태 전환, guard와 effect를 단위 테스트로 검증한다.
-- 키보드, Focus, HTML과 ARIA 동작을 Vitest Browser Mode로 검증한다.
-- Core와 지원하는 각 프레임워크 어댑터가 같은 행동 계약을 만족하는지 검증한다.
+- Bison이 직접 연결하는 키보드, HTML과 ARIA 동작을 Vitest Browser Mode로
+  검증한다.
+- Focus Trap, Focus 복원과 외부 영역 비활성화처럼 DOM 생명주기가 필요한 동작은
+  Bison에서 행동 계약을 검증하고, 계약을 구현하는 컴포넌트 계층에서 실제 브라우저
+  동작을 검증한다.
+- Core와 지원하는 각 프레임워크 어댑터가 같은 상태 및 행동 계약을 유지하는지
+  검증한다.
 - APG와 다르게 동작하거나 자동화할 수 없는 검증 범위가 있다면 그 이유와 한계를
   문서로 남긴다.
 
@@ -22,7 +27,7 @@ Bison의 목표는 [WAI-ARIA APG 패턴](https://www.w3.org/WAI/ARIA/apg/pattern
 
 - [ ] Accordion
 - [ ] Alert
-- [ ] Alert and Message Dialogs
+- [ ] Alert Dialog
 - [ ] Breadcrumb
 - [ ] Button
 - [ ] Carousel
