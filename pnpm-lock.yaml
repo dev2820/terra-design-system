@@ -71,6 +71,22 @@ importers:
         specifier: workspace:*
         version: link:../../vitest-config
 
+  packages/bison/alert-dialog:
+    dependencies:
+      '@bison/core':
+        specifier: workspace:*
+        version: link:../core
+      '@bison/dialog':
+        specifier: workspace:*
+        version: link:../dialog
+    devDependencies:
+      '@terra/typescript-config':
+        specifier: workspace:*
+        version: link:../../typescript-config
+      '@terra/vitest-config':
+        specifier: workspace:*
+        version: link:../../vitest-config
+
   packages/bison/core:
     devDependencies:
       '@terra/typescript-config':
