@@ -1,6 +1,5 @@
 import type { Actor, NormalizeProps } from "@bison/core";
 
-import { getPressed } from "./machine";
 import type { ButtonApi, ButtonEvent, ButtonPropTypes, ButtonProps, ButtonState } from "./types";
 
 export function connect<MachineProps extends ButtonProps, Props extends ButtonPropTypes>(
@@ -8,7 +7,7 @@ export function connect<MachineProps extends ButtonProps, Props extends ButtonPr
   normalize: NormalizeProps<Props>,
 ): ButtonApi<MachineProps extends { toggle: true } ? true : false, Props> {
   const { props, state } = actor.getSnapshot();
-  const pressed = getPressed(state, props);
+  const pressed = props.toggle === true ? (props.pressed ?? state.pressed) : false;
   const api = {
     getRootProps: () =>
       normalize.button({

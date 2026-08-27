@@ -1,6 +1,5 @@
 import type { Actor, NormalizeProps } from "@bison/core";
 
-import { machine } from "./machine";
 import type {
   DialogApi,
   DialogContentProps,
@@ -31,7 +30,7 @@ export function connect<MachineProps extends DialogProps, Props extends DialogPr
   normalize: NormalizeProps<Props>,
 ): DialogApi<Props> {
   const { props, state } = actor.getSnapshot();
-  const open = machine.getOpen(state, props);
+  const open = props.open ?? state.open;
   const dialogId = getDialogId(props.id);
   const triggerId = getTriggerId(props.id);
 

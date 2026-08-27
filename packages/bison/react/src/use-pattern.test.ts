@@ -1,5 +1,12 @@
 import type { Actor, NormalizeProps, Pattern, PatternTypes } from "@bison/core";
-import { act, createElement, StrictMode, type ButtonHTMLAttributes, type ReactNode } from "react";
+import {
+  act,
+  createElement,
+  StrictMode,
+  type ButtonHTMLAttributes,
+  type ComponentPropsWithRef,
+  type ReactNode,
+} from "react";
 import { createRoot, type Root } from "react-dom/client";
 import { afterEach, describe, expect, expectTypeOf, it, vi } from "vitest";
 import { userEvent } from "vitest/browser";
@@ -65,6 +72,61 @@ const togglePattern = {
   connect,
 } as Pattern<ToggleProps, ToggleState, ToggleEvent, TogglePropTypes, TogglePatternTypes>;
 
+interface IndeterminateInputProps {
+  indeterminate: boolean;
+}
+
+interface IndeterminateInputPropTypes {
+  input: unknown;
+}
+
+interface IndeterminateInputApi<Props extends IndeterminateInputPropTypes> {
+  getInputProps: () => Props["input"];
+}
+
+interface IndeterminateInputPatternTypes extends PatternTypes {
+  api: this["propTypes"] extends IndeterminateInputPropTypes
+    ? IndeterminateInputApi<this["propTypes"]>
+    : never;
+}
+
+type IndeterminateInputState = Record<never, never>;
+
+type IndeterminateInputEvent = { type: "noop" };
+
+const indeterminateInputPattern = {
+  machine: {
+    initial(): IndeterminateInputState {
+      return {};
+    },
+    transition(state: IndeterminateInputState): IndeterminateInputState {
+      return state;
+    },
+  },
+  connect<MachineProps extends IndeterminateInputProps, Props extends IndeterminateInputPropTypes>(
+    actor: Actor<MachineProps, IndeterminateInputState, IndeterminateInputEvent>,
+    normalize: NormalizeProps<Props>,
+  ): IndeterminateInputApi<Props> {
+    const { props } = actor.getSnapshot();
+
+    return {
+      getInputProps: () =>
+        normalize.input({
+          type: "checkbox",
+          checked: false,
+          indeterminate: props.indeterminate,
+          onChange() {},
+        }),
+    };
+  },
+} as Pattern<
+  IndeterminateInputProps,
+  IndeterminateInputState,
+  IndeterminateInputEvent,
+  IndeterminateInputPropTypes,
+  IndeterminateInputPatternTypes
+>;
+
 const roots: Root[] = [];
 const containers: HTMLElement[] = [];
 
@@ -104,11 +166,19 @@ function Toggle(props: ToggleProps) {
   return createElement("button", api.getTriggerProps(), api.active ? "켜짐" : "꺼짐");
 }
 
+function IndeterminateInput(props: IndeterminateInputProps) {
+  const api = usePattern(indeterminateInputPattern, props);
+
+  return createElement("input", api.getInputProps());
+}
+
 function TypeFixture() {
   const api = usePattern(togglePattern, {});
+  const inputApi = usePattern(indeterminateInputPattern, { indeterminate: true });
 
   expectTypeOf(api.active).toEqualTypeOf<boolean>();
   expectTypeOf(api.getTriggerProps()).toEqualTypeOf<ButtonHTMLAttributes<HTMLButtonElement>>();
+  expectTypeOf(inputApi.getInputProps()).toEqualTypeOf<ComponentPropsWithRef<"input">>();
 
   return null;
 }
@@ -175,5 +245,28 @@ describe("usePattern", () => {
 
   it("정규화한 React props 타입을 유지한다", () => {
     expect(TypeFixture).toBeTypeOf("function");
+  });
+
+  it("indeterminate를 DOM attribute가 아닌 input property로 연결한다", () => {
+    const container = render(createElement(IndeterminateInput, { indeterminate: true }));
+    const input = container.querySelector("input");
+
+    expect(input?.indeterminate).toBe(true);
+    expect(input?.hasAttribute("indeterminate")).toBe(false);
+  });
+
+  it("다시 렌더링하면 input의 indeterminate property를 동기화한다", () => {
+    const container = render(createElement(IndeterminateInput, { indeterminate: true }));
+    const root = roots.at(-1);
+    const input = container.querySelector("input");
+
+    if (!root || !input) {
+      throw new Error("React Root 또는 input을 찾을 수 없습니다.");
+    }
+
+    act(() => root.render(createElement(IndeterminateInput, { indeterminate: false })));
+
+    expect(input.indeterminate).toBe(false);
+    expect(input.hasAttribute("indeterminate")).toBe(false);
   });
 });

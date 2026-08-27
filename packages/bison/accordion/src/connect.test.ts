@@ -199,6 +199,12 @@ describe("Accordion", () => {
 
         expect(fixture.getPanel("first").hidden).toBe(false);
       });
+
+      it("controlled value에 해당하는 Panel을 표시한다", () => {
+        const fixture = setup({ id: "accordion", value: "first" });
+
+        expect(fixture.getPanel("first").hidden).toBe(false);
+      });
     });
 
     describe("accessibility", () => {

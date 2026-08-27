@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from "vitest";
 
 import type { ButtonProps } from "./index";
-import { getPressed, machine } from "./machine";
+import { machine } from "./machine";
 
 describe("Button", () => {
   describe("machine", () => {
@@ -58,7 +58,6 @@ describe("Button", () => {
 
       expect(nextState).toEqual({ pressed: false });
       expect(onPressedChange).toHaveBeenCalledWith(false);
-      expect(getPressed(nextState, props)).toBe(true);
     });
 
     it("외부에서 toggle: true Button의 pressed 상태를 설정할 수 있다", () => {

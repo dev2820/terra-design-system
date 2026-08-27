@@ -1,5 +1,10 @@
 import type { Actor, NormalizeProps, Pattern, PatternApi, PatternTypes } from "@bison/core";
-import type { AnchorHTMLAttributes, ButtonHTMLAttributes, HTMLAttributes } from "react";
+import type {
+  AnchorHTMLAttributes,
+  ButtonHTMLAttributes,
+  ComponentPropsWithRef,
+  HTMLAttributes,
+} from "react";
 
 import { useMachine } from "./use-machine";
 
@@ -7,12 +12,25 @@ interface ReactPropTypes {
   element: HTMLAttributes<HTMLElement>;
   link: AnchorHTMLAttributes<HTMLAnchorElement>;
   button: ButtonHTMLAttributes<HTMLButtonElement>;
+  input: ComponentPropsWithRef<"input">;
 }
 
 const normalizeProps: NormalizeProps<ReactPropTypes> = {
   element: (props) => props as HTMLAttributes<HTMLElement>,
   link: (props) => props as AnchorHTMLAttributes<HTMLAnchorElement>,
   button: (props) => props as ButtonHTMLAttributes<HTMLButtonElement>,
+  input: (props) => {
+    const { indeterminate, ...inputProps } = props;
+
+    return {
+      ...inputProps,
+      ref(element: HTMLInputElement | null) {
+        if (element) {
+          element.indeterminate = indeterminate === true;
+        }
+      },
+    } as ComponentPropsWithRef<"input">;
+  },
 };
 
 export function usePattern<

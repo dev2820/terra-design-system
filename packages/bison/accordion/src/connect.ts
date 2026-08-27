@@ -1,6 +1,5 @@
 import type { Actor, NormalizeProps } from "@bison/core";
 
-import { canCollapse, getValue } from "./machine";
 import type {
   AccordionApi,
   AccordionEvent,
@@ -37,8 +36,8 @@ export function connect<MachineProps extends AccordionProps, Props extends Accor
   normalize: NormalizeProps<Props>,
 ): AccordionApi<MachineProps extends { multiple: true } ? true : false, Props> {
   const { props, state } = actor.getSnapshot();
-  const value = getValue(state, props);
-  const collapsible = canCollapse(props);
+  const value = props.value === undefined ? state.value : toInternalValue(props.value);
+  const collapsible = props.multiple === true || props.collapsible === true;
 
   function getItemState(item: AccordionItemProps): AccordionItemState {
     return {

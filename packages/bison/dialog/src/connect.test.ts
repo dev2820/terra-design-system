@@ -203,6 +203,13 @@ describe("Dialog", () => {
         expect(fixture.trigger.getAttribute("aria-expanded")).toBe("false");
       });
 
+      it("controlled open이 true이면 Dialog를 표시한다", () => {
+        const fixture = setup({ props: { id: "dialog", open: true } });
+
+        expect(fixture.dialog.hidden).toBe(false);
+        expect(fixture.trigger.getAttribute("aria-expanded")).toBe("true");
+      });
+
       it("Trigger와 Close trigger를 button으로 만들어 form을 제출하지 않는다", async () => {
         const fixture = setup();
 

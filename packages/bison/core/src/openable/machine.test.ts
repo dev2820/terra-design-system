@@ -43,11 +43,11 @@ describe("Openable", () => {
       });
     });
 
-    it("open이 주어지면 내부 상태보다 제어된 값을 사용한다", () => {
+    it("open이 주어지면 제어된 값을 기준으로 상태를 전환한다", () => {
       const props = { open: true } satisfies OpenableProps;
       const state = { open: false };
 
-      expect(openableMachine.getOpen(state, props)).toBe(true);
+      expect(openableMachine.transition(state, { type: "toggle" }, props)).toEqual({ open: false });
     });
 
     it("상태가 변경되면 변경된 값을 알린다", () => {

@@ -1,15 +1,9 @@
 import type { ButtonEvent, ButtonProps, ButtonState } from "./types";
 
-export function getPressed(state: ButtonState, props: ButtonProps) {
-  if (props.toggle !== true) {
-    return false;
-  }
-
-  return props.pressed ?? state.pressed;
-}
-
 function updatePressed(state: ButtonState, props: ButtonProps, pressed: boolean) {
-  if (props.toggle !== true || getPressed(state, props) === pressed) {
+  const currentPressed = props.toggle === true ? (props.pressed ?? state.pressed) : false;
+
+  if (props.toggle !== true || currentPressed === pressed) {
     return state;
   }
 
@@ -34,7 +28,7 @@ export const machine = {
 
         props.onActivate?.();
 
-        return updatePressed(state, props, !getPressed(state, props));
+        return updatePressed(state, props, !(props.pressed ?? state.pressed));
       }
 
       case "pressed.set": {

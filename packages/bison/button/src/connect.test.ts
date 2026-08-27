@@ -145,6 +145,12 @@ describe("Button", () => {
         expect(fixture.button.getAttribute("aria-pressed")).toBe("true");
       });
 
+      it("controlled toggle: true Button의 pressed 상태를 aria-pressed로 노출한다", () => {
+        const fixture = setup({ toggle: true, pressed: true });
+
+        expect(fixture.button.getAttribute("aria-pressed")).toBe("true");
+      });
+
       it("toggle: true Button을 활성화하면 aria-pressed를 갱신한다", async () => {
         const fixture = setup({ toggle: true });
 
