@@ -30,7 +30,7 @@ Bison의 목표는 [WAI-ARIA APG 패턴](https://www.w3.org/WAI/ARIA/apg/pattern
 - [x] Checkbox
 - [ ] Combobox
 - [x] Dialog (Modal)
-- [ ] Disclosure
+- [x] Disclosure
 - [ ] Feed
 - [ ] Grid
 - [ ] Landmarks

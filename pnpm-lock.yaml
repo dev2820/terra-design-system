@@ -148,6 +148,19 @@ importers:
         specifier: workspace:*
         version: link:../../vitest-config
 
+  packages/bison/disclosure:
+    dependencies:
+      '@bison/core':
+        specifier: workspace:*
+        version: link:../core
+    devDependencies:
+      '@terra/typescript-config':
+        specifier: workspace:*
+        version: link:../../typescript-config
+      '@terra/vitest-config':
+        specifier: workspace:*
+        version: link:../../vitest-config
+
   packages/bison/react:
     dependencies:
       '@bison/core':
