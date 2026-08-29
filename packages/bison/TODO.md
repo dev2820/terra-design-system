@@ -26,7 +26,9 @@ Bison의 목표는 [WAI-ARIA APG 패턴](https://www.w3.org/WAI/ARIA/apg/pattern
 - [x] Alert Dialog
 - [x] Breadcrumb
 - [x] Button
-- [ ] Carousel
+- [x] Carousel (Basic, manual and automatic rotation)
+- [ ] Carousel (Grouped slide picker)
+- [ ] Carousel (Tabbed slide picker, Tabs 패턴 이후)
 - [x] Checkbox
 - [ ] Combobox
 - [x] Dialog (Modal)
