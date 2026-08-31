@@ -22,6 +22,16 @@
       ],
       "outputs": []
     },
+    "test:watch": {
+      "cache": true,
+      "dependsOn": ["^test:watch"],
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        "$TURBO_ROOT$/packages/vitest-config/index.js",
+        "$TURBO_ROOT$/packages/vitest-config/package.json"
+      ],
+      "outputs": []
+    },
     "typecheck": {
       "cache": true,
       "dependsOn": ["^build", "^typecheck"],
