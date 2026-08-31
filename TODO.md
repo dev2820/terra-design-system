@@ -8,8 +8,8 @@
 
 ## Coral
 
-- [ ] Coral의 책임 범위를 정한다.
-- [ ] Coral에 구조와 parts를 구현한다.
+- [x] Coral의 책임 범위를 정한다.
+- [ ] Coral에 구조, 행동과 접근성을 구현한다.
 
 ## Moss
 
