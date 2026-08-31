@@ -13,6 +13,51 @@ Coral은 WAI-ARIA APG 목록을 컴포넌트 목록으로 그대로 구현하지
 - Type Test와 Browser Test로 공개 계약과 사용자 결과를 검증한다.
 - APG와 다르게 동작하거나 자동화할 수 없는 범위는 이유와 한계를 문서로 남긴다.
 
+## Base UI 컴포넌트 검토 목록
+
+2026-08-31 현재 Base UI v1.7.0 공식 문서에 등재된 컴포넌트다. Coral이 구조와
+행동을 설계할 때 우선 참고하되, 목록에 있다는 이유만으로 구현하지 않는다. 각
+체크박스는 구현 완료가 아니라 Coral에서 제공할 필요와 지원 범위의 검토 완료를
+뜻한다.
+
+- [x] Accordion
+- [ ] Alert Dialog
+- [ ] Autocomplete
+- [ ] Avatar
+- [ ] Button
+- [ ] Checkbox
+- [ ] Checkbox Group
+- [ ] Collapsible
+- [ ] Combobox
+- [ ] Context Menu
+- [ ] Dialog
+- [ ] Drawer
+- [ ] Field
+- [ ] Fieldset
+- [ ] Form
+- [ ] Input
+- [ ] Menu
+- [ ] Menubar
+- [ ] Meter
+- [ ] Navigation Menu
+- [ ] Number Field
+- [ ] OTP Field
+- [ ] Popover
+- [ ] Preview Card
+- [ ] Progress
+- [ ] Radio
+- [ ] Scroll Area
+- [ ] Select
+- [ ] Separator
+- [ ] Slider
+- [ ] Switch
+- [ ] Tabs
+- [ ] Toast
+- [ ] Toggle
+- [ ] Toggle Group
+- [ ] Toolbar
+- [ ] Tooltip
+
 ## Bison에서 이전한 패턴 검토
 
 - [ ] Alert와 Breadcrumb가 네이티브 구조를 안전하게 재사용하게 하는 Coral
