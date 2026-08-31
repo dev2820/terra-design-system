@@ -12,6 +12,7 @@ dist
 dist-ssr
 .turbo
 coverage
+.vitest-attachments/
 *.tsbuildinfo
 *.local
 
