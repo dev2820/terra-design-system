@@ -13,10 +13,12 @@ dist-ssr
 .turbo
 coverage
 .vitest-attachments/
+__screenshots__/
 *.tsbuildinfo
 *.local
 
 # Editor directories and files
+.zed/
 .vscode/*
 !.vscode/extensions.json
 .idea
