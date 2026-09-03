@@ -20,6 +20,10 @@
       "types": "./dist/field.d.ts",
       "import": "./dist/field.js"
     },
+    "./input": {
+      "types": "./dist/input.d.ts",
+      "import": "./dist/input.js"
+    },
     "./use-render": {
       "types": "./dist/use-render.d.ts",
       "import": "./dist/use-render.js"
