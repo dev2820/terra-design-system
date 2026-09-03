@@ -10,7 +10,8 @@ Coral은 WAI-ARIA APG 목록을 컴포넌트 목록으로 그대로 구현하지
 - 네이티브 HTML이 제공하지 않는 상태와 행동만 구현한다.
 - 적용 가능한 APG의 키보드, Focus와 ARIA 요구를 충족한다.
 - Coral이 소유하는 DOM 생명주기 동작을 실제로 구현한다.
-- Type Test와 Browser Test로 공개 계약과 사용자 결과를 검증한다.
+- Browser Test와 typecheck로 공개 계약과 사용자 결과를 검증한다. Type Test는
+  `AGENTS.md`의 기준에 해당하는 비자명한 타입 계약이 있을 때만 추가한다.
 - APG와 다르게 동작하거나 자동화할 수 없는 범위는 이유와 한계를 문서로 남긴다.
 
 ## Base UI 컴포넌트 검토 목록
@@ -32,10 +33,10 @@ Coral은 WAI-ARIA APG 목록을 컴포넌트 목록으로 그대로 구현하지
 - [ ] Context Menu
 - [ ] Dialog
 - [ ] Drawer
-- [ ] Field
+- [x] Field
 - [ ] Fieldset
 - [ ] Form
-- [ ] Input
+- [x] Input
 - [ ] Menu
 - [ ] Menubar
 - [ ] Meter
