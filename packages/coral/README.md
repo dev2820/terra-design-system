@@ -4,6 +4,17 @@ Coral은 UI 패턴의 HTML 구조, 행동과 접근성을 제공하는 Headless 
 Library다. 스타일과 제품의 비즈니스 로직은 소유하지 않으며, 실제 HTML을
 렌더링하는 컴포넌트와 조합 가능한 Parts를 제공한다.
 
+```sh
+pnpm add @coral/react
+```
+
+루트 named export와 컴포넌트별 하위 경로를 모두 지원한다.
+
+```tsx
+import { Accordion } from "@coral/react";
+import { Accordion as SubpathAccordion } from "@coral/react/accordion";
+```
+
 ## 책임 범위
 
 - 패턴을 이루는 HTML 요소와 Parts의 의미 및 관계
@@ -21,12 +32,16 @@ Coral이 직접 제공한 기본 구성과 문서화된 조합의 접근성은 C
 제품이 전달한 콘텐츠, 생략하거나 다른 요소에 적용한 Parts와 최종 화면의
 접근성은 사용하는 제품이 다시 검증해야 한다.
 
-## 구현 경계
+## 배포와 구현 경계
 
-Coral의 공개 컴포넌트는 `@coral/accordion`처럼 패턴별 패키지로 나누어 필요한
-컴포넌트만 설치할 수 있게 한다. 공개 Part의 렌더링 요소와 Props를 합성하는
-공통 규칙은 `@coral/core`에 두되, 각 패턴의 의미와 접근성 계약은 해당 컴포넌트
-패키지가 계속 소유한다.
+Coral의 공개 설치 단위는 `@coral/react` 하나다. 모든 컴포넌트는 루트 named
+export와 `@coral/react/input` 같은 컴포넌트별 하위 경로에서 제공한다. 하위
+경로는 독립 ESM entry로 빌드하고 패키지에 Side Effect가 없음을 명시해 사용하는
+앱의 Bundler가 필요하지 않은 코드를 제거할 수 있게 한다.
+
+내부 구현은 별도 Package가 아닌 컴포넌트별 소스 디렉터리로 나누고 책임을
+유지한다. 공개 Part의 렌더링 요소와 Props를 합성하는 공통 규칙은 Core가
+소유하고, 각 패턴의 의미와 접근성 계약은 해당 컴포넌트 구현이 계속 소유한다.
 
 Bison의 Machine·Actor·Connect·Normalizer 또는 Framework Adapter를 Coral의
 이름으로 옮겨 구현하지 않는다. 먼저 실제 컴포넌트 사용처에서 필요한 구조와

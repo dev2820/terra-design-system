@@ -1,7 +1,8 @@
 "use client";
 
-import { useRender, type RenderProp } from "@coral/core";
 import * as React from "react";
+
+import { useRender, type RenderProp } from "../core/index";
 
 interface AccordionRenderProps {
   render?: RenderProp;

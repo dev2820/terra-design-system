@@ -1,4 +1,4 @@
-# @coral/accordion
+# Accordion
 
 접을 수 있는 여러 콘텐츠 섹션의 HTML 구조, 펼침 상태와 접근성 관계를 제공하는
 React 컴포넌트다.
@@ -6,7 +6,7 @@ React 컴포넌트다.
 ## 사용법
 
 ```tsx
-import { Accordion } from "@coral/accordion";
+import { Accordion } from "@coral/react/accordion";
 
 <Accordion.Root defaultValue={["first"]}>
   <Accordion.Item value="first">

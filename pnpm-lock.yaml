@@ -63,18 +63,14 @@ importers:
         specifier: ^4.1.10
         version: 4.1.10(@types/node@22.20.1)(@vitest/browser-playwright@4.1.10)(vite@8.2.1(@types/node@22.20.1)(yaml@2.9.0))
 
-  packages/coral/accordion:
-    dependencies:
-      '@coral/core':
-        specifier: workspace:*
-        version: link:../core
+  packages/coral:
     devDependencies:
       '@terra/typescript-config':
         specifier: workspace:*
-        version: link:../../typescript-config
+        version: link:../typescript-config
       '@terra/vitest-config':
         specifier: workspace:*
-        version: link:../../vitest-config
+        version: link:../vitest-config
       '@types/react':
         specifier: 'catalog:'
         version: 19.2.18
@@ -84,27 +80,6 @@ importers:
       axe-core:
         specifier: 'catalog:'
         version: 4.13.0
-      react:
-        specifier: 'catalog:'
-        version: 19.2.8
-      react-dom:
-        specifier: 'catalog:'
-        version: 19.2.8(react@19.2.8)
-
-  packages/coral/core:
-    devDependencies:
-      '@terra/typescript-config':
-        specifier: workspace:*
-        version: link:../../typescript-config
-      '@terra/vitest-config':
-        specifier: workspace:*
-        version: link:../../vitest-config
-      '@types/react':
-        specifier: 'catalog:'
-        version: 19.2.18
-      '@types/react-dom':
-        specifier: 'catalog:'
-        version: 19.2.5(@types/react@19.2.18)
       react:
         specifier: 'catalog:'
         version: 19.2.8

@@ -1,5 +1,5 @@
 {
-  "name": "@coral/accordion",
+  "name": "@coral/react",
   "version": "0.0.0",
   "files": [
     "dist"
@@ -11,6 +11,14 @@
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
+    },
+    "./accordion": {
+      "types": "./dist/accordion.d.ts",
+      "import": "./dist/accordion.js"
+    },
+    "./use-render": {
+      "types": "./dist/use-render.d.ts",
+      "import": "./dist/use-render.js"
     }
   },
   "scripts": {
@@ -18,9 +26,6 @@
     "test": "vitest run",
     "test:watch": "vitest run --watch",
     "typecheck": "tsc --noEmit"
-  },
-  "dependencies": {
-    "@coral/core": "workspace:*"
   },
   "devDependencies": {
     "@terra/typescript-config": "workspace:*",
