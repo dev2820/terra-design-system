@@ -4,6 +4,7 @@ export default defineConfig({
   entry: {
     index: "src/index.ts",
     accordion: "src/accordion/index.ts",
+    field: "src/field/index.ts",
     "use-render": "src/core/index.ts",
   },
   format: "esm",

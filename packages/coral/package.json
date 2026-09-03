@@ -16,6 +16,10 @@
       "types": "./dist/accordion.d.ts",
       "import": "./dist/accordion.js"
     },
+    "./field": {
+      "types": "./dist/field.d.ts",
+      "import": "./dist/field.js"
+    },
     "./use-render": {
       "types": "./dist/use-render.d.ts",
       "import": "./dist/use-render.js"
