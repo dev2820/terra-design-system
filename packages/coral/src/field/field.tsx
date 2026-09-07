@@ -3,6 +3,7 @@
 import * as React from "react";
 
 import { areValuesEqual, isPromise, joinIds, useRender, type RenderProp } from "../core/index";
+import { useFieldsetContext } from "../fieldset/fieldset-context";
 
 export type FieldValidationMode = "onSubmit" | "onBlur" | "onChange";
 export type FieldValidationResult = string | readonly string[] | null;
@@ -317,7 +318,7 @@ export interface FieldRootProps extends React.ComponentPropsWithRef<"div">, Fiel
 export function Root(props: FieldRootProps) {
   const {
     name,
-    disabled = false,
+    disabled: disabledProp = false,
     invalid: invalidProp,
     touched: touchedProp,
     dirty: dirtyProp,
@@ -329,6 +330,8 @@ export function Root(props: FieldRootProps) {
     ref,
     ...rest
   } = props;
+  const fieldsetDisabled = useFieldsetContext("Field.Root", true) ?? false;
+  const disabled = fieldsetDisabled || disabledProp;
   const generatedId = React.useId();
   const baseId = idProp ?? `${generatedId}-field`;
   const rootId = idProp ?? `${baseId}-root`;

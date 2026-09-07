@@ -34,7 +34,7 @@ Coral은 WAI-ARIA APG 목록을 컴포넌트 목록으로 그대로 구현하지
 - [ ] Dialog
 - [ ] Drawer
 - [x] Field
-- [ ] Fieldset
+- [x] Fieldset
 - [ ] Form
 - [x] Input
 - [ ] Menu
