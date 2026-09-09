@@ -332,6 +332,7 @@ export function Root(props: FieldRootProps) {
   } = props;
   const fieldsetDisabled = useFieldsetContext("Field.Root", true) ?? false;
   const disabled = fieldsetDisabled || disabledProp;
+  const hasCustomValidator = validate !== undefined;
   const generatedId = React.useId();
   const baseId = idProp ?? `${generatedId}-field`;
   const rootId = idProp ?? `${baseId}-root`;
@@ -560,7 +561,7 @@ export function Root(props: FieldRootProps) {
   React.useEffect(() => {
     const form = controlElement?.form;
 
-    if (!form) {
+    if (!form || !hasCustomValidator) {
       return undefined;
     }
 
@@ -568,7 +569,7 @@ export function Root(props: FieldRootProps) {
       getControl: () => controlRef.current,
       validate: runValidation,
     });
-  }, [controlElement, runValidation]);
+  }, [controlElement, hasCustomValidator, runValidation]);
 
   const invalid = invalidProp ?? internalState.invalid === true;
   const valid =

@@ -210,6 +210,39 @@ describe("Field", () => {
   });
 
   describe("검증", () => {
+    it("validate가 없으면 외부 Form library의 제출에 개입하지 않는다", async () => {
+      const onSubmit = vi.fn();
+      const container = render(
+        <form
+          noValidate
+          onSubmit={(event) => {
+            event.preventDefault();
+            onSubmit();
+          }}
+        >
+          <Field.Root name="email" invalid touched dirty>
+            <Field.Label>이메일</Field.Label>
+            <Field.Control type="email" required />
+            <Field.Error match>외부 검증 오류</Field.Error>
+          </Field.Root>
+          <button type="submit">제출</button>
+        </form>,
+      );
+      const control = container.querySelector("input");
+      const button = container.querySelector("button");
+      const error = container.querySelector("[id$='-field-error']");
+
+      if (!control || !button || !error) {
+        throw new Error("Field 테스트 구성이 완전하지 않습니다.");
+      }
+
+      await userEvent.click(button);
+
+      expect(onSubmit).toHaveBeenCalledOnce();
+      expect(control.getAttribute("aria-invalid")).toBe("true");
+      expect(control.getAttribute("aria-describedby")?.split(" ")).toContain(error.id);
+    });
+
     it("native constraint 오류를 표시하고 제출을 막는다", async () => {
       const onSubmit = vi.fn();
       const container = render(
