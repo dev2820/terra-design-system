@@ -33,7 +33,7 @@ function getStateAttributes(status: InternalImageLoadingStatus) {
   };
 }
 
-export interface AvatarRootProps extends React.ComponentPropsWithRef<"span"> {}
+export interface AvatarRootProps extends React.ComponentProps<"span"> {}
 
 export function Root(props: AvatarRootProps) {
   const { ref, ...rest } = props;
@@ -53,7 +53,7 @@ export function Root(props: AvatarRootProps) {
   return <AvatarContext value={context}>{element}</AvatarContext>;
 }
 
-export interface AvatarImageProps extends Omit<React.ComponentPropsWithRef<"img">, "alt"> {
+export interface AvatarImageProps extends Omit<React.ComponentProps<"img">, "alt"> {
   alt: string;
   keepMounted?: boolean;
   onLoadingStatusChange?: (status: AvatarImageLoadingStatus) => void;
@@ -174,7 +174,7 @@ export function Image(props: AvatarImageProps) {
     setImageLoadingStatus("error");
   }
 
-  const sourceProps: React.ComponentPropsWithRef<"img"> = {
+  const sourceProps: React.ComponentProps<"img"> = {
     ...rest,
     alt,
     crossOrigin,
@@ -201,7 +201,7 @@ export function Image(props: AvatarImageProps) {
   return keepMounted || imageLoadingStatus === "loaded" ? element : null;
 }
 
-export interface AvatarFallbackProps extends React.ComponentPropsWithRef<"span"> {
+export interface AvatarFallbackProps extends React.ComponentProps<"span"> {
   delay?: number;
 }
 
