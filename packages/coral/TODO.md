@@ -24,7 +24,7 @@ Coral은 WAI-ARIA APG 목록을 컴포넌트 목록으로 그대로 구현하지
 - [x] Accordion
 - [ ] Alert Dialog
 - [ ] Autocomplete
-- [ ] Avatar
+- [x] Avatar
 - [ ] Button
 - [ ] Checkbox
 - [ ] Checkbox Group
