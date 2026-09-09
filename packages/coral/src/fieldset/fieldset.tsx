@@ -4,7 +4,7 @@ import * as React from "react";
 
 import { FieldsetContext, useFieldsetContext } from "./fieldset-context";
 
-export type FieldsetRootProps = React.ComponentPropsWithRef<"fieldset">;
+export type FieldsetRootProps = React.ComponentProps<"fieldset">;
 
 export function Root(props: FieldsetRootProps) {
   const { disabled: disabledProp = false, ref, ...rest } = props;
@@ -18,7 +18,7 @@ export function Root(props: FieldsetRootProps) {
   );
 }
 
-export type FieldsetLegendProps = React.ComponentPropsWithRef<"legend">;
+export type FieldsetLegendProps = React.ComponentProps<"legend">;
 
 export function Legend(props: FieldsetLegendProps) {
   const { ref, ...rest } = props;

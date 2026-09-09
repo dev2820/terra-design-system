@@ -17,7 +17,7 @@ export interface AccordionChangeEventDetails {
 }
 
 export interface AccordionRootProps
-  extends Omit<React.ComponentPropsWithRef<"div">, "defaultValue">, AccordionRenderProps {
+  extends Omit<React.ComponentProps<"div">, "defaultValue">, AccordionRenderProps {
   value?: readonly string[];
   defaultValue?: readonly string[];
   onValueChange?: (value: string[], eventDetails: AccordionChangeEventDetails) => void;
@@ -121,8 +121,7 @@ export function Root(props: AccordionRootProps) {
   );
 }
 
-export interface AccordionItemProps
-  extends React.ComponentPropsWithRef<"div">, AccordionRenderProps {
+export interface AccordionItemProps extends React.ComponentProps<"div">, AccordionRenderProps {
   value: string;
   disabled?: boolean;
 }
@@ -179,7 +178,7 @@ export function Item(props: AccordionItemProps) {
 export type AccordionHeadingLevel = 1 | 2 | 3 | 4 | 5 | 6;
 
 export interface AccordionHeaderProps
-  extends Omit<React.ComponentPropsWithRef<"h3">, "aria-level">, AccordionRenderProps {
+  extends Omit<React.ComponentProps<"h3">, "aria-level">, AccordionRenderProps {
   level?: AccordionHeadingLevel;
 }
 
@@ -201,7 +200,7 @@ export function Header(props: AccordionHeaderProps) {
 
 export interface AccordionTriggerProps
   extends
-    Omit<React.ComponentPropsWithRef<"button">, "aria-controls" | "aria-expanded" | "id">,
+    Omit<React.ComponentProps<"button">, "aria-controls" | "aria-expanded" | "id">,
     AccordionRenderProps {}
 
 export function Trigger(props: AccordionTriggerProps) {
@@ -234,7 +233,7 @@ export function Trigger(props: AccordionTriggerProps) {
 
 export interface AccordionPanelProps
   extends
-    Omit<React.ComponentPropsWithRef<"div">, "aria-labelledby" | "hidden" | "id" | "role">,
+    Omit<React.ComponentProps<"div">, "aria-labelledby" | "hidden" | "id" | "role">,
     AccordionRenderProps {
   region?: boolean;
 }

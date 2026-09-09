@@ -304,7 +304,7 @@ interface FieldRenderProps {
   render?: RenderProp;
 }
 
-export interface FieldRootProps extends React.ComponentPropsWithRef<"div">, FieldRenderProps {
+export interface FieldRootProps extends React.ComponentProps<"div">, FieldRenderProps {
   name?: string;
   disabled?: boolean;
   invalid?: boolean;
@@ -651,7 +651,7 @@ export function Root(props: FieldRootProps) {
 }
 
 export interface FieldLabelProps
-  extends Omit<React.ComponentPropsWithRef<"label">, "htmlFor">, FieldRenderProps {}
+  extends Omit<React.ComponentProps<"label">, "htmlFor">, FieldRenderProps {}
 
 export function Label(props: FieldLabelProps) {
   const { render, ref, ...rest } = props;
@@ -669,7 +669,7 @@ export function Label(props: FieldLabelProps) {
   });
 }
 
-export interface FieldControlProps extends React.ComponentPropsWithRef<"input">, FieldRenderProps {}
+export interface FieldControlProps extends React.ComponentProps<"input">, FieldRenderProps {}
 
 export function Control(props: FieldControlProps) {
   const {
@@ -759,7 +759,7 @@ export function Control(props: FieldControlProps) {
   });
 }
 
-export interface FieldDescriptionProps extends React.ComponentPropsWithRef<"p">, FieldRenderProps {}
+export interface FieldDescriptionProps extends React.ComponentProps<"p">, FieldRenderProps {}
 
 export function Description(props: FieldDescriptionProps) {
   const { render, ref, ...rest } = props;
@@ -799,7 +799,7 @@ export type FieldErrorMatch =
   | "typeMismatch"
   | "valueMissing";
 
-export interface FieldErrorProps extends React.ComponentPropsWithRef<"div">, FieldRenderProps {
+export interface FieldErrorProps extends React.ComponentProps<"div">, FieldRenderProps {
   match?: FieldErrorMatch;
 }
 

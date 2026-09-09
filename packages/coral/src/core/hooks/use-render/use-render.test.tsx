@@ -28,7 +28,7 @@ function render(children: React.ReactNode) {
   return container;
 }
 
-interface TestPartProps extends React.ComponentPropsWithRef<"button"> {
+interface TestPartProps extends React.ComponentProps<"button"> {
   internalProps?: object;
   render?: RenderProp;
 }
