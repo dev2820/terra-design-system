@@ -227,7 +227,10 @@ export function Fallback(props: AvatarFallbackProps) {
     props: { ...rest, ref },
     internalProps: getStateAttributes(avatar.imageLoadingStatus),
   });
-  const visible = avatar.imageLoadingStatus !== "loaded" && (delay <= 0 || delayPassed);
+
+  const imageIsNotLoaded = avatar.imageLoadingStatus !== "loaded";
+  const canShowFallback = delay <= 0 || delayPassed;
+  const visible = imageIsNotLoaded && canShowFallback;
 
   return visible ? element : null;
 }
