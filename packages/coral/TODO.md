@@ -39,7 +39,7 @@ Coral은 WAI-ARIA APG 목록을 컴포넌트 목록으로 그대로 구현하지
 - [x] Input
 - [ ] Menu
 - [ ] Menubar
-- [ ] Meter
+- [x] Meter — 기본 측정값·포맷·Parts를 제공하고 원형과 임계값 구간 판정은 제외한다.
 - [ ] Navigation Menu
 - [ ] Number Field
 - [ ] OTP Field

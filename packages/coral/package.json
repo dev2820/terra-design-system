@@ -32,6 +32,10 @@
       "types": "./dist/input.d.ts",
       "import": "./dist/input.js"
     },
+    "./meter": {
+      "types": "./dist/meter.d.ts",
+      "import": "./dist/meter.js"
+    },
     "./use-render": {
       "types": "./dist/use-render.d.ts",
       "import": "./dist/use-render.js"

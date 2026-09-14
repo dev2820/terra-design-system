@@ -8,6 +8,7 @@ export default defineConfig({
     field: "src/field/index.ts",
     fieldset: "src/fieldset/index.ts",
     input: "src/input/index.ts",
+    meter: "src/meter/index.ts",
     "use-render": "src/core/index.ts",
   },
   format: "esm",
