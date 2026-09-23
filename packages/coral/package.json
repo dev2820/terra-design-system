@@ -36,6 +36,10 @@
       "types": "./dist/meter.d.ts",
       "import": "./dist/meter.js"
     },
+    "./separator": {
+      "types": "./dist/separator.d.ts",
+      "import": "./dist/separator.js"
+    },
     "./use-render": {
       "types": "./dist/use-render.d.ts",
       "import": "./dist/use-render.js"
@@ -45,7 +49,8 @@
     "build": "tsdown",
     "test": "vitest run",
     "test:watch": "vitest run --watch",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "typecheck:watch": "tsc --noEmit -w"
   },
   "devDependencies": {
     "@terra/typescript-config": "workspace:*",

@@ -41,6 +41,16 @@
         "$TURBO_ROOT$/packages/typescript-config/package.json"
       ],
       "outputs": []
+    },
+    "typecheck:watch": {
+      "cache": true,
+      "dependsOn": ["^typecheck:watch"],
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        "$TURBO_ROOT$/packages/typescript-config/base.json",
+        "$TURBO_ROOT$/packages/typescript-config/package.json"
+      ],
+      "outputs": []
     }
   }
 }

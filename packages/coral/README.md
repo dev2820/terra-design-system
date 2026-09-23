@@ -15,6 +15,7 @@ import { Field, Input } from "@coral/react";
 import { Accordion } from "@coral/react/accordion";
 import { Input as SubpathInput } from "@coral/react/input";
 import { Meter } from "@coral/react/meter";
+import { Separator } from "@coral/react/separator";
 ```
 
 ## 책임 범위

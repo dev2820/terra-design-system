@@ -49,7 +49,7 @@ Coral은 WAI-ARIA APG 목록을 컴포넌트 목록으로 그대로 구현하지
 - [ ] Radio
 - [ ] Scroll Area
 - [ ] Select
-- [ ] Separator
+- [x] Separator — 네이티브 `<hr>` 기반 정적 구분선으로 방향과 장식용 처리를 제공한다.
 - [ ] Slider
 - [ ] Switch
 - [ ] Tabs
