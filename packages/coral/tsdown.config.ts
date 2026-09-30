@@ -5,6 +5,7 @@ export default defineConfig({
     index: "src/index.ts",
     accordion: "src/accordion/index.ts",
     avatar: "src/avatar/index.ts",
+    checkbox: "src/checkbox/index.ts",
     field: "src/field/index.ts",
     fieldset: "src/fieldset/index.ts",
     input: "src/input/index.ts",

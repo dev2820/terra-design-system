@@ -1,5 +1,6 @@
 export * from "./accordion/index";
 export * from "./avatar/index";
+export * from "./checkbox/index";
 export * from "./core/index";
 export * from "./field/index";
 export * from "./fieldset/index";

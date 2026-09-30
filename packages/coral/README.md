@@ -11,8 +11,9 @@ pnpm add @coral/react
 루트 named export와 컴포넌트별 하위 경로를 모두 지원한다.
 
 ```tsx
-import { Field, Input } from "@coral/react";
+import { Checkbox, Field, Input } from "@coral/react";
 import { Accordion } from "@coral/react/accordion";
+import { Checkbox as SubpathCheckbox } from "@coral/react/checkbox";
 import { Input as SubpathInput } from "@coral/react/input";
 import { Meter } from "@coral/react/meter";
 import { Separator } from "@coral/react/separator";
