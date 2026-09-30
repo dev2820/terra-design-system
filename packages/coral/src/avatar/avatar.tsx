@@ -3,6 +3,7 @@
 import * as React from "react";
 
 import { useRender } from "../core/index";
+import { createPartContext } from "../core/utils/create-part-context";
 
 export type AvatarImageLoadingStatus = "loading" | "loaded" | "error";
 
@@ -13,17 +14,7 @@ interface AvatarContextValue {
   setImageLoadingStatus: React.Dispatch<React.SetStateAction<InternalImageLoadingStatus>>;
 }
 
-const AvatarContext = React.createContext<AvatarContextValue | null>(null);
-
-function useAvatarContext(part: string) {
-  const context = React.use(AvatarContext);
-
-  if (context === null) {
-    throw new Error(`Avatar.${part} must be used within Avatar.Root.`);
-  }
-
-  return context;
-}
+const [AvatarContext, useAvatarContext] = createPartContext<AvatarContextValue>("Avatar");
 
 function getStateAttributes(status: InternalImageLoadingStatus) {
   return {

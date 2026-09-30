@@ -3,6 +3,7 @@
 import * as React from "react";
 
 import { areValuesEqual, isPromise, joinIds, useRender, type RenderProp } from "../core/index";
+import { createPartContext } from "../core/utils/create-part-context";
 import { useFieldsetContext } from "../fieldset/fieldset-context";
 
 export type FieldValidationMode = "onSubmit" | "onBlur" | "onChange";
@@ -85,7 +86,7 @@ interface RegisteredForm {
   handleSubmit: (event: SubmitEvent) => void;
 }
 
-const FieldContext = React.createContext<FieldContextValue | null>(null);
+const [FieldContext, useFieldContext] = createPartContext<FieldContextValue>("Field");
 const registeredForms = new WeakMap<HTMLFormElement, RegisteredForm>();
 const resumedForms = new WeakSet<HTMLFormElement>();
 const initialValueUnset = Symbol("initial-value-unset");
@@ -288,16 +289,6 @@ function getStateAttributes(state: FieldState) {
     "data-filled": state.filled ? "" : undefined,
     "data-focused": state.focused ? "" : undefined,
   };
-}
-
-function useFieldContext(part: string) {
-  const context = React.use(FieldContext);
-
-  if (context === null) {
-    throw new globalThis.Error(`Field.${part} must be used within Field.Root.`);
-  }
-
-  return context;
 }
 
 interface FieldRenderProps {

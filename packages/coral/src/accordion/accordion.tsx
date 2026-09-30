@@ -3,6 +3,7 @@
 import * as React from "react";
 
 import { useRender, type RenderProp } from "../core/index";
+import { createPartContext } from "../core/utils/create-part-context";
 
 interface AccordionRenderProps {
   render?: RenderProp;
@@ -31,17 +32,8 @@ interface AccordionRootContextValue {
   toggle: (value: string, event: MouseEvent, trigger: HTMLButtonElement) => void;
 }
 
-const AccordionRootContext = React.createContext<AccordionRootContextValue | null>(null);
-
-function useAccordionRootContext(part: string) {
-  const context = React.useContext(AccordionRootContext);
-
-  if (context === null) {
-    throw new Error(`Accordion.${part} must be used within Accordion.Root.`);
-  }
-
-  return context;
-}
+const [AccordionRootContext, useAccordionRootContext] =
+  createPartContext<AccordionRootContextValue>("Accordion");
 
 function normalizeValue(value: readonly string[] | undefined, multiple: boolean) {
   const nextValue = value === undefined ? [] : [...value];
@@ -134,17 +126,8 @@ interface AccordionItemContextValue {
   panelId: string;
 }
 
-const AccordionItemContext = React.createContext<AccordionItemContextValue | null>(null);
-
-function useAccordionItemContext(part: string) {
-  const context = React.useContext(AccordionItemContext);
-
-  if (context === null) {
-    throw new Error(`Accordion.${part} must be used within Accordion.Item.`);
-  }
-
-  return context;
-}
+const [AccordionItemContext, useAccordionItemContext] =
+  createPartContext<AccordionItemContextValue>("Accordion", "Item");
 
 export function Item(props: AccordionItemProps) {
   const { value, disabled: disabledProp = false, id: idProp, render, ref, ...rest } = props;

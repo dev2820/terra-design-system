@@ -3,6 +3,7 @@
 import * as React from "react";
 
 import { useRender } from "../core/index";
+import { createPartContext } from "../core/utils/create-part-context";
 
 interface MeterContextValue {
   value: number;
@@ -11,17 +12,7 @@ interface MeterContextValue {
   setLabelId: React.Dispatch<React.SetStateAction<string | null>>;
 }
 
-const MeterContext = React.createContext<MeterContextValue | null>(null);
-
-function useMeterContext(part: string) {
-  const context = React.use(MeterContext);
-
-  if (context === null) {
-    throw new Error(`Meter.${part} must be used within Meter.Root.`);
-  }
-
-  return context;
-}
+const [MeterContext, useMeterContext] = createPartContext<MeterContextValue>("Meter");
 
 export interface MeterRootProps extends Omit<
   React.ComponentProps<"div">,
