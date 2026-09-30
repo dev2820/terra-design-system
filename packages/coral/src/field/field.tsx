@@ -291,6 +291,10 @@ function getStateAttributes(state: FieldState) {
   };
 }
 
+export function useFieldState() {
+  return React.use(FieldContext)?.state;
+}
+
 interface FieldRenderProps {
   render?: RenderProp;
 }
