@@ -99,26 +99,16 @@ export function Label(props: MeterLabelProps) {
   });
 }
 
-export interface MeterValueProps extends Omit<React.ComponentProps<"span">, "children"> {
-  children?: React.ReactNode | ((formattedValue: string, value: number) => React.ReactNode);
-}
+export type MeterValueProps = Omit<React.ComponentProps<"span">, "children">;
 
 export function Value(props: MeterValueProps) {
-  const { children, ...rest } = props;
   const meter = useMeterContext("Value");
 
   return useRender({
     defaultTagName: "span",
     render: undefined,
-    props: rest,
-    internalProps: {
-      children:
-        typeof children === "function"
-          ? children(meter.formattedValue, meter.value)
-          : children === undefined
-            ? meter.formattedValue
-            : children,
-    },
+    props,
+    internalProps: { children: meter.formattedValue },
   });
 }
 

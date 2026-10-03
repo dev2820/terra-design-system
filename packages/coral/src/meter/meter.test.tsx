@@ -87,15 +87,13 @@ function valueTextFixture(value: number, ariaValueText?: string) {
       aria-label="저장 공간"
       aria-valuetext={ariaValueText}
     >
-      <Meter.Value>
-        {(formatted, current) => <strong>{`${current} MB 사용 (${formatted})`}</strong>}
-      </Meter.Value>
+      <Meter.Value />
     </Meter.Root>
   );
 }
 
 // Meter에는 키보드·Focus·Form 동작이 없다. 네이티브 div/span의 동작과
-// 일반 Props·Ref 타입을 중복 검증하는 Type Test는 추가하지 않는다.
+// 일반 Props·Ref 타입은 중복 검증하지 않는다.
 describe("Meter", () => {
   it("루트와 하위 경로에서 같은 Meter를 제공한다", () => {
     expect(RootExportMeter).toBe(Meter);
@@ -366,38 +364,21 @@ describe("Meter", () => {
       ).toBe("25%");
     });
 
-    it("children 함수에는 포맷된 문자열과 제한한 값을 전달하고 낭독과 분리한다", () => {
+    it("제한한 값의 표시 문자열을 제공하고 명시적 낭독 문자열을 존중한다", () => {
       const { container, rerender } = render(valueTextFixture(250));
-      expect(container.querySelector("strong")?.textContent).toBe("250 MB 사용 (250 MB)");
+      expect(container.querySelector("span")?.textContent).toBe("250 MB");
       expect(container.querySelector('[role="meter"]')?.getAttribute("aria-valuetext")).toBe(
         "250 MB",
       );
       rerender(valueTextFixture(1500, "저장 공간 1,000 MB를 모두 사용 중"));
-      expect(container.querySelector("strong")?.textContent).toBe("1000 MB 사용 (1000 MB)");
+      expect(container.querySelector("span")?.textContent).toBe("1000 MB");
       expect(container.querySelector('[role="meter"]')?.getAttribute("aria-valuetext")).toBe(
         "저장 공간 1,000 MB를 모두 사용 중",
       );
       rerender(valueTextFixture(500));
+      expect(container.querySelector("span")?.textContent).toBe("500 MB");
       expect(container.querySelector('[role="meter"]')?.getAttribute("aria-valuetext")).toBe(
         "500 MB",
-      );
-    });
-
-    it("Value의 명시적인 children과 null을 그대로 표시한다", () => {
-      const { container, rerender } = render(
-        <Meter.Root value={25}>
-          <Meter.Value>사용 중</Meter.Value>
-        </Meter.Root>,
-      );
-      expect(container.querySelector("span")?.textContent).toBe("사용 중");
-      rerender(
-        <Meter.Root value={25}>
-          <Meter.Value>{null}</Meter.Value>
-        </Meter.Root>,
-      );
-      expect(container.querySelector("span")?.textContent).toBe("");
-      expect(container.querySelector('[role="meter"]')?.getAttribute("aria-valuetext")).toBe(
-        percentFormatter.format(0.25),
       );
     });
   });

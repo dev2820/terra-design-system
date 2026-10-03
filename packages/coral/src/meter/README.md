@@ -27,7 +27,7 @@ import { Meter } from "@coral/react/meter";
 위반하면 오류를 던진다. 값은 사용처에서 관리하며 별도 초기값이나 변경 콜백은 없다.
 
 `format`은 `(value: number) => string` 함수를 받는다. 함수에는 범위로 제한한
-실제 값을 전달하며, 반환 문자열을 `Value`의 기본 내용과 자동 `aria-valuetext`에
+실제 값을 전달하며, 반환 문자열을 `Value`의 내용과 자동 `aria-valuetext`에
 사용한다. 포맷은 Indicator의 채움 비율에 영향을 주지 않는다.
 
 `format`을 생략하면 `Intl.NumberFormat`으로 범위 대비 백분율을 표시한다.
@@ -57,24 +57,9 @@ Intl이 지원하지 않는 문구도 직접 반환할 수 있다.
 </Meter.Root>
 ```
 
-## 사용자 지정 값 표현
-
-`Value`의 children 함수는 포맷된 문자열과 제한한 실제 값을 받는다.
-일반 children을 전달하면 그대로 표시하고, `null`은 빈 내용을 표시한다.
-
-```tsx
-<Meter.Root value={250} max={1000} aria-valuetext="1,000 MB 중 250 MB 사용">
-  <Meter.Label>저장 공간</Meter.Label>
-  <Meter.Value>{(formattedValue, value) => `${value} MB 사용 (${formattedValue})`}</Meter.Value>
-  <Meter.Track>
-    <Meter.Indicator />
-  </Meter.Track>
-</Meter.Root>
-```
-
-`Root`의 `aria-valuetext` 기본값은 포맷된 문자열이다. `Value`의 children을
-바꾸어도 낭독 문자열은 자동으로 바뀌지 않는다. 화면에서 추가한 의미나 설명을
-보조 기술에도 전달해야 한다면 `aria-valuetext`를 별도로 지정한다.
+`Value`는 `children`을 받지 않는다. 표시 문자열은 `Root`의 `format`이 결정한다.
+`Root`의 `aria-valuetext` 기본값도 같은 문자열이다. 보조 기술에 다른 설명을
+전달해야 한다면 `aria-valuetext`를 별도로 지정한다.
 
 ## 접근 가능한 이름
 
@@ -122,7 +107,7 @@ RTL에서는 inline 시작 방향에서 채워지도록 배치한다.
 텍스트 등으로 의미를 전달하고, 모션은 사용처에서 reduced motion을 고려한다.
 
 Browser Test로 DOM, 접근 가능한 이름과 설명, ARIA, 값·범위 갱신, 포맷,
-사용자 지정 표현과 기본 조합의 axe 검사를 검증한다. 실제 스크린 리더의 낭독
+표시 문자열과 기본 조합의 axe 검사를 검증한다. 실제 스크린 리더의 낭독
 방식과 제품에서 구성한 CSS·콘텐츠는 사용하는 제품이 별도로 검증해야 한다.
 
 - [HTML Meter](https://html.spec.whatwg.org/multipage/form-elements.html#the-meter-element)
