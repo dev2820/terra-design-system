@@ -9,6 +9,7 @@ interface MeterContextValue {
   value: number;
   percentage: number;
   formattedValue: string;
+  generatedLabelId: string;
   setLabelId: React.Dispatch<React.SetStateAction<string | null>>;
 }
 
@@ -36,6 +37,7 @@ export function Root(props: MeterRootProps) {
     ...rest
   } = props;
   const [labelId, setLabelId] = React.useState<string | null>(null);
+  const generatedLabelId = React.useId();
 
   if (!Number.isFinite(valueProp) || !Number.isFinite(min) || !Number.isFinite(max)) {
     throw new Error("Meter.Root value, min, and max must be finite numbers.");
@@ -54,8 +56,8 @@ export function Root(props: MeterRootProps) {
     ? format(value)
     : new Intl.NumberFormat(undefined, { style: "percent" }).format(ratio);
   const context = React.useMemo(
-    () => ({ value, percentage: ratio * 100, formattedValue, setLabelId }),
-    [value, ratio, formattedValue],
+    () => ({ value, percentage: ratio * 100, formattedValue, generatedLabelId, setLabelId }),
+    [value, ratio, formattedValue, generatedLabelId],
   );
   const element = useRender({
     defaultTagName: "div",
@@ -80,8 +82,7 @@ export type MeterLabelProps = React.ComponentProps<"span">;
 
 export function Label(props: MeterLabelProps) {
   const meter = useMeterContext("Label");
-  const generatedId = React.useId();
-  const id = props.id ?? `${generatedId}-meter-label`;
+  const id = props.id ?? `${meter.generatedLabelId}-meter-label`;
   const setLabelId = meter.setLabelId;
 
   React.useLayoutEffect(() => {
