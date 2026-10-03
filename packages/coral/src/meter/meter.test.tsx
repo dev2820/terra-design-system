@@ -2,6 +2,7 @@ import axe from "axe-core";
 import { Component, StrictMode, type ReactNode } from "react";
 import { flushSync } from "react-dom";
 import { createRoot, type Root } from "react-dom/client";
+import { renderToString } from "react-dom/server";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { page } from "vitest/browser";
 
@@ -50,7 +51,9 @@ class TestErrorBoundary extends Component<{ children: ReactNode }, { error: Erro
 
 function labelFixture(showLabel: boolean, id?: string) {
   return (
-    <Meter.Root value={25}>{showLabel && <Meter.Label id={id}>저장 공간</Meter.Label>}</Meter.Root>
+    <Meter.Root value={25} aria-label={id ? undefined : "저장 공간"} aria-labelledby={id}>
+      {showLabel && <Meter.Label id={id}>저장 공간</Meter.Label>}
+    </Meter.Root>
   );
 }
 
@@ -100,11 +103,11 @@ describe("Meter", () => {
   });
 
   describe("구조와 이름", () => {
-    it("Parts의 구조와 라벨로 연결된 접근 가능한 이름을 제공한다", async () => {
+    it("Parts의 구조와 명시적으로 연결한 Label의 접근 가능한 이름을 제공한다", async () => {
       const { container } = render(
         <StrictMode>
-          <Meter.Root value={25}>
-            <Meter.Label>저장 공간</Meter.Label>
+          <Meter.Root value={25} aria-labelledby="storage-label">
+            <Meter.Label id="storage-label">저장 공간</Meter.Label>
             <Meter.Value />
             <Meter.Track data-testid="track">
               <Meter.Indicator data-testid="indicator" />
@@ -129,24 +132,100 @@ describe("Meter", () => {
       await expect.element(page.getByRole("meter", { name: "저장 공간" })).toBeInTheDocument();
     });
 
-    it("Label의 등장·제거·ID 변경에 따라 자동 참조를 갱신한다", () => {
+    it("render 요소에서도 Label 연결, 표시값과 Indicator 길이를 유지한다", async () => {
+      const { container } = render(
+        <Meter.Root value={25} aria-labelledby="storage-label">
+          <Meter.Label
+            id="storage-label"
+            className="part-label"
+            render={<strong id="render-label" className="render-label" />}
+          >
+            저장 공간
+          </Meter.Label>
+          <Meter.Value render={<b>교체 전 내용</b>} />
+          <Meter.Track render={<section data-testid="track" />}>
+            <Meter.Indicator
+              render={<i data-testid="indicator" style={{ blockSize: "8px", inlineSize: "95%" }} />}
+              style={{ color: "red" }}
+            />
+          </Meter.Track>
+        </Meter.Root>,
+      );
+      const meter = container.querySelector('[role="meter"]');
+      const label = meter?.querySelector("strong");
+      const value = meter?.querySelector("b");
+      const track = meter?.querySelector('[data-testid="track"]');
+      const indicator = meter?.querySelector<HTMLElement>('[data-testid="indicator"]');
+
+      expect(label?.id).toBe("storage-label");
+      expect(label?.className).toBe("render-label part-label");
+      expect(meter?.getAttribute("aria-labelledby")).toBe(label?.id);
+      expect(value?.textContent).toBe(percentFormatter.format(0.25));
+      expect(track?.tagName).toBe("SECTION");
+      expect(track?.firstElementChild).toBe(indicator);
+      expect(indicator?.style.inlineSize).toBe("25%");
+      expect(indicator?.style.blockSize).toBe("8px");
+      expect(indicator?.style.color).toBe("red");
+      await expect.element(page.getByRole("meter", { name: "저장 공간" })).toBeInTheDocument();
+    });
+
+    it("Label의 등장·제거만으로 참조를 만들지 않고 명시적인 ID 연결을 반영한다", () => {
       const { container, rerender } = render(labelFixture(false));
       const meter = container.querySelector('[role="meter"]');
 
       expect(meter?.hasAttribute("aria-labelledby")).toBe(false);
       rerender(labelFixture(true));
-      const generatedId = container.querySelector("span")?.id;
-      expect(generatedId).toBeTruthy();
-      expect(meter?.getAttribute("aria-labelledby")).toBe(generatedId);
+      expect(container.querySelector("span")?.hasAttribute("id")).toBe(false);
+      expect(meter?.hasAttribute("aria-labelledby")).toBe(false);
       rerender(labelFixture(true, "storage-label"));
       expect(meter?.getAttribute("aria-labelledby")).toBe("storage-label");
+      expect(container.querySelector("span")?.id).toBe("storage-label");
       rerender(labelFixture(true, "updated-label"));
       expect(meter?.getAttribute("aria-labelledby")).toBe("updated-label");
       rerender(labelFixture(false));
       expect(meter?.hasAttribute("aria-labelledby")).toBe(false);
     });
 
-    it("명시적 ARIA 이름을 자동 Label 연결보다 우선한다", async () => {
+    it("서버 HTML에서 Label의 ID나 참조를 자동 생성하지 않는다", () => {
+      const serverMarkup = renderToString(
+        <Meter.Root value={25} aria-label="저장 공간">
+          <Meter.Label>저장 공간</Meter.Label>
+        </Meter.Root>,
+      );
+      const container = document.createElement("div");
+      container.innerHTML = serverMarkup;
+      const meter = container.querySelector('[role="meter"]');
+
+      expect(meter?.querySelector("span")?.hasAttribute("id")).toBe(false);
+      expect(meter?.hasAttribute("aria-labelledby")).toBe(false);
+    });
+
+    it("서버 HTML에서 명시적인 Label ID를 연결한다", () => {
+      const serverMarkup = renderToString(
+        <Meter.Root value={25} aria-labelledby="storage-label">
+          <Meter.Label id="storage-label">저장 공간</Meter.Label>
+        </Meter.Root>,
+      );
+      const container = document.createElement("div");
+      container.innerHTML = serverMarkup;
+
+      expect(container.querySelector('[role="meter"]')?.getAttribute("aria-labelledby")).toBe(
+        "storage-label",
+      );
+      expect(container.querySelector("span")?.id).toBe("storage-label");
+    });
+
+    it("Label이 없는 서버 HTML에 참조를 자동 생성하지 않는다", () => {
+      const serverMarkup = renderToString(<Meter.Root value={25} />);
+      const container = document.createElement("div");
+      container.innerHTML = serverMarkup;
+
+      expect(container.querySelector('[role="meter"]')?.hasAttribute("aria-labelledby")).toBe(
+        false,
+      );
+    });
+
+    it("명시적인 ARIA 이름을 사용한다", async () => {
       const { container, rerender } = render(
         <Meter.Root value={25} aria-label="남은 배터리">
           <Meter.Label>배터리</Meter.Label>
@@ -171,11 +250,11 @@ describe("Meter", () => {
       await expect.element(page.getByRole("meter", { name: "외부 이름" })).toBeInTheDocument();
 
       rerender(
-        <Meter.Root value={25}>
-          <Meter.Label>자동 이름</Meter.Label>
+        <Meter.Root value={25} aria-labelledby="battery-label">
+          <Meter.Label id="battery-label">배터리</Meter.Label>
         </Meter.Root>,
       );
-      await expect.element(page.getByRole("meter", { name: "자동 이름" })).toBeInTheDocument();
+      await expect.element(page.getByRole("meter", { name: "배터리" })).toBeInTheDocument();
     });
 
     it("Label 없이 명시적인 이름과 설명을 사용할 수 있다", async () => {
@@ -189,26 +268,6 @@ describe("Meter", () => {
       await expect
         .element(page.getByRole("meter", { name: "사용량" }))
         .toHaveAccessibleDescription("전체 저장 공간 대비 사용량");
-    });
-
-    it("서로 다른 Root의 자동 Label ID가 충돌하지 않는다", () => {
-      const { container } = render(
-        <>
-          <Meter.Root value={25}>
-            <Meter.Label>저장 공간</Meter.Label>
-          </Meter.Root>
-          <Meter.Root value={50}>
-            <Meter.Label>배터리</Meter.Label>
-          </Meter.Root>
-        </>,
-      );
-      const meters = container.querySelectorAll('[role="meter"]');
-      const ids = Array.from(meters, (meter) => meter.getAttribute("aria-labelledby"));
-
-      expect(ids[0]).not.toBe(ids[1]);
-      for (const [index, meter] of meters.entries()) {
-        expect(meter.querySelector("span")?.id).toBe(ids[index]);
-      }
     });
   });
 
@@ -450,8 +509,8 @@ describe("Meter", () => {
   it("기본 조합과 Label 없는 조합에 접근성 자동 검사 위반이 없다", async () => {
     const { container } = render(
       <>
-        <Meter.Root value={250} max={1000}>
-          <Meter.Label>저장 공간</Meter.Label>
+        <Meter.Root value={250} max={1000} aria-labelledby="storage-label">
+          <Meter.Label id="storage-label">저장 공간</Meter.Label>
           <Meter.Value />
           <Meter.Track>
             <Meter.Indicator />

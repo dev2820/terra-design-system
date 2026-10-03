@@ -2,15 +2,12 @@
 
 import * as React from "react";
 
-import { useRender } from "../core/index";
-import { createPartContext } from "../core/utils/create-part-context";
+import { clamp, createPartContext, isNumber, useRender, type RenderProp } from "../core";
 
 interface MeterContextValue {
   value: number;
   percentage: number;
   formattedValue: string;
-  generatedLabelId: string;
-  setLabelId: React.Dispatch<React.SetStateAction<string | null>>;
 }
 
 const [MeterContext, useMeterContext] = createPartContext<MeterContextValue>("Meter");
@@ -25,21 +22,27 @@ export interface MeterRootProps extends Omit<
   format?: (value: number) => string;
 }
 
+function isValidValue(value: unknown): value is number {
+  return isNumber(value) && Number.isFinite(value);
+}
+
+function formatValue(value: number, ratio: number, format?: MeterRootProps["format"]): string {
+  return format
+    ? format(value)
+    : new Intl.NumberFormat(undefined, { style: "percent" }).format(ratio);
+}
+
 export function Root(props: MeterRootProps) {
   const {
     value: valueProp,
     min = 0,
     max = 100,
     format,
-    "aria-label": ariaLabel,
-    "aria-labelledby": ariaLabelledBy,
     "aria-valuetext": ariaValueText,
     ...rest
   } = props;
-  const [labelId, setLabelId] = React.useState<string | null>(null);
-  const generatedLabelId = React.useId();
 
-  if (!Number.isFinite(valueProp) || !Number.isFinite(min) || !Number.isFinite(max)) {
+  if (!isValidValue(valueProp) || !Number.isFinite(min) || !Number.isFinite(max)) {
     throw new Error("Meter.Root value, min, and max must be finite numbers.");
   }
 
@@ -47,17 +50,17 @@ export function Root(props: MeterRootProps) {
     throw new Error("Meter.Root min must be less than max.");
   }
 
-  const value = Math.min(max, Math.max(min, valueProp));
+  const value = clamp(valueProp, min, max);
   const range = max - min;
+  // 유한한 min과 max의 차도 Infinity로 넘칠 수 있으므로, 그때는 빼기 전에 각 항을 반으로 나눈다.
   const ratio = Number.isFinite(range)
     ? (value - min) / range
     : (value / 2 - min / 2) / (max / 2 - min / 2);
-  const formattedValue = format
-    ? format(value)
-    : new Intl.NumberFormat(undefined, { style: "percent" }).format(ratio);
+  const formattedValue = formatValue(value, ratio, format);
+
   const context = React.useMemo(
-    () => ({ value, percentage: ratio * 100, formattedValue, generatedLabelId, setLabelId }),
-    [value, ratio, formattedValue, generatedLabelId],
+    () => ({ value, percentage: ratio * 100, formattedValue }),
+    [value, ratio, formattedValue],
   );
   const element = useRender({
     defaultTagName: "div",
@@ -69,66 +72,66 @@ export function Root(props: MeterRootProps) {
       "aria-valuemax": max,
       "aria-valuenow": value,
       "aria-valuetext": ariaValueText ?? formattedValue,
-      "aria-label": ariaLabel,
-      "aria-labelledby":
-        ariaLabelledBy ?? (ariaLabel === undefined ? (labelId ?? undefined) : undefined),
     },
   });
 
   return <MeterContext value={context}>{element}</MeterContext>;
 }
 
-export type MeterLabelProps = React.ComponentProps<"span">;
+export interface MeterLabelProps extends React.ComponentProps<"span"> {
+  render?: RenderProp;
+}
 
 export function Label(props: MeterLabelProps) {
-  const meter = useMeterContext("Label");
-  const id = props.id ?? `${meter.generatedLabelId}-meter-label`;
-  const setLabelId = meter.setLabelId;
-
-  React.useLayoutEffect(() => {
-    setLabelId(id);
-
-    return () => setLabelId(null);
-  }, [id, setLabelId]);
+  const { render, ...rest } = props;
+  useMeterContext("Label");
 
   return useRender({
     defaultTagName: "span",
-    render: undefined,
-    props,
-    internalProps: { id },
+    render,
+    props: rest,
   });
 }
 
-export type MeterValueProps = Omit<React.ComponentProps<"span">, "children">;
+export interface MeterValueProps extends Omit<React.ComponentProps<"span">, "children"> {
+  render?: RenderProp;
+}
 
 export function Value(props: MeterValueProps) {
+  const { render, ...rest } = props;
   const meter = useMeterContext("Value");
 
   return useRender({
     defaultTagName: "span",
-    render: undefined,
-    props,
+    render,
+    props: rest,
     internalProps: { children: meter.formattedValue },
   });
 }
 
-export type MeterTrackProps = React.ComponentProps<"div">;
-
-export function Track(props: MeterTrackProps) {
-  useMeterContext("Track");
-
-  return useRender({ defaultTagName: "div", render: undefined, props });
+export interface MeterTrackProps extends React.ComponentProps<"div"> {
+  render?: RenderProp;
 }
 
-export type MeterIndicatorProps = React.ComponentProps<"div">;
+export function Track(props: MeterTrackProps) {
+  const { render, ...rest } = props;
+  useMeterContext("Track");
+
+  return useRender({ defaultTagName: "div", render, props: rest });
+}
+
+export interface MeterIndicatorProps extends React.ComponentProps<"div"> {
+  render?: RenderProp;
+}
 
 export function Indicator(props: MeterIndicatorProps) {
+  const { render, ...rest } = props;
   const meter = useMeterContext("Indicator");
 
   return useRender({
     defaultTagName: "div",
-    render: undefined,
-    props,
+    render,
+    props: rest,
     internalProps: { style: { inlineSize: `${meter.percentage}%` } },
   });
 }

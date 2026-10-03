@@ -4,20 +4,29 @@
 headless Meter다. 작업 완료율과 로딩에는 Progress를 사용한다.
 
 ```tsx
+import * as React from "react";
 import { Meter } from "@coral/react/meter";
 
-<Meter.Root value={25} className="meter">
-  <Meter.Label>저장 공간</Meter.Label>
-  <Meter.Value />
-  <Meter.Track className="meter-track">
-    <Meter.Indicator className="meter-indicator" />
-  </Meter.Track>
-</Meter.Root>;
+function StorageMeter() {
+  const labelId = React.useId();
+
+  return (
+    <Meter.Root value={25} className="meter" aria-labelledby={labelId}>
+      <Meter.Label id={labelId}>저장 공간</Meter.Label>
+      <Meter.Value />
+      <Meter.Track className="meter-track">
+        <Meter.Indicator className="meter-indicator" />
+      </Meter.Track>
+    </Meter.Root>
+  );
+}
 ```
 
 `@coral/react`의 루트 export에서도 같은 `Meter`와 각 Part의 Props 타입을 제공한다.
 `Root`, `Track`, `Indicator`는 `div`, `Label`, `Value`는 `span`을 렌더링한다.
-모든 Part는 `Root` 안에서 사용한다. 요소를 교체하는 `render`는 제공하지 않는다.
+모든 Part는 `Root` 안에서 사용한다. `Label`, `Value`, `Track`, `Indicator`는
+`render={<요소 />}`로 기본 요소를 교체할 수 있다. 사용자 지정 컴포넌트를 전달한다면
+Coral이 합성한 `id`, `children`, `style` 속성을 실제 DOM까지 전달해야 한다.
 
 ## 값과 포맷
 
@@ -39,8 +48,7 @@ Intl 옵션 객체와 별도 `locale` Prop은 제공하지 않는다. 특정 로
 ```tsx
 const megabytes = new Intl.NumberFormat("en-US", { style: "unit", unit: "megabyte" });
 
-<Meter.Root value={250} max={1000} format={megabytes.format}>
-  <Meter.Label>저장 공간</Meter.Label>
+<Meter.Root value={250} max={1000} format={megabytes.format} aria-label="저장 공간">
   <Meter.Value /> {/* 250 MB */}
   <Meter.Track>
     <Meter.Indicator /> {/* 채움 비율 25% */}
@@ -51,26 +59,30 @@ const megabytes = new Intl.NumberFormat("en-US", { style: "unit", unit: "megabyt
 Intl이 지원하지 않는 문구도 직접 반환할 수 있다.
 
 ```tsx
-<Meter.Root value={250} max={1000} format={(value) => `1,000 MB 중 ${value} MB 사용`}>
-  <Meter.Label>저장 공간</Meter.Label>
+<Meter.Root
+  value={250}
+  max={1000}
+  format={(value) => `1,000 MB 중 ${value} MB 사용`}
+  aria-label="저장 공간"
+>
   <Meter.Value />
 </Meter.Root>
 ```
 
 `Value`는 `children`을 받지 않는다. 표시 문자열은 `Root`의 `format`이 결정한다.
+`render` 요소에 children이 있더라도 계산한 표시값으로 대체한다.
 `Root`의 `aria-valuetext` 기본값도 같은 문자열이다. 보조 기술에 다른 설명을
 전달해야 한다면 `aria-valuetext`를 별도로 지정한다.
 
 ## 접근 가능한 이름
 
 `Root`는 `role="meter"`와 값·범위 ARIA를 소유한다. 한 Root에는 최대 하나의
-`Label`을 사용한다. Label은 마운트 시 자동으로 Root의 `aria-labelledby`에
-연결되며, 등장·제거·ID 변경을 반영한다. 사용자 지정 `id`도 지원한다.
-
-명시적 `aria-labelledby` 또는 `aria-label`이 있으면 자동 Label 연결보다
-우선한다. Label 없이 사용할 때는 사용처에서 둘 중 하나로 이름을 제공한다.
-서버 HTML 자체에서도 라벨 연결이 필요하면 Label에 명시적인 ID를 주고 Root에
-같은 `aria-labelledby`를 전달한다.
+`Label`을 사용한다. Label은 보이는 텍스트를 렌더링한다. 이 텍스트를 접근 가능한
+이름으로 사용하려면 Label의 `id`와 Root의 `aria-labelledby`에 같은 값을 전달한다.
+여러 Meter를 렌더링할 때는 `React.useId()`로 각 ID를 만들 수 있다. Label 없이
+사용한다면 Root에 `aria-label`을 주거나 외부 텍스트의 ID를 `aria-labelledby`로
+참조한다. Root와 Label은 ID나 이름 연결을 자동 생성하지 않는다. 이름을 지정하지
+않은 Meter는 접근 가능한 이름이 없으므로 사용처가 반드시 제공해야 한다.
 
 ```tsx
 <Meter.Root value={40} aria-label="배터리 잔량" />
