@@ -65,7 +65,7 @@ function progressFixture(value: number | undefined, max = 100) {
 
 function labelFixture(label: ReactNode, id?: string) {
   return (
-    <Progress.Root value={25} aria-label={label ? undefined : "파일 업로드"} aria-labelledby={id}>
+    <Progress.Root value={25} aria-label={id ? undefined : "파일 업로드"} aria-labelledby={id}>
       {label && <Progress.Label id={id}>{label}</Progress.Label>}
     </Progress.Root>
   );
@@ -92,11 +92,11 @@ describe("Progress", () => {
   });
 
   describe("구조와 접근 가능한 이름", () => {
-    it("Parts와 Label로 연결한 progressbar를 렌더링한다", async () => {
+    it("명시적으로 연결한 Label과 Parts로 progressbar를 렌더링한다", async () => {
       const { container } = render(
         <StrictMode>
-          <Progress.Root value={25}>
-            <Progress.Label>파일 업로드</Progress.Label>
+          <Progress.Root value={25} aria-labelledby="upload-label">
+            <Progress.Label id="upload-label">파일 업로드</Progress.Label>
             <Progress.Value />
             <Progress.Track data-testid="track">
               <Progress.Indicator data-testid="indicator" />
@@ -124,25 +124,25 @@ describe("Progress", () => {
         .toBeInTheDocument();
     });
 
-    it("Label의 등장·제거와 명시적인 ID 연결을 반영한다", () => {
+    it("Label의 등장·제거만으로 참조를 만들지 않고 명시적인 ID 연결을 반영한다", () => {
       const { container, rerender } = render(labelFixture(null));
       const progress = container.querySelector('[role="progressbar"]');
 
       expect(progress?.hasAttribute("aria-labelledby")).toBe(false);
       rerender(labelFixture("업로드"));
-      const generatedId = progress?.querySelector("span")?.id;
-      expect(generatedId).toBeTruthy();
-      expect(progress?.getAttribute("aria-labelledby")).toBe(generatedId);
+      expect(progress?.querySelector("span")?.hasAttribute("id")).toBe(false);
+      expect(progress?.hasAttribute("aria-labelledby")).toBe(false);
       rerender(labelFixture("업로드", "upload-label"));
       expect(progress?.getAttribute("aria-labelledby")).toBe("upload-label");
+      expect(progress?.querySelector("span")?.id).toBe("upload-label");
       rerender(labelFixture(null));
       expect(progress?.hasAttribute("aria-labelledby")).toBe(false);
       expect(progress?.getAttribute("aria-label")).toBe("파일 업로드");
     });
 
-    it("기본 Label의 ID 참조를 서버 HTML에서 완성한다", () => {
+    it("서버 HTML에서 Label의 ID나 참조를 자동 생성하지 않는다", () => {
       const serverMarkup = renderToString(
-        <Progress.Root value={25}>
+        <Progress.Root value={25} aria-label="파일 업로드">
           <Progress.Label>파일 업로드</Progress.Label>
         </Progress.Root>,
       );
@@ -151,8 +151,8 @@ describe("Progress", () => {
       const progress = container.querySelector('[role="progressbar"]');
       const label = progress?.querySelector("span");
 
-      expect(label?.id).toBeTruthy();
-      expect(progress?.getAttribute("aria-labelledby")).toBe(label?.id);
+      expect(label?.hasAttribute("id")).toBe(false);
+      expect(progress?.hasAttribute("aria-labelledby")).toBe(false);
     });
 
     it("서버 HTML에서 커스텀 Label ID는 명시적 참조로 연결한다", () => {
@@ -180,7 +180,17 @@ describe("Progress", () => {
       expect(progress?.hasAttribute("aria-labelledby")).toBe(false);
     });
 
-    it("명시적인 이름과 설명을 자동 Label보다 우선한다", async () => {
+    it("이름을 전달하지 않아도 존재하지 않는 Label ID를 참조하지 않는다", () => {
+      const serverMarkup = renderToString(<Progress.Root value={25} />);
+      const container = document.createElement("div");
+      container.innerHTML = serverMarkup;
+
+      expect(container.querySelector('[role="progressbar"]')?.hasAttribute("aria-labelledby")).toBe(
+        false,
+      );
+    });
+
+    it("명시적인 이름과 설명을 유지한다", async () => {
       const { container, rerender } = render(
         <Progress.Root value={25} aria-label="파일 처리">
           <Progress.Label>업로드</Progress.Label>
@@ -213,27 +223,6 @@ describe("Progress", () => {
       await expect
         .element(page.getByRole("progressbar", { name: "데이터 처리" }))
         .toHaveAccessibleDescription("파일을 확인하는 중입니다.");
-    });
-
-    it("여러 Root의 자동 Label ID가 충돌하지 않는다", () => {
-      const { container } = render(
-        <>
-          <Progress.Root value={25}>
-            <Progress.Label>업로드</Progress.Label>
-          </Progress.Root>
-          <Progress.Root value={50}>
-            <Progress.Label>처리</Progress.Label>
-          </Progress.Root>
-        </>,
-      );
-      const progressBars = container.querySelectorAll('[role="progressbar"]');
-      const ids = Array.from(progressBars, (progress) => progress.getAttribute("aria-labelledby"));
-
-      expect(ids).toHaveLength(2);
-      expect(ids[0]).not.toBe(ids[1]);
-      for (const [index, progress] of progressBars.entries()) {
-        expect(progress.querySelector("span")?.id).toBe(ids[index]);
-      }
     });
   });
 
@@ -537,8 +526,8 @@ describe("Progress", () => {
     it("확정·불확정 기본 조합에 접근성 자동 검사 위반이 없다", async () => {
       const { container } = render(
         <>
-          <Progress.Root value={25}>
-            <Progress.Label>파일 업로드</Progress.Label>
+          <Progress.Root value={25} aria-labelledby="upload-label">
+            <Progress.Label id="upload-label">파일 업로드</Progress.Label>
             <Progress.Value />
             <Progress.Track>
               <Progress.Indicator />

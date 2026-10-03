@@ -18,7 +18,6 @@ interface ProgressContextValue {
   max: number;
   formattedValue: string | undefined;
   state: ProgressState;
-  labelId: string;
 }
 
 const [ProgressContext, useProgressContext] = createPartContext<ProgressContextValue>("Progress");
@@ -61,19 +60,7 @@ function formatValue(
 }
 
 export function Root(props: ProgressRootProps) {
-  const {
-    value: valueProp,
-    max = 100,
-    format,
-    "aria-label": ariaLabel,
-    "aria-labelledby": ariaLabelledBy,
-    "aria-valuetext": ariaValueText,
-    id,
-    ...rest
-  } = props;
-
-  const baseId = id ?? React.useId();
-  const labelId = `${baseId}-progress-label`;
+  const { value: valueProp, max = 100, format, "aria-valuetext": ariaValueText, ...rest } = props;
 
   if (!Number.isFinite(max) || max <= 0) {
     throw new Error("Progress.Root max must be a finite positive number.");
@@ -94,8 +81,8 @@ export function Root(props: ProgressRootProps) {
       : "progressing";
 
   const context = React.useMemo(
-    () => ({ value, max, formattedValue, state, labelId }),
-    [value, max, formattedValue, state, labelId],
+    () => ({ value, max, formattedValue, state }),
+    [value, max, formattedValue, state],
   );
 
   const element = useRender({
@@ -103,14 +90,11 @@ export function Root(props: ProgressRootProps) {
     render: undefined,
     props: rest,
     internalProps: {
-      id: baseId,
       role: "progressbar",
       "aria-valuemin": 0,
       "aria-valuemax": max,
       "aria-valuenow": value,
       "aria-valuetext": ariaValueText ?? formattedValue,
-      "aria-label": ariaLabel,
-      "aria-labelledby": ariaLabelledBy ?? (ariaLabel === undefined ? labelId : undefined),
       ...getStateAttributes(state),
     },
   });
@@ -123,15 +107,14 @@ export interface ProgressLabelProps extends React.ComponentProps<"span"> {
 }
 
 export function Label(props: ProgressLabelProps) {
-  const { render, id: idProps, ...rest } = props;
+  const { render, ...rest } = props;
   const progress = useProgressContext("Label");
-  const id = idProps ?? progress.labelId;
 
   return useRender({
     defaultTagName: "span",
     render,
     props: rest,
-    internalProps: { id, ...getStateAttributes(progress.state) },
+    internalProps: { ...getStateAttributes(progress.state) },
   });
 }
 

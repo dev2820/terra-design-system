@@ -25,17 +25,30 @@
 포맷 함수를 호출하지 않고 `Value`의 내용과 자동 `aria-valuetext`를 생략한다.
 특정 로케일은 사용처가 포맷 함수에서 `Intl.NumberFormat`으로 지정한다.
 
-Root는 값과 범위 ARIA, 접근 가능한 이름을 제공한다. 불확정 상태에서는
-`aria-valuenow`를 생략한다. Root가 기본 Label ID를 만들고 한 Root의 Label 하나에
-전달한다. 기본 Label은 서버 HTML에서도 Root의 `aria-labelledby`에 연결된다.
-Label에 직접 `id`를 지정하면 Root의 `aria-labelledby`에도 같은 ID를 지정해야 한다.
-Label을 생략하면 Root에 `aria-label` 또는 `aria-labelledby`로 이름을 제공한다.
-명시적인 `aria-labelledby` 또는 `aria-label`이 자동 연결보다 우선한다.
+Root는 값과 범위 ARIA를 제공하고 접근 가능한 이름을 받는다. 불확정 상태에서는
+`aria-valuenow`를 생략한다. `Label`은 보이는 텍스트를 렌더링하며, Root와의 이름 연결은
+사용처가 지정한다. 보이는 Label을 이름으로 사용하려면 Label의 `id`와 Root의
+`aria-labelledby`에 같은 값을 전달한다. 여러 Progress를 렌더링할 때는 `React.useId()`로
+각 ID를 만들 수 있다. Label을 생략하면 Root에 `aria-label`을 주거나 외부 텍스트의
+ID를 `aria-labelledby`로 참조한다. Root와 Label은 ID나 이름 연결을 자동 생성하지 않는다.
+이름을 지정하지 않은 Progress는 접근 가능한 이름이 없으므로 사용처가 반드시 제공해야 한다.
 
 ```tsx
-<Progress.Root value={25} aria-labelledby="upload-label">
-  <Progress.Label id="upload-label">파일 업로드</Progress.Label>
-</Progress.Root>
+import * as React from "react";
+import { Progress } from "@coral/react";
+
+function UploadProgress() {
+  const labelId = React.useId();
+
+  return (
+    <Progress.Root value={25} aria-labelledby={labelId}>
+      <Progress.Label id={labelId}>파일 업로드</Progress.Label>
+      <Progress.Track>
+        <Progress.Indicator />
+      </Progress.Track>
+    </Progress.Root>
+  );
+}
 ```
 
 `role="status"`, 자동 live region, 키보드 조작, Focus 이동과 Form 참여는 제공하지
