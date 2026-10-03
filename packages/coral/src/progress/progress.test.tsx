@@ -2,6 +2,7 @@ import axe from "axe-core";
 import { Component, StrictMode, createRef, type ReactNode } from "react";
 import { flushSync } from "react-dom";
 import { createRoot, type Root } from "react-dom/client";
+import { renderToString } from "react-dom/server";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { page } from "vitest/browser";
 
@@ -64,7 +65,7 @@ function progressFixture(value: number | undefined, max = 100) {
 
 function labelFixture(label: ReactNode, id?: string) {
   return (
-    <Progress.Root value={25}>
+    <Progress.Root value={25} aria-label={label ? undefined : "파일 업로드"} aria-labelledby={id}>
       {label && <Progress.Label id={id}>{label}</Progress.Label>}
     </Progress.Root>
   );
@@ -123,7 +124,7 @@ describe("Progress", () => {
         .toBeInTheDocument();
     });
 
-    it("Label의 등장·제거·ID 변경에 따라 자동 참조를 갱신한다", () => {
+    it("Label의 등장·제거와 명시적인 ID 연결을 반영한다", () => {
       const { container, rerender } = render(labelFixture(null));
       const progress = container.querySelector('[role="progressbar"]');
 
@@ -135,6 +136,47 @@ describe("Progress", () => {
       rerender(labelFixture("업로드", "upload-label"));
       expect(progress?.getAttribute("aria-labelledby")).toBe("upload-label");
       rerender(labelFixture(null));
+      expect(progress?.hasAttribute("aria-labelledby")).toBe(false);
+      expect(progress?.getAttribute("aria-label")).toBe("파일 업로드");
+    });
+
+    it("기본 Label의 ID 참조를 서버 HTML에서 완성한다", () => {
+      const serverMarkup = renderToString(
+        <Progress.Root value={25}>
+          <Progress.Label>파일 업로드</Progress.Label>
+        </Progress.Root>,
+      );
+      const container = document.createElement("div");
+      container.innerHTML = serverMarkup;
+      const progress = container.querySelector('[role="progressbar"]');
+      const label = progress?.querySelector("span");
+
+      expect(label?.id).toBeTruthy();
+      expect(progress?.getAttribute("aria-labelledby")).toBe(label?.id);
+    });
+
+    it("서버 HTML에서 커스텀 Label ID는 명시적 참조로 연결한다", () => {
+      const serverMarkup = renderToString(
+        <Progress.Root value={25} aria-labelledby="upload-label">
+          <Progress.Label id="upload-label">파일 업로드</Progress.Label>
+        </Progress.Root>,
+      );
+      const container = document.createElement("div");
+      container.innerHTML = serverMarkup;
+
+      expect(container.querySelector('[role="progressbar"]')?.getAttribute("aria-labelledby")).toBe(
+        "upload-label",
+      );
+      expect(container.querySelector("span")?.id).toBe("upload-label");
+    });
+
+    it("Label이 없는 서버 HTML에서는 명시적인 이름을 사용한다", () => {
+      const serverMarkup = renderToString(<Progress.Root value={25} aria-label="파일 업로드" />);
+      const container = document.createElement("div");
+      container.innerHTML = serverMarkup;
+      const progress = container.querySelector('[role="progressbar"]');
+
+      expect(progress?.getAttribute("aria-label")).toBe("파일 업로드");
       expect(progress?.hasAttribute("aria-labelledby")).toBe(false);
     });
 
@@ -383,7 +425,7 @@ describe("Progress", () => {
   describe("Part 상태와 공개 경계", () => {
     it("render 요소에서도 Label 연결, 표시값, 상태와 Indicator 길이를 유지한다", () => {
       const { container } = render(
-        <Progress.Root value={25}>
+        <Progress.Root value={25} aria-labelledby="upload-label">
           <Progress.Label
             id="upload-label"
             className="part-label"

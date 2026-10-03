@@ -18,8 +18,7 @@ interface ProgressContextValue {
   max: number;
   formattedValue: string | undefined;
   state: ProgressState;
-  generatedLabelId: string;
-  setLabelId: React.Dispatch<React.SetStateAction<string | null>>;
+  labelId: string;
 }
 
 const [ProgressContext, useProgressContext] = createPartContext<ProgressContextValue>("Progress");
@@ -69,10 +68,12 @@ export function Root(props: ProgressRootProps) {
     "aria-label": ariaLabel,
     "aria-labelledby": ariaLabelledBy,
     "aria-valuetext": ariaValueText,
+    id,
     ...rest
   } = props;
-  const [labelId, setLabelId] = React.useState<string | null>(null);
-  const generatedLabelId = React.useId();
+
+  const baseId = id ?? React.useId();
+  const labelId = `${baseId}-progress-label`;
 
   if (!Number.isFinite(max) || max <= 0) {
     throw new Error("Progress.Root max must be a finite positive number.");
@@ -93,8 +94,8 @@ export function Root(props: ProgressRootProps) {
       : "progressing";
 
   const context = React.useMemo(
-    () => ({ value, max, formattedValue, state, generatedLabelId, setLabelId }),
-    [value, max, formattedValue, state, generatedLabelId],
+    () => ({ value, max, formattedValue, state, labelId }),
+    [value, max, formattedValue, state, labelId],
   );
 
   const element = useRender({
@@ -102,14 +103,14 @@ export function Root(props: ProgressRootProps) {
     render: undefined,
     props: rest,
     internalProps: {
+      id: baseId,
       role: "progressbar",
       "aria-valuemin": 0,
       "aria-valuemax": max,
       "aria-valuenow": value,
       "aria-valuetext": ariaValueText ?? formattedValue,
       "aria-label": ariaLabel,
-      "aria-labelledby":
-        ariaLabelledBy ?? (ariaLabel === undefined ? (labelId ?? undefined) : undefined),
+      "aria-labelledby": ariaLabelledBy ?? (ariaLabel === undefined ? labelId : undefined),
       ...getStateAttributes(state),
     },
   });
@@ -124,14 +125,7 @@ export interface ProgressLabelProps extends React.ComponentProps<"span"> {
 export function Label(props: ProgressLabelProps) {
   const { render, id: idProps, ...rest } = props;
   const progress = useProgressContext("Label");
-  const id = idProps ?? `${progress.generatedLabelId}-progress-label`;
-  const { setLabelId } = progress;
-
-  React.useLayoutEffect(() => {
-    setLabelId(id);
-
-    return () => setLabelId(null);
-  }, [id, setLabelId]);
+  const id = idProps ?? progress.labelId;
 
   return useRender({
     defaultTagName: "span",
