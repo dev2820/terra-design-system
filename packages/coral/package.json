@@ -40,6 +40,10 @@
       "types": "./dist/meter.d.ts",
       "import": "./dist/meter.js"
     },
+    "./progress": {
+      "types": "./dist/progress.d.ts",
+      "import": "./dist/progress.js"
+    },
     "./separator": {
       "types": "./dist/separator.d.ts",
       "import": "./dist/separator.js"

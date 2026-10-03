@@ -6,4 +6,5 @@ export * from "./field/index";
 export * from "./fieldset/index";
 export * from "./input/index";
 export * from "./meter/index";
+export * from "./progress/index";
 export * from "./separator/index";

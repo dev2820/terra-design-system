@@ -16,6 +16,7 @@ import { Accordion } from "@coral/react/accordion";
 import { Checkbox as SubpathCheckbox } from "@coral/react/checkbox";
 import { Input as SubpathInput } from "@coral/react/input";
 import { Meter } from "@coral/react/meter";
+import { Progress } from "@coral/react/progress";
 import { Separator } from "@coral/react/separator";
 ```
 

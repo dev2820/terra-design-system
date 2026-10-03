@@ -10,6 +10,7 @@ export default defineConfig({
     fieldset: "src/fieldset/index.ts",
     input: "src/input/index.ts",
     meter: "src/meter/index.ts",
+    progress: "src/progress/index.ts",
     separator: "src/separator/index.ts",
     "use-render": "src/core/index.ts",
   },

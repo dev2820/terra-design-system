@@ -45,7 +45,7 @@ Coral은 WAI-ARIA APG 목록을 컴포넌트 목록으로 그대로 구현하지
 - [ ] OTP Field
 - [ ] Popover
 - [ ] Preview Card
-- [ ] Progress
+- [x] Progress — 확정·불확정 상태와 값 포맷·Parts를 제공한다.
 - [ ] Radio
 - [ ] Scroll Area
 - [ ] Select
@@ -58,6 +58,16 @@ Coral은 WAI-ARIA APG 목록을 컴포넌트 목록으로 그대로 구현하지
 - [ ] Toggle Group
 - [ ] Toolbar
 - [ ] Tooltip
+
+## Progress 포맷 계약
+
+- Meter와 동일하게 `format?: (value: number) => string`만 제공한다.
+- `format`을 생략하면 런타임 기본 로케일로 백분율을 표시한다.
+- 포맷 함수에는 범위로 제한한 실제 값을 전달하고, 반환 문자열을 `Value`의
+  기본 내용과 자동 `aria-valuetext`에 사용한다.
+- 불확정 상태에서는 포맷 함수를 호출하지 않는다.
+- Intl 옵션 객체와 별도 `locale` Prop은 제공하지 않는다. 특정 로케일이 필요하면
+  사용처가 포맷 함수에서 `Intl.NumberFormat`을 사용한다.
 
 ## Bison에서 이전한 패턴 검토
 
