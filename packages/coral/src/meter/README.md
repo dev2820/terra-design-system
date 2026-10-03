@@ -6,7 +6,7 @@ headless Meter다. 작업 완료율과 로딩에는 Progress를 사용한다.
 ```tsx
 import { Meter } from "@coral/react/meter";
 
-<Meter.Root value={25} locale="ko-KR" className="meter">
+<Meter.Root value={25} className="meter">
   <Meter.Label>저장 공간</Meter.Label>
   <Meter.Value />
   <Meter.Track className="meter-track">
@@ -26,20 +26,34 @@ import { Meter } from "@coral/react/meter";
 값을 사용한다. 세 숫자는 유한해야 하며 `min < max`여야 한다. 이 조건을
 위반하면 오류를 던진다. 값은 사용처에서 관리하며 별도 초기값이나 변경 콜백은 없다.
 
-`format`은 `Intl.NumberFormatOptions`, `locale`은 `Intl.LocalesArgument`를 받는다.
-`format`을 생략하면 `{ style: "percent" }`로 범위 대비 비율을 표시한다.
-백분율의 계산은 `(value - min) / (max - min)`이다. 그 외 포맷은 실제 값을 표시한다.
-`format`을 전달하면 해당 옵션을 그대로 사용하므로 `style`을 생략한 포맷은 숫자
-표현이 된다. `locale`을 생략하면 런타임 기본 로케일을 사용한다. SSR과 브라우저의
-포맷을 일치시켜야 할 때는 양쪽에서 같은 `locale`을 명시한다.
+`format`은 `(value: number) => string` 함수를 받는다. 함수에는 범위로 제한한
+실제 값을 전달하며, 반환 문자열을 `Value`의 기본 내용과 자동 `aria-valuetext`에
+사용한다. 포맷은 Indicator의 채움 비율에 영향을 주지 않는다.
+
+`format`을 생략하면 `Intl.NumberFormat`으로 범위 대비 백분율을 표시한다.
+백분율의 계산은 `(value - min) / (max - min)`이며 런타임 기본 로케일을 사용한다.
+Intl 옵션 객체와 별도 `locale` Prop은 제공하지 않는다. 특정 로케일이나 단위가
+필요하면 포맷 함수 안에서 `Intl.NumberFormat`을 사용한다. SSR과 브라우저의
+표시를 맞춰야 할 때도 같은 로케일을 지정한 포맷 함수를 사용한다.
 
 ```tsx
-<Meter.Root value={250} max={1000} locale="en-US" format={{ style: "unit", unit: "megabyte" }}>
+const megabytes = new Intl.NumberFormat("en-US", { style: "unit", unit: "megabyte" });
+
+<Meter.Root value={250} max={1000} format={megabytes.format}>
   <Meter.Label>저장 공간</Meter.Label>
   <Meter.Value /> {/* 250 MB */}
   <Meter.Track>
     <Meter.Indicator /> {/* 채움 비율 25% */}
   </Meter.Track>
+</Meter.Root>;
+```
+
+Intl이 지원하지 않는 문구도 직접 반환할 수 있다.
+
+```tsx
+<Meter.Root value={250} max={1000} format={(value) => `1,000 MB 중 ${value} MB 사용`}>
+  <Meter.Label>저장 공간</Meter.Label>
+  <Meter.Value />
 </Meter.Root>
 ```
 
@@ -49,7 +63,7 @@ import { Meter } from "@coral/react/meter";
 일반 children을 전달하면 그대로 표시하고, `null`은 빈 내용을 표시한다.
 
 ```tsx
-<Meter.Root value={250} max={1000} locale="en-US" aria-valuetext="1,000 MB 중 250 MB 사용">
+<Meter.Root value={250} max={1000} aria-valuetext="1,000 MB 중 250 MB 사용">
   <Meter.Label>저장 공간</Meter.Label>
   <Meter.Value>{(formattedValue, value) => `${value} MB 사용 (${formattedValue})`}</Meter.Value>
   <Meter.Track>
@@ -111,6 +125,7 @@ Browser Test로 DOM, 접근 가능한 이름과 설명, ARIA, 값·범위 갱신
 사용자 지정 표현과 기본 조합의 axe 검사를 검증한다. 실제 스크린 리더의 낭독
 방식과 제품에서 구성한 CSS·콘텐츠는 사용하는 제품이 별도로 검증해야 한다.
 
+- [HTML Meter](https://html.spec.whatwg.org/multipage/form-elements.html#the-meter-element)
 - [WAI-ARIA APG Meter](https://www.w3.org/WAI/ARIA/apg/patterns/meter/)
 - [Base UI Meter](https://base-ui.com/react/components/meter)
 - [React Aria Meter](https://react-aria.adobe.com/Meter)

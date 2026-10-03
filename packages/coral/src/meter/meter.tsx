@@ -21,8 +21,7 @@ export interface MeterRootProps extends Omit<
   value: number;
   min?: number;
   max?: number;
-  format?: Intl.NumberFormatOptions;
-  locale?: Intl.LocalesArgument;
+  format?: (value: number) => string;
 }
 
 export function Root(props: MeterRootProps) {
@@ -31,7 +30,6 @@ export function Root(props: MeterRootProps) {
     min = 0,
     max = 100,
     format,
-    locale,
     "aria-label": ariaLabel,
     "aria-labelledby": ariaLabelledBy,
     "aria-valuetext": ariaValueText,
@@ -52,10 +50,9 @@ export function Root(props: MeterRootProps) {
   const ratio = Number.isFinite(range)
     ? (value - min) / range
     : (value / 2 - min / 2) / (max / 2 - min / 2);
-  const formatOptions: Intl.NumberFormatOptions = format ?? { style: "percent" };
-  const formattedValue = new Intl.NumberFormat(locale, formatOptions).format(
-    formatOptions.style === "percent" ? ratio : value,
-  );
+  const formattedValue = format
+    ? format(value)
+    : new Intl.NumberFormat(undefined, { style: "percent" }).format(ratio);
   const context = React.useMemo(
     () => ({ value, percentage: ratio * 100, formattedValue, setLabelId }),
     [value, ratio, formattedValue],

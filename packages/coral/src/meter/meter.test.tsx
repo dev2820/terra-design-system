@@ -9,6 +9,7 @@ import { Meter as RootExportMeter } from "../index";
 import { Meter } from "./index";
 
 const fixtures: Array<{ container: HTMLDivElement; root: Root }> = [];
+const percentFormatter = new Intl.NumberFormat(undefined, { style: "percent" });
 
 afterEach(() => {
   for (const fixture of fixtures) {
@@ -55,9 +56,24 @@ function labelFixture(showLabel: boolean, id?: string) {
 
 function sizingFixture(value: number, max: number) {
   return (
-    <Meter.Root value={value} max={max} locale="en-US" aria-label="측정값">
+    <Meter.Root value={value} max={max} aria-label="측정값">
       <Meter.Value />
       <Meter.Indicator style={{ blockSize: "8px", inlineSize: "99%" }} />
+    </Meter.Root>
+  );
+}
+
+function formatFixture(value: number, max: number, format?: (value: number) => string) {
+  return (
+    <Meter.Root
+      value={value}
+      min={20}
+      max={max}
+      {...(format ? { format } : {})}
+      aria-label="측정값"
+    >
+      <Meter.Value />
+      <Meter.Indicator />
     </Meter.Root>
   );
 }
@@ -67,7 +83,7 @@ function valueTextFixture(value: number, ariaValueText?: string) {
     <Meter.Root
       value={value}
       max={1000}
-      locale="en-US"
+      format={(current) => `${current} MB`}
       aria-label="저장 공간"
       aria-valuetext={ariaValueText}
     >
@@ -89,7 +105,7 @@ describe("Meter", () => {
     it("Parts의 구조와 라벨로 연결된 접근 가능한 이름을 제공한다", async () => {
       const { container } = render(
         <StrictMode>
-          <Meter.Root value={25} locale="en-US">
+          <Meter.Root value={25}>
             <Meter.Label>저장 공간</Meter.Label>
             <Meter.Value />
             <Meter.Track data-testid="track">
@@ -213,13 +229,7 @@ describe("Meter", () => {
       "$min..$max의 $value를 ARIA·포맷·Indicator에 일관되게 적용한다",
       ({ value, min, max, now, percent }) => {
         const { container } = render(
-          <Meter.Root
-            value={value}
-            min={min ?? 0}
-            max={max ?? 100}
-            locale="en-US"
-            aria-label="측정값"
-          >
+          <Meter.Root value={value} min={min ?? 0} max={max ?? 100} aria-label="측정값">
             <Meter.Value />
             <Meter.Track>
               <Meter.Indicator data-testid="indicator" />
@@ -228,12 +238,13 @@ describe("Meter", () => {
         );
         const meter = container.querySelector('[role="meter"]');
         const indicator = meter?.querySelector<HTMLDivElement>('[data-testid="indicator"]');
+        const formattedValue = percentFormatter.format(Number.parseFloat(percent) / 100);
 
         expect(meter?.getAttribute("aria-valuemin")).toBe(String(min ?? 0));
         expect(meter?.getAttribute("aria-valuemax")).toBe(String(max ?? 100));
         expect(meter?.getAttribute("aria-valuenow")).toBe(String(now));
-        expect(meter?.getAttribute("aria-valuetext")).toBe(percent);
-        expect(meter?.querySelector("span")?.textContent).toBe(percent);
+        expect(meter?.getAttribute("aria-valuetext")).toBe(formattedValue);
+        expect(meter?.querySelector("span")?.textContent).toBe(formattedValue);
         expect(indicator?.style.inlineSize).toBe(percent);
       },
     );
@@ -246,37 +257,37 @@ describe("Meter", () => {
 
       expect(meter?.getAttribute("aria-valuenow")).toBe("150");
       expect(meter?.getAttribute("aria-valuemax")).toBe("200");
-      expect(meter?.getAttribute("aria-valuetext")).toBe("75%");
-      expect(meter?.querySelector("span")?.textContent).toBe("75%");
+      expect(meter?.getAttribute("aria-valuetext")).toBe(percentFormatter.format(0.75));
+      expect(meter?.querySelector("span")?.textContent).toBe(percentFormatter.format(0.75));
       expect(indicator?.style.inlineSize).toBe("75%");
       expect(indicator?.style.blockSize).toBe("8px");
     });
 
     it("Parts가 가장 가까운 Root의 값을 사용한다", () => {
       const { container } = render(
-        <Meter.Root value={25} locale="en-US">
+        <Meter.Root value={25}>
           <Meter.Value data-testid="outer-value" />
-          <Meter.Root value={75} locale="en-US">
+          <Meter.Root value={75}>
             <Meter.Value data-testid="inner-value" />
           </Meter.Root>
         </Meter.Root>,
       );
 
-      expect(container.querySelector('[data-testid="outer-value"]')?.textContent).toBe("25%");
-      expect(container.querySelector('[data-testid="inner-value"]')?.textContent).toBe("75%");
+      expect(container.querySelector('[data-testid="outer-value"]')?.textContent).toBe(
+        percentFormatter.format(0.25),
+      );
+      expect(container.querySelector('[data-testid="inner-value"]')?.textContent).toBe(
+        percentFormatter.format(0.75),
+      );
     });
   });
 
   describe("포맷과 사용자 지정 표현", () => {
-    it("실제 값에 단위 포맷을 적용하고 format·locale 변경을 반영한다", () => {
+    it("포맷 함수에서 Intl 단위·로케일을 지정하고 함수 변경을 반영한다", () => {
+      const megabytes = new Intl.NumberFormat("en-US", { style: "unit", unit: "megabyte" });
+      const decimal = new Intl.NumberFormat("de-DE", { maximumFractionDigits: 1 });
       const { container, rerender } = render(
-        <Meter.Root
-          value={250}
-          max={1000}
-          locale="en-US"
-          format={{ style: "unit", unit: "megabyte" }}
-          aria-label="저장 공간"
-        >
+        <Meter.Root value={250} max={1000} format={megabytes.format} aria-label="저장 공간">
           <Meter.Value />
           <Meter.Indicator />
         </Meter.Root>,
@@ -290,13 +301,7 @@ describe("Meter", () => {
       ).toBe("25%");
 
       rerender(
-        <Meter.Root
-          value={1234.5}
-          max={2000}
-          locale="de-DE"
-          format={{ maximumFractionDigits: 1 }}
-          aria-label="측정값"
-        >
+        <Meter.Root value={1234.5} max={2000} format={decimal.format} aria-label="측정값">
           <Meter.Value />
         </Meter.Root>,
       );
@@ -306,45 +311,94 @@ describe("Meter", () => {
       );
     });
 
-    it("locale을 생략하면 런타임의 숫자 포맷을 사용한다", () => {
+    it("format을 생략하면 런타임 로케일의 백분율을 사용한다", () => {
       const { container } = render(
         <Meter.Root value={25}>
           <Meter.Value />
         </Meter.Root>,
       );
 
-      expect(container.querySelector("span")?.textContent).toBe(
-        new Intl.NumberFormat(undefined, { style: "percent" }).format(0.25),
+      expect(container.querySelector("span")?.textContent).toBe(percentFormatter.format(0.25));
+      expect(container.querySelector('[role="meter"]')?.getAttribute("aria-valuetext")).toBe(
+        percentFormatter.format(0.25),
       );
+    });
+
+    it("커스텀 포맷에 제한한 실제 값을 전달하고 제거하면 기본 백분율로 복귀한다", () => {
+      const format = vi.fn((value: number) => `측정값 ${value}`);
+      const { container, rerender } = render(formatFixture(10, 60, format));
+      const meter = container.querySelector('[role="meter"]');
+      const indicator = meter?.querySelector<HTMLDivElement>("div");
+
+      expect(meter?.querySelector("span")?.textContent).toBe("측정값 20");
+      expect(meter?.getAttribute("aria-valuetext")).toBe("측정값 20");
+      expect(indicator?.style.inlineSize).toBe("0%");
+      expect(format).toHaveBeenLastCalledWith(20);
+
+      rerender(formatFixture(100, 80, format));
+      expect(meter?.querySelector("span")?.textContent).toBe("측정값 80");
+      expect(meter?.getAttribute("aria-valuetext")).toBe("측정값 80");
+      expect(indicator?.style.inlineSize).toBe("100%");
+
+      rerender(formatFixture(30, 60, format));
+      expect(meter?.querySelector("span")?.textContent).toBe("측정값 30");
+      expect(meter?.getAttribute("aria-valuetext")).toBe("측정값 30");
+      expect(indicator?.style.inlineSize).toBe("25%");
+
+      rerender(formatFixture(30, 60));
+      expect(meter?.querySelector("span")?.textContent).toBe(percentFormatter.format(0.25));
+      expect(meter?.getAttribute("aria-valuetext")).toBe(percentFormatter.format(0.25));
+      expect(indicator?.style.inlineSize).toBe("25%");
+    });
+
+    it("포맷 함수가 반환한 빈 문자열을 그대로 사용한다", () => {
+      const { container } = render(
+        <Meter.Root value={25} format={() => ""} aria-label="측정값">
+          <Meter.Value />
+          <Meter.Indicator />
+        </Meter.Root>,
+      );
+
+      expect(container.querySelector("span")?.textContent).toBe("");
+      expect(container.querySelector('[role="meter"]')?.getAttribute("aria-valuetext")).toBe("");
+      expect(
+        container.querySelector<HTMLDivElement>('[role="meter"] > div')?.style.inlineSize,
+      ).toBe("25%");
     });
 
     it("children 함수에는 포맷된 문자열과 제한한 값을 전달하고 낭독과 분리한다", () => {
       const { container, rerender } = render(valueTextFixture(250));
-      expect(container.querySelector("strong")?.textContent).toBe("250 MB 사용 (25%)");
-      expect(container.querySelector('[role="meter"]')?.getAttribute("aria-valuetext")).toBe("25%");
+      expect(container.querySelector("strong")?.textContent).toBe("250 MB 사용 (250 MB)");
+      expect(container.querySelector('[role="meter"]')?.getAttribute("aria-valuetext")).toBe(
+        "250 MB",
+      );
       rerender(valueTextFixture(1500, "저장 공간 1,000 MB를 모두 사용 중"));
-      expect(container.querySelector("strong")?.textContent).toBe("1000 MB 사용 (100%)");
+      expect(container.querySelector("strong")?.textContent).toBe("1000 MB 사용 (1000 MB)");
       expect(container.querySelector('[role="meter"]')?.getAttribute("aria-valuetext")).toBe(
         "저장 공간 1,000 MB를 모두 사용 중",
       );
       rerender(valueTextFixture(500));
-      expect(container.querySelector('[role="meter"]')?.getAttribute("aria-valuetext")).toBe("50%");
+      expect(container.querySelector('[role="meter"]')?.getAttribute("aria-valuetext")).toBe(
+        "500 MB",
+      );
     });
 
     it("Value의 명시적인 children과 null을 그대로 표시한다", () => {
       const { container, rerender } = render(
-        <Meter.Root value={25} locale="en-US">
+        <Meter.Root value={25}>
           <Meter.Value>사용 중</Meter.Value>
         </Meter.Root>,
       );
       expect(container.querySelector("span")?.textContent).toBe("사용 중");
       rerender(
-        <Meter.Root value={25} locale="en-US">
+        <Meter.Root value={25}>
           <Meter.Value>{null}</Meter.Value>
         </Meter.Root>,
       );
       expect(container.querySelector("span")?.textContent).toBe("");
-      expect(container.querySelector('[role="meter"]')?.getAttribute("aria-valuetext")).toBe("25%");
+      expect(container.querySelector('[role="meter"]')?.getAttribute("aria-valuetext")).toBe(
+        percentFormatter.format(0.25),
+      );
     });
   });
 
@@ -415,7 +469,7 @@ describe("Meter", () => {
   it("기본 조합과 Label 없는 조합에 접근성 자동 검사 위반이 없다", async () => {
     const { container } = render(
       <>
-        <Meter.Root value={250} max={1000} locale="en-US">
+        <Meter.Root value={250} max={1000}>
           <Meter.Label>저장 공간</Meter.Label>
           <Meter.Value />
           <Meter.Track>
