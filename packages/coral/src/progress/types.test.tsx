@@ -2,7 +2,7 @@ import type * as React from "react";
 import { describe, expectTypeOf, it } from "vitest";
 
 import { Progress } from "./index";
-import type { ProgressRootProps, ProgressValueProps } from "./index";
+import type { ProgressRootProps, ProgressValueTextProps } from "./index";
 
 describe("Progress 타입", () => {
   it("생략한 value는 허용하고 null은 허용하지 않는다", () => {
@@ -26,16 +26,16 @@ describe("Progress 타입", () => {
     <Progress.Root format={(value) => value} />;
   });
 
-  it("Value는 표시값을 소유하고 children을 받지 않는다", () => {
-    expectTypeOf<"children">().not.toExtend<keyof ProgressValueProps>();
+  it("ValueText는 표시값을 소유하고 children을 받지 않는다", () => {
+    expectTypeOf<"children">().not.toExtend<keyof ProgressValueTextProps>();
 
     // @ts-expect-error 표시값은 Root의 format 계약에서 결정한다.
-    <Progress.Value>직접 지정한 값</Progress.Value>;
+    <Progress.ValueText>직접 지정한 값</Progress.ValueText>;
   });
 
   it("Parts의 render는 React 요소를 받는다", () => {
     <Progress.Label render={<strong />} />;
-    <Progress.Value render={<b />} />;
+    <Progress.ValueText render={<b />} />;
     <Progress.Track render={<section />} />;
     <Progress.Indicator render={<i />} />;
 

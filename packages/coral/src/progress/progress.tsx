@@ -118,13 +118,13 @@ export function Label(props: ProgressLabelProps) {
   });
 }
 
-export interface ProgressValueProps extends Omit<React.ComponentProps<"span">, "children"> {
+export interface ProgressValueTextProps extends Omit<React.ComponentProps<"span">, "children"> {
   render?: RenderProp;
 }
 
-export function Value(props: ProgressValueProps) {
+export function ValueText(props: ProgressValueTextProps) {
   const { render, ...rest } = props;
-  const progress = useProgressContext("Value");
+  const progress = useProgressContext("ValueText");
 
   return useRender({
     defaultTagName: "span",

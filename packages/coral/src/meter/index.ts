@@ -5,5 +5,5 @@ export type {
   MeterLabelProps,
   MeterRootProps,
   MeterTrackProps,
-  MeterValueProps,
+  MeterValueTextProps,
 } from "./meter";

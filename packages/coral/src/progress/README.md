@@ -3,12 +3,12 @@
 작업 완료율 또는 진행량을 표시하는 가로 막대형 headless Progress다. Root는 진행
 상태와 접근성 의미를 관리하며, 사용처는 Parts의 모양과 모션을 스타일링한다.
 
-`Root`는 `div`에 `role="progressbar"`를 제공한다. `Label`과 `Value`는 `span`,
+`Root`는 `div`에 `role="progressbar"`를 제공한다. `Label`과 `ValueText`는 `span`,
 `Track`과 `Indicator`는 `div`다. 모든 Part는 Root 안에서 사용한다. Root의 ref는
 실제 `HTMLDivElement`를 가리키며 네이티브 `<progress>`의 `position`은 제공하지
 않는다. 네이티브 요소를 숨겨서 추가하지 않는다.
 
-`Label`, `Value`, `Track`, `Indicator`는 `render={<요소 />}`로 기본 요소를 교체할 수
+`Label`, `ValueText`, `Track`, `Indicator`는 `render={<요소 />}`로 기본 요소를 교체할 수
 있다. 사용자 지정 컴포넌트를 전달한다면 Coral이 합성한 `id`, `children`, `style`,
 `data-*` 속성을 실제 DOM까지 전달해야 한다.
 
@@ -19,10 +19,10 @@
 변경 콜백은 제공하지 않는다.
 
 `format?: (value: number) => string`에는 제한한 실제 값을 전달한다. 반환 문자열은
-`Value`의 내용과 자동 `aria-valuetext`에 사용한다. `Value`는 `children`을 받지
+`ValueText`의 내용과 자동 `aria-valuetext`에 사용한다. `ValueText`는 `children`을 받지
 않으며, `render` 요소에 children이 있더라도 계산한 표시값으로 대체한다.
 `format`을 생략하면 런타임 기본 로케일의 백분율을 표시한다. 불확정 상태에서는
-포맷 함수를 호출하지 않고 `Value`의 내용과 자동 `aria-valuetext`를 생략한다.
+포맷 함수를 호출하지 않고 `ValueText`의 내용과 자동 `aria-valuetext`를 생략한다.
 특정 로케일은 사용처가 포맷 함수에서 `Intl.NumberFormat`으로 지정한다.
 
 Root는 값과 범위 ARIA를 제공하고 접근 가능한 이름을 받는다. 불확정 상태에서는

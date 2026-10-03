@@ -93,13 +93,13 @@ export function Label(props: MeterLabelProps) {
   });
 }
 
-export interface MeterValueProps extends Omit<React.ComponentProps<"span">, "children"> {
+export interface MeterValueTextProps extends Omit<React.ComponentProps<"span">, "children"> {
   render?: RenderProp;
 }
 
-export function Value(props: MeterValueProps) {
+export function ValueText(props: MeterValueTextProps) {
   const { render, ...rest } = props;
-  const meter = useMeterContext("Value");
+  const meter = useMeterContext("ValueText");
 
   return useRender({
     defaultTagName: "span",

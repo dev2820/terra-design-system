@@ -52,7 +52,7 @@ class TestErrorBoundary extends Component<{ children: ReactNode }, { error: Erro
 function progressFixture(value: number | undefined, max = 100) {
   return (
     <Progress.Root {...(value === undefined ? {} : { value })} max={max} aria-label="파일 업로드">
-      <Progress.Value />
+      <Progress.ValueText />
       <Progress.Track>
         <Progress.Indicator
           data-testid="indicator"
@@ -97,7 +97,7 @@ describe("Progress", () => {
         <StrictMode>
           <Progress.Root value={25} aria-labelledby="upload-label">
             <Progress.Label id="upload-label">파일 업로드</Progress.Label>
-            <Progress.Value />
+            <Progress.ValueText />
             <Progress.Track data-testid="track">
               <Progress.Indicator data-testid="indicator" />
             </Progress.Track>
@@ -259,7 +259,7 @@ describe("Progress", () => {
     it("값 생략과 undefined는 불확정 상태이며 0은 확정 상태다", () => {
       const { container, rerender } = render(
         <Progress.Root aria-label="파일 처리">
-          <Progress.Value />
+          <Progress.ValueText />
           <Progress.Track>
             <Progress.Indicator data-testid="indicator" />
           </Progress.Track>
@@ -339,7 +339,7 @@ describe("Progress", () => {
       const format = vi.fn((value: number) => `파일 ${value}개 완료`);
       const { container, rerender } = render(
         <Progress.Root value={12} max={10} format={format} aria-label="파일 업로드">
-          <Progress.Value />
+          <Progress.ValueText />
           <Progress.Indicator />
         </Progress.Root>,
       );
@@ -352,18 +352,18 @@ describe("Progress", () => {
 
       rerender(
         <Progress.Root value={5} max={10} aria-label="파일 업로드">
-          <Progress.Value />
+          <Progress.ValueText />
         </Progress.Root>,
       );
       expect(progress?.querySelector("span")?.textContent).toBe(percentFormatter.format(0.5));
       expect(progress?.getAttribute("aria-valuetext")).toBe(percentFormatter.format(0.5));
     });
 
-    it("불확정 상태에서는 포맷 함수를 호출하지 않고 Value 내용을 비운다", () => {
+    it("불확정 상태에서는 포맷 함수를 호출하지 않고 ValueText 내용을 비운다", () => {
       const format = vi.fn((value: number) => `${value}개`);
       const { container } = render(
         <Progress.Root format={format} aria-label="파일 처리">
-          <Progress.Value />
+          <Progress.ValueText />
         </Progress.Root>,
       );
       const progress = container.querySelector('[role="progressbar"]');
@@ -373,7 +373,7 @@ describe("Progress", () => {
       expect(progress?.hasAttribute("aria-valuetext")).toBe(false);
     });
 
-    it("명시적 aria-valuetext는 Value의 표시값과 별도로 적용한다", () => {
+    it("명시적 aria-valuetext는 ValueText의 표시값과 별도로 적용한다", () => {
       const { container, rerender } = render(
         <Progress.Root
           value={25}
@@ -381,7 +381,7 @@ describe("Progress", () => {
           aria-valuetext="네 개 중 하나"
           aria-label="파일 업로드"
         >
-          <Progress.Value />
+          <Progress.ValueText />
         </Progress.Root>,
       );
       const progress = container.querySelector('[role="progressbar"]');
@@ -391,7 +391,7 @@ describe("Progress", () => {
 
       rerender(
         <Progress.Root aria-valuetext="처리 중" aria-label="파일 업로드">
-          <Progress.Value />
+          <Progress.ValueText />
         </Progress.Root>,
       );
       expect(progress?.querySelector("span")?.textContent).toBe("");
@@ -401,7 +401,7 @@ describe("Progress", () => {
     it("포맷 함수의 빈 문자열을 기본 백분율로 대체하지 않는다", () => {
       const { container } = render(
         <Progress.Root value={25} format={() => ""} aria-label="파일 업로드">
-          <Progress.Value />
+          <Progress.ValueText />
         </Progress.Root>,
       );
       const progress = container.querySelector('[role="progressbar"]');
@@ -422,7 +422,7 @@ describe("Progress", () => {
           >
             파일 업로드
           </Progress.Label>
-          <Progress.Value render={<b>교체 전 내용</b>} />
+          <Progress.ValueText render={<b>교체 전 내용</b>} />
           <Progress.Track render={<section data-testid="track" />}>
             <Progress.Indicator
               render={<i data-testid="indicator" style={{ blockSize: "8px", inlineSize: "95%" }} />}
@@ -459,7 +459,7 @@ describe("Progress", () => {
       const { container } = render(
         <Progress.Root {...(value === undefined ? {} : { value })} aria-label="파일 업로드">
           <Progress.Label>업로드</Progress.Label>
-          <Progress.Value />
+          <Progress.ValueText />
           <Progress.Track>
             <Progress.Indicator />
           </Progress.Track>
@@ -489,7 +489,7 @@ describe("Progress", () => {
       const { container } = render(
         <form>
           <Progress.Root value={25} aria-label="파일 업로드">
-            <Progress.Value />
+            <Progress.ValueText />
             <Progress.Track>
               <Progress.Indicator />
             </Progress.Track>
@@ -504,7 +504,7 @@ describe("Progress", () => {
       expect(container.querySelector("form")?.elements).toHaveLength(0);
     });
 
-    it.each(["Label", "Value", "Track", "Indicator"] as const)(
+    it.each(["Label", "ValueText", "Track", "Indicator"] as const)(
       "%s는 Root 안에서 사용해야 한다",
       (part) => {
         const Part = Progress[part];
@@ -528,7 +528,7 @@ describe("Progress", () => {
         <>
           <Progress.Root value={25} aria-labelledby="upload-label">
             <Progress.Label id="upload-label">파일 업로드</Progress.Label>
-            <Progress.Value />
+            <Progress.ValueText />
             <Progress.Track>
               <Progress.Indicator />
             </Progress.Track>

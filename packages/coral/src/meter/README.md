@@ -13,7 +13,7 @@ function StorageMeter() {
   return (
     <Meter.Root value={25} className="meter" aria-labelledby={labelId}>
       <Meter.Label id={labelId}>저장 공간</Meter.Label>
-      <Meter.Value />
+      <Meter.ValueText />
       <Meter.Track className="meter-track">
         <Meter.Indicator className="meter-indicator" />
       </Meter.Track>
@@ -23,8 +23,8 @@ function StorageMeter() {
 ```
 
 `@coral/react`의 루트 export에서도 같은 `Meter`와 각 Part의 Props 타입을 제공한다.
-`Root`, `Track`, `Indicator`는 `div`, `Label`, `Value`는 `span`을 렌더링한다.
-모든 Part는 `Root` 안에서 사용한다. `Label`, `Value`, `Track`, `Indicator`는
+`Root`, `Track`, `Indicator`는 `div`, `Label`, `ValueText`는 `span`을 렌더링한다.
+모든 Part는 `Root` 안에서 사용한다. `Label`, `ValueText`, `Track`, `Indicator`는
 `render={<요소 />}`로 기본 요소를 교체할 수 있다. 사용자 지정 컴포넌트를 전달한다면
 Coral이 합성한 `id`, `children`, `style` 속성을 실제 DOM까지 전달해야 한다.
 
@@ -36,7 +36,7 @@ Coral이 합성한 `id`, `children`, `style` 속성을 실제 DOM까지 전달�
 위반하면 오류를 던진다. 값은 사용처에서 관리하며 별도 초기값이나 변경 콜백은 없다.
 
 `format`은 `(value: number) => string` 함수를 받는다. 함수에는 범위로 제한한
-실제 값을 전달하며, 반환 문자열을 `Value`의 내용과 자동 `aria-valuetext`에
+실제 값을 전달하며, 반환 문자열을 `ValueText`의 내용과 자동 `aria-valuetext`에
 사용한다. 포맷은 Indicator의 채움 비율에 영향을 주지 않는다.
 
 `format`을 생략하면 `Intl.NumberFormat`으로 범위 대비 백분율을 표시한다.
@@ -49,7 +49,7 @@ Intl 옵션 객체와 별도 `locale` Prop은 제공하지 않는다. 특정 로
 const megabytes = new Intl.NumberFormat("en-US", { style: "unit", unit: "megabyte" });
 
 <Meter.Root value={250} max={1000} format={megabytes.format} aria-label="저장 공간">
-  <Meter.Value /> {/* 250 MB */}
+  <Meter.ValueText /> {/* 250 MB */}
   <Meter.Track>
     <Meter.Indicator /> {/* 채움 비율 25% */}
   </Meter.Track>
@@ -65,11 +65,11 @@ Intl이 지원하지 않는 문구도 직접 반환할 수 있다.
   format={(value) => `1,000 MB 중 ${value} MB 사용`}
   aria-label="저장 공간"
 >
-  <Meter.Value />
+  <Meter.ValueText />
 </Meter.Root>
 ```
 
-`Value`는 `children`을 받지 않는다. 표시 문자열은 `Root`의 `format`이 결정한다.
+`ValueText`는 `children`을 받지 않는다. 표시 문자열은 `Root`의 `format`이 결정한다.
 `render` 요소에 children이 있더라도 계산한 표시값으로 대체한다.
 `Root`의 `aria-valuetext` 기본값도 같은 문자열이다. 보조 기술에 다른 설명을
 전달해야 한다면 `aria-valuetext`를 별도로 지정한다.

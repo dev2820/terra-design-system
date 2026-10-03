@@ -60,7 +60,7 @@ function labelFixture(showLabel: boolean, id?: string) {
 function sizingFixture(value: number, max: number) {
   return (
     <Meter.Root value={value} max={max} aria-label="측정값">
-      <Meter.Value />
+      <Meter.ValueText />
       <Meter.Indicator style={{ blockSize: "8px", inlineSize: "99%" }} />
     </Meter.Root>
   );
@@ -75,7 +75,7 @@ function formatFixture(value: number, max: number, format?: (value: number) => s
       {...(format ? { format } : {})}
       aria-label="측정값"
     >
-      <Meter.Value />
+      <Meter.ValueText />
       <Meter.Indicator />
     </Meter.Root>
   );
@@ -90,7 +90,7 @@ function valueTextFixture(value: number, ariaValueText?: string) {
       aria-label="저장 공간"
       aria-valuetext={ariaValueText}
     >
-      <Meter.Value />
+      <Meter.ValueText />
     </Meter.Root>
   );
 }
@@ -108,7 +108,7 @@ describe("Meter", () => {
         <StrictMode>
           <Meter.Root value={25} aria-labelledby="storage-label">
             <Meter.Label id="storage-label">저장 공간</Meter.Label>
-            <Meter.Value />
+            <Meter.ValueText />
             <Meter.Track data-testid="track">
               <Meter.Indicator data-testid="indicator" />
             </Meter.Track>
@@ -142,7 +142,7 @@ describe("Meter", () => {
           >
             저장 공간
           </Meter.Label>
-          <Meter.Value render={<b>교체 전 내용</b>} />
+          <Meter.ValueText render={<b>교체 전 내용</b>} />
           <Meter.Track render={<section data-testid="track" />}>
             <Meter.Indicator
               render={<i data-testid="indicator" style={{ blockSize: "8px", inlineSize: "95%" }} />}
@@ -287,7 +287,7 @@ describe("Meter", () => {
       ({ value, min, max, now, percent }) => {
         const { container } = render(
           <Meter.Root value={value} min={min ?? 0} max={max ?? 100} aria-label="측정값">
-            <Meter.Value />
+            <Meter.ValueText />
             <Meter.Track>
               <Meter.Indicator data-testid="indicator" />
             </Meter.Track>
@@ -323,9 +323,9 @@ describe("Meter", () => {
     it("Parts가 가장 가까운 Root의 값을 사용한다", () => {
       const { container } = render(
         <Meter.Root value={25}>
-          <Meter.Value data-testid="outer-value" />
+          <Meter.ValueText data-testid="outer-value" />
           <Meter.Root value={75}>
-            <Meter.Value data-testid="inner-value" />
+            <Meter.ValueText data-testid="inner-value" />
           </Meter.Root>
         </Meter.Root>,
       );
@@ -345,7 +345,7 @@ describe("Meter", () => {
       const decimal = new Intl.NumberFormat("de-DE", { maximumFractionDigits: 1 });
       const { container, rerender } = render(
         <Meter.Root value={250} max={1000} format={megabytes.format} aria-label="저장 공간">
-          <Meter.Value />
+          <Meter.ValueText />
           <Meter.Indicator />
         </Meter.Root>,
       );
@@ -359,7 +359,7 @@ describe("Meter", () => {
 
       rerender(
         <Meter.Root value={1234.5} max={2000} format={decimal.format} aria-label="측정값">
-          <Meter.Value />
+          <Meter.ValueText />
         </Meter.Root>,
       );
       expect(container.querySelector("span")?.textContent).toBe("1.234,5");
@@ -371,7 +371,7 @@ describe("Meter", () => {
     it("format을 생략하면 런타임 로케일의 백분율을 사용한다", () => {
       const { container } = render(
         <Meter.Root value={25}>
-          <Meter.Value />
+          <Meter.ValueText />
         </Meter.Root>,
       );
 
@@ -411,7 +411,7 @@ describe("Meter", () => {
     it("포맷 함수가 반환한 빈 문자열을 그대로 사용한다", () => {
       const { container } = render(
         <Meter.Root value={25} format={() => ""} aria-label="측정값">
-          <Meter.Value />
+          <Meter.ValueText />
           <Meter.Indicator />
         </Meter.Root>,
       );
@@ -486,7 +486,7 @@ describe("Meter", () => {
       }
     });
 
-    it.each(["Label", "Value", "Track", "Indicator"] as const)(
+    it.each(["Label", "ValueText", "Track", "Indicator"] as const)(
       "%s는 Root 안에서 사용해야 한다",
       (part) => {
         const Part = Meter[part];
@@ -511,7 +511,7 @@ describe("Meter", () => {
       <>
         <Meter.Root value={250} max={1000} aria-labelledby="storage-label">
           <Meter.Label id="storage-label">저장 공간</Meter.Label>
-          <Meter.Value />
+          <Meter.ValueText />
           <Meter.Track>
             <Meter.Indicator />
           </Meter.Track>

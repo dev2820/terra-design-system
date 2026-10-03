@@ -5,5 +5,5 @@ export type {
   ProgressLabelProps,
   ProgressRootProps,
   ProgressTrackProps,
-  ProgressValueProps,
+  ProgressValueTextProps,
 } from "./progress";
