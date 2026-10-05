@@ -190,11 +190,9 @@ describe("Checkbox", () => {
       expect(container.querySelector("[aria-hidden=true]")?.textContent).toBe("✓");
       expect(onCheckedChange).toHaveBeenCalledOnce();
       expect(onCheckedChange.mock.calls[0]?.[0]).toBe(true);
-      expect(onCheckedChange.mock.calls[0]?.[1]).toMatchObject({
-        reason: "input-change",
-        input,
-        isCanceled: false,
-      });
+      expect(onCheckedChange.mock.calls[0]?.[1].reason).toBe("input-change");
+      expect(onCheckedChange.mock.calls[0]?.[1].input).toBe(input);
+      expect(onCheckedChange.mock.calls[0]?.[1].isCanceled).toBe(false);
       expect(onCheckedChange.mock.calls[0]?.[1].event).toBeInstanceOf(Event);
     });
 

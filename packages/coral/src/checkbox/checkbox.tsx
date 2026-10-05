@@ -106,7 +106,6 @@ export function Root(props: CheckboxRootProps) {
     name,
     value,
     form,
-    ref,
     ...rest
   } = props;
   const [uncontrolledChecked, setChecked] = React.useState(defaultChecked);
@@ -119,12 +118,18 @@ export function Root(props: CheckboxRootProps) {
     () => ({ checked, indeterminate, disabled, readOnly, required }),
     [checked, indeterminate, disabled, readOnly, required],
   );
+  const element = useRender({
+    defaultTagName: "label",
+    render: undefined,
+    props: rest,
+    internalProps: getStateAttributes(state),
+  });
 
   return (
     <CheckboxContext
       value={{ state, controlled, defaultChecked, name, value, form, setChecked, onCheckedChange }}
     >
-      <label {...rest} {...getStateAttributes(state)} ref={ref} />
+      {element}
     </CheckboxContext>
   );
 }
