@@ -7,5 +7,6 @@ export * from "./fieldset/index";
 export * from "./input/index";
 export * from "./meter/index";
 export * from "./progress/index";
+export * from "./radio-group/index";
 export * from "./separator/index";
 export * from "./switch/index";

@@ -44,6 +44,10 @@
       "types": "./dist/progress.d.ts",
       "import": "./dist/progress.js"
     },
+    "./radio-group": {
+      "types": "./dist/radio-group.d.ts",
+      "import": "./dist/radio-group.js"
+    },
     "./separator": {
       "types": "./dist/separator.d.ts",
       "import": "./dist/separator.js"

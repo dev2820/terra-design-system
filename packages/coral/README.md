@@ -17,6 +17,7 @@ import { Checkbox as SubpathCheckbox } from "@coral/react/checkbox";
 import { Input as SubpathInput } from "@coral/react/input";
 import { Meter } from "@coral/react/meter";
 import { Progress } from "@coral/react/progress";
+import { RadioGroup } from "@coral/react/radio-group";
 import { Separator } from "@coral/react/separator";
 import { Switch } from "@coral/react/switch";
 ```
