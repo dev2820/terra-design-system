@@ -12,6 +12,7 @@ export default defineConfig({
     meter: "src/meter/index.ts",
     progress: "src/progress/index.ts",
     separator: "src/separator/index.ts",
+    switch: "src/switch/index.ts",
     "use-render": "src/core/index.ts",
   },
   format: "esm",

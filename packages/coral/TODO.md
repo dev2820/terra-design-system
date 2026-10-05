@@ -51,7 +51,7 @@ Coral은 WAI-ARIA APG 목록을 컴포넌트 목록으로 그대로 구현하지
 - [ ] Select
 - [x] Separator — 네이티브 `<hr>` 기반 정적 구분선으로 방향과 장식용 처리를 제공한다.
 - [ ] Slider
-- [ ] Switch
+- [x] Switch — 네이티브 checkbox 기반 켜짐·꺼짐 상태와 Root, Control, Thumb, Label, HiddenInput을 제공한다.
 - [ ] Tabs
 - [ ] Toast
 - [ ] Toggle

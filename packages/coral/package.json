@@ -48,6 +48,10 @@
       "types": "./dist/separator.d.ts",
       "import": "./dist/separator.js"
     },
+    "./switch": {
+      "types": "./dist/switch.d.ts",
+      "import": "./dist/switch.js"
+    },
     "./use-render": {
       "types": "./dist/use-render.d.ts",
       "import": "./dist/use-render.js"
