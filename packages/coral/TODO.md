@@ -25,7 +25,7 @@ Coral은 WAI-ARIA APG 목록을 컴포넌트 목록으로 그대로 구현하지
 - [ ] Alert Dialog
 - [ ] Autocomplete
 - [x] Avatar
-- [ ] Button
+- [x] Button — 네이티브 `<button>`으로 충분하므로 별도 컴포넌트를 제공하지 않는다.
 - [x] Checkbox
 - [ ] Checkbox Group
 - [ ] Collapsible
@@ -74,8 +74,8 @@ Coral은 WAI-ARIA APG 목록을 컴포넌트 목록으로 그대로 구현하지
 
 - [ ] Alert와 Breadcrumb가 네이티브 구조를 안전하게 재사용하게 하는 Coral
       컴포넌트가 필요한지 검토한다.
-- [ ] Button은 네이티브 요소의 의미, 키보드와 Form 동작을 보존하는 범위에서
-      Coral의 공개 계약을 정한다.
+- [x] Button은 네이티브 `<button>`과 각 패턴의 Trigger로 충분하므로 별도
+      컴포넌트를 제공하지 않는다.
 - [x] Checkbox는 Root, Control, Indicator, Label과 HiddenInput의 합성 구조로
       제공하고, 네이티브 input의 키보드와 Form 동작을 유지한다.
 - [ ] Disclosure와 Accordion은 구조, 펼침 상태와 ID 관계를 컴포넌트에서 직접
