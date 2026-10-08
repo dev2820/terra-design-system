@@ -20,6 +20,7 @@ import { Progress } from "@coral/react/progress";
 import { RadioGroup } from "@coral/react/radio-group";
 import { Separator } from "@coral/react/separator";
 import { Switch } from "@coral/react/switch";
+import { Toggle } from "@coral/react/toggle";
 ```
 
 ## 책임 범위

@@ -55,7 +55,7 @@ Coral은 WAI-ARIA APG 목록을 컴포넌트 목록으로 그대로 구현하지
 - [x] Switch — 네이티브 checkbox 기반 켜짐·꺼짐 상태와 Root, Control, Thumb, Label, HiddenInput을 제공한다.
 - [ ] Tabs
 - [ ] Toast
-- [ ] Toggle
+- [x] Toggle — 네이티브 button 기반 눌림 상태, 변경 취소와 aria-pressed를 Root로 제공한다.
 - [ ] Toggle Group
 - [ ] Toolbar
 - [ ] Tooltip

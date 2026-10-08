@@ -14,6 +14,7 @@ export default defineConfig({
     "radio-group": "src/radio-group/index.ts",
     separator: "src/separator/index.ts",
     switch: "src/switch/index.ts",
+    toggle: "src/toggle/index.ts",
     "use-render": "src/core/index.ts",
   },
   format: "esm",

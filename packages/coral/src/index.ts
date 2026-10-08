@@ -10,3 +10,4 @@ export * from "./progress/index";
 export * from "./radio-group/index";
 export * from "./separator/index";
 export * from "./switch/index";
+export * from "./toggle/index";
