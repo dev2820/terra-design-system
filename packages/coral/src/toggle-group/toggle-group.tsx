@@ -2,7 +2,7 @@
 
 import * as React from "react";
 
-import { createPartContext, useRender, type RenderProp } from "../core/index";
+import { createPartContext, useRender, useRovingFocus, type RenderProp } from "../core";
 import {
   Root as ToggleRoot,
   type ToggleChangeEventDetails,
@@ -57,182 +57,6 @@ function getStateAttributes(state: ToggleGroupState) {
   };
 }
 
-function getItems(root: HTMLElement) {
-  return Array.from(root.querySelectorAll<HTMLButtonElement>(itemSelector)).filter(
-    (item) => item.closest(rootSelector) === root,
-  );
-}
-
-function isFocusable(item: HTMLButtonElement) {
-  return (
-    !item.matches(":disabled") &&
-    !item.closest("[inert]") &&
-    item.checkVisibility({ visibilityProperty: true })
-  );
-}
-
-function useGroupFocus(orientation: ToggleGroupState["orientation"], loopFocus: boolean) {
-  const ref = React.useRef<HTMLDivElement | null>(null);
-  const lastFocused = React.useRef<HTMLButtonElement | null>(null);
-  const focusWithin = React.useRef(false);
-
-  function syncTabStop() {
-    const root = ref.current;
-
-    if (!root) {
-      return;
-    }
-
-    const items = getItems(root);
-    const enabled = items.filter(isFocusable);
-    const active = root.ownerDocument.activeElement;
-
-    if (enabled.includes(active as HTMLButtonElement)) {
-      lastFocused.current = active as HTMLButtonElement;
-      focusWithin.current = true;
-    }
-
-    const previous = lastFocused.current;
-    const entry =
-      (previous && enabled.includes(previous) ? previous : undefined) ??
-      enabled.find((item) => item.hasAttribute("data-pressed")) ??
-      enabled[0];
-
-    for (const item of items) {
-      item.tabIndex = item === entry ? 0 : -1;
-    }
-
-    if (!entry) {
-      focusWithin.current = false;
-    } else if (
-      focusWithin.current &&
-      !enabled.includes(active as HTMLButtonElement) &&
-      (active === root.ownerDocument.body || active === previous)
-    ) {
-      entry.focus();
-    }
-  }
-
-  React.useLayoutEffect(() => {
-    syncTabStop();
-
-    const root = ref.current;
-
-    if (!root) {
-      return undefined;
-    }
-
-    // Descendants can mount, reorder or become disabled without rerendering Root.
-    // Observe availability changes, but not the tabindex writes made above.
-    const observer = new MutationObserver(syncTabStop);
-    const attributeFilter = [
-      "disabled",
-      "hidden",
-      "inert",
-      "open",
-      "class",
-      "style",
-      "data-pressed",
-    ];
-    observer.observe(root, { childList: true, subtree: true, attributes: true, attributeFilter });
-
-    for (let ancestor = root.parentElement; ancestor; ancestor = ancestor.parentElement) {
-      observer.observe(ancestor, { attributes: true, attributeFilter });
-    }
-
-    const resizeObserver = new ResizeObserver(syncTabStop);
-    resizeObserver.observe(root);
-
-    return () => {
-      observer.disconnect();
-      resizeObserver.disconnect();
-    };
-  });
-
-  function getItem(target: EventTarget | null) {
-    const item = target instanceof Element ? target.closest<HTMLButtonElement>(itemSelector) : null;
-
-    return item?.closest(rootSelector) === ref.current ? item : null;
-  }
-
-  function handleFocusCapture(event: React.FocusEvent<HTMLDivElement>) {
-    const item = getItem(event.target);
-    focusWithin.current = item !== null;
-
-    if (item) {
-      lastFocused.current = item;
-      syncTabStop();
-    }
-  }
-
-  function handleBlurCapture(event: React.FocusEvent<HTMLDivElement>) {
-    const item = getItem(event.target);
-
-    if (
-      item &&
-      !ref.current?.contains(event.relatedTarget) &&
-      (event.relatedTarget !== null || isFocusable(item))
-    ) {
-      focusWithin.current = false;
-    }
-  }
-
-  function handleKeyDown(event: React.KeyboardEvent<HTMLDivElement>) {
-    if (
-      event.defaultPrevented ||
-      event.altKey ||
-      event.ctrlKey ||
-      event.metaKey ||
-      event.shiftKey
-    ) {
-      return;
-    }
-
-    const item = getItem(event.target);
-    const root = ref.current;
-
-    if (!item || !root) {
-      return;
-    }
-
-    const items = getItems(root).filter(isFocusable);
-    const index = items.indexOf(item);
-
-    if (index === -1) {
-      return;
-    }
-
-    const rtl = getComputedStyle(root).direction === "rtl";
-    const previousKey = orientation === "vertical" ? "ArrowUp" : rtl ? "ArrowRight" : "ArrowLeft";
-    const nextKey = orientation === "vertical" ? "ArrowDown" : rtl ? "ArrowLeft" : "ArrowRight";
-    let nextIndex: number;
-
-    if (event.key === "Home") {
-      nextIndex = 0;
-    } else if (event.key === "End") {
-      nextIndex = items.length - 1;
-    } else if (event.key === previousKey || event.key === nextKey) {
-      nextIndex = index + (event.key === nextKey ? 1 : -1);
-
-      if (loopFocus) {
-        nextIndex = (nextIndex + items.length) % items.length;
-      }
-    } else {
-      return;
-    }
-
-    event.preventDefault();
-    items[nextIndex]?.focus();
-  }
-
-  return {
-    ref,
-    onFocusCapture: handleFocusCapture,
-    onBlurCapture: handleBlurCapture,
-    onKeyDown: handleKeyDown,
-  };
-}
-
 export function Root(props: ToggleGroupRootProps) {
   const {
     value: valueProp,
@@ -251,7 +75,14 @@ export function Root(props: ToggleGroupRootProps) {
   const controlled = valueProp !== undefined;
   const value = normalizeValue(controlled ? valueProp : uncontrolledValue, multiple);
   const state: ToggleGroupState = { disabled, multiple, orientation };
-  const focusProps = useGroupFocus(orientation, loopFocus);
+  const focusProps = useRovingFocus({
+    rootSelector,
+    itemSelector,
+    selectedSelector: "[data-pressed]",
+    selectedAttribute: "data-pressed",
+    orientation,
+    loopFocus,
+  });
 
   function toggle(
     itemValue: string,
