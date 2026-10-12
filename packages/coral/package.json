@@ -60,6 +60,10 @@
       "types": "./dist/toggle.d.ts",
       "import": "./dist/toggle.js"
     },
+    "./toggle-group": {
+      "types": "./dist/toggle-group.d.ts",
+      "import": "./dist/toggle-group.js"
+    },
     "./use-render": {
       "types": "./dist/use-render.d.ts",
       "import": "./dist/use-render.js"

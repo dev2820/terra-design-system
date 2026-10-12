@@ -22,43 +22,43 @@ Coral은 WAI-ARIA APG 목록을 컴포넌트 목록으로 그대로 구현하지
 뜻한다.
 
 - [x] Accordion
-- [ ] Alert Dialog
-- [ ] Autocomplete
+- [ ] Alert Dialog (popover 선행)
+- [ ] Autocomplete (popover 선행)
 - [x] Avatar
 - [x] Button — 네이티브 `<button>`으로 충분하므로 별도 컴포넌트를 제공하지 않는다.
 - [x] Checkbox
 - [ ] Checkbox Group
 - [ ] Collapsible
-- [ ] Combobox
-- [ ] Context Menu
-- [ ] Dialog
-- [ ] Drawer
+- [ ] Combobox (popover 선행)
+- [ ] Context Menu (popover 선행)
+- [ ] Dialog (popover 선행)
+- [ ] Drawer (popover 선행)
 - [x] Field
 - [x] Fieldset
 - [x] Form — 네이티브 `<form>`으로 충분하므로 별도 컴포넌트를 제공하지 않는다.
 - [x] Input
-- [ ] Menu
-- [ ] Menubar
+- [ ] Menu (popover 선행)
+- [ ] Menubar (popover 선행)
 - [x] Meter — 기본 측정값·포맷·Parts를 제공하고 원형과 임계값 구간 판정은 제외한다.
-- [ ] Navigation Menu
+- [ ] Navigation Menu (popover 선행)
 - [ ] Number Field
 - [ ] OTP Field
 - [ ] Popover
-- [ ] Preview Card
+- [ ] Preview Card (popover 선행)
 - [x] Progress — 확정·불확정 상태와 값 포맷·Parts를 제공한다.
 - [x] Radio — 별도 컴포넌트 없이 Radio Group의 Item으로 제공한다.
 - [x] Radio Group — 네이티브 fieldset, legend, label과 radio input으로 단일 선택 그룹을 제공한다.
 - [ ] Scroll Area
-- [ ] Select
+- [ ] Select (popover 선행)
 - [x] Separator — 네이티브 `<hr>` 기반 정적 구분선으로 방향과 장식용 처리를 제공한다.
 - [ ] Slider
 - [x] Switch — 네이티브 checkbox 기반 켜짐·꺼짐 상태와 Root, Control, Thumb, Label, HiddenInput을 제공한다.
 - [ ] Tabs
-- [ ] Toast
+- [ ] Toast (popover 선행)
 - [x] Toggle — 네이티브 button 기반 눌림 상태, 변경 취소와 aria-pressed를 Root로 제공한다.
-- [ ] Toggle Group
+- [x] Toggle Group — Toggle 기반 단일·다중 선택과 방향키 포커스 이동을 Root와 Item으로 제공한다.
 - [ ] Toolbar
-- [ ] Tooltip
+- [ ] Tooltip (popover 선행)
 
 ## Progress 포맷 계약
 

@@ -11,3 +11,4 @@ export * from "./radio-group/index";
 export * from "./separator/index";
 export * from "./switch/index";
 export * from "./toggle/index";
+export * from "./toggle-group/index";

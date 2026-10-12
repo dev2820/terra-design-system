@@ -15,6 +15,7 @@ export default defineConfig({
     separator: "src/separator/index.ts",
     switch: "src/switch/index.ts",
     toggle: "src/toggle/index.ts",
+    "toggle-group": "src/toggle-group/index.ts",
     "use-render": "src/core/index.ts",
   },
   format: "esm",

@@ -21,6 +21,7 @@ import { RadioGroup } from "@coral/react/radio-group";
 import { Separator } from "@coral/react/separator";
 import { Switch } from "@coral/react/switch";
 import { Toggle } from "@coral/react/toggle";
+import { ToggleGroup } from "@coral/react/toggle-group";
 ```
 
 ## 책임 범위
