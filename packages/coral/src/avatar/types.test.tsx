@@ -1,7 +1,7 @@
 import { describe, expectTypeOf, it } from "vitest";
 
-import { Avatar } from "./index";
-import type { AvatarImageProps } from "./index";
+import { Avatar } from ".";
+import type { AvatarImageProps } from ".";
 
 describe("Avatar 타입", () => {
   it("Image에 문자열 alt를 요구한다", () => {

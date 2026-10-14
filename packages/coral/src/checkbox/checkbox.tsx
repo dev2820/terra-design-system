@@ -2,10 +2,9 @@
 
 import * as React from "react";
 
-import { useRender } from "../core/index";
-import { createPartContext } from "../core/utils/create-part-context";
+import { createPartContext, useRender } from "../core";
+import { Field } from "../field";
 import { useFieldState } from "../field/field";
-import { Field } from "../field/index";
 import { useFieldsetContext } from "../fieldset/fieldset-context";
 
 export interface CheckboxState {

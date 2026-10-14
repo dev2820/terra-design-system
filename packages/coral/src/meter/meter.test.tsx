@@ -6,8 +6,8 @@ import { renderToString } from "react-dom/server";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { page } from "vitest/browser";
 
-import { Meter as RootExportMeter } from "../index";
-import { Meter } from "./index";
+import { Meter } from ".";
+import { Meter as RootExportMeter } from "..";
 
 const fixtures: Array<{ container: HTMLDivElement; root: Root }> = [];
 const percentFormatter = new Intl.NumberFormat(undefined, { style: "percent" });

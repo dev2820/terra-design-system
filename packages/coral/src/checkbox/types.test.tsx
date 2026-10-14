@@ -1,8 +1,8 @@
 import type * as React from "react";
 import { describe, expectTypeOf, it } from "vitest";
 
-import { Checkbox } from "./index";
-import type { CheckboxChangeEventDetails, CheckboxState } from "./index";
+import { Checkbox } from ".";
+import type { CheckboxChangeEventDetails, CheckboxState } from ".";
 
 describe("Checkbox 타입", () => {
   it("Root와 HiddenInput ref를 구분한다", () => {

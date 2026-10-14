@@ -4,7 +4,7 @@ import { flushSync } from "react-dom";
 import { createRoot, type Root } from "react-dom/client";
 import { afterEach, describe, expect, it, vi } from "vitest";
 
-import { Avatar } from "./index";
+import { Avatar } from ".";
 
 const fixtures: Array<{ container: HTMLDivElement; root: Root }> = [];
 

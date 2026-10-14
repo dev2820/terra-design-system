@@ -2,8 +2,14 @@
 
 import * as React from "react";
 
-import { areValuesEqual, isPromise, joinIds, useRender, type RenderProp } from "../core/index";
-import { createPartContext } from "../core/utils/create-part-context";
+import {
+  areValuesEqual,
+  createPartContext,
+  isPromise,
+  joinIds,
+  useRender,
+  type RenderProp,
+} from "../core";
 import { useFieldsetContext } from "../fieldset/fieldset-context";
 
 export type FieldValidationMode = "onSubmit" | "onBlur" | "onChange";

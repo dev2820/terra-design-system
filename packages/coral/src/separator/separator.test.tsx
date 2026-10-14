@@ -5,7 +5,7 @@ import { createRoot, type Root } from "react-dom/client";
 import { afterEach, describe, expect, it } from "vitest";
 import { page } from "vitest/browser";
 
-import { Separator } from "./index";
+import { Separator } from ".";
 
 const fixtures: Array<{ container: HTMLDivElement; root: Root }> = [];
 

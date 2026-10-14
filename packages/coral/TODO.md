@@ -28,7 +28,7 @@ Coral은 WAI-ARIA APG 목록을 컴포넌트 목록으로 그대로 구현하지
 - [x] Button — 네이티브 `<button>`으로 충분하므로 별도 컴포넌트를 제공하지 않는다.
 - [x] Checkbox
 - [ ] Checkbox Group
-- [ ] Collapsible
+- [x] Collapsible — 단일 패널의 제어·비제어 펼침 상태와 Root, Trigger, Panel을 제공한다.
 - [ ] Combobox (popover 선행)
 - [ ] Context Menu (popover 선행)
 - [ ] Dialog (popover 선행)
@@ -78,7 +78,7 @@ Coral은 WAI-ARIA APG 목록을 컴포넌트 목록으로 그대로 구현하지
       컴포넌트를 제공하지 않는다.
 - [x] Checkbox는 Root, Control, Indicator, Label과 HiddenInput의 합성 구조로
       제공하고, 네이티브 input의 키보드와 Form 동작을 유지한다.
-- [ ] Disclosure와 Accordion은 구조, 펼침 상태와 ID 관계를 컴포넌트에서 직접
+- [x] Disclosure와 Accordion은 구조, 펼침 상태와 ID 관계를 컴포넌트에서 직접
       완성한다.
 - [ ] Dialog와 Alert Dialog는 Focus 이동·순환·복원, 외부 영역 비활성화와
       Scroll Lock을 실제 DOM 동작으로 완성한다.

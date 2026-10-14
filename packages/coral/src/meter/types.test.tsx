@@ -1,7 +1,7 @@
 import { describe, expectTypeOf, it } from "vitest";
 
-import { Meter } from "./index";
-import type { MeterValueTextProps } from "./index";
+import { Meter } from ".";
+import type { MeterValueTextProps } from ".";
 
 describe("Meter 타입", () => {
   it("ValueText는 표시값을 소유하고 children을 받지 않는다", () => {

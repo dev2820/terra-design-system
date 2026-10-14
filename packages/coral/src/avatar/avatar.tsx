@@ -2,8 +2,7 @@
 
 import * as React from "react";
 
-import { useRender } from "../core/index";
-import { createPartContext } from "../core/utils/create-part-context";
+import { createPartContext, useRender } from "../core";
 
 export type AvatarImageLoadingStatus = "loading" | "loaded" | "error";
 

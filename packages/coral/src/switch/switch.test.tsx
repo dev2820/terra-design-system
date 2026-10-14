@@ -6,10 +6,10 @@ import { renderToString } from "react-dom/server";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { page, userEvent } from "vitest/browser";
 
-import { Field } from "../field/index";
-import { Fieldset } from "../fieldset/index";
-import { Switch as RootExportSwitch } from "../index";
-import { Switch } from "./index";
+import { Switch } from ".";
+import { Switch as RootExportSwitch } from "..";
+import { Field } from "../field";
+import { Fieldset } from "../fieldset";
 
 const fixtures: Array<{ container: HTMLDivElement; root: Root }> = [];
 

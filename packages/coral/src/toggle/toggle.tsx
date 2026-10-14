@@ -2,7 +2,7 @@
 
 import * as React from "react";
 
-import { useRender } from "../core/index";
+import { useRender } from "../core";
 
 export interface ToggleState {
   pressed: boolean;

@@ -5,7 +5,7 @@ import { createRoot, type Root } from "react-dom/client";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { userEvent } from "vitest/browser";
 
-import { Accordion } from "./index";
+import { Accordion } from ".";
 
 const fixtures: Array<{ container: HTMLDivElement; root: Root }> = [];
 

@@ -2,9 +2,9 @@
 
 import * as React from "react";
 
-import { createPartContext, useRender, type RenderProp } from "../core/index";
+import { createPartContext, useRender, type RenderProp } from "../core";
+import { Field } from "../field";
 import { useFieldState } from "../field/field";
-import { Field } from "../field/index";
 import { useFieldsetContext } from "../fieldset/fieldset-context";
 
 export interface SwitchState {

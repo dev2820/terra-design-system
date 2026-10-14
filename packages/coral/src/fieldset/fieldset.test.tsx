@@ -5,9 +5,9 @@ import { createRoot, type Root } from "react-dom/client";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { userEvent } from "vitest/browser";
 
-import { Field } from "../field/index";
-import { Input } from "../input/index";
-import { Fieldset } from "./index";
+import { Fieldset } from ".";
+import { Field } from "../field";
+import { Input } from "../input";
 
 const fixtures: Array<{ container: HTMLDivElement; root: Root }> = [];
 

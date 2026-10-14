@@ -2,7 +2,7 @@
 
 import * as React from "react";
 
-import { createPartContext, useRender, type RenderProp } from "../core/index";
+import { createPartContext, useRender, type RenderProp } from "../core";
 import { useFieldState } from "../field/field";
 import { useFieldsetContext } from "../fieldset/fieldset-context";
 

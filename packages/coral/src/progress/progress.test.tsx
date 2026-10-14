@@ -6,8 +6,8 @@ import { renderToString } from "react-dom/server";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { page } from "vitest/browser";
 
-import { Progress as RootProgress } from "../index";
-import { Progress } from "./index";
+import { Progress } from ".";
+import { Progress as RootProgress } from "..";
 
 const fixtures: Array<{ container: HTMLDivElement; root: Root }> = [];
 const percentFormatter = new Intl.NumberFormat(undefined, { style: "percent" });

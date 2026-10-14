@@ -1,7 +1,7 @@
 "use client";
 
-import { Field } from "../field/index";
-import type { FieldControlProps } from "../field/index";
+import { Field } from "../field";
+import type { FieldControlProps } from "../field";
 
 export interface InputProps extends FieldControlProps {}
 

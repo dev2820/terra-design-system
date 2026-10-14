@@ -1,8 +1,8 @@
 import type * as React from "react";
 import { describe, expectTypeOf, it } from "vitest";
 
-import { useRender } from "./index";
-import type { RenderProp, UseRenderOptions } from "./index";
+import { useRender } from ".";
+import type { RenderProp, UseRenderOptions } from ".";
 
 describe("useRender 타입", () => {
   it("render에 React 요소를 받는다", () => {

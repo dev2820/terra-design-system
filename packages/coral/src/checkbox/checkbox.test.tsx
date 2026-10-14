@@ -5,10 +5,10 @@ import { createRoot, type Root } from "react-dom/client";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { page, userEvent } from "vitest/browser";
 
-import { Field } from "../field/index";
-import { Fieldset } from "../fieldset/index";
-import { Checkbox as RootExportCheckbox } from "../index";
-import { Checkbox } from "./index";
+import { Checkbox } from ".";
+import { Checkbox as RootExportCheckbox } from "..";
+import { Field } from "../field";
+import { Fieldset } from "../fieldset";
 
 const fixtures: Array<{ container: HTMLDivElement; root: Root }> = [];
 

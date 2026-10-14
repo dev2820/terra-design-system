@@ -14,6 +14,7 @@ pnpm add @coral/react
 import { Checkbox, Field, Input } from "@coral/react";
 import { Accordion } from "@coral/react/accordion";
 import { Checkbox as SubpathCheckbox } from "@coral/react/checkbox";
+import { Collapsible } from "@coral/react/collapsible";
 import { Input as SubpathInput } from "@coral/react/input";
 import { Meter } from "@coral/react/meter";
 import { Progress } from "@coral/react/progress";

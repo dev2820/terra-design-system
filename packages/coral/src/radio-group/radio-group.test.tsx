@@ -6,8 +6,8 @@ import { renderToString } from "react-dom/server";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { page, userEvent } from "vitest/browser";
 
-import { RadioGroup as RootExportRadioGroup } from "../index";
-import { RadioGroup } from "./index";
+import { RadioGroup } from ".";
+import { RadioGroup as RootExportRadioGroup } from "..";
 
 const fixtures: Array<{ container: HTMLDivElement; root: Root }> = [];
 

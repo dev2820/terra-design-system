@@ -2,8 +2,7 @@
 
 import * as React from "react";
 
-import { useRender, type RenderProp } from "../core/index";
-import { createPartContext } from "../core/utils/create-part-context";
+import { createPartContext, useRender, type RenderProp } from "../core";
 
 interface AccordionRenderProps {
   render?: RenderProp;

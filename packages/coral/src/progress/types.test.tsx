@@ -1,8 +1,8 @@
 import type * as React from "react";
 import { describe, expectTypeOf, it } from "vitest";
 
-import { Progress } from "./index";
-import type { ProgressRootProps, ProgressValueTextProps } from "./index";
+import { Progress } from ".";
+import type { ProgressRootProps, ProgressValueTextProps } from ".";
 
 describe("Progress 타입", () => {
   it("생략한 value는 허용하고 null은 허용하지 않는다", () => {

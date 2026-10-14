@@ -6,9 +6,9 @@ import { renderToString } from "react-dom/server";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { page, userEvent } from "vitest/browser";
 
-import { Fieldset } from "../fieldset/index";
-import { Toggle as RootExportToggle } from "../index";
-import { Toggle, type ToggleChangeEventDetails } from "./index";
+import { Toggle, type ToggleChangeEventDetails } from ".";
+import { Toggle as RootExportToggle } from "..";
+import { Fieldset } from "../fieldset";
 
 const fixtures: Array<{ container: HTMLDivElement; root: Root }> = [];
 

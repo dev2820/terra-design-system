@@ -1,13 +1,13 @@
 import type * as React from "react";
 import { describe, expectTypeOf, it } from "vitest";
 
-import { Accordion } from "./index";
+import { Accordion } from ".";
 import type {
   AccordionChangeEventDetails,
   AccordionItemProps,
   AccordionPanelProps,
   AccordionTriggerProps,
-} from "./index";
+} from ".";
 
 describe("Accordion 타입", () => {
   it("제어 값과 비제어 값에 문자열 배열을 사용한다", () => {
