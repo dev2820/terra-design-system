@@ -2,11 +2,7 @@
 
 import * as React from "react";
 
-import { createPartContext, useRender, type RenderProp } from "../core";
-
-interface CollapsibleRenderProps {
-  render?: RenderProp;
-}
+import { createPartContext, useRender, type PropsWithRender } from "../core";
 
 export interface CollapsibleChangeEventDetails {
   readonly reason: "trigger-press";
@@ -16,7 +12,7 @@ export interface CollapsibleChangeEventDetails {
   cancel: () => void;
 }
 
-export interface CollapsibleRootProps extends React.ComponentProps<"div">, CollapsibleRenderProps {
+export interface CollapsibleRootProps extends PropsWithRender<React.ComponentProps<"div">> {
   open?: boolean;
   defaultOpen?: boolean;
   onOpenChange?: (open: boolean, eventDetails: CollapsibleChangeEventDetails) => void;
@@ -66,6 +62,8 @@ export function Root(props: CollapsibleRootProps) {
   const [uncontrolledOpen, setUncontrolledOpen] = React.useState(defaultOpen);
   const generatedId = React.useId();
   const id = idProp ?? `${generatedId}-collapsible`;
+  const triggerId = `${id}-trigger`;
+  const panelId = `${id}-panel`;
   const controlled = openProp !== undefined;
   const open = openProp ?? uncontrolledOpen;
 
@@ -96,9 +94,7 @@ export function Root(props: CollapsibleRootProps) {
   });
 
   return (
-    <CollapsibleContext.Provider
-      value={{ open, disabled, triggerId: `${id}-trigger`, panelId: `${id}-panel`, toggle }}
-    >
+    <CollapsibleContext.Provider value={{ open, disabled, triggerId, panelId, toggle }}>
       {element}
     </CollapsibleContext.Provider>
   );
@@ -136,8 +132,9 @@ export function Trigger(props: CollapsibleTriggerProps) {
   });
 }
 
-export interface CollapsiblePanelProps
-  extends Omit<React.ComponentProps<"div">, "hidden" | "id">, CollapsibleRenderProps {}
+export interface CollapsiblePanelProps extends PropsWithRender<
+  Omit<React.ComponentProps<"div">, "hidden" | "id">
+> {}
 
 export function Panel(props: CollapsiblePanelProps) {
   const { render, ref, ...rest } = props;

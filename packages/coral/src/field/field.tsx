@@ -8,7 +8,7 @@ import {
   isPromise,
   joinIds,
   useRender,
-  type RenderProp,
+  type PropsWithRender,
 } from "../core";
 import { useFieldsetContext } from "../fieldset/fieldset-context";
 
@@ -301,11 +301,7 @@ export function useFieldState() {
   return React.use(FieldContext)?.state;
 }
 
-interface FieldRenderProps {
-  render?: RenderProp;
-}
-
-export interface FieldRootProps extends React.ComponentProps<"div">, FieldRenderProps {
+export interface FieldRootProps extends PropsWithRender<React.ComponentProps<"div">> {
   name?: string;
   disabled?: boolean;
   invalid?: boolean;
@@ -651,8 +647,9 @@ export function Root(props: FieldRootProps) {
   return <FieldContext value={context}>{element}</FieldContext>;
 }
 
-export interface FieldLabelProps
-  extends Omit<React.ComponentProps<"label">, "htmlFor">, FieldRenderProps {}
+export interface FieldLabelProps extends PropsWithRender<
+  Omit<React.ComponentProps<"label">, "htmlFor">
+> {}
 
 export function Label(props: FieldLabelProps) {
   const { render, ref, ...rest } = props;
@@ -670,7 +667,7 @@ export function Label(props: FieldLabelProps) {
   });
 }
 
-export interface FieldControlProps extends React.ComponentProps<"input">, FieldRenderProps {}
+export interface FieldControlProps extends PropsWithRender<React.ComponentProps<"input">> {}
 
 export function Control(props: FieldControlProps) {
   const {
@@ -760,7 +757,7 @@ export function Control(props: FieldControlProps) {
   });
 }
 
-export interface FieldDescriptionProps extends React.ComponentProps<"p">, FieldRenderProps {}
+export interface FieldDescriptionProps extends PropsWithRender<React.ComponentProps<"p">> {}
 
 export function Description(props: FieldDescriptionProps) {
   const { render, ref, ...rest } = props;
@@ -800,7 +797,7 @@ export type FieldErrorMatch =
   | "typeMismatch"
   | "valueMissing";
 
-export interface FieldErrorProps extends React.ComponentProps<"div">, FieldRenderProps {
+export interface FieldErrorProps extends PropsWithRender<React.ComponentProps<"div">> {
   match?: FieldErrorMatch;
 }
 

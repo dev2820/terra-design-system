@@ -2,7 +2,7 @@
 
 import * as React from "react";
 
-import { clamp, createPartContext, isNumber, useRender, type RenderProp } from "../core";
+import { clamp, createPartContext, isNumber, useRender, type PropsWithRender } from "../core";
 
 interface MeterContextValue {
   value: number;
@@ -78,9 +78,7 @@ export function Root(props: MeterRootProps) {
   return <MeterContext value={context}>{element}</MeterContext>;
 }
 
-export interface MeterLabelProps extends React.ComponentProps<"span"> {
-  render?: RenderProp;
-}
+export interface MeterLabelProps extends PropsWithRender<React.ComponentProps<"span">> {}
 
 export function Label(props: MeterLabelProps) {
   const { render, ...rest } = props;
@@ -93,9 +91,9 @@ export function Label(props: MeterLabelProps) {
   });
 }
 
-export interface MeterValueTextProps extends Omit<React.ComponentProps<"span">, "children"> {
-  render?: RenderProp;
-}
+export interface MeterValueTextProps extends PropsWithRender<
+  Omit<React.ComponentProps<"span">, "children">
+> {}
 
 export function ValueText(props: MeterValueTextProps) {
   const { render, ...rest } = props;
@@ -109,9 +107,7 @@ export function ValueText(props: MeterValueTextProps) {
   });
 }
 
-export interface MeterTrackProps extends React.ComponentProps<"div"> {
-  render?: RenderProp;
-}
+export interface MeterTrackProps extends PropsWithRender<React.ComponentProps<"div">> {}
 
 export function Track(props: MeterTrackProps) {
   const { render, ...rest } = props;
@@ -120,9 +116,7 @@ export function Track(props: MeterTrackProps) {
   return useRender({ defaultTagName: "div", render, props: rest });
 }
 
-export interface MeterIndicatorProps extends React.ComponentProps<"div"> {
-  render?: RenderProp;
-}
+export interface MeterIndicatorProps extends PropsWithRender<React.ComponentProps<"div">> {}
 
 export function Indicator(props: MeterIndicatorProps) {
   const { render, ...rest } = props;

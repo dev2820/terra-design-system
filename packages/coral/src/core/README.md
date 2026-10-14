@@ -9,3 +9,6 @@ Coral 컴포넌트가 기본 요소를 사용자 지정 React 요소로 교체�
 
 이 모듈은 컴포넌트의 의미나 접근성 계약을 정하지 않는다. 각 Coral 컴포넌트가
 최종 렌더링 요소와 필수 HTML·ARIA 속성을 계속 소유한다.
+
+`PropsWithRender<T>`는 `render?: RenderProp`을 지원하는 Part의 Props를
+HTML 요소 Props와 조합한다.

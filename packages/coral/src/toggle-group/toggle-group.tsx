@@ -2,7 +2,7 @@
 
 import * as React from "react";
 
-import { createPartContext, useRender, useRovingFocus, type RenderProp } from "../core";
+import { createPartContext, useRender, useRovingFocus, type PropsWithRender } from "../core";
 import {
   Root as ToggleRoot,
   type ToggleChangeEventDetails,
@@ -17,9 +17,8 @@ export interface ToggleGroupState {
   orientation: "horizontal" | "vertical";
 }
 
-export interface ToggleGroupRootProps extends Omit<
-  React.ComponentProps<"div">,
-  "aria-orientation" | "defaultValue" | "role" | "tabIndex"
+export interface ToggleGroupRootProps extends PropsWithRender<
+  Omit<React.ComponentProps<"div">, "aria-orientation" | "defaultValue" | "role" | "tabIndex">
 > {
   value?: readonly string[];
   defaultValue?: readonly string[];
@@ -28,7 +27,6 @@ export interface ToggleGroupRootProps extends Omit<
   disabled?: boolean;
   orientation?: ToggleGroupState["orientation"];
   loopFocus?: boolean;
-  render?: RenderProp;
 }
 
 interface ToggleGroupContextValue {

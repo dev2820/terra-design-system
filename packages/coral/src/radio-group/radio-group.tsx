@@ -2,7 +2,7 @@
 
 import * as React from "react";
 
-import { createPartContext, useRender, type RenderProp } from "../core";
+import { createPartContext, useRender, type PropsWithRender } from "../core";
 import { useFieldState } from "../field/field";
 import { useFieldsetContext } from "../fieldset/fieldset-context";
 
@@ -319,12 +319,9 @@ export function ItemHiddenInput(props: RadioGroupItemHiddenInputProps) {
   });
 }
 
-export interface RadioGroupItemControlProps extends Omit<
-  React.ComponentProps<"span">,
-  "aria-hidden" | "role"
-> {
-  render?: RenderProp;
-}
+export interface RadioGroupItemControlProps extends PropsWithRender<
+  Omit<React.ComponentProps<"span">, "aria-hidden" | "role">
+> {}
 
 export function ItemControl(props: RadioGroupItemControlProps) {
   const { render, ...rest } = props;
@@ -338,12 +335,10 @@ export function ItemControl(props: RadioGroupItemControlProps) {
   });
 }
 
-export interface RadioGroupItemIndicatorProps extends Omit<
-  React.ComponentProps<"span">,
-  "aria-hidden"
+export interface RadioGroupItemIndicatorProps extends PropsWithRender<
+  Omit<React.ComponentProps<"span">, "aria-hidden">
 > {
   keepMounted?: boolean;
-  render?: RenderProp;
 }
 
 export function ItemIndicator(props: RadioGroupItemIndicatorProps) {
@@ -359,9 +354,7 @@ export function ItemIndicator(props: RadioGroupItemIndicatorProps) {
   return keepMounted || state.checked ? element : null;
 }
 
-export interface RadioGroupItemTextProps extends React.ComponentProps<"span"> {
-  render?: RenderProp;
-}
+export interface RadioGroupItemTextProps extends PropsWithRender<React.ComponentProps<"span">> {}
 
 export function ItemText(props: RadioGroupItemTextProps) {
   const { render, ...rest } = props;

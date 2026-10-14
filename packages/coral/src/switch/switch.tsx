@@ -2,7 +2,7 @@
 
 import * as React from "react";
 
-import { createPartContext, useRender, type RenderProp } from "../core";
+import { createPartContext, useRender, type PropsWithRender } from "../core";
 import { Field } from "../field";
 import { useFieldState } from "../field/field";
 import { useFieldsetContext } from "../fieldset/fieldset-context";
@@ -235,12 +235,9 @@ export function HiddenInput(props: SwitchHiddenInputProps) {
   });
 }
 
-export interface SwitchControlProps extends Omit<
-  React.ComponentProps<"span">,
-  "aria-hidden" | "role"
-> {
-  render?: RenderProp;
-}
+export interface SwitchControlProps extends PropsWithRender<
+  Omit<React.ComponentProps<"span">, "aria-hidden" | "role">
+> {}
 
 export function Control(props: SwitchControlProps) {
   const { render, ...rest } = props;
@@ -254,9 +251,7 @@ export function Control(props: SwitchControlProps) {
   });
 }
 
-export interface SwitchLabelProps extends React.ComponentProps<"span"> {
-  render?: RenderProp;
-}
+export interface SwitchLabelProps extends PropsWithRender<React.ComponentProps<"span">> {}
 
 export function Label(props: SwitchLabelProps) {
   const { render, ...rest } = props;
@@ -270,12 +265,9 @@ export function Label(props: SwitchLabelProps) {
   });
 }
 
-export interface SwitchThumbProps extends Omit<
-  React.ComponentProps<"span">,
-  "aria-hidden" | "role"
-> {
-  render?: RenderProp;
-}
+export interface SwitchThumbProps extends PropsWithRender<
+  Omit<React.ComponentProps<"span">, "aria-hidden" | "role">
+> {}
 
 export function Thumb(props: SwitchThumbProps) {
   const { render, ...rest } = props;

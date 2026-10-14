@@ -2,11 +2,7 @@
 
 import * as React from "react";
 
-import { createPartContext, useRender, type RenderProp } from "../core";
-
-interface AccordionRenderProps {
-  render?: RenderProp;
-}
+import { createPartContext, useRender, type PropsWithRender } from "../core";
 
 export interface AccordionChangeEventDetails {
   readonly reason: "trigger-press";
@@ -16,8 +12,9 @@ export interface AccordionChangeEventDetails {
   cancel: () => void;
 }
 
-export interface AccordionRootProps
-  extends Omit<React.ComponentProps<"div">, "defaultValue">, AccordionRenderProps {
+export interface AccordionRootProps extends PropsWithRender<
+  Omit<React.ComponentProps<"div">, "defaultValue">
+> {
   value?: readonly string[];
   defaultValue?: readonly string[];
   onValueChange?: (value: string[], eventDetails: AccordionChangeEventDetails) => void;
@@ -112,7 +109,7 @@ export function Root(props: AccordionRootProps) {
   );
 }
 
-export interface AccordionItemProps extends React.ComponentProps<"div">, AccordionRenderProps {
+export interface AccordionItemProps extends PropsWithRender<React.ComponentProps<"div">> {
   value: string;
   disabled?: boolean;
 }
@@ -159,8 +156,9 @@ export function Item(props: AccordionItemProps) {
 
 export type AccordionHeadingLevel = 1 | 2 | 3 | 4 | 5 | 6;
 
-export interface AccordionHeaderProps
-  extends Omit<React.ComponentProps<"h3">, "aria-level">, AccordionRenderProps {
+export interface AccordionHeaderProps extends PropsWithRender<
+  Omit<React.ComponentProps<"h3">, "aria-level">
+> {
   level?: AccordionHeadingLevel;
 }
 
@@ -180,10 +178,9 @@ export function Header(props: AccordionHeaderProps) {
   });
 }
 
-export interface AccordionTriggerProps
-  extends
-    Omit<React.ComponentProps<"button">, "aria-controls" | "aria-expanded" | "id">,
-    AccordionRenderProps {}
+export interface AccordionTriggerProps extends PropsWithRender<
+  Omit<React.ComponentProps<"button">, "aria-controls" | "aria-expanded" | "id">
+> {}
 
 export function Trigger(props: AccordionTriggerProps) {
   const { disabled: disabledProp = false, render, ...rest } = props;
@@ -213,10 +210,9 @@ export function Trigger(props: AccordionTriggerProps) {
   });
 }
 
-export interface AccordionPanelProps
-  extends
-    Omit<React.ComponentProps<"div">, "aria-labelledby" | "hidden" | "id" | "role">,
-    AccordionRenderProps {
+export interface AccordionPanelProps extends PropsWithRender<
+  Omit<React.ComponentProps<"div">, "aria-labelledby" | "hidden" | "id" | "role">
+> {
   region?: boolean;
 }
 

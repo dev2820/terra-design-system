@@ -8,7 +8,7 @@ import {
   useRender,
   isNumber,
   clamp,
-  type RenderProp,
+  type PropsWithRender,
 } from "../core";
 
 type ProgressState = "indeterminate" | "progressing" | "complete";
@@ -102,9 +102,7 @@ export function Root(props: ProgressRootProps) {
   return <ProgressContext value={context}>{element}</ProgressContext>;
 }
 
-export interface ProgressLabelProps extends React.ComponentProps<"span"> {
-  render?: RenderProp;
-}
+export interface ProgressLabelProps extends PropsWithRender<React.ComponentProps<"span">> {}
 
 export function Label(props: ProgressLabelProps) {
   const { render, ...rest } = props;
@@ -118,9 +116,9 @@ export function Label(props: ProgressLabelProps) {
   });
 }
 
-export interface ProgressValueTextProps extends Omit<React.ComponentProps<"span">, "children"> {
-  render?: RenderProp;
-}
+export interface ProgressValueTextProps extends PropsWithRender<
+  Omit<React.ComponentProps<"span">, "children">
+> {}
 
 export function ValueText(props: ProgressValueTextProps) {
   const { render, ...rest } = props;
@@ -137,9 +135,7 @@ export function ValueText(props: ProgressValueTextProps) {
   });
 }
 
-export interface ProgressTrackProps extends React.ComponentProps<"div"> {
-  render?: RenderProp;
-}
+export interface ProgressTrackProps extends PropsWithRender<React.ComponentProps<"div">> {}
 
 export function Track(props: ProgressTrackProps) {
   const { render, ...rest } = props;
@@ -155,9 +151,7 @@ export function Track(props: ProgressTrackProps) {
   });
 }
 
-export interface ProgressIndicatorProps extends React.ComponentProps<"div"> {
-  render?: RenderProp;
-}
+export interface ProgressIndicatorProps extends PropsWithRender<React.ComponentProps<"div">> {}
 
 export function Indicator(props: ProgressIndicatorProps) {
   const { render, ...rest } = props;

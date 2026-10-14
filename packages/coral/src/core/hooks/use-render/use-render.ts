@@ -8,6 +8,8 @@ type RefCleanup = (() => void) | undefined;
 
 export type RenderProp = React.ReactElement;
 
+export type PropsWithRender<T> = T & { render?: RenderProp };
+
 export interface UseRenderOptions {
   defaultTagName: keyof React.JSX.IntrinsicElements;
   render: RenderProp | undefined;
