@@ -203,7 +203,7 @@ export function Trigger(props: AccordionTriggerProps) {
       "aria-controls": item.panelId,
       "aria-expanded": item.open,
       disabled,
-      "data-panel-open": item.open ? "" : undefined,
+      "data-expanded": item.open ? "" : undefined,
       "data-disabled": disabled ? "" : undefined,
       onClick: handleClick,
     },

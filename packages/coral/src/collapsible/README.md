@@ -24,6 +24,9 @@ import { Collapsible } from "@coral/react/collapsible";
 브라우저가 처리한다. `Panel`은 DOM에 남아 있으며 닫힌 동안 `hidden` 상태가
 된다. 닫힌 패널 안의 내용과 컨트롤은 탐색 및 키보드 순서에서 제외된다.
 
+펼친 상태의 `Trigger`에는 `data-expanded`를, `Root`와 `Panel`에는
+`data-open`을 설정한다.
+
 `Root`와 `Panel`의 `render`에는 같은 의미의 요소를 렌더링하는 React 요소를
 전달할 수 있다. 사용자 지정 컴포넌트는 전달받은 Props와 Ref를 최종 DOM 요소에
 연결해야 한다. Trigger는 버튼의 의미, 키보드 동작과 `disabled`를 유지하기 위해

@@ -30,6 +30,9 @@ import { Accordion } from "@coral/react/accordion";
 도움이 될 때만 사용한다. `region`을 활성화하면 `role="region"`과 Trigger를
 참조하는 `aria-labelledby`를 함께 설정한다.
 
+펼친 상태의 `Trigger`에는 `data-expanded`를, `Item`·`Header`·`Panel`에는
+`data-open`을 설정한다.
+
 모든 Part는 `render`에 React 요소를 전달해 기본 요소를 같은 의미의 사용자 지정
 컴포넌트로 교체할 수 있다. 사용자 지정 컴포넌트는 각 Part의 기본 요소와 같은
 종류의 DOM 요소를 렌더링하고 전달받은 Props와 Ref를 그 요소에 연결해야 한다.

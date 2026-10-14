@@ -4,5 +4,6 @@ export type {
   CollapsibleChangeEventDetails,
   CollapsiblePanelProps,
   CollapsibleRootProps,
+  CollapsibleState,
   CollapsibleTriggerProps,
 } from "./collapsible";

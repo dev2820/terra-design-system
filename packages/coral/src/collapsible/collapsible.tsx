@@ -4,6 +4,11 @@ import * as React from "react";
 
 import { createPartContext, useRender, type PropsWithRender } from "../core";
 
+export interface CollapsibleState {
+  open: boolean;
+  disabled: boolean;
+}
+
 export interface CollapsibleChangeEventDetails {
   readonly reason: "trigger-press";
   readonly event: MouseEvent;
@@ -20,8 +25,7 @@ export interface CollapsibleRootProps extends PropsWithRender<React.ComponentPro
 }
 
 interface CollapsibleContextValue {
-  open: boolean;
-  disabled: boolean;
+  state: CollapsibleState;
   triggerId: string;
   panelId: string;
   toggle: (event: MouseEvent, trigger: HTMLButtonElement) => void;
@@ -29,6 +33,13 @@ interface CollapsibleContextValue {
 
 const [CollapsibleContext, useCollapsibleContext] =
   createPartContext<CollapsibleContextValue>("Collapsible");
+
+function getStateAttributes(state: CollapsibleState) {
+  return {
+    "data-open": state.open ? "" : undefined,
+    "data-disabled": state.disabled ? "" : undefined,
+  };
+}
 
 function createChangeEventDetails(event: MouseEvent, trigger: HTMLButtonElement) {
   let canceled = false;
@@ -66,13 +77,14 @@ export function Root(props: CollapsibleRootProps) {
   const panelId = `${id}-panel`;
   const controlled = openProp !== undefined;
   const open = openProp ?? uncontrolledOpen;
+  const state: CollapsibleState = { open, disabled };
 
   function toggle(event: MouseEvent, trigger: HTMLButtonElement) {
-    if (disabled) {
+    if (state.disabled) {
       return;
     }
 
-    const nextOpen = !open;
+    const nextOpen = !state.open;
     const eventDetails = createChangeEventDetails(event, trigger);
 
     onOpenChange?.(nextOpen, eventDetails);
@@ -88,13 +100,12 @@ export function Root(props: CollapsibleRootProps) {
     props: { ...rest, ref },
     internalProps: {
       id,
-      "data-open": open ? "" : undefined,
-      "data-disabled": disabled ? "" : undefined,
+      ...getStateAttributes(state),
     },
   });
 
   return (
-    <CollapsibleContext.Provider value={{ open, disabled, triggerId, panelId, toggle }}>
+    <CollapsibleContext.Provider value={{ state, triggerId, panelId, toggle }}>
       {element}
     </CollapsibleContext.Provider>
   );
@@ -108,7 +119,7 @@ export interface CollapsibleTriggerProps extends Omit<
 export function Trigger(props: CollapsibleTriggerProps) {
   const { disabled: disabledProp = false, ...rest } = props;
   const collapsible = useCollapsibleContext("Trigger");
-  const disabled = collapsible.disabled || disabledProp;
+  const disabled = collapsible.state.disabled || disabledProp;
 
   function handleClick(event: React.MouseEvent<HTMLButtonElement>) {
     if (!event.defaultPrevented && !disabled) {
@@ -123,9 +134,9 @@ export function Trigger(props: CollapsibleTriggerProps) {
     internalProps: {
       id: collapsible.triggerId,
       "aria-controls": collapsible.panelId,
-      "aria-expanded": collapsible.open,
+      "aria-expanded": collapsible.state.open,
       disabled,
-      "data-panel-open": collapsible.open ? "" : undefined,
+      "data-expanded": collapsible.state.open ? "" : undefined,
       "data-disabled": disabled ? "" : undefined,
       onClick: handleClick,
     },
@@ -146,9 +157,8 @@ export function Panel(props: CollapsiblePanelProps) {
     props: { ...rest, ref },
     internalProps: {
       id: collapsible.panelId,
-      hidden: !collapsible.open,
-      "data-open": collapsible.open ? "" : undefined,
-      "data-disabled": collapsible.disabled ? "" : undefined,
+      hidden: !collapsible.state.open,
+      ...getStateAttributes(collapsible.state),
     },
   });
 }
