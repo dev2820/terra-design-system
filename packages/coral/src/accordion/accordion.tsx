@@ -122,6 +122,13 @@ interface AccordionItemContextValue {
   panelId: string;
 }
 
+function getStateAttributes(state: Pick<AccordionItemContextValue, "open" | "disabled">) {
+  return {
+    "data-open": state.open ? "" : undefined,
+    "data-disabled": state.disabled ? "" : undefined,
+  };
+}
+
 const [AccordionItemContext, useAccordionItemContext] =
   createPartContext<AccordionItemContextValue>("Accordion", "Item");
 
@@ -146,8 +153,7 @@ export function Item(props: AccordionItemProps) {
     props: { ...rest, ref },
     internalProps: {
       id,
-      "data-open": open ? "" : undefined,
-      "data-disabled": disabled ? "" : undefined,
+      ...getStateAttributes(context),
     },
   });
 
@@ -172,8 +178,7 @@ export function Header(props: AccordionHeaderProps) {
     render,
     props: { ...rest, ref },
     internalProps: {
-      "data-open": item.open ? "" : undefined,
-      "data-disabled": item.disabled ? "" : undefined,
+      ...getStateAttributes(item),
     },
   });
 }
@@ -229,8 +234,7 @@ export function Panel(props: AccordionPanelProps) {
       hidden: !item.open,
       role: region ? "region" : undefined,
       "aria-labelledby": region ? item.triggerId : undefined,
-      "data-open": item.open ? "" : undefined,
-      "data-disabled": item.disabled ? "" : undefined,
+      ...getStateAttributes(item),
     },
   });
 }

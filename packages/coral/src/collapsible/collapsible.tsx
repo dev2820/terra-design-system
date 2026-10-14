@@ -111,13 +111,12 @@ export function Root(props: CollapsibleRootProps) {
   );
 }
 
-export interface CollapsibleTriggerProps extends Omit<
-  React.ComponentProps<"button">,
-  "aria-controls" | "aria-expanded" | "id"
+export interface CollapsibleTriggerProps extends PropsWithRender<
+  Omit<React.ComponentProps<"button">, "aria-controls" | "aria-expanded" | "id">
 > {}
 
 export function Trigger(props: CollapsibleTriggerProps) {
-  const { disabled: disabledProp = false, ...rest } = props;
+  const { disabled: disabledProp = false, render, ...rest } = props;
   const collapsible = useCollapsibleContext("Trigger");
   const disabled = collapsible.state.disabled || disabledProp;
 
@@ -129,7 +128,7 @@ export function Trigger(props: CollapsibleTriggerProps) {
 
   return useRender({
     defaultTagName: "button",
-    render: undefined,
+    render,
     props: { ...rest, type: rest.type ?? "button" },
     internalProps: {
       id: collapsible.triggerId,

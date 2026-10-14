@@ -27,10 +27,10 @@ import { Collapsible } from "@coral/react/collapsible";
 펼친 상태의 `Trigger`에는 `data-expanded`를, `Root`와 `Panel`에는
 `data-open`을 설정한다.
 
-`Root`와 `Panel`의 `render`에는 같은 의미의 요소를 렌더링하는 React 요소를
-전달할 수 있다. 사용자 지정 컴포넌트는 전달받은 Props와 Ref를 최종 DOM 요소에
-연결해야 한다. Trigger는 버튼의 의미, 키보드 동작과 `disabled`를 유지하기 위해
-요소 교체를 지원하지 않는다.
+각 Part의 `render`에는 같은 의미의 요소를 렌더링하는 React 요소를 전달할 수
+있다. 사용자 지정 컴포넌트는 전달받은 Props와 Ref를 최종 DOM 요소에 연결해야
+한다. `Trigger`는 네이티브 `<button>`을 최종 렌더링해야 버튼의 의미, 키보드 동작과
+`disabled`를 유지할 수 있다.
 
 네이티브 `<details>`와 `<summary>`는 별도의 상태 관리가 필요 없는 단순한
 공개·숨김에 사용할 수 있다. Collapsible은 제어 상태, 변경 취소와 비활성화가
@@ -38,4 +38,5 @@ import { Collapsible } from "@coral/react/collapsible";
 사용한다.
 
 - [HTML Standard: details and summary](https://html.spec.whatwg.org/multipage/interactive-elements.html#the-details-element)
+- [HTML Standard: button](https://html.spec.whatwg.org/multipage/form-elements.html#the-button-element)
 - [WAI-ARIA APG Disclosure Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/)
