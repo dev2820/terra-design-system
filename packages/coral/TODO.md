@@ -27,7 +27,7 @@ Coral은 WAI-ARIA APG 목록을 컴포넌트 목록으로 그대로 구현하지
 - [x] Avatar
 - [x] Button — 네이티브 `<button>`으로 충분하므로 별도 컴포넌트를 제공하지 않는다.
 - [x] Checkbox
-- [ ] Checkbox Group
+- [x] Checkbox Group — fieldset, legend와 Checkbox.Root로 다중 선택 값을 관리한다.
 - [x] Collapsible — 단일 패널의 제어·비제어 펼침 상태와 Root, Trigger, Panel을 제공한다.
 - [ ] Combobox (popover 선행)
 - [ ] Context Menu (popover 선행)

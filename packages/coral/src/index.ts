@@ -1,6 +1,7 @@
 export * from "./accordion";
 export * from "./avatar";
 export * from "./checkbox";
+export * from "./checkbox-group";
 export * from "./collapsible";
 export * from "./core";
 export * from "./field";

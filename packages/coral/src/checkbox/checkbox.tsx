@@ -2,6 +2,7 @@
 
 import * as React from "react";
 
+import { useCheckboxGroupContext } from "../checkbox-group/checkbox-group-context";
 import { createPartContext, useRender } from "../core";
 import { Field } from "../field";
 import { useFieldState } from "../field/field";
@@ -107,26 +108,70 @@ export function Root(props: CheckboxRootProps) {
     form,
     ...rest
   } = props;
+  const group = useCheckboxGroupContext("Checkbox.Root", true);
+
+  if (group && value === undefined) {
+    throw new globalThis.Error("Checkbox.Root requires a value within CheckboxGroup.Root.");
+  }
+
+  if (
+    group &&
+    (checkedProp !== undefined ||
+      props.defaultChecked !== undefined ||
+      name !== undefined ||
+      form !== undefined)
+  ) {
+    throw new globalThis.Error(
+      "Checkbox.Root cannot set checked, defaultChecked, name, or form within CheckboxGroup.Root.",
+    );
+  }
+
   const [uncontrolledChecked, setChecked] = React.useState(defaultChecked);
-  const controlled = checkedProp !== undefined;
-  const checked = checkedProp ?? uncontrolledChecked;
+  const controlled = group !== null || checkedProp !== undefined;
+  const checked = group ? group.value.includes(value!) : (checkedProp ?? uncontrolledChecked);
   const fieldState = useFieldState();
   const fieldsetDisabled = useFieldsetContext("Root", true) ?? false;
-  const disabled = disabledProp || fieldsetDisabled || fieldState?.disabled === true;
+  const disabled =
+    disabledProp ||
+    group?.state.disabled === true ||
+    fieldsetDisabled ||
+    fieldState?.disabled === true;
+  const effectiveReadOnly = readOnly || group?.state.readOnly === true;
   const state = React.useMemo<CheckboxState>(
-    () => ({ checked, indeterminate, disabled, readOnly, required }),
-    [checked, indeterminate, disabled, readOnly, required],
+    () => ({ checked, indeterminate, disabled, readOnly: effectiveReadOnly, required }),
+    [checked, indeterminate, disabled, effectiveReadOnly, required],
   );
+  const handleCheckedChange = group
+    ? (nextChecked: boolean, details: CheckboxChangeEventDetails) => {
+        onCheckedChange?.(nextChecked, details);
+
+        if (!details.isCanceled) {
+          group.toggle(value!, nextChecked, details);
+        }
+      }
+    : onCheckedChange;
   const element = useRender({
     defaultTagName: "label",
     render: undefined,
     props: rest,
-    internalProps: getStateAttributes(state),
+    internalProps: {
+      ...getStateAttributes(state),
+      "data-checkbox-group-item": group ? "" : undefined,
+    },
   });
 
   return (
     <CheckboxContext
-      value={{ state, controlled, defaultChecked, name, value, form, setChecked, onCheckedChange }}
+      value={{
+        state,
+        controlled,
+        defaultChecked,
+        name: group?.name ?? name,
+        value,
+        form: group?.form ?? form,
+        setChecked,
+        onCheckedChange: handleCheckedChange,
+      }}
     >
       {element}
     </CheckboxContext>

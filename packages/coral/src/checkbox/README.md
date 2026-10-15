@@ -121,7 +121,8 @@ Root를 충분한 크기로 만들어 체크 영역과 텍스트 사이에도 la
 
 Coral은 체크·mixed 아이콘, 크기, 색상, border와 motion을 제공하지 않는다.
 강제 색상 모드를 포함한 최종 Indicator와 focus 표시의 가시성은 제품에서
-검증한다. Checkbox Group과 parent checkbox의 하위 항목 계산도 별도 범위다.
+검증한다. Checkbox Group은 별도 컴포넌트로 제공하며 parent checkbox의 하위
+항목 계산은 별도 범위다.
 
 - [Ark UI Checkbox](https://ark-ui.com/docs/components/checkbox)
 - [HTML checkbox](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/checkbox)

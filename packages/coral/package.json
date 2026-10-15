@@ -24,6 +24,10 @@
       "types": "./dist/checkbox.d.ts",
       "import": "./dist/checkbox.js"
     },
+    "./checkbox-group": {
+      "types": "./dist/checkbox-group.d.ts",
+      "import": "./dist/checkbox-group.js"
+    },
     "./collapsible": {
       "types": "./dist/collapsible.d.ts",
       "import": "./dist/collapsible.js"
