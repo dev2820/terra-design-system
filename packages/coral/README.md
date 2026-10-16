@@ -18,6 +18,7 @@ import { CheckboxGroup } from "@coral/react/checkbox-group";
 import { Collapsible } from "@coral/react/collapsible";
 import { Input as SubpathInput } from "@coral/react/input";
 import { Meter } from "@coral/react/meter";
+import { NumberInput } from "@coral/react/number-input";
 import { Progress } from "@coral/react/progress";
 import { RadioGroup } from "@coral/react/radio-group";
 import { Separator } from "@coral/react/separator";

@@ -12,6 +12,7 @@ export default defineConfig({
     fieldset: "src/fieldset/index.ts",
     input: "src/input/index.ts",
     meter: "src/meter/index.ts",
+    "number-input": "src/number-input/index.ts",
     progress: "src/progress/index.ts",
     "radio-group": "src/radio-group/index.ts",
     separator: "src/separator/index.ts",

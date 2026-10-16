@@ -48,6 +48,10 @@
       "types": "./dist/meter.d.ts",
       "import": "./dist/meter.js"
     },
+    "./number-input": {
+      "types": "./dist/number-input.d.ts",
+      "import": "./dist/number-input.js"
+    },
     "./progress": {
       "types": "./dist/progress.d.ts",
       "import": "./dist/progress.js"

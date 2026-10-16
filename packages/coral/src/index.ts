@@ -8,6 +8,7 @@ export * from "./field";
 export * from "./fieldset";
 export * from "./input";
 export * from "./meter";
+export * from "./number-input";
 export * from "./progress";
 export * from "./radio-group";
 export * from "./separator";
