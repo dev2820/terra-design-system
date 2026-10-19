@@ -3,7 +3,7 @@
 import * as React from "react";
 
 import { useCheckboxGroupContext } from "../checkbox-group/checkbox-group-context";
-import { createPartContext, useRender } from "../core";
+import { createPartContext, useRender, visuallyHiddenStyle } from "../core";
 import { Field } from "../field";
 import { useFieldState } from "../field/field";
 import { useFieldsetContext } from "../fieldset/fieldset-context";
@@ -65,18 +65,6 @@ function getStateAttributes(state: CheckboxState) {
     "data-required": state.required ? "" : undefined,
   };
 }
-
-const visuallyHiddenStyle: React.CSSProperties = {
-  position: "absolute",
-  width: 1,
-  height: 1,
-  margin: -1,
-  padding: 0,
-  border: 0,
-  overflow: "hidden",
-  clipPath: "inset(50%)",
-  whiteSpace: "nowrap",
-};
 
 export interface CheckboxRootProps extends Omit<
   React.ComponentProps<"label">,

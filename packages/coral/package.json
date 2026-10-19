@@ -52,6 +52,10 @@
       "types": "./dist/number-input.d.ts",
       "import": "./dist/number-input.js"
     },
+    "./otp-field": {
+      "types": "./dist/otp-field.d.ts",
+      "import": "./dist/otp-field.js"
+    },
     "./progress": {
       "types": "./dist/progress.d.ts",
       "import": "./dist/progress.js"

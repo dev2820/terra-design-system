@@ -2,15 +2,14 @@
 
 import * as React from "react";
 
-import {
-  areValuesEqual,
-  createPartContext,
-  isPromise,
-  joinIds,
-  useRender,
-  type PropsWithRender,
-} from "../core";
+import { areValuesEqual, isPromise, joinIds, useRender, type PropsWithRender } from "../core";
 import { useFieldsetContext } from "../fieldset/fieldset-context";
+import {
+  FieldContext,
+  useFieldContext,
+  type FieldContextValue,
+  type FieldControlElement,
+} from "./field-context";
 
 export type FieldValidationMode = "onSubmit" | "onBlur" | "onChange";
 export type FieldValidationResult = string | readonly string[] | null;
@@ -44,7 +43,6 @@ export interface FieldState {
   focused: boolean;
 }
 
-type FieldControlElement = HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
 type ValidationOutcome = boolean | Promise<boolean>;
 
 interface InternalFieldState {
@@ -57,31 +55,6 @@ interface InternalFieldState {
   validity: FieldValidityState | null;
 }
 
-interface FieldContextValue {
-  state: FieldState;
-  actions: {
-    setControl: (control: FieldControlElement | null) => void;
-    setControlId: (id: string | null) => void;
-    syncControl: (control: FieldControlElement) => void;
-    handleChange: (control: FieldControlElement) => void;
-    handleBlur: () => void;
-    handleFocus: () => void;
-    handleInvalid: (control: FieldControlElement) => void;
-    registerDescription: (id: string) => () => void;
-    registerError: (id: string) => () => void;
-  };
-  meta: {
-    controlId: string;
-    defaultControlId: string;
-    labelId: string;
-    name: string | undefined;
-    descriptionIds: readonly string[];
-    errorIds: readonly string[];
-    errors: readonly string[];
-    validity: FieldValidityState | null;
-  };
-}
-
 interface RegisteredField {
   getControl: () => FieldControlElement | null;
   validate: (formValues: FieldFormValues) => ValidationOutcome;
@@ -92,7 +65,6 @@ interface RegisteredForm {
   handleSubmit: (event: SubmitEvent) => void;
 }
 
-const [FieldContext, useFieldContext] = createPartContext<FieldContextValue>("Field");
 const registeredForms = new WeakMap<HTMLFormElement, RegisteredForm>();
 const resumedForms = new WeakSet<HTMLFormElement>();
 const initialValueUnset = Symbol("initial-value-unset");

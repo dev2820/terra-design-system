@@ -2,7 +2,7 @@
 
 import * as React from "react";
 
-import { createPartContext, useRender, type PropsWithRender } from "../core";
+import { createPartContext, useRender, visuallyHiddenStyle, type PropsWithRender } from "../core";
 import { Field } from "../field";
 import { useFieldState } from "../field/field";
 import { useFieldsetContext } from "../fieldset/fieldset-context";
@@ -62,18 +62,6 @@ function getStateAttributes(state: SwitchState) {
     "data-required": state.required ? "" : undefined,
   };
 }
-
-const visuallyHiddenStyle: React.CSSProperties = {
-  position: "absolute",
-  width: 1,
-  height: 1,
-  margin: -1,
-  padding: 0,
-  border: 0,
-  overflow: "hidden",
-  clipPath: "inset(50%)",
-  whiteSpace: "nowrap",
-};
 
 export interface SwitchRootProps extends Omit<
   React.ComponentProps<"label">,

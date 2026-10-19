@@ -42,7 +42,7 @@ Coral은 WAI-ARIA APG 목록을 컴포넌트 목록으로 그대로 구현하지
 - [x] Meter — 기본 측정값·포맷·Parts를 제공하고 원형과 임계값 구간 판정은 제외한다.
 - [ ] Navigation Menu (popover 선행)
 - [x] Number Field — Coral에서는 NumberInput으로 네이티브 숫자 입력과 증감 버튼을 제공한다.
-- [ ] OTP Field
+- [x] OTP Field — Root, Label, Control, Input, HiddenInput, Separator로 숫자·영문·영숫자 인증번호를 조합한다.
 - [ ] Popover
 - [ ] Preview Card (popover 선행)
 - [x] Progress — 확정·불확정 상태와 값 포맷·Parts를 제공한다.
