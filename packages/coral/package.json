@@ -64,6 +64,10 @@
       "types": "./dist/radio-group.d.ts",
       "import": "./dist/radio-group.js"
     },
+    "./scroll-area": {
+      "types": "./dist/scroll-area.d.ts",
+      "import": "./dist/scroll-area.js"
+    },
     "./separator": {
       "types": "./dist/separator.d.ts",
       "import": "./dist/separator.js"

@@ -16,6 +16,7 @@ export default defineConfig({
     "otp-field": "src/otp-field/index.ts",
     progress: "src/progress/index.ts",
     "radio-group": "src/radio-group/index.ts",
+    "scroll-area": "src/scroll-area/index.ts",
     separator: "src/separator/index.ts",
     switch: "src/switch/index.ts",
     toggle: "src/toggle/index.ts",

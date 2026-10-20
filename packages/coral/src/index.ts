@@ -12,6 +12,7 @@ export * from "./number-input";
 export * from "./otp-field";
 export * from "./progress";
 export * from "./radio-group";
+export * from "./scroll-area";
 export * from "./separator";
 export * from "./switch";
 export * from "./toggle";

@@ -22,6 +22,7 @@ import { NumberInput } from "@coral/react/number-input";
 import { OtpField } from "@coral/react/otp-field";
 import { Progress } from "@coral/react/progress";
 import { RadioGroup } from "@coral/react/radio-group";
+import { ScrollArea } from "@coral/react/scroll-area";
 import { Separator } from "@coral/react/separator";
 import { Switch } from "@coral/react/switch";
 import { Toggle } from "@coral/react/toggle";

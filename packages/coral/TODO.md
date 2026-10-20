@@ -48,7 +48,7 @@ Coral은 WAI-ARIA APG 목록을 컴포넌트 목록으로 그대로 구현하지
 - [x] Progress — 확정·불확정 상태와 값 포맷·Parts를 제공한다.
 - [x] Radio — 별도 컴포넌트 없이 Radio Group의 Item으로 제공한다.
 - [x] Radio Group — 네이티브 fieldset, legend, label과 radio input으로 단일 선택 그룹을 제공한다.
-- [ ] Scroll Area
+- [x] Scroll Area — Root, Viewport, Content, Scrollbar, Thumb, Corner로 네이티브 스크롤과 커스텀 스크롤바를 조합한다.
 - [ ] Select (popover 선행)
 - [x] Separator — 네이티브 `<hr>` 기반 정적 구분선으로 방향과 장식용 처리를 제공한다.
 - [ ] Slider
