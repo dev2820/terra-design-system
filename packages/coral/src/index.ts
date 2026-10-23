@@ -14,6 +14,7 @@ export * from "./progress";
 export * from "./radio-group";
 export * from "./scroll-area";
 export * from "./separator";
+export * from "./slider";
 export * from "./switch";
 export * from "./toggle";
 export * from "./toggle-group";

@@ -12,6 +12,7 @@ export type PropsWithRender<T> = T & { render?: RenderProp };
 
 export interface UseRenderOptions {
   defaultTagName: keyof React.JSX.IntrinsicElements;
+  defaultProps?: object;
   render: RenderProp | undefined;
   props: object;
   internalProps?: object;
@@ -144,19 +145,21 @@ function mergeRefs(...refs: Array<React.Ref<unknown> | undefined>) {
 }
 
 export function useRender(options: UseRenderOptions) {
-  const { defaultTagName, render, props, internalProps = {} } = options;
+  const { defaultTagName, defaultProps = {}, render, props, internalProps = {} } = options;
   const element = render ?? React.createElement(defaultTagName);
+  const fallbackProps = defaultProps as Props;
   const renderProps = element.props as Props;
   const partProps = props as Props;
   const ownedProps = internalProps as Props;
+  const defaultRef = readRef(fallbackProps.ref);
   const renderRef = readRef(renderProps.ref);
   const partRef = readRef(partProps.ref);
   const internalRef = readRef(ownedProps.ref);
   const ref = React.useMemo(
-    () => mergeRefs(renderRef, partRef, internalRef),
-    [renderRef, partRef, internalRef],
+    () => mergeRefs(defaultRef, renderRef, partRef, internalRef),
+    [defaultRef, renderRef, partRef, internalRef],
   );
-  const mergedProps = mergeProps(renderProps, partProps, ownedProps);
+  const mergedProps = mergeProps(fallbackProps, renderProps, partProps, ownedProps);
 
   if (ref !== undefined) {
     mergedProps.ref = ref;

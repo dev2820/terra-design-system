@@ -29,15 +29,17 @@ function render(children: React.ReactNode) {
 }
 
 interface TestPartProps extends React.ComponentProps<"button"> {
+  defaultProps?: object;
   internalProps?: object;
   render?: RenderProp;
 }
 
 function TestPart(props: TestPartProps) {
-  const { internalProps = {}, render: renderElement, ...rest } = props;
+  const { defaultProps = {}, internalProps = {}, render: renderElement, ...rest } = props;
 
   return useRender({
     defaultTagName: "button",
+    defaultProps,
     render: renderElement,
     props: rest,
     internalProps,
@@ -45,6 +47,111 @@ function TestPart(props: TestPartProps) {
 }
 
 describe("useRender", () => {
+  it.each([
+    { renderProps: {}, partProps: {}, internalProps: {}, expected: "default" },
+    { renderProps: { title: "render" }, partProps: {}, internalProps: {}, expected: "render" },
+    {
+      renderProps: { title: "render" },
+      partProps: { title: "part" },
+      internalProps: {},
+      expected: "part",
+    },
+    {
+      renderProps: { title: "render" },
+      partProps: { title: "part" },
+      internalProps: { title: "internal" },
+      expected: "internal",
+    },
+    { renderProps: { title: undefined }, partProps: {}, internalProps: {}, expected: "" },
+  ])(
+    "기본값을 적용하고 뒤 단계의 일반 속성 $expected를 우선한다",
+    ({ renderProps, partProps, internalProps, expected }) => {
+      const container = render(
+        <TestPart
+          defaultProps={{ title: "default" }}
+          render={<button {...renderProps} />}
+          {...partProps}
+          internalProps={internalProps}
+        />,
+      );
+      expect(container.querySelector("button")?.title).toBe(expected);
+    },
+  );
+
+  it("기본 className과 style을 합성하고 뒤 단계의 style 값을 우선한다", () => {
+    const container = render(
+      <TestPart
+        defaultProps={{ className: "default", style: { color: "red", padding: "4px" } }}
+        render={<button className="render" style={{ color: "blue", margin: "2px" }} />}
+        className="part"
+        style={{ color: "green" }}
+        internalProps={{ className: "internal", style: { color: "black" } }}
+      />,
+    );
+    const button = container.querySelector("button")!;
+    expect(button.className).toBe("default render part internal");
+    expect(button.style.color).toBe("black");
+    expect(button.style.padding).toBe("4px");
+    expect(button.style.margin).toBe("2px");
+  });
+
+  it("기본 핸들러부터 순서대로 실행하고 preventDefault를 전달한다", async () => {
+    const calls: string[] = [];
+    const container = render(
+      <TestPart
+        defaultProps={{ onClick: () => calls.push("default") }}
+        render={<button onClick={() => calls.push("render")} />}
+        onClick={(event) => {
+          calls.push("part");
+          event.preventDefault();
+        }}
+        internalProps={{
+          onClick: (event: React.MouseEvent<HTMLButtonElement>) =>
+            calls.push(`internal:${event.defaultPrevented}`),
+        }}
+      />,
+    );
+    await userEvent.click(container.querySelector("button")!);
+    expect(calls).toEqual(["default", "render", "part", "internal:true"]);
+  });
+
+  it("네 단계의 ref를 연결하고 기본 callback ref를 재연결 없이 정리한다", () => {
+    const cleanup = vi.fn();
+    const defaultRef = vi.fn(() => cleanup);
+    const renderRef = React.createRef<HTMLButtonElement>();
+    const partRef = React.createRef<HTMLButtonElement>();
+    const internalRef = React.createRef<HTMLButtonElement>();
+    const container = document.createElement("div");
+    const root = createRoot(container);
+    document.body.append(container);
+    try {
+      const fixture = () => (
+        <TestPart
+          defaultProps={{ ref: defaultRef }}
+          render={<button ref={renderRef} />}
+          ref={partRef}
+          internalProps={{ ref: internalRef }}
+        />
+      );
+      flushSync(() => root.render(fixture()));
+      const button = container.querySelector("button");
+      expect(defaultRef).toHaveBeenCalledExactlyOnceWith(button);
+      expect(renderRef.current).toBe(button);
+      expect(partRef.current).toBe(button);
+      expect(internalRef.current).toBe(button);
+      flushSync(() => root.render(fixture()));
+      expect(defaultRef).toHaveBeenCalledOnce();
+      expect(cleanup).not.toHaveBeenCalled();
+    } finally {
+      flushSync(() => root.unmount());
+      container.remove();
+    }
+    expect(cleanup).toHaveBeenCalledOnce();
+    expect(renderRef.current).toBeNull();
+    expect(partRef.current).toBeNull();
+    expect(internalRef.current).toBeNull();
+  });
+
   it("render를 생략하면 기본 요소를 렌더링한다", () => {
     const container = render(<TestPart>버튼</TestPart>);
     const button = container.querySelector("button");

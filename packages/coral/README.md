@@ -24,6 +24,7 @@ import { Progress } from "@coral/react/progress";
 import { RadioGroup } from "@coral/react/radio-group";
 import { ScrollArea } from "@coral/react/scroll-area";
 import { Separator } from "@coral/react/separator";
+import { Slider } from "@coral/react/slider";
 import { Switch } from "@coral/react/switch";
 import { Toggle } from "@coral/react/toggle";
 import { ToggleGroup } from "@coral/react/toggle-group";

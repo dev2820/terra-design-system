@@ -18,6 +18,7 @@ export default defineConfig({
     "radio-group": "src/radio-group/index.ts",
     "scroll-area": "src/scroll-area/index.ts",
     separator: "src/separator/index.ts",
+    slider: "src/slider/index.ts",
     switch: "src/switch/index.ts",
     toggle: "src/toggle/index.ts",
     "toggle-group": "src/toggle-group/index.ts",

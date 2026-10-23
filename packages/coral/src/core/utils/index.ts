@@ -5,3 +5,6 @@ export * from "./is-promise";
 export * from "./is-undefined";
 export * from "./is-number";
 export * from "./clamp";
+export * from "./rounding-tolerance";
+export * from "./snap";
+export * from "./decimal-places";

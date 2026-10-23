@@ -72,6 +72,10 @@
       "types": "./dist/separator.d.ts",
       "import": "./dist/separator.js"
     },
+    "./slider": {
+      "types": "./dist/slider.d.ts",
+      "import": "./dist/slider.js"
+    },
     "./switch": {
       "types": "./dist/switch.d.ts",
       "import": "./dist/switch.js"

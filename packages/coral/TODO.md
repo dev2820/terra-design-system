@@ -51,7 +51,7 @@ Coral은 WAI-ARIA APG 목록을 컴포넌트 목록으로 그대로 구현하지
 - [x] Scroll Area — Root, Viewport, Content, Scrollbar, Thumb, Corner로 네이티브 스크롤과 커스텀 스크롤바를 조합한다.
 - [ ] Select (popover 선행)
 - [x] Separator — 네이티브 `<hr>` 기반 정적 구분선으로 방향과 장식용 처리를 제공한다.
-- [ ] Slider
+- [x] Slider — 네이티브 range input과 조합형 Parts로 단일·다중 값, 방향, 드래그와 폼 연동을 제공한다.
 - [x] Switch — 네이티브 checkbox 기반 켜짐·꺼짐 상태와 Root, Control, Thumb, Label, HiddenInput을 제공한다.
 - [ ] Tabs
 - [ ] Toast (popover 선행)
