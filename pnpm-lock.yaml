@@ -87,6 +87,30 @@ importers:
         specifier: 'catalog:'
         version: 19.2.8(react@19.2.8)
 
+  packages/coral-hooks:
+    devDependencies:
+      '@terra/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
+      '@terra/vitest-config':
+        specifier: workspace:*
+        version: link:../vitest-config
+      '@types/react':
+        specifier: 'catalog:'
+        version: 19.2.18
+      '@types/react-dom':
+        specifier: 'catalog:'
+        version: 19.2.5(@types/react@19.2.18)
+      axe-core:
+        specifier: 'catalog:'
+        version: 4.13.0
+      react:
+        specifier: 'catalog:'
+        version: 19.2.8
+      react-dom:
+        specifier: 'catalog:'
+        version: 19.2.8(react@19.2.8)
+
   packages/typescript-config: {}
 
   packages/vitest-config:
