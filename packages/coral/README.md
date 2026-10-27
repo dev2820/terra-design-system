@@ -26,6 +26,7 @@ import { ScrollArea } from "@coral/react/scroll-area";
 import { Separator } from "@coral/react/separator";
 import { Slider } from "@coral/react/slider";
 import { Switch } from "@coral/react/switch";
+import { Tabs } from "@coral/react/tabs";
 import { Toggle } from "@coral/react/toggle";
 import { ToggleGroup } from "@coral/react/toggle-group";
 ```

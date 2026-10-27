@@ -9,6 +9,7 @@ interface UseRovingFocusOptions {
   selectedAttribute: string;
   orientation: "horizontal" | "vertical";
   loopFocus: boolean;
+  entryFocus?: "last-focused" | "selected";
 }
 
 function isFocusable(item: HTMLElement) {
@@ -27,6 +28,7 @@ export function useRovingFocus(options: UseRovingFocusOptions) {
     selectedAttribute,
     orientation,
     loopFocus,
+    entryFocus = "last-focused",
   } = options;
   const ref = React.useRef<HTMLDivElement | null>(null);
   const lastFocused = React.useRef<HTMLElement | null>(null);
@@ -56,7 +58,11 @@ export function useRovingFocus(options: UseRovingFocusOptions) {
 
     const previous = lastFocused.current;
     const entry =
-      (previous && enabled.includes(previous) ? previous : undefined) ??
+      ((entryFocus === "last-focused" || focusWithin.current) &&
+      previous &&
+      enabled.includes(previous)
+        ? previous
+        : undefined) ??
       enabled.find((item) => item.matches(selectedSelector)) ??
       enabled[0];
 
@@ -136,6 +142,11 @@ export function useRovingFocus(options: UseRovingFocusOptions) {
       (event.relatedTarget !== null || isFocusable(item))
     ) {
       focusWithin.current = false;
+
+      if (entryFocus === "selected") {
+        // Wait for the browser to move focus before restoring the selected tab stop.
+        queueMicrotask(syncTabStop);
+      }
     }
   }
 

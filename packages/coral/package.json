@@ -80,6 +80,10 @@
       "types": "./dist/switch.d.ts",
       "import": "./dist/switch.js"
     },
+    "./tabs": {
+      "types": "./dist/tabs.d.ts",
+      "import": "./dist/tabs.js"
+    },
     "./toggle": {
       "types": "./dist/toggle.d.ts",
       "import": "./dist/toggle.js"

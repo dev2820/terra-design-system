@@ -20,6 +20,7 @@ export default defineConfig({
     separator: "src/separator/index.ts",
     slider: "src/slider/index.ts",
     switch: "src/switch/index.ts",
+    tabs: "src/tabs/index.ts",
     toggle: "src/toggle/index.ts",
     "toggle-group": "src/toggle-group/index.ts",
     "use-render": "src/core/index.ts",
