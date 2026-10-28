@@ -23,6 +23,7 @@ export default defineConfig({
     tabs: "src/tabs/index.ts",
     toggle: "src/toggle/index.ts",
     "toggle-group": "src/toggle-group/index.ts",
+    toolbar: "src/toolbar/index.ts",
     "use-render": "src/core/index.ts",
   },
   format: "esm",

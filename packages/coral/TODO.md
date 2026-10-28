@@ -57,7 +57,7 @@ Coral은 WAI-ARIA APG 목록을 컴포넌트 목록으로 그대로 구현하지
 - [ ] Toast (popover 선행)
 - [x] Toggle — 네이티브 button 기반 눌림 상태, 변경 취소와 aria-pressed를 Root로 제공한다.
 - [x] Toggle Group — Toggle 기반 단일·다중 선택과 방향키 포커스 이동을 Root와 Item으로 제공한다.
-- [ ] Toolbar
+- [x] Toolbar
 - [ ] Tooltip (popover 선행)
 
 ## Progress 포맷 계약

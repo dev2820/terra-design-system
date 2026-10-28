@@ -29,6 +29,7 @@ import { Switch } from "@coral/react/switch";
 import { Tabs } from "@coral/react/tabs";
 import { Toggle } from "@coral/react/toggle";
 import { ToggleGroup } from "@coral/react/toggle-group";
+import { Toolbar } from "@coral/react/toolbar";
 ```
 
 ## 책임 범위

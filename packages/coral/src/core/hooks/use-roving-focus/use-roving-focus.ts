@@ -5,8 +5,8 @@ import * as React from "react";
 interface UseRovingFocusOptions {
   rootSelector: string;
   itemSelector: string;
-  selectedSelector: string;
-  selectedAttribute: string;
+  selectedSelector?: string;
+  selectedAttribute?: string;
   orientation: "horizontal" | "vertical";
   loopFocus: boolean;
   entryFocus?: "last-focused" | "selected";
@@ -63,7 +63,7 @@ export function useRovingFocus(options: UseRovingFocusOptions) {
       enabled.includes(previous)
         ? previous
         : undefined) ??
-      enabled.find((item) => item.matches(selectedSelector)) ??
+      (selectedSelector ? enabled.find((item) => item.matches(selectedSelector)) : undefined) ??
       enabled[0];
 
     for (const item of items) {
@@ -100,7 +100,7 @@ export function useRovingFocus(options: UseRovingFocusOptions) {
       "open",
       "class",
       "style",
-      selectedAttribute,
+      ...(selectedAttribute ? [selectedAttribute] : []),
     ];
     observer.observe(root, { childList: true, subtree: true, attributes: true, attributeFilter });
 

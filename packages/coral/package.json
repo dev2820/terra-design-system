@@ -92,6 +92,10 @@
       "types": "./dist/toggle-group.d.ts",
       "import": "./dist/toggle-group.js"
     },
+    "./toolbar": {
+      "types": "./dist/toolbar.d.ts",
+      "import": "./dist/toolbar.js"
+    },
     "./use-render": {
       "types": "./dist/use-render.d.ts",
       "import": "./dist/use-render.js"
