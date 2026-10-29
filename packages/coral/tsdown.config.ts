@@ -8,6 +8,7 @@ export default defineConfig({
     checkbox: "src/checkbox/index.ts",
     "checkbox-group": "src/checkbox-group/index.ts",
     collapsible: "src/collapsible/index.ts",
+    dialog: "src/dialog/index.ts",
     field: "src/field/index.ts",
     fieldset: "src/fieldset/index.ts",
     input: "src/input/index.ts",

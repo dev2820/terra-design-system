@@ -32,6 +32,10 @@
       "types": "./dist/collapsible.d.ts",
       "import": "./dist/collapsible.js"
     },
+    "./dialog": {
+      "types": "./dist/dialog.d.ts",
+      "import": "./dist/dialog.js"
+    },
     "./field": {
       "types": "./dist/field.d.ts",
       "import": "./dist/field.js"
@@ -118,6 +122,7 @@
     "react-dom": "catalog:"
   },
   "peerDependencies": {
-    "react": "^19.0.0"
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   }
 }

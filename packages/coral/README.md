@@ -16,6 +16,7 @@ import { Accordion } from "@coral/react/accordion";
 import { Checkbox as SubpathCheckbox } from "@coral/react/checkbox";
 import { CheckboxGroup } from "@coral/react/checkbox-group";
 import { Collapsible } from "@coral/react/collapsible";
+import { Dialog } from "@coral/react/dialog";
 import { Input as SubpathInput } from "@coral/react/input";
 import { Meter } from "@coral/react/meter";
 import { NumberInput } from "@coral/react/number-input";

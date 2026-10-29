@@ -31,7 +31,7 @@ Coral은 WAI-ARIA APG 목록을 컴포넌트 목록으로 그대로 구현하지
 - [x] Collapsible — 단일 패널의 제어·비제어 펼침 상태와 Root, Trigger, Panel을 제공한다.
 - [ ] Combobox (popover 선행)
 - [ ] Context Menu (popover 선행)
-- [ ] Dialog (popover 선행)
+- [x] Dialog — 모달·비모달 선택과 Parts, 포커스 이동·복원, 모달의 포커스 순환·외부 비활성화·Scroll Lock을 제공한다.
 - [ ] Drawer (popover 선행)
 - [x] Field
 - [x] Fieldset
