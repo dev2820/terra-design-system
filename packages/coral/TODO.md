@@ -22,7 +22,7 @@ Coral은 WAI-ARIA APG 목록을 컴포넌트 목록으로 그대로 구현하지
 뜻한다.
 
 - [x] Accordion
-- [ ] Alert Dialog (popover 선행)
+- [x] Alert Dialog — 경고 메시지, 모달의 포커스 관리와 바깥 클릭 유지 동작을 제공한다.
 - [ ] Autocomplete (popover 선행)
 - [x] Avatar
 - [x] Button — 네이티브 `<button>`으로 충분하므로 별도 컴포넌트를 제공하지 않는다.
@@ -80,7 +80,7 @@ Coral은 WAI-ARIA APG 목록을 컴포넌트 목록으로 그대로 구현하지
       제공하고, 네이티브 input의 키보드와 Form 동작을 유지한다.
 - [x] Disclosure와 Accordion은 구조, 펼침 상태와 ID 관계를 컴포넌트에서 직접
       완성한다.
-- [ ] Dialog와 Alert Dialog는 Focus 이동·순환·복원, 외부 영역 비활성화와
+- [x] Dialog와 Alert Dialog는 Focus 이동·순환·복원, 외부 영역 비활성화와
       Scroll Lock을 실제 DOM 동작으로 완성한다.
 - [ ] Carousel은 수동·자동 회전, Focus·Hover 일시 정지와 비순환 경계를
       컴포넌트에서 완성하되 Timer 주입 계약을 별도로 검토한다.

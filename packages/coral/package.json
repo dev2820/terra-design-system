@@ -16,6 +16,10 @@
       "types": "./dist/accordion.d.ts",
       "import": "./dist/accordion.js"
     },
+    "./alert-dialog": {
+      "types": "./dist/alert-dialog.d.ts",
+      "import": "./dist/alert-dialog.js"
+    },
     "./avatar": {
       "types": "./dist/avatar.d.ts",
       "import": "./dist/avatar.js"

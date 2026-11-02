@@ -13,6 +13,7 @@ pnpm add @coral/react
 ```tsx
 import { Checkbox, Field, Input } from "@coral/react";
 import { Accordion } from "@coral/react/accordion";
+import { AlertDialog } from "@coral/react/alert-dialog";
 import { Checkbox as SubpathCheckbox } from "@coral/react/checkbox";
 import { CheckboxGroup } from "@coral/react/checkbox-group";
 import { Collapsible } from "@coral/react/collapsible";
