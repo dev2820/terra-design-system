@@ -16,6 +16,7 @@ export default defineConfig({
     meter: "src/meter/index.ts",
     "number-input": "src/number-input/index.ts",
     "otp-field": "src/otp-field/index.ts",
+    popover: "src/popover/index.ts",
     progress: "src/progress/index.ts",
     "radio-group": "src/radio-group/index.ts",
     "scroll-area": "src/scroll-area/index.ts",

@@ -64,6 +64,10 @@
       "types": "./dist/otp-field.d.ts",
       "import": "./dist/otp-field.js"
     },
+    "./popover": {
+      "types": "./dist/popover.d.ts",
+      "import": "./dist/popover.js"
+    },
     "./progress": {
       "types": "./dist/progress.d.ts",
       "import": "./dist/progress.js"
@@ -115,6 +119,9 @@
     "test:watch": "vitest run --watch",
     "typecheck": "tsc --noEmit",
     "typecheck:watch": "tsc --noEmit -w"
+  },
+  "dependencies": {
+    "@floating-ui/dom": "^1.8.0"
   },
   "devDependencies": {
     "@terra/typescript-config": "workspace:*",

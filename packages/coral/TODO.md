@@ -43,7 +43,7 @@ Coral은 WAI-ARIA APG 목록을 컴포넌트 목록으로 그대로 구현하지
 - [ ] Navigation Menu (popover 선행)
 - [x] Number Field — Coral에서는 NumberInput으로 네이티브 숫자 입력과 증감 버튼을 제공한다.
 - [x] OTP Field — Root, Label, Control, Input, HiddenInput, Separator로 숫자·영문·영숫자 인증번호를 조합한다.
-- [ ] Popover
+- [x] Popover — 비모달 패널의 Parts, 제목·설명 자동 연결, 상대 배치·화면 경계 보정과 포커스·닫기를 제공한다.
 - [ ] Preview Card (popover 선행)
 - [x] Progress — 확정·불확정 상태와 값 포맷·Parts를 제공한다.
 - [x] Radio — 별도 컴포넌트 없이 Radio Group의 Item으로 제공한다.
