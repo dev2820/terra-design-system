@@ -477,7 +477,7 @@ describe("Autocomplete", () => {
       expect(getList()).toBeNull();
       view.rerender(<Fixture rootProps={{ value: "B", open: true }} />);
       expect(getInput().value).toBe("B");
-      expect(getList()).not.toBeNull();
+      await vi.waitFor(() => expect(getList()).not.toBeNull());
     });
 
     it("입력과 추천 선택의 값 변경을 취소할 수 있다", async () => {
@@ -822,7 +822,7 @@ describe("Autocomplete", () => {
             <Autocomplete.Positioner
               data-positioner=""
               ref={positionerRef}
-              render={<CustomContainer />}
+              render={<CustomContainer style={{ pointerEvents: "auto" }} />}
             >
               <Autocomplete.List aria-label="추천 과일" ref={listRef} render={<CustomContainer />}>
                 <Autocomplete.Item ref={itemRef} value="Apple" render={<CustomContainer />}>
@@ -849,6 +849,7 @@ describe("Autocomplete", () => {
       expect(inputRef.current).toBe(getInput());
       expect(renderInputRef.current).toBe(getInput());
       expect(positionerRef.current).toBe(getPositioner());
+      expect(positionerRef.current!.style.pointerEvents).toBe("auto");
       expect(listRef.current).toBe(getList());
       await userEvent.keyboard("{ArrowDown}{Enter}");
       expect(inputRef.current!.value).toBe("Apple");

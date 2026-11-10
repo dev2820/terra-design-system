@@ -1,8 +1,6 @@
 "use client";
 
-import { arrow, autoUpdate, computePosition, flip, offset, shift, size } from "@floating-ui/dom";
 import * as React from "react";
-import { createPortal } from "react-dom";
 
 import {
   createFocusRestoration,
@@ -11,6 +9,14 @@ import {
   useRender,
   type PropsWithRender,
 } from "../core";
+import { Portal as BasePortal, type PortalProps } from "../portal";
+import {
+  Positioner as BasePositioner,
+  type PositionerAlign,
+  type PositionerPlacement,
+  type PositionerProps,
+  type PositionerSide,
+} from "../positioner";
 import {
   focusInitialElement,
   getPopoverManager,
@@ -23,8 +29,8 @@ export type PopoverFocusTarget =
   | boolean
   | React.RefObject<HTMLElement | null>
   | ((interactionType: PopoverInteractionType) => HTMLElement | boolean | null | void);
-export type PopoverSide = "top" | "right" | "bottom" | "left";
-export type PopoverAlign = "start" | "center" | "end";
+export type PopoverSide = PositionerSide;
+export type PopoverAlign = PositionerAlign;
 
 export interface PopoverChangeEventDetails {
   readonly reason:
@@ -46,11 +52,7 @@ export interface PopoverRootProps {
   onOpenChange?: (open: boolean, eventDetails: PopoverChangeEventDetails) => void;
 }
 
-interface Placement {
-  side: PopoverSide;
-  align: PopoverAlign;
-  arrowStyle: React.CSSProperties;
-}
+type Placement = PositionerPlacement;
 
 interface PopoverContextValue {
   open: boolean;
@@ -216,28 +218,17 @@ export function Trigger(props: PopoverTriggerProps) {
   });
 }
 
-export interface PopoverPortalProps extends PropsWithRender<React.ComponentProps<"div">> {
-  container?: HTMLElement | null;
-}
+export interface PopoverPortalProps extends PortalProps {}
 
 export function Portal(props: PopoverPortalProps) {
-  const { container, render, ...rest } = props;
-
-  const popover = usePopoverContext("Portal");
-  const [mounted, setMounted] = React.useState(false);
-  React.useEffect(() => setMounted(true), []);
-  const element = useRender({ defaultTagName: "div", render, props: rest });
-  return mounted && popover.open ? createPortal(element, container ?? document.body) : null;
+  const { open } = usePopoverContext("Portal");
+  return open ? <BasePortal {...props} /> : null;
 }
 
-export interface PopoverPositionerProps extends PropsWithRender<
-  Omit<React.ComponentProps<"div">, "popover">
-> {
-  side?: PopoverSide;
-  align?: PopoverAlign;
-  sideOffset?: number;
-  collisionPadding?: number;
-}
+export interface PopoverPositionerProps extends Omit<
+  PositionerProps,
+  "open" | "anchorRef" | "arrowElement" | "onPlacementChange"
+> {}
 
 export function Positioner(props: PopoverPositionerProps) {
   const {
@@ -248,133 +239,36 @@ export function Positioner(props: PopoverPositionerProps) {
     render,
     ...rest
   } = props;
-
-  const popover = usePopoverContext("Positioner");
   const { open, parentReady, positionerRef, triggerRef, arrowElement, setReady, setPlacement } =
-    popover;
-
-  React.useLayoutEffect(() => {
-    const element = positionerRef.current;
-    if (!open || !parentReady || !element) return;
-    const trigger = triggerRef.current;
-    element.showPopover(trigger ? { source: trigger } : {});
-    return () => {
-      setReady(false);
-      if (element.matches(":popover-open")) element.hidePopover();
-    };
-  }, [open, parentReady, positionerRef, triggerRef, setReady]);
-
-  React.useLayoutEffect(() => {
-    const element = positionerRef.current;
-    const trigger = triggerRef.current;
-    if (!open || !parentReady || !element || !trigger) return;
-    let disposed = false;
-    let revision = 0;
-    const update = () => {
-      const currentRevision = ++revision;
-      void computePosition(trigger, element, {
-        strategy: "fixed",
-        placement: align === "center" ? side : `${side}-${align}`,
-        middleware: [
-          offset(sideOffset),
-          flip({ padding: collisionPadding }),
-          shift({ padding: collisionPadding }),
-          size({
-            padding: collisionPadding,
-            apply({ availableWidth, availableHeight, rects }) {
-              if (disposed || revision !== currentRevision) return;
-              element.style.setProperty("--available-width", `${Math.max(0, availableWidth)}px`);
-              element.style.setProperty("--available-height", `${Math.max(0, availableHeight)}px`);
-              element.style.setProperty("--anchor-width", `${rects.reference.width}px`);
-              element.style.setProperty("--anchor-height", `${rects.reference.height}px`);
-            },
-          }),
-          arrowElement ? arrow({ element: arrowElement, padding: collisionPadding }) : undefined,
-        ],
-      }).then(({ x, y, placement, middlewareData }) => {
-        if (disposed || revision !== currentRevision) return;
-        element.style.left = `${x}px`;
-        element.style.top = `${y}px`;
-        const [resolvedSide, resolvedAlign = "center"] = placement.split("-") as [
-          PopoverSide,
-          PopoverAlign?,
-        ];
-        const oppositeSide = (
-          { top: "bottom", right: "left", bottom: "top", left: "right" } as const
-        )[resolvedSide];
-        const arrowSize =
-          resolvedSide === "top" || resolvedSide === "bottom"
-            ? (arrowElement?.offsetHeight ?? 0)
-            : (arrowElement?.offsetWidth ?? 0);
-        const arrowStyle = {
-          left: middlewareData.arrow?.x,
-          top: middlewareData.arrow?.y,
-          [oppositeSide]: -arrowSize / 2,
-        };
-        setPlacement((previous) =>
-          previous.side === resolvedSide &&
-          previous.align === resolvedAlign &&
-          previous.arrowStyle.left === arrowStyle.left &&
-          previous.arrowStyle.top === arrowStyle.top &&
-          previous.arrowStyle[oppositeSide] === arrowStyle[oppositeSide]
-            ? previous
-            : { side: resolvedSide, align: resolvedAlign, arrowStyle },
-        );
-        setReady(true);
-      });
-    };
-    const cleanup = autoUpdate(trigger, element, update);
-    const observer = new ResizeObserver(update);
-    if (arrowElement) observer.observe(arrowElement);
-    return () => {
-      disposed = true;
-      cleanup();
-      observer.disconnect();
-    };
-  }, [
-    open,
-    parentReady,
-    side,
-    align,
-    sideOffset,
-    collisionPadding,
-    positionerRef,
-    triggerRef,
-    arrowElement,
-    setReady,
-    setPlacement,
-  ]);
+    usePopoverContext("Positioner");
+  const handlePlacementChange = React.useCallback(
+    (placement: PositionerPlacement | null) => {
+      if (placement) setPlacement(placement);
+      setReady(placement !== null);
+    },
+    [setPlacement, setReady],
+  );
 
   const element = useRender({
     defaultTagName: "div",
+    defaultProps: { style: { pointerEvents: "none" } },
     render,
-    defaultProps: {
-      style: {
-        position: "fixed",
-        inset: "auto",
-        top: 0,
-        left: 0,
-        margin: 0,
-        padding: 0,
-        border: 0,
-        background: "transparent",
-        color: "inherit",
-        overflow: "visible",
-        width: "max-content",
-        pointerEvents: "none",
-      },
-    },
     props: rest,
-    internalProps: {
-      ref: positionerRef,
-      popover: "manual",
-      "data-open": open ? "" : undefined,
-      "data-side": popover.placement.side,
-      "data-align": popover.placement.align,
-    },
+    internalProps: { ref: positionerRef },
   });
-
-  return open ? element : null;
+  return (
+    <BasePositioner
+      open={open && parentReady}
+      anchorRef={triggerRef}
+      side={side}
+      align={align}
+      sideOffset={sideOffset}
+      collisionPadding={collisionPadding}
+      arrowElement={arrowElement}
+      onPlacementChange={handlePlacementChange}
+      render={element}
+    />
+  );
 }
 
 export interface PopoverContentProps extends PropsWithRender<

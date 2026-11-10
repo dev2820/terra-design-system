@@ -1,7 +1,6 @@
 "use client";
 
 import * as React from "react";
-import { createPortal } from "react-dom";
 
 import {
   createFocusRestoration,
@@ -17,6 +16,7 @@ import {
   resolveFocusTarget,
   type DialogLayer,
 } from "../dialog/dialog-layer";
+import { Portal as BasePortal, type PortalProps } from "../portal";
 
 export type AlertDialogInteractionType = "mouse" | "touch" | "pen" | "keyboard" | "";
 export type AlertDialogFocusTarget =
@@ -190,20 +190,11 @@ export function Trigger(props: AlertDialogTriggerProps) {
   });
 }
 
-export interface AlertDialogPortalProps extends PropsWithRender<React.ComponentProps<"div">> {
-  container?: HTMLElement | null;
-}
+export interface AlertDialogPortalProps extends PortalProps {}
 
 export function Portal(props: AlertDialogPortalProps) {
-  const { container, render, ...rest } = props;
-  const dialog = useAlertDialogContext("Portal");
-  const [mounted, setMounted] = React.useState(false);
-
-  React.useEffect(() => setMounted(true), []);
-
-  const element = useRender({ defaultTagName: "div", render, props: rest });
-
-  return mounted && dialog.open ? createPortal(element, container ?? document.body) : null;
+  const { open } = useAlertDialogContext("Portal");
+  return open ? <BasePortal {...props} /> : null;
 }
 
 export interface AlertDialogBackdropProps extends PropsWithRender<

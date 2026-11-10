@@ -60,6 +60,11 @@ Coral은 WAI-ARIA APG 목록을 컴포넌트 목록으로 그대로 구현하지
 - [x] Toolbar
 - [ ] Tooltip (popover 선행)
 
+## 공통 공개 컴포넌트
+
+- [x] Portal — DOM 컨테이너 이동과 클라이언트 마운트, render 합성을 독립적으로 제공합니다.
+- [x] Positioner — 기준 요소 옆의 배치와 화면 경계 보정, 상위 표시 계층과 화살표 배치를 독립적으로 제공합니다.
+
 ## Progress 포맷 계약
 
 - Meter와 동일하게 `format?: (value: number) => string`만 제공한다.

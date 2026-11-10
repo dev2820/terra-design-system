@@ -18,6 +18,8 @@ export default defineConfig({
     "number-input": "src/number-input/index.ts",
     "otp-field": "src/otp-field/index.ts",
     popover: "src/popover/index.ts",
+    portal: "src/portal/index.ts",
+    positioner: "src/positioner/index.ts",
     progress: "src/progress/index.ts",
     "radio-group": "src/radio-group/index.ts",
     "scroll-area": "src/scroll-area/index.ts",

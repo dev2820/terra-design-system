@@ -1,7 +1,6 @@
 "use client";
 
 import * as React from "react";
-import { createPortal } from "react-dom";
 
 import {
   createFocusRestoration,
@@ -11,6 +10,7 @@ import {
   visuallyHiddenStyle,
   type PropsWithRender,
 } from "../core";
+import { Portal as BasePortal, type PortalProps } from "../portal";
 import {
   focusInitialElement,
   getDialogManager,
@@ -192,20 +192,11 @@ export function Trigger(props: DialogTriggerProps) {
   });
 }
 
-export interface DialogPortalProps extends PropsWithRender<React.ComponentProps<"div">> {
-  container?: HTMLElement | null;
-}
+export interface DialogPortalProps extends PortalProps {}
 
 export function Portal(props: DialogPortalProps) {
-  const { container, render, ...rest } = props;
-  const dialog = useDialogContext("Portal");
-  const [mounted, setMounted] = React.useState(false);
-
-  React.useEffect(() => setMounted(true), []);
-
-  const element = useRender({ defaultTagName: "div", render, props: rest });
-
-  return mounted && dialog.open ? createPortal(element, container ?? document.body) : null;
+  const { open } = useDialogContext("Portal");
+  return open ? <BasePortal {...props} /> : null;
 }
 
 export interface DialogBackdropProps extends PropsWithRender<

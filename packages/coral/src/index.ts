@@ -14,6 +14,8 @@ export * from "./meter";
 export * from "./number-input";
 export * from "./otp-field";
 export * from "./popover";
+export * from "./portal";
+export * from "./positioner";
 export * from "./progress";
 export * from "./radio-group";
 export * from "./scroll-area";

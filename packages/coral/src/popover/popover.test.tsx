@@ -926,7 +926,10 @@ describe("Popover", () => {
             열기
           </Popover.Trigger>
           <Popover.Portal ref={refs.portal} render={<CustomContainer />}>
-            <Popover.Positioner ref={refs.positioner} render={<CustomContainer />}>
+            <Popover.Positioner
+              ref={refs.positioner}
+              render={<CustomContainer style={{ pointerEvents: "auto" }} />}
+            >
               <Popover.Content ref={refs.content} render={<CustomContainer ref={renderRef} />}>
                 <Popover.Arrow ref={refs.arrow} render={<CustomContainer />} />
                 <Popover.Title ref={refs.title} render={<CustomTitle />}>
@@ -948,6 +951,7 @@ describe("Popover", () => {
       await vi.waitFor(() => expect(document.activeElement).toBe(getFirst()));
       expect(calls).toEqual(["render", "part"]);
       expect(renderRef.current).toBe(refs.content.current);
+      expect(refs.positioner.current!.style.pointerEvents).toBe("auto");
       for (const ref of Object.values(refs))
         expect(ref.current!.hasAttribute("data-custom")).toBe(true);
       await expect.element(refs.content.current!).toHaveAccessibleName("설정");

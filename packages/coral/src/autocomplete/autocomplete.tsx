@@ -1,13 +1,13 @@
 "use client";
 
-import { autoUpdate, computePosition, flip, offset, shift, size } from "@floating-ui/dom";
 import * as React from "react";
-import { createPortal } from "react-dom";
 
 import { createPartContext, useRender, type PropsWithRender } from "../core";
 import { Field } from "../field";
 import { useFieldContext } from "../field/field-context";
 import { useFieldsetContext } from "../fieldset/fieldset-context";
+import { Portal as BasePortal, type PortalProps } from "../portal";
+import { Positioner as BasePositioner, type PositionerProps } from "../positioner";
 
 export interface AutocompleteChangeEventDetails {
   readonly reason:
@@ -370,27 +370,18 @@ export function Input(props: AutocompleteInputProps) {
   });
 }
 
-export interface AutocompletePortalProps extends PropsWithRender<React.ComponentProps<"div">> {
-  container?: HTMLElement | null;
-}
+export interface AutocompletePortalProps extends PortalProps {}
 
 export function Portal(props: AutocompletePortalProps) {
-  const { container, render, ...rest } = props;
   const { open } = useAutocompleteContext("Portal");
-  const [mounted, setMounted] = React.useState(false);
-  React.useEffect(() => setMounted(true), []);
-  const element = useRender({ defaultTagName: "div", render, props: rest });
-
-  return mounted && open ? createPortal(element, container ?? document.body) : null;
+  return open ? <BasePortal {...props} /> : null;
 }
 
-export interface AutocompletePositionerProps extends PropsWithRender<
-  Omit<React.ComponentProps<"div">, "popover">
+export interface AutocompletePositionerProps extends Omit<
+  PositionerProps,
+  "open" | "anchorRef" | "arrowElement" | "onPlacementChange" | "side"
 > {
   side?: "top" | "bottom";
-  align?: "start" | "center" | "end";
-  sideOffset?: number;
-  collisionPadding?: number;
 }
 
 export function Positioner(props: AutocompletePositionerProps) {
@@ -403,79 +394,24 @@ export function Positioner(props: AutocompletePositionerProps) {
     ...rest
   } = props;
   const { open, inputRef, positionerRef } = useAutocompleteContext("Positioner");
-  const [placement, setPlacement] = React.useState(`${side}-${align}`);
-  React.useLayoutEffect(() => {
-    const element = positionerRef.current;
-    const input = inputRef.current;
-    if (!open || !element || !input) return;
-    element.showPopover({ source: input });
-    let disposed = false;
-    let revision = 0;
-    const update = () => {
-      const currentRevision = ++revision;
-      void computePosition(input, element, {
-        strategy: "fixed",
-        placement: align === "center" ? side : `${side}-${align}`,
-        middleware: [
-          offset(sideOffset),
-          flip({ padding: collisionPadding }),
-          shift({ padding: collisionPadding }),
-          size({
-            padding: collisionPadding,
-            apply({ availableWidth, availableHeight, rects }) {
-              if (disposed || currentRevision !== revision) return;
-              element.style.setProperty("--anchor-width", `${rects.reference.width}px`);
-              element.style.setProperty("--anchor-height", `${rects.reference.height}px`);
-              element.style.setProperty("--available-width", `${Math.max(0, availableWidth)}px`);
-              element.style.setProperty("--available-height", `${Math.max(0, availableHeight)}px`);
-            },
-          }),
-        ],
-      }).then(({ x, y, placement: resolved }) => {
-        if (disposed || currentRevision !== revision) return;
-        element.style.left = `${x}px`;
-        element.style.top = `${y}px`;
-        setPlacement(resolved);
-      });
-    };
-    const cleanup = autoUpdate(input, element, update);
-    return () => {
-      disposed = true;
-      cleanup();
-      if (element.matches(":popover-open")) element.hidePopover();
-    };
-  }, [open, side, align, sideOffset, collisionPadding, inputRef, positionerRef]);
-
   const element = useRender({
     defaultTagName: "div",
+    defaultProps: { style: { pointerEvents: "none" } },
     render,
-    defaultProps: {
-      style: {
-        position: "fixed",
-        inset: "auto",
-        top: 0,
-        left: 0,
-        margin: 0,
-        padding: 0,
-        border: 0,
-        background: "transparent",
-        color: "inherit",
-        overflow: "visible",
-        width: "max-content",
-        pointerEvents: "none",
-      },
-    },
     props: rest,
-    internalProps: {
-      ref: positionerRef,
-      popover: "manual",
-      "data-open": open ? "" : undefined,
-      "data-side": placement.split("-")[0],
-      "data-align": placement.split("-")[1] ?? "center",
-    },
+    internalProps: { ref: positionerRef },
   });
-
-  return open ? element : null;
+  return (
+    <BasePositioner
+      open={open}
+      anchorRef={inputRef}
+      side={side}
+      align={align}
+      sideOffset={sideOffset}
+      collisionPadding={collisionPadding}
+      render={element}
+    />
+  );
 }
 
 export interface AutocompleteListProps extends PropsWithRender<

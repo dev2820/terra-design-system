@@ -128,10 +128,11 @@ HTMLElement Ref, boolean 또는 입력 유형을 받는 콜백을 지정할 수 
 입력 유형은 `mouse`, `touch`, `pen`, `keyboard`
 또는 유형이 알려지지 않은 경우의 빈 문자열이다.
 
-Popover는 자체 컨텍스트로 부모·자식 Popover의 관계를 전달하고, 자체 레이어
-관리자가 중첩 Popover의 닫기와 포커스를 처리한다. Escape는 가장 위의 Popover
-하나를 닫는다. Dialog와 AlertDialog의 타입, 컨텍스트와 레이어 구현에는
-의존하지 않는다. 다른 컴포넌트와의 공통 모듈도 추가하지 않는다.
+Popover는 자체 컨텍스트로 부모와 자식 Popover의 관계를 전달합니다. 자체 레이어
+관리자가 중첩 Popover의 닫기와 포커스를 처리합니다. Escape는 가장 위의 Popover
+하나를 닫습니다. Dialog와 AlertDialog의 타입, 컨텍스트와 레이어 구현에는
+의존하지 않습니다. 공개 Portal과 Positioner를 재사용하며 Popover는 기준 Trigger,
+열림 상태, 화살표와 배치 완료 후 포커스 이동을 연결합니다.
 
 Dialog·AlertDialog와의 교차 중첩은 현재 지원 범위에 포함하지 않는다. 각
 컴포넌트는 별도의 레이어 순서, 외부 상호작용과 포커스 경계를 관리한다.

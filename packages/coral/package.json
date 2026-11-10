@@ -72,6 +72,14 @@
       "types": "./dist/popover.d.ts",
       "import": "./dist/popover.js"
     },
+    "./portal": {
+      "types": "./dist/portal.d.ts",
+      "import": "./dist/portal.js"
+    },
+    "./positioner": {
+      "types": "./dist/positioner.d.ts",
+      "import": "./dist/positioner.js"
+    },
     "./progress": {
       "types": "./dist/progress.d.ts",
       "import": "./dist/progress.js"
