@@ -20,6 +20,10 @@
       "types": "./dist/alert-dialog.d.ts",
       "import": "./dist/alert-dialog.js"
     },
+    "./autocomplete": {
+      "types": "./dist/autocomplete.d.ts",
+      "import": "./dist/autocomplete.js"
+    },
     "./avatar": {
       "types": "./dist/avatar.d.ts",
       "import": "./dist/avatar.js"

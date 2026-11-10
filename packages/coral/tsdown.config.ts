@@ -5,6 +5,7 @@ export default defineConfig({
     index: "src/index.ts",
     accordion: "src/accordion/index.ts",
     "alert-dialog": "src/alert-dialog/index.ts",
+    autocomplete: "src/autocomplete/index.ts",
     avatar: "src/avatar/index.ts",
     checkbox: "src/checkbox/index.ts",
     "checkbox-group": "src/checkbox-group/index.ts",

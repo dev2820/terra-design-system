@@ -23,7 +23,7 @@ Coral은 WAI-ARIA APG 목록을 컴포넌트 목록으로 그대로 구현하지
 
 - [x] Accordion
 - [x] Alert Dialog — 경고 메시지, 모달의 포커스 관리와 바깥 클릭 유지 동작을 제공한다.
-- [ ] Autocomplete (popover 선행)
+- [x] Autocomplete — 자유 입력, 추천 문자열 필터링, 목록 탐색과 선택, 팝업 배치를 제공합니다.
 - [x] Avatar
 - [x] Button — 네이티브 `<button>`으로 충분하므로 별도 컴포넌트를 제공하지 않는다.
 - [x] Checkbox
