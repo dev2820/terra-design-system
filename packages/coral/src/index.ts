@@ -5,6 +5,7 @@ export * from "./avatar";
 export * from "./checkbox";
 export * from "./checkbox-group";
 export * from "./collapsible";
+export * from "./combobox";
 export * from "./core";
 export * from "./dialog";
 export * from "./field";

@@ -40,6 +40,10 @@
       "types": "./dist/collapsible.d.ts",
       "import": "./dist/collapsible.js"
     },
+    "./combobox": {
+      "types": "./dist/combobox.d.ts",
+      "import": "./dist/combobox.js"
+    },
     "./dialog": {
       "types": "./dist/dialog.d.ts",
       "import": "./dist/dialog.js"

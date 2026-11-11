@@ -18,6 +18,7 @@ import { Autocomplete } from "@coral/react/autocomplete";
 import { Checkbox as SubpathCheckbox } from "@coral/react/checkbox";
 import { CheckboxGroup } from "@coral/react/checkbox-group";
 import { Collapsible } from "@coral/react/collapsible";
+import { Combobox } from "@coral/react/combobox";
 import { Dialog } from "@coral/react/dialog";
 import { Input as SubpathInput } from "@coral/react/input";
 import { Meter } from "@coral/react/meter";
