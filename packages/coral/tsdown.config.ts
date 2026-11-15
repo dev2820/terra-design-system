@@ -15,6 +15,7 @@ export default defineConfig({
     field: "src/field/index.ts",
     fieldset: "src/fieldset/index.ts",
     input: "src/input/index.ts",
+    menu: "src/menu/index.ts",
     meter: "src/meter/index.ts",
     "number-input": "src/number-input/index.ts",
     "otp-field": "src/otp-field/index.ts",

@@ -18,6 +18,7 @@ import { Autocomplete as RootExportAutocomplete } from "..";
 import { Field } from "../field";
 import { Fieldset } from "../fieldset";
 
+// Fixture buttons explicitly participate in keyboard navigation on macOS WebKit.
 const fixtures: Array<{ container: HTMLDivElement; root: Root }> = [];
 
 afterEach(() => {
@@ -81,12 +82,14 @@ function Fixture({
   );
   return (
     <>
-      <button data-before="">이전</button>
+      <button tabIndex={0} data-before="">
+        이전
+      </button>
       <Autocomplete.Root data-root="" {...rootProps}>
         <Autocomplete.Input aria-label="과일" {...inputProps} />
         {portal ? <Autocomplete.Portal data-portal="">{popup}</Autocomplete.Portal> : popup}
       </Autocomplete.Root>
-      <button data-after="" style={{ display: "block", marginTop: 240 }}>
+      <button tabIndex={0} data-after="" style={{ display: "block", marginTop: 240 }}>
         다음
       </button>
     </>
@@ -692,7 +695,9 @@ describe("Autocomplete", () => {
       render(
         <>
           <form id="fruit-form">
-            <button type="reset">초기화</button>
+            <button tabIndex={0} type="reset">
+              초기화
+            </button>
           </form>
           <Fixture
             rootProps={{ defaultValue: "A", onValueChange }}
@@ -712,7 +717,9 @@ describe("Autocomplete", () => {
     it("폼 reset은 제어 값을 유지한다", async () => {
       render(
         <form>
-          <button type="reset">초기화</button>
+          <button tabIndex={0} type="reset">
+            초기화
+          </button>
           <Fixture rootProps={{ value: "Cherry", defaultValue: "A" }} />
         </form>,
       );
@@ -723,7 +730,9 @@ describe("Autocomplete", () => {
     it("폼 reset 취소는 입력값을 유지한다", async () => {
       render(
         <form onReset={(event) => event.preventDefault()}>
-          <button type="reset">초기화</button>
+          <button tabIndex={0} type="reset">
+            초기화
+          </button>
           <Fixture rootProps={{ defaultValue: "A" }} />
         </form>,
       );
@@ -744,7 +753,9 @@ describe("Autocomplete", () => {
           }}
         >
           <Fixture />
-          <button type="submit">제출</button>
+          <button tabIndex={0} type="submit">
+            제출
+          </button>
         </form>,
       );
       await openAutocomplete();

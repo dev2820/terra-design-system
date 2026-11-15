@@ -140,7 +140,7 @@ Popover와 Dialog를 전환할 때는 현재 컴포넌트를 닫은 뒤 다른 �
 
 ## 배치와 화살표
 
-Positioner는 Floating UI의 DOM 모듈로 배치를 계산한다.
+Positioner는 공통 Coral.Positioner에 배치를 위임하며 CSS Anchor Positioning을 사용한다.
 
 | Prop               | 기본값     | 의미                                                                                   |
 | ------------------ | ---------- | -------------------------------------------------------------------------------------- |
@@ -172,7 +172,7 @@ Arrow의 레이아웃 상자는 정사각형으로 만든다. Coral은 보정된
 
 ## 지원 경계와 검증
 
-네이티브 Popover API와 `showPopover({ source })`를 지원하는 브라우저를 대상으로
+CSS Anchor Positioning과 네이티브 Popover API의 `showPopover({ source })`를 지원하는 브라우저를 대상으로
 한다. 대체 표시 계층을 위한 polyfill은 포함하지 않는다. 모달 Popover, Hover로
 열기, 별도 Anchor, 다중·분리 Trigger와 퇴장 애니메이션의 지연 제거는 제공하지
 않는다. Menu나 Combobox의 역할·선택·방향키 동작은 각 컴포넌트가 소유한다.
@@ -197,8 +197,7 @@ pnpm --filter @coral/react exec vitest run src/popover/popover.test.tsx
 - [WAI-ARIA: dialog의 의미와 접근 가능한 이름](https://www.w3.org/TR/wai-aria-1.2/#dialog)
 - [WAI-ARIA APG 패턴 목록](https://www.w3.org/WAI/ARIA/apg/patterns/)
 - [WAI-ARIA APG: Dialog의 이름·설명](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/)
-- [Floating UI: 배치 계산](https://floating-ui.com/docs/computePosition)
-- [Floating UI: 자동 위치 갱신](https://floating-ui.com/docs/autoUpdate)
+- [CSS Anchor Positioning: 배치와 화면 경계 fallback](https://drafts.csswg.org/css-anchor-position-1/)
 - [Base UI Popover](https://base-ui.com/react/components/popover)
 - [Ark UI Popover](https://ark-ui.com/docs/components/popover)
 

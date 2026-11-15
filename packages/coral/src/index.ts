@@ -11,6 +11,7 @@ export * from "./dialog";
 export * from "./field";
 export * from "./fieldset";
 export * from "./input";
+export * from "./menu";
 export * from "./meter";
 export * from "./number-input";
 export * from "./otp-field";

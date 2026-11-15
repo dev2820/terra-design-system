@@ -6,6 +6,8 @@ export default defineConfig({
     include: ["react", "react/jsx-runtime", "react-dom", "react-dom/client", "react-dom/server"],
   },
   test: {
+    // Browser focus is shared across concurrently active pages in Firefox/WebKit.
+    fileParallelism: false,
     browser: {
       enabled: true,
       headless: true,

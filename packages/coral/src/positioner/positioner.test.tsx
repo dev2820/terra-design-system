@@ -155,6 +155,15 @@ describe("Positioner", () => {
     expect(getPositioner()).toBeNull();
   });
 
+  it("첫 레이아웃에서 기준점 배치를 준비한다", () => {
+    render(<Fixture open positionerProps={{ sideOffset: 6, align: "start" }} />);
+    expect(getPositioner()!.getBoundingClientRect().top).toBeCloseTo(
+      getAnchor().getBoundingClientRect().bottom + 6,
+      0,
+    );
+    expect(getPositioner()!.style.getPropertyValue("--anchor-width")).not.toBe("");
+  });
+
   it.each([false, true])(
     "Portal=%s에서도 기준 요소 옆에 배치하고 크기 변수를 제공한다",
     async (portal) => {

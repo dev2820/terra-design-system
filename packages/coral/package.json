@@ -60,6 +60,10 @@
       "types": "./dist/input.d.ts",
       "import": "./dist/input.js"
     },
+    "./menu": {
+      "types": "./dist/menu.d.ts",
+      "import": "./dist/menu.js"
+    },
     "./meter": {
       "types": "./dist/meter.d.ts",
       "import": "./dist/meter.js"

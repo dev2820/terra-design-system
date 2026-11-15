@@ -3,6 +3,7 @@
 Coral은 UI 패턴의 HTML 구조, 행동과 접근성을 제공하는 Headless Component
 Library다. 스타일과 제품의 비즈니스 로직은 소유하지 않으며, 실제 HTML을
 렌더링하는 컴포넌트와 조합 가능한 Parts를 제공한다.
+팝업 배치는 공통 Positioner의 CSS Anchor Positioning과 네이티브 Popover API를 사용한다.
 
 ```sh
 pnpm add @coral/react
@@ -21,6 +22,7 @@ import { Collapsible } from "@coral/react/collapsible";
 import { Combobox } from "@coral/react/combobox";
 import { Dialog } from "@coral/react/dialog";
 import { Input as SubpathInput } from "@coral/react/input";
+import { Menu } from "@coral/react/menu";
 import { Meter } from "@coral/react/meter";
 import { NumberInput } from "@coral/react/number-input";
 import { OtpField } from "@coral/react/otp-field";

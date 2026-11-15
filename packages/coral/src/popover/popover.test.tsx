@@ -17,6 +17,7 @@ import {
 } from ".";
 import { Popover as RootExportPopover } from "..";
 
+// Fixture buttons explicitly participate in keyboard navigation on macOS WebKit.
 const fixtures: Array<{ container: HTMLDivElement; root: Root }> = [];
 const cleanups: Array<() => void> = [];
 
@@ -86,14 +87,18 @@ function Fixture({
         {description && <Popover.Description>설정을 변경합니다.</Popover.Description>}
         {body === undefined ? (
           <>
-            <button data-first="">첫 번째</button>
-            <button data-second="">두 번째</button>
+            <button tabIndex={0} data-first="">
+              첫 번째
+            </button>
+            <button tabIndex={0} data-second="">
+              두 번째
+            </button>
           </>
         ) : (
           body
         )}
         {close && (
-          <Popover.Close data-close="" {...closeProps}>
+          <Popover.Close tabIndex={0} data-close="" {...closeProps}>
             닫기
           </Popover.Close>
         )}
@@ -102,14 +107,18 @@ function Fixture({
   );
   return (
     <>
-      <button data-before="">이전</button>
+      <button tabIndex={0} data-before="">
+        이전
+      </button>
       <Popover.Root {...rootProps}>
-        <Popover.Trigger data-trigger="" {...triggerProps}>
+        <Popover.Trigger tabIndex={0} data-trigger="" {...triggerProps}>
           열기
         </Popover.Trigger>
         {portal ? <Popover.Portal data-portal="">{contents}</Popover.Portal> : contents}
       </Popover.Root>
-      <button data-after="">다음</button>
+      <button tabIndex={0} data-after="">
+        다음
+      </button>
     </>
   );
 }
@@ -138,10 +147,10 @@ function CustomContainer(props: ComponentProps<"div">) {
   return <div {...props} data-custom="" />;
 }
 function CustomButton(props: ComponentProps<"button">) {
-  return <button {...props} data-custom="" />;
+  return <button tabIndex={0} {...props} data-custom="" />;
 }
 function SubmitButton({ type = "submit", ...props }: ComponentProps<"button">) {
-  return <button {...props} type={type} />;
+  return <button tabIndex={0} {...props} type={type} />;
 }
 function CustomTitle(props: ComponentProps<"h2">) {
   return <h2 {...props} data-custom="" />;
@@ -160,7 +169,9 @@ function NamedPartsFixture({ id }: { id: string }) {
         <>
           <Popover.Title id={`${id}-title`}>제목</Popover.Title>
           <Popover.Description id={`${id}-description`}>설명</Popover.Description>
-          <button data-first="">작업</button>
+          <button tabIndex={0} data-first="">
+            작업
+          </button>
         </>
       }
     />
@@ -177,8 +188,12 @@ function NestedFixture({
   const child = (
     <Popover.Positioner side="right">
       <Popover.Content aria-label="자식">
-        <button data-child-first="">자식 작업</button>
-        <Popover.Close data-child-close="">자식 닫기</Popover.Close>
+        <button tabIndex={0} data-child-first="">
+          자식 작업
+        </button>
+        <Popover.Close tabIndex={0} data-child-close="">
+          자식 닫기
+        </Popover.Close>
       </Popover.Content>
     </Popover.Positioner>
   );
@@ -188,9 +203,13 @@ function NestedFixture({
       portal={portal}
       body={
         <>
-          <button data-first="">부모 작업</button>
+          <button tabIndex={0} data-first="">
+            부모 작업
+          </button>
           <Popover.Root defaultOpen={defaultOpen}>
-            <Popover.Trigger data-child-trigger="">자식 열기</Popover.Trigger>
+            <Popover.Trigger tabIndex={0} data-child-trigger="">
+              자식 열기
+            </Popover.Trigger>
             {portal ? <Popover.Portal>{child}</Popover.Portal> : child}
           </Popover.Root>
         </>
@@ -309,11 +328,13 @@ describe("Popover", () => {
       const target = appendElement(document.createElement("div"));
       render(
         <Popover.Root defaultOpen>
-          <Popover.Trigger>기준</Popover.Trigger>
+          <Popover.Trigger tabIndex={0}>기준</Popover.Trigger>
           <Popover.Portal container={target}>
             <Popover.Positioner>
               <Popover.Content aria-label="설정">
-                <button data-first="">작업</button>
+                <button tabIndex={0} data-first="">
+                  작업
+                </button>
               </Popover.Content>
             </Popover.Positioner>
           </Popover.Portal>
@@ -559,10 +580,14 @@ describe("Popover", () => {
         <Fixture
           body={
             <>
-              <button disabled>비활성</button>
-              <button hidden>숨김</button>
+              <button tabIndex={0} disabled>
+                비활성
+              </button>
+              <button tabIndex={0} hidden>
+                숨김
+              </button>
               <div inert>
-                <button>inert</button>
+                <button tabIndex={0}>inert</button>
               </div>
             </>
           }
@@ -597,10 +622,12 @@ describe("Popover", () => {
           contentProps={{ initialFocus: unavailable }}
           body={
             <>
-              <button ref={unavailable} disabled>
+              <button tabIndex={0} ref={unavailable} disabled>
                 비활성
               </button>
-              <button data-first="">첫 번째</button>
+              <button tabIndex={0} data-first="">
+                첫 번째
+              </button>
             </>
           }
         />,
@@ -614,7 +641,7 @@ describe("Popover", () => {
         const target = createRef<HTMLButtonElement>();
         render(
           <>
-            <button ref={target} disabled={!available}>
+            <button tabIndex={0} ref={target} disabled={!available}>
               최종 대상
             </button>
             <Fixture contentProps={{ finalFocus: target }} />
@@ -639,7 +666,7 @@ describe("Popover", () => {
       expect(focused).not.toHaveBeenCalled();
     });
 
-    it("배치가 완료되기 전에 닫으면 늦은 초기 포커스 이동을 실행하지 않는다", async () => {
+    it("닫힌 뒤 초기 포커스 처리를 실행하지 않는다", async () => {
       const initial = vi.fn(() => true);
       const { rerender } = render(
         <Fixture
@@ -648,6 +675,7 @@ describe("Popover", () => {
           portal={false}
         />,
       );
+      const initialCalls = initial.mock.calls.length;
       rerender(
         <Fixture
           rootProps={{ open: false }}
@@ -656,7 +684,7 @@ describe("Popover", () => {
         />,
       );
       await new Promise(requestAnimationFrame);
-      expect(initial).not.toHaveBeenCalled();
+      expect(initial).toHaveBeenCalledTimes(initialCalls);
       expect(getContent()).toBeNull();
       expect(document.querySelector(":popover-open")).toBeNull();
     });
@@ -744,7 +772,11 @@ describe("Popover", () => {
         });
         render(
           <Popover.Root defaultOpen>
-            <Popover.Trigger ref={reference} style={{ position: "fixed", left: 160, top: 200 }}>
+            <Popover.Trigger
+              tabIndex={0}
+              ref={reference}
+              style={{ position: "fixed", left: 160, top: 200 }}
+            >
               기준
             </Popover.Trigger>
             <Popover.Portal>
@@ -754,7 +786,9 @@ describe("Popover", () => {
                   initialFocus={focusRect}
                   style={{ width: 70, height: 60 }}
                 >
-                  <button data-first="">작업</button>
+                  <button tabIndex={0} data-first="">
+                    작업
+                  </button>
                 </Popover.Content>
               </Popover.Positioner>
             </Popover.Portal>
@@ -800,13 +834,19 @@ describe("Popover", () => {
       const floating = createRef<HTMLDivElement>();
       render(
         <Popover.Root defaultOpen>
-          <Popover.Trigger ref={reference} style={{ position: "fixed", left: 150, top: 150 }}>
+          <Popover.Trigger
+            tabIndex={0}
+            ref={reference}
+            style={{ position: "fixed", left: 150, top: 150 }}
+          >
             기준
           </Popover.Trigger>
           <Popover.Portal>
             <Popover.Positioner ref={floating} align={align} dir={dir}>
               <Popover.Content aria-label="패널" style={{ width: 100, height: 50 }}>
-                <button data-first="">작업</button>
+                <button tabIndex={0} data-first="">
+                  작업
+                </button>
               </Popover.Content>
             </Popover.Positioner>
           </Popover.Portal>
@@ -890,7 +930,9 @@ describe("Popover", () => {
           body={
             <>
               <Popover.Arrow ref={arrowRef} style={{ width: 20, height: 20 }} />
-              <button data-first="">작업</button>
+              <button tabIndex={0} data-first="">
+                작업
+              </button>
             </>
           }
         />,
@@ -919,6 +961,7 @@ describe("Popover", () => {
       render(
         <Popover.Root>
           <Popover.Trigger
+            tabIndex={0}
             ref={refs.trigger}
             render={<CustomButton onClick={() => calls.push("render")} />}
             onClick={() => calls.push("part")}
@@ -938,8 +981,10 @@ describe("Popover", () => {
                 <Popover.Description ref={refs.description} render={<CustomDescription />}>
                   설명
                 </Popover.Description>
-                <button data-first="">작업</button>
-                <Popover.Close ref={refs.close} render={<CustomButton />}>
+                <button tabIndex={0} data-first="">
+                  작업
+                </button>
+                <Popover.Close tabIndex={0} ref={refs.close} render={<CustomButton />}>
                   닫기
                 </Popover.Close>
               </Popover.Content>

@@ -19,6 +19,7 @@ import { Combobox as RootExportCombobox } from "..";
 import { Field } from "../field";
 import { Fieldset } from "../fieldset";
 
+// Fixture buttons explicitly participate in keyboard navigation on macOS WebKit.
 const fixtures: Array<{ container: HTMLDivElement; root: Root }> = [];
 
 afterEach(() => {
@@ -90,7 +91,9 @@ function Fixture({
   );
   return (
     <>
-      <button type="button">이전</button>
+      <button tabIndex={0} type="button">
+        이전
+      </button>
       <Combobox.Root items={items} {...rootProps} data-root="">
         <Combobox.Value data-value-display="" />
         <Combobox.Input aria-label="과일" {...inputProps} />
@@ -103,7 +106,7 @@ function Fixture({
         {portal ? <Combobox.Portal data-portal="">{popup}</Combobox.Portal> : popup}
         <Combobox.HiddenSelect data-native-select="" />
       </Combobox.Root>
-      <button type="button" style={{ display: "block", marginTop: 240 }}>
+      <button tabIndex={0} type="button" style={{ display: "block", marginTop: 240 }}>
         다음
       </button>
       <div data-outside="" style={{ width: 100, height: 32 }}>
@@ -256,7 +259,9 @@ describe("Combobox", () => {
           }}
         >
           <Fixture rootProps={{ items, name: "fruit", onValueChange }} />
-          <button type="submit">제출</button>
+          <button tabIndex={0} type="submit">
+            제출
+          </button>
         </form>,
       );
       await userEvent.fill(page.getByRole("combobox"), "Apple");
@@ -782,7 +787,9 @@ describe("Combobox", () => {
               />
               <Field.Error>과일 선택이 필요합니다.</Field.Error>
             </Field.Root>
-            <button type="submit">제출</button>
+            <button tabIndex={0} type="submit">
+              제출
+            </button>
           </form>,
         );
         await expect.element(getInput()).toHaveAccessibleName("원하는 과일");
@@ -848,7 +855,9 @@ describe("Combobox", () => {
         render(
           <>
             <form id="fruit-form">
-              <button type="reset">초기화</button>
+              <button tabIndex={0} type="reset">
+                초기화
+              </button>
             </form>
             <Fixture
               rootProps={
@@ -920,7 +929,9 @@ describe("Combobox", () => {
                     }
               }
             />
-            <button type="reset">초기화</button>
+            <button tabIndex={0} type="reset">
+              초기화
+            </button>
           </form>,
         );
         await userEvent.fill(page.getByRole("combobox"), "ban");
@@ -938,7 +949,9 @@ describe("Combobox", () => {
       render(
         <form onReset={(event) => event.preventDefault()}>
           <Fixture rootProps={{ items, defaultValue: "banana-id", name: "fruit" }} />
-          <button type="reset">초기화</button>
+          <button tabIndex={0} type="reset">
+            초기화
+          </button>
         </form>,
       );
       await openCombobox();
@@ -1048,8 +1061,14 @@ describe("Combobox", () => {
             onClick={() => calls.push("part")}
           />
           <Combobox.Value render={<span ref={valueRef} />} />
-          <Combobox.Trigger aria-label="목록 열기" render={<button ref={triggerRef} />} />
-          <Combobox.Clear aria-label="선택 모두 지우기" render={<button ref={clearRef} />} />
+          <Combobox.Trigger
+            aria-label="목록 열기"
+            render={<button tabIndex={0} ref={triggerRef} />}
+          />
+          <Combobox.Clear
+            aria-label="선택 모두 지우기"
+            render={<button tabIndex={0} ref={clearRef} />}
+          />
           <Combobox.Portal render={<CustomDiv ref={portalRef} />}>
             <Combobox.Positioner render={<CustomDiv ref={positionerRef} />}>
               <Combobox.List aria-label="과일 목록" render={<CustomDiv ref={listRef} />}>

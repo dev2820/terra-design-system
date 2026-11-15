@@ -299,7 +299,7 @@ export function Positioner(props: PositionerProps) {
       setPlacement(next);
       settings.current?.(next);
     }
-    frame = window.requestAnimationFrame(update);
+    update();
     return () => window.cancelAnimationFrame(frame);
   }, [open, anchorRef, side, align, sideOffset, collisionPadding, arrowElement]);
 

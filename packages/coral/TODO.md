@@ -30,14 +30,14 @@ Coral은 WAI-ARIA APG 목록을 컴포넌트 목록으로 그대로 구현하지
 - [x] Checkbox Group — fieldset, legend와 Checkbox.Root로 다중 선택 값을 관리한다.
 - [x] Collapsible — 단일 패널의 제어·비제어 펼침 상태와 Root, Trigger, Panel을 제공한다.
 - [x] Combobox — 검색과 선택 값을 분리하고 단일·다중 선택, 키보드 탐색, 팝업 배치와 네이티브 select 기반 Form 연동을 제공한다.
-- [ ] Context Menu (popover 선행)
+- [x] Context Menu — Menu.ContextTrigger로 우클릭·키보드 호출과 좌표 배치를 제공한다.
 - [x] Dialog — 모달·비모달 선택과 Parts, 포커스 이동·복원, 모달의 포커스 순환·외부 비활성화·Scroll Lock을 제공한다.
 - [ ] Drawer (popover 선행)
 - [x] Field
 - [x] Fieldset
 - [x] Form — 네이티브 `<form>`으로 충분하므로 별도 컴포넌트를 제공하지 않는다.
 - [x] Input
-- [ ] Menu (popover 선행)
+- [x] Menu — 버튼·컨텍스트 호출, 중첩 Root와 TriggerItem, 항목 탐색·실행과 계층별 포커스 관리를 제공한다.
 - [ ] Menubar (popover 선행)
 - [x] Meter — 기본 측정값·포맷·Parts를 제공하고 원형과 임계값 구간 판정은 제외한다.
 - [ ] Navigation Menu (popover 선행)

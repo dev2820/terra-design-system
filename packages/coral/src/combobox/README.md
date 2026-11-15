@@ -160,8 +160,9 @@ sideOffset은 0, collisionPadding은 8 CSS px입니다. 배치 결과는 data-si
 data-align으로, 가용 공간은 --anchor-width, --anchor-height, --available-width와
 --available-height로 제공합니다. 스크롤과 최대 크기는 사용처가 정합니다.
 부분 RTL 영역을 Portal로 옮기면 Positioner에도 dir="rtl"을 전달합니다.
+공통 Coral.Positioner의 CSS Anchor Positioning 기반 배치를 사용합니다.
 
-Popover API와 showPopover({ source })를 지원하는 브라우저가 필요합니다.
+CSS Anchor Positioning과 Popover API의 showPopover({ source })를 지원하는 브라우저가 필요합니다.
 Dialog·Popover와의 교차 중첩, 팝업 간 레이어 조정, 수동 스크린 리더와 실제 모바일
 기기 검증은 포함하지 않습니다. 다중 선택은 APG의 단일 값 Combobox에 더해
 다중 선택 listbox와 명시적인 선택 토글을 사용하며 탐색만으로 값을 확정하지 않습니다.

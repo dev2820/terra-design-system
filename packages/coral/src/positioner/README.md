@@ -104,6 +104,7 @@ Scroll Lock을 제공하지 않습니다. 사용처가 콘텐츠에 맞는 의�
 
 Autocomplete.Positioner는 Input을, Popover.Positioner는 Trigger를 기준 요소로
 연결합니다. 각 패턴은 자신의 역할, 포커스와 닫기 정책을 유지합니다.
+Menu.Positioner는 버튼·부모 메뉴 항목 또는 컨텍스트 호출 좌표를 기준으로 연결합니다.
 Dialog.Positioner와 AlertDialog.Positioner는 화면 배치용 컨테이너입니다.
 이들은 기준 요소 옆에 배치하는 독립 Positioner와 다른 계약입니다.
 

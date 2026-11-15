@@ -162,13 +162,14 @@ Positioner의 `side`는 `top`과 `bottom`을 지원하며 기본값은 `bottom`�
 `align`은 `start`, `center`, `end`를 지원하며 기본값은 `start`입니다.
 `sideOffset`은 기본 `0`, `collisionPadding`은 기본 `8` CSS px입니다.
 스크롤, 크기 변경과 레이아웃 이동에 따라 배치를 갱신합니다.
+공통 Coral.Positioner의 CSS Anchor Positioning 기반 배치를 사용합니다.
 
 목록 크기를 구성할 수 있도록 `--anchor-width`, `--anchor-height`,
 `--available-width`, `--available-height`를 제공합니다. 최대 크기와 스크롤은
 사용처가 정합니다. 부분 RTL 영역의 팝업을 body로 옮길 때는 Positioner에도
 `dir="rtl"`을 전달합니다.
 
-네이티브 Popover API와 `showPopover({ source })`를 지원하는 브라우저가 필요합니다.
+CSS Anchor Positioning과 네이티브 Popover API의 `showPopover({ source })`를 지원하는 브라우저가 필요합니다.
 Dialog, Popover와의 교차 중첩과 여러 팝업 사이의 레이어 조정은 지원 범위에
 포함하지 않습니다. 수동 스크린 리더와 실제 모바일 기기 검증은 포함하지 않습니다.
 
