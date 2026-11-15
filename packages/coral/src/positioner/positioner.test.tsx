@@ -102,6 +102,53 @@ function ArrowFixture() {
 // The browser owns the top layer and manual popover behavior. These tests cover
 // Coral's controlled visibility, anchored placement, cleanup and DOM composition.
 describe("Positioner", () => {
+  it.each([false, true])(
+    "contextElement=%s인 가상 기준점으로 배치하고 새 좌표를 반영한다",
+    async (withContext) => {
+      const source = createRef<HTMLButtonElement>();
+      const view = render(<button ref={source}>좌표 기준</button>);
+      const anchorRef = {
+        current: {
+          ...(withContext ? { contextElement: source.current! } : {}),
+          getBoundingClientRect: () => new DOMRect(80, 100, 0, 0),
+        },
+      };
+      view.rerender(
+        <>
+          <button ref={source}>좌표 기준</button>
+          <Positioner
+            open
+            anchorRef={anchorRef}
+            align="start"
+            data-positioner=""
+            style={{ width: 60, height: 40 }}
+          />
+        </>,
+      );
+      await expectPositioned();
+      expect(getPositioner()!.getBoundingClientRect().left).toBeCloseTo(80, 0);
+      expect(getPositioner()!.getBoundingClientRect().top).toBeCloseTo(100, 0);
+      const nextAnchor = {
+        current: { ...anchorRef.current, getBoundingClientRect: () => new DOMRect(120, 160, 0, 0) },
+      };
+      view.rerender(
+        <>
+          <button ref={source}>좌표 기준</button>
+          <Positioner
+            open
+            anchorRef={nextAnchor}
+            align="start"
+            data-positioner=""
+            style={{ width: 60, height: 40 }}
+          />
+        </>,
+      );
+      await vi.waitFor(() =>
+        expect(getPositioner()!.getBoundingClientRect().top).toBeCloseTo(160, 0),
+      );
+      expect(getPositioner()!.getBoundingClientRect().left).toBeCloseTo(120, 0);
+    },
+  );
   it("루트 export와 닫힌 상태의 DOM 제거를 제공한다", () => {
     expect(RootExportPositioner).toBe(Positioner);
     render(<Fixture />);
@@ -141,7 +188,10 @@ describe("Positioner", () => {
       }),
     );
     const element = ref.current!;
-    expect(element.style.left).not.toBe("");
+    expect(element.getBoundingClientRect().top).toBeCloseTo(
+      getAnchor().getBoundingClientRect().bottom,
+      0,
+    );
     expect(element.style.getPropertyValue("--anchor-width")).not.toBe("");
     view.rerender(<Fixture positionerProps={{ ref, onPlacementChange }} />);
     expect(getPositioner()).toBeNull();
@@ -153,17 +203,22 @@ describe("Positioner", () => {
   it("포커스를 이동하거나 Escape와 외부 클릭으로 자체 상태를 바꾸지 않는다", async () => {
     const view = render(<Fixture />);
     await page.getByRole("button", { name: "기준 요소" }).click();
+    // Focus is a fixture precondition; pointer focus defaults vary across browsers.
+    getAnchor().focus();
     view.rerender(<Fixture open />);
     await expectPositioned();
     expect(document.activeElement).toBe(getAnchor());
     await userEvent.keyboard("{Escape}");
     expect(getPositioner()!.matches(":popover-open")).toBe(true);
     await page.getByRole("button", { name: "외부 작업" }).click();
+    (document.querySelector("[data-outside]") as HTMLElement).focus();
     expect(getPositioner()!.matches(":popover-open")).toBe(true);
     expect(document.activeElement).toBe(document.querySelector("[data-outside]"));
     // Standalone contents work without a separate Content Part enabling pointer events.
+    const onClick = vi.fn();
+    page.getByRole("button", { name: "패널 작업" }).element().addEventListener("click", onClick);
     await page.getByRole("button", { name: "패널 작업" }).click();
-    expect(document.activeElement?.textContent).toBe("패널 작업");
+    expect(onClick).toHaveBeenCalledOnce();
   });
 
   it("화면 아래 공간이 부족하면 위로 보정한다", async () => {
@@ -179,6 +234,76 @@ describe("Positioner", () => {
       getAnchor().getBoundingClientRect().top - 4,
       0,
     );
+  });
+
+  it("화면 경계의 기준점에서도 collisionPadding을 확보한다", async () => {
+    render(
+      <Fixture
+        open
+        anchorProps={{ style: { position: "fixed", left: 2, top: 80 } }}
+        positionerProps={{ align: "start", collisionPadding: 12 }}
+      />,
+    );
+    await expectPositioned();
+    expect(getPositioner()!.getBoundingClientRect().left).toBeCloseTo(12, 0);
+  });
+
+  it("여러 팝업의 anchor 이름을 독립적으로 해제하고 사용자 이름을 복원한다", async () => {
+    const anchorRef = createRef<HTMLButtonElement>();
+    function content(first: boolean, second: boolean) {
+      return (
+        <>
+          <button ref={anchorRef} style={{ anchorName: "--consumer-anchor" }}>
+            Shared anchor
+          </button>
+          <Positioner open={first} anchorRef={anchorRef} />
+          <Positioner open={second} anchorRef={anchorRef} side="right" />
+        </>
+      );
+    }
+    const view = render(content(true, true));
+    expect(anchorRef.current!.style.anchorName.split(",")).toHaveLength(3);
+    view.rerender(content(false, true));
+    expect(anchorRef.current!.style.anchorName.split(",")).toHaveLength(2);
+    view.rerender(content(false, false));
+    expect(anchorRef.current!.style.anchorName).toBe("--consumer-anchor");
+  });
+
+  it("같은 Ref의 실제 요소가 교체되면 새 기준점에 연결한다", async () => {
+    const anchorRef = createRef<HTMLButtonElement>();
+    function content(key: string, left: number) {
+      return (
+        <>
+          <button key={key} ref={anchorRef} style={{ position: "fixed", left, top: 80 }}>
+            Moving anchor
+          </button>
+          <Positioner
+            open
+            anchorRef={anchorRef}
+            align="start"
+            data-positioner=""
+            style={{ width: 60, height: 40 }}
+          />
+        </>
+      );
+    }
+    const view = render(content("first", 80));
+    await expectPositioned();
+    const first = anchorRef.current!;
+    view.rerender(content("second", 180));
+    await vi.waitFor(() =>
+      expect(getPositioner()!.getBoundingClientRect().left).toBeCloseTo(180, 0),
+    );
+    expect(first.style.anchorName).toBe("");
+  });
+
+  it("가상 기준점의 임시 요소를 닫을 때 제거한다", async () => {
+    const anchorRef = { current: { getBoundingClientRect: () => new DOMRect(80, 100, 0, 0) } };
+    const view = render(<Positioner open anchorRef={anchorRef} data-positioner="" />);
+    await expectPositioned();
+    expect(document.querySelectorAll("[data-positioner-anchor]")).toHaveLength(1);
+    view.rerender(<Positioner open={false} anchorRef={anchorRef} />);
+    expect(document.querySelectorAll("[data-positioner-anchor]")).toHaveLength(0);
   });
 
   it("기준 요소 크기와 배치 옵션 변경을 반영한다", async () => {

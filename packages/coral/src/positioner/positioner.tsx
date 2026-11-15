@@ -1,12 +1,19 @@
 "use client";
 
-import { arrow, autoUpdate, computePosition, flip, offset, shift, size } from "@floating-ui/dom";
 import * as React from "react";
 
 import { useRender, type PropsWithRender } from "../core";
 
 export type PositionerSide = "top" | "right" | "bottom" | "left";
 export type PositionerAlign = "start" | "center" | "end";
+export interface PositionerVirtualAnchor {
+  getBoundingClientRect: () => Pick<
+    DOMRect,
+    "top" | "right" | "bottom" | "left" | "width" | "height"
+  >;
+  contextElement?: Element | undefined;
+}
+export type PositionerAnchor = HTMLElement | PositionerVirtualAnchor;
 
 export interface PositionerPlacement {
   side: PositionerSide;
@@ -18,13 +25,60 @@ export interface PositionerProps extends PropsWithRender<
   Omit<React.ComponentProps<"div">, "popover">
 > {
   open: boolean;
-  anchorRef: React.RefObject<HTMLElement | null>;
+  anchorRef: React.RefObject<PositionerAnchor | null>;
   side?: PositionerSide;
   align?: PositionerAlign;
   sideOffset?: number;
   collisionPadding?: number;
   arrowElement?: HTMLElement | null;
   onPlacementChange?: (placement: PositionerPlacement | null) => void;
+}
+
+interface AnchorRegistration {
+  original: string;
+  priority: string;
+  base: string;
+  names: Set<string>;
+  applied: string;
+}
+const registrations = new WeakMap<HTMLElement, AnchorRegistration>();
+let nextAnchorId = 0;
+
+function registerAnchor(element: HTMLElement, name: string) {
+  let entry = registrations.get(element);
+  if (!entry) {
+    const computed = getComputedStyle(element).getPropertyValue("anchor-name").trim();
+    entry = {
+      original: element.style.getPropertyValue("anchor-name"),
+      priority: element.style.getPropertyPriority("anchor-name"),
+      base: computed === "none" ? "" : computed,
+      names: new Set(),
+      applied: "",
+    };
+    registrations.set(element, entry);
+  }
+  const registration = entry;
+  function apply() {
+    registration.applied = [registration.base, ...registration.names].filter(Boolean).join(", ");
+    element.style.setProperty("anchor-name", registration.applied);
+  }
+  registration.names.add(name);
+  apply();
+  return () => {
+    registration.names.delete(name);
+    if (element.style.getPropertyValue("anchor-name") === registration.applied) {
+      if (registration.names.size) apply();
+      else if (registration.original)
+        element.style.setProperty("anchor-name", registration.original, registration.priority);
+      else element.style.removeProperty("anchor-name");
+    }
+    if (!registration.names.size) registrations.delete(element);
+  };
+}
+
+const opposite = { top: "bottom", right: "left", bottom: "top", left: "right" } as const;
+function clamp(value: number, min: number, max: number) {
+  return Math.max(min, Math.min(value, Math.max(min, max)));
 }
 
 export function Positioner(props: PositionerProps) {
@@ -41,6 +95,7 @@ export function Positioner(props: PositionerProps) {
     ...rest
   } = props;
   const elementRef = React.useRef<HTMLDivElement>(null);
+  const syncAnchorRef = React.useRef<(() => HTMLElement | null) | null>(null);
   const [placement, setPlacement] = React.useState<PositionerPlacement>({
     side,
     align,
@@ -55,9 +110,56 @@ export function Positioner(props: PositionerProps) {
   React.useLayoutEffect(() => {
     const element = elementRef.current;
     if (!open || !element) return;
-    const anchor = anchorRef.current;
-    element.showPopover(anchor ? { source: anchor } : {});
+    const name = "--coral-positioner-" + ++nextAnchorId;
+    let reference: PositionerAnchor | null = null;
+    let anchorElement: HTMLElement | null = null;
+    let ghost: HTMLSpanElement | null = null;
+    let unregister: (() => void) | undefined;
+    function sync() {
+      const next = anchorRef.current;
+      if (next !== reference) {
+        if (element!.matches(":popover-open")) element!.hidePopover();
+        unregister?.();
+        ghost?.remove();
+        ghost = null;
+        reference = next;
+        anchorElement = null;
+        if (next) {
+          if (next instanceof HTMLElement) anchorElement = next;
+          else {
+            ghost = element!.ownerDocument.createElement("span");
+            ghost.setAttribute("aria-hidden", "true");
+            ghost.dataset.positionerAnchor = "";
+            ghost.style.cssText =
+              "position:fixed;margin:0;padding:0;border:0;opacity:0;pointer-events:none";
+            element!.ownerDocument.body.append(ghost);
+            anchorElement = ghost;
+          }
+          unregister = registerAnchor(anchorElement, name);
+          element!.style.setProperty("position-anchor", name);
+        }
+      }
+      if (reference && ghost) {
+        const rect = reference.getBoundingClientRect();
+        Object.assign(ghost.style, {
+          left: rect.left + "px",
+          top: rect.top + "px",
+          width: rect.width + "px",
+          height: rect.height + "px",
+        });
+      }
+      if (reference && anchorElement?.isConnected && !element!.matches(":popover-open")) {
+        const source = reference instanceof HTMLElement ? reference : reference.contextElement;
+        element!.showPopover(source instanceof HTMLElement ? { source } : {});
+      }
+      return anchorElement;
+    }
+    syncAnchorRef.current = sync;
+    sync();
     return () => {
+      syncAnchorRef.current = null;
+      unregister?.();
+      ghost?.remove();
       previousPlacement.current = null;
       settings.current?.(null);
       if (element.matches(":popover-open")) element.hidePopover();
@@ -66,76 +168,139 @@ export function Positioner(props: PositionerProps) {
 
   React.useLayoutEffect(() => {
     const element = elementRef.current;
-    const anchor = anchorRef.current;
-    if (!open || !element || !anchor) return;
-    let disposed = false;
-    let revision = 0;
-    const update = () => {
-      const currentRevision = ++revision;
-      void computePosition(anchor, element, {
-        strategy: "fixed",
-        placement: align === "center" ? side : `${side}-${align}`,
-        middleware: [
-          offset(sideOffset),
-          flip({ padding: collisionPadding }),
-          shift({ padding: collisionPadding }),
-          size({
-            padding: collisionPadding,
-            apply({ availableWidth, availableHeight, rects }) {
-              if (disposed || revision !== currentRevision) return;
-              element.style.setProperty("--anchor-width", `${rects.reference.width}px`);
-              element.style.setProperty("--anchor-height", `${rects.reference.height}px`);
-              element.style.setProperty("--available-width", `${Math.max(0, availableWidth)}px`);
-              element.style.setProperty("--available-height", `${Math.max(0, availableHeight)}px`);
-            },
-          }),
-          arrowElement ? arrow({ element: arrowElement, padding: collisionPadding }) : undefined,
-        ],
-      }).then(({ x, y, placement: resolved, middlewareData }) => {
-        if (disposed || revision !== currentRevision) return;
-        element.style.left = `${x}px`;
-        element.style.top = `${y}px`;
-        const [resolvedSide, resolvedAlign = "center"] = resolved.split("-") as [
-          PositionerSide,
-          PositionerAlign?,
-        ];
-        const oppositeSide = (
-          { top: "bottom", right: "left", bottom: "top", left: "right" } as const
-        )[resolvedSide];
-        const arrowSize =
-          resolvedSide === "top" || resolvedSide === "bottom"
-            ? (arrowElement?.offsetHeight ?? 0)
-            : (arrowElement?.offsetWidth ?? 0);
-        const arrowStyle: React.CSSProperties = arrowElement
-          ? {
-              left: middlewareData.arrow?.x,
-              top: middlewareData.arrow?.y,
-              [oppositeSide]: -arrowSize / 2,
-            }
-          : {};
-        const previous = previousPlacement.current;
-        if (
-          previous?.side === resolvedSide &&
-          previous.align === resolvedAlign &&
-          previous.arrowStyle.left === arrowStyle.left &&
-          previous.arrowStyle.top === arrowStyle.top &&
-          previous.arrowStyle[oppositeSide] === arrowStyle[oppositeSide]
+    if (!open || !element) return;
+    const document = element.ownerDocument;
+    const window = document.defaultView!;
+    let frame = 0;
+    let direction = "";
+    let shiftX = 0;
+    let shiftY = 0;
+    element.style.translate = "0px 0px";
+
+    function setStyle(property: string, value: string) {
+      if (element!.style.getPropertyValue(property) !== value)
+        element!.style.setProperty(property, value);
+    }
+    function update() {
+      frame = window.requestAnimationFrame(update);
+      const anchor = syncAnchorRef.current?.();
+      if (!anchor?.isConnected || !element!.isConnected) return;
+      const rtl = getComputedStyle(element!).direction === "rtl";
+      const nextDirection = rtl ? "rtl" : "ltr";
+      const vertical = side === "top" || side === "bottom";
+      if (direction !== nextDirection) {
+        direction = nextDirection;
+        const edge = vertical
+          ? align === "start"
+            ? rtl
+              ? "left"
+              : "right"
+            : rtl
+              ? "right"
+              : "left"
+          : align === "start"
+            ? "bottom"
+            : "top";
+        setStyle("position-area", align === "center" ? side : side + " span-" + edge);
+        setStyle(
+          "position-try-fallbacks",
+          vertical
+            ? "flip-block, flip-inline, flip-block flip-inline"
+            : "flip-inline, flip-block, flip-inline flip-block",
+        );
+        for (const boundary of ["top", "right", "bottom", "left"])
+          setStyle("margin-" + boundary, "0px");
+        setStyle("margin-" + side, collisionPadding + "px");
+        for (const cross of vertical ? ["left", "right"] : ["top", "bottom"]) {
+          if (align === "center" || cross === edge)
+            setStyle("margin-" + cross, collisionPadding + "px");
+        }
+        setStyle("margin-" + opposite[side], sideOffset + "px");
+      }
+      const area = getComputedStyle(element!).getPropertyValue("position-area").split(" ");
+      const resolvedSide = area.find((value) => value in opposite) as PositionerSide | undefined;
+      if (!resolvedSide) return;
+      const resolvedVertical = resolvedSide === "top" || resolvedSide === "bottom";
+      const resolvedAlign: PositionerAlign = area.some((value) => value.startsWith("span-"))
+        ? resolvedVertical
+          ? area.includes(rtl ? "span-left" : "span-right")
+            ? "start"
+            : "end"
+          : area.includes("span-bottom")
+            ? "start"
+            : "end"
+        : "center";
+      const viewport = window.visualViewport;
+      const left = viewport?.offsetLeft ?? 0;
+      const top = viewport?.offsetTop ?? 0;
+      const width = viewport?.width ?? document.documentElement.clientWidth;
+      const height = viewport?.height ?? document.documentElement.clientHeight;
+      let rect = element!.getBoundingClientRect();
+      const baseX = rect.left - shiftX;
+      const baseY = rect.top - shiftY;
+      const nextX = resolvedVertical
+        ? clamp(baseX, left + collisionPadding, left + width - rect.width - collisionPadding) -
+          baseX
+        : 0;
+      const nextY = resolvedVertical
+        ? 0
+        : clamp(baseY, top + collisionPadding, top + height - rect.height - collisionPadding) -
+          baseY;
+      if (shiftX !== nextX || shiftY !== nextY) {
+        shiftX = nextX;
+        shiftY = nextY;
+        setStyle("translate", shiftX + "px " + shiftY + "px");
+        rect = element!.getBoundingClientRect();
+      }
+      const target = anchor.getBoundingClientRect();
+      const availableWidth = resolvedVertical
+        ? width - 2 * collisionPadding
+        : resolvedSide === "right"
+          ? left + width - target.right - sideOffset - collisionPadding
+          : target.left - left - sideOffset - collisionPadding;
+      const availableHeight = !resolvedVertical
+        ? height - 2 * collisionPadding
+        : resolvedSide === "bottom"
+          ? top + height - target.bottom - sideOffset - collisionPadding
+          : target.top - top - sideOffset - collisionPadding;
+      setStyle("--anchor-width", target.width + "px");
+      setStyle("--anchor-height", target.height + "px");
+      setStyle("--available-width", Math.max(0, availableWidth) + "px");
+      setStyle("--available-height", Math.max(0, availableHeight) + "px");
+      const arrowStyle: React.CSSProperties = {};
+      if (arrowElement) {
+        const arrowWidth = arrowElement.offsetWidth;
+        const arrowHeight = arrowElement.offsetHeight;
+        if (resolvedVertical)
+          arrowStyle.left = clamp(
+            target.left + target.width / 2 - rect.left - arrowWidth / 2,
+            collisionPadding,
+            rect.width - arrowWidth - collisionPadding,
+          );
+        else
+          arrowStyle.top = clamp(
+            target.top + target.height / 2 - rect.top - arrowHeight / 2,
+            collisionPadding,
+            rect.height - arrowHeight - collisionPadding,
+          );
+        arrowStyle[opposite[resolvedSide]] = -(resolvedVertical ? arrowHeight : arrowWidth) / 2;
+      }
+      const previous = previousPlacement.current;
+      if (
+        previous?.side === resolvedSide &&
+        previous.align === resolvedAlign &&
+        (["top", "right", "bottom", "left"] as const).every(
+          (key) => previous.arrowStyle[key] === arrowStyle[key],
         )
-          return;
-        const next = { side: resolvedSide, align: resolvedAlign, arrowStyle };
-        previousPlacement.current = next;
-        setPlacement(next);
-        settings.current?.(next);
-      });
-    };
-    const cleanup = autoUpdate(anchor, element, update);
-    const observer = new ResizeObserver(update);
-    if (arrowElement) observer.observe(arrowElement);
-    return () => {
-      disposed = true;
-      cleanup();
-      observer.disconnect();
-    };
+      )
+        return;
+      const next = { side: resolvedSide, align: resolvedAlign, arrowStyle };
+      previousPlacement.current = next;
+      setPlacement(next);
+      settings.current?.(next);
+    }
+    frame = window.requestAnimationFrame(update);
+    return () => window.cancelAnimationFrame(frame);
   }, [open, anchorRef, side, align, sideOffset, collisionPadding, arrowElement]);
 
   const element = useRender({
@@ -145,8 +310,6 @@ export function Positioner(props: PositionerProps) {
       style: {
         position: "fixed",
         inset: "auto",
-        top: 0,
-        left: 0,
         margin: 0,
         padding: 0,
         border: 0,

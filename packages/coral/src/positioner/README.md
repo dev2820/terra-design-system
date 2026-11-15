@@ -2,6 +2,7 @@
 
 기준 요소 옆에 콘텐츠를 배치하는 독립 컴포넌트입니다. 상위 표시 계층에서
 표시하고 공간이 부족하면 방향과 좌표를 보정합니다.
+CSS Anchor Positioning과 네이티브 Popover API로 배치하며 외부 런타임 의존성이 없습니다.
 
 ```tsx
 import * as React from "react";
@@ -44,7 +45,7 @@ Portal은 선택 사항입니다. Portal을 생략해도 상위 표시 계층에
 | Prop                | 기본값   | 계약                                                                              |
 | ------------------- | -------- | --------------------------------------------------------------------------------- |
 | `open`              | 필수     | 열림 상태입니다. `false`이면 요소를 제거합니다.                                   |
-| `anchorRef`         | 필수     | 기준 HTMLElement의 Ref입니다.                                                     |
+| `anchorRef`         | 필수     | 기준 HTMLElement 또는 가상 기준점의 Ref입니다.                                    |
 | `side`              | `bottom` | `top`, `right`, `bottom`, `left` 중 우선 배치 방향입니다.                         |
 | `align`             | `center` | `start`, `center`, `end` 중 정렬입니다.                                           |
 | `sideOffset`        | `0`      | 기준 요소와의 간격입니다. 단위는 CSS px입니다.                                    |
@@ -57,7 +58,19 @@ Portal은 선택 사항입니다. Portal을 생략해도 상위 표시 계층에
 기준 요소는 표시 시점에 DOM에 연결되어 있어야 합니다.
 표시 상태는 `open`으로 제어하며 네이티브 표시 메서드를 직접 호출하지 않습니다.
 
+가상 기준점은 `getBoundingClientRect()`로 배치 기준의 사각형을 제공합니다.
+Coral은 이 사각형과 같은 위치·크기의 투명한 기준 요소를 만들고 닫힐 때 제거합니다.
+`contextElement`가 HTMLElement이면 Popover의 source로 연결합니다.
+공개 `PositionerAnchor`와 `PositionerVirtualAnchor`는 Coral이 소유하는 타입입니다.
+
+실제 기준 요소에는 Positioner별 고유한 `anchor-name`을 추가하고 팝업의
+`position-anchor`에 연결합니다. 같은 요소를 여러 Positioner가 사용해도 각 이름을
+독립적으로 해제하며 마지막 사용자가 닫히면 원래 인라인 이름을 복원합니다.
+
 스크롤, 기준 요소와 콘텐츠의 크기 변경, 레이아웃 이동에 따라 좌표를 갱신합니다.
+열린 동안 animation frame에서 배치 결과를 읽어 크기 변수·화살표·콜백을 동기화하고,
+교차 축이 화면 경계에 닿으면 `translate`로 collisionPadding을 확보합니다.
+닫히면 frame과 기준 요소 등록을 정리합니다.
 `data-open`, 실제 배치 방향의 `data-side`와 정렬의 `data-align`을 제공합니다.
 `start`와 `end`는 Positioner의 RTL 방향을 반영합니다. 부분 RTL 영역의 내용을
 body로 옮기는 경우 Positioner에도 `dir="rtl"`을 지정합니다.
@@ -81,7 +94,9 @@ Positioner는 화살표의 역할이나 모양을 정하지 않습니다.
 
 `render`는 사용자 요소와 Props, 이벤트, Ref를 합성합니다.
 대체 요소는 Popover API를 지원하는 HTMLElement여야 합니다. 기본 고정 배치와
-좌표를 유지해야 하며 `ref`는 실제 요소를 가리킵니다.
+배치 스타일을 유지해야 하며 `ref`는 실제 요소를 가리킵니다.
+`position-anchor`, `position-area`, `position-try-fallbacks`, margin과 translate는
+Positioner가 배치를 위해 관리합니다. 사용처의 시각적 변환은 transform으로 구성합니다.
 
 Positioner는 접근성 역할, 이름, 키보드 탐색, 외부 클릭 닫기, 포커스 이동과
 Scroll Lock을 제공하지 않습니다. 사용처가 콘텐츠에 맞는 의미와 상호작용을
@@ -92,8 +107,11 @@ Autocomplete.Positioner는 Input을, Popover.Positioner는 Trigger를 기준 요
 Dialog.Positioner와 AlertDialog.Positioner는 화면 배치용 컨테이너입니다.
 이들은 기준 요소 옆에 배치하는 독립 Positioner와 다른 계약입니다.
 
-네이티브 Popover API와 `showPopover({ source })`를 지원하는 브라우저가 필요합니다.
+CSS Anchor Positioning의 position-area·position-try-fallbacks와
+네이티브 Popover API의 `showPopover({ source })`를 지원하는 브라우저가 필요합니다.
 교차 팝업의 레이어 순서와 포커스 정책은 Positioner가 조정하지 않습니다.
+모바일 키보드·pinch zoom, Shadow DOM·iframe 경계와 루트의 transform이 있는
+가상 기준점은 실제 기기와 환경에서 추가 검증이 필요합니다.
 
 ## 검증과 근거
 
@@ -102,7 +120,13 @@ Dialog.Positioner와 AlertDialog.Positioner는 화면 배치용 컨테이너입�
 
 ```sh
 pnpm --filter @coral/react exec vitest run src/positioner/positioner.test.tsx
+pnpm --filter @coral/react test src/positioner --config vitest.cross-browser.config.ts
 ```
+
+macOS 27에서 Firefox 앱 데이터 초기화가 막히는 환경은 테스트용
+`CFFIXED_USER_HOME` 경로를 지정합니다. CSS 기반 기본 배치, 화면 경계 보정,
+Ref의 기준 요소 교체와 공유 anchor 이름의 등록·해제를 브라우저에서 검증합니다.
 
 - [WHATWG HTML: popover 속성과 manual 상태](https://html.spec.whatwg.org/multipage/popover.html#the-popover-attribute)
 - [WHATWG HTML: showPopover와 source](https://html.spec.whatwg.org/multipage/popover.html#dom-showpopover)
+- [CSS Anchor Positioning: position-area와 fallback](https://drafts.csswg.org/css-anchor-position-1/)
