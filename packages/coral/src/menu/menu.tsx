@@ -475,6 +475,10 @@ export interface MenuPositionerProps extends Omit<
   "open" | "anchorRef" | "arrowElement" | "onPlacementChange"
 > {}
 export function Positioner(props: MenuPositionerProps) {
+  const menu = useMenuContext("Positioner");
+  const rtl = menu.triggerRef.current
+    ? getComputedStyle(menu.triggerRef.current).direction === "rtl"
+    : false;
   const {
     side = menu.parentRef ? (rtl ? "left" : "right") : "bottom",
     align = "start",
@@ -482,11 +486,6 @@ export function Positioner(props: MenuPositionerProps) {
     collisionPadding = 8,
     ...rest
   } = props;
-
-  const menu = useMenuContext("Positioner");
-  const rtl = menu.triggerRef.current
-    ? getComputedStyle(menu.triggerRef.current).direction === "rtl"
-    : false;
 
   const handlePlacementChange = React.useCallback(
     (placement: PositionerPlacement | null) => menu.setReady(placement !== null),
