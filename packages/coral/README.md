@@ -32,6 +32,7 @@ import { Positioner } from "@coral/react/positioner";
 import { Progress } from "@coral/react/progress";
 import { RadioGroup } from "@coral/react/radio-group";
 import { ScrollArea } from "@coral/react/scroll-area";
+import { Select } from "@coral/react/select";
 import { Separator } from "@coral/react/separator";
 import { Slider } from "@coral/react/slider";
 import { Switch } from "@coral/react/switch";

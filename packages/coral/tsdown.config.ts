@@ -25,6 +25,7 @@ export default defineConfig({
     progress: "src/progress/index.ts",
     "radio-group": "src/radio-group/index.ts",
     "scroll-area": "src/scroll-area/index.ts",
+    select: "src/select/index.ts",
     separator: "src/separator/index.ts",
     slider: "src/slider/index.ts",
     switch: "src/switch/index.ts",
